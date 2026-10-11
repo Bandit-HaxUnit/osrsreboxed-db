@@ -48,6 +48,9 @@ DATA_SCHEMAS_PATH = Path(DATA_PATH / "schemas")
 # Generated npc drops dump
 DOCS_DROPS_PATH = Path(DOCS_PATH / "drops-json")
 
+# Generated object (scenery) examine dump
+DOCS_OBJECT_EXAMINES_FILE = Path(DOCS_PATH / "object-examines.json")
+
 # Useful builder paths
 BUILDERS_ITEMS = Path(BUILDERS_PATH / "items")
 BUILDERS_MONSTERS = Path(BUILDERS_PATH / "monsters")
