@@ -24,7 +24,13 @@
               {
                 "type": "jump",
                 "reference": "continue",
-                "id": "X48GQF"
+                "id": "X48GQF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-68ca096f234c6328"
+                  }
+                ]
               }
             ]
           },
@@ -42,7 +48,13 @@
               {
                 "type": "jump",
                 "reference": "continue",
-                "id": "iWeab9"
+                "id": "iWeab9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-68ca096f234c6328"
+                  }
+                ]
               }
             ]
           },
@@ -60,7 +72,13 @@
               {
                 "type": "jump",
                 "reference": "continue",
-                "id": "BuKsSB"
+                "id": "BuKsSB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-68ca096f234c6328"
+                  }
+                ]
               }
             ]
           },
@@ -274,8 +292,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "VD0Tsg"
+                                "id": "VD0Tsg",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-4575f08f2ae82915"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1287,8 +1310,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rfwo5Z"
+                "id": "rfwo5Z",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3d28834883405204"
+                  }
+                ]
               }
             ]
           },
@@ -1297,8 +1325,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sx2xEF"
+                "id": "sx2xEF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7a60316450ba6da5"
+                  }
+                ]
               }
             ]
           },
@@ -1325,8 +1358,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NwMKM4"
+                "id": "NwMKM4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0279881a2ef77217"
+                  }
+                ]
               }
             ]
           }
@@ -3942,8 +3980,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "ZIIUMV"
+                            "id": "ZIIUMV",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-bd8422f81ba9bf6c"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -4237,8 +4280,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "0xGThk"
+        "id": "0xGThk",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-da5fe69d4e79d6bf"
+          }
+        ]
       },
       {
         "type": "condition",
@@ -4794,6 +4842,559 @@
     ]
   },
   "branches": {
+    "jump-68ca096f234c6328": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why should I leave?",
+            "steps": [
+              {
+                "player": "Why should I leave?"
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "This place has been cursed. Our people have angered the gods and have fled the village."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Where is this place?",
+                    "steps": [
+                      {
+                        "player": "Where is this place?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Timfraku",
+                        "text": "You ask too many questions. Now begone!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are the gods?",
+                    "steps": [
+                      {
+                        "player": "Who are the gods?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Timfraku",
+                        "text": "You ask too many questions. Now begone!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where have your people fled to?",
+                    "steps": [
+                      {
+                        "player": "Where have your people fled to?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Timfraku",
+                        "text": "You ask too many questions. Now begone!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Right, I'm going then.",
+            "steps": [
+              {
+                "player": "Right, I'm going then."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Trufitus sent me.",
+            "steps": [
+              {
+                "player": "Trufitus sent me."
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "Trufitus Shakaya? What news does he send?"
+              },
+              {
+                "player": "Trufitus has communed with the gods. Your village was never cursed and your people are free to return."
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "Bwana, do you speak the truth?"
+              },
+              {
+                "player": "Yes, I helped Trufitus gather ingredients for a commune potion."
+              },
+              {
+                "type": "message",
+                "text": "Timfraku appears to concentrate very deeply.",
+                "id": "EF66WH"
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "Then it must be true."
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "I cannot thank you enough for what you have done so far."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Your gratitude is all I deserve.",
+                    "steps": [
+                      {
+                        "player": "Your gratitude is all I deserve."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Timfraku",
+                        "text": "No, Bwana, you deserve much more."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Timfraku",
+                        "text": "I now ask you to do one last thing for our village."
+                      },
+                      {
+                        "player": "And what is that?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Timfraku",
+                        "text": "I ask you to deliver the good news to my three sons Tamayu, Tinsay & Tiadeche, and then return them to the village."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Start the Tai Bwo Wannai Trio quest?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "player": "Ok, I'll do it."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Timfraku",
+                                "text": "Thank you very much. I shall reward you greatly if you succeed."
+                              },
+                              {
+                                "player": "If I succeed? How hard can it be?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Timfraku",
+                                "text": "We shall see, Bwana."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "hook": "quest:tai-bwo-wannai-trio:start",
+                            "quest": "Tai Bwo Wannai Trio"
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "player": "No, I've had quite enough of the jungle already."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Timfraku",
+                                "text": "Very well. Return when you are ready."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well, some gold would be nice.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "SNHWKk"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So far??",
+                    "steps": [
+                      {
+                        "player": "So far??"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Timfraku",
+                        "text": "I now ask you to do one last thing for our village."
+                      },
+                      {
+                        "type": "jump",
+                        "id": "VD0Tsg",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4575f08f2ae82915"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ask about Village.",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "What do you do here?",
+                            "steps": [
+                              {
+                                "player": "What do you do here?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Timfraku",
+                                "text": "It should be clear to anyone that I am the chief of Tai Bwo Wannai. I ensure that things run smoothly in this village."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Is there anything interesting to do here?",
+                            "steps": [
+                              {
+                                "player": "Is there anything interesting to do here?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Timfraku",
+                                "text": "Yes Bwana, plenty of interesting things to do. Firstly you could make an effort to tidy the place up a little. Equip yourself with a machete and start cutting down the jungle that seems to be growing all around here."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Timfraku",
+                                "text": "Go and have a chat with Murcaily for information, he's tending the hardwood grove to the east of here."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "LzrTMZ"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I've been doing some work around the village.",
+                            "steps": [
+                              {
+                                "player": "I've been doing some work around the village."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has not been doing the Tai Bwo Wannai Cleanup tasks:",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Timfraku",
+                                    "text": "That's good Bwana, I would hate to think that you were just being lazy while you're in my kingdom!"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "kq9R0D"
+                                  }
+                                ],
+                                "id": "8HTLn-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has completed at least one task from the Tai Bwo Wannai Cleanup task list:",
+                                "steps": [
+                                  {
+                                    "type": "missing",
+                                    "id": "lhpbH_"
+                                  }
+                                ],
+                                "id": "MKal2j"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok, thanks.",
+                            "steps": [
+                              {
+                                "player": "Ok, thanks."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4575f08f2ae82915": [
+      {
+        "player": "And what is that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Timfraku",
+        "text": "I ask you to deliver the good news to my three sons Tamayu, Tinsay & Tiadeche, and then return them to the village."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Tai Bwo Wannai Trio quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Ok, I'll do it."
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "Thank you very much. I shall reward you greatly if you succeed."
+              },
+              {
+                "player": "If I succeed? How hard can it be?"
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "We shall see, Bwana."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:tai-bwo-wannai-trio:start",
+            "quest": "Tai Bwo Wannai Trio"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, I've had quite enough of the jungle already."
+              },
+              {
+                "type": "line",
+                "speaker": "Timfraku",
+                "text": "Very well. Return when you are ready."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3d28834883405204": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "player": "Tell me more of the Shaikahan."
+              },
+              {
+                "type": "line",
+                "speaker": "Tamayu",
+                "text": "A source of indescribable evil. A beast more foul than your dreams could imagine. It hunts the jungle for anything foolish enough to cross its path."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "gQyz1v"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "Tell me more of the Shaikahan."
+              },
+              {
+                "type": "line",
+                "speaker": "Tamayu",
+                "text": "It stands a full man's length in height. Its fore claws are sharp enough to rip through metal. In its eyes glow the embers of death."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "Rowrl-"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7a60316450ba6da5": [
+      {
+        "player": "How long have you been hunting the Shaikahan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tamayu",
+        "text": "Since before I was born, stranger. It is my destiny."
+      }
+    ],
+    "jump-0279881a2ef77217": [
+      {
+        "player": "I could slay the Shaikahan for you."
+      },
+      {
+        "type": "line",
+        "speaker": "Tamayu",
+        "text": "You offer to kill the beast for me? Stop this nonsense, lest I kill you first. It is I who must avenge the death of my kin."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-bd8422f81ba9bf6c": [
+      {
+        "player": "Just how insane are you?"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Tinsay",
+                "text": "On a scale of 1 to barmy , I'm about [#]."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "4M9Thi"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Tinsay",
+                "text": "On a scale of 1 to kooky , I'm about [#]."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "fvUV2B"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Tinsay",
+                "text": "On a scale of 1 to mad , I'm about [#]."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "Pki0Q8"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Tinsay",
+                "text": "On a scale of 1 to loopy , I'm about [#]."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "-GOx6C"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "JrgJOL"
+      }
+    ],
+    "jump-da5fe69d4e79d6bf": [
+      {
+        "player": "I insist - and so does your father."
+      },
+      {
+        "type": "line",
+        "speaker": "Tinsay",
+        "text": "He will not be pleased with me..."
+      },
+      {
+        "player": "Why?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tinsay",
+        "text": "It's complicated - we don't really talk about it."
+      },
+      {
+        "type": "line",
+        "speaker": "Tinsay",
+        "text": "Very well. I will meet you in the village once you have helped my brothers and spoken to my father."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "lSbvTf": [
       {
         "player": "No."

@@ -1,4 +1,28 @@
 {
+  "branches": {
+    "jump-cd66e22c1b487fbd": [
+      {
+        "player": "What are you serving?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The Golden Field",
+        "id": "-VZ8Al"
+      }
+    ],
+    "jump-370c400f33b5f56c": [
+      {
+        "player": "I'm okay, thanks."
+      },
+      {
+        "npc": "With some of these drinks inside you, you could be far more than merely okay!"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What can I get you?"
@@ -37,8 +61,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "AA1DOI"
+                      "id": "AA1DOI",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-cd66e22c1b487fbd"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -47,8 +76,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "KydF-b"
+                      "id": "KydF-b",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-370c400f33b5f56c"
+                        }
+                      ]
                     }
                   ]
                 }

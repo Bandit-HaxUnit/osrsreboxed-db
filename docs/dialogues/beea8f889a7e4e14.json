@@ -1,5 +1,92 @@
 {
   "branches": {
+    "jump-6a68bb936832b0b7": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I know, I was there!",
+            "steps": [
+              {
+                "player": "I know, I was there!"
+              },
+              {
+                "npc": "You were? I didn't see you!"
+              },
+              {
+                "player": "It was super crowded. I was the one in the colourful outfit."
+              },
+              {
+                "npc": "The one in the colourful outfit...?"
+              },
+              {
+                "player": "Ah, yes, like everybody else. I forgot, we were all in colourful outfits!"
+              },
+              {
+                "npc": "Yes! Did you have a good time?"
+              },
+              {
+                "player": "I did thank you. It was really nice to see so many adventurers coming together to bring a splash of colour to Gielinor."
+              },
+              {
+                "npc": "It truly was, and so many flower crowns too! I was a bit worried the large pile I'd made of them would go to waste, but in the end I almost ran out!"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "pvhW9f"
+              }
+            ]
+          },
+          {
+            "text": "Really? That is cool!",
+            "steps": [
+              {
+                "player": "Really? That's cool! What made it colourful?"
+              },
+              {
+                "npc": "Everyone turned up in colourful outfits, it was like a sea of rainbows."
+              },
+              {
+                "npc": "So many flower crowns too! I was a bit worried the large pile I'd made of them would go to waste, but in the end I almost ran out!"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "JKplLa"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player": "Sounds like a nice problem to have! Will you be making more for the next parade they do?"
+      },
+      {
+        "npc": "The next parade?"
+      },
+      {
+        "player": "Yes, I'm sure they'll do another one. If so many people turned up, it must have been a great success. Why wouldn't they want to do it again?"
+      },
+      {
+        "npc": "That is a good point. I'll get to making some more right away."
+      },
+      {
+        "player": "Maybe it'll become a yearly thing. A chance to show off some colour, and of course your fancy flower crowns, to all of Gielinor!"
+      },
+      {
+        "npc": "Sounds good to me, gives me time to get lots made in advance."
+      },
+      {
+        "npc": "Right, well I clearly have work to be getting on with. See you soon!"
+      },
+      {
+        "player": "See you!"
+      },
+      {
+        "type": "end"
+      }
+    ],
     "1oWUBy": [
       {
         "npc": "Oh, you appear to already have one of those."
@@ -47,7 +134,13 @@
                 {
                   "type": "jump",
                   "reference": "continues",
-                  "id": "-qOtyt"
+                  "id": "-qOtyt",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-6a68bb936832b0b7"
+                    }
+                  ]
                 }
               ],
               "id": "GtTSTU"
@@ -65,7 +158,13 @@
                 {
                   "type": "jump",
                   "reference": "continues",
-                  "id": "vPdRyd"
+                  "id": "vPdRyd",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-6a68bb936832b0b7"
+                    }
+                  ]
                 }
               ],
               "id": "lxH38T"

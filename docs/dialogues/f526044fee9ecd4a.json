@@ -31,8 +31,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "cQMqKC"
+                "id": "cQMqKC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e970280ab68c115c"
+                  }
+                ]
               }
             ]
           },
@@ -242,6 +247,72 @@
               },
               {
                 "npc": "See you later!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-e970280ab68c115c": [
+      {
+        "npc": "Yay! That will be 5 coins, please."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Buy beer for 5 coins.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have 5 coins:",
+                "steps": [
+                  {
+                    "player": "Oh dear, I don't seem to have enough money."
+                  },
+                  {
+                    "npc": "That's alright. Come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xgCSUv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 5 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "beer",
+                    "id": "AcQDjo"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "z3moXi"
+              }
+            ]
+          },
+          {
+            "text": "No way, that's too expensive.",
+            "steps": [
+              {
+                "player": "No way, that's too expensive."
+              },
+              {
+                "npc": "Look, I don't choose the prices here. I'm just trying to make a living selling beer."
+              },
+              {
+                "player": "That's fair enough."
+              },
+              {
+                "type": "end"
               }
             ]
           }

@@ -205,8 +205,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vZajtt"
+                "id": "vZajtt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-919c4a244d014bda"
+                  }
+                ]
               }
             ]
           },
@@ -215,8 +220,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6pmdSo"
+                "id": "6pmdSo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8c33783649c904cb"
+                  }
+                ]
               }
             ]
           }
@@ -251,8 +261,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sEIi-O"
+                "id": "sEIi-O",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-919c4a244d014bda"
+                  }
+                ]
               }
             ]
           },
@@ -261,8 +276,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BrFQJm"
+                "id": "BrFQJm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8c33783649c904cb"
+                  }
+                ]
               }
             ]
           }
@@ -384,6 +404,150 @@
     ]
   },
   "branches": {
+    "jump-919c4a244d014bda": [
+      {
+        "player": "Yes please, I need woad leaves."
+      },
+      {
+        "npc": "How much are you willing to pay?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How about 5 coins?",
+            "steps": [
+              {
+                "player": "How about 5 coins?"
+              },
+              {
+                "npc": "No no, that's far too little. Woad leaves are hard to get. I used to have plenty but someone kept stealing them off me."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "How about 10 coins?",
+            "steps": [
+              {
+                "player": "How about 10 coins?"
+              },
+              {
+                "npc": "No no, that's far too little. Woad leaves are hard to get. I used to have plenty but someone kept stealing them off me."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "How about 15 coins?",
+            "steps": [
+              {
+                "player": "How about 15 coins?"
+              },
+              {
+                "npc": "Mmmm... okay, that sounds fair."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 15 coins:",
+                "steps": [
+                  {
+                    "player": "I don't have enough coins to buy the leaves. I'll come back later."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "HeH6yX"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 15 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "one woad leaf",
+                    "id": "bywQsQ"
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "npc": "I'll be around if you have any more gardening needs."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "j8I8So"
+              }
+            ]
+          },
+          {
+            "text": "How about 20 coins?",
+            "steps": [
+              {
+                "player": "How about 20 coins?"
+              },
+              {
+                "npc": "Okay, that's more than fair."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 20 coins:",
+                "steps": [
+                  {
+                    "player": "I don't have enough coins to buy the leaves. I'll come back later."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "bddTbW"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 20 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "two woad leaves",
+                    "id": "F6m-S9"
+                  },
+                  {
+                    "npc": "Here, have two, you're a generous person."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CgN3Et"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8c33783649c904cb": [
+      {
+        "player": "Sorry, but I'm not interested."
+      },
+      {
+        "npc": "Fair enough."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "xdDS1A": [
       {
         "player": "I don't have enough coins to buy the leaves. I'll come back later."

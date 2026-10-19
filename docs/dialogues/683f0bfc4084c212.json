@@ -1,4 +1,220 @@
 {
+  "branches": {
+    "jump-5413ddaae2b30d8a": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I work here, in the blast mine. It's a valuable source of minerals for the kingdom, so our work is very important."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I mine in this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "nyl3bn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9a5972d17364ab20"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is this machine?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "JBv69X",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8d74e68acf4998c4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "neiiyI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2aa1c243704e5af4"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8d74e68acf4998c4": [
+      {
+        "player": "What is this machine?"
+      },
+      {
+        "npc": "The ore from the blast mines is unstable, and needs washing quickly before it disintegrates, so the Lovakengj engineers invented this machine to clean it."
+      },
+      {
+        "npc": "The design's a secret; even if someone tried to copy it, they'd never get it quite right. I bet their machine would break down all the time."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I mine in this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "I_ZdAB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9a5972d17364ab20"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "C4titw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5413ddaae2b30d8a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "vM7niX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2aa1c243704e5af4"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-2aa1c243704e5af4": [
+      {
+        "player": "I'll be off."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9a5972d17364ab20": [
+      {
+        "player": "How do I mine in this place?"
+      },
+      {
+        "npc": "Okay, first you need dynamite. That's got three ingredients..."
+      },
+      {
+        "type": "message",
+        "text": "Firstly, you need volcanic sulphur. It comes from Toothy's mine, west of here.",
+        "id": "vxJQVC"
+      },
+      {
+        "type": "message",
+        "text": "Secondly, you need juniper charcoal. Smoggy's got some charcoal furnaces on the beach in the Hosidius area, near the juniper woods.",
+        "id": "JkhQuU"
+      },
+      {
+        "type": "message",
+        "text": "Thirdly, you need saltpetre. There are some natural deposits in the Hosidius woodlands, near the juniper trees.",
+        "id": "dWd88B"
+      },
+      {
+        "type": "message",
+        "text": "Mix the volcanic sulphur, the juniper charcoal and the saltpetre in a pot to make dynamite. Finally add a string as a fuse.",
+        "id": "KoJ0mW"
+      },
+      {
+        "npc": "Once you've got dynamite, use a chisel to excavate a cavity in the hard rock walls, so you can put the dynamite in, then light the fuse."
+      },
+      {
+        "npc": "The dynamite blows ore out of the hard rock. It's very unstable, so you don't have long to get it cleaned before it disintegrates."
+      },
+      {
+        "npc": "Just deposit it into the sack upstream, and my colleague will get it cleaned safely. You can collect your cleaned ore from me."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "9BBsAV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5413ddaae2b30d8a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is this machine?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "wEC4e9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8d74e68acf4998c4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "xQO6nc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2aa1c243704e5af4"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "How can I help you, human?"
@@ -89,8 +305,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "9BBsAV"
+                      "id": "9BBsAV",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-5413ddaae2b30d8a"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -99,8 +320,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "wEC4e9"
+                      "id": "wEC4e9",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-8d74e68acf4998c4"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -109,8 +335,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "xQO6nc"
+                      "id": "xQO6nc",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-2aa1c243704e5af4"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -135,8 +366,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "nyl3bn"
+                      "id": "nyl3bn",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-9a5972d17364ab20"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -145,8 +381,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "JBv69X"
+                      "id": "JBv69X",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-8d74e68acf4998c4"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -155,8 +396,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "neiiyI"
+                      "id": "neiiyI",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-2aa1c243704e5af4"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -184,8 +430,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "I_ZdAB"
+                      "id": "I_ZdAB",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-9a5972d17364ab20"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -194,8 +445,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "C4titw"
+                      "id": "C4titw",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-5413ddaae2b30d8a"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -204,8 +460,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "vM7niX"
+                      "id": "vM7niX",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-2aa1c243704e5af4"
+                        }
+                      ]
                     }
                   ]
                 }

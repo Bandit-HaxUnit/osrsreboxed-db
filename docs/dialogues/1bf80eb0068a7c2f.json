@@ -1,4 +1,17 @@
 {
+  "branches": {
+    "jump-c5092f1108843159": [
+      {
+        "player": "I would like to buy some equipment."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Myths' Guild Armoury",
+        "id": "p6rVTJ"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello."
@@ -103,8 +116,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "Cr9F7k"
+                      "id": "Cr9F7k",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-c5092f1108843159"
+                        }
+                      ]
                     }
                   ]
                 },

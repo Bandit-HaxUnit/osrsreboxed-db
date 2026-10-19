@@ -167,8 +167,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "mSVgN1"
+                    "id": "mSVgN1",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-caf032e27e1a6b7b"
+                      }
+                    ]
                   }
                 ]
               },
@@ -177,8 +182,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "leapz-"
+                    "id": "leapz-",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-d928f5fe914b2265"
+                      }
+                    ]
                   }
                 ]
               }
@@ -236,8 +246,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "HoVccA"
+                    "id": "HoVccA",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-caf032e27e1a6b7b"
+                      }
+                    ]
                   }
                 ]
               },
@@ -246,8 +261,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "_JDUVg"
+                    "id": "_JDUVg",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-d928f5fe914b2265"
+                      }
+                    ]
                   }
                 ]
               }
@@ -290,6 +310,74 @@
     ]
   },
   "branches": {
+    "jump-caf032e27e1a6b7b": [
+      {
+        "player": "I have a cat that I could sell."
+      },
+      {
+        "npc": "You don't say, is that it ?"
+      },
+      {
+        "player": "Say hello to a real mouse killer!"
+      },
+      {
+        "npc": "Hmmm, not bad, not bad at all. Looks like it's a lively one."
+      },
+      {
+        "player": "Erm...kind of..."
+      },
+      {
+        "npc": "I don't have much in the way of money. I do have these!"
+      },
+      {
+        "type": "unavailable",
+        "id": "45OMkv"
+      },
+      {
+        "npc": "The dwarves bring them from the mine for us. Tell you what, I'll give you [100/200] Death Runes for the cat."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Nope, I'm not parting for that.",
+            "steps": [
+              {
+                "player": "Nope, I'm not parting for that."
+              },
+              {
+                "npc": "Well, I'm not giving you anymore!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Ok then, you've got a deal.",
+            "steps": [
+              {
+                "player": "Ok then, you've got a deal."
+              },
+              {
+                "npc": "Great! Hand over the cat and I'll give you the runes."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-d928f5fe914b2265": [
+      {
+        "player": "Nope, they're not easy to get hold of."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "SEO-ag": [
       {
         "player": "No, you're right, you don't see many around."

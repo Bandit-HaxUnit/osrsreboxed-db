@@ -34,8 +34,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "-JCBt_"
+                        "id": "-JCBt_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-267cbbf886016411"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -44,8 +49,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "vG1M_s"
+                        "id": "vG1M_s",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4babdde79d108666"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -270,6 +280,193 @@
         "type": "action",
         "text": "(Continues with standard dialogue.)",
         "id": "P79WOa"
+      }
+    ]
+  },
+  "branches": {
+    "jump-267cbbf886016411": [
+      {
+        "player": "Have you anything for sale?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Buy some wine: 1 coin",
+            "condition": "If the player has 1 coin:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You buy a jug of wine for 1 coin.",
+                "id": "xtNKaV"
+              },
+              {
+                "type": "action",
+                "text": "Player receives a jug of wine for 1 coin.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "2gLQXa"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "QjUHk4"
+              }
+            ],
+            "id": "LnZgcy"
+          },
+          {
+            "text": "Buy some beer: 2 coins",
+            "condition": "If the player has 2 coins:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You purchase a frothy glass of beer for 2 coins.",
+                "id": "qm7HaA"
+              },
+              {
+                "type": "action",
+                "text": "Player receives 2 glasses of beer for 2 coins.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "3cklpM"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "Umsh9w"
+              }
+            ],
+            "id": "Sc7hvw"
+          },
+          {
+            "text": "Buy a night's rest: 35 coins",
+            "condition": "If the player has 35 coins:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You purchase a ticket to access the dormitory for 35 coins.",
+                "id": "67RI_i"
+              },
+              {
+                "type": "action",
+                "text": "Player receives a Paramaya ticket for 35 coins.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "T8GBSb"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "kl4DVZ"
+              }
+            ],
+            "id": "Nimksb"
+          },
+          {
+            "text": "Buy a pack of 5 dorm tickets: 175 coins",
+            "condition": "If the player has 175 coins:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You purchase five tickets to access the dormitory for 175 coins.",
+                "id": "g2RMkS"
+              },
+              {
+                "type": "action",
+                "text": "Player receives 5 Paramaya tickets for 175 coins.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "-ftKwK"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "NvXp4_"
+              }
+            ],
+            "id": "Ou8Hs9"
+          },
+          {
+            "text": "Buy some wine: 1 coin",
+            "condition": "If the player does not have 1 coin:",
+            "steps": [
+              {
+                "npc": "I'm afraid you do not have enough money for that, Bwana."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "g8aa13"
+              }
+            ],
+            "id": "lXXWQ3"
+          },
+          {
+            "text": "Buy some beer: 2 coins",
+            "condition": "If the player does not have 2 coins:",
+            "steps": [
+              {
+                "npc": "I'm afraid you do not have enough money for that, Bwana."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "tKDERr"
+              }
+            ],
+            "id": "tu3udN"
+          },
+          {
+            "text": "Buy a night's rest: 35 coins",
+            "condition": "If the player does not have 35 coins:",
+            "steps": [
+              {
+                "npc": "I'm afraid you do not have enough money for that, Bwana."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "LtG0mp"
+              }
+            ],
+            "id": "WzTTZO"
+          },
+          {
+            "text": "Buy a pack of 5 dorm tickets: 175 coins",
+            "condition": "If the player does not have 175 coins:",
+            "steps": [
+              {
+                "npc": "I'm afraid you do not have enough money for that, Bwana."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "VneBP2"
+              }
+            ],
+            "id": "k0YOG4"
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4babdde79d108666": [
+      {
+        "player": "I'm fine, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

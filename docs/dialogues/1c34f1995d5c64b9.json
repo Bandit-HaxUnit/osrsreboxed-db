@@ -82,8 +82,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JuHSMI"
+                "id": "JuHSMI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-44f056a2866ed843"
+                  }
+                ]
               }
             ]
           },
@@ -120,8 +125,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "henv11"
+                "id": "henv11",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-db3b21a5e16d65f0"
+                  }
+                ]
               }
             ]
           }
@@ -131,6 +141,24 @@
     "standard-dialogue-if-the-player-is-not-disguised": [
       {
         "npc": "Human! Get back to the slave pens before I call the guards!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-44f056a2866ed843": [
+      {
+        "player": "Show me what you've got."
+      }
+    ],
+    "jump-db3b21a5e16d65f0": [
+      {
+        "player": "I'm good, thanks."
+      },
+      {
+        "npc": "Come back if you ever want some meat!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

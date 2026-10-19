@@ -1,4 +1,162 @@
 {
+  "branches": {
+    "jump-80f750b79ec6e4d5": [
+      {
+        "type": "action",
+        "text": "(Bank space purchase interface opens.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Bank space purchase",
+        "id": "sCZ9FC"
+      },
+      {
+        "type": "choice",
+        "prompt": "How many do you wish to purchase?",
+        "options": [
+          {
+            "text": "[number] slots ([number] coins):",
+            "steps": [
+              {
+                "player": "[number] slots please."
+              },
+              {
+                "type": "line",
+                "speaker": "Banker",
+                "text": "Buying [number] additional bank slots will cost [number] coins. Be warned, this purchase is not reversible. Are you happy to proceed?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins in their inventory or bank:",
+                        "steps": [
+                          {
+                            "player": "Oh... I don't seem to have enough money for that. Never mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "VgD83V"
+                      },
+                      {
+                        "player": "Yes, I'm happy with that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Banker",
+                        "text": "Your additional bank slots have been added."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Actually, I've changed my mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do I have any other options for extra bank space?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has set up a bank PIN, an Authenticator and is playing on a Jagex Account:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Banker",
+                    "text": "I'm afraid not! You've already got as much bank space as you can obtain without purchase."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Banker",
+                    "text": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+                  },
+                  {
+                    "type": "jump",
+                    "id": "kR11-_",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-80f750b79ec6e4d5"
+                      }
+                    ]
+                  }
+                ],
+                "id": "WUOFQS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not satisfy all three conditions:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Banker",
+                    "text": "I'm not supposed to tell you this, but you can obtain more bank space by [setting up a PIN], [setting up an Authenticator] [or] [upgrading to a Jagex Account]."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Banker",
+                    "text": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+                  },
+                  {
+                    "type": "jump",
+                    "id": "A7NbQb",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-ed9cf9076857faeb"
+                      }
+                    ]
+                  }
+                ],
+                "id": "AI-B57"
+              }
+            ]
+          },
+          {
+            "text": "(Cancel)",
+            "steps": [
+              {
+                "player": "Actually, I've changed my mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ed9cf9076857faeb": [
+      {
+        "type": "jump",
+        "id": "kR11-_",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-80f750b79ec6e4d5"
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "type": "line",
@@ -153,8 +311,13 @@
                         },
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "kR11-_"
+                          "id": "kR11-_",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-80f750b79ec6e4d5"
+                            }
+                          ]
                         }
                       ],
                       "id": "WUOFQS"
@@ -175,8 +338,13 @@
                         },
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "A7NbQb"
+                          "id": "A7NbQb",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-ed9cf9076857faeb"
+                            }
+                          ]
                         }
                       ],
                       "id": "AI-B57"

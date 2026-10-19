@@ -83,8 +83,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "2LPX3m"
+                        "id": "2LPX3m",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-91f497c88b18e70c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -145,6 +150,16 @@
           }
         ],
         "id": "Oginy2"
+      }
+    ]
+  },
+  "branches": {
+    "jump-91f497c88b18e70c": [
+      {
+        "player": "I'm off."
+      },
+      {
+        "type": "end"
       }
     ]
   }

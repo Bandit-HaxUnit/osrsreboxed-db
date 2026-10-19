@@ -126,8 +126,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "PpS2Wy"
+                        "id": "PpS2Wy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c52b4611881661c9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -176,8 +181,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WFo54_"
+                "id": "WFo54_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c52b4611881661c9"
+                  }
+                ]
               }
             ]
           },
@@ -186,8 +196,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "aOpVNp"
+                "id": "aOpVNp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1b74775c9f13ef3d"
+                  }
+                ]
               }
             ]
           },
@@ -196,12 +211,150 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Fofkyp"
+                "id": "Fofkyp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8c7c3f355aef7837"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-c52b4611881661c9": [
+      {
+        "player": "Who is Xeric?"
+      },
+      {
+        "npc": "Xeric was an incredibly powerful dark mage. He ruled Great Kourend for ten decades."
+      },
+      {
+        "npc": "If you'd like to find out more you should visit the Historical Archive at the Grand Library."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "n-DFWD"
+      }
+    ],
+    "jump-1b74775c9f13ef3d": [
+      {
+        "player": "What are the Chambers of Xeric?"
+      },
+      {
+        "npc": "At the summit of this mountain we've found an ancient temple and a vast network of caves that we believe were formed by Xeric and his followers."
+      },
+      {
+        "npc": "The discovery of the Chambers tells us Xeric invested significant time and resources here, yet it was never documented."
+      },
+      {
+        "npc": "While much of Kourend's history under Xeric remains unknown, it is very surprising to discover such a huge area that was previously undiscovered to us."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I explore the Chambers?",
+            "steps": [
+              {
+                "player": "Can I explore the Chambers?"
+              },
+              {
+                "npc": "Of course, though be careful. The dangers of the Chambers of Xeric are as yet unknown. You should take a strong group of companions with you."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "PGYYfD"
+              }
+            ]
+          },
+          {
+            "text": "What do you think Xeric used this area for?",
+            "steps": [
+              {
+                "player": "What do you think Xeric used this area for?"
+              },
+              {
+                "npc": "When he ruled Kourend, we know Xeric performed experiments on the living, using power drawn from the Dark Altar. After he was overthrown, he would have needed a new source of power."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Tale of the Righteous:",
+                "steps": [
+                  {
+                    "npc": "We believe he came here to seek it. Xeric would also have required a source of many creatures for these experiments, and the Chambers certainly contain many of those!"
+                  },
+                  {
+                    "npc": "He must have also had some form of teleportation in order to reach the temple unnoticed."
+                  },
+                  {
+                    "npc": "With time and careful study we will uncover these secrets and be able to answer these questions."
+                  }
+                ],
+                "id": "FPSyE3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Tale of the Righteous:",
+                "steps": [
+                  {
+                    "npc": "We believe this altar is that source. It seems to act as an amplifier for the Dark Altar."
+                  },
+                  {
+                    "npc": "As for what he used the Chambers for, that we still don't know. There's a lot of creatures in the Chambers. Maybe he used them in his experiments."
+                  }
+                ],
+                "id": "kU-QZP"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "6yL0iF"
+              }
+            ]
+          },
+          {
+            "text": "Who is Xeric?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "PpS2Wy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c52b4611881661c9"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "0B2omu"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8c7c3f355aef7837": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "Ka2gfg"
       }
     ]
   }

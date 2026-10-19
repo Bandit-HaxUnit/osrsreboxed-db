@@ -191,8 +191,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4YDktM"
+                "id": "4YDktM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c2e6c0a2fa96bb5b"
+                  }
+                ]
               }
             ]
           }
@@ -229,8 +234,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8nK4FY"
+                "id": "8nK4FY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c2e6c0a2fa96bb5b"
+                  }
+                ]
               }
             ]
           }
@@ -529,8 +539,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "u_falu"
+                                "id": "u_falu",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-8994692a56868fac"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -539,8 +554,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "eNzlQf"
+                                "id": "eNzlQf",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f13e95d8d1454ec1"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -549,8 +569,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "oQjzMA"
+                                "id": "oQjzMA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-04027da7356b3b28"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -563,8 +588,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "SE7bw0"
+                        "id": "SE7bw0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f13e95d8d1454ec1"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -573,8 +603,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "E01kat"
+                        "id": "E01kat",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-04027da7356b3b28"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -611,8 +646,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ZGYAci"
+                        "id": "ZGYAci",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8994692a56868fac"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -621,8 +661,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "cIuJ-I"
+                        "id": "cIuJ-I",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2c4606fe1430f194"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -649,8 +694,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "oTLZG4"
+                        "id": "oTLZG4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8994692a56868fac"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -659,8 +709,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "cMQDHb"
+                        "id": "cMQDHb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f13e95d8d1454ec1"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1290,8 +1345,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ciarvN"
+                "id": "ciarvN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-791e0b9f21736ffa"
+                  }
+                ]
               }
             ]
           },
@@ -1303,8 +1363,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kFoJFl"
+                "id": "kFoJFl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fe05dac342a4b136"
+                  }
+                ]
               }
             ]
           }
@@ -1333,13 +1398,143 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me more about this 'makeover'."
+            "text": "Tell me more about this 'makeover'.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "m4tico"
+              }
+            ]
           },
           {
-            "text": "Sure, I'll have a makeover."
+            "text": "Sure, I'll have a makeover.",
+            "steps": [
+              {
+                "player": "Sure, I'll have a makeover."
+              },
+              {
+                "type": "line",
+                "speaker": "Makeover Mage",
+                "text": "Good choice, good choice. You wouldn't want to carry on looking like that, I'm sure!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Makeover Mage{{!}}Select skin colour and gender",
+                "id": "lWVTBy"
+              },
+              {
+                "type": "action",
+                "text": "Player selects skin colour and/or gender",
+                "id": "eCzYHr"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "2ai1qj"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "2OMnYH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ZWcaZA"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "TpcOyN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Cool amulet! Can I have one?"
+            "text": "Cool amulet! Can I have one?",
+            "steps": [
+              {
+                "player": "Cool amulet! Can I have one?"
+              },
+              {
+                "type": "line",
+                "speaker": "Makeover Mage",
+                "text": "No problem, but please remember that the amulet I will sell you is only a copy of my own. It contains no magical powers, and as such will only cost you 100 coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "x3cKke"
+                  }
+                ],
+                "id": "6lki0i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Jme3Q8"
+                  }
+                ],
+                "id": "ezWCks"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough space and at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sure, here you go.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "oRhxAo"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No way! That's far too expensive.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "c4yTZt"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "CfWavq"
+              }
+            ]
           },
           {
             "text": "Can you turn me into a goblin?",
@@ -1427,8 +1622,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "RNMGfB"
+                                        "id": "RNMGfB",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-a294b31c936932ad"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -1441,8 +1641,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "Q4UbOb"
+                                "id": "Q4UbOb",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c476a7c74bf151a6"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1451,8 +1656,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "2JhO5v"
+                                "id": "2JhO5v",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a294b31c936932ad"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1479,8 +1689,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "YJpsxg"
+                                "id": "YJpsxg",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-07e56bf54bb03a0f"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1489,8 +1704,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "YfRTrU"
+                                "id": "YfRTrU",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c476a7c74bf151a6"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1499,8 +1719,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "IXEjox"
+                                "id": "IXEjox",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a294b31c936932ad"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1521,7 +1746,13 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "7AcMTS"
+              }
+            ]
           }
         ]
       }
@@ -1541,13 +1772,143 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me more about this 'makeover'."
+            "text": "Tell me more about this 'makeover'.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "m4tico"
+              }
+            ]
           },
           {
-            "text": "Sure, I'll have a makeover."
+            "text": "Sure, I'll have a makeover.",
+            "steps": [
+              {
+                "player": "Sure, I'll have a makeover."
+              },
+              {
+                "type": "line",
+                "speaker": "Makeover Mage",
+                "text": "Good choice, good choice. You wouldn't want to carry on looking like that, I'm sure!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Makeover Mage{{!}}Select skin colour and gender",
+                "id": "lWVTBy"
+              },
+              {
+                "type": "action",
+                "text": "Player selects skin colour and/or gender",
+                "id": "eCzYHr"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "2ai1qj"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "2OMnYH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ZWcaZA"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "TpcOyN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Cool amulet! Can I have one?"
+            "text": "Cool amulet! Can I have one?",
+            "steps": [
+              {
+                "player": "Cool amulet! Can I have one?"
+              },
+              {
+                "type": "line",
+                "speaker": "Makeover Mage",
+                "text": "No problem, but please remember that the amulet I will sell you is only a copy of my own. It contains no magical powers, and as such will only cost you 100 coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "x3cKke"
+                  }
+                ],
+                "id": "6lki0i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Jme3Q8"
+                  }
+                ],
+                "id": "ezWCks"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough space and at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sure, here you go.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "oRhxAo"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No way! That's far too expensive.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "c4yTZt"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "CfWavq"
+              }
+            ]
           },
           {
             "text": "Can you turn me into a goblin?",
@@ -1574,7 +1935,13 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "7AcMTS"
+              }
+            ]
           }
         ]
       }
@@ -1601,8 +1968,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rlscfM"
+                "id": "rlscfM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-791e0b9f21736ffa"
+                  }
+                ]
               }
             ]
           },
@@ -1790,8 +2162,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vK8TrQ"
+                "id": "vK8TrQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5686dd63d893c397"
+                  }
+                ]
               }
             ]
           },
@@ -2350,8 +2727,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3frT1J"
+                "id": "3frT1J",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-791e0b9f21736ffa"
+                  }
+                ]
               }
             ]
           },
@@ -2370,8 +2752,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "s5SdhL"
+                "id": "s5SdhL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1a43aa707a6cda95"
+                  }
+                ]
               }
             ]
           }
@@ -2546,8 +2933,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "af8Nkh"
+                "id": "af8Nkh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-791e0b9f21736ffa"
+                  }
+                ]
               }
             ]
           },
@@ -2566,8 +2958,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IZz0wv"
+                "id": "IZz0wv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1a43aa707a6cda95"
+                  }
+                ]
               }
             ]
           }
@@ -3381,8 +3778,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "zb_f_m"
+                                "id": "zb_f_m",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-efe1d08ed4db8b44"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -3614,8 +4016,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ihIUv7"
+                "id": "ihIUv7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d3bba541d0e4e809"
+                  }
+                ]
               }
             ]
           },
@@ -3624,8 +4031,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "haLBaC"
+                "id": "haLBaC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6561fcdcd17b3775"
+                  }
+                ]
               }
             ]
           },
@@ -3634,8 +4046,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Q50BM_"
+                "id": "Q50BM_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2b00969ada9f5e79"
+                  }
+                ]
               }
             ]
           },
@@ -3662,13 +4079,460 @@
         "type": "choice",
         "options": [
           {
-            "text": "What could you make for me?"
+            "text": "What could you make for me?",
+            "steps": [
+              {
+                "player": "What could you make for me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "I mostly just make what I find pretty. I sometimes make dye for the women's clothes to brighten the place up. I can make red, yellow and blue dyes. If you'd like some, just bring me the appropriate ingredients."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What do you need to make red dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make red dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "3 lots of redberries and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some red dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some red dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have redberries:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "_Ej-aO"
+                                  }
+                                ],
+                                "id": "Ga-EA_"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives red dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "bMfkaS"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "cdQyQC"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Qrbf6S"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get redberries?",
+                            "steps": [
+                              {
+                                "player": "Where do I get redberries?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "I pick mine from the woods south of Varrock. The food shop in Port Sarim sometimes has some as well."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "MtoN0U"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "Nom3Hd"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "ORu0kB",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make yellow dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make yellow dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "Yellow is a strange colour to get, comes from onion skins. I need 2 onions and 5 coins to make yellow dye."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some yellow dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some yellow dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have enough onions:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "PSIU9U"
+                                  }
+                                ],
+                                "id": "83sE3M"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives yellow dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "WsCsbT"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "mxPhaA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FjzrtA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get onions?",
+                            "steps": [
+                              {
+                                "player": "Where do I get onions?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "There are some onions growing on a farm to the East of here, next to the sheep field."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "rLlL2Z",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "wFxQ2H"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "SVEOy8",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make blue dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make blue dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "2 woad leaves and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some blue dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some blue dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have woad leaves:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "NZDPuK"
+                                  }
+                                ],
+                                "id": "WUXHEJ"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives blue dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "4kcivD"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FS2GCJ",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "A0YuXA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get woad leaves?",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "Woad leaves are fairly hard to find. My other customers tell me the chief gardener in Falador grows them."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "mUxHVs",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "hbUv2u"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FDLPmi",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I am happy the colour I am.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jcXEFM"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Cool, do you turn people into frogs?"
+            "text": "Cool, do you turn people into frogs?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "m1vRzq"
+              }
+            ]
           },
           {
-            "text": "You mad old witch, you can't help me."
+            "text": "You mad old witch, you can't help me.",
+            "steps": [
+              {
+                "player": "You mad old witch, you can't help me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 21-100 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "VQT--z"
+                  }
+                ],
+                "id": "2FpbvQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 101 or more coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "WflJz1"
+                  }
+                ],
+                "id": "b-i7IK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying a pot of flour:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "WTDr09"
+                  }
+                ],
+                "id": "N62aqF"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "You should be careful about insulting a witch. You never know what shape you could wake up in."
+              }
+            ]
           },
           {
             "text": "Can you make dyes for me please?",
@@ -3685,13 +4549,378 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "What do you need to make red dye?"
+                    "text": "What do you need to make red dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make red dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "3 lots of redberries and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some red dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some red dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have redberries:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "_Ej-aO"
+                                  }
+                                ],
+                                "id": "Ga-EA_"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives red dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "bMfkaS"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "cdQyQC"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Qrbf6S"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get redberries?",
+                            "steps": [
+                              {
+                                "player": "Where do I get redberries?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "I pick mine from the woods south of Varrock. The food shop in Port Sarim sometimes has some as well."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "MtoN0U"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "Nom3Hd"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "ORu0kB",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "What do you need to make yellow dye?"
+                    "text": "What do you need to make yellow dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make yellow dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "Yellow is a strange colour to get, comes from onion skins. I need 2 onions and 5 coins to make yellow dye."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some yellow dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some yellow dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have enough onions:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "PSIU9U"
+                                  }
+                                ],
+                                "id": "83sE3M"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives yellow dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "WsCsbT"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "mxPhaA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FjzrtA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get onions?",
+                            "steps": [
+                              {
+                                "player": "Where do I get onions?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "There are some onions growing on a farm to the East of here, next to the sheep field."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "rLlL2Z",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "wFxQ2H"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "SVEOy8",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "What do you need to make blue dye?"
+                    "text": "What do you need to make blue dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make blue dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "2 woad leaves and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some blue dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some blue dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have woad leaves:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "NZDPuK"
+                                  }
+                                ],
+                                "id": "WUXHEJ"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives blue dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "4kcivD"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FS2GCJ",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "A0YuXA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get woad leaves?",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "Woad leaves are fairly hard to find. My other customers tell me the chief gardener in Falador grows them."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "mUxHVs",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "hbUv2u"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FDLPmi",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "text": "Can you make black or white dye?",
@@ -3739,18 +4968,20 @@
                         "type": "choice",
                         "options": [
                           {
-                            "text": "What other colours can you make?"
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "MtoN0U"
+                              }
+                            ]
                           },
                           {
                             "text": "Thanks.",
                             "steps": [
                               {
-                                "player": "Thanks."
-                              },
-                              {
-                                "type": "line",
-                                "speaker": "Aggie",
-                                "text": "You're welcome!"
+                                "type": "call",
+                                "branch": "Nom3Hd"
                               }
                             ]
                           }
@@ -3802,10 +5033,30 @@
             "type": "choice",
             "options": [
               {
-                "text": "I don't have one of them."
+                "text": "I don't have one of them.",
+                "steps": [
+                  {
+                    "player": "I don't have one of them."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Morris",
+                    "text": "Oh well. I can't let you past then."
+                  }
+                ]
               },
               {
-                "text": "What do I need that for?"
+                "text": "What do I need that for?",
+                "steps": [
+                  {
+                    "player": "What do I need that for?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Morris",
+                    "text": "This is the entrance to the Hemenster fishing competition. It's a high class competition. Invitation only."
+                  }
+                ]
               },
               {
                 "text": "I need to catch a Hemenster Whitefish.",
@@ -3836,13 +5087,460 @@
         "type": "choice",
         "options": [
           {
-            "text": "What could you make for me?"
+            "text": "What could you make for me?",
+            "steps": [
+              {
+                "player": "What could you make for me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "I mostly just make what I find pretty. I sometimes make dye for the women's clothes to brighten the place up. I can make red, yellow and blue dyes. If you'd like some, just bring me the appropriate ingredients."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What do you need to make red dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make red dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "3 lots of redberries and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some red dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some red dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have redberries:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "_Ej-aO"
+                                  }
+                                ],
+                                "id": "Ga-EA_"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives red dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "bMfkaS"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "cdQyQC"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Qrbf6S"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get redberries?",
+                            "steps": [
+                              {
+                                "player": "Where do I get redberries?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "I pick mine from the woods south of Varrock. The food shop in Port Sarim sometimes has some as well."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "MtoN0U"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "Nom3Hd"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "ORu0kB",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make yellow dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make yellow dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "Yellow is a strange colour to get, comes from onion skins. I need 2 onions and 5 coins to make yellow dye."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some yellow dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some yellow dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have enough onions:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "PSIU9U"
+                                  }
+                                ],
+                                "id": "83sE3M"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives yellow dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "WsCsbT"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "mxPhaA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FjzrtA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get onions?",
+                            "steps": [
+                              {
+                                "player": "Where do I get onions?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "There are some onions growing on a farm to the East of here, next to the sheep field."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "rLlL2Z",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "wFxQ2H"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "SVEOy8",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make blue dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make blue dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "2 woad leaves and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some blue dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some blue dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have woad leaves:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "NZDPuK"
+                                  }
+                                ],
+                                "id": "WUXHEJ"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives blue dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "4kcivD"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FS2GCJ",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "A0YuXA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get woad leaves?",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "Woad leaves are fairly hard to find. My other customers tell me the chief gardener in Falador grows them."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "mUxHVs",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "hbUv2u"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FDLPmi",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I am happy the colour I am.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jcXEFM"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Cool, do you turn people into frogs?"
+            "text": "Cool, do you turn people into frogs?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "m1vRzq"
+              }
+            ]
           },
           {
-            "text": "You mad old witch, you can't help me."
+            "text": "You mad old witch, you can't help me.",
+            "steps": [
+              {
+                "player": "You mad old witch, you can't help me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 21-100 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "VQT--z"
+                  }
+                ],
+                "id": "2FpbvQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 101 or more coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "WflJz1"
+                  }
+                ],
+                "id": "b-i7IK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying a pot of flour:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "WTDr09"
+                  }
+                ],
+                "id": "N62aqF"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "You should be careful about insulting a witch. You never know what shape you could wake up in."
+              }
+            ]
           },
           {
             "text": "Can you make dyes for me please?",
@@ -3859,13 +5557,378 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "What do you need to make red dye?"
+                    "text": "What do you need to make red dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make red dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "3 lots of redberries and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some red dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some red dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have redberries:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "_Ej-aO"
+                                  }
+                                ],
+                                "id": "Ga-EA_"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives red dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "bMfkaS"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "cdQyQC"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Qrbf6S"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get redberries?",
+                            "steps": [
+                              {
+                                "player": "Where do I get redberries?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "I pick mine from the woods south of Varrock. The food shop in Port Sarim sometimes has some as well."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "MtoN0U"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "Nom3Hd"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "ORu0kB",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "What do you need to make yellow dye?"
+                    "text": "What do you need to make yellow dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make yellow dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "Yellow is a strange colour to get, comes from onion skins. I need 2 onions and 5 coins to make yellow dye."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some yellow dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some yellow dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have enough onions:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "PSIU9U"
+                                  }
+                                ],
+                                "id": "83sE3M"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives yellow dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "WsCsbT"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "mxPhaA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FjzrtA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get onions?",
+                            "steps": [
+                              {
+                                "player": "Where do I get onions?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "There are some onions growing on a farm to the East of here, next to the sheep field."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "rLlL2Z",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "wFxQ2H"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "SVEOy8",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "What do you need to make blue dye?"
+                    "text": "What do you need to make blue dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make blue dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "2 woad leaves and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some blue dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some blue dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have woad leaves:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "NZDPuK"
+                                  }
+                                ],
+                                "id": "WUXHEJ"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives blue dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "4kcivD"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FS2GCJ",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "iixcYr"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "A0YuXA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "InUUiO"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get woad leaves?",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "Woad leaves are fairly hard to find. My other customers tell me the chief gardener in Falador grows them."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "mUxHVs",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "5rEqev"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "hbUv2u"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FDLPmi",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "5rEqev"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "text": "Could you remove the dye from this goblin mail?",
@@ -5078,6 +7141,1424 @@
       {
         "type": "unavailable",
         "id": "ae_Zny"
+      }
+    ]
+  },
+  "branches": {
+    "jump-c2e6c0a2fa96bb5b": [
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "Okay. I go back to wait in Dorgesh-mines."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8994692a56868fac": [
+      {
+        "player": "Why don't other goblins believe?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "They say Zanik not true goblin. She cannot be Chosen Commander because she not worship Big High War God. Because she not think war good."
+      },
+      {
+        "type": "line",
+        "speaker": "Zanik",
+        "text": "I certainly don't!"
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "But does that mean she have no destiny? Perhaps her destiny to lead goblins into new age of peace."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That's an unusual sentiment for a goblin.",
+            "steps": [
+              {
+                "player": "That's an unusual sentiment for a goblin."
+              },
+              {
+                "type": "line",
+                "speaker": "Zanik",
+                "text": "Yes. I thought all surface goblins thought war was good."
+              },
+              {
+                "type": "line",
+                "speaker": "Grubfoot",
+                "text": "Most do, but not me. I see goblins kill goblins, humans kill goblins. I think, is this really best thing in life?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grubfoot",
+                "text": "I not say that to other goblins. They kill me if they think I not like war."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Why don't other goblins believe?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "u_falu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8994692a56868fac"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What is the Chosen Commander?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "eNzlQf",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f13e95d8d1454ec1"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So why have you come to talk to Zanik?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "oQjzMA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-04027da7356b3b28"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is the Chosen Commander?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "SE7bw0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f13e95d8d1454ec1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "So why have you come to talk to Zanik?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "E01kat",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-04027da7356b3b28"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f13e95d8d1454ec1": [
+      {
+        "player": "What is the Chosen Commander?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "Goblin legend. Hopespear, long ago goblin, he have dream. He say someday Chosen Commander come, lead all goblins to new age."
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "Most goblins, they think Chosen Commander lead goblins to war and fight other races. But I think maybe not."
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "I have dreams that Zanik is Chosen Commander. Before you visit Goblin Village I dream about Zanik. And now, last night I have new dream."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why don't other goblins believe?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ZGYAci",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8994692a56868fac"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What was this new dream?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "cIuJ-I",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2c4606fe1430f194"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-04027da7356b3b28": [
+      {
+        "player": "So why have you come to talk to Zanik?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "To tell Chosen Commander about new dream I have."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why don't other goblins believe?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "oTLZG4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8994692a56868fac"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is the Chosen Commander?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "cMQDHb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f13e95d8d1454ec1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What was this new dream?",
+            "steps": [
+              {
+                "player": "What was this new dream?"
+              },
+              {
+                "type": "line",
+                "speaker": "Zanik",
+                "text": "Yes, what was it?"
+              },
+              {
+                "type": "action",
+                "text": "Cutscene begins, showing a distant, lush, foreign land with goblins.",
+                "id": "zSUlVq"
+              },
+              {
+                "type": "line",
+                "speaker": "Grubfoot",
+                "text": "I have dream of far-off land. It like no land I ever see, but somehow I know it."
+              },
+              {
+                "type": "line",
+                "speaker": "Grubfoot",
+                "text": "It cool and wet. Ground is soft, big plants everywhere, red water bubbling."
+              },
+              {
+                "type": "line",
+                "speaker": "Grubfoot",
+                "text": "I see goblins, many goblins. Goblins of all tribes, but they not fight. They have no weapons. They live in peace."
+              },
+              {
+                "type": "line",
+                "speaker": "Grubfoot",
+                "text": "Then I see Chosen Commander. She stand at entrance to new land, she show way in. She lead all goblins on long journey to new land."
+              },
+              {
+                "type": "line",
+                "speaker": "Grubfoot",
+                "text": "I never see land before. I see it only in dream. But somehow I know what it is. It Yu'biusk, Land of the Goblins."
+              },
+              {
+                "type": "action",
+                "text": "Cutscene ends.",
+                "id": "YUdQ2P"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "6ne0C2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-2c4606fe1430f194": [
+      {
+        "player": "What was this new dream?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zanik",
+        "text": "Yes, what was it?"
+      },
+      {
+        "type": "action",
+        "text": "Cutscene begins, showing a distant, lush, foreign land with goblins.",
+        "id": "zSUlVq"
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "I have dream of far-off land. It like no land I ever see, but somehow I know it."
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "It cool and wet. Ground is soft, big plants everywhere, red water bubbling."
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "I see goblins, many goblins. Goblins of all tribes, but they not fight. They have no weapons. They live in peace."
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "Then I see Chosen Commander. She stand at entrance to new land, she show way in. She lead all goblins on long journey to new land."
+      },
+      {
+        "type": "line",
+        "speaker": "Grubfoot",
+        "text": "I never see land before. I see it only in dream. But somehow I know what it is. It Yu'biusk, Land of the Goblins."
+      },
+      {
+        "type": "action",
+        "text": "Cutscene ends.",
+        "id": "YUdQ2P"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "6ne0C2"
+      }
+    ],
+    "jump-791e0b9f21736ffa": [
+      {
+        "player": "Can you teleport me to the temple again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Oldak",
+        "text": "I can, but I can't afford to keep doing it for free. If you get me two law runes and a piece of molten glass, I'll make a sphere to take you there."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the materials:",
+        "steps": [
+          {
+            "player": "I'll have to go get some law runes and molten glass then."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "PwO-Ik"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the materials:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player is teleported to the Goblin Cave.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "6cDx_0"
+                  }
+                ]
+              },
+              {
+                "text": "Never mind, I'll walk.",
+                "steps": [
+                  {
+                    "player": "Never mind, I'll walk."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "4j8klO"
+      }
+    ],
+    "jump-fe05dac342a4b136": [
+      {
+        "player": "I'll go and see this mage."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a294b31c936932ad": [
+      {
+        "player": "Actually, I don't want to be a goblin."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c476a7c74bf151a6": [
+      {
+        "player": "Can you turn me into a goblin or not?"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "I think I know how, but I've never deliberately transmogrified someone into another species before. It's a very risky procedure, and I don't want to be held responsible if it goes wrong."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "How about I tell you the recipe so you can make the potion yourself. It's not too complex. You'll just need to take a toadflax potion and add some pharmakos berries."
+      },
+      {
+        "player": "Pharmakos berries?"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "That's right. They're quite rare, but have wonderful properties that help with transmogrification. Luckily, I grow plenty right outside. Feel free to take some."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Now, once you've made the potion, remember that the transformation is very delicate. It will reverse itself if you are in direct sunlight or if you perform a strenuous activity like fighting."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "For that reason, you should only drink it in the area where you're going to need it. I'd also suggest you take off any pieces of armour or similar before drinking it, just in case the transformation damages them."
+      },
+      {
+        "player": "Okay. Thanks for the help."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-07e56bf54bb03a0f": [
+      {
+        "player": "I need to slip past some goblin guards."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Really? What are they guarding?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I promised not to tell anyone.",
+            "steps": [
+              {
+                "player": "I promised not to tell anyone."
+              },
+              {
+                "type": "line",
+                "speaker": "Makeover Mage",
+                "text": "Okay, okay, sorry I asked."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you turn me into a goblin or not?",
+                    "steps": [
+                      {
+                        "player": "Can you turn me into a goblin or not?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Makeover Mage",
+                        "text": "I think I know how, but I've never deliberately transmogrified someone into another species before. It's a very risky procedure, and I don't want to be held responsible if it goes wrong."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Makeover Mage",
+                        "text": "How about I tell you the recipe so you can make the potion yourself. It's not too complex. You'll just need to take a toadflax potion and add some pharmakos berries."
+                      },
+                      {
+                        "player": "Pharmakos berries?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Makeover Mage",
+                        "text": "That's right. They're quite rare, but have wonderful properties that help with transmogrification. Luckily, I grow plenty right outside. Feel free to take some."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Makeover Mage",
+                        "text": "Now, once you've made the potion, remember that the transformation is very delicate. It will reverse itself if you are in direct sunlight or if you perform a strenuous activity like fighting."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Makeover Mage",
+                        "text": "For that reason, you should only drink it in the area where you're going to need it. I'd also suggest you take off any pieces of armour or similar before drinking it, just in case the transformation damages them."
+                      },
+                      {
+                        "player": "Okay. Thanks for the help."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I don't want to be a goblin.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "RNMGfB",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a294b31c936932ad"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you turn me into a goblin or not?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Q4UbOb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c476a7c74bf151a6"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Actually, I don't want to be a goblin.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "2JhO5v",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a294b31c936932ad"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5686dd63d893c397": [
+      {
+        "type": "line",
+        "speaker": "Goblin guard (1)",
+        "text": "No wait, I guess."
+      },
+      {
+        "type": "line",
+        "speaker": "Goblin guard (1)",
+        "text": "Is it [goblin name]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, me [goblin name].",
+            "steps": [
+              {
+                "player": "Yes, me [goblin name]."
+              },
+              {
+                "type": "line",
+                "speaker": "Goblin guard (1)",
+                "text": "Ha ha! Me knew me guess right!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a pet with them:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Goblin guard (2)",
+                    "text": "You not come into temple with that thing."
+                  },
+                  {
+                    "player": "What thing?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is carrying the pet",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Goblin guard (2)",
+                        "text": "That thing you carrying! It look alive!"
+                      }
+                    ],
+                    "id": "kjwaIM"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has the pet following them:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Goblin guard (2)",
+                        "text": "Goblin guard: That thing! That thing that following you!"
+                      }
+                    ],
+                    "id": "yq72SS"
+                  },
+                  {
+                    "player": "My follower?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Goblin guard (1)",
+                    "text": "Me not like it."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Goblin guard (2)",
+                    "text": "You go take it somewhere else before you go in."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "dfOF2x"
+              },
+              {
+                "type": "line",
+                "speaker": "Goblin guard (2)",
+                "text": "You go into temple now, [goblin name]."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No. You guess again.",
+            "steps": [
+              {
+                "player": "No. You guess again."
+              },
+              {
+                "type": "line",
+                "speaker": "Goblin guard (1)",
+                "text": "Is it [goblin name]?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "iVeXqR"
+              }
+            ]
+          },
+          {
+            "text": "Actually, me no want to go in temple.",
+            "steps": [
+              {
+                "player": "Actually, me no want to go in temple."
+              },
+              {
+                "type": "line",
+                "speaker": "Goblin guard (2)",
+                "text": "You go away then."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1a43aa707a6cda95": [
+      {
+        "player": "I'll see you later."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-efe1d08ed4db8b44": [
+      {
+        "player": "Will goblins return to Yu'biusk?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "Why we want to return to Yu'biusk? In Yu'biusk we weak. Big High War God take us from Yu'biusk and make us strong."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "okD8tx"
+      }
+    ],
+    "jump-d3bba541d0e4e809": [
+      {
+        "player": "Me want to know about Yu'biusk."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "Yu'biusk is goblin legend. Very old legend, from before this temple built. From before Hopespear the prophet. Even before great war."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "Legend say that goblins come from land of Yu'biusk. Big High War God find goblins in Yu'biusk and bring them to other lands to train them as warriors!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Will goblins return to Yu'biusk?",
+            "steps": [
+              {
+                "player": "Will goblins return to Yu'biusk?"
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "Why we want to return to Yu'biusk? In Yu'biusk we weak. Big High War God take us from Yu'biusk and make us strong."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "okD8tx"
+              }
+            ]
+          },
+          {
+            "text": "Where is Yu'biusk?",
+            "steps": [
+              {
+                "player": "Where is Yu'biusk?"
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "Me not know. Me think Snothead maybe know."
+              },
+              {
+                "player": "Where can I find him?"
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "He old high priest in temple crypt behind me! He dead!"
+              },
+              {
+                "player": "Oh."
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "Maybe me ask him next time me see him."
+              },
+              {
+                "player": "What? But you said he dead!"
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "Ha ha! You not know, but since you pass test, me tell you."
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "When goblin high priest die, they buried in temple crypt in special magic way."
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "This mean next high priest can ask them questions, even though they dead. I just say name of high priest over grave, and he appear and answer questions."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I talk to old high priests?",
+                    "steps": [
+                      {
+                        "player": "Can I talk to old high priests?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "High Priest Bighead",
+                        "text": "No. Temple crypt is holy place. Only high priest allowed into crypt, and that me. No other goblin ever go in."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "High Priest Bighead",
+                        "text": "Crypt door locked by six keys, kept by six tribal priests. Priests only give keys to me. They never give them to normal goblin like you."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "jxEeWb"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Will goblins return to Yu'biusk?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "zb_f_m",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-efe1d08ed4db8b44"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What Big High War God's real name?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "KMYO0Z"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why there only six tribes in temple?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "3QsO9f"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Me have no more questions.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "sRYyPS"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What Big High War God's real name?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "3C5uu8"
+              }
+            ]
+          },
+          {
+            "text": "Why there only six tribes in temple?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "EG1raB"
+              }
+            ]
+          },
+          {
+            "text": "Me have no more questions.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "SM14bw"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6561fcdcd17b3775": [
+      {
+        "player": "What Big High War God's real name?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "You ask big question. Big High War God's true name not for normal goblin minds, but since you pass test, I tell you. His true name Bandos."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "That name that ogres call him, that orks call him. That name that goblin priests call him on holy days. But normal goblins, you must show respect. You only call him Big High War God."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "TMXWkC"
+      }
+    ],
+    "jump-2b00969ada9f5e79": [
+      {
+        "player": "Why there only six tribes in temple?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "Goblin tribes are thing of past. Long ago, all goblins divided into twelve tribes. Dorgeshuun tribe rebel, so Big High War God punish them. Then there eleven tribes."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "No other tribes disappear like Dorgeshuun, but over ages, tribes merge. Now most goblins, they not know what tribe they come from."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest Bighead",
+        "text": "Sometimes, goblins who know what tribe they come from, they come here and make tribal enclaves. They colour armour different colours to show what tribe they in. But not all tribes here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How me get into tribal enclaves?",
+            "steps": [
+              {
+                "player": "How me get into tribal enclaves?"
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "Goblins show tribe by dying armour special tribe colour. Yellow for Yurkolgokh, white for Saragorgak, purple for Horogothgar, orange for Narogoshuun, blue for Ekeleshuun and black for Huzamogaarb."
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "You not wearing colour, you not entering the enclave."
+              },
+              {
+                "player": "Where they get dye?"
+              },
+              {
+                "type": "line",
+                "speaker": "High Priest Bighead",
+                "text": "Some goblins say they go to witch-lady in Draynor for it. Me hope they beat up witch-lady and take dye! That way of Big High War God!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "MysMSo"
+              }
+            ]
+          },
+          {
+            "text": "Me want to know about Yu'biusk.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Qzcxcz"
+              }
+            ]
+          },
+          {
+            "text": "What Big High War God's real name?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "zowIpS"
+              }
+            ]
+          },
+          {
+            "text": "Me have no more questions.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "upNHda"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-370b457b486f519c": [
+      {
+        "player": "What other colours can you make?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Red, yellow and blue. Which one would you like?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "6QIgcS"
+      }
+    ],
+    "jump-26a0ae2031e4c184": [
+      {
+        "player": "I don't think I have all the ingredients yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "You know what you need to get, now come back when you have them. Goodbye for now."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ed9b8ebf8636407f": [
+      {
+        "player": "I can do without dye at that price."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "That's your choice, but I would think you have killed for less. I can see it in your eyes."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "m4tico": [
+      {
+        "player": "Tell me more about this 'make-over'."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Why, of course! Basically, and I will try and explain this so that you will understand it correctly,"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "I use my secret magical technique to melt your body down into a puddle of its elements."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "When I have broken down all trace of your body, I then rebuild it into the form I am thinking of!"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Or, you know, somewhere vaguely close enough anyway."
+      },
+      {
+        "player": "Uh... that doesn't sound particularly safe to me..."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "It's as safe as houses! Why, I have only had thirty-six major accidents this month!"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "So what do you say? Feel like a change? There's no fee."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "GhKwP_"
+      }
+    ],
+    "2ai1qj": [
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Woah!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "You still look human!"
+      },
+      {
+        "player": "Uh... Thanks, I guess."
+      }
+    ],
+    "2OMnYH": [
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Hmm... you didn't feel any unexpected growths anywhere around your head just then did you?"
+      },
+      {
+        "player": "Uh... no...?"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Good, good! I was worried for a second there!"
+      },
+      {
+        "player": "Uh... Thanks, I guess."
+      }
+    ],
+    "ZWcaZA": [
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Whew! That was lucky!"
+      },
+      {
+        "player": "What was?"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Nothing! It's all fine! You seem alive anyway!"
+      },
+      {
+        "player": "Uh... Thanks, I guess."
+      }
+    ],
+    "TpcOyN": [
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Two arms... two legs... one head... it seems that spell finally worked okay!"
+      },
+      {
+        "player": "Uh... Thanks, I guess."
+      }
+    ],
+    "x3cKke": [
+      {
+        "player": "Oh, I don't have enough money for that."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "xnSV_t"
+      }
+    ],
+    "Jme3Q8": [
+      {
+        "player": "No way! That's far too expensive."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "That's fair enough, my jewellery is not to everyone's taste."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "1gk0S3"
+      }
+    ],
+    "oRhxAo": [
+      {
+        "player": "Sure, here you go."
+      },
+      {
+        "type": "message",
+        "text": "You receive an amulet in exchange for 100 coins.",
+        "id": "XHjd3R"
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "-FFutj"
+      }
+    ],
+    "c4yTZt": [
+      {
+        "player": "I don't have room to hold it. Maybe another time."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "j7RvSv"
+      }
+    ],
+    "7AcMTS": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Makeover Mage",
+        "text": "Ehhh... suit yourself."
+      }
+    ],
+    "_Ej-aO": [
+      {
+        "type": "message",
+        "text": "You don't have enough berries to make the red dye.",
+        "id": "jEM4Fl"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "cdQyQC": [
+      {
+        "player": "I don't think I have all the ingredients yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "You know what you need to get, now come back when you have them. Goodbye for now."
+      }
+    ],
+    "Qrbf6S": [
+      {
+        "player": "I can do without dye at that price."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "That's your choice, but I would think you have killed for less. I can see it in your eyes."
+      }
+    ],
+    "MtoN0U": [
+      {
+        "player": "What other colours can you make?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Red, yellow and blue. Which one would you like?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "6QIgcS"
+      }
+    ],
+    "Nom3Hd": [
+      {
+        "player": "Thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "You're welcome!"
+      }
+    ],
+    "5rEqev": [
+      {
+        "type": "call",
+        "branch": "jump-370b457b486f519c"
+      }
+    ],
+    "PSIU9U": [
+      {
+        "type": "message",
+        "text": "You don't have enough onions to make the yellow dye.",
+        "id": "aCXhvA"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "iixcYr": [
+      {
+        "type": "call",
+        "branch": "jump-26a0ae2031e4c184"
+      }
+    ],
+    "InUUiO": [
+      {
+        "type": "call",
+        "branch": "jump-ed9b8ebf8636407f"
+      }
+    ],
+    "NZDPuK": [
+      {
+        "type": "condition",
+        "text": "You don't have enough woad leaves to make the blue dye.",
+        "id": "_-vloh"
+      }
+    ],
+    "jcXEFM": [
+      {
+        "player": "No thanks, I am happy the colour I am."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "You are easily pleased with yourself then. When you need dyes, come to me."
+      }
+    ],
+    "m1vRzq": [
+      {
+        "player": "Cool, do you turn people into frogs?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Oh, not for years, but if you meet a talking chicken, you have probably met the professor in the manor north of here. A few years ago it was flying fish. That machine is a menace."
+      }
+    ],
+    "VQT--z": [
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Oh, you like to call a witch names do you?"
+      },
+      {
+        "type": "message",
+        "text": "Aggie waves her hands about, and you seem to be five coins poorer.",
+        "id": "ZgmmGS"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "That's a fine for insulting a witch. You should learn some respect."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "WflJz1": [
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Oh, you like to call a witch names do you?"
+      },
+      {
+        "type": "message",
+        "text": "Aggie waves her hands about, and you seem to be 20 coins poorer.",
+        "id": "EIPyFf"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "That's a fine for insulting a witch. You should learn some respect."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "WTDr09": [
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Oh, you like to call a witch names do you?"
+      },
+      {
+        "type": "message",
+        "text": "Aggie waves her hands about, and you seem to have a pot of flour less.",
+        "id": "KCH5mX"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Thank you for your kind present of some flour. I am sure you never meant to insult me."
+      },
+      {
+        "type": "end"
       }
     ]
   }

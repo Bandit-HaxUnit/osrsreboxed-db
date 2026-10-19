@@ -63,10 +63,21 @@
             ]
           },
           {
-            "text": "So what are you doing in Gielinor?"
+            "text": "So what are you doing in Gielinor?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "1BF5kr"
+              }
+            ]
           },
           {
-            "text": "Thank you very much."
+            "text": "Thank you very much.",
+            "steps": [
+              {
+                "player": "Thank you very much."
+              }
+            ]
           }
         ]
       }
@@ -94,10 +105,21 @@
             ]
           },
           {
-            "text": "So what are you doing in Gielinor?"
+            "text": "So what are you doing in Gielinor?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "1BF5kr"
+              }
+            ]
           },
           {
-            "text": "Thank you very much."
+            "text": "Thank you very much.",
+            "steps": [
+              {
+                "player": "Thank you very much."
+              }
+            ]
           }
         ]
       }
@@ -171,7 +193,13 @@
             ]
           },
           {
-            "text": "You're a little full of yourself aren't you?"
+            "text": "You're a little full of yourself aren't you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "KJ3aaE"
+              }
+            ]
           }
         ]
       }
@@ -266,7 +294,12 @@
         "type": "choice",
         "options": [
           {
-            "text": "Good day."
+            "text": "Good day.",
+            "steps": [
+              {
+                "player": "Good day."
+              }
+            ]
           },
           {
             "text": "Any ideas on how to get Merlin out of that crystal?",
@@ -465,13 +498,24 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "O1SfZl"
+                "id": "O1SfZl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a0f0807e46cfd926"
+                  }
+                ]
               }
             ]
           },
           {
-            "text": "You're a little full of yourself aren't you?"
+            "text": "You're a little full of yourself aren't you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "KJ3aaE"
+              }
+            ]
           },
           {
             "text": "Any ideas on how to get into Morgan Le Faye's stronghold?",
@@ -1027,10 +1071,26 @@
             ]
           },
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Candle Shop",
+                "id": "yFuJmp"
+              }
+            ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
           }
         ]
       }
@@ -1211,7 +1271,12 @@
             "text": "Who are you?"
           },
           {
-            "text": "Good day."
+            "text": "Good day.",
+            "steps": [
+              {
+                "player": "Good day."
+              }
+            ]
           },
           {
             "text": "I seek the sword Excalibur.",
@@ -1668,6 +1733,56 @@
       {
         "type": "unavailable",
         "id": "Jep8LN"
+      }
+    ]
+  },
+  "branches": {
+    "jump-a0f0807e46cfd926": [
+      {
+        "player": "I want to get Merlin out of the crystal."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Lancelot",
+        "text": "Well, if the Knights of the Round Table can't manage it, I can't see how a commoner like you could succeed where we have failed."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "1BF5kr": [
+      {
+        "player": "So what are you doing in Gielinor?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Arthur",
+        "text": "Well legend says we will return to Britain in its time of greatest need. But that's not for quite a while yet."
+      },
+      {
+        "type": "line",
+        "speaker": "King Arthur",
+        "text": "So we've moved the whole outfit here for now."
+      },
+      {
+        "type": "line",
+        "speaker": "King Arthur",
+        "text": "We're passing the time in Gielinor!"
+      }
+    ],
+    "KJ3aaE": [
+      {
+        "player": "You're a little full of yourself aren't you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Lancelot",
+        "text": "I have every right to be proud of myself."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Lancelot",
+        "text": "My prowess in battle is world renowned!"
       }
     ]
   }

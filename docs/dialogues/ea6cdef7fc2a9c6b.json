@@ -1,5 +1,21 @@
 {
   "branches": {
+    "jump-e37ef66b601110e8": [
+      {
+        "npc": "Understandable. Come back at any time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-077a5ba31b115a55": [
+      {
+        "npc": "There you go. Your boat has been broken up into scrap."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "pZWhCS": [
       {
         "npc": "I'm afraid you don't seem to own any boats."
@@ -170,8 +186,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "below",
-                          "id": "NYPI4o"
+                          "id": "NYPI4o",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-e37ef66b601110e8"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -222,7 +243,38 @@
                 },
                 {
                   "type": "random",
-                  "options": []
+                  "options": [
+                    {
+                      "text": "Dialogue 1",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Port Wizard Perrie/Peter/Petra",
+                          "text": "Another recovery? This won't take long..."
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 2",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Port Wizard Perrie/Peter/Petra",
+                          "text": "Need a recovery? One moment please..."
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 3",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Port Wizard Perrie/Peter/Petra",
+                          "text": "Recovery is it? Right, give me a moment..."
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "type": "condition",
@@ -325,8 +377,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "rFKn9z"
+                              "id": "rFKn9z",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-077a5ba31b115a55"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -348,7 +405,27 @@
                 {
                   "type": "choice",
                   "prompt": "Are you sure you want to destroy your boat?",
-                  "options": []
+                  "options": [
+                    {
+                      "text": "Yes, destroy it.",
+                      "steps": [
+                        {
+                          "npc": "There you go. Your boat has been broken up into scrap."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No, don't destroy it.",
+                      "steps": [
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ],
               "id": "I8_0sB"

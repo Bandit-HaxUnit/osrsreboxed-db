@@ -37,8 +37,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "p1seZC"
+                "id": "p1seZC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f78b7c2e8d011937"
+                  }
+                ]
               }
             ]
           },
@@ -312,6 +317,16 @@
     "overhead-dialogue-when-a-wealthy-citizen-is-about-to-re-enter-their-house": [
       {
         "npc": "whistle*"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f78b7c2e8d011937": [
+      {
+        "npc": "Suit yourself."
+      },
+      {
+        "type": "end"
       }
     ]
   }

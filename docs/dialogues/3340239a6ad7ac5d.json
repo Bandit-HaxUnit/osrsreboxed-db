@@ -124,8 +124,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "1iEdnh"
+                "id": "1iEdnh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2f90fca89399aa51"
+                  }
+                ]
               }
             ]
           },
@@ -1579,10 +1584,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'm looking for something to kill."
+            "text": "I'm looking for something to kill.",
+            "steps": [
+              {
+                "player": "I'm looking for something to kill."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "What, on my land? Leave my livestock alone you scoundrel!"
+              }
+            ]
           },
           {
-            "text": "I'm lost."
+            "text": "I'm lost.",
+            "steps": [
+              {
+                "player": "I'm lost."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "How can you be lost? Just follow the road east and south. You'll end up in Lumbridge fairly quickly."
+              }
+            ]
           },
           {
             "text": "I need to talk to you about penguins.",
@@ -3106,6 +3131,89 @@
       {
         "type": "unavailable",
         "id": "iOYuKW"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2f90fca89399aa51": [
+      {
+        "type": "condition",
+        "text": "If missing the planks:",
+        "steps": [
+          {
+            "type": "unavailable",
+            "id": "wDdNjz"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "RHMS4E"
+      },
+      {
+        "type": "condition",
+        "text": "If missing the nails:",
+        "steps": [
+          {
+            "type": "unavailable",
+            "id": "Et4P3h"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "7OC0wq"
+      },
+      {
+        "type": "condition",
+        "text": "If missing the hammer:",
+        "steps": [
+          {
+            "type": "unavailable",
+            "id": "ghfV5P"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "moBm_9"
+      },
+      {
+        "type": "line",
+        "speaker": "Larry",
+        "text": "You have all the materials. Off to the iceberg!"
+      },
+      {
+        "type": "choice",
+        "prompt": "Are you ready to go to the iceberg?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Screen fades and the player is transported to the iceberg",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "_0WHki"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "No."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

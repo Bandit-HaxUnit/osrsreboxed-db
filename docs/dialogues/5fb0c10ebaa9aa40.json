@@ -49,8 +49,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "UK598n"
+                        "id": "UK598n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8fbf981c93ca324d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -59,8 +64,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Qlq2AU"
+                        "id": "Qlq2AU",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c8774f5655411d68"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -156,8 +166,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bkYiJU"
+                "id": "bkYiJU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-40e13be5f96f87cc"
+                  }
+                ]
               }
             ]
           },
@@ -166,8 +181,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "S1FcPM"
+                "id": "S1FcPM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c8774f5655411d68"
+                  }
+                ]
               }
             ]
           }
@@ -243,6 +263,158 @@
           }
         ],
         "id": "kqGZVG"
+      }
+    ]
+  },
+  "branches": {
+    "jump-8fbf981c93ca324d": [
+      {
+        "player": "I'd like to play."
+      },
+      {
+        "npc": "Which mode would you like to play?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "High Stakes (500,000 coins)",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at least 500,000 coins in the coffer:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You do not have enough money in your coffer.",
+                    "id": "Ri_Z7g"
+                  }
+                ],
+                "id": "NE1OPi"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "High Stakes (500,000 coins)",
+            "condition": "If High Stakes are not active:",
+            "id": "CXmRZb"
+          },
+          {
+            "text": "Competitive (free entry)",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Player is placed in the lobby or game.",
+                "id": "8k_7j1"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Casual",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Player is placed in the lobby or game.",
+                "id": "oKqHAU"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c8774f5655411d68": [
+      {
+        "player": "Not right now."
+      },
+      {
+        "npc": "No problem, come back if you happen to change your mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-40e13be5f96f87cc": [
+      {
+        "player": "Tell me more."
+      },
+      {
+        "npc": "It's simple. Anyone looking to participate enters the relevant waiting area. Once the waiting area has enough people, they are taken to the arena."
+      },
+      {
+        "player": "Arena?"
+      },
+      {
+        "npc": "Indeed. We have set up two arenas on another plane. When a game starts, we pick one at random. Once everyone arrives in the arena, the fight for survival begins."
+      },
+      {
+        "npc": "Now, there's a few important things to be aware of. While in an arena, your physical and mental abilities will be boosted. Also, praying to the gods will not cost you any precious energies."
+      },
+      {
+        "npc": "After a game has started, lethal fog will soon start filling the arena. This forces contenders to a designated safe zone and ensures no one escapes the fighting."
+      },
+      {
+        "npc": "Be aware, you can't take any of your own belongings into the game. Instead, you can use only what you find in the arena, including anything we give you on arrival."
+      },
+      {
+        "npc": "Regarding what you are given on arrival, you have a few options to pick from. Use my supply chest to configure your load-outs for the different battle styles."
+      },
+      {
+        "npc": "Remember, this is a solo competition! Anyone attempting to form teams for an unfair advantage will be banished from further participation."
+      },
+      {
+        "npc": "Now that you know more, would you like to take part in a game of Last Man Standing?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to play.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "UK598n",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8fbf981c93ca324d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Qlq2AU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c8774f5655411d68"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

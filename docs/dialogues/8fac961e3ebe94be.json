@@ -37,8 +37,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "4GuSg-"
+                        "id": "4GuSg-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6cc968b441141e49"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -273,8 +278,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "AK9JsL"
+                        "id": "AK9JsL",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b3db12c66168d42b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -346,8 +356,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "-PIJyd"
+                                "id": "-PIJyd",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-32b345d3529c8a7d"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -356,8 +371,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "QFMslp"
+                                "id": "QFMslp",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-97f6c6cd44c3c788"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -435,8 +455,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "BwgVnC"
+                        "id": "BwgVnC",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-59a4b5d103455d6e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -455,8 +480,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "lF54_5"
+                        "id": "lF54_5",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ad3c8a2fd25c3f2c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -479,8 +509,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_-BtK8"
+                "id": "_-BtK8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-32b345d3529c8a7d"
+                  }
+                ]
               }
             ]
           },
@@ -519,6 +554,301 @@
     ]
   },
   "branches": {
+    "jump-6cc968b441141e49": [
+      {
+        "player": "What are you doing here?"
+      },
+      {
+        "npc": "I'm a student here at the tower. I don't know what I'll do now. Maybe I'll go home to Ardougne. Or maybe I'll pick up a new magical field to study."
+      },
+      {
+        "player": "What kind of magical fields are we talking about?"
+      },
+      {
+        "npc": "Anything but pumpkin fields."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "AK9JsL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b3db12c66168d42b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything to sell?",
+            "steps": [
+              {
+                "player": "Do you have anything to sell?"
+              },
+              {
+                "npc": "As a matter of fact, I do! I was recently doing some research on cabbages. I was able to extract their essence and combine it with a t-"
+              },
+              {
+                "player": "You're not a very good salesman, are you? Just tell me what you're selling!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a members world:",
+                "steps": [
+                  {
+                    "npc": "Oh. Right! I have these crystal shards that will let you escape from particularly dangerous situations. They only work in certain places. I call them Escape crystals."
+                  }
+                ],
+                "id": "TRetI2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not on a members world:",
+                "steps": [
+                  {
+                    "npc": "Oh. Right! I have these crystal shards that will let you escape from particularly dangerous situations. They only work in certain places. I call them Members objects."
+                  }
+                ],
+                "id": "p1jhZa"
+              },
+              {
+                "player": "Why would I want that?"
+              },
+              {
+                "npc": "Sometimes you get caught in places that won't let you teleport out by normal means. These crystals are specially crafted to let you escape those scenarios. I've recently enhanced them as well!"
+              },
+              {
+                "npc": "Have you ever found yourself zoning out, and come back to reality to find yourself under attack and on the brink of death? Well you can configure them to teleport you to safety if !"
+              },
+              {
+                "npc": "It does mean they are likely to trigger in combat, although I'm working on that. But they should let you run through a dangerous area as long as you don't stop in the middle."
+              },
+              {
+                "npc": "They also now work in any place a ring of life would. Talking about rings of life, they can also act just like one if you configure them to be so."
+              },
+              {
+                "npc": "So, would you like to buy one? They cost 75000 gold each!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sure - I'd like to buy a crystal.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ipyrz2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Which places can the Escape crystal teleport me out of?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "-PIJyd",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-32b345d3529c8a7d"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No way, that's too expensive!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "QFMslp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-97f6c6cd44c3c788"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "oBlbRI"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-b3db12c66168d42b": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "My name is Rick. I'm a wizard student. I used to study magical farming, but I don't like it anymore."
+      },
+      {
+        "player": "Why don't you like it anymore?"
+      },
+      {
+        "npc": "It's a bit embarrassing, but... I got my head swapped with a pumpkin. Luckily an adventurer came along and helped me get it back in place."
+      },
+      {
+        "player": "That is indeed lucky."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "4GuSg-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6cc968b441141e49"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything to sell?"
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "SX0__E"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-32b345d3529c8a7d": [
+      {
+        "player": "Which places can the Escape crystal teleport me out of?"
+      },
+      {
+        "npc": "The crystals currently work in the Theatre of Blood, the Chambers of Xeric, TzHaar-Ket-Rak's Challenges, the Inferno, Pest Control, Barbarian Assault and the Tombs of Amascut."
+      },
+      {
+        "npc": "Although you cannot technically take them into the Gauntlet, if you enable the feature that teleports you if you zone out and have a crystal on you when entering, it will continue to work within."
+      },
+      {
+        "npc": "So, would you like to buy one? They cost 75000 gold each!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sure - I'd like to buy a crystal.",
+            "steps": [
+              {
+                "player": "Sure - I'd like to buy a crystal."
+              },
+              {
+                "npc": "Wonderful!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 75,000 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Player is prompted to select how many to purchase.",
+                    "id": "hBGD3t"
+                  }
+                ],
+                "id": "DCbFZw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 75,000 coins:",
+                "steps": [
+                  {
+                    "npc": "It looks like you can't afford any crystals. They cost 75000 coins each."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "j21U5J"
+              }
+            ]
+          },
+          {
+            "text": "No way, that's too expensive!",
+            "steps": [
+              {
+                "player": "No way, that's too expensive!"
+              },
+              {
+                "npc": "Well, there's a lot that goes into it to drive the price up that high. But I understand why you feel that way."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-97f6c6cd44c3c788": [
+      {
+        "player": "No way, that's too expensive!"
+      },
+      {
+        "npc": "Well, there's a lot that goes into it to drive the price up that high. But I understand why you feel that way."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-59a4b5d103455d6e": [
+      {
+        "npc": "I still study. I'm changing my field of study though. Hopefully if I don't mess up more spells, one day I can become the head wizard."
+      },
+      {
+        "player": "I think that would suit you very well!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "-IfISm"
+      }
+    ],
+    "jump-ad3c8a2fd25c3f2c": [
+      {
+        "player": "Goodbye, Rick."
+      },
+      {
+        "npc": "Take care, [player name]."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "QRAISw": [
       {
         "player": "No way, that's too expensive!"

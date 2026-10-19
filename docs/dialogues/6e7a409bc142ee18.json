@@ -50,8 +50,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "w3lz_M"
+                        "id": "w3lz_M",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3d3cc5d95ecab721"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -60,8 +65,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "ojbzNd"
+                        "id": "ojbzNd",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d6fd4a59d62a23da"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -113,8 +123,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "gbOKB3"
+                "id": "gbOKB3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3d3cc5d95ecab721"
+                  }
+                ]
               }
             ]
           },
@@ -123,8 +138,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "f63Y3p"
+                "id": "f63Y3p",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2c6ffc63090bd1be"
+                  }
+                ]
               }
             ]
           },
@@ -152,8 +172,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "quJKwy"
+                "id": "quJKwy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d6fd4a59d62a23da"
+                  }
+                ]
               }
             ]
           },
@@ -162,8 +187,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rneT7l"
+                "id": "rneT7l",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-44a64e3314634071"
+                  }
+                ]
               }
             ]
           }
@@ -175,6 +205,97 @@
         "type": "line",
         "speaker": "Larry Leprechaun",
         "text": "I'm not one of them farmin' leprechauns! I don't want yer garbage!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-3d3cc5d95ecab721": [
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Amazing Farming Equipment Store",
+        "id": "hfXsrU"
+      }
+    ],
+    "jump-d6fd4a59d62a23da": [
+      {
+        "player": "No thanks, I'll keep hold of my stuff."
+      },
+      {
+        "npc": "Ye must be dafter than ye look if ye likes luggin' yer tools everywhere ye goes!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2c6ffc63090bd1be": [
+      {
+        "player": "Why are you sunbathing up a mountain?"
+      },
+      {
+        "npc": "We tool leprechauns work hard, that we do. An' nary a penny do we get in return. So ye cannae begrudge me mah holiday an' a wee drink or twelve!"
+      },
+      {
+        "player": "Yes, very nice, but why are you sunbathing up a mountain? Surely a beach would be more appropriate?"
+      },
+      {
+        "npc": "Ahh, but I likes th' ruggedy mountain, ye see. Also, I ha' a terrible allergy to sand."
+      },
+      {
+        "player": "Fair enough, I suppose."
+      },
+      {
+        "npc": "So were ye wantin' help with th' tool store?"
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "w3lz_M",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3d3cc5d95ecab721"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll keep hold of my stuff.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ojbzNd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d6fd4a59d62a23da"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-44a64e3314634071": [
+      {
+        "player": "Would you like to trade?"
+      },
+      {
+        "npc": "Ach! Can ye no' leave a body to ha' a little peace? Very well, I have a bit o' stuff to trade with ye. But don't be expectin' yerself any discounts."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Leprechaun Larry's Farming Supplies.",
+        "id": "fKByoO"
       }
     ]
   }

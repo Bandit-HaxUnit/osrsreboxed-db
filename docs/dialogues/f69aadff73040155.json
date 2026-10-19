@@ -139,8 +139,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "ehPiSz"
+                        "id": "ehPiSz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-80b7ad4acb9164fa"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -227,6 +232,17 @@
     ]
   },
   "branches": {
+    "jump-80b7ad4acb9164fa": [
+      {
+        "player": "Sorry, just passing through."
+      },
+      {
+        "npc": "Oh... my poor darling Jossik... I just know something terrible has happened..."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "MWDQ_R": [
       {
         "player": "Sorry, just passing through."

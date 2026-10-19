@@ -21,8 +21,10 @@ from scripts.dialogues.fetch import (
     participant_pages,
     save,
 )
-from scripts.dialogues.hooks import enrich_records
+from scripts.dialogues.hooks import enrich_records, walk as dialogue_nodes
 from scripts.dialogues.compact import compact_record, write_split
+from scripts.dialogues.corrections import apply_corrections
+from scripts.dialogues.bindings import apply_bindings
 
 
 def clean(raw):
@@ -34,7 +36,7 @@ def clean(raw):
             code.replace(template, clean(template.get(2).value))
         elif name == "overhead" and template.has(1):
             code.replace(template, clean(template.get(1).value))
-        elif name == "sic":
+        elif name in ("sic", "^"):
             code.replace(template, "")
     # Keep unrecognised templates through strip_code rather than dropping data.
     saved = []
@@ -135,6 +137,16 @@ def parse_step(raw, issues, line):
             )
         return node
     templates = mw.parse(raw).filter_templates(recursive=False)
+    if templates and str(templates[0].name).strip().lower() == "topt":
+        option = str(templates[0])
+        annotation = raw.removeprefix(option).strip()
+        if annotation:
+            condition = clean(annotation).strip("() ")
+            after = re.fullmatch(r"only after (.+)", condition, re.I)
+            if after:
+                node = parse_step(option, issues, line)
+                node["condition"] = f"If the player has completed {after[1]}:"
+                return node
     if len(templates) == 1 and str(templates[0]) == raw:
         t = templates[0]
         name = str(t.name).strip().lower()
@@ -159,8 +171,19 @@ def parse_step(raw, issues, line):
         text = args.get("1", "")
         if name == "topt":
             node = dict(type="option", text=text)
+            if text == "cond" and args.get("2") and args.get("3"):
+                node.update(text=args["3"], condition=args["2"])
+                issues.append(
+                    dict(
+                        line=line,
+                        reason="Recovered positional option condition",
+                        raw=raw,
+                    )
+                )
             if "cond" in args:
                 node["condition"] = args["cond"]
+            if args.get("quest", "").casefold() == "no":
+                node["_shared"] = True
             return node
         if name in ("tcond", "tselect", "tbox", "mes", "qact", "tinput"):
             node = dict(
@@ -210,17 +233,24 @@ def parse_step(raw, issues, line):
             node.update(infer_action(text))
             return node
     issues.append(dict(line=line, reason="Unrecognised markup retained", raw=raw))
+    if re.match(r"Before starting this quest,?\s", raw, re.I):
+        issues.pop()
+        return dict(type="message", text=clean(raw), _identity={"type": "unavailable"})
     return dict(type="unparsed", raw=raw)
 
 
 def group_options(nodes, random_options=False):
-    """Group sibling alternatives, keeping their nested bodies and order."""
+    """Group menu alternatives.
+
+    The wiki writes a menu's options either as following siblings (`{{tselect}}`
+    then `{{topt}}` at the same bullet depth) or nested as children (`{{tselect}}`
+    then deeper `{{topt}}` bullets). Both must become the menu's options; the
+    nested style used to emit an empty menu and drop every choice.
+    """
     result = []
     i = 0
     while i < len(nodes):
         node = nodes[i]
-        if "steps" in node and node["type"] != "option":
-            node["steps"] = group_options(node["steps"])
         if node["type"] in ("menu", "random_marker", "option"):
             kind = (
                 "random"
@@ -228,20 +258,35 @@ def group_options(nodes, random_options=False):
                 else "choice"
             )
             group = dict(type=kind, options=[])
-            if node["type"] != "option":
+            option_nodes = []
+            if node["type"] == "option":
+                option_nodes.append(node)
+                i += 1
+            else:
                 if node.get("text"):
                     group["prompt"] = node["text"]
+                # Deeper-bullet options parsed as children of the tselect.
+                for child in node.get("steps", []):
+                    if child["type"] == "option":
+                        option_nodes.append(child)
+                    elif option_nodes:
+                        # Some transcripts put an option's body at its own depth.
+                        option_nodes[-1].setdefault("steps", []).append(child)
                 i += 1
-            while i < len(nodes) and nodes[i]["type"] == "option":
-                option = nodes[i]
+            if not option_nodes or node["type"] == "option":
+                while i < len(nodes) and nodes[i]["type"] == "option":
+                    option_nodes.append(nodes[i])
+                    i += 1
+            for option in option_nodes:
                 group["options"].append(
                     {k: v for k, v in option.items() if k != "type"}
                 )
                 option_body = group["options"][-1]
                 option_body["steps"] = group_options(option.get("steps", []))
-                i += 1
             result.append(group)
         else:
+            if "steps" in node:
+                node["steps"] = group_options(node["steps"])
             result.append(node)
             i += 1
     return result
@@ -319,10 +364,23 @@ def parse_npc(name, raw):
     raw = re.sub(
         r"<!--.*?-->", lambda match: "\n" * match[0].count("\n"), raw, flags=re.S
     )
+    poem = None
     for number, original in enumerate(raw.splitlines(), 1):
+        node_override = None
         line = original.strip()
         if not line:
             continue
+        if line.casefold() == "<poem>":
+            poem = []
+            poem_depth = stack[-1][0] if stack else 1
+            continue
+        if poem is not None:
+            if line.casefold() != "</poem>":
+                poem.append(clean(line))
+                continue
+            node_override = dict(type="message", text="\n".join(poem))
+            line = "*" * poem_depth + " {{tbox}}"
+            poem = None
         heading = re.fullmatch(r"(={2,6})\s*(.*?)\s*\1", line)
         if heading:
             level = len(heading[1])
@@ -358,9 +416,15 @@ def parse_npc(name, raw):
                 suffix += 1
             current = dict(label=path[-1], section_path=path, steps=[])
             variants[key] = current
+        if (
+            not line.startswith(("*", "{{", "'''"))
+            and "the topic just asked about is left out" in line.casefold()
+        ):
+            current["_omit_selected"] = True
+            continue
         bullet = re.fullmatch(r"(\*+)\s*(.*)", line)
         depth, body = (len(bullet[1]), bullet[2]) if bullet else (1, line)
-        node = parse_step(body, issues, number)
+        node = node_override or parse_step(body, issues, number)
         while stack and stack[-1][0] >= depth:
             stack.pop()
         if stack:
@@ -368,6 +432,8 @@ def parse_npc(name, raw):
         else:
             current["steps"].append(node)
         stack.append((depth, node))
+    if poem is not None:
+        raise ValueError(f"Unclosed poem in {name}")
     for variant in variants.values():
         is_oracle = name == "Oracle" and variant["section_path"] == [
             "Standard dialogue"
@@ -408,6 +474,8 @@ def gameplay_step(node, name):
                 "reason",
                 "action_source",
                 "prompt",
+                "_shared",
+                "_identity",
             )
             and value is not None
         }
@@ -433,6 +501,11 @@ def gameplay_npc(name, parsed):
             key: value["section_path"] for key, value in parsed["variants"].items()
         },
         "participants": parsed.get("participants", []),
+        "_omit_selected": [
+            key
+            for key, variant in parsed["variants"].items()
+            if variant.get("_omit_selected")
+        ],
     }
 
 
@@ -497,6 +570,31 @@ def resolve_shops(npcs, index):
                 walk(item)
 
     walk(npcs)
+    from scripts.dialogues.hooks import walk as nodes
+
+    for record in npcs.values():
+        variants = (
+            [record]
+            if isinstance(record, list)
+            else [
+                *record.get("variants", {}).values(),
+                *record.get("branches", {}).values(),
+                record.get("steps", []),
+            ]
+        )
+        steps = [node for variant in variants for node in nodes(variant)]
+        shops = {node["target"] for node in steps if node.get("action") == "open_shop"}
+        if len(shops) == 1:
+            for node in steps:
+                if (
+                    node.get("action") == "open_interface"
+                    and not node.get("target")
+                    and re.fullmatch(
+                        r"\(?Shop interface opens\.?\)?", node.get("text", ""), re.I
+                    )
+                ):
+                    node.update(action="open_shop", target=next(iter(shops)))
+                    resolved += 1
     return resolved
 
 
@@ -683,16 +781,50 @@ def main():
         raise ValueError("NPC and quest transcript names overlap")
     index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean)
     resolved = resolve_shops(npcs, shop_index())
+    # Shared quest replies retain their NPC source IDs, including inferred shops.
+    source_shops = {
+        node["id"]: node["target"]
+        for record in npcs.values()
+        for steps in [
+            *record["variants"].values(),
+            *record.get("branches", {}).values(),
+        ]
+        for node in dialogue_nodes(steps)
+        if node.get("action") == "open_shop" and "id" in node
+    }
+    for record in quests.values():
+        for steps in [
+            *record["variants"].values(),
+            *record.get("branches", {}).values(),
+        ]:
+            for node in dialogue_nodes(steps):
+                if (
+                    node.get("action") == "open_interface"
+                    and node.get("id") in source_shops
+                ):
+                    node["target"] = source_shops[node["id"]]
     resolved += resolve_shops(quests, shop_index())
     slayer = resolve_slayer(npcs, slayer_masters())
-    report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
-    report.write_text(action_report({**npcs, **quests}))
+    report_text = action_report({**npcs, **quests})
     authoring = {}
     for group in (npcs, quests):
         for name, record in group.items():
             authoring["Transcript:" + name] = compact_record(record)
-    save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     dialogues = dict(sorted({**npcs, **quests}.items()))
+    data = {"records": dialogues, "authoring": authoring, "index": index}
+    apply_bindings(
+        data,
+        json.loads(
+            (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
+        ),
+    )
+    apply_corrections(
+        data,
+        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text()),
+    )
+    report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
+    report.write_text(report_text)
+    save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
     save(args.out.with_name("npc-dialogue-index.json"), index)

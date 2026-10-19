@@ -105,8 +105,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TKlTEt"
+                "id": "TKlTEt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0656dcee0ed5768d"
+                  }
+                ]
               }
             ]
           },
@@ -118,8 +123,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sECEpP"
+                "id": "sECEpP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-911295cd1f881d8f"
+                  }
+                ]
               }
             ]
           }
@@ -230,6 +240,87 @@
     "standard-dialogue-talking-to-prison-pete-after-getting-rewarded": [
       {
         "npc": "Don't mind me, I was just leaving..."
+      }
+    ]
+  },
+  "branches": {
+    "jump-0656dcee0ed5768d": [
+      {
+        "npc": "Some of these balloon animals have keys in them, and if you pull the big lever it tells you which shape animal contains the correct key, but I can never find it."
+      },
+      {
+        "npc": "You need to pull the lever to find out which shape animal contains the key, then pop that sort of animal to get the key."
+      },
+      {
+        "npc": "Bring me any keys you get and I'll try them on the doors."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "But I want to leave now.",
+            "steps": [
+              {
+                "npc": "Oh. Well I guess you can leave but I'll still be stuck here."
+              },
+              {
+                "type": "choice",
+                "prompt": "Leave the event?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You leave the prison.",
+                        "id": "3MGLKK"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player leaves the prison through the east hallway.",
+                        "id": "J-SmnE"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-911295cd1f881d8f": [
+      {
+        "type": "jump",
+        "id": "TKlTEt",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-0656dcee0ed5768d"
+          }
+        ]
       }
     ]
   }

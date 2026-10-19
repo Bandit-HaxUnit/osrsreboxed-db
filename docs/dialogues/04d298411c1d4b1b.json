@@ -76,8 +76,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "oB_RxH"
+                        "id": "oB_RxH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-861446f38460d576"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -426,6 +431,27 @@
     ]
   },
   "branches": {
+    "jump-861446f38460d576": [
+      {
+        "npc": "It's a diary that helps you keep track of particular achievements. In Varrock and the surrounding area it can help you discover some quite useful things. Eventually, with enough exploration, the inhabitants will"
+      },
+      {
+        "npc": "reward you."
+      },
+      {
+        "type": "action",
+        "text": "The player's Achievement Diaries tab is opened",
+        "id": "iRg065"
+      },
+      {
+        "npc": "You can see the list of tasks on the side-panel."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "tULHig"
+      }
+    ],
     "pmUsWS": [
       {
         "npc": "You need at least two inventory spaces, make some space and come back."

@@ -98,8 +98,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "KITCjy"
+                        "id": "KITCjy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a0a3504759b5011a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -138,6 +143,19 @@
       },
       {
         "player": "Umm... sorry"
+      }
+    ]
+  },
+  "branches": {
+    "jump-a0a3504759b5011a": [
+      {
+        "player": "You're a vampyre aren't you?"
+      },
+      {
+        "npc": "Just because I can't stand ze smell ov garlic und I don't like bright sunlight doesn't necessarily mean I'm ein vampyre!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

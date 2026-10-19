@@ -232,8 +232,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Pka9Fq"
+                "id": "Pka9Fq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c904723ab139d3dd"
+                  }
+                ]
               }
             ]
           },
@@ -252,8 +257,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "FgfftL"
+                "id": "FgfftL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0b1733d1fb0bf044"
+                  }
+                ]
               }
             ]
           }
@@ -338,8 +348,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "XP4rJw"
+                        "id": "XP4rJw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-27595c67ea214c1d"
+                          }
+                        ]
                       },
                       {
                         "type": "jump",
@@ -671,8 +686,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "3BUept"
+                                "id": "3BUept",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-97ce7272477bd317"
+                                  }
+                                ]
                               },
                               {
                                 "type": "jump",
@@ -715,8 +735,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "nuzBX_"
+                        "id": "nuzBX_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-97ce7272477bd317"
+                          }
+                        ]
                       },
                       {
                         "type": "jump",
@@ -836,8 +861,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "MVrbPz"
+        "id": "MVrbPz",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-37c3689eac3c1261"
+          }
+        ]
       }
     ],
     "convincing-cyreg-paddlehorn-talking-to-cyreg-after-fixing-the-boaty": [
@@ -3227,6 +3257,184 @@
       {
         "type": "unavailable",
         "id": "9sQzxV"
+      }
+    ]
+  },
+  "branches": {
+    "jump-c904723ab139d3dd": [
+      {
+        "player": "Remind me, what weapons do I need?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanstrom Klause",
+        "text": "You've forgotten already? Ha! That's funny! But I do understand, my memory isn't what it was either!"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanstrom Klause",
+        "text": "I'd suggest a longsword, two shortswords, a dagger, a mace and a warhammer, all made of steel."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanstrom Klause",
+        "text": "You'll need to obtain the weapons yourself. Fear not though! If you return to me here once you've found them, I'll be sure to give you a nice surprise in return for your help!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "HFvbGn"
+      }
+    ],
+    "jump-0b1733d1fb0bf044": [
+      {
+        "player": "I'd better be off."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-27595c67ea214c1d": [
+      {
+        "player": "Oh come on, you can tell me!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cyreg Paddlehorn",
+        "text": "I'm sorry, I just can't... They're watching us you know... Eyes everywhere!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "4wGcf0"
+      }
+    ],
+    "jump-97ce7272477bd317": [
+      {
+        "player": "I just want to help them, I think they need help."
+      },
+      {
+        "type": "line",
+        "speaker": "Cyreg Paddlehorn",
+        "text": "Aye, everyone in these lands needs help. I'm sorry though, it's just not safe and it's not likely to get safer any time soon."
+      },
+      {
+        "type": "line",
+        "speaker": "Cyreg Paddlehorn",
+        "text": "Look, I feel for them, I really do. They're fighting the good fight out there and unfortunately, some of them probably won't live through it."
+      },
+      {
+        "type": "line",
+        "speaker": "Cyreg Paddlehorn",
+        "text": "Ivan in particular I feel sorry for. He's the youngest of their group and he's seen too few winters to be involved in such toil."
+      },
+      {
+        "player": "Then tell me how to find them. I can help them."
+      },
+      {
+        "type": "line",
+        "speaker": "Cyreg Paddlehorn",
+        "text": "I support their cause. That doesn't mean I want to die for them though. I'm sorry, but I will not risk the wrath of the vampyres."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "wFOW4N"
+      }
+    ],
+    "jump-37c3689eac3c1261": [
+      {
+        "type": "line",
+        "speaker": "Cyreg Paddlehorn",
+        "text": "You'll be going through Mort Myre though, so I won't be letting you go unless you've got some defence against the ghasts."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a druid pouch in their inventory:",
+        "steps": [
+          {
+            "player": "I don't have anything which I can use against them."
+          },
+          {
+            "type": "line",
+            "speaker": "Cyreg Paddlehorn",
+            "text": "Well return to me once you have."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Ac3Ba7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a Druid Pouch in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the boatman your druid pouch.",
+            "id": "BKpf08"
+          },
+          {
+            "player": "I have this druid pouch! This turns the ghasts visible and I can kill them once I can see them."
+          },
+          {
+            "type": "line",
+            "speaker": "Cyreg Paddlehorn",
+            "text": "Very well, you can go! But you'll need to bring me six wooden planks first."
+          },
+          {
+            "player": "What for?"
+          },
+          {
+            "type": "line",
+            "speaker": "Cyreg Paddlehorn",
+            "text": "The boat took some damage on my last trip. It needs repairing. There's also a bridge you'll need to cross later in your journey. It's rotten and will likely need repairs."
+          },
+          {
+            "type": "line",
+            "speaker": "Cyreg Paddlehorn",
+            "text": "Three of the planks are for the boat and three are for the bridge. I suggest you bring some tools and steel nails along as well."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Here are some planks for you.",
+                "steps": [
+                  {
+                    "player": "Here are some planks for you."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The boatman takes three wooden planks from you and uses them to fix his boat.",
+                    "id": "DsO5TF"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cyreg Paddlehorn",
+                    "text": "Right. You can take the boat. Just jump in when you're ready to leave."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cyreg Paddlehorn",
+                    "text": "Go as far north as you can and you'll arrive at the Hollows. Keep heading north on foot, over the rotten bridge, and you'll eventually reach an odd looking tree. That is where you'll find the Myreque."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "I'll be back later."
+              }
+            ]
+          },
+          {
+            "player": "I'll be back later."
+          }
+        ],
+        "id": "39TjyD"
       }
     ]
   }

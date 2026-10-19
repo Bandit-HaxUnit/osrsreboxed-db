@@ -49,6 +49,9 @@
                     "text": "Can I help?",
                     "steps": [
                       {
+                        "player": "Can I help?"
+                      },
+                      {
                         "type": "line",
                         "speaker": "Veos",
                         "text": "Hmmm. Maybe you can. You probably know this area better than I do. You might be able to work the scroll out. I'll be able to reward you if you help."
@@ -57,7 +60,7 @@
                         "type": "choice",
                         "options": [
                           {
-                            "text": "Sounds good, what should I do?",
+                            "text": "Yes.",
                             "steps": [
                               {
                                 "player": "Sounds good, what should I do?"
@@ -83,9 +86,8 @@
                                     "text": "Take this scroll. It should lead you to the treasure I seek. Once you've found it, meet me at my ship. It's docked at the northernmost pier in Port Sarim."
                                   },
                                   {
-                                    "type": "action",
-                                    "action": "receive",
-                                    "text": "Treasure scroll",
+                                    "type": "message",
+                                    "text": "Veos has given you a scroll.",
                                     "id": "vNA0zu"
                                   },
                                   {
@@ -95,6 +97,11 @@
                                     "type": "line",
                                     "speaker": "Veos",
                                     "text": "You'll probably want a spade, I find they're pretty much always needed when it comes to hunting treasure. Check the general store if you don't have one. If you need any extra help, just let me know."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Veos",
+                                    "text": "I'll be sticking around here a little longer before heading back to my ship. If you need extra guidance with anything, just let me know and I'll see what I can do."
                                   },
                                   {
                                     "player": "Okay, thanks Veos."
@@ -110,7 +117,7 @@
                             ]
                           },
                           {
-                            "text": "I'm good thanks.",
+                            "text": "No.",
                             "steps": [
                               {
                                 "player": "I'm good thanks."
@@ -122,7 +129,8 @@
                               }
                             ]
                           }
-                        ]
+                        ],
+                        "prompt": "Start the X Marks the Spot quest?"
                       }
                     ]
                   },
@@ -151,8 +159,129 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yEQ3ts"
+                "id": "yEQ3ts",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Veos",
+                    "text": "Across the sea to the far west. It is a truly magnificent place."
+                  },
+                  {
+                    "player": "Interesting. So what brings you to Lumbridge?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Veos",
+                    "text": "I'm here on a bit of a hunt. The hunt for treasure. Back in my home of Great Kourend, I came across a scroll. I believe it will lead me to something of great value."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Veos",
+                    "text": "Alas, I've hit a bit of a blocker. The scroll has led me here but as I don't really know the area, I'm not sure what to do next."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Can I help?",
+                        "steps": [
+                          {
+                            "player": "Can I help?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Veos",
+                            "text": "Hmmm. Maybe you can. You probably know this area better than I do. You might be able to work the scroll out. I'll be able to reward you if you help."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes.",
+                                "steps": [
+                                  {
+                                    "player": "Sounds good, what should I do?"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have any free inventory space:",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "A8qY2A"
+                                      }
+                                    ],
+                                    "id": "eWfCON"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has a free inventory space:",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Veos",
+                                        "text": "Take this scroll. It should lead you to the treasure I seek. Once you've found it, meet me at my ship. It's docked at the northernmost pier in Port Sarim."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "Veos has given you a scroll.",
+                                        "id": "vNA0zu"
+                                      },
+                                      {
+                                        "player": "Awesome. Anything else I should know?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Veos",
+                                        "text": "You'll probably want a spade, I find they're pretty much always needed when it comes to hunting treasure. Check the general store if you don't have one. If you need any extra help, just let me know."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Veos",
+                                        "text": "I'll be sticking around here a little longer before heading back to my ship. If you need extra guidance with anything, just let me know and I'll see what I can do."
+                                      },
+                                      {
+                                        "player": "Okay, thanks Veos."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Veos",
+                                        "text": "Good luck."
+                                      }
+                                    ],
+                                    "id": "ds0BER"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No.",
+                                "steps": [
+                                  {
+                                    "player": "I'm good thanks."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Veos",
+                                    "text": "Fair enough. I'll be here if you change your mind."
+                                  }
+                                ]
+                              }
+                            ],
+                            "prompt": "Start the X Marks the Spot quest?"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Well good luck with it.",
+                        "steps": [
+                          {
+                            "player": "Well good luck with it."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -451,8 +580,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QDerlm"
+                "id": "QDerlm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4d0d79ebf9a7d483"
+                  }
+                ]
               }
             ]
           }
@@ -695,6 +829,165 @@
     ]
   },
   "branches": {
+    "jump-ad6ee9147c3ba441": [
+      {
+        "type": "line",
+        "speaker": "Veos",
+        "text": "Across the sea to the far west. It is a truly magnificent place."
+      },
+      {
+        "player": "Interesting. So what brings you to Lumbridge?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veos",
+        "text": "I'm here on a bit of a hunt. The hunt for treasure. Back in my home of Great Kourend, I came across a scroll. I believe it will lead me to something of great value."
+      },
+      {
+        "type": "line",
+        "speaker": "Veos",
+        "text": "Alas, I've hit a bit of a blocker. The scroll has led me here but as I don't really know the area, I'm not sure what to do next."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I help?",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Hmmm. Maybe you can. You probably know this area better than I do. You might be able to work the scroll out. I'll be able to reward you if you help."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sounds good, what should I do?",
+                    "steps": [
+                      {
+                        "player": "Sounds good, what should I do?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have any free inventory space:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Veos",
+                            "text": "First you should go and make some room in your inventory. Once you've done that, you can have a look at this scroll."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "eWfCON"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a free inventory space:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Veos",
+                            "text": "Take this scroll. It should lead you to the treasure I seek. Once you've found it, meet me at my ship. It's docked at the northernmost pier in Port Sarim."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Treasure scroll",
+                            "id": "vNA0zu"
+                          },
+                          {
+                            "player": "Awesome. Anything else I should know?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Veos",
+                            "text": "You'll probably want a spade, I find they're pretty much always needed when it comes to hunting treasure. Check the general store if you don't have one. If you need any extra help, just let me know."
+                          },
+                          {
+                            "player": "Okay, thanks Veos."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Veos",
+                            "text": "Good luck."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ds0BER"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm good thanks.",
+                    "steps": [
+                      {
+                        "player": "I'm good thanks."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Veos",
+                        "text": "Fair enough. I'll be here if you change your mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well good luck with it.",
+            "steps": [
+              {
+                "player": "Well good luck with it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4d0d79ebf9a7d483": [
+      {
+        "type": "condition",
+        "text": "If the player talks to Veos in Lumbridge:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Veos",
+            "text": "Well keep at it. Once you've found the treasure, meet me at my ship. It's docked at the northernmost pier in Port Sarim."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "oANzOg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player talks to Veos in Port Sarim:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Veos",
+            "text": "Well keep at it. Once you've found the treasure, bring it to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1c5uQl"
+      }
+    ],
     "A8qY2A": [
       {
         "type": "line",

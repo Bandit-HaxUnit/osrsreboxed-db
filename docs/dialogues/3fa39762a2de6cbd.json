@@ -304,8 +304,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "81xA1u"
+                "id": "81xA1u",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cc64f24ca222b537"
+                  }
+                ]
               }
             ]
           },
@@ -314,8 +319,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cy-L1-"
+                "id": "cy-L1-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b8b9a47fdd745f8b"
+                  }
+                ]
               }
             ]
           },
@@ -365,8 +375,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "34T_jp"
+                "id": "34T_jp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cc64f24ca222b537"
+                  }
+                ]
               }
             ]
           },
@@ -375,8 +390,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "r_eIwi"
+                "id": "r_eIwi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b8b9a47fdd745f8b"
+                  }
+                ]
               }
             ]
           },
@@ -424,10 +444,40 @@
             "text": "Fossil Island"
           },
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
             "text": "I'm looking for a statuette recovered from the city of Uzer.",
@@ -487,7 +537,97 @@
             ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The curator hands you a medallion.",
+                            "id": "qrOUUk"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -562,10 +702,40 @@
             "text": "Fossil Island"
           },
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
             "text": "I'm looking for a statuette recovered from the city of Uzer.",
@@ -593,13 +763,108 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YmYBcq"
+                "id": "YmYBcq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-25d2f758fb1ad200"
+                  }
+                ]
               }
             ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The curator hands you a medallion.",
+                            "id": "qrOUUk"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -900,6 +1165,215 @@
       {
         "type": "unavailable",
         "id": "ZGGIwk"
+      }
+    ]
+  },
+  "branches": {
+    "jump-cc64f24ca222b537": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Elissa",
+        "text": "I'm helping with the dig. I'm an expert on Third Age architecture."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b8b9a47fdd745f8b": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "type": "line",
+        "speaker": "Elissa",
+        "text": "In the Third Age, this was a great city. Look at these giant walls! They put Varrock to shame!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I don't know, Varrock is pretty impressive.",
+            "steps": [
+              {
+                "player": "I don't know, Varrock palace is impressive."
+              },
+              {
+                "type": "line",
+                "speaker": "Elissa",
+                "text": "Hmph. I don't think it will look this good when it's been buried in the ground for three thousand years!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "What happened to the city?",
+            "steps": [
+              {
+                "player": "What happened to the city?"
+              },
+              {
+                "type": "line",
+                "speaker": "Elissa",
+                "text": "No one knows for sure."
+              },
+              {
+                "type": "line",
+                "speaker": "Elissa",
+                "text": "But the Third Age was a time of destruction, when the gods were violently at war."
+              },
+              {
+                "type": "line",
+                "speaker": "Elissa",
+                "text": "Many great civilizations were destroyed then."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-25d2f758fb1ad200": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "What do you want it for?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I want to open a portal to the lair of an elder-demon.",
+            "steps": [
+              {
+                "player": "I want to open a portal to the lair of an elder-demon."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Good heavens! I'd never let you do such a dangerous thing."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Well, I, er, just want it.",
+            "steps": [
+              {
+                "player": "Well, I, er, just want it."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Well, you can't have it! This museum never lets go of its treasures."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dwJpG2": [
+      {
+        "player": "Have you any interesting news?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Yes, we found a rather interesting island to the North of Morytania. We believe that it may be of archaeological significance."
+      },
+      {
+        "player": "Oh? That sounds interesting."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Indeed. We are making the final preparations for our voyage, in fact, you may be just the person we are looking for... Assuming you've got the necessary qualifications, that is."
+      },
+      {
+        "player": "Would I qualify then?"
+      },
+      {
+        "type": "reference",
+        "target": "Transcript:Bone Voyage",
+        "section": "",
+        "text": "Continues in Transcript:Bone Voyage",
+        "id": "C60sf8",
+        "resolved": false,
+        "page_available": true
+      }
+    ],
+    "X9TO_8": [
+      {
+        "player": "Have you any interesting news?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "We've seen some incredible specimens come back from Fossil Island!"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Be sure to bring anything you find back for examination - we've got a brand new Palaeontology room downstairs dedicated to finds from the island."
+      }
+    ],
+    "pkFLbX": [
+      {
+        "player": "Do you know where I could find any treasure?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Look around you! This museum is full of treasures!"
+      },
+      {
+        "player": "No, I meant treasures for ME."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Any treasures this museum knows about it goes to great lengths to acquire."
+      }
+    ],
+    "1wehEl": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Well, firstly you'll need to do a bit of work around the museum, then maybe we can talk."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "YRgjB_": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Oh dear. You'll need 250 rubies, a Digsite pendant, 100 cosmic runes and 500 fire runes with you I'm afraid."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "08vMNp": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Thank you. You have [X] to go before you have enough for a medallion."
+      },
+      {
+        "type": "end"
       }
     ]
   }

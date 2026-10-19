@@ -51,8 +51,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TVgC3P"
+                "id": "TVgC3P",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4ef552c84cb03fbc"
+                  }
+                ]
               }
             ]
           },
@@ -61,8 +66,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nWHQov"
+                "id": "nWHQov",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8b9dbc27ea1ce4dc"
+                  }
+                ]
               }
             ]
           }
@@ -94,8 +104,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "In1IaT"
+                    "id": "In1IaT",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-4ef552c84cb03fbc"
+                      }
+                    ]
                   }
                 ]
               },
@@ -104,8 +119,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "OaMDGa"
+                    "id": "OaMDGa",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-8b9dbc27ea1ce4dc"
+                      }
+                    ]
                   }
                 ]
               }
@@ -138,8 +158,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "FAx7Ss"
+                    "id": "FAx7Ss",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-4ef552c84cb03fbc"
+                      }
+                    ]
                   }
                 ]
               },
@@ -148,8 +173,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "yxjLaa"
+                    "id": "yxjLaa",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-8b9dbc27ea1ce4dc"
+                      }
+                    ]
                   }
                 ]
               }
@@ -157,6 +187,27 @@
           }
         ],
         "id": "_XDl5P"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4ef552c84cb03fbc": [
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Varrock Swordshop",
+        "id": "oQ0xiC"
+      }
+    ],
+    "jump-8b9dbc27ea1ce4dc": [
+      {
+        "player": "No, I'm okay for swords right now."
+      },
+      {
+        "npc": "Come back if you need any."
+      },
+      {
+        "type": "end"
       }
     ]
   }

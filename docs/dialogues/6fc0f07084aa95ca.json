@@ -99,8 +99,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "aCWmkq"
+                "id": "aCWmkq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dd34dca96f123944"
+                  }
+                ]
               }
             ]
           }
@@ -255,6 +260,19 @@
             "id": "cfccNC"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-dd34dca96f123944": [
+      {
+        "player": "Sorry, I'm a little busy."
+      },
+      {
+        "npc": "No problem, I'll find someone else to do it!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

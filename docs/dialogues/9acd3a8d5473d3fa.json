@@ -35,8 +35,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "hRlcUm"
+                "id": "hRlcUm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ae0a9a1ba3d56678"
+                  }
+                ]
               }
             ]
           }
@@ -204,8 +209,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nj_DjN"
+                "id": "nj_DjN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-747f51a57bce4e91"
+                  }
+                ]
               }
             ]
           },
@@ -214,8 +224,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "51l2ZP"
+                "id": "51l2ZP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7b302662aceba720"
+                  }
+                ]
               }
             ]
           },
@@ -224,8 +239,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6QzF8B"
+                "id": "6QzF8B",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ae0a9a1ba3d56678"
+                  }
+                ]
               }
             ]
           }
@@ -334,6 +354,72 @@
         "type": "message",
         "text": "Molly's given you [1-5] noted uncut [sapphires/emeralds/rubies/diamonds].",
         "id": "IRuwTn"
+      }
+    ]
+  },
+  "branches": {
+    "jump-ae0a9a1ba3d56678": [
+      {
+        "player": "I want to leave."
+      },
+      {
+        "npc": "Fine. And there I was thinking you'd help."
+      },
+      {
+        "type": "action",
+        "text": "The player is teleported back to their initial location",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "oFtY0q"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-747f51a57bce4e91": [
+      {
+        "player": "Yes please. I mean, it's always best to be prepared, right?"
+      },
+      {
+        "npc": "Ok, when you turn the machine on you'll see the glowing mark on the floor where the claw is currently aiming, and you'll see a lever and button on the right hand side of your screen."
+      },
+      {
+        "npc": "To move the claw's current location, click on the direction you want it to move in, as indicated on the right hand panel."
+      },
+      {
+        "npc": "You'll know which way the claw will go as the lever will point that way to show you."
+      },
+      {
+        "npc": "When you see someone on top of the glowing mark, then hit the button on the right hand panel, as this will send the claw down to pick them up."
+      },
+      {
+        "npc": "Do be careful and make sure that there is someone on the mark, and not just walking past it."
+      },
+      {
+        "npc": "Oh, and make sure that the person is my sister, so you don't end up catching a random civilian."
+      },
+      {
+        "npc": "Does that help?"
+      },
+      {
+        "player": "Yes, that covers everything. Thanks!"
+      },
+      {
+        "npc": "Good luck!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7b302662aceba720": [
+      {
+        "player": "No, thanks. I should be able to work it out."
+      },
+      {
+        "npc": "Good luck!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -1,4 +1,31 @@
 {
+  "branches": {
+    "jump-831e13becc9c7c41": [
+      {
+        "player": "How do I use the furnace?"
+      },
+      {
+        "npc": "Put your ore on the conveyor belt to get it smelted. We'll stoke the boiler and operate the rest of the machinery for you."
+      },
+      {
+        "npc": "You'll have to help repair the furnace whenever a pipe blows, though. Just hit it with a hammer - that usually works."
+      },
+      {
+        "npc": "You'll have to put money in the coffer to pay for our services. We charge 72,000 coins per hour; money is deducted as long as you're in this room with us."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2fd5501da7d0f238": [
+      {
+        "player": "I'll let you get on with it."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What is it, human? I'm working."
@@ -52,8 +79,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "5xJpGK"
+                              "id": "5xJpGK",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-831e13becc9c7c41"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -62,8 +94,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "5PIv--"
+                              "id": "5PIv--",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-2fd5501da7d0f238"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -88,8 +125,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "b35DQW"
+                              "id": "b35DQW",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-831e13becc9c7c41"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -98,8 +140,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "s-DkUa"
+                              "id": "s-DkUa",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-2fd5501da7d0f238"
+                                }
+                              ]
                             }
                           ]
                         }

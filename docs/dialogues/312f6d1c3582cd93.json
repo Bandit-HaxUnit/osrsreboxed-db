@@ -656,8 +656,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "z34oR7"
+                "id": "z34oR7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb0104d7c458e4c0"
+                  }
+                ]
               }
             ]
           },
@@ -666,8 +671,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uXw66A"
+                "id": "uXw66A",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8ce26a14ae9940fc"
+                  }
+                ]
               }
             ]
           },
@@ -676,8 +686,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "eJ4wge"
+                "id": "eJ4wge",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ca0fb095532761a7"
+                  }
+                ]
               }
             ]
           }
@@ -2235,6 +2250,300 @@
     ]
   },
   "branches": {
+    "jump-fb0104d7c458e4c0": [
+      {
+        "player": "Before I decide, I have some questions for you."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Very well."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me more about Hazeel.",
+            "steps": [
+              {
+                "player": "Tell me more about Hazeel."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Lord Hazeel is one of the great Mahjarrat who once fought alongside Zamorak himself. He ruled this region for many years, until the cowardly Carnilleans rebelled against him."
+              },
+              {
+                "player": "But he survived?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Of course! The Mahjarrat know magic that others can only dream of. Lord Hazeel used his abilities to ensure that one day he'd eventually return. That day will soon be upon us."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "OW5krI"
+              }
+            ]
+          },
+          {
+            "text": "Why did the Carnilleans rebel against Hazeel?",
+            "steps": [
+              {
+                "player": "Why did the Carnilleans rebel against Hazeel?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "The Carnilleans served the pathetic Saradomin. They considered it their duty to overthrow Hazeel due to his loyalties to Zamorak. They were fools, blinded by Saradominist propaganda!"
+              },
+              {
+                "player": "Saradominist propaganda?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Yes! Something even more prevalent today. Too many people now are fooled into believing that Saradomin is a god of good, while Zamorak is evil. Those lies couldn't be further from the truth!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "nPuOKQ"
+              }
+            ]
+          },
+          {
+            "text": "Why do you keep breaking into the Carnillean Mansion?",
+            "steps": [
+              {
+                "player": "Why do you keep breaking into the Carnillean Mansion?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "There is something we need inside. I will say no more unless you agree to join us."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "NkDbfr"
+              }
+            ]
+          },
+          {
+            "text": "What can you tell me about the Mahjarrat?",
+            "steps": [
+              {
+                "player": "What can you tell me about the Mahjarrat?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Surely you have heard of the Mahjarrat? Their race is the ultimate example of power! Each of them wields the strength of an entire army. To oppose any one of them, is to face your doom!"
+              },
+              {
+                "player": "And Hazeel is one of them?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "More than that! Hazeel is one of the greatest Mahjarrat to have ever lived!"
+              },
+              {
+                "player": "I see."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Ix8GTf"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I have no questions.",
+            "steps": [
+              {
+                "player": "I have no more questions."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Then we have nothing more to discuss until you've made your choice."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "iEF5GR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8ce26a14ae9940fc": [
+      {
+        "player": "Alright, I've made my decision."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "And?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'll help you.",
+            "steps": [
+              {
+                "player": "I'll help you."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Good. Now, we are not the monsters that the Carnilleans would claim we are, so we were hoping to do this without violence. However, the fact they sent you here makes it clear that won't work now."
+              },
+              {
+                "player": "Meaning?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "You must prove your loyalty to our cause, and Ceril Carnillean must die. Kill him for us, and we will know you are truly dedicated to Lord Hazeel."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Alright, how do I do it?",
+                    "steps": [
+                      {
+                        "player": "Alright, how do I do it?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "I can already tell I was right about you. I can see you are of exactly the right character to join the followers of Hazeel."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Here, take this poison and pour it into Ceril Carnillean's food. Once the deed is done, return here and speak to me once more."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a full inventory:",
+                        "action_source": "text",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Clivet tries to give you some poison, but you don't have enough room to take it.",
+                            "id": "pCp_XI"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "hY4-Bb"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player inventory space:",
+                        "action_source": "text",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Clivet gives you some poison.",
+                            "id": "dWE8Mb"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "sJhsrw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I need some time to think on this.",
+                    "steps": [
+                      {
+                        "player": "I need some time to think on this."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Don't take too long."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I won't help you.",
+            "steps": [
+              {
+                "player": "I won't help you."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Then you are a fool. Go back to your small-minded little life. You will never know the glories you could have tasted as one of us!"
+              },
+              {
+                "player": "You know I'm going to stop you, right?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "You'll try, but you'll never find us."
+              },
+              {
+                "type": "message",
+                "text": "Clivet jumps onto the nearby raft and pushes off into the sewer system.",
+                "id": "sTL_Dc"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I need more time to think on this.",
+            "steps": [
+              {
+                "player": "Actually, I need more time to think on this."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Don't take too long."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ca0fb095532761a7": [
+      {
+        "player": "I need some time to think on this."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Don't take too long."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "C3CzKz": [
       {
         "player": "Hello."

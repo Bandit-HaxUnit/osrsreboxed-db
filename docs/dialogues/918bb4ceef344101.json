@@ -59,8 +59,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "83np0b"
+                                "id": "83np0b",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e3726f4c05847f5b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -97,8 +102,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "U1spCG"
+                                    "id": "U1spCG",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-903a1a9f6f00b843"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -263,6 +273,79 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-e3726f4c05847f5b": [
+      {
+        "player": "Can I send a parcel please?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 10 trading sticks in their inventory:",
+        "steps": [
+          {
+            "npc": "It costs at least 10 trading sticks to use this service. Sorry but you don't have enough."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "What are trading sticks and how do I get some?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "U1spCG",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-903a1a9f6f00b843"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Ok, thanks.",
+                "steps": [
+                  {
+                    "player": "Ok, thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Wveg-k"
+      },
+      {
+        "npc": "Of course...which items would you like to send to your bank?"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Tai Bwo Wannai Parcel Service",
+        "id": "gwyy7h"
+      }
+    ],
+    "jump-903a1a9f6f00b843": [
+      {
+        "player": "What are trading sticks and how do I get some?"
+      },
+      {
+        "npc": "Trading sticks are our local currency, you could perhaps earn some trading sticks by doing some work around the village."
+      },
+      {
+        "npc": "Have a chat with Murcaily, I think he was looking for someone to help him, he works near the hardwood grove to the east of Trufitus' hut."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "D8Whl1"
       }
     ]
   }

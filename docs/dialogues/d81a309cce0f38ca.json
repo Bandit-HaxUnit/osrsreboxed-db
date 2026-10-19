@@ -102,8 +102,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IQKV6-"
+                "id": "IQKV6-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dfd94177ee5d944f"
+                  }
+                ]
               }
             ]
           }
@@ -175,12 +180,41 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "fcl-94"
+                "id": "fcl-94",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4a63ad7cfc46c62b"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-dfd94177ee5d944f": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Timoiva, traveller."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-4a63ad7cfc46c62b": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Timoiva, traveller."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -162,8 +162,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "HOORg9"
+                            "id": "HOORg9",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-5b579073374799c4"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -214,7 +219,38 @@
                   },
                   {
                     "type": "random",
-                    "options": []
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Port Wizard Perrie/Peter/Petra",
+                            "text": "Another recovery? This won't take long..."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Port Wizard Perrie/Peter/Petra",
+                            "text": "Need a recovery? One moment please..."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Port Wizard Perrie/Peter/Petra",
+                            "text": "Recovery is it? Right, give me a moment..."
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "type": "condition",
@@ -323,8 +359,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "l-EaOV"
+                                "id": "l-EaOV",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c107b81bd6cf1a22"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -346,7 +387,27 @@
                   {
                     "type": "choice",
                     "prompt": "Are you sure you want to destroy your boat?",
-                    "options": []
+                    "options": [
+                      {
+                        "text": "Yes, destroy it.",
+                        "steps": [
+                          {
+                            "npc": "All done, mate. Your boat has been broken up into scrap."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, don't destroy it.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "id": "RMdiNJ"
@@ -453,8 +514,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "BN0a6g"
+                            "id": "BN0a6g",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-d1a6b61c9cb2d140"
+                              }
+                            ]
                           }
                         ],
                         "id": "fyw4yQ"
@@ -830,6 +896,30 @@
     ]
   },
   "branches": {
+    "jump-5b579073374799c4": [
+      {
+        "npc": "No worries, mate. Come back at any time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c107b81bd6cf1a22": [
+      {
+        "npc": "All done, mate. Your boat has been broken up into scrap."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d1a6b61c9cb2d140": [
+      {
+        "npc": "No worries, mate."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "vTzouL": [
       {
         "npc": "Sorry, mate, but you don't seem to own any boats."

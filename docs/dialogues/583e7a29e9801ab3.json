@@ -43,8 +43,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "bziYIf"
+                                "id": "bziYIf",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-dfc9859189091160"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -77,8 +82,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "eHRBKA"
+                                "id": "eHRBKA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-dfc9859189091160"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -87,8 +97,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "YCxLkO"
+                                "id": "YCxLkO",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-7324eab8c4daae29"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -314,8 +329,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xctgVw"
+                "id": "xctgVw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-031bd4a6fac486c1"
+                  }
+                ]
               }
             ]
           },
@@ -423,8 +443,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "OfsIgf"
+                        "id": "OfsIgf",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-eea3bee8c7ba1a9e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -449,6 +474,346 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-dfc9859189091160": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "npc": "Yeah, alright..."
+      },
+      {
+        "npc": "I am Bologa Gricoller, seeker of forbidden wisdom, wanderer of the dark pathways, thinker of the unthinkable. I can do bartending too."
+      },
+      {
+        "npc": "I used to work at The Golden Field. That's my sister's bar. It's mostly farmhands drinking there, but you get some interesting people as well."
+      },
+      {
+        "npc": "See, most Hosidius people are Saradominists. My sister, she's always listening to Father Jean at the church with his goodie-goodie sermons."
+      },
+      {
+        "npc": "But some of us in the bar thought we'd give Zamorak a try. Like, you gotta be open-minded, right? What did Saradomin ever do for us anyway?"
+      },
+      {
+        "npc": "So we'd meet in the bar, sharing books that the Piscarilius smugglers would bring us, learning what the Saradominists don't want us to know."
+      },
+      {
+        "npc": "Anyway, my sister - she's a right cow, by the way - she fired me and kicked me out. Said I was bringing bad sorts to her bar."
+      },
+      {
+        "npc": "Bad sorts, she said! Like, morality is totally subjective, right? So who's she to call us bad sorts just 'cos we're not afraid to think differently?"
+      },
+      {
+        "npc": "Anyway, I've learnt all this cool stuff about Zamorak, and being stuck in a fruit farm doesn't stop me being his loyal servant, right?"
+      },
+      {
+        "npc": "In fact I've invented a Zamorakian blessing that works on fruit! You can use it to make Zamorak's wine out of grapes from the Vinery."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help me to make Zamorak's wine?",
+            "steps": [
+              {
+                "player": "Can you help me to make Zamorak's wine?"
+              },
+              {
+                "npc": "I'll let you have access to the Zamorakian blessing I invented, so you can invoke Zamorak's unholy power upon the grapes... if I think you're up to it."
+              },
+              {
+                "npc": "I'll want 75,000 coins too."
+              },
+              {
+                "player": "And do you think I'm up to it?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than level 50 Prayer:",
+                "steps": [
+                  {
+                    "npc": "Nah, I bet you couldn't even bless an unholy symbol - you're not going to get very far with my grape blessing."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a Prayer level of 50 to use Bologa's blessing.",
+                    "id": "6s-bAY"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Z6Z5M8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least level 50 Prayer while wearing other god items:",
+                "steps": [
+                  {
+                    "npc": "Not likely - I can see from your kit that you're supporting other gods. Dress Zamorakian if you want to impress me. And I'll still want 75,000 coins."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5HpKYf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least level 50 Prayer without wearing a Zamorakian item:",
+                "steps": [
+                  {
+                    "npc": "You don't look much like a Zamorakian to me. Dress Zamorakian if you want my help. And I'll still want 75,000 coins."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NGYNL7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least level 50 Prayer while wearing a Zamorakian item but does not have 75,000 coins:",
+                "steps": [
+                  {
+                    "npc": "Yeah, I guess you'll do. But I want 75,000 coins. One day I'll need to buy my own house, y'know!"
+                  },
+                  {
+                    "player": "Maybe another time."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "_cqP-M"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least level 50 Prayer while wearing a Zamorakian item and having 75,000 coins:",
+                "steps": [
+                  {
+                    "npc": "Yeah, I guess you'll do. But I want 75,000 coins. One day I'll need to buy my own house, y'know!"
+                  },
+                  {
+                    "npc": "Here's how it works... I'll write the blessing on scrolls. You need to carry some of the scrolls when you're harvesting grapes."
+                  },
+                  {
+                    "npc": "As each fruit is severed from its stem, it begins to die. That's the moment of vulnerability when Zamorak's unholy power can infest it."
+                  },
+                  {
+                    "npc": "The power consumes the scroll on which the blessing is written, so you'll need one for each grape. I suggest you take a stack of blessings with you."
+                  },
+                  {
+                    "npc": "By the way, Lord Zamorak's chaotic power is quite volatile. You'll likely get a smaller harvest from your vine if you're using these blessings."
+                  },
+                  {
+                    "npc": "I'll give the scrolls to Granddad downstairs. You can get them off him as a reward if you work on his farm. Hey, it's a dump, but he's family. So, do you accept?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Pay 75,000 coins to access Bologa's blessings.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You pay Bologa 75,000 coins. You can now claim her blessings from Farmer Gricoller as a reward for working on his farm.",
+                            "id": "Qzpm65"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Decline.",
+                        "steps": [
+                          {
+                            "player": "Actually, no thanks."
+                          },
+                          {
+                            "npc": "Meh."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "izQUfs"
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7324eab8c4daae29": [
+      {
+        "player": "Never mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-031bd4a6fac486c1": [
+      {
+        "type": "condition",
+        "text": "If the player has less than level 50 Prayer:",
+        "steps": [
+          {
+            "npc": "Nah, I bet you couldn't even bless an unholy symbol - you're not going to get very far with my grape blessing."
+          },
+          {
+            "type": "message",
+            "text": "You need a Prayer level of 50 to use Bologa's blessing.",
+            "id": "6s-bAY"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Z6Z5M8"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least level 50 Prayer while wearing other god items:",
+        "steps": [
+          {
+            "npc": "Not likely - I can see from your kit that you're supporting other gods. Dress Zamorakian if you want to impress me. And I'll still want 75,000 coins."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "5HpKYf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least level 50 Prayer without wearing a Zamorakian item:",
+        "steps": [
+          {
+            "npc": "You don't look much like a Zamorakian to me. Dress Zamorakian if you want my help. And I'll still want 75,000 coins."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NGYNL7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least level 50 Prayer while wearing a Zamorakian item but does not have 75,000 coins:",
+        "steps": [
+          {
+            "npc": "Yeah, I guess you'll do. But I want 75,000 coins. One day I'll need to buy my own house, y'know!"
+          },
+          {
+            "player": "Maybe another time."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_cqP-M"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least level 50 Prayer while wearing a Zamorakian item and having 75,000 coins:",
+        "steps": [
+          {
+            "npc": "Yeah, I guess you'll do. But I want 75,000 coins. One day I'll need to buy my own house, y'know!"
+          },
+          {
+            "npc": "Here's how it works... I'll write the blessing on scrolls. You need to carry some of the scrolls when you're harvesting grapes."
+          },
+          {
+            "npc": "As each fruit is severed from its stem, it begins to die. That's the moment of vulnerability when Zamorak's unholy power can infest it."
+          },
+          {
+            "npc": "The power consumes the scroll on which the blessing is written, so you'll need one for each grape. I suggest you take a stack of blessings with you."
+          },
+          {
+            "npc": "By the way, Lord Zamorak's chaotic power is quite volatile. You'll likely get a smaller harvest from your vine if you're using these blessings."
+          },
+          {
+            "npc": "I'll give the scrolls to Granddad downstairs. You can get them off him as a reward if you work on his farm. Hey, it's a dump, but he's family. So, do you accept?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Pay 75,000 coins to access Bologa's blessings.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You pay Bologa 75,000 coins. You can now claim her blessings from Farmer Gricoller as a reward for working on his farm.",
+                    "id": "Qzpm65"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Decline.",
+                "steps": [
+                  {
+                    "player": "Actually, no thanks."
+                  },
+                  {
+                    "npc": "Meh."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "izQUfs"
+      }
+    ],
+    "jump-eea3bee8c7ba1a9e": [
+      {
+        "player": "How do those blessings work again?"
+      },
+      {
+        "npc": "My blessing is written on scrolls. You need to carry some of the scrolls when you're harvesting grapes."
+      },
+      {
+        "npc": "As each fruit is severed from its stem, it begins to die. That's the moment of vulnerability when Zamorak's unholy power can infest it."
+      },
+      {
+        "npc": "The power consumes the scroll on which the blessing is written, so you'll need one for each grape. I suggest you take a stack of blessings with you."
+      },
+      {
+        "npc": "By the way, Lord Zamorak's chaotic power is quite volatile. You'll likely get a smaller harvest from your vine if you're using these blessings."
+      },
+      {
+        "npc": "I've given the scrolls to Granddad downstairs. You can get them off him as a reward for working on his farm. The place may be a dump, but he's family."
+      },
+      {
+        "player": "Thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

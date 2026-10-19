@@ -28,8 +28,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "BMSYPo"
+                "id": "BMSYPo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-95daec9d26b5dbc3"
+                  }
+                ]
               }
             ]
           },
@@ -579,8 +584,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4OlXn_"
+                "id": "4OlXn_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-632b97d127449fd0"
+                  }
+                ]
               }
             ]
           },
@@ -589,8 +599,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jlhPuS"
+                "id": "jlhPuS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-24a9a9ff72390b5e"
+                  }
+                ]
               }
             ]
           },
@@ -672,8 +687,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jAapNy"
+                "id": "jAapNy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-632b97d127449fd0"
+                  }
+                ]
               }
             ]
           },
@@ -682,8 +702,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NPcgYz"
+                "id": "NPcgYz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-24a9a9ff72390b5e"
+                  }
+                ]
               }
             ]
           },
@@ -702,6 +727,352 @@
     ]
   },
   "branches": {
+    "jump-95daec9d26b5dbc3": [
+      {
+        "npc": "That's because my foe never lives to tell of me. We slayers are a dangerous bunch."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Wow, can you teach me?",
+            "steps": [
+              {
+                "player": "Wow, can you teach me?"
+              },
+              {
+                "npc": "Hmmm well I'm not so sure..."
+              },
+              {
+                "player": "Pleeeaasssse!"
+              },
+              {
+                "npc": "Oh okay then, you twisted my arm. You'll have to train against specific groups of creatures."
+              },
+              {
+                "player": "Okay, what's first?"
+              },
+              {
+                "npc": "We'll start you off hunting [monster name], you'll need to kill [number] of them."
+              },
+              {
+                "npc": "You'll also need this enchanted gem, it allows Slayer Masters like myself to contact you and update you on your progress. Don't worry if you lose it, you can buy another from any Slayer Master."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Got any tips for me?",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "text": "(Slayer task specific tip.)",
+                        "id": "vhWgv1"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, great!",
+                    "steps": [
+                      {
+                        "player": "Okay, great!"
+                      },
+                      {
+                        "npc": "Good luck! Don't forget to come back when you need a new assignment."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sounds useless to me.",
+            "steps": [
+              {
+                "player": "Sounds useless to me."
+              },
+              {
+                "npc": "Suit yourself."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-632b97d127449fd0": [
+      {
+        "player": "I need another assignment."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a high combat level:",
+        "steps": [
+          {
+            "npc": "You're actually very strong, are you sure you don't want Chaeldar in Zanaris to assign you a task?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "No that's okay, I'll take a task from you.",
+                "steps": [
+                  {
+                    "player": "No that's okay, I'll take a task from you."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "mzExIQ"
+                  }
+                ]
+              },
+              {
+                "text": "Oh okay then, I'll go talk to Chaeldar.",
+                "steps": [
+                  {
+                    "player": "Oh okay then, I'll go talk to Chaeldar."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ZFAfnk"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have an assignment yet:",
+        "steps": [
+          {
+            "id": "jQB8kU",
+            "type": "action",
+            "action": "slayer_assignment",
+            "target": "Turael",
+            "text": "Excellent, you're doing great. Your new task is to kill [amount] [task monster].",
+            "action_source": "text"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "DlWhne"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has an assignment:",
+        "steps": [
+          {
+            "npc": "You're still hunting [task monster], you have [amount] to go."
+          },
+          {
+            "type": "condition",
+            "text": "If the assignment isn't on Turael's task list:",
+            "steps": [
+              {
+                "npc": "Although, it's not an assignment that I'd normally give... I guess I could give you a new assignment, if you'd like."
+              },
+              {
+                "npc": "If you do get a new one, you will reset your standard task streak of [task streak amount]. Is that okay? It won't affect your Wilderness task streak of [task streak amount]."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, please.",
+                    "steps": [
+                      {
+                        "type": "missing",
+                        "id": "dZaz1S"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thanks.",
+                    "steps": [
+                      {
+                        "player": "No, thanks."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "QC3wey"
+          }
+        ],
+        "id": "zi0lfR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+        "steps": [
+          {
+            "npc": "You're still hunting [monster], with [amount] to go."
+          },
+          {
+            "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please cancel it.",
+                "steps": [
+                  {
+                    "player": "Yes, please cancel it."
+                  },
+                  {
+                    "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No, thanks, I want to try doing it.",
+                "steps": [
+                  {
+                    "player": "No, thanks, I want to try doing it."
+                  },
+                  {
+                    "npc": "Good luck with that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "condition",
+            "text": "If the assignment is on Turael's task list:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "_NWbbW"
+          }
+        ],
+        "id": "STghlm"
+      }
+    ],
+    "jump-24a9a9ff72390b5e": [
+      {
+        "player": "Let's talk about the difficulty of my assignments."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has disabled combat checking:",
+        "steps": [
+          {
+            "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I can handle any task.",
+                "steps": [
+                  {
+                    "player": "That's fine - I can handle any task."
+                  },
+                  {
+                    "npc": "That's the spirit."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "In future, please don't give anything too tough.",
+                "steps": [
+                  {
+                    "player": "In future, please don't give anything too tough."
+                  },
+                  {
+                    "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Slayer Masters will now take the player's combat level into account.",
+                    "id": "0mA_Zq"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "yhrIja"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enabled combat checking:",
+        "steps": [
+          {
+            "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I don't want anything too tough.",
+                "steps": [
+                  {
+                    "player": "That's fine - I don't want anything too tough."
+                  },
+                  {
+                    "npc": "Okay, we'll keep checking your combat level."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Stop checking my combat level - I can take anything!",
+                "steps": [
+                  {
+                    "player": "Stop checking my combat level - I can take anything!"
+                  },
+                  {
+                    "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Slayer Masters will no longer take the player's combat level into account.",
+                    "id": "f-zV8K"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "684HvC"
+      }
+    ],
     "Qgqzui": [
       {
         "npc": "You'll need to hand over both a mithril axe and holy symbol of Saradomin. You don't have an axe in your pack, so I'm not able to help."

@@ -97,7 +97,7 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Sure, I'll try to help with your curse.",
+                    "text": "Yes.",
                     "steps": [
                       {
                         "player": "Sure, I'll try to help with your curse."
@@ -123,16 +123,22 @@
                     ]
                   },
                   {
-                    "text": "No, I'm not available.",
+                    "text": "No.",
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "o-1F-N"
+                        "id": "o-1F-N",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f655117b85f70854"
+                          }
+                        ]
                       }
                     ]
                   }
-                ]
+                ],
+                "prompt": "Start The Corsair Curse quest?"
               }
             ]
           },
@@ -559,8 +565,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sazRo3"
+                "id": "sazRo3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5e8dc6a037c55d00"
+                  }
+                ]
               }
             ]
           }
@@ -682,10 +693,21 @@
             ]
           },
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "8O3Qph"
+              }
+            ]
           },
           {
-            "text": "I'll leave you alone, sorry."
+            "text": "I'll leave you alone, sorry.",
+            "steps": [
+              {
+                "player": "I'll leave you alone, sorry."
+              }
+            ]
           }
         ]
       }
@@ -734,10 +756,21 @@
             ]
           },
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "8O3Qph"
+              }
+            ]
           },
           {
-            "text": "I'll leave you alone, sorry."
+            "text": "I'll leave you alone, sorry.",
+            "steps": [
+              {
+                "player": "I'll leave you alone, sorry."
+              }
+            ]
           }
         ]
       }
@@ -1184,8 +1217,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_-Zaa7"
+                "id": "_-Zaa7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fc6f52a63da8e459"
+                  }
+                ]
               }
             ]
           }
@@ -1662,8 +1700,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_uGOVr"
+                "id": "_uGOVr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bd7554c0ca4aebfd"
+                  }
+                ]
               }
             ]
           }
@@ -1741,8 +1784,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6igYEf"
+                "id": "6igYEf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d8fc2961bbbe389d"
+                  }
+                ]
               }
             ]
           }
@@ -2226,8 +2274,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lagAdg"
+                "id": "lagAdg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-87c5cc75900a7e39"
+                  }
+                ]
               }
             ]
           }
@@ -2258,8 +2311,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nLjXeK"
+                "id": "nLjXeK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-190857255d1711d2"
+                  }
+                ]
               }
             ]
           }
@@ -2290,8 +2348,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tENImu"
+                "id": "tENImu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-55904044855325fe"
+                  }
+                ]
               }
             ]
           }
@@ -2567,6 +2630,95 @@
     ]
   },
   "branches": {
+    "jump-f655117b85f70854": [
+      {
+        "player": "No, I'm not available."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Tock",
+        "text": "Arrr. Some other time, perhaps..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5e8dc6a037c55d00": [
+      {
+        "player": "Urgh to you too, with candy sprinkles on."
+      },
+      {
+        "type": "line",
+        "speaker": "Arsen the Thief",
+        "text": "A sympathetic soul you are. I'm in real pain here."
+      },
+      {
+        "player": "Yes, I hear you've been cursed."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "caIQDc"
+      }
+    ],
+    "jump-fc6f52a63da8e459": [
+      {
+        "player": "My lower intestine!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gnocci the Cook",
+        "text": "... look, I'm in a lot of pain here. We're not playing Name Your Favourite Body Part."
+      },
+      {
+        "player": "Yes, I hear you've been cursed."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "X50pBQ"
+      }
+    ],
+    "jump-bd7554c0ca4aebfd": [
+      {
+        "player": "I'm still looking into it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d8fc2961bbbe389d": [
+      {
+        "player": "I'm still looking into it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-87c5cc75900a7e39": [
+      {
+        "player": "I'm still looking into it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-190857255d1711d2": [
+      {
+        "player": "I'm still looking into it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-55904044855325fe": [
+      {
+        "player": "I'm still looking into it."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "-7yaBI": [
       {
         "player": "Perhaps you can tell me about it another time."
@@ -2575,6 +2727,24 @@
         "type": "line",
         "speaker": "Cabin Boy Colin",
         "text": "I'll be here. I'm not going anywhere while I feel so sick."
+      }
+    ],
+    "8O3Qph": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "type": "line",
+        "speaker": "Chief Tess",
+        "text": "Dis our home. It comfy, though we thinking of maybe getting more space up on land, above. But silly Corsair men live up there an' think dey own whole place."
+      },
+      {
+        "type": "line",
+        "speaker": "Chief Tess",
+        "text": "Maybe one day dat gonna change. Tess got plans."
+      },
+      {
+        "player": "Thanks."
       }
     ]
   }

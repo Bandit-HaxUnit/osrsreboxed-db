@@ -144,8 +144,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "below",
-                    "id": "Ku9sOm"
+                    "id": "Ku9sOm",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7c5c32cb4f827fdb"
+                      }
+                    ]
                   }
                 ],
                 "id": "3TwaWo"
@@ -174,8 +179,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "below",
-                    "id": "Ixc699"
+                    "id": "Ixc699",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-fb294d9968e14723"
+                      }
+                    ]
                   }
                 ],
                 "id": "F5mS3x"
@@ -204,8 +214,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "below",
-                    "id": "kU9vhb"
+                    "id": "kU9vhb",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-dfbb3a13d196544a"
+                      }
+                    ]
                   }
                 ],
                 "id": "viV2pC"
@@ -240,8 +255,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "below",
-                    "id": "sPE5jo"
+                    "id": "sPE5jo",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7c5c32cb4f827fdb"
+                      }
+                    ]
                   }
                 ],
                 "id": "yzJhkt"
@@ -270,8 +290,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "kR5MBX"
+                        "id": "kR5MBX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8c6e4d74c5f08a72"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -280,8 +305,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "i_xlgI"
+                        "id": "i_xlgI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5e2bc3067bb403f4"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -290,8 +320,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "9JhwDF"
+                        "id": "9JhwDF",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-671792ad1f866e39"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -507,8 +542,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "kepV6W"
+                        "id": "kepV6W",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5e2bc3067bb403f4"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -637,6 +677,193 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-7c5c32cb4f827fdb": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What potions do these new herbs make?",
+            "steps": [
+              {
+                "player": "What potions do these new herbs make?"
+              },
+              {
+                "npc": "I be no herbalist but I were given the recipes to go with these herbs..."
+              },
+              {
+                "type": "message",
+                "text": "Toadflax + toad legs &equals; Agility potion.",
+                "id": "fwbXQI"
+              },
+              {
+                "type": "message",
+                "text": "Snapdragon + red spiders' eggs &equals; Super restore potion.",
+                "id": "r2k7SF"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous2",
+                "id": "baxjw6"
+              }
+            ]
+          },
+          {
+            "text": "See you later.",
+            "steps": [
+              {
+                "player": "See you later."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "BACK",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "sJp_y6"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-fb294d9968e14723": [
+      {
+        "type": "jump",
+        "id": "kU9vhb",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-dfbb3a13d196544a"
+          }
+        ]
+      }
+    ],
+    "jump-dfbb3a13d196544a": [
+      {
+        "type": "jump",
+        "id": "sPE5jo",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-7c5c32cb4f827fdb"
+          }
+        ]
+      }
+    ],
+    "jump-8c6e4d74c5f08a72": [
+      {
+        "player": "What are the rewards?"
+      },
+      {
+        "npc": "Arrr, that depends what tier ye wants to know about."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Easy rewards",
+            "steps": [
+              {
+                "npc": "Ye gets a pair of special Karamja gloves. The seafarin' folk who sail to Port Sarim and Ardougne will take ye on board half price if ye be wearin' them."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "6mhaFm"
+              }
+            ]
+          },
+          {
+            "text": "Medium rewards",
+            "steps": [
+              {
+                "npc": "Arrr, I upgrade the Karamja gloves so ye gets a little extra benefit in our Agility Arena with 'em on, and now they'll take ye to the special mine under Shilo Village, an ye still gets the easy rewards too."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "wuCuXa"
+              }
+            ]
+          },
+          {
+            "text": "Hard rewards",
+            "steps": [
+              {
+                "npc": "Arrr, I upgrade the Karamja gloves so they can take ye to a special mine under Shilo Village infinitely. Ye still gets the easy and medium rewards too."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "XPLu06"
+              }
+            ]
+          },
+          {
+            "text": "Elite rewards",
+            "steps": [
+              {
+                "npc": "Arrr, ye can get double TokKul from the Fight Cave, Inferno an' TzHaar-Ket-Rak's Challenges, an' have a chance for double tickets in our Agility Arena 'ere."
+              },
+              {
+                "npc": "Ye can resurrect in the Fight Cave once per day, an' even enter some places fer free."
+              },
+              {
+                "npc": "I can make the metal dragons under Brimhaven give ye bars as banknotes too, if ye likes. Ye still gets the easy, medium an' hard rewards too."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "YZTB4A"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous2",
+                "id": "UlIjCk"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5e2bc3067bb403f4": [
+      {
+        "player": "See you later."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-671792ad1f866e39": [
+      {
+        "player": "Can I have another set of Karamja gloves?"
+      },
+      {
+        "type": "message",
+        "text": "Pirate Jackie gives you another pair of gloves.",
+        "id": "JVHm-k"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "M7mDOU"
       }
     ]
   }

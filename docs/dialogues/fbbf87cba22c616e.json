@@ -230,8 +230,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5BL3Dc"
+                "id": "5BL3Dc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b30f8c43e102b2e0"
+                  }
+                ]
               }
             ]
           }
@@ -1008,8 +1013,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "CmfohW"
+                                        "id": "CmfohW",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-0a487ed37253a9bc"
+                                          }
+                                        ]
                                       }
                                     ],
                                     "id": "QW2mhm"
@@ -1721,8 +1731,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wQ4DDu"
+                "id": "wQ4DDu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-23beafe8d8a1c36f"
+                  }
+                ]
               }
             ]
           },
@@ -1731,8 +1746,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nmxpqK"
+                "id": "nmxpqK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fbe4779d27d01bb2"
+                  }
+                ]
               }
             ]
           }
@@ -1753,8 +1773,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "FNWd6A"
+                "id": "FNWd6A",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d032ec7fe59dd93f"
+                  }
+                ]
               }
             ]
           },
@@ -1924,8 +1949,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "AX6KTq"
+                                "id": "AX6KTq",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-d681f89b85abe397"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1934,8 +1964,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "biJ6Lc"
+                                "id": "biJ6Lc",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-938b4cdd6a23f0b7"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -2378,6 +2413,948 @@
     ]
   },
   "branches": {
+    "jump-b30f8c43e102b2e0": [
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "Don't you see? It's the hot air! It rises, taking the ashes with it."
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "I had this epiphany while I was at the glass blower's house. If we pump hot air into an envelope it will rise because it is lighter than the cold air around it."
+      },
+      {
+        "player": "Come again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "We are going to sew a big sack and light a fire under it. Once the sack fills with hot air it will begin to rise, taking us along with it in the basket."
+      },
+      {
+        "player": "You seem pretty confident about this. Have you tested it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "Well, no. You see, I don't have the materials here to make any test balloons."
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "That's where you come in!"
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "You are going to collect materials for two test runs of the balloon."
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "You will need to get three sheets of papyrus, one ball of wool, one full sack of potatoes, and one unlit candle."
+      },
+      {
+        "player": "What am I supposed to do with all of that junk?"
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "When you have all of it, bring it to me and I'll explain what to do next. Any questions?"
+      },
+      {
+        "player": "Where do I get all this stuff?"
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "You're the adventurer, you should know! Think of logical places, like, churches; they have tons of candles."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0a487ed37253a9bc": [
+      {
+        "player": "I have lost my willow sapling. Can I buy a replacement?"
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "It will cost you 30,000 gold coins to replace it, do you want to pay that?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If his sapling is still in the inventory:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You already have one! Don't be greedy."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "j60R6_"
+              },
+              {
+                "type": "condition",
+                "text": "If his sapling is in the bank:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You already have one in your bank! Don't be greedy."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kuyqhV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You don't have enough money for it. You should have been more careful."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KYWowe"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Looks like you don't have enough room in your inventory. Come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "SDC5qf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the sapling, has enough money and inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Here you go. Now be very careful not to lose it again!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "m-HkIL"
+              }
+            ]
+          },
+          {
+            "text": "No way!",
+            "steps": [
+              {
+                "player": "No way!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-23beafe8d8a1c36f": [
+      {
+        "player": "Yes, I want to give you some items."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Dye.",
+            "condition": "If the player has not handed in both dyes",
+            "steps": [
+              {
+                "player": "Here's the dye."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has red and yellow dye:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Ah, wonderful, yellow dye. Thank you."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Red dye! Thank you."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "That's the last of it!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "You just need to build the basket and I can finish the balloon! How are you getting on with the willow?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I have lost my willow sapling. Can I buy a replacement?",
+                            "condition": "If Auguste's sapping hasn't been planted yet",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "CmfohW",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-0a487ed37253a9bc"
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "QW2mhm"
+                          },
+                          {
+                            "text": "What do I do again?",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Auguste",
+                                "text": "Use the willow sapling I gave you to grow a willow tree. Cut twelve branches from it using secateurs. Use the branches on the platform here."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Fine thanks.",
+                            "steps": [
+                              {
+                                "player": "Fine thanks."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "KCORxa"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If not all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "SRdjzp"
+                      }
+                    ],
+                    "id": "ltShnW"
+                  }
+                ],
+                "id": "2_FjSs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player only has yellow dye:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Ah, wonderful, yellow dye. Thank you."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not handed in red dye yet:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "I still need red dye for the balloon."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "qYqIbD"
+                      }
+                    ],
+                    "id": "PVHUCg"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "-PAJNV"
+                      }
+                    ],
+                    "id": "z-fS6X"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If not all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "459_JI"
+                      }
+                    ],
+                    "id": "Qt5SsF"
+                  }
+                ],
+                "id": "ONkEG7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player only has red dye:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Red dye! Thank you."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not handed in yellow dye yet:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "I still need yellow dye for the balloon."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "thCnTm"
+                      }
+                    ],
+                    "id": "OGBDtg"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "I7Vu-j"
+                      }
+                    ],
+                    "id": "xtOk6w"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If not all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "b1E5G2"
+                      }
+                    ],
+                    "id": "UZueD-"
+                  }
+                ],
+                "id": "tLaQYR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has neither dye and hasn't handed in either:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You don't have any dye with you."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "I need red and yellow dye for the balloon."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "qhFx0z"
+                  }
+                ],
+                "id": "nP0BFo"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have red dye and has handed in yellow:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You don't have any dye with you."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "I need red dye for the balloon."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "EPPB9w"
+                  }
+                ],
+                "id": "jNUi7l"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have yellow dye and has handed in red:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You don't have any dye with you."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "I need yellow dye for the balloon."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "H5895j"
+                  }
+                ],
+                "id": "tV-rCx"
+              }
+            ],
+            "id": "fr8Ic9"
+          },
+          {
+            "text": "Sandbags.",
+            "condition": "If the player has not handed in 8 sandbags already",
+            "steps": [
+              {
+                "player": "Here are the sandbags."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 8 sandbags:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Sandbags, thank you. This will allow us to change height."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "JpL2Y0"
+                      }
+                    ],
+                    "id": "ty-ocK"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If not all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "MB3gNt"
+                      }
+                    ],
+                    "id": "ID2g2e"
+                  }
+                ],
+                "id": "KNd89K"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 8 sandbags:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You don't have enough sandbags. Please bring me eight."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Sandbags can be made by getting empty sacks and filling them at the sand pit here on Entrana."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "However, there are other sand pits around the world that will work as well."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "UXhS2Q"
+                  }
+                ],
+                "id": "UITbMi"
+              }
+            ],
+            "id": "1WQgqd"
+          },
+          {
+            "text": "Silk.",
+            "condition": "If the player has not handed in 10 silk already",
+            "steps": [
+              {
+                "player": "Here's the silk."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 10 noted silk:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "What am I supposed to do with a note?? I can't make a balloon from notes!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2WwGtt"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 10 silk:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Silk for the balloon, thank you."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "gDAA-k"
+                      }
+                    ],
+                    "id": "mkBxOa"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If not all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "CaLGrC"
+                      }
+                    ],
+                    "id": "jn7GNV"
+                  }
+                ],
+                "id": "Ce6dky"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 10 silk:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You don't have enough silk. Please bring me ten pieces."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "gPnnRF"
+                  }
+                ],
+                "id": "IjQl8E"
+              }
+            ],
+            "id": "ckYL6f"
+          },
+          {
+            "text": "Bowl.",
+            "condition": "If the player has not handed in a bowl already",
+            "steps": [
+              {
+                "player": "Here's the bowl."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a noted bowl:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "What am I supposed to do with a note?? I can't make a balloon from notes!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "80uM5R"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unfired bowl:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "You need to fire that bowl."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9EWfX7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a bowl:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "Ah the bowl. This will be used to hold the fuel while it heats the air in the balloon."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "l-JmZE"
+                      }
+                    ],
+                    "id": "ILKLjD"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If not all the materials are finally handed in:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "rjV0bb"
+                      }
+                    ],
+                    "id": "tvIsTj"
+                  }
+                ],
+                "id": "sf6qdG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a bowl:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Auguste",
+                    "text": "I need a plain clay-fired bowl; they're quite easy to come by."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "b9FzqD"
+                  }
+                ],
+                "id": "_jqWMv"
+              }
+            ],
+            "id": "7BBsyy"
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-fbe4779d27d01bb2": [
+      {
+        "player": "I'm having some trouble finding some of the items."
+      },
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "What do you need help with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Dye.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Auguste",
+                "text": "I was told a while ago that there was a witch who made dye in Draynor Village. Maybe you should start by looking there."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Sandbags.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Auguste",
+                "text": "Sandbags can be made by getting empty sacks and filling them at the sand pit here on Entrana."
+              },
+              {
+                "type": "line",
+                "speaker": "Auguste",
+                "text": "However, there are other sand pits around the world that will work as well; there is one in Yanille, Rellekka, and Zanaris."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Silk.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Auguste",
+                "text": "Hmm, I believe silk is imported from the desert. Perhaps someone there can tell you where to find it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Bowl.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Auguste",
+                "text": "I think there is a spare one in the glass blower's house. I rent a room from him there, so I don't think he'll mind you taking it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-d032ec7fe59dd93f": [
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "Use the willow sapling I gave you to grow a willow tree. Cut twelve branches from it using secateurs. Use the branches on the platform here."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d681f89b85abe397": [
+      {
+        "type": "condition",
+        "text": "If the player has a pet out:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Auguste",
+            "text": "You need to put your pet into your inventory before the flight."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eett8T"
+      },
+      {
+        "type": "condition",
+        "text": "If the player weighs more than 40kg:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Auguste",
+            "text": "You have too much weight in your bag. You may only bring 40kg of weight."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "G1OzvY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 10 normal logs and a tinderbox:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "When you travel with logs in storage as well as your inventory, which would you like to use? This can be changed at any of the storage crates.",
+            "id": "BBeDtT"
+          },
+          {
+            "type": "choice",
+            "prompt": "Which logs would you like to use up first?",
+            "options": [
+              {
+                "text": "Take logs from my inventory first.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Balloon transport flying",
+                    "id": "_G1qps"
+                  }
+                ]
+              },
+              {
+                "text": "Take logs from storage first.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Balloon transport flying",
+                    "id": "UrzuZs"
+                  }
+                ]
+              },
+              {
+                "text": "Ask me what logs to use every time.",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Use logs from inventory",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "open_interface",
+                            "target": "Balloon transport flying",
+                            "id": "XJPKij"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Use logs from storage",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "open_interface",
+                            "target": "Balloon transport flying",
+                            "id": "RS5ufp"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "pgRm3-"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a tinderbox:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Auguste",
+            "text": "You need a tinderbox."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "z2wZOR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 10 normal logs:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Auguste",
+            "text": "You don't have enough logs. You need ten normal logs."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Kjqrcm"
+      }
+    ],
+    "jump-938b4cdd6a23f0b7": [
+      {
+        "player": "No, I'm not ready."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "GIKiks": [
       {
         "type": "line",

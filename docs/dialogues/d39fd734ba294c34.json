@@ -275,8 +275,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "l2smER"
+            "id": "l2smER",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-0ae202847419ad53"
+              }
+            ]
           }
         ],
         "id": "xEBoWh"
@@ -285,6 +290,210 @@
     "standard-dialogue-after-passing-or-failing-the-exam": [
       {
         "npc": "To exit, use any of the doors in this room."
+      }
+    ]
+  },
+  "branches": {
+    "jump-0ae202847419ad53": [
+      {
+        "type": "condition",
+        "text": "When answered incorrectly:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If given less than 3 incorrect answers so far:",
+            "steps": [
+              {
+                "type": "random",
+                "options": []
+              },
+              {
+                "type": "condition",
+                "text": "Dialogue 1:",
+                "steps": [
+                  {
+                    "npc": "No. No, that's not right at all. Okay, next question."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If it's the 1st incorrect answer:",
+                    "steps": [
+                      {
+                        "npc": "Remember, the goal here is to find the pattern. Look for objects that would have a connection to each other."
+                      }
+                    ],
+                    "id": "bNhiMu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Mr. Mordaut repeats the same question.",
+                    "id": "Ef1MO_"
+                  }
+                ],
+                "id": "AIGo1v"
+              },
+              {
+                "type": "condition",
+                "text": "Dialogue 2:",
+                "steps": [
+                  {
+                    "npc": "That's WRONG. Take your time and think about the next question."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "IKUnGE"
+                  }
+                ],
+                "id": "6gckg-"
+              },
+              {
+                "type": "condition",
+                "text": "Dialogue 3:",
+                "steps": [
+                  {
+                    "npc": "No, no, no... That's WRONG! Okay, next question."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "HOXg9Q"
+                  }
+                ],
+                "id": "YbhDpB"
+              }
+            ],
+            "id": "vh8ATH"
+          },
+          {
+            "type": "condition",
+            "text": "If it's the 3rd incorrect answer:",
+            "steps": [
+              {
+                "npc": "How unfortunate, you FAILED. You'd better hit the books and study up for next time."
+              },
+              {
+                "npc": "To exit, use any of the doors in this room."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "lx-_Zg"
+          }
+        ],
+        "id": "vmA72E"
+      },
+      {
+        "type": "condition",
+        "text": "When answered correctly:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If given less than 3 correct answers so far:",
+            "steps": [
+              {
+                "type": "random",
+                "options": []
+              },
+              {
+                "type": "condition",
+                "text": "Dialogue 1:",
+                "steps": [
+                  {
+                    "npc": "Wonderful! Keep up the good work. Next question."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Mr. Mordaut asks a new question.",
+                    "id": "Wbtr7T"
+                  }
+                ],
+                "id": "svpZo6"
+              },
+              {
+                "type": "condition",
+                "text": "Dialogue 2:",
+                "steps": [
+                  {
+                    "npc": "Finally, a pupil using [his/her/their] brains rather than trying to eat them. Next question."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "1BvVly"
+                  }
+                ],
+                "id": "hUVFif"
+              },
+              {
+                "type": "condition",
+                "text": "Dialogue 3:",
+                "steps": [
+                  {
+                    "npc": "That's correct! Next question."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "Tv9INv"
+                  }
+                ],
+                "id": "ndlZqu"
+              }
+            ],
+            "id": "6O-FPs"
+          },
+          {
+            "type": "condition",
+            "text": "If it's the 3rd correct answer:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a Book of knowledge:",
+                "steps": [
+                  {
+                    "npc": "WELL DONE! You've proven your aptitude for pattern recognition. You'll receive a book once you leave the classroom. It is a Book of Knowledge to further your education."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a book of knowledge",
+                    "id": "4uE-mj"
+                  },
+                  {
+                    "npc": "To exit, use any of the doors in this room."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "aaABeQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has a Book of knowledge:",
+                "steps": [
+                  {
+                    "npc": "WELL DONE! You've proven your aptitude for pattern recognition."
+                  },
+                  {
+                    "npc": "Hmm, you already appear to have a Book of Knowledge. You should read that! Still, I will reward you for your work once you leave the room."
+                  },
+                  {
+                    "npc": "To exit, use any of the doors in this room."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "07qmiX"
+              }
+            ],
+            "id": "JOU1K4"
+          }
+        ],
+        "id": "GbeGJ0"
       }
     ]
   }

@@ -1046,8 +1046,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ADoIcq"
+                "id": "ADoIcq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-361be7b25d0e072d"
+                  }
+                ]
               }
             ]
           },
@@ -2524,8 +2529,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IovL7V"
+                "id": "IovL7V",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6d227a6f66c4d26d"
+                  }
+                ]
               }
             ]
           },
@@ -2891,7 +2901,96 @@
       },
       {
         "type": "choice",
-        "options": []
+        "options": [
+          {
+            "text": "What are Fresh Start Worlds?",
+            "steps": [
+              {
+                "player": "What are Fresh Start Worlds?"
+              },
+              {
+                "type": "line",
+                "speaker": "Iron Man tutor",
+                "text": "Fresh Start Worlds are worlds that have a fresh economy to build and fresh hiscores to chase."
+              },
+              {
+                "type": "line",
+                "speaker": "Iron Man tutor",
+                "text": "They're a way to experience Old School RuneScape as if it were new, today!"
+              },
+              {
+                "type": "line",
+                "speaker": "Iron Man tutor",
+                "text": "They will last for 6 months, after which your account will be transfered to the main game and you can carry on playing as normal there."
+              },
+              {
+                "type": "line",
+                "speaker": "Iron Man tutor",
+                "text": "There is a World First system, which are achievements only obtainable once on all worlds, so you can race against others for these!"
+              },
+              {
+                "type": "line",
+                "speaker": "Iron Man tutor",
+                "text": "If a global race is a bit too much, then there is also an Achievement Point system. You can compete against your friends to get the most points."
+              },
+              {
+                "type": "line",
+                "speaker": "Iron Man tutor",
+                "text": "Other than that, it's the same Old School experience you know and love, with all the same content as the main game."
+              },
+              {
+                "type": "line",
+                "speaker": "Iron Man tutor",
+                "text": "Do you still wish to proceed with selecting an Iron Man mode?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I'm not interested in Fresh Start Worlds.",
+                    "steps": [
+                      {
+                        "player": "Yes, I'm not interested in Fresh Start Worlds."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Iron Man tutor",
+                        "text": "That's okay. If you change your mind you can find out more about Fresh Start Worlds by speaking to the Magic Instructor, assuming you're not an ironman."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Iron Man tutor",
+                        "text": "You'll have to remove any ironman status first by speaking to me."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, Fresh Start Worlds sound like my sort of thing!",
+                    "steps": [
+                      {
+                        "player": "No, Fresh Start Worlds sound like my sort of thing!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Iron Man tutor",
+                        "text": "Lovely! You can talk to the Magic Instructor to find out more about Fresh Start Worlds."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's fine, I'm not interested in those.",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "J1imrI"
+              }
+            ]
+          }
+        ]
       }
     ],
     "magic-instructor-talking-to-the-magic-instructor": [
@@ -3178,6 +3277,147 @@
       {
         "type": "unavailable",
         "id": "5QI_7_"
+      }
+    ]
+  },
+  "branches": {
+    "jump-361be7b25d0e072d": [
+      {
+        "type": "line",
+        "speaker": "Quest Guide",
+        "text": "It's very easy to find quest start points. Just look out for the quest icon on your minimap. You should see one marking this house."
+      },
+      {
+        "type": "message",
+        "text": "The minimap in the top right corner of the screen has various icons to show different points of interest. Look for the icon to the left to find quest start points.",
+        "id": "Vx9cHL"
+      },
+      {
+        "type": "line",
+        "speaker": "Quest Guide",
+        "text": "The quests themselves can vary greatly from collecting beads to hunting down dragons. Completing quests will reward you with all sorts of things, such as new areas and better weapons!"
+      },
+      {
+        "type": "line",
+        "speaker": "Quest Guide",
+        "text": "There's not a lot more I can tell you about questing. You have to experience the thrill of it yourself to fully understand. Let me know if you want a recap, otherwise you can move on."
+      },
+      {
+        "type": "message",
+        "text": "Moving onIt's time to enter some caves. [Click/Tap] on the ladder to go down to the next area.",
+        "id": "EjZZ5v"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6d227a6f66c4d26d": [
+      {
+        "player": "What's a world?"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Logout",
+        "id": "t4bMPR"
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "A world is what you play the game on. Most worlds can hold up to 2000 players. They are split into two main types: free worlds and members' worlds. You can swap worlds with the World Switcher in the Logout menu."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a free world:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Account Guide",
+            "text": "You are currently on a free world. If you want to switch to a members' world and enjoy all of the benefits, you'll need to purchase membership. You can do so using the store in the Account Management menu."
+          }
+        ],
+        "id": "7NGaa4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a members world:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Account Guide",
+            "text": "You are currently on a members' world so you already have access to everything that being a member has to offer. Enjoy!"
+          }
+        ],
+        "id": "k4lcSc"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Account Management",
+        "id": "KDBq6j"
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "Bonds are another thing that you should know about. You can purchase Bonds from the store in the Account Management menu. Once you have some Bonds, you can redeem them for membership!"
+      },
+      {
+        "player": "But why would I use a Bond instead of just buying membership normally?"
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "Unlike membership, Bonds can be traded with other players. You could purchase a Bond and then sell it to another player for some gold. Alternatively, you could use your gold to buy a Bond from another player!"
+      },
+      {
+        "player": "So if I used my gold to buy a Bond from another player, I could get membership without spending any real money?"
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "Exactly!"
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "Next up, you have your inbox and name changer. The inbox is where you'll receive important information related to your account and the game. Be sure to keep an eye on it."
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "The name changer allows you to change your display name if you don't like your current one. Be aware though that this is only available to accounts with membership."
+      },
+      {
+        "player": "Awesome. Is there anything else I should know about accounts?"
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "Your account is very valuable and it's important you look after it. Various tools can help with this, such as Bank PINs and two-factor authentication options."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Account Management#Links",
+        "id": "nhOW5V"
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "You'll find more information on account security on the Customer Support webpage. You can use the Useful Links section of the Account Management menu to get there."
+      },
+      {
+        "type": "line",
+        "speaker": "Account Guide",
+        "text": "Anyway, that's everything I have to tell you about accounts. Let me know if you need a recap, otherwise head on to your next instructor."
+      },
+      {
+        "type": "message",
+        "text": "Moving onContinue through the next door.",
+        "id": "bR05l5"
+      },
+      {
+        "type": "end"
       }
     ]
   }

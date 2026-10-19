@@ -69,8 +69,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "yg8TTB"
+                        "id": "yg8TTB",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-442693f2b629f9e5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -167,6 +172,73 @@
     "after-monkey-madness-ii-after-completing-duke-s-training": [
       {
         "npc": "Please excuse me; I have much to oversee now that King Awowogei has put me in charge of the guard to replace Kruk."
+      }
+    ]
+  },
+  "branches": {
+    "jump-442693f2b629f9e5": [
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Duke's combat training",
+        "id": "JwtpHO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player selects '(Cancel)':",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "7QOgve"
+          }
+        ],
+        "id": "AVX9OA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player selects a skill:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Receive 50,000 XP in [Skill]?",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Duke teaches you some advanced techniques...",
+                    "id": "Mbet52"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The screen turns to black as combat-related sound effects play",
+                    "id": "2hy0bX"
+                  },
+                  {
+                    "npc": "This concludes the advanced combat training. I must return to my duties now - King Awowogei has put me in charge of the guard to replace Kruk."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "MCNYbC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "XFoMjO"
       }
     ]
   }

@@ -274,8 +274,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "U7t4ok"
+                        "id": "U7t4ok",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-00baac25af90961e"
+                          }
+                        ]
                       }
                     ],
                     "id": "YFn6px"
@@ -285,8 +290,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "oWIWr2"
+                        "id": "oWIWr2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-109132fca684422d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -516,6 +526,141 @@
           }
         ],
         "id": "GWSK37"
+      }
+    ]
+  },
+  "branches": {
+    "jump-00baac25af90961e": [
+      {
+        "player": "Can I have another law talisman?"
+      },
+      {
+        "npc": "Well, I've got one here you can have for 1,000 coins if you'd like it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'll take it.",
+            "steps": [
+              {
+                "player": "Yes, I'll take it."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins:",
+                "steps": [
+                  {
+                    "npc": "Looks like you don't have enough money to afford it just now, come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MobNlv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Looks like you don't have any room to carry it just now, come back when you do."
+                  }
+                ],
+                "id": "O2hAH6"
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "message",
+                "text": "You hand over the coins... and receive a law talisman.",
+                "id": "EmTbaj"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a law talisman for 1,000 coins",
+                "id": "JpNnpQ"
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No thanks...",
+            "steps": [
+              {
+                "player": "No thanks..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-109132fca684422d": [
+      {
+        "player": "Can you put some spikes on my Climbing boots?"
+      },
+      {
+        "npc": "For you, no problem."
+      },
+      {
+        "npc": "Do you realise that you can only use the Climbing boots right now? The Spiked boots can only be used in the Icelands but no one's been able to get there for years!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, but I still want them.",
+            "steps": [
+              {
+                "player": "Yes, but I still want them."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an iron bar in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Sorry, I'll need an Iron bar to make the spikes."
+                  },
+                  {
+                    "npc": "Anything else before I get on with my work?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous2",
+                    "id": "QQ7GCB"
+                  }
+                ],
+                "id": "BRhCHm"
+              }
+            ]
+          },
+          {
+            "text": "Oh OK, I'll leave them thanks.",
+            "steps": [
+              {
+                "player": "Oh OK, I'll leave them thanks."
+              },
+              {
+                "npc": "Anything else before I get on with my work?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous2",
+                "id": "6YHhP_"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

@@ -483,10 +483,50 @@
             ]
           },
           {
-            "text": "Ok, I'll buy some!"
+            "text": "Ok, I'll buy some!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have 1000 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't have 1000 coins to buy the water with.",
+                    "id": "m8--ej"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "o1rVHS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 1000 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You buy a full waterskin for 1000 coins!",
+                    "id": "UfEXu0"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Waterskin(4)",
+                    "id": "kGpPkf"
+                  }
+                ],
+                "id": "Qj1d5D"
+              }
+            ]
           },
           {
-            "text": "I think I'll give it a miss."
+            "text": "I think I'll give it a miss.",
+            "steps": [
+              {
+                "player": "I think I'll give it a miss."
+              }
+            ]
           }
         ]
       }
@@ -501,13 +541,41 @@
         "type": "choice",
         "options": [
           {
-            "text": "Cool I'd like to buy some."
+            "text": "Cool I'd like to buy some.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Rok's Chocs Box.",
+                "id": "uxyjGv"
+              }
+            ]
           },
           {
-            "text": "No thanks, I'm not interested."
+            "text": "No thanks, I'm not interested.",
+            "steps": [
+              {
+                "player": "No thanks, I'm not interested."
+              }
+            ]
           },
           {
-            "text": "How do you stop your icy snacks melting?"
+            "text": "How do you stop your icy snacks melting?",
+            "steps": [
+              {
+                "player": "How do you stop your icy snacks melting? The middle of the desert is the last place I'd expect to see ice."
+              },
+              {
+                "type": "line",
+                "speaker": "Rokuh",
+                "text": "It's quite a surprise, isn't it, my friend. I actually have this special magic box of ice, which I bought for a princely sum, from a strange man while adventuring in lands far away. He said it is imbued with some sort of"
+              },
+              {
+                "type": "line",
+                "speaker": "Rokuh",
+                "text": "powerful ice magic which keeps it cold all the time. I had never seen any ice magic before, it's clearly very rare and powerful, so I felt I had to buy it."
+              }
+            ]
           },
           {
             "text": "I am trying to find out the cause of this town's curse.",
@@ -783,8 +851,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "x9dX_V"
+                        "id": "x9dX_V",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b42f87f8c58273f5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -825,8 +898,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "7t2JMM"
+                                "id": "7t2JMM",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-813c6e5ce54ebe60"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -849,8 +927,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "mo2wE7"
+                                        "id": "mo2wE7",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-beba3fab6e71f0ed"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -873,8 +956,13 @@
                                             "steps": [
                                               {
                                                 "type": "jump",
-                                                "reference": "below",
-                                                "id": "lWDrOs"
+                                                "id": "lWDrOs",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-3d9394b55ab5fbea"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           },
@@ -935,8 +1023,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "CWGIw7"
+                                        "id": "CWGIw7",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-00cdace3967fc4c3"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -1045,8 +1138,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "yeOUZH"
+                        "id": "yeOUZH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f853329a26a3db3d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1598,6 +1696,141 @@
         "type": "choice",
         "options": [
           {
+            "text": "I'm after a statue that was thrown down here.",
+            "steps": [
+              {
+                "player": "I'm after a statue that was thrown down here."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Ahh yes someone did drop a statue on my head recently. Very nice workmanship, looks quite old and valuable too. I'm surprised someone threw it away!"
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "I have accepted it as a gift as they clearly respect my terrible powers. They seek to keep me at bay by giving me valuables."
+              }
+            ]
+          },
+          {
+            "text": "Maybe I can make a deal for it?",
+            "steps": [
+              {
+                "player": "Maybe I can make a deal for the statuette?"
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Hmm a deal eh? I think we can come to some sort of arrangement. I'll give you the valuable statuette in return for, let me think ...."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "How about I give you the statue in exchange for the sole of the mayor of Nardah?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Isn't that a little harsh?",
+                    "steps": [
+                      {
+                        "player": "Isn't that a little harsh?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Genie",
+                        "text": "I wouldn't have said so. It seems a perfectly reasonable thing to request to me. I can think of many things a lot worse I could have asked for."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "xAzmDP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How am I meant to remove someone's soul?",
+                    "steps": [
+                      {
+                        "player": "How am I meant to remove someone's soul?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Genie",
+                        "text": "Oh that's easy. In my experience soles are very easy to remove with just a knife."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "k0dQwx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok I agree to the deal.",
+                    "steps": [
+                      {
+                        "player": "Ok I agree to the deal."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No way am I agreeing to that.",
+                    "steps": [
+                      {
+                        "player": "No way am I agreeing to that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Genie",
+                        "text": "Ah well it's your loss. No sole, then no statuette."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'm not sure they know you're down here.",
+            "steps": [
+              {
+                "player": "I'm not sure they know you're down here."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Silence cur! They fear and respect me and that's an end to it."
+              },
+              {
+                "player": "Maybe I can make a deal for the statuette?"
+              },
+              {
+                "type": "jump",
+                "id": "nczz6o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bfd530d93752b530"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
             "text": "You're a genie, grant me a wish.",
             "steps": [
               {
@@ -1638,7 +1871,7 @@
                       {
                         "type": "jump",
                         "reference": "previous",
-                        "id": "bEpYcl"
+                        "id": "c-CM9F"
                       }
                     ]
                   },
@@ -1647,8 +1880,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "U9b1gp"
+                        "id": "KONgi_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-62142b5fc65ecd29"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1657,8 +1895,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "O75gAM"
+                        "id": "at7vlP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-489c93eae8dacb92"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1712,7 +1955,7 @@
                       {
                         "type": "jump",
                         "reference": "previous",
-                        "id": "91woop"
+                        "id": "ZUuKZr"
                       }
                     ]
                   },
@@ -1721,8 +1964,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "hDbyoU"
+                        "id": "zCuZvt",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-62142b5fc65ecd29"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1731,8 +1979,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "KLO4wT"
+                        "id": "MXRHaZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-43a7ac4ff521fc6d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1741,8 +1994,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "-SGtam"
+                        "id": "xPRk62",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ac2b21d1afcad3a0"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1788,8 +2046,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RUsD2P"
+                "id": "RUsD2P",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-75873c8dbd8f4dec"
+                  }
+                ]
               }
             ]
           },
@@ -2005,6 +2268,520 @@
       {
         "type": "unavailable",
         "id": "cNdfv2"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b42f87f8c58273f5": [
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "You are little in power compared to us."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "nuTYEd"
+      }
+    ],
+    "jump-813c6e5ce54ebe60": [
+      {
+        "type": "line",
+        "speaker": "Tirrie",
+        "text": "Well maybe we're not that desperate for thee to leave."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I come as an emissary from the people of Nardah",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "mo2wE7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-beba3fab6e71f0ed"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Look you don't want me to get annoyed.",
+            "steps": [
+              {
+                "player": "Look you don't want me to get annoyed."
+              },
+              {
+                "type": "line",
+                "speaker": "Nirrie",
+                "text": "That's a shame because thou art annoyed already."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I come as an emissary from the people of Nardah",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "lWDrOs",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3d9394b55ab5fbea"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Oh yes I'm annoyed, now give them their water.",
+                    "steps": [
+                      {
+                        "player": "Oh yes I'm annoyed, now give them their water."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Nirrie",
+                        "text": "You know thou art really not skilled at diplomacy."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I come as an emissary from the people of Nardah",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "vPnjfy"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I haven't time for this nonsense.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "eOUvLl"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I haven't time for this nonsense.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "b2icn0"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I haven't time for this nonsense.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "CWGIw7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-00cdace3967fc4c3"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-beba3fab6e71f0ed": [
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "That's a shame because thou art annoyed already."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I come as an emissary from the people of Nardah",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "lWDrOs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3d9394b55ab5fbea"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Oh yes I'm annoyed, now give them their water.",
+            "steps": [
+              {
+                "player": "Oh yes I'm annoyed, now give them their water."
+              },
+              {
+                "type": "line",
+                "speaker": "Nirrie",
+                "text": "You know thou art really not skilled at diplomacy."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I come as an emissary from the people of Nardah",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "vPnjfy"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I haven't time for this nonsense.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "eOUvLl"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I haven't time for this nonsense.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "b2icn0"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3d9394b55ab5fbea": [
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "You know thou art really not skilled at diplomacy."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I come as an emissary from the people of Nardah",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "vPnjfy"
+              }
+            ]
+          },
+          {
+            "text": "I haven't time for this nonsense.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "eOUvLl"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-00cdace3967fc4c3": [
+      {
+        "player": "I haven't time for this nonsense."
+      },
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "Well we know ye mortals are always in a rush with"
+      },
+      {
+        "type": "line",
+        "speaker": "Tirrie",
+        "text": "your very busy little lives. We'd better let thee get on. We"
+      },
+      {
+        "type": "line",
+        "speaker": "Hallak",
+        "text": "enjoyed thy visit."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f853329a26a3db3d": [
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "That seems to be something which happens when we get emotional"
+      },
+      {
+        "type": "line",
+        "speaker": "Hallak",
+        "text": "We are"
+      },
+      {
+        "type": "line",
+        "speaker": "Tirrie",
+        "text": "calmer now though."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "lnJjDV"
+      }
+    ],
+    "jump-bfd530d93752b530": [
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "Hmm a deal eh? I think we can come to some sort of arrangement. I'll give you the valuable statuette in return for, let me think ...."
+      },
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "How about I give you the statue in exchange for the sole of the mayor of Nardah?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Isn't that a little harsh?",
+            "steps": [
+              {
+                "player": "Isn't that a little harsh?"
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "I wouldn't have said so. It seems a perfectly reasonable thing to request to me. I can think of many things a lot worse I could have asked for."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "xAzmDP"
+              }
+            ]
+          },
+          {
+            "text": "How am I meant to remove someone's soul?",
+            "steps": [
+              {
+                "player": "How am I meant to remove someone's soul?"
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Oh that's easy. In my experience soles are very easy to remove with just a knife."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "k0dQwx"
+              }
+            ]
+          },
+          {
+            "text": "Ok I agree to the deal.",
+            "steps": [
+              {
+                "player": "Ok I agree to the deal."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No way am I agreeing to that.",
+            "steps": [
+              {
+                "player": "No way am I agreeing to that."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Ah well it's your loss. No sole, then no statuette."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-62142b5fc65ecd29": [
+      {
+        "player": "I'm after a statue that was thrown down here."
+      },
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "Ahh yes someone did drop a statue on my head recently. Very nice workmanship, looks quite old and valuable too. I'm surprised someone threw it away!"
+      },
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "I have accepted it as a gift as they clearly respect my terrible powers. They seek to keep me at bay by giving me valuables."
+      }
+    ],
+    "jump-489c93eae8dacb92": [
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "Yes, run. Ruuuun in fear of.. The crevice genie of Nardah! Muhahaha!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-43a7ac4ff521fc6d": [
+      {
+        "player": "You're a genie, grant me a wish."
+      },
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "Not all genies are goody two shoes who go round granting wishes. It's something that my pathetic brother does to make people like him, but that's not my style."
+      },
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "I like to think of myself more as an evil and scary sort of genie, who people talk about in hushed and fearful tones."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well you seem quite scary.",
+            "steps": [
+              {
+                "player": "Well you seem quite scary."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Why thank you, I put a lot of effort into my terrifyingness."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Wait! Did you say quite scary? I'll have you know I am VERY scary!"
+              },
+              {
+                "player": "Erm yes that's what I meant."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "c-CM9F"
+              }
+            ]
+          },
+          {
+            "text": "I'm after a statue that was thrown down here.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "KONgi_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-62142b5fc65ecd29"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why are you sitting here in the dark.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "at7vlP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-489c93eae8dacb92"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I must be off now.",
+            "steps": [
+              {
+                "player": "Well I must be off now."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Yes, run. Ruuuun in fear of.. The crevice genie of Nardah! Muhahaha!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ac2b21d1afcad3a0": [
+      {
+        "player": "Well I must be off now."
+      },
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "Yes, run. Ruuuun in fear of.. The crevice genie of Nardah! Muhahaha!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-75873c8dbd8f4dec": [
+      {
+        "player": "How am I meant to remove someone's soul?"
+      },
+      {
+        "type": "line",
+        "speaker": "Genie",
+        "text": "Oh that's easy. In my experience soles are very easy to remove with just a knife."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "k0dQwx"
       }
     ]
   }

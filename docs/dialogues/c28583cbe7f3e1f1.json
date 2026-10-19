@@ -293,8 +293,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "-LGtc7"
+            "id": "-LGtc7",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-b94b630a858b37d1"
+              }
+            ]
           }
         ],
         "id": "mQu-Pn"
@@ -498,8 +503,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "B_T923"
+            "id": "B_T923",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-f06d203803708683"
+              }
+            ]
           }
         ],
         "id": "CtRddU"
@@ -1030,6 +1040,141 @@
       {
         "type": "unavailable",
         "id": "JvhS0P"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b94b630a858b37d1": [
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Essylt",
+            "text": "Free up some inventory space and get another one from my desk."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YLGj-v"
+      },
+      {
+        "type": "line",
+        "speaker": "Essylt",
+        "text": "Have a new one then, if you lose it help yourself to one from my desk."
+      },
+      {
+        "type": "message",
+        "text": "Essylt hands you a newly cut key.",
+        "id": "8y9fFM"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f06d203803708683": [
+      {
+        "type": "message",
+        "text": "You show the blackened crystal to Arianwyn.",
+        "id": "hI2ckG"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "Yes! Good work."
+      },
+      {
+        "player": "Thanks, I found it on the top floor of the temple."
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "Well done, with this sample, a good crystal chanter should be able to make a replacement. Just a second, I will summon Eluned."
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": ""
+      },
+      {
+        "type": "action",
+        "text": "Eluned appears next to Arianwyn",
+        "id": "vIeP1X"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "Thank you for responding to my summons Eluned."
+      },
+      {
+        "type": "line",
+        "speaker": "Eluned",
+        "text": "Any time Arianwyn, how can I help?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "[player name] here has an old crystal sample, we need you to make a replacement for it."
+      },
+      {
+        "type": "line",
+        "speaker": "Eluned",
+        "text": "Alright, hand it here and I shall take a look."
+      },
+      {
+        "type": "message",
+        "text": "You hand Eluned the blackened crystal.",
+        "id": "whXSmi"
+      },
+      {
+        "type": "line",
+        "speaker": "Eluned",
+        "text": "Now, let me see... Hmm... Ah, there we go."
+      },
+      {
+        "type": "message",
+        "text": "Eluned gives you a newly formed crystal.",
+        "id": "sbwN7P"
+      },
+      {
+        "player": "Thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Eluned",
+        "text": "No problem, Arianwyn will tell you what you should do with it. Now I had better get going, see you round."
+      },
+      {
+        "player": "I have the new crystal, now what am I meant to do with it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "You will need to first take the newly formed crystal to the end of the temple and place it on the altar there. This will imbue the crystal with the power it needs to safeguard the temple."
+      },
+      {
+        "player": "This is starting to sound hard."
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "It should be quite simple. Once you have powered up the newly formed crystal, you will need to return to the blackened crystal and place the new shard with others. This should restore the safeguards."
+      },
+      {
+        "player": "And that's it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "Yes, that is all."
+      },
+      {
+        "player": "Right then, I'll get to it."
+      },
+      {
+        "type": "end"
       }
     ]
   }

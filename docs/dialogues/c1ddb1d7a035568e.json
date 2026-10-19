@@ -65,8 +65,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WlWg34"
+                "id": "WlWg34",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-46326c52725e2af3"
+                  }
+                ]
               }
             ]
           },
@@ -75,8 +80,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cljG0g"
+                "id": "cljG0g",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16b239cdbf7e6a77"
+                  }
+                ]
               }
             ]
           }
@@ -118,6 +128,30 @@
     "if-talked-to-whilst-fighting-another-soldier": [
       {
         "npc": "Focus on your fight!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-46326c52725e2af3": [
+      {
+        "player": "Sure, let's fight."
+      },
+      {
+        "npc": "To the arena!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-16b239cdbf7e6a77": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "I'll be here if you ever change your mind. I love a good fight."
+      },
+      {
+        "type": "end"
       }
     ]
   }

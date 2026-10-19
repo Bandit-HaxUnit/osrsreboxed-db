@@ -127,8 +127,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "urPDqO"
+                "id": "urPDqO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e134824dfc6153e4"
+                  }
+                ]
               }
             ]
           },
@@ -385,6 +390,19 @@
         "type": "action",
         "text": "Standard dialogue continues...",
         "id": "uWIPEs"
+      }
+    ]
+  },
+  "branches": {
+    "jump-e134824dfc6153e4": [
+      {
+        "player": "Show me what you've found."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Lost Property shop",
+        "id": "MTlnQd"
       }
     ]
   }

@@ -482,8 +482,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "fl0qp1"
+            "id": "fl0qp1",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-ba4556820e430cbe"
+              }
+            ]
           }
         ],
         "id": "9E76xR"
@@ -497,11 +502,49 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "L9Ufb1"
+            "id": "L9Ufb1",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-3392dc6e9ae2ed0f"
+              }
+            ]
           }
         ],
         "id": "89F6g6"
+      }
+    ]
+  },
+  "branches": {
+    "jump-ba4556820e430cbe": [
+      {
+        "player": "I may be..."
+      },
+      {
+        "npc": "I think you're almost ready to do some work for Aluft Gianne Jnr. He is in charge of a new family venture: Gnome Food Delivery. There are good tips to be made if you make and deliver gnome foods - though you may"
+      },
+      {
+        "npc": "have to travel all over Gielinor to fulfil some of the other orders..."
+      },
+      {
+        "npc": "However, you'll need some basic gnome cooking training if you want to work for Lufty. Go and have a chat with his Dad, Aluft Gianne Snr. Hel'll tell you what you need to do."
+      },
+      {
+        "player": "Thanks for your help!"
+      }
+    ],
+    "jump-3392dc6e9ae2ed0f": [
+      {
+        "npc": "good tips to be made if you make and deliver gnome foods - though you may have to travel all over Gielinor to fulfill some of the other orders..."
+      },
+      {
+        "player": "Sounds interesting...."
+      },
+      {
+        "npc": "Go and have a chat with my young Lufty Jnr. and he'll fill you in with details."
+      },
+      {
+        "type": "end"
       }
     ]
   }

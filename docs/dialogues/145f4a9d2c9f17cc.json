@@ -138,8 +138,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "op4lVF"
+                "id": "op4lVF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4a5d48ba2201de28"
+                  }
+                ]
               }
             ]
           }
@@ -166,6 +171,19 @@
         "type": "action",
         "text": "The player is launched back to the main platform",
         "id": "uKt-gL"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4a5d48ba2201de28": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "Have it your way."
+      },
+      {
+        "type": "end"
       }
     ]
   }

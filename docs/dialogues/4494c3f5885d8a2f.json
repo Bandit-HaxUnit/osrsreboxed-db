@@ -118,7 +118,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "ohz6TZ"
+                        "id": "ohz6TZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-70bdcf9e0a4b42f1"
+                          }
+                        ]
                       }
                     ],
                     "id": "4IugD5"
@@ -166,8 +172,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "JG9_kI"
+                        "id": "JG9_kI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4085a6935095beb2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -176,8 +187,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "MvU_lH"
+                        "id": "MvU_lH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-16e03db64d340015"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -211,8 +227,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "HEJGBR"
+                        "id": "HEJGBR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4085a6935095beb2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -221,8 +242,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "PBBz_A"
+                        "id": "PBBz_A",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-16e03db64d340015"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -330,6 +356,133 @@
       {
         "type": "unavailable",
         "id": "DINY8t"
+      }
+    ]
+  },
+  "branches": {
+    "jump-70bdcf9e0a4b42f1": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you teleport me to the Rune Essence Mine?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HEJGBR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4085a6935095beb2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the old Wizards' Tower?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "PBBz_A",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16e03db64d340015"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Thanks for the information.",
+            "steps": [
+              {
+                "player": "Thanks for the information."
+              },
+              {
+                "npc": "My pleasure."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4085a6935095beb2": [
+      {
+        "player": "Can you teleport me to the Rune Essence Mine?"
+      },
+      {
+        "npc": "Senventior disthine molenko!"
+      },
+      {
+        "type": "action",
+        "text": "Player is teleported to the rune essence mine.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "SvUvek"
+      }
+    ],
+    "jump-16e03db64d340015": [
+      {
+        "player": "Could you tell me about the old Wizards' Tower?"
+      },
+      {
+        "npc": "Of course. The first Wizards' Tower was built at the same time the Order of Wizards was founded. It was at the dawn of the Fifth Age, when the secrets of runecrafting were rediscovered."
+      },
+      {
+        "npc": "For years, the tower was a hub of magical research. Wizards of all races and religions were welcomed into our order."
+      },
+      {
+        "npc": "Alas, that openness is what ultimately led to disaster. The wizards who served Zamorak, the evil god of chaos, tried to claim our magical discoveries in his name."
+      },
+      {
+        "npc": "They failed, but in retaliation, they burnt the entire tower to the ground. Years of work was destroyed."
+      },
+      {
+        "npc": "The tower was soon rebuilt of course, but even now we are still trying to regain knowledge that was lost."
+      },
+      {
+        "npc": "That's why I spend my time down here, in fact. This basement is all that is left of the old tower, and I believe there are still some secrets to discover here."
+      },
+      {
+        "npc": "Of course, one secret I am no longer looking for is the teleportation incantation to the Rune Essence Mine. We have you to thank for that."
+      },
+      {
+        "type": "condition",
+        "text": "If the player did not speak to the Mage of Zamorak about the abyssal incantation post-quest:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "TZzviH"
+          }
+        ],
+        "id": "fhNh4z"
+      },
+      {
+        "type": "condition",
+        "text": "If the player spoke to the Mage of Zamorak about the Z.M.I. post-quest:",
+        "steps": [
+          {
+            "player": "I've heard a different take on how the tower burnt down. Something about a ritual gone wrong?"
+          },
+          {
+            "npc": "Nothing more than Zamorakian hearsay! They burnt the tower down and are now too cowardly to even admit it!"
+          },
+          {
+            "player": "Fair enough."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "eoAI9B"
+          }
+        ],
+        "id": "df82K2"
       }
     ]
   }

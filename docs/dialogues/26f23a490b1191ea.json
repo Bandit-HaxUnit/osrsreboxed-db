@@ -53,8 +53,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "B_RVaJ"
+                "id": "B_RVaJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d55d8602baddbe28"
+                  }
+                ]
               }
             ],
             "id": "XQqLvG"
@@ -398,7 +403,7 @@
                     "npc": "Here, you can have this one, I have plenty spare."
                   },
                   {
-                    "player": "Thanks!{{^|Drops to ground with full inventory}}"
+                    "player": "Thanks!"
                   }
                 ],
                 "id": "2bJa5p"
@@ -573,6 +578,15 @@
         "action_source": "text",
         "target": "Managing Miscellania",
         "id": "MH4M4Z"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d55d8602baddbe28": [
+      {
+        "type": "action",
+        "text": "(See After Royal Trouble section)",
+        "id": "a5Xk0V"
       }
     ]
   }

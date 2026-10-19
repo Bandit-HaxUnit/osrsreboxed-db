@@ -1117,8 +1117,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DbnIqr"
+                "id": "DbnIqr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2ee0160b16b8b206"
+                  }
+                ]
               }
             ]
           },
@@ -1127,8 +1132,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KGRecF"
+                "id": "KGRecF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3cffe2f2503f5cef"
+                  }
+                ]
               }
             ]
           },
@@ -1261,8 +1271,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5N9U8p"
+                "id": "5N9U8p",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ce26420de542fb82"
+                  }
+                ]
               }
             ]
           },
@@ -1271,8 +1286,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pY6Y1G"
+                "id": "pY6Y1G",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6989590ec0379fb9"
+                  }
+                ]
               }
             ]
           },
@@ -1281,8 +1301,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rPAZIM"
+                "id": "rPAZIM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-82e1e527abdd1705"
+                  }
+                ]
               }
             ]
           },
@@ -1474,8 +1499,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ga6kBs"
+                "id": "ga6kBs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-34952f52400c39d3"
+                  }
+                ]
               }
             ]
           }
@@ -1909,10 +1939,28 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes"
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Rasolo the Wandering Merchant",
+                "id": "VZ9kJE"
+              }
+            ]
           },
           {
-            "text": "No"
+            "text": "No",
+            "steps": [
+              {
+                "player": "No, not really."
+              },
+              {
+                "type": "line",
+                "speaker": "Rasolo",
+                "text": "As you wish. I will travel wherever the business takes me."
+              }
+            ]
           },
           {
             "text": "Ask about the Diamonds of Azzanadra",
@@ -2086,8 +2134,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "mLc7bK"
+        "id": "mLc7bK",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-a94fb47c8d87454f"
+          }
+        ]
       }
     ],
     "shadow-diamond-talking-to-rasolo-after-agreeing-to-help-him": [
@@ -3332,8 +3385,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "J-906x"
+                "id": "J-906x",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0e4cf2040ae75be1"
+                  }
+                ]
               }
             ]
           }
@@ -3998,8 +4056,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "QbbhUo"
+        "id": "QbbhUo",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-7569f6ba6c7dc050"
+          }
+        ]
       }
     ],
     "the-ancient-pyramid-talking-to-eblis-with-two-diamonds": [
@@ -4016,8 +4079,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "xCb3PV"
+        "id": "xCb3PV",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-7569f6ba6c7dc050"
+          }
+        ]
       }
     ],
     "the-ancient-pyramid-talking-to-eblis-with-three-diamonds": [
@@ -4034,8 +4102,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "5x7o3B"
+        "id": "5x7o3B",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-7569f6ba6c7dc050"
+          }
+        ]
       }
     ],
     "the-ancient-pyramid-talking-to-eblis-with-four-diamonds": [
@@ -4435,8 +4508,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "-0eUot"
+                        "id": "-0eUot",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c38a251297d7c220"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4483,6 +4561,419 @@
       {
         "type": "unavailable",
         "id": "XZk7eh"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2ee0160b16b8b206": [
+      {
+        "player": "I heard a rumour about four diamonds or crystals..."
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "The four diamonds of Azzanadra??? How came you to know of this?"
+      },
+      {
+        "player": "You've heard of them then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "It's just a fairy tale for children. Maybe one of the village elders might know more, but it's not really something I care about."
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "Now get out of here, your sort isn't welcome in my bar."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3cffe2f2503f5cef": [
+      {
+        "player": "Certain things have led me to believe there may be some kind of ruined fortress around here..."
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "Doubt it. What in the world would someone need to guard against in the middle of this desert?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "A bad attack of sand? I think you're on the wrong track here, stranger."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ce26420de542fb82": [
+      {
+        "player": "Why are all of the people here so hostile? You would think I was asking you for money instead of just for answers to a few questions..."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "It is a long story, and I doubt you have much interest in hearing it. Your sort never are, you just take what you can of ours, and then abandon us once more to the desert."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, I want to hear this story.",
+            "steps": [
+              {
+                "player": "Actually, I'd be quite interested to hear what it is you have to say to excuse the attitude everybody in this village seems to have."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "Ah, it all begun many generations ago, when our ancestors were the proud rulers of these lands..."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "My ancestors lived far to the North of here, and our lands stretched from the sea in the East to the river Lum, and the mountain of ice. From coast to coast, North to South, our domain was absolute."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "Our god was kind to us, and blessed us with prosperity and happiness, and in return we were merciless to his enemies wherever we found them."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "Then came the betrayal."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "Our god was banished, leaving us helpless to our fates."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "Without his protection, we were forced to fend for ourselves once more, against the enemies that sought to destroy us through their petty jealousies."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "But we did not succumb without fighting! The spiteful Saradomin and pathetic Zamorak warred with each other, but the hatred they had for each other was as nothing to the hatred they held towards us!"
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "With each battle they waged, we lost more and more land, unable to fight on all fronts, and were pushed further and further South into this gods-forsaken desert."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "Our greatest hero, Azzanadra, was finally trapped in a strange stone structure to the South of here, and bound within by terrible powers..."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "And with that our lands, our homes, our very lives were stolen from us! Too weak to reclaim what was rightfully ours, we made our homes here, knowing that someday Azzanadra will"
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "return with his magnificent power, and bring us back to our former glory..."
+              },
+              {
+                "player": "So you're upset because of something that happened hundreds of years ago?"
+              },
+              {
+                "player": "Seems to me like maybe you should find some closure, and let the past go..."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "The insults heaped upon my race will never be forgotten, will never be forgiven and will never again be overlooked."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "Someday, a harsh wind will blow upon this land, uncovering the wrongs of the past, and we will get back what is rightfully ours. Until such a day we will bide our time here, and will"
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "always be ready with our blades for our righteous vengeance."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't care about your story.",
+            "steps": [
+              {
+                "player": "I don't really care what your story is to be honest, there is no excuse for such rudeness or hostility."
+              },
+              {
+                "player": "I have done nothing wrong to you, but everybody here treats me like I have committed some great crime against the village."
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "That is because, from our point of view, you have."
+              },
+              {
+                "player": "What? Just because I entered your village?"
+              },
+              {
+                "type": "line",
+                "speaker": "Eblis",
+                "text": "You have no right to be here! You have no right to the life you have, for it was taken at our expense!"
+              },
+              {
+                "player": "Whatever... No wonder all you loonies live out here in the desert by yourselves."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6989590ec0379fb9": [
+      {
+        "player": "I was wondering if you knew anything about some treasure somewhere around here?"
+      },
+      {
+        "player": "I have some evidence that there might be some kind of treasure hidden very close to this village..."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "If I knew of any treasure I would not choose to spend my life in this gods-forsaken desert."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-82e1e527abdd1705": [
+      {
+        "player": "Do you know anything about some kind of fortress nearby? I have reason to believe there is, or at least used to be, some kind of fortress very close to here..."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "Nobody would build anything in this wasteland unless they were forced to, to survive."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "I know of no fortress, I know of no reason why anyone would ever bother doing anything out here in the desert."
+      }
+    ],
+    "jump-34952f52400c39d3": [
+      {
+        "player": "Actually, there was nothing I really wanted to ask you about."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "Yes, it is exactly like your sort to waste my time in such a way."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a94fb47c8d87454f": [
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "I have in my possession a small trinket, a ring, that allows its wearer to see the unseen..."
+      },
+      {
+        "player": "How much do you want for it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "Ah, but it is not for sale...  As such..."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "I am offering to trade it for an item that was rightfully mine, but that was stolen by a bandit named Laheeb."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "The item in question is a gilded cross, that has some sentimental value to myself. I wish for you to recover this item for me, and I will happily let you have my ring of visibility."
+      },
+      {
+        "player": "Where can I find this Laheeb?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "Well, as a travelling merchant I have roamed these lands for many years..."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "To the far east of here there is an area that is dry, and barren like the desert... it is called..."
+      },
+      {
+        "player": "Al Kharid?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "...Yes, Al Kharid. Now, to the south of Al Kharid there is a passageway, it is called the..."
+      },
+      {
+        "player": "Shantay Pass."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "...Yes. I didn't realise you had travelled there yourself."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "Anyway, when you have gone through the Shantay Pass, you will find yourself in a hostile desert... You will need to bring water with you to keep your life. Now, to the south-west of this pass, you will find a small"
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "village..."
+      },
+      {
+        "player": "The Bedabin camp."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "If you know where Laheeb lives, why did you ask me?"
+      },
+      {
+        "player": "I don't. Sorry, please continue."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "Well, okay then. Anyway, south of this encampment there is an area where few have ever been... It is a village of murderous bandits, and treacherous"
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "thieves... This is where Laheeb makes his home."
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "He will have hidden his stolen treasure somewhere in that village, I am sure of it. When you find his loot, you will find my gilded cross. Return it to me, and I will reward you with my ring"
+      },
+      {
+        "type": "line",
+        "speaker": "Rasolo",
+        "text": "of visibility, so that you may find Damis. Does this seem fair to you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "player": "Not a problem. I'll be back with your cross before you know it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "Sounds like too much effort to me. I'll find this Damis by myself."
+              },
+              {
+                "type": "line",
+                "speaker": "Rasolo",
+                "text": "As you wish."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0e4cf2040ae75be1": [
+      {
+        "player": "Never mind, I will figure out all I need to know by myself."
+      },
+      {
+        "type": "line",
+        "speaker": "Malak",
+        "text": "As you wish. Come and see me when you have managed to kill Dessous."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7569f6ba6c7dc050": [
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "No, the magic used in this spell is powerful, but inaccurate. The direction the scrying glass faces is roughly the direction you will find the warrior, but I'm afraid I"
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "can't be any more help than that."
+      },
+      {
+        "player": "I don't understand why there are six mirrors when there are only four diamonds..."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "As I say, the enchantment is very inaccurate."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "I can only focus upon the aura the diamonds have left behind them, so any place where the Diamonds were present for a significant period of time will still be shown - such as the Bandit Camp where I make my home."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "My apologies, but magic is an inaccurate art in many respects."
+      },
+      {
+        "type": "line",
+        "speaker": "Eblis",
+        "text": "Don't forget to come back here when you have collected all four diamonds."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c38a251297d7c220": [
+      {
+        "player": "Have you got any symbols of your god?"
+      },
+      {
+        "type": "message",
+        "text": "Eblis gives you a little signet. Its shape matches the icon you saw on the altar in the pyramid.",
+        "id": "n9xTDe"
+      },
+      {
+        "type": "end"
       }
     ]
   }

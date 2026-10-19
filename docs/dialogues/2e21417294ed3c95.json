@@ -463,8 +463,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "g5J_5D"
+                "id": "g5J_5D",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-25f6f9699a149e02"
+                  }
+                ]
               }
             ]
           },
@@ -473,8 +478,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Tg9Tsz"
+                "id": "Tg9Tsz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7bcce189dbf7f9df"
+                  }
+                ]
               }
             ]
           },
@@ -483,8 +493,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "w5EKtg"
+                "id": "w5EKtg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-045e79a08a06ca8f"
+                  }
+                ]
               }
             ]
           },
@@ -493,8 +508,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Y0yqXK"
+                "id": "Y0yqXK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-50a5145f9c73d145"
+                  }
+                ]
               }
             ]
           },
@@ -593,7 +613,66 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you tell me more about the lesser gods?"
+            "text": "Could you tell me more about the lesser gods?",
+            "steps": [
+              {
+                "player": "Could you tell me more about the lesser gods?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jex",
+                "text": "Of course. The lesser gods, or avatars as some call them, were born from the dreams of Tumeken. They are Apmeken, Het, Crondis and Scabaras."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you tell me more about Apmeken?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "I3foyz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Het?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "No__KO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Crondis?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "wpb61F"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Scabaras?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UW7Xd7"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Interesting. Thanks for the information.",
+                    "steps": [
+                      {
+                        "player": "Interesting. Thanks for the information."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I'd better get down there.",
@@ -630,7 +709,66 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you tell me more about the lesser gods?"
+            "text": "Could you tell me more about the lesser gods?",
+            "steps": [
+              {
+                "player": "Could you tell me more about the lesser gods?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jex",
+                "text": "Of course. The lesser gods, or avatars as some call them, were born from the dreams of Tumeken. They are Apmeken, Het, Crondis and Scabaras."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you tell me more about Apmeken?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "I3foyz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Het?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "No__KO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Crondis?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "wpb61F"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Scabaras?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UW7Xd7"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Interesting. Thanks for the information.",
+                    "steps": [
+                      {
+                        "player": "Interesting. Thanks for the information."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I'd better get going.",
@@ -983,15 +1121,79 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you tell me more about the lesser gods?"
+            "text": "Could you tell me more about the lesser gods?",
+            "steps": [
+              {
+                "player": "Could you tell me more about the lesser gods?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jex",
+                "text": "Of course. The lesser gods, or avatars as some call them, were born from the dreams of Tumeken. They are Apmeken, Het, Crondis and Scabaras."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you tell me more about Apmeken?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "I3foyz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Het?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "No__KO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Crondis?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "wpb61F"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Scabaras?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UW7Xd7"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Interesting. Thanks for the information.",
+                    "steps": [
+                      {
+                        "player": "Interesting. Thanks for the information."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I'd better get going.",
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XrQHsf"
+                "id": "XrQHsf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f461367dca8c020d"
+                  }
+                ]
               }
             ]
           }
@@ -1307,8 +1509,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "S6pOC9"
+                "id": "S6pOC9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3a8eae7218ee2390"
+                  }
+                ]
               }
             ]
           },
@@ -1317,8 +1524,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ATWLbY"
+                "id": "ATWLbY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-71fb100e4e727413"
+                  }
+                ]
               }
             ]
           },
@@ -1337,8 +1549,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kDrq5m"
+                "id": "kDrq5m",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a48b3d7b0674e85c"
+                  }
+                ]
               }
             ]
           },
@@ -1661,8 +1878,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "X3sX3f"
+                        "id": "X3sX3f",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-46be28350637fe1c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1671,8 +1893,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ToOWwR"
+                        "id": "ToOWwR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ae964f6f90758dcd"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1681,8 +1908,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "9-eEgo"
+                        "id": "9-eEgo",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b84a15b35b831746"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1691,8 +1923,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "C2NAu-"
+                        "id": "C2NAu-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c82c3c536d874820"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1955,10 +2192,74 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you tell me more about the lesser gods?"
+            "text": "Could you tell me more about the lesser gods?",
+            "steps": [
+              {
+                "player": "Could you tell me more about the lesser gods?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jex",
+                "text": "Of course. The lesser gods, or avatars as some call them, were born from the dreams of Tumeken. They are Apmeken, Het, Crondis and Scabaras."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you tell me more about Apmeken?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "I3foyz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Het?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "No__KO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Crondis?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "wpb61F"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Scabaras?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UW7Xd7"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Interesting. Thanks for the information.",
+                    "steps": [
+                      {
+                        "player": "Interesting. Thanks for the information."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "I'd better get going."
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              }
+            ]
           }
         ]
       }
@@ -2107,6 +2408,436 @@
     ]
   },
   "branches": {
+    "jump-25f6f9699a149e02": [
+      {
+        "player": "What if I disguised myself as a citizen or a guard?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "It would not work. Their quarantine is very strict, just as ours was. Even their own people are not allowed in or out of the city."
+      },
+      {
+        "player": "So how do they get food and other supplies in?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "The port south of the main city is still open. Traders take their goods to the city gates and exchange them with the guards there. Everything is thoroughly checked."
+      },
+      {
+        "player": "I see. Doesn't sound like we can make anything work there then."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "wMeEO5"
+      }
+    ],
+    "jump-7bcce189dbf7f9df": [
+      {
+        "player": "Is there any way across the river?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "You'd want to swim across? If the current doesn't kill you, the crocodiles surely will."
+      },
+      {
+        "player": "Ah... Maybe not then."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "dLyDUO"
+      }
+    ],
+    "jump-045e79a08a06ca8f": [
+      {
+        "player": "Perhaps I could fight my way in?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Absolutely not! We here in Sophanem are still Menaphites and those guards are our brethren. Besides, I doubt you'd succeed against so many of them."
+      },
+      {
+        "player": "Fair enough."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "_pmGYF"
+      }
+    ],
+    "jump-50a5145f9c73d145": [
+      {
+        "player": "Is there any way into Menaphos from below?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "I don't know. I don't think so."
+      },
+      {
+        "player": "Oh. So there aren't any tunnels under this city?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Beyond the homes of our dead? I can't imagine so. We are not ones for digging tunnels unnecessarily. We leave that nonsense to the Sect of Scabaras, and they're long gone."
+      },
+      {
+        "player": "The Sect of Scabaras?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "They were a group dedicated to Scabaras, one of the lesser deities."
+      },
+      {
+        "player": "What's a lesser deity?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "You already know of Icthlarin and the Devourer. They are the son and daughter of Tumeken and Elidinis. Together, they are the four main deities of the Menaphite Pantheon."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "However, the pantheon also has four lesser deities, or avatars as some call them. The Book of Light and Day says that Tumeken once fell into a deep sleep and dreamt for four days and four nights."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "With each night, his dreams took form. Those four forms became the lesser deities of the pantheon, with Scabaras being the last of them."
+      },
+      {
+        "player": "And his followers liked to dig tunnels?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "That's right. Scabaras is the god of isolation. In keeping with his teachings, his followers mostly lived underground. As such, they were said to be great architects of the subterranean."
+      },
+      {
+        "player": "So what happened to them?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "The Devourer was not the only member of the pantheon to wish ill upon our people. It is said that many years ago, Scabaras and his sect tried to claim these lands as their own."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "They built great tunnels beneath the Elid and used them to attack our settlements. However, Elidinis stood against them. The sect was destroyed, and Scabaras was fittingly driven into isolation."
+      },
+      {
+        "player": "And you don't think there's a chance they might have built some tunnels under Sophanem and Menaphos?"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Er... I suppose I've never considered it before. I guess it's not impossible."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Maybe you should visit Jex at the Temple of the Lesser Gods in the north east corner of the city. He knows more about the Sect of Scabaras than I do."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "In fact, now that I think about it, I recall a rumour that the temple was actually once home to the sect."
+      },
+      {
+        "player": "Interesting. I'll pay him a visit."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f461367dca8c020d": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3a8eae7218ee2390": [
+      {
+        "player": "Pollnivneach."
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "vUJRO4"
+      }
+    ],
+    "jump-71fb100e4e727413": [
+      {
+        "player": "Draynor Village."
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "Amx8vo"
+      }
+    ],
+    "jump-a48b3d7b0674e85c": [
+      {
+        "player": "Goblin Village."
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "mxFSzA"
+      }
+    ],
+    "jump-46be28350637fe1c": [
+      {
+        "player": "It must be boring here."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "You wish to charm me with the idea of getting my hands dirty? Well I'm perfectly happy here in Al Kharid. I did all the adventuring I ever wanted to do in my youth."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "HK901c"
+      }
+    ],
+    "jump-ae964f6f90758dcd": [
+      {
+        "player": "There might be treasures underneath Sophanem."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "That there might be, but if so, those treasures belong to the dead. We have treasures aplenty here in Al Kharid."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "kDFLuD"
+      }
+    ],
+    "jump-b84a15b35b831746": [
+      {
+        "player": "It could drive a wedge between the Menaphite cities."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "How so?"
+      },
+      {
+        "player": "Menaphos wouldn't be happy if the citizens of Sophanem bypassed the quarantine. I imagine you'd be able to take advantage of that."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "Hmm... Alright, you have my curiosity. Let's see where this trail takes us. Meet me outside the gates to Sophanem. I have one or two things to sort out here before I depart."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c82c3c536d874820": [
+      {
+        "player": "It would give you the chance to spy first hand."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "I have Maisa and others in place to do that already."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "eU-9S3"
+      }
+    ],
+    "I3foyz": [
+      {
+        "player": "Could you tell me more about Apmeken?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Apmeken is the goddess of companionship. She is known to be the most mischievous, playful and unpredictable of the minor deities. I'd say she's my personal favourite."
+      },
+      {
+        "player": "So I shouldn't trust you then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Apmeken can appeal to the most erudite scholar or the most barefaced liar. I'd like to be considered amongst the former category."
+      },
+      {
+        "player": "I see. What does she look like?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "She has the head of a monkey, or sometimes an ape. It changes depending upon what nature she is displaying. For example, the orangutan represents wisdom, while the baboon represents mischief."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "gNsneP"
+      }
+    ],
+    "No__KO": [
+      {
+        "player": "Could you tell me more about Het?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Het is the least strange of our deities to foreign eyes, for he looks just like us. I suspect this is why his shrines are particularly targeted by thieves like that infamous Templeton."
+      },
+      {
+        "player": "What does he represent?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Het is the god of health, both in mind and body. He is quite popular amongst soldiers as a result, especially up in Al Kharid."
+      },
+      {
+        "player": "Just soldiers?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Not at all! Like I said, the wellbeing of the mind is also key to Het. Many great orators also look to him for guidance. I imagine his teachings help with some of their strenuous speeches."
+      },
+      {
+        "player": "How did his followers react to the plagues here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "With many arguments. They really couldn't decide whether it was a punishment from Het, or an affront to him. I stayed out of that debate."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "kpBW9Z"
+      }
+    ],
+    "wpb61F": [
+      {
+        "player": "Could you tell me more about Crondis?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Crondis is a ferocious lady with the head of a mighty crocodile."
+      },
+      {
+        "player": "That must be awkward when buying helmets."
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Luckily for her, I don't think deities have much need for them."
+      },
+      {
+        "player": "So what is she the goddess of?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Resourcefulness. A word which seems to be open to large interpretation."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Most consider her to be a teacher of modesty. They say we should be resourceful by only taking and using that which we absolutely need."
+      },
+      {
+        "player": "But there's others with a different interpretation?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Some believe she is actually the goddess of pleasure. They claim that the idea of modesty came from a misinterpretation, and that to be resourceful is to take all that you can."
+      },
+      {
+        "player": "That doesn't sound right."
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "No. It is a more recent take that I suspect was born in Menaphos. There are many in that city with more wealth than they'll ever need. Modesty is not an ideal they'll ever embody."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "hxMhNz"
+      }
+    ],
+    "UW7Xd7": [
+      {
+        "player": "Could you tell me more about Scabaras?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "There are many opinions out there on Scabaras, but general knowledge isn't always the most accurate."
+      },
+      {
+        "player": "Well what are the absolute facts then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Scabaras is the god of isolation. He takes on the appearance of a man with the head of a scarab. Both he and his followers were driven into hiding long ago."
+      },
+      {
+        "player": "And?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "And that's it. You asked for the absolute facts. Anything beyond that is just speculation."
+      },
+      {
+        "player": "But there must be more. The High Priest told me that Scabaras tried to conquer these lands."
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "So it is said, but the written accounts that exist contain many inconsistencies when it comes to what role Scabaras actually played. Of course, most would not know that."
+      },
+      {
+        "player": "How come?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jex",
+        "text": "Many of the writings are only available to us priests. That does of course include the new High Priest, but perhaps he is yet to read them. They are definitely... illuminating."
+      },
+      {
+        "player": "Interesting..."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "wuJ73P"
+      }
+    ],
     "CYkkrs": [
       {
         "player": "I don't know."

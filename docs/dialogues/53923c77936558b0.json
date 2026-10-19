@@ -556,8 +556,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "QG80ab"
+        "id": "QG80ab",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-old-coin": [
@@ -566,8 +571,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "9GL2oO"
+        "id": "9GL2oO",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-ancient-coin": [
@@ -576,8 +586,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "ClOefx"
+        "id": "ClOefx",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-ancient-symbol": [
@@ -586,8 +601,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "SWPWQM"
+        "id": "SWPWQM",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-old-symbol": [
@@ -596,8 +616,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "vwRkx1"
+        "id": "vwRkx1",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-arrowheads": [
@@ -606,8 +631,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "bMu4qC"
+        "id": "bMu4qC",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-jewellery": [
@@ -616,8 +646,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "NUemez"
+        "id": "NUemez",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-old-chipped-vase": [
@@ -626,8 +661,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "8LORwu"
+        "id": "8LORwu",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "sU9FDP"
+          }
+        ]
       }
     ],
     "using-items-on-tinse-torpe-any-other-item": [
@@ -636,6 +676,30 @@
       },
       {
         "npc": "Thank you, but I don't need that"
+      }
+    ]
+  },
+  "branches": {
+    "jump-73957e25e21f1fec": [
+      {
+        "player": "I found these old necklaces."
+      },
+      {
+        "npc": "An interesting find... Here, let me offer you something in return."
+      },
+      {
+        "player": "Oh! Okay."
+      },
+      {
+        "type": "message",
+        "text": "The archaeologist gives you [5x] coins... must have been worth a lot in his day!",
+        "id": "K2WA5Z"
+      }
+    ],
+    "sU9FDP": [
+      {
+        "type": "call",
+        "branch": "jump-73957e25e21f1fec"
       }
     ]
   }

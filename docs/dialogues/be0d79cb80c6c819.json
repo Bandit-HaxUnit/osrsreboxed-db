@@ -128,8 +128,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "CDfHhH"
+                        "id": "CDfHhH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3fc993f3341e01ca"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -138,8 +143,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "YNxlQo"
+                        "id": "YNxlQo",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-67d5a7f450c20c3d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -148,8 +158,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "rPt4Jv"
+                        "id": "rPt4Jv",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4ea79ea4630a4163"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -313,6 +328,174 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-3fc993f3341e01ca": [
+      {
+        "player": "Do you have any quests for me?"
+      },
+      {
+        "npc": "I don't know if you can help us!"
+      },
+      {
+        "npc": "The trolls have taken up camp on Death Plateau! They are using it to launch raids at night on the village. We have tried to attack the camp but the main path is heavily guarded!"
+      },
+      {
+        "player": "Perhaps there is a way you can sneak up at night?"
+      },
+      {
+        "npc": "If there is another way I do not know of it."
+      },
+      {
+        "npc": "Do you know of such a path?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start Death Plateau?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "No but perhaps I could try and find one?"
+              },
+              {
+                "npc": "Citizen you would be well rewarded!"
+              },
+              {
+                "npc": "If you go up to Death Plateau be very careful as the trolls will attack you on sight!"
+              },
+              {
+                "player": "I'll be careful."
+              },
+              {
+                "npc": "One other thing."
+              },
+              {
+                "player": "What's that?"
+              },
+              {
+                "npc": "All of our equipment is kept in the castle on the hill."
+              },
+              {
+                "npc": "The stupid guard that was on duty last night lost the combination to the lock! I told the Prince that the Imperial Guard should've been in charge of security!"
+              },
+              {
+                "player": "No problem, what does the combination look like?"
+              },
+              {
+                "npc": "The equipment room is unlocked when the stone balls are placed in the correct order on the stone mechanism outside it. The right order is written on a piece of paper the guard had."
+              },
+              {
+                "player": "A stone what...?!"
+              },
+              {
+                "npc": "Well citizen, the Prince is fond of puzzles. Why he couldn't just have a key is beyond me!"
+              },
+              {
+                "player": "I'll get on it right away!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:death-plateau:start",
+            "quest": "Death Plateau"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, sorry."
+              },
+              {
+                "npc": "Never mind citizen."
+              },
+              {
+                "npc": "Can I assist you with anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "QGtpHb"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-67d5a7f450c20c3d": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "Welcome to Principality of Burthorpe!"
+      },
+      {
+        "npc": "We are the Imperial Guard for his Royal Highness Prince Anlaf of Burthorpe."
+      },
+      {
+        "npc": "Can I assist you with anything else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any quests for me?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "CDfHhH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3fc993f3341e01ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "YNxlQo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-67d5a7f450c20c3d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You can't, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "rPt4Jv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4ea79ea4630a4163"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4ea79ea4630a4163": [
+      {
+        "player": "You can't, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

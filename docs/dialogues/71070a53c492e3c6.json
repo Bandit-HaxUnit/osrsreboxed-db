@@ -69,8 +69,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "a60v9Y"
+                        "id": "a60v9Y",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-186c0d00567d93fa"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -178,8 +183,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "1gVpTC"
+                        "id": "1gVpTC",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0aa62d159e051150"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -188,8 +198,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "tWQ00n"
+                        "id": "tWQ00n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-186c0d00567d93fa"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -275,6 +290,27 @@
           }
         ],
         "id": "ILR_xC"
+      }
+    ]
+  },
+  "branches": {
+    "jump-186c0d00567d93fa": [
+      {
+        "player": "I'm fine, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0aa62d159e051150": [
+      {
+        "player": "Have you any armour for me, please?"
+      },
+      {
+        "npc": "You're not an Iron[man/woman]. This armour is only for them."
+      },
+      {
+        "type": "end"
       }
     ]
   }

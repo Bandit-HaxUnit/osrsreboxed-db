@@ -161,8 +161,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "BldZU-"
+                            "id": "BldZU-",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-a8ea9582181a3867"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -171,8 +176,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "jiQPFj"
+                            "id": "jiQPFj",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-d2b854fdc539944c"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -191,7 +201,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "zNOJ6e"
+                    "id": "zNOJ6e",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-135d29177681012b"
+                      }
+                    ]
                   }
                 ],
                 "id": "lpZ5HM"
@@ -209,7 +225,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "4ww2HV"
+                    "id": "4ww2HV",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-135d29177681012b"
+                      }
+                    ]
                   }
                 ],
                 "id": "cxAK5F"
@@ -366,8 +388,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ARcYi3"
+                        "id": "ARcYi3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0eea5ea1eddc9ef2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -376,8 +403,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ns38su"
+                        "id": "ns38su",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5f37500894d69cf4"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -386,8 +418,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "z0KdoD"
+                        "id": "z0KdoD",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fb70986973d56046"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -396,8 +433,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "QXtKwy"
+                        "id": "QXtKwy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0f0737af133331cf"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -714,6 +756,454 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-a8ea9582181a3867": [
+      {
+        "player": "Carry on."
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "cgYhKI"
+      }
+    ],
+    "jump-d2b854fdc539944c": [
+      {
+        "player": "What's that got to do with THREE?"
+      },
+      {
+        "npc": "Look, I'd got something for ONE, TWO and FOUR, and I like counting, okay? Don't interrupt my flow!"
+      },
+      {
+        "player": "..."
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "vw6g83"
+      }
+    ],
+    "jump-135d29177681012b": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "If you're a vampyre, how did you cross the Salve?",
+            "condition": "If the player has completed Priest in Peril:",
+            "steps": [
+              {
+                "player": "If you're a vampyre, how did you cross the Salve?"
+              },
+              {
+                "npc": "What do you mean? 'If' I am a vampyre? Of course I am a vampyre! See my pale complexion, my teeth, my outfit - how could anyone doubt I am a true vampyre?"
+              },
+              {
+                "npc": "I used to stalk the night drinking blood like vampyres do, and I am certainly not just a role-playing enthusiast in a costume! Never question that!"
+              },
+              {
+                "player": "Right."
+              },
+              {
+                "npc": "So may I check your account for you?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "e6djSi"
+              }
+            ],
+            "id": "feZf0u"
+          },
+          {
+            "text": "Check my account, Count Check!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ARcYi3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0eea5ea1eddc9ef2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you give me any advice?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ns38su",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5f37500894d69cf4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where can I learn more about security?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "z0KdoD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb70986973d56046"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll see you another time.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "QXtKwy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0f0737af133331cf"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0eea5ea1eddc9ef2": [
+      {
+        "player": "Check my account, Count Check!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's account has a Bank PIN and is attached to a Jagex Account:",
+        "steps": [
+          {
+            "npc": "You have a Jagex Account, and you have set a Bank PIN, so you pass my checks! As you've passed my check for the first time, I award you a prize."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "lamp",
+            "id": "7ZjkFt"
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "DnPNl4"
+          }
+        ],
+        "id": "5sFIt3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's account has a Bank PIN and is attached to a Jagex Account, but has already received the lamp:",
+        "steps": [
+          {
+            "npc": "You have a Jagex Account, and you have set a Bank PIN, so you pass my checks! As you've passed my check before, there's no prize now."
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "8767CH"
+          }
+        ],
+        "id": "t9qsoX"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's account has a Bank PIN, but is not attached to a Jagex Account:",
+        "steps": [
+          {
+            "npc": "You do not have a Jagex Account, so you fail my checks! You should upgrade before we meet again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "HsOZhj"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's account does not have a Bank PIN and is not attached to a Jagex Account:",
+        "steps": [
+          {
+            "npc": "You do not have a Jagex Account, nor a Bank PIN, so so you fail my checks! Please upgrade before we meet again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bjPnM0"
+      }
+    ],
+    "jump-5f37500894d69cf4": [
+      {
+        "player": "Can you give me any advice?"
+      },
+      {
+        "npc": "I can! Count with the Count as I count the steps to securing your account:"
+      },
+      {
+        "npc": "ONE... unique password!"
+      },
+      {
+        "npc": "Never use the same password for different accounts, or on different websites. If it got leaked, all of your accounts would become vulnerable at once!"
+      },
+      {
+        "npc": "TWO... step verification for your email account!"
+      },
+      {
+        "npc": "Good email providers let you set up two-step verification, maybe by generating security codes on a second device, or by sending codes to your phone. Make sure you've enabled this."
+      },
+      {
+        "type": "condition",
+        "text": "If the player's account is attached to a Jagex Account:",
+        "steps": [
+          {
+            "npc": "THREE... Um... Use a Jagex Account. I can see you already do this."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Carry on.",
+                "steps": [
+                  {
+                    "player": "Carry on."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "cgYhKI"
+                  }
+                ]
+              },
+              {
+                "text": "What's that got to do with THREE?",
+                "steps": [
+                  {
+                    "player": "What's that got to do with THREE?"
+                  },
+                  {
+                    "npc": "Look, I'd got something for ONE, TWO and FOUR, and I like counting, okay? Don't interrupt my flow!"
+                  },
+                  {
+                    "player": "..."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "vw6g83"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "cuyiDC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's account is not attached to a Jagex Account:",
+        "steps": [
+          {
+            "npc": "THREE... Um... Use a Jagex Account."
+          },
+          {
+            "npc": "Visit the RuneScape website and log in to update your Account settings."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Carry on.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "BldZU-",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-a8ea9582181a3867"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "What's that got to do with THREE?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "jiQPFj",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-d2b854fdc539944c"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ula2z3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has set up a bank PIN:",
+        "steps": [
+          {
+            "npc": "FOUR... digit Bank PIN! I can see you have set one."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "zNOJ6e",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-135d29177681012b"
+              }
+            ]
+          }
+        ],
+        "id": "lpZ5HM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not set up a bank PIN:",
+        "steps": [
+          {
+            "npc": "FOUR... digit Bank PIN!"
+          },
+          {
+            "npc": "Next time you visit a bank, talk to a banker and ask to check your PIN settings."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "4ww2HV",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-135d29177681012b"
+              }
+            ]
+          }
+        ],
+        "id": "cxAK5F"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is an Ultimate Ironman:",
+        "steps": [
+          {
+            "npc": "FOUR... digit Bank PIN! I can see you do not use banks, by the way."
+          },
+          {
+            "type": "unavailable",
+            "id": "g_8UFy"
+          }
+        ],
+        "id": "7M6q42"
+      },
+      {
+        "npc": "Muhahahahhaa! Such fun it is to count!"
+      },
+      {
+        "type": "action",
+        "text": "Lightning strikes the Count's square.",
+        "id": "scwB1y"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "FqN-Ou"
+      }
+    ],
+    "jump-fb70986973d56046": [
+      {
+        "player": "Where can I learn more about security?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not visited the Stronghold of Security:",
+        "steps": [
+          {
+            "npc": "The Stronghold of Security, in Barbarian Village. I see you have not visited it. Would you like to? I can send you straight there - but only once."
+          },
+          {
+            "type": "choice",
+            "prompt": "Teleport to the Stronghold of Security?",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player is teleported to the entrance of the Stronghold of Security.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "OkOwlH"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No",
+                "steps": [
+                  {
+                    "npc": "So may I check your account for you?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "BNxHWI"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "0rc7mi"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has visited the Stronghold of Security:",
+        "steps": [
+          {
+            "npc": "The Stronghold of Security, in Barbarian Village. There is much to learn there. But while you are here, may I check your account for you?"
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "Ywuc8B"
+          }
+        ],
+        "id": "R40Jh7"
+      }
+    ],
+    "jump-0f0737af133331cf": [
+      {
+        "player": "I'll see you another time."
+      },
+      {
+        "type": "end"
       }
     ]
   }

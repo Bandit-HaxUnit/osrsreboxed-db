@@ -131,7 +131,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "4GzeHk"
+              }
+            ]
           },
           {
             "text": "About the missing people...",
@@ -187,7 +193,13 @@
                     "type": "choice",
                     "options": [
                       {
-                        "text": "Let's see what you have."
+                        "text": "Let's see what you have.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "4GzeHk"
+                          }
+                        ]
                       },
                       {
                         "text": "No thanks."
@@ -217,7 +229,17 @@
             ]
           },
           {
-            "text": "Nothing for me, thanks."
+            "text": "Nothing for me, thanks.",
+            "steps": [
+              {
+                "player": "Nothing for me, thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Bartender (Auburn Pub)",
+                "text": "As you wish."
+              }
+            ]
           }
         ]
       }
@@ -298,7 +320,13 @@
         "prompt": "Select an option:",
         "options": [
           {
-            "text": "What do you have for sale?"
+            "text": "What do you have for sale?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "GBAvfg"
+              }
+            ]
           },
           {
             "text": "About the missing people...",
@@ -386,7 +414,13 @@
             ]
           },
           {
-            "text": "Nothing, thanks?"
+            "text": "Nothing, thanks?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "xy5Gw-"
+              }
+            ]
           }
         ]
       }
@@ -402,14 +436,26 @@
         "prompt": "Select an option:",
         "options": [
           {
-            "text": "What do you have for sale?"
+            "text": "What do you have for sale?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "GBAvfg"
+              }
+            ]
           },
           {
             "text": "About the missing people...",
             "steps": []
           },
           {
-            "text": "Nothing, thanks?"
+            "text": "Nothing, thanks?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "xy5Gw-"
+              }
+            ]
           }
         ]
       }
@@ -597,8 +643,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "C9cG7N"
+        "id": "C9cG7N",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-23a96be8f77e1f43"
+          }
+        ]
       }
     ],
     "parents-anguish-talking-to-aemilia-or-francis-talking-to-them-again-after-talking-to-ictus": [
@@ -1586,6 +1637,141 @@
       {
         "type": "unavailable",
         "id": "qE4Wds"
+      }
+    ]
+  },
+  "branches": {
+    "jump-23a96be8f77e1f43": [
+      {
+        "type": "condition",
+        "text": "The player has not talked to Ictus:",
+        "steps": [
+          {
+            "player": "Er..."
+          },
+          {
+            "type": "line",
+            "speaker": "Aemilia",
+            "text": "Exactly! Now, go!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "crIEJs"
+      },
+      {
+        "type": "condition",
+        "text": "The player has talked to Ictus:",
+        "steps": [
+          {
+            "player": "Well, I know most of the town has given up on finding them. Most are just dismissing the disappearances, assuming them to have run away or had an accident."
+          },
+          {
+            "player": "However, there are some who think something more sinister is going on. If that's the case, I intend to find out. I'm [player name] and I promise I\"m here to help."
+          },
+          {
+            "type": "line",
+            "speaker": "Francis",
+            "text": "You... You'll find our sons?"
+          },
+          {
+            "player": "I'm going to try."
+          },
+          {
+            "type": "line",
+            "speaker": "Aemilia",
+            "text": "Well... I suppose you do at least seem to somewhat care."
+          },
+          {
+            "type": "line",
+            "speaker": "Francis",
+            "text": "What do you need from us, [player name]?"
+          },
+          {
+            "player": "First up, what can you tell me about the disappearnce of your sons?"
+          },
+          {
+            "type": "line",
+            "speaker": "Aemilia",
+            "text": "That's the thing... They just seemed to vanish! One moment they were playing upstairs, but the next they'd gone."
+          },
+          {
+            "player": "And you didn't notice anything unusual at all?"
+          },
+          {
+            "type": "line",
+            "speaker": "Francis",
+            "text": "Nothing really. The only thing that was a bit odd was the ents..."
+          },
+          {
+            "player": "The ents?"
+          },
+          {
+            "type": "line",
+            "speaker": "Francis",
+            "text": "Yes. Their normal path takes them right past our house, but the night the boys disappeared, they took a different route. It's like they were avoiding something..."
+          },
+          {
+            "player": "I see. Can I look around the house a little and see if there's any clues as to where your sons went?"
+          },
+          {
+            "type": "line",
+            "speaker": "Aemilia",
+            "text": "If you think it will help, then of course."
+          },
+          {
+            "player": "Thank you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "dfjxEe"
+      }
+    ],
+    "4GzeHk": [
+      {
+        "type": "line",
+        "speaker": "Bartender (Auburn Pub)",
+        "text": "Welcome to the Auburn Pub. Are you here to buy a drink?"
+      },
+      {
+        "player": "Let's see what you have."
+      },
+      {
+        "type": "action",
+        "text": "Auburn Pub shop opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Auburn Pub shop",
+        "id": "HYLNzN"
+      }
+    ],
+    "GBAvfg": [
+      {
+        "player": "What do you have for sale?"
+      },
+      {
+        "type": "line",
+        "speaker": "Shopkeeper (Auburnvale)",
+        "text": "Take a look."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Auburnvale General Store",
+        "id": "MCMi9N"
+      }
+    ],
+    "xy5Gw-": [
+      {
+        "player": "Nothing, thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Shopkeeper (Auburnvale)",
+        "text": "Very well."
       }
     ]
   }

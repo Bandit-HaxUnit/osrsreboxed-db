@@ -72,7 +72,53 @@
               },
               {
                 "type": "choice",
-                "options": []
+                "options": [
+                  {
+                    "text": "Who are you?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "54RXkG",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-74765d378cb9a02d"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So what are master clue scrolls anyway?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "d1SemM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-daf67bc46076c839"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Dq60hG",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ba2455a08344ffc7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -96,7 +142,48 @@
               },
               {
                 "type": "choice",
-                "options": []
+                "options": [
+                  {
+                    "text": "Who are you?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "o6_8cu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-74765d378cb9a02d"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So what are master clue scrolls anyway?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "u5ayX7"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "zF8iwH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ba2455a08344ffc7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -149,8 +236,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "nRQorG"
+                        "id": "nRQorG",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2026d83009235ca7"
+                          }
+                        ]
                       }
                     ],
                     "id": "beFYCM"
@@ -166,8 +258,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "xLtB2A"
+                        "id": "xLtB2A",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-11f856a0c8576489"
+                          }
+                        ]
                       }
                     ],
                     "id": "fQQqpN"
@@ -183,8 +280,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "f8Nz2o"
+                        "id": "f8Nz2o",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b1a09d27d19e318c"
+                          }
+                        ]
                       }
                     ],
                     "id": "iuKAHW"
@@ -212,8 +314,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "qr9a8A"
+                                    "id": "qr9a8A",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-74765d378cb9a02d"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -222,8 +329,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "8uJbfg"
+                                    "id": "8uJbfg",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-02333f7637fd95dd"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -232,8 +344,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "CcsL80"
+                                    "id": "CcsL80",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-daf67bc46076c839"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -242,8 +359,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "ESe5K2"
+                                    "id": "ESe5K2",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-c199b1767b2442b5"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -519,6 +641,310 @@
             "steps": [
               {
                 "npc": "Come again if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-74765d378cb9a02d": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I am Watson, the master of clue scrolls. I have lived a long life here in Kourend. The lands are beautiful here."
+      },
+      {
+        "player": "You're the master are you?"
+      },
+      {
+        "npc": "Ha! It is not so much due to my ego, but the fact that I give out master tier clue scrolls."
+      },
+      {
+        "player": "Interesting. Do you get many treasure hunters here in Kourend?"
+      },
+      {
+        "npc": "I have seen many, but few are good enough. I only give out my clue scrolls to the very best."
+      },
+      {
+        "player": "Ah! I am just the adventurer you are looking for. If you hand me a clue, I'll be on my way."
+      },
+      {
+        "npc": "Not so fast [player name]. I require payment. You must bring me a clue scroll of all lower tiers."
+      },
+      {
+        "npc": "I will remember which ones you have given me though. I expect you'll find that useful."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "q-_AZJ"
+      }
+    ],
+    "jump-daf67bc46076c839": [
+      {
+        "player": "So what are master clue scrolls anyway?"
+      },
+      {
+        "npc": "Master clue scrolls are the most challenging of all clue scrolls. They will test you in ways you have not been tested before."
+      },
+      {
+        "npc": "You will be led all over Gielinor with your strengths, your weaknesses, your mental strength and your reactions all scrutinised."
+      },
+      {
+        "player": "I assume there is treasure to be found?"
+      },
+      {
+        "npc": "That is for you to find out, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "o6_8cu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-74765d378cb9a02d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "So what are master clue scrolls anyway?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "u5ayX7"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "zF8iwH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ba2455a08344ffc7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ba2455a08344ffc7": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2026d83009235ca7": [
+      {
+        "npc": "Thank you very much."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-11f856a0c8576489": [
+      {
+        "type": "jump",
+        "id": "nRQorG",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-2026d83009235ca7"
+          }
+        ]
+      }
+    ],
+    "jump-b1a09d27d19e318c": [
+      {
+        "type": "jump",
+        "id": "xLtB2A",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-11f856a0c8576489"
+          }
+        ]
+      }
+    ],
+    "jump-02333f7637fd95dd": [
+      {
+        "player": "Have you heard of Sherlock?"
+      },
+      {
+        "npc": "Never heard of the bloke. I haven't a clue who he is."
+      },
+      {
+        "player": "He also claims to be the master of all clue scrolls."
+      },
+      {
+        "npc": "As I said, I've never heard of him. If he was such a big deal, I would have heard of him..."
+      },
+      {
+        "player": "Something tells me you're lying! I bet you're just his underling aren't you."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "54RXkG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-74765d378cb9a02d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "So what are master clue scrolls anyway?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "d1SemM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-daf67bc46076c839"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Dq60hG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ba2455a08344ffc7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c199b1767b2442b5": [
+      {
+        "player": "What is that noticeboard for?"
+      },
+      {
+        "type": "unavailable",
+        "id": "klOh6k"
+      },
+      {
+        "player": "Oh that seems really useful! It's a bit of a shame I need to come here everytime to check though."
+      },
+      {
+        "type": "unavailable",
+        "id": "4mBWch"
+      },
+      {
+        "player": "I suppose you're right, I don't suppose you have a spare one I could buy off you to save me the hassle?"
+      },
+      {
+        "type": "unavailable",
+        "id": "laQtIG"
+      },
+      {
+        "type": "choice",
+        "prompt": "Pay Watson 500 coins for a S.T.A.S.H blueprint?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough coins:",
+                "steps": [
+                  {
+                    "type": "unavailable",
+                    "id": "NZwU7r"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZYxYvz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full",
+                "steps": [
+                  {
+                    "type": "unavailable",
+                    "id": "hsQScs"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9f2NqD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough coins and an empty inventory slot:",
+                "steps": [
+                  {
+                    "type": "unavailable",
+                    "id": "zwGig9"
+                  },
+                  {
+                    "type": "action",
+                    "text": "(Watson takes 500 coins.)",
+                    "id": "AoHenW"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "S.t.a.s.h blueprint",
+                    "id": "pek_VJ"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "09HPXE"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "type": "unavailable",
+                "id": "ZM61lG"
+              },
+              {
+                "type": "end"
               }
             ]
           }

@@ -222,7 +222,10 @@
                       {
                         "type": "action",
                         "text": "Cutscene ends.",
-                        "id": "u1P_mp"
+                        "id": "u1P_mp",
+                        "action": "quest_start",
+                        "hook": "quest:demon-slayer:start",
+                        "quest": "Demon Slayer"
                       },
                       {
                         "type": "line",
@@ -242,8 +245,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "-JTRFB"
+                                "id": "-JTRFB",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-8d9968112da88754"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -252,8 +260,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "e7phLe"
+                                "id": "e7phLe",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a98c3f90d203bee2"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -326,9 +339,7 @@
                                 "type": "action",
                                 "text": "Demon Slayer is started.",
                                 "id": "KQNNzA",
-                                "action": "quest_start",
                                 "quest": "Demon Slayer",
-                                "hook": "quest:demon-slayer:start",
                                 "action_source": "text"
                               }
                             ]
@@ -354,7 +365,8 @@
               }
             ]
           }
-        ]
+        ],
+        "prompt": "Start the Demon Slayer quest?"
       }
     ],
     "starting-demon-slayer-aris-after-starting-the-quest": [
@@ -379,8 +391,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "N_q-8i"
+                "id": "N_q-8i",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2c034504739676db"
+                  }
+                ]
               }
             ]
           },
@@ -389,8 +406,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "otKzN0"
+                "id": "otKzN0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-54e0cb567b89d81c"
+                  }
+                ]
               }
             ]
           },
@@ -624,8 +646,13 @@
                                                             "steps": [
                                                               {
                                                                 "type": "jump",
-                                                                "reference": "below",
-                                                                "id": "L9HSLq"
+                                                                "id": "L9HSLq",
+                                                                "steps": [
+                                                                  {
+                                                                    "type": "call",
+                                                                    "branch": "jump-6300f917161325dd"
+                                                                  }
+                                                                ]
                                                               }
                                                             ]
                                                           },
@@ -634,8 +661,13 @@
                                                             "steps": [
                                                               {
                                                                 "type": "jump",
-                                                                "reference": "below",
-                                                                "id": "wpJ67n"
+                                                                "id": "wpJ67n",
+                                                                "steps": [
+                                                                  {
+                                                                    "type": "call",
+                                                                    "branch": "jump-bb6acfbf5808b909"
+                                                                  }
+                                                                ]
                                                               }
                                                             ]
                                                           },
@@ -661,8 +693,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "below",
-                                                        "id": "mHF7MF"
+                                                        "id": "mHF7MF",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-6300f917161325dd"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   },
@@ -671,8 +708,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "below",
-                                                        "id": "Q5LEZV"
+                                                        "id": "Q5LEZV",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-bb6acfbf5808b909"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   }
@@ -699,8 +741,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "above",
-                                                        "id": "wBD3g3"
+                                                        "id": "wBD3g3",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-ac2be9a0a742c5d6"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   },
@@ -709,8 +756,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "below",
-                                                        "id": "6PNWQl"
+                                                        "id": "6PNWQl",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-bb6acfbf5808b909"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   },
@@ -719,8 +771,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "above",
-                                                        "id": "HixPrl"
+                                                        "id": "HixPrl",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-5a3cab2169346487"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   }
@@ -752,8 +809,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "above",
-                                                        "id": "ScuqV3"
+                                                        "id": "ScuqV3",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-ac2be9a0a742c5d6"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   },
@@ -762,8 +824,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "above",
-                                                        "id": "qrScJ3"
+                                                        "id": "qrScJ3",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-6300f917161325dd"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   },
@@ -772,8 +839,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "above",
-                                                        "id": "Oz1XHz"
+                                                        "id": "Oz1XHz",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-5a3cab2169346487"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   }
@@ -798,8 +870,13 @@
                                       },
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "B7xIsp"
+                                        "id": "B7xIsp",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-01618f72f09bd4b5"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -828,8 +905,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "EJYaTv"
+                                "id": "EJYaTv",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-645927beee7423dd"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -858,8 +940,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "RVR2HL"
+                        "id": "RVR2HL",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-da097ef8875601e7"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -912,8 +999,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "AcVtAR"
+                        "id": "AcVtAR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ac2be9a0a742c5d6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -922,8 +1014,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "5JvclF"
+                        "id": "5JvclF",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6300f917161325dd"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -932,8 +1029,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "HQpHgI"
+                        "id": "HQpHgI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb6acfbf5808b909"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1071,10 +1173,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "I am one of the palace guards."
+            "text": "I am one of the palace guards.",
+            "steps": [
+              {
+                "player": "I am one of the palace guards."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Rovin",
+                "text": "No, you're not! I know all the palace guards."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'm a new recruit.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UQK0Nx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I've had extensive plastic surgery.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "pUUa4j"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "What about the King?"
+            "text": "What about the King?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "vwuImT"
+              }
+            ]
           },
           {
             "text": "Yes I know, but this is important.",
@@ -1277,8 +1418,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "above",
-                                                        "id": "20A5Ro"
+                                                        "id": "20A5Ro",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-71ad2868a2c5b8e5"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   }
@@ -1303,10 +1449,22 @@
             ]
           },
           {
-            "text": "Erm I forgot."
+            "text": "Erm I forgot.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "h2oAO3"
+              }
+            ]
           },
           {
-            "text": "The castle has just received its ale delivery."
+            "text": "The castle has just received its ale delivery.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "3fZgZO"
+              }
+            ]
           }
         ]
       }
@@ -1321,10 +1479,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "I am one of the palace guards."
+            "text": "I am one of the palace guards.",
+            "steps": [
+              {
+                "player": "I am one of the palace guards."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Rovin",
+                "text": "No, you're not! I know all the palace guards."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'm a new recruit.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UQK0Nx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I've had extensive plastic surgery.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "pUUa4j"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "What about the King?"
+            "text": "What about the King?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "vwuImT"
+              }
+            ]
           },
           {
             "text": "Yes I know, but this is important.",
@@ -1384,10 +1581,22 @@
                     ]
                   },
                   {
-                    "text": "Erm I forgot."
+                    "text": "Erm I forgot.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "h2oAO3"
+                      }
+                    ]
                   },
                   {
-                    "text": "The castle has just received its ale delivery."
+                    "text": "The castle has just received its ale delivery.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "3fZgZO"
+                      }
+                    ]
                   }
                 ]
               }
@@ -1504,8 +1713,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "BVxqz_"
+                                        "id": "BVxqz_",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-0aec14cadda86e84"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -1518,8 +1732,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "2R4slM"
+                                "id": "2R4slM",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-0aec14cadda86e84"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1568,8 +1787,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "0PeLvp"
+                                        "id": "0PeLvp",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-33852a2e275f53fe"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1578,8 +1802,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "WjzTfG"
+                                        "id": "WjzTfG",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-0aec14cadda86e84"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -1639,8 +1868,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "above",
-                                                        "id": "-IUJa3"
+                                                        "id": "-IUJa3",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-33852a2e275f53fe"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   },
@@ -1649,8 +1883,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "below",
-                                                        "id": "EaM1C9"
+                                                        "id": "EaM1C9",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-0aec14cadda86e84"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   }
@@ -1663,8 +1902,13 @@
                                             "steps": [
                                               {
                                                 "type": "jump",
-                                                "reference": "below",
-                                                "id": "dug9_X"
+                                                "id": "dug9_X",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-0aec14cadda86e84"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           }
@@ -2042,8 +2286,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "93wl6X"
+                "id": "93wl6X",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2c034504739676db"
+                  }
+                ]
               }
             ]
           },
@@ -2093,7 +2342,7 @@
           {
             "type": "line",
             "speaker": "Sir Prysin",
-            "text": "Yes, I know, someone returned it to me. Take better care of it this time. {{^|With full inventory it drops to the ground.}}"
+            "text": "Yes, I know, someone returned it to me. Take better care of it this time."
           }
         ],
         "id": "VlRPCO"
@@ -2122,8 +2371,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4dA-to"
+                "id": "4dA-to",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2c034504739676db"
+                  }
+                ]
               }
             ]
           },
@@ -2284,6 +2538,1429 @@
     ]
   },
   "branches": {
+    "jump-8d9968112da88754": [
+      {
+        "player": "How am I meant to fight a demon who can destroy cities?!"
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "If you face Delrith while he is still weak from being summoned, and use the correct weapon, you will not find the task too arduous."
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "Do not fear. If you follow the path of the great hero Wally, then you are sure to defeat the demon."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "vFqkAX"
+      }
+    ],
+    "jump-a98c3f90d203bee2": [
+      {
+        "player": "Okay, where is he? I'll kill him for you!"
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "Ah, the overconfidence of the young!"
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "Delrith can't be harmed by ordinary weapons. You must face him using the same weapon that Wally used."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "oqI2yw"
+      }
+    ],
+    "jump-2c034504739676db": [
+      {
+        "player": "What is the magical incantation?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "Oh yes, let me think a second..."
+      },
+      {
+        "type": "action",
+        "text": "The following five words Aber, Gabindo, Purchai, Camerinthum, and Carlem",
+        "id": "iLkHgE"
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "Alright, I think I've got it now, it goes.... [word 1]... [word 2]... [word 3]... [word 4]... [word 5]. Have you got that?"
+      },
+      {
+        "player": "I think so, yes."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "u0UR-m"
+      }
+    ],
+    "jump-54e0cb567b89d81c": [
+      {
+        "player": "Where can I find Silverlight?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "Silverlight has been passed down through Wally's descendants. I believe it is currently in the care of one of the King's knights called Sir Prysin."
+      },
+      {
+        "type": "line",
+        "speaker": "Aris",
+        "text": "He shouldn't be too hard to find. He lives in the royal palace in this city. Tell him Aris sent you."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "9vVwDO"
+      }
+    ],
+    "jump-6300f917161325dd": [
+      {
+        "player": "Where can I find Captain Rovin?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Captain Rovin lives at the top of the guards' quarters in the north-west wing of this palace."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you give me your key?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "wBD3g3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ac2be9a0a742c5d6"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where does the wizard live?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "6PNWQl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb6acfbf5808b909"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I'd better go key hunting.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HixPrl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5a3cab2169346487"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-bb6acfbf5808b909": [
+      {
+        "player": "Where does the wizard live?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Wizard Traiborn?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "He is one of the wizards who lives in the tower on the little island just off the south coast. I believe his quarters are on the first floor of the tower."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you give me your key?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ScuqV3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ac2be9a0a742c5d6"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where can I find Captain Rovin?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "qrScJ3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6300f917161325dd"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I'd better go key hunting.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Oz1XHz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5a3cab2169346487"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ac2be9a0a742c5d6": [
+      {
+        "player": "Can you give me your key?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Um.... ah...."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Well there's a problem there as well."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "I managed to drop the key in the drain just outside the palace kitchen. It is just inside and I can't reach it."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So what does the drain lead to?",
+            "steps": [
+              {
+                "player": "So what does the drain connect to?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "It is the drain for the drainpipe running from the sink in the kitchen down to the palace sewers."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Where can I find Captain Rovin?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "L9HSLq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6300f917161325dd"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where does the wizard live?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "wpJ67n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb6acfbf5808b909"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well I'd better go key hunting.",
+                    "steps": [
+                      {
+                        "player": "Well I'd better go key hunting."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "Ok, goodbye."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where can I find Captain Rovin?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "mHF7MF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6300f917161325dd"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where does the wizard live?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Q5LEZV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb6acfbf5808b909"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5a3cab2169346487": [
+      {
+        "player": "Well I'd better go key hunting."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Ok, goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-01618f72f09bd4b5": [
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "One I gave to Rovin, the captain of the palace guard."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "I gave the other to the wizard Traiborn."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you give me your key?",
+            "steps": [
+              {
+                "player": "Can you give me your key?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "Um.... ah...."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "Well there's a problem there as well."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "I managed to drop the key in the drain just outside the palace kitchen. It is just inside and I can't reach it."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So what does the drain lead to?",
+                    "steps": [
+                      {
+                        "player": "So what does the drain connect to?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "It is the drain for the drainpipe running from the sink in the kitchen down to the palace sewers."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Where can I find Captain Rovin?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "L9HSLq",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6300f917161325dd"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where does the wizard live?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "wpJ67n",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-bb6acfbf5808b909"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well I'd better go key hunting.",
+                            "steps": [
+                              {
+                                "player": "Well I'd better go key hunting."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "Ok, goodbye."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where can I find Captain Rovin?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "mHF7MF",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6300f917161325dd"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where does the wizard live?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Q5LEZV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb6acfbf5808b909"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where can I find Captain Rovin?",
+            "steps": [
+              {
+                "player": "Where can I find Captain Rovin?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "Captain Rovin lives at the top of the guards' quarters in the north-west wing of this palace."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you give me your key?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "wBD3g3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ac2be9a0a742c5d6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where does the wizard live?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "6PNWQl",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb6acfbf5808b909"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well I'd better go key hunting.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HixPrl",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5a3cab2169346487"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where does the wizard live?",
+            "steps": [
+              {
+                "player": "Where does the wizard live?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "Wizard Traiborn?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "He is one of the wizards who lives in the tower on the little island just off the south coast. I believe his quarters are on the first floor of the tower."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you give me your key?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "ScuqV3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ac2be9a0a742c5d6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where can I find Captain Rovin?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "qrScJ3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6300f917161325dd"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well I'd better go key hunting.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Oz1XHz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5a3cab2169346487"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-645927beee7423dd": [
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Oh I do have it, but it is so powerful that the king made me put it in a special box which needs three different keys to open it. That way it won't fall into the wrong hands."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So give me the keys!",
+            "steps": [
+              {
+                "player": "So give me the keys!"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "Um, well, it's not so easy."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "I kept one of the keys. I gave the other two to other people for safe keeping."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "One I gave to Rovin, the captain of the palace guard."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "I gave the other to the wizard Traiborn."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you give me your key?",
+                    "steps": [
+                      {
+                        "player": "Can you give me your key?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "Um.... ah...."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "Well there's a problem there as well."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "I managed to drop the key in the drain just outside the palace kitchen. It is just inside and I can't reach it."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So what does the drain lead to?",
+                            "steps": [
+                              {
+                                "player": "So what does the drain connect to?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "It is the drain for the drainpipe running from the sink in the kitchen down to the palace sewers."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Where can I find Captain Rovin?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "L9HSLq",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-6300f917161325dd"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where does the wizard live?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "wpJ67n",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-bb6acfbf5808b909"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Well I'd better go key hunting.",
+                                    "steps": [
+                                      {
+                                        "player": "Well I'd better go key hunting."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Sir Prysin",
+                                        "text": "Ok, goodbye."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I find Captain Rovin?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "mHF7MF",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6300f917161325dd"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where does the wizard live?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "Q5LEZV",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-bb6acfbf5808b909"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where can I find Captain Rovin?",
+                    "steps": [
+                      {
+                        "player": "Where can I find Captain Rovin?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "Captain Rovin lives at the top of the guards' quarters in the north-west wing of this palace."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can you give me your key?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "wBD3g3",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-ac2be9a0a742c5d6"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where does the wizard live?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "6PNWQl",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-bb6acfbf5808b909"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well I'd better go key hunting.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "HixPrl",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5a3cab2169346487"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where does the wizard live?",
+                    "steps": [
+                      {
+                        "player": "Where does the wizard live?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "Wizard Traiborn?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "He is one of the wizards who lives in the tower on the little island just off the south coast. I believe his quarters are on the first floor of the tower."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can you give me your key?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "ScuqV3",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-ac2be9a0a742c5d6"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I find Captain Rovin?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "qrScJ3",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6300f917161325dd"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well I'd better go key hunting.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "Oz1XHz",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5a3cab2169346487"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "And why is this a problem?",
+            "steps": [
+              {
+                "player": "And why is this a problem?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "I kept one of the keys. I gave the other two to other people for safe keeping."
+              },
+              {
+                "type": "jump",
+                "id": "B7xIsp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-01618f72f09bd4b5"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-da097ef8875601e7": [
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "What do you need to find that for?"
+      },
+      {
+        "player": "I need it to fight Delrith."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Delrith? I thought the world was rid of him, thanks to my great-grandfather."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well, Aris' crystal ball seems to think otherwise.",
+            "steps": [
+              {
+                "player": "Well Aris' crystal ball seems to think otherwise."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "Well if the ball says so, I'd better help you."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "The problem is getting Silverlight."
+              },
+              {
+                "player": "You mean you don't have it?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "Oh I do have it, but it is so powerful that the king made me put it in a special box which needs three different keys to open it. That way it won't fall into the wrong hands."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So give me the keys!",
+                    "steps": [
+                      {
+                        "player": "So give me the keys!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "Um, well, it's not so easy."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "I kept one of the keys. I gave the other two to other people for safe keeping."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "One I gave to Rovin, the captain of the palace guard."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "I gave the other to the wizard Traiborn."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can you give me your key?",
+                            "steps": [
+                              {
+                                "player": "Can you give me your key?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "Um.... ah...."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "Well there's a problem there as well."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "I managed to drop the key in the drain just outside the palace kitchen. It is just inside and I can't reach it."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "So what does the drain lead to?",
+                                    "steps": [
+                                      {
+                                        "player": "So what does the drain connect to?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Sir Prysin",
+                                        "text": "It is the drain for the drainpipe running from the sink in the kitchen down to the palace sewers."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Where can I find Captain Rovin?",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "L9HSLq",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-6300f917161325dd"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Where does the wizard live?",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "wpJ67n",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-bb6acfbf5808b909"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Well I'd better go key hunting.",
+                                            "steps": [
+                                              {
+                                                "player": "Well I'd better go key hunting."
+                                              },
+                                              {
+                                                "type": "line",
+                                                "speaker": "Sir Prysin",
+                                                "text": "Ok, goodbye."
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where can I find Captain Rovin?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "mHF7MF",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-6300f917161325dd"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where does the wizard live?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "Q5LEZV",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-bb6acfbf5808b909"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I find Captain Rovin?",
+                            "steps": [
+                              {
+                                "player": "Where can I find Captain Rovin?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "Captain Rovin lives at the top of the guards' quarters in the north-west wing of this palace."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can you give me your key?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "wBD3g3",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-ac2be9a0a742c5d6"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where does the wizard live?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "6PNWQl",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-bb6acfbf5808b909"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Well I'd better go key hunting.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "HixPrl",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-5a3cab2169346487"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where does the wizard live?",
+                            "steps": [
+                              {
+                                "player": "Where does the wizard live?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "Wizard Traiborn?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Prysin",
+                                "text": "He is one of the wizards who lives in the tower on the little island just off the south coast. I believe his quarters are on the first floor of the tower."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can you give me your key?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "ScuqV3",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-ac2be9a0a742c5d6"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where can I find Captain Rovin?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "qrScJ3",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-6300f917161325dd"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Well I'd better go key hunting.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "Oz1XHz",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-5a3cab2169346487"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "And why is this a problem?",
+                    "steps": [
+                      {
+                        "player": "And why is this a problem?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sir Prysin",
+                        "text": "I kept one of the keys. I gave the other two to other people for safe keeping."
+                      },
+                      {
+                        "type": "jump",
+                        "id": "B7xIsp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-01618f72f09bd4b5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "He's back and unfortunately I've got to deal with him.",
+            "steps": [
+              {
+                "player": "He's back and unfortunately I've got to deal with him."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "You don't look up to much. I suppose Silverlight may be good enough to carry you through though."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Prysin",
+                "text": "The problem is getting Silverlight."
+              },
+              {
+                "player": "You mean you don't have it?"
+              },
+              {
+                "type": "jump",
+                "id": "EJYaTv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-645927beee7423dd"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-71ad2868a2c5b8e5": [
+      {
+        "player": "Otherwise the demon will destroy the city!"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "You can't fool me! How do I know you haven't just made that story up to get my key?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "taAQkV"
+      }
+    ],
+    "jump-0aec14cadda86e84": [
+      {
+        "player": "Well, have you got any keys knocking around?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "Now you come to mention it, yes I do have a key. It's in my special closet of valuable stuff. Now how do I get into that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "I sealed it using one of my magic rituals. So it would make sense that another ritual would open it again."
+      },
+      {
+        "player": "So do you know what ritual to use?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "Let me think a second."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "Yes a simple drazier style ritual should suffice. Hmm, main problem with that is I'll need 25 sets of bones. Now where am I going to get hold of something like that?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hmm, that's too bad. I really need that key.",
+            "steps": [
+              {
+                "player": "Hmm, that's too bad. I really need that key."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Traiborn",
+                "text": "Ah well, sorry I couldn't be any more help."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I'll get the bones for you.",
+            "steps": [
+              {
+                "player": "I'll help get the bones for you."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Traiborn",
+                "text": "Ooh that would be very good of you."
+              },
+              {
+                "player": "Okay, I'll speak to you when I've got some bones."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-33852a2e275f53fe": [
+      {
+        "player": "Err I'd better be off really."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "Oh ok, have a good time, and watch out for sheep! They're more cunning than they look."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "HrjKZI": [
       {
         "player": "Well I'd better press on with it."
@@ -2292,6 +3969,82 @@
         "type": "line",
         "speaker": "Aris",
         "text": "See you anon."
+      }
+    ],
+    "UQK0Nx": [
+      {
+        "player": "I'm a new recruit."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "I interview all the new recruits. I'd know if you were one of them."
+      },
+      {
+        "player": "That blows that story out of the water then."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "Get out of my sight."
+      }
+    ],
+    "pUUa4j": [
+      {
+        "player": "I've had extensive plastic surgery."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "What sort of surgery is that? I've never heard of it. Besides, you look reasonably healthy."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "Why is this relevant anyway? You still shouldn't be here."
+      }
+    ],
+    "vwuImT": [
+      {
+        "player": "What about the King? Surely you'd let him up here."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "Well, yes, I suppose we'd let him up. He doesn't generally want to come up here, but if he did want to, he could."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "Anyway, you're not the King either. So get out of my sight."
+      }
+    ],
+    "h2oAO3": [
+      {
+        "player": "Erm I forgot."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "Well it can't be that important then."
+      },
+      {
+        "player": "How do you know?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "Just go away."
+      }
+    ],
+    "3fZgZO": [
+      {
+        "player": "The castle has just received its ale delivery."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Rovin",
+        "text": "Now that is important. However I'm the wrong person to speak to about it. Go talk to the kitchen staff."
       }
     ]
   }

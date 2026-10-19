@@ -92,8 +92,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "SibOy9"
+                        "id": "SibOy9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d1be1912e486f73a"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -157,6 +162,16 @@
           }
         ],
         "id": "WBf6El"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d1be1912e486f73a": [
+      {
+        "player": "I'm good, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

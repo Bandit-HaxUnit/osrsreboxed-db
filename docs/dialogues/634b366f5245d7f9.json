@@ -306,8 +306,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "YljOJT"
+                                        "id": "YljOJT",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-327575ea9f3c30e7"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -316,8 +321,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "lX8YeX"
+                                        "id": "lX8YeX",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-99720f0662dca372"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -326,8 +336,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "T8QJeM"
+                                        "id": "T8QJeM",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-16359160912a81dc"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -847,8 +862,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "tSYYct"
+                    "id": "tSYYct",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-327575ea9f3c30e7"
+                      }
+                    ]
                   }
                 ]
               },
@@ -857,8 +877,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "PDdHC8"
+                    "id": "PDdHC8",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-99720f0662dca372"
+                      }
+                    ]
                   }
                 ]
               },
@@ -867,8 +892,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "m3bp73"
+                    "id": "m3bp73",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-16359160912a81dc"
+                      }
+                    ]
                   }
                 ]
               },
@@ -899,6 +929,93 @@
       {
         "type": "unavailable",
         "id": "kMmyeA"
+      }
+    ]
+  },
+  "branches": {
+    "jump-327575ea9f3c30e7": [
+      {
+        "player": "Where can I find these beings?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "They can all be found in the Wilderness. The enchanted symbol can track their unique magical energies, leading you to their exact locations."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "Be warned though, the symbol will take a blood sacrifice every time it's used."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "VGocEe"
+      }
+    ],
+    "jump-99720f0662dca372": [
+      {
+        "player": "Any advice on fighting the beings?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "They can't be harmed by normal magic, melee or ranged attacks, you will need to use the god combat spell corresponding to the creature you are fighting."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "iRPfrU"
+      }
+    ],
+    "jump-16359160912a81dc": [
+      {
+        "player": "Tell me more about these beings."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "One is a justiciar. According to legend, the justiciars were the elite of Saradomin's forces. Some worked alone, operating as assassins behind enemy lines. Others led entire armies in Saradomin's name."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "I couldn't tell you why this one wanders the Wilderness, but I suspect he has good reason."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "The second is a Demon of Zamorak. From what I can tell, he is completely mad. He roams the Wilderness, killing all who he comes across without mercy. Even his own kind do not escape his fury."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "He's known to battle the justiciar quite regularly, perhaps they are old enemies."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "The final being is a Guthixian Ent. Like most followers of Guthix, he will avoid combat if possible. Make no mistake though, he is deadly when threatened."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "He seems to take great interest in the other two creatures. Maybe he is trying to keep a balance between them."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "All three of them give off a unique magical energy, one unlike any I have ever felt before. The fact that the three of them are so different, yet possess powers so similar, is very odd indeed."
+      },
+      {
+        "type": "line",
+        "speaker": "Kolodion",
+        "text": "I'd be very interested in learning more about the source of their power."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "1Uee_Y"
       }
     ]
   }

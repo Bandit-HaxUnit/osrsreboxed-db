@@ -49,8 +49,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "04ZWtI"
+                                        "id": "04ZWtI",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-b9b189bd7e60a059"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -131,8 +136,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "eTHlU7"
+                                        "id": "eTHlU7",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-6cef8e66bd0bdd23"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -141,8 +151,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "HJx7oz"
+                                        "id": "HJx7oz",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-58e40d69c51e897f"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -151,8 +166,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "Xs61cn"
+                                        "id": "Xs61cn",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-f9ce92d4cb0a9667"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -181,8 +201,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "h50tJ6"
+                                "id": "h50tJ6",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-b9b189bd7e60a059"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -215,8 +240,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "6TEyhO"
+                                "id": "6TEyhO",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e7912655d8ac6687"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -299,8 +329,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "N8gPHa"
+                                "id": "N8gPHa",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6cef8e66bd0bdd23"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -309,8 +344,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "0RLwEE"
+                                "id": "0RLwEE",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-58e40d69c51e897f"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -319,8 +359,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "q2jMhT"
+                                "id": "q2jMhT",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f9ce92d4cb0a9667"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -377,6 +422,365 @@
       },
       {
         "player": "You know.... I think I'll keep that to myself."
+      }
+    ]
+  },
+  "branches": {
+    "jump-b9b189bd7e60a059": [
+      {
+        "player": "Please tell me?"
+      },
+      {
+        "npc": "No."
+      },
+      {
+        "player": "Please?"
+      },
+      {
+        "npc": "No!"
+      },
+      {
+        "player": "PLEEEEEEEEEEEEEEEEEEEEEASE?"
+      },
+      {
+        "npc": "NO!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6cef8e66bd0bdd23": [
+      {
+        "player": "Who's Zanaris?"
+      },
+      {
+        "npc": "Ahahahaha! Zanaris isn't a person! It's a magical hidden city filled with treasures and rich.. uh, nothing. It's nothing."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "If it's hidden how are you planning to find it?",
+            "steps": [
+              {
+                "player": "If it's hidden how are you planning to find it?"
+              },
+              {
+                "npc": "Well, we don't want to tell anyone else about that, because we don't want anyone else sharing in all that glory and treasure."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Please tell me.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "04ZWtI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b9b189bd7e60a059"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Looks like you don't know either.",
+                    "steps": [
+                      {
+                        "player": "Well, it looks to me like YOU don't know EITHER seeing as you're all just sat around here."
+                      },
+                      {
+                        "npc": "Of course we know! We just haven't found which tree the stupid leprechaun's hiding in yet!"
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Start the Lost City quest?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "player": "Leprechaun?"
+                              },
+                              {
+                                "npc": "GAH! I didn't mean to tell you that! Look, just forget I said anything okay?"
+                              },
+                              {
+                                "player": "So a leprechaun knows where Zanaris is eh?"
+                              },
+                              {
+                                "npc": "Ye.. uh, no. No, not at all. And even if he did - which he doesn't - he DEFINITELY ISN'T hiding in some tree around here. Nope, definitely not. Honestly."
+                              },
+                              {
+                                "player": "Thanks for the help!"
+                              },
+                              {
+                                "npc": "Help? What help? I didn't help! Please don't say I did, I'll get in trouble!"
+                              },
+                              {
+                                "player": "So let me get this straight: I need to search the trees around here for a leprechaun; and then when I find him, he will tell me where this 'Zanaris' is?"
+                              },
+                              {
+                                "npc": "What? How did you know that? Uh... I mean, no, no you're very wrong. Very wrong, and not right at all, and I definitely didn't tell you about that at all."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "hook": "quest:lost-city:start",
+                            "quest": "Lost City"
+                          },
+                          {
+                            "text": "No",
+                            "steps": [
+                              {
+                                "player": "Right... Well good luck with it."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "There's no such thing.",
+            "steps": [
+              {
+                "player": "There's no such thing!"
+              },
+              {
+                "npc": "When we've found Zanaris you'll... GAH! I mean, we're not here for any particular reason at all."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Who's Zanaris?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "eTHlU7",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6cef8e66bd0bdd23"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What's Zanaris?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HJx7oz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-58e40d69c51e897f"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What makes you think it's out here?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Xs61cn",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f9ce92d4cb0a9667"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-58e40d69c51e897f": [
+      {
+        "player": "What's Zanaris?"
+      },
+      {
+        "npc": "I don't think we want other people competing with us to find it. Forget I said anything."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Please tell me.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "h50tJ6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b9b189bd7e60a059"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Oh well. Never mind.",
+            "steps": [
+              {
+                "player": "Oh well. Never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f9ce92d4cb0a9667": [
+      {
+        "player": "What makes you think it's out here?"
+      },
+      {
+        "npc": "Don't you know of the legends that tell of the magical city, hidden in the swam... Uh, no, you're right, we're wasting our time here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "If it's hidden how are you planning to find it?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "6TEyhO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e7912655d8ac6687"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "There's no such thing!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "3Y6tL1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e7912655d8ac6687": [
+      {
+        "player": "If it's hidden how are you planning to find it?"
+      },
+      {
+        "npc": "Well, we don't want to tell anyone else about that, because we don't want anyone else sharing in all that glory and treasure."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Please tell me.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "04ZWtI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b9b189bd7e60a059"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Looks like you don't know either.",
+            "steps": [
+              {
+                "player": "Well, it looks to me like YOU don't know EITHER seeing as you're all just sat around here."
+              },
+              {
+                "npc": "Of course we know! We just haven't found which tree the stupid leprechaun's hiding in yet!"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Lost City quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Leprechaun?"
+                      },
+                      {
+                        "npc": "GAH! I didn't mean to tell you that! Look, just forget I said anything okay?"
+                      },
+                      {
+                        "player": "So a leprechaun knows where Zanaris is eh?"
+                      },
+                      {
+                        "npc": "Ye.. uh, no. No, not at all. And even if he did - which he doesn't - he DEFINITELY ISN'T hiding in some tree around here. Nope, definitely not. Honestly."
+                      },
+                      {
+                        "player": "Thanks for the help!"
+                      },
+                      {
+                        "npc": "Help? What help? I didn't help! Please don't say I did, I'll get in trouble!"
+                      },
+                      {
+                        "player": "So let me get this straight: I need to search the trees around here for a leprechaun; and then when I find him, he will tell me where this 'Zanaris' is?"
+                      },
+                      {
+                        "npc": "What? How did you know that? Uh... I mean, no, no you're very wrong. Very wrong, and not right at all, and I definitely didn't tell you about that at all."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "hook": "quest:lost-city:start",
+                    "quest": "Lost City"
+                  },
+                  {
+                    "text": "No",
+                    "steps": [
+                      {
+                        "player": "Right... Well good luck with it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

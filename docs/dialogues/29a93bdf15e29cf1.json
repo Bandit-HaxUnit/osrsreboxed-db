@@ -206,8 +206,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "9F4Phz"
+                        "id": "9F4Phz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9ce378b0faa34711"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -231,8 +236,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "G-4rVp"
+                "id": "G-4rVp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b03ebe9ee5e06a3f"
+                  }
+                ]
               }
             ],
             "id": "fI2PkS"
@@ -298,6 +308,64 @@
     ]
   },
   "branches": {
+    "jump-9ce378b0faa34711": [
+      {
+        "player": "Actually, I don't need to speak to you."
+      },
+      {
+        "npc": "Well, we all make mistakes sometimes."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b03ebe9ee5e06a3f": [
+      {
+        "player": "Hey there, can you tell me something about this Sanfew Serum, like how do I make it, and what does it do?"
+      },
+      {
+        "npc": "Certainly. It was after all, my creation, and mine alone. If anyone should know how to make it, it should be me!"
+      },
+      {
+        "player": "Can't fault that logic!"
+      },
+      {
+        "npc": "Ok, essentially this potion is a mixture of a cure poison, cure disease and restore stats all rolled into one! Very handy for the adventurers with an eye on conserving inventory space."
+      },
+      {
+        "player": "Ok, I'm sold... How do you make it?"
+      },
+      {
+        "npc": "Well, it's very easy really. You take a standard super stat restore potion. Add some ground unicorn horn. Then, add some snake weed from the island of Karamja. Finally, add some nail beast nails. You can"
+      },
+      {
+        "npc": "only get these from the area of Morytania, specifically, if you go deep in the Mort Myre swamp."
+      },
+      {
+        "player": "How do you mean, deep into the Mort Myre swamp?"
+      },
+      {
+        "npc": "Well, most adventurers avoid the deep Mort Myre swamp, whereas the Paterdomus trek and the Burgh de Rott trek take you through the most interesting areas. These area's often allow the quickest, but potentially"
+      },
+      {
+        "npc": "more dangerous routes through Mort Myre. This is where you're likely to encounter a Nail beast."
+      },
+      {
+        "player": "Are they very dangerous?"
+      },
+      {
+        "npc": "They can be pretty dangerous. They'll defend for a long time, then attack suddenly and seemingly without warning, landing three viscious attacks at once. This can be pretty lethal. However, the nail beasts themselves"
+      },
+      {
+        "npc": "are curiously wounded from the Sanfew Serum itself...very bizzare, that a potion made from their claws should have such a pronounced effect on them."
+      },
+      {
+        "player": "Ok, that's very helpful. Many thanks for your assistance."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "pgW7Vi": [
       {
         "player": "Actually, I don't need to speak to you."

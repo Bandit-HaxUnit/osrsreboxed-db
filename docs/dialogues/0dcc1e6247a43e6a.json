@@ -1,4 +1,343 @@
 {
+  "branches": {
+    "jump-95955924d033d25b": [
+      {
+        "player": "What happened to Xeric?"
+      },
+      {
+        "npc": "During the 47th decade, after ten decades of oppression, the people revolted against Xeric and his army of lizardmen."
+      },
+      {
+        "player": "Why did the people suffer for so long?"
+      },
+      {
+        "npc": "The events were triggered through the courage of one man, Byrne. He was not a man of particular stature of nobility, though he did proceed to become king."
+      },
+      {
+        "player": "What happened?"
+      },
+      {
+        "npc": "'Twas the 312th day of decade 47. Byrne, a farmer by trade, is said to have witnessed a lizardman guard murder a child whilst working his farm."
+      },
+      {
+        "npc": "Outraged at what he had just seen, Byrne grabbed his pitchfork and sprinted towards the guard."
+      },
+      {
+        "npc": "Blinded by fury, Byrne attacked the guard, slaughtering the lizardman in plain sight of all around."
+      },
+      {
+        "npc": "Legend has it Byrne then gave a galvanizing speech, standing over the butchered guard with his bloodied pitchfork held aloft in the air, urging the people to fight back."
+      },
+      {
+        "player": "Do you know what he said?"
+      },
+      {
+        "npc": "Sadly no. While we have many witness accounts, they all differ, so we can not verify it at all."
+      },
+      {
+        "player": "Ah, so what happened next?"
+      },
+      {
+        "npc": "Whatever Byrne said, the people responded. Together, the citizens of Kourend revolted, grabbing whatever they could use as a weapon. They fought the lizardmen."
+      },
+      {
+        "npc": "The lizardmen, while strong and powerful, were simply outnumbered. In a matter of days, they had been driven back into the Kebos Lowlands."
+      },
+      {
+        "player": "So what happened to Xeric?"
+      },
+      {
+        "npc": "During the battle, the temple surrounding the Dark Altar was destroyed, weakening Xeric's power. We believe he fled to Quidamortem."
+      },
+      {
+        "npc": "Some say Xeric was actually killed during the revolt, but we have no record of his remains being discovered."
+      },
+      {
+        "player": "So no one knows what really happened to him?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Tale of the Righteous:",
+        "steps": [
+          {
+            "npc": "Xeric was incredibly powerful but we can reasonably assume that he soon perished. Without the power of the Dark Altar, Xeric would have become mortal."
+          },
+          {
+            "player": "Good riddance by the sounds of it."
+          },
+          {
+            "npc": "Indeed. Is there anything else I can help you with?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "What happened to the lizardmen after Xeric's reign?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "Fa6Lyb",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-48fb11e25d361c01"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "How did Xeric have so much power?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "tahElO",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-e1d4afc56e3e68e7"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "XQUkPO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Tale of the Righteous:",
+        "steps": [
+          {
+            "npc": "Xeric was incredibly powerful, but without the Dark Altar, he would have soon become mortal and perished."
+          },
+          {
+            "npc": "However, recent discoveries suggest that he may have found a way to amplify the power of the altar. This may have allowed him to live far longer than previously believed."
+          },
+          {
+            "player": "Hmmm, interesting."
+          },
+          {
+            "npc": "Is there anything else I can help you with?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "What happened to the lizardmen after Xeric's reign?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "yTq86T",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-48fb11e25d361c01"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "How did Xeric have so much power?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "YWF7SV",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-e1d4afc56e3e68e7"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "1DZQlC"
+      }
+    ],
+    "jump-9926bbd14086e918": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-48fb11e25d361c01": [
+      {
+        "player": "What happened to the lizardmen after Xeric's reign?"
+      },
+      {
+        "npc": "They remain loyal to Xeric. Even to this day they continue to attack the kingdom, as you may have seen."
+      },
+      {
+        "npc": "Fortunately, the Shayzien Army keeps them under control."
+      },
+      {
+        "player": "Why do they keep fighting? Surely after a thousand years they must know Xeric is gone?"
+      },
+      {
+        "npc": "Without examining their minds, we will never know for sure. However, we assume Xeric genetically altered them to enforce that their duty is to serve him."
+      },
+      {
+        "player": "But if they are serving Xeric, why do they attack the kingdom?"
+      },
+      {
+        "npc": "A good question. One that I'm afraid I do not know the answer to."
+      },
+      {
+        "npc": "Is there anything else you would like to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "WsxL6r"
+      }
+    ],
+    "jump-e1d4afc56e3e68e7": [
+      {
+        "player": "How did Xeric have so much power?"
+      },
+      {
+        "npc": "Xeric drew much of his power from the Dark Altar, but he asserted his authority as ruler through his personal army of creatures, the lizardmen."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Tale of the Righteous:",
+        "steps": [
+          {
+            "player": "Xeric created the lizardmen!?"
+          },
+          {
+            "npc": "Sadly so, though we're not exactly sure how he did so. Xeric used the citizens of Kourend for many experiments, as well as for his own sadistic pleasures."
+          },
+          {
+            "npc": "We have little written record of the experiments, but we believe they might have led to the creation of the lizardmen."
+          },
+          {
+            "player": "Do you know why he created the lizardmen?"
+          }
+        ],
+        "id": "zda60B"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Tale of the Righteous:",
+        "steps": [
+          {
+            "npc": "Originally, we believed that Xeric created the lizardmen. However, recent discovieres suggest they were actually created during the time of King Shayzien VII."
+          },
+          {
+            "player": "Do you know why Xeric needed the lizardmen?"
+          }
+        ],
+        "id": "fwzFlE"
+      },
+      {
+        "npc": "Xeric was undoubtedly powerful, but he couldn't rule the people singlehandedly, nor could he rely on human informants. He needed an army he could control."
+      },
+      {
+        "npc": "Lizardmen are loyal creatures and would do as he commanded without question. With them at his disposal, the people were powerless to resist his authority."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What happened to the lizardmen after Xeric's reign?",
+            "steps": [
+              {
+                "player": "What happened to the lizardmen after Xeric's reign?"
+              },
+              {
+                "npc": "They remain loyal to Xeric. Even to this day they continue to attack the kingdom, as you may have seen."
+              },
+              {
+                "npc": "Fortunately, the Shayzien Army keeps them under control."
+              },
+              {
+                "player": "Why do they keep fighting? Surely after a thousand years they must know Xeric is gone?"
+              },
+              {
+                "npc": "Without examining their minds, we will never know for sure. However, we assume Xeric genetically altered them to enforce that their duty is to serve him."
+              },
+              {
+                "player": "But if they are serving Xeric, why do they attack the kingdom?"
+              },
+              {
+                "npc": "A good question. One that I'm afraid I do not know the answer to."
+              },
+              {
+                "npc": "Is there anything else you would like to know?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "WsxL6r"
+              }
+            ]
+          },
+          {
+            "text": "What happened to Xeric?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "7x51QA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-95955924d033d25b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "NfcjaG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9926bbd14086e918"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello. Who are you?"
@@ -150,8 +489,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "7x51QA"
+                      "id": "7x51QA",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-95955924d033d25b"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -160,8 +504,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "NfcjaG"
+                      "id": "NfcjaG",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-9926bbd14086e918"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -247,8 +596,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "Fa6Lyb"
+                          "id": "Fa6Lyb",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-48fb11e25d361c01"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -257,8 +611,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "tahElO"
+                          "id": "tahElO",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-e1d4afc56e3e68e7"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -302,8 +661,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "yTq86T"
+                          "id": "yTq86T",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-48fb11e25d361c01"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -312,8 +676,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "YWF7SV"
+                          "id": "YWF7SV",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-e1d4afc56e3e68e7"
+                            }
+                          ]
                         }
                       ]
                     },

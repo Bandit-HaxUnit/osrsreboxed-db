@@ -179,8 +179,13 @@
                                   },
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "RHKY9P"
+                                    "id": "RHKY9P",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-f1da7ea5d383e951"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -227,6 +232,16 @@
     "standard-dialogue-attempting-to-bank-with-runes-the-player-does-not-have": [
       {
         "npc": "I'm afraid you don't have the necessary runes with you at this time, so I can't allow you to access your account. Please bring twenty runes of one type and you can open your account."
+      }
+    ]
+  },
+  "branches": {
+    "jump-f1da7ea5d383e951": [
+      {
+        "npc": "Very well, if you would like to set up another deal, just come ask me again."
+      },
+      {
+        "type": "end"
       }
     ]
   }

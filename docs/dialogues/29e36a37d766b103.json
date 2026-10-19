@@ -149,8 +149,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "jkVs3v"
+                            "id": "jkVs3v",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-f6b291e5bee08892"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -159,8 +164,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "paK-Pg"
+                            "id": "paK-Pg",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-6c77c0291ff6f1e9"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -272,6 +282,24 @@
           }
         ],
         "id": "fFiECQ"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f6b291e5bee08892": [
+      {
+        "npc": "Certainly. I'll start right away."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6c77c0291ff6f1e9": [
+      {
+        "npc": "Certainly. I'll start right away."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -340,8 +340,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8GjVWF"
+                "id": "8GjVWF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-782fae54d14d6e46"
+                  }
+                ]
               }
             ]
           }
@@ -649,8 +654,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4vdKGt"
+                "id": "4vdKGt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-782fae54d14d6e46"
+                  }
+                ]
               }
             ]
           }
@@ -1963,6 +1973,21 @@
       {
         "type": "unavailable",
         "id": "vU0QkY"
+      }
+    ]
+  },
+  "branches": {
+    "jump-782fae54d14d6e46": [
+      {
+        "player": "Can I just go grab something?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bill Teach",
+        "text": "Aye [lad/lass], take yer time, I'm not goin' anywhere without ye."
+      },
+      {
+        "type": "end"
       }
     ]
   }

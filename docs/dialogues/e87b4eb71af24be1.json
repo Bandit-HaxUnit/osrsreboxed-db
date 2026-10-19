@@ -93,8 +93,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "tAQGLZ"
+                        "id": "tAQGLZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-27ec321ed335b75e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -103,8 +108,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "5itBwL"
+                        "id": "5itBwL",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0b56f1d12540eeb7"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -187,8 +197,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "7a3-Iv"
+                        "id": "7a3-Iv",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0ad6fb8eb602b654"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -247,6 +262,96 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-27ec321ed335b75e": [
+      {
+        "player": "Tell me about the Mimic."
+      },
+      {
+        "type": "message",
+        "text": "Strange casket The Mimic is... a casket. When you find treasure, perhaps you will realise your casket is the Mimic.",
+        "id": "7GLUEL"
+      },
+      {
+        "type": "message",
+        "text": "Strange casket If so, the Mimic will reveal itself, and summon you to its arena, to fight.",
+        "id": "Yro5IN"
+      },
+      {
+        "type": "message",
+        "text": "Strange casket If you are victorious, the Mimic will reward you with... things.",
+        "id": "pMQ27v"
+      },
+      {
+        "type": "message",
+        "text": "Strange casket So, would you like the chance to face the Mimic? The rewards are... special.",
+        "id": "cYtnE3"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'd like to get Mimic challenges.",
+            "steps": [
+              {
+                "player": "Yes, I'd like to get Mimic challenges."
+              },
+              {
+                "type": "message",
+                "text": "Strange casket The Mimic is... pleased.",
+                "id": "pFZnbc"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No, I don't think I want that.",
+            "steps": [
+              {
+                "player": "No, I don't think I want that."
+              },
+              {
+                "type": "message",
+                "text": "Strange casket You may find me here if you change your mind. The Mimic will wait.",
+                "id": "0QLmXG"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0b56f1d12540eeb7": [
+      {
+        "player": "I don't think I want that."
+      },
+      {
+        "type": "message",
+        "text": "Strange casket The Mimic is... disappointed.",
+        "id": "Rgz57z"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0ad6fb8eb602b654": [
+      {
+        "player": "No, I want to keep getting mimic challenges."
+      },
+      {
+        "type": "message",
+        "text": "Strange casket The Mimic is... pleased.",
+        "id": "qktIxn"
+      },
+      {
+        "type": "end"
       }
     ]
   }

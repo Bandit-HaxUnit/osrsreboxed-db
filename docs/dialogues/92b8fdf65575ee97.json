@@ -24,9 +24,14 @@
                 "player": "Okay... How are you still communicating with your followers?"
               },
               {
-                "type": "action",
-                "text": "Continues from \"Why, through my voice, of course.\"",
-                "id": "8wHGcN"
+                "type": "jump",
+                "id": "8wHGcN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-440ff8f83fea1e73"
+                  }
+                ]
               }
             ]
           },
@@ -43,9 +48,14 @@
                 "player": "Okay, how are you still communicating with your followers?"
               },
               {
-                "type": "action",
-                "text": "Continues from \"Why, through my voice, of course.\"",
-                "id": "ASA202"
+                "type": "jump",
+                "id": "ASA202",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-440ff8f83fea1e73"
+                  }
+                ]
               }
             ]
           },
@@ -1588,8 +1598,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "HQuGKb"
+        "id": "HQuGKb",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-9280298a911b70fb"
+          }
+        ]
       }
     ],
     "using-items-on-yama-teleporting-or-dying-after-showing-yama-a-pizza": [
@@ -1887,8 +1902,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xjYjOY"
+                "id": "xjYjOY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ec258da904bab835"
+                  }
+                ]
               }
             ]
           }
@@ -1897,6 +1917,210 @@
     ]
   },
   "branches": {
+    "jump-440ff8f83fea1e73": [
+      {
+        "npc": "Why, through my voice, of course."
+      },
+      {
+        "player": "You know what I mean. How are you still communicating with your voice?"
+      },
+      {
+        "npc": "The same way I always have."
+      },
+      {
+        "player": "But the dark nullifier... I thought it was supposed to sever your connection."
+      },
+      {
+        "npc": "Hmm... Yes, if anything could have done so, it would have been the power of the Dark Altar."
+      },
+      {
+        "npc": "However, when your opponents have only one angle of approach, it makes them so predictable."
+      },
+      {
+        "player": "You knew we would try to use it?"
+      },
+      {
+        "npc": "Yes. When I heard you would be hand delivering me a connection to the Dark Altar... Why, I was overjoyed."
+      },
+      {
+        "player": "But... I remember planting it! The plan went off without a hitch!"
+      },
+      {
+        "npc": "I do not doubt that you remember it that way."
+      },
+      {
+        "player": "What did you do?!"
+      },
+      {
+        "npc": "A simple transfiguration of the mind. My disciples granted you a memory of success. A fitting payment for your gratious service."
+      },
+      {
+        "type": "condition",
+        "text": "If Icthlarin's Little Helper has been completed:",
+        "steps": [
+          {
+            "player": "You modified my memory?! That's only the second time someone has done that to me, and I wasn't very happy about it then either!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "k_9VOe"
+          }
+        ],
+        "id": "yohoaz"
+      },
+      {
+        "type": "condition",
+        "text": "If Icthlarin's Little Helper hasn't been completed:",
+        "steps": [
+          {
+            "player": "You modified my memory?!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "86V9v2"
+          }
+        ],
+        "id": "EtQ8ZV"
+      },
+      {
+        "npc": "Yes. And I have now answered five of your questions. I believe my generosity has been both demonstrated and exhausted."
+      },
+      {
+        "player": "You call that gloating generosity? If you didn't want something from me, I wouldn't still be down here. Get to the point."
+      },
+      {
+        "npc": "Hmm... Perhaps you are more astute than I thought. Very well, there is something that I want."
+      },
+      {
+        "player": "Well you won't be getting it from me!"
+      },
+      {
+        "npc": "I am Yama. Every mortal desires something of mine. Ancient armaments? Hidden knowledge? Or perhaps a taste of revenge..."
+      },
+      {
+        "npc": "These things could be yours."
+      },
+      {
+        "npc": "Face me in combat. If you win, you take it all. Armaments, knowledge, revenge."
+      },
+      {
+        "player": "And if I lose?"
+      },
+      {
+        "npc": "I take your soul. For all of eternity."
+      },
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "I see. Perhaps we could lower the stakes then."
+      },
+      {
+        "npc": "I will face you in an inhibited form. I'll even allow you to bring an ally, provided they have entered the same contract."
+      },
+      {
+        "npc": "If you win, I will give you a chance to gain some of my treasures, and of course, you will have sampled your revenge."
+      },
+      {
+        "player": "And if I lose?"
+      },
+      {
+        "npc": "When you take your final rest, I shall take your soul for a year. A drop in the ocean compared to eternity."
+      },
+      {
+        "player": "How can I know you'll keep your word?"
+      },
+      {
+        "npc": "The same way I will know you shall keep yours. A binding contract. As luck would have it, I had one of my scribes draft one up for just such an occasion."
+      },
+      {
+        "player": "...Okay."
+      },
+      {
+        "npc": "Sign right here."
+      },
+      {
+        "type": "choice",
+        "prompt": "Sign the contract?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you sure? A contract with Yama cannot be backed out of.",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "Excellent... Challenge me when you are ready, [player name]. I very much look forward to it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "cL6psz"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'm not sure I want to..."
+              },
+              {
+                "npc": "Of course. There is no rush. Leave, with your tail tucked between your legs. If you grow a spine and wish to fulfil your revenge, I will be waiting."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9280298a911b70fb": [
+      {
+        "player": "What do you mean?! You can't just take my pizza!"
+      },
+      {
+        "npc": "Oh but I can. As per our contract, any pizza you present to me cannot be taken back. Right here."
+      },
+      {
+        "type": "message",
+        "text": "Yama points to a line on the contract that states that once a full pizza is shown to him, it cannot be taken back.",
+        "id": "URLFgW"
+      },
+      {
+        "player": "That's outrageous! You can't hold me to this!"
+      },
+      {
+        "npc": "Perhaps you should have expressed that opinion before signing. Indeed, perhaps if you felt that way you should not have signed at all."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ec258da904bab835": [
+      {
+        "npc": "Greetings, acolyte. What compels you to beg my attention?"
+      }
+    ],
     "g-wZDh": [
       {
         "player": "On second thought, I think I'll hold off."

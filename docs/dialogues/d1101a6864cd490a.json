@@ -73,8 +73,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "catWaf"
+                                "id": "catWaf",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-766f7245ade3305e"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -93,8 +98,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "JrFuC4"
+                                "id": "JrFuC4",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-4b57e3d0347015f2"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -103,8 +113,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "tyY6e5"
+                                "id": "tyY6e5",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-b603c8e6c1eb35de"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -117,8 +132,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "qS2omj"
+                        "id": "qS2omj",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-766f7245ade3305e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -127,8 +147,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "q3tEYz"
+                        "id": "q3tEYz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4b57e3d0347015f2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -137,8 +162,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "cMcoVX"
+                        "id": "cMcoVX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b603c8e6c1eb35de"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -187,6 +217,56 @@
         "type": "message",
         "text": "On PvP Arena worlds, you can only use the PvP Arena. Switch to another world to play on your normal profile.",
         "id": "nCpIfH"
+      }
+    ]
+  },
+  "branches": {
+    "jump-766f7245ade3305e": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is the Emir's Arena. Fighters come from far and wide to arrange fights against their friends and rivals. They can fight in 1v1 Tournaments or Duels."
+      },
+      {
+        "type": "message",
+        "text": "The Arena is open only on PvP Arena worlds. Switch to one of those game worlds to play in the Arena.",
+        "id": "yjUZTv"
+      },
+      {
+        "npc": "Head over to the hospital north of the Arena, and speak to the Guides. They'll help you sign up to a fight. Now, can I help you with anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "YNWJVx"
+      }
+    ],
+    "jump-4b57e3d0347015f2": [
+      {
+        "player": "Do you have any tips on how to win duels?"
+      },
+      {
+        "npc": "The easiest way to win is to knock your opponent out in one blow!"
+      },
+      {
+        "player": "But I can't hit that hard!"
+      },
+      {
+        "npc": "Don't stop believing."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "RjXImm"
+      }
+    ],
+    "jump-b603c8e6c1eb35de": [
+      {
+        "player": "I'm fine, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

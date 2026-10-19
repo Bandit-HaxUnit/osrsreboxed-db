@@ -64,8 +64,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JLDb8v"
+                "id": "JLDb8v",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e7935bad032909c3"
+                  }
+                ]
               }
             ]
           },
@@ -74,12 +79,38 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "gdFtE6"
+                "id": "gdFtE6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a031785928e2f3bc"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-e7935bad032909c3": [
+      {
+        "player": "Can you give me any Farming advice?"
+      },
+      {
+        "npc": "Yes - ask a gardener."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a031785928e2f3bc": [
+      {
+        "player": "I'm okay, thank you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -39,8 +39,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "RQFLwk"
+                        "id": "RQFLwk",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-03b4f564697b33fe"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -65,6 +70,19 @@
     "sometimes-when-attempting-to-open-the-gate-to-the-anvils-with-less-than-60-smithing": [
       {
         "npc": "Only the top smiths are allowed in there!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-03b4f564697b33fe": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "You just don't appreciate the beauty of fine metalwork."
+      },
+      {
+        "type": "end"
       }
     ]
   }

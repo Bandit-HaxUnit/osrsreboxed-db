@@ -474,8 +474,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "zokRtm"
+                        "id": "zokRtm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c600eb216897bcf3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -496,6 +501,54 @@
     ]
   },
   "branches": {
+    "jump-c600eb216897bcf3": [
+      {
+        "player": "Could I get some more gauntlets, please?"
+      },
+      {
+        "npc": "You may, but you'll have to ask my sons for them, unless you just want the plain steel gauntlets."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I do want some steel gauntlets, please.",
+            "steps": [
+              {
+                "player": "Yes, I do want some steel gauntlets, please."
+              },
+              {
+                "type": "input",
+                "text": "How many would you like to take?",
+                "id": "_HKMDY"
+              },
+              {
+                "type": "message",
+                "text": "Dimintheis hands you some steel gauntlets.",
+                "id": "UPzk9-"
+              },
+              {
+                "npc": "Here you go."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll ask your sons instead.",
+            "steps": [
+              {
+                "player": "No thanks, I'll ask your sons instead."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "g2Q7Ob": [
       {
         "player": "I'm not interested in that adventure right now."

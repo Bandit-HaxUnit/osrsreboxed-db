@@ -54,8 +54,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "rzmokz"
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6e899c9e7fd0c879"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -98,8 +103,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "cp72IU"
+                        "id": "cp72IU",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9bb0a40854943b50"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -344,6 +354,152 @@
             "steps": []
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-6e899c9e7fd0c879": [
+      {
+        "player": "Yes, I would like to charter a ship."
+      },
+      {
+        "npc": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the bedsheet in their inventory:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Charter ship",
+            "id": "mbDjCu"
+          },
+          {
+            "type": "action",
+            "text": "Player selects destination",
+            "id": "8WudTZ"
+          },
+          {
+            "type": "action",
+            "text": "Sailing to [destination] costs [x] coins.",
+            "id": "ihG9Wq"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player is transported to the destination",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "U7KiEJ"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Choose again",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "mmm4uy"
+                  }
+                ]
+              },
+              {
+                "text": "Cancel",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "pl6h8_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player chooses Crandor during Dragon Slayer I:",
+        "steps": [
+          {
+            "npc": "Crandor? Are you crazy? No charter ship would take you to that island. You'd need to use your own ship, but even then, you'd need a miracle to find a safe route there!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XLEH9H"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the bedsheet in their inventory:",
+        "steps": [
+          {
+            "npc": "Sorry, but we aren't a laundry ship. You'll need to leave those dirty bedsheets behind."
+          },
+          {
+            "player": "Would you let me bring it if I told you it was a security blanket?"
+          },
+          {
+            "npc": "No, then we would just mock you."
+          },
+          {
+            "player": "Ah, I see."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "78kMDr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+        "steps": [
+          {
+            "npc": "Is that your bedsheet covered in filthy slime?"
+          },
+          {
+            "player": "I can say in all honesty that it is not."
+          },
+          {
+            "npc": "Well, whoever it belongs to, it's not coming on this ship!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KoR3ZR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has Karamjan rum in their inventory:",
+        "steps": [
+          {
+            "npc": "I'm afraid we can't take you anywhere if you're trying to smuggle that rum."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1R0gqM"
+      }
+    ],
+    "jump-9bb0a40854943b50": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

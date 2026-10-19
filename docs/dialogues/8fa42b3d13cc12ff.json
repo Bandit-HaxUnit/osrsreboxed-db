@@ -133,8 +133,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-yIR7L"
+                "id": "-yIR7L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b9918a5e2e2fa03b"
+                  }
+                ]
               }
             ]
           },
@@ -143,8 +148,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WmphHa"
+                "id": "WmphHa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-280aa7ad988f9591"
+                  }
+                ]
               }
             ]
           },
@@ -209,6 +219,57 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-b9918a5e2e2fa03b": [
+      {
+        "player": "What brought the plague to Ardougne?"
+      },
+      {
+        "npc": "It's all down to King Tyras of West Ardougne. It started came back from one of his visits to the lands west of here."
+      },
+      {
+        "npc": "Some of his men must have unknowingly caught it out there and brought it back with them"
+      },
+      {
+        "player": "Does he know how bad the situation is now?"
+      },
+      {
+        "npc": "If he did he wouldn't care. I believe he wants his people to suffer, he's an evil man."
+      },
+      {
+        "player": "Isn't that treason?"
+      },
+      {
+        "npc": "He's not my king."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-280aa7ad988f9591": [
+      {
+        "player": "What are the symptoms of the plague?"
+      },
+      {
+        "npc": "The first signs are typical flu symptoms. These tend to be followed by severe nightmares, horrifying hallucinations which drive many to madness."
+      },
+      {
+        "player": "Sounds nasty."
+      },
+      {
+        "npc": "It gets worse. Next the victim's blood changes into a thick black tar-like liquid, at this point they're past help."
+      },
+      {
+        "npc": "Their skin is cold to the touch, the victim is now brain dead. Their body however lives on driven by the virus, roaming like a zombie, spreading itself further wherever possible."
+      },
+      {
+        "player": "I think I've heard enough."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -357,7 +357,7 @@
                   {
                     "type": "line",
                     "speaker": "Khazard barman",
-                    "text": "There you go, that's two gold coins.{{^|Drops to ground with full inventory.}}"
+                    "text": "There you go, that's two gold coins."
                   },
                   {
                     "type": "end"
@@ -741,8 +741,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Kj12DD"
+                "id": "Kj12DD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-69827540222808bc"
+                  }
+                ]
               }
             ]
           },
@@ -773,7 +778,7 @@
               {
                 "type": "line",
                 "speaker": "Khazard barman",
-                "text": "There you go, that's five gold coins. I suggest lying down before you drink it. That way you have less distance to collapse.{{^|Drops to ground with full inventory.}}"
+                "text": "There you go, that's five gold coins. I suggest lying down before you drink it. That way you have less distance to collapse."
               },
               {
                 "type": "end"
@@ -874,7 +879,7 @@
       {
         "type": "line",
         "speaker": "Khazard Guard",
-        "text": "...and I'm drunk. Here, take my spare set.{{^|Drops to floor with full inventory.}}"
+        "text": "...and I'm drunk. Here, take my spare set."
       }
     ],
     "entering-the-arena-talking-to-drunk-khazard-guard-after-getting-him-drunk-without-khazard-armour-equipped": [
@@ -1109,8 +1114,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "-0Zbhq"
+        "id": "-0Zbhq",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-407aac3f248bed74"
+          }
+        ]
       }
     ],
     "the-battles-exiting-the-arena-after-defeating-the-ogre": [
@@ -1121,8 +1131,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "VDzlye"
+        "id": "VDzlye",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-407aac3f248bed74"
+          }
+        ]
       }
     ],
     "the-battles-talking-to-general-khazard-after-defeating-the-ogre": [
@@ -1139,8 +1154,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "hHQz4H"
+        "id": "hHQz4H",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-73a8096d21530f78"
+          }
+        ]
       }
     ],
     "the-battles-talking-to-sammy-in-the-jail-cell": [
@@ -1767,6 +1787,119 @@
       {
         "type": "unavailable",
         "id": "HpDdmf"
+      }
+    ]
+  },
+  "branches": {
+    "jump-69827540222808bc": [
+      {
+        "player": "I'll have a beer please."
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard barman",
+        "text": "That'll be two gold coins please."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have 2 coins:",
+        "steps": [
+          {
+            "player": "Oh, I don't have enough money with me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "AEZwpf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 2 coins:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Khazard barman",
+            "text": "There you go, that's two gold coins."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "tKEQ1B"
+      }
+    ],
+    "jump-407aac3f248bed74": [
+      {
+        "player": "They belong to nobody."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Well, I suppose we could find some arrangement for their freedom... hmmm?"
+      },
+      {
+        "player": "What do you mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "I'll let them go, but you must stay and fight for me. You'll make me double the gold if you manage to last a few fights."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Guards! Take [him/her] to the cells."
+      },
+      {
+        "type": "action",
+        "text": "The player is taken to a jail cell.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "l2eYgD"
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Guard",
+        "text": "The General seems to have taken a liking to you. He'd normally kill imposters like you without a second thought."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-73a8096d21530f78": [
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Well, I suppose we could find some arrangement for their freedom... hmmm?"
+      },
+      {
+        "player": "What do you mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "I'll let them go, but you must stay and fight for me. You'll make me double the gold if you manage to last a few fights."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Guards! Take [him/her] to the cells."
+      },
+      {
+        "type": "action",
+        "text": "The player is taken to a jail cell.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "l2eYgD"
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Guard",
+        "text": "The General seems to have taken a liking to you. He'd normally kill imposters like you without a second thought."
+      },
+      {
+        "type": "end"
       }
     ]
   }

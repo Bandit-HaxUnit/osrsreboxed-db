@@ -126,8 +126,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kzgmGH"
+                "id": "kzgmGH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f184c41609a83309"
+                  }
+                ]
               }
             ]
           },
@@ -136,8 +141,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cRO8uS"
+                "id": "cRO8uS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ae0d4a75e22b31f3"
+                  }
+                ]
               }
             ]
           }
@@ -251,6 +261,35 @@
         "type": "message",
         "text": "You need to defeat TzKal-Zuk in the Inferno at least once before taking on TzHaar-Ket-Rak's Third Challenge.",
         "id": "HsSd1d"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f184c41609a83309": [
+      {
+        "player": "Of course I'm brave enough."
+      },
+      {
+        "npc": "Then select your challenge, JalYt-[caste]-Xo-[player name]."
+      },
+      {
+        "type": "action",
+        "text": "Challenge interface opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Challenge",
+        "id": "2zA7bO"
+      }
+    ],
+    "jump-ae0d4a75e22b31f3": [
+      {
+        "player": "I'll pass."
+      },
+      {
+        "npc": "Few can match TzHaar bravery."
+      },
+      {
+        "type": "end"
       }
     ]
   }

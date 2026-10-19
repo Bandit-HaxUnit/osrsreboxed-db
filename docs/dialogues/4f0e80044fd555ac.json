@@ -727,8 +727,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tHfniG"
+                "id": "tHfniG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1bbb3518b15a953d"
+                  }
+                ]
               }
             ]
           },
@@ -865,8 +870,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Th7Bcq"
+                "id": "Th7Bcq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4babde5056e9a071"
+                  }
+                ]
               }
             ]
           },
@@ -875,12 +885,185 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JMuYsh"
+                "id": "JMuYsh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9b6218d12bdeba43"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-1bbb3518b15a953d": [
+      {
+        "player": "Tell me about yourselves."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Ket-Jor",
+        "text": "We are the Tasakaal."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "We serve the balance."
+      },
+      {
+        "npc": "Between life."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "And death."
+      },
+      {
+        "player": "Balance? So you serve Guthix?"
+      },
+      {
+        "npc": "A pretender."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "We serve another power."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Ket-Jor",
+        "text": "A higher power."
+      },
+      {
+        "player": "What power?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "One beyond your understanding."
+      },
+      {
+        "player": "Why do you serve this power?"
+      },
+      {
+        "npc": "The anima of this world, it is fed by life."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "Without life, there is no anima."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Ket-Jor",
+        "text": "But life can also destroy. It can endanger the anima."
+      },
+      {
+        "npc": "So life must be kept in check."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "This is our purpose."
+      },
+      {
+        "player": "And you were given this purpose?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Ket-Jor",
+        "text": "Yes."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "And no."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Ket-Jor",
+        "text": "Our purpose was to wait. But we saw the world burn."
+      },
+      {
+        "npc": "We could not stand by and watch."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "So we left our people. Left our home."
+      },
+      {
+        "npc": "And took on a new purpose."
+      },
+      {
+        "player": "I'm still not sure I understand."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Ket-Jor",
+        "text": "Maybe you never will."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "7EZJSs"
+      }
+    ],
+    "jump-4babde5056e9a071": [
+      {
+        "player": "Why do you hate Lord Arceuus?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Ket-Jor",
+        "text": "We granted them knowledge."
+      },
+      {
+        "npc": "For a specific purpose."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "But they misused it."
+      },
+      {
+        "player": "Them? Who else was there?"
+      },
+      {
+        "npc": "Another."
+      },
+      {
+        "player": "Another?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "Another."
+      },
+      {
+        "player": "I can see we're not going to get anywhere here."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "bVdJZ6"
+      }
+    ],
+    "jump-9b6218d12bdeba43": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "Farewell human."
+      },
+      {
+        "type": "end"
       }
     ]
   }

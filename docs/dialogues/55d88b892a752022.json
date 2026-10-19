@@ -101,7 +101,13 @@
               {
                 "type": "jump",
                 "reference": "continue",
-                "id": "E-xEHX"
+                "id": "E-xEHX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e89bf640b7a48427"
+                  }
+                ]
               }
             ]
           },
@@ -155,7 +161,70 @@
               {
                 "type": "choice",
                 "prompt": "Start the Royal Trouble quest?",
-                "options": []
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Very well, I'll sort it out."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Advisor Ghrim",
+                        "text": "Thank you, Your Royal Highness."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Advisor Ghrim",
+                        "text": "I suggest you talk to the prince and princess to find out more about the situation."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is in a relationship with Princess Astrid:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Advisor Ghrim",
+                            "text": "Princess Astrid has been asking after you. She would very much like to see you once again."
+                          }
+                        ],
+                        "id": "R2NoGA"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is in a relationship with Prince Brand:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Advisor Ghrim",
+                            "text": "Prince Brand has been asking after you. He would very much like to see you once again."
+                          }
+                        ],
+                        "id": "j4Z8Ra"
+                      }
+                    ],
+                    "hook": "quest:royal-trouble:start",
+                    "quest": "Royal Trouble"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No, I don't have the time at the moment."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Advisor Ghrim",
+                        "text": "You are the regent of this kingdom, Your Royal Highness. I would urge you to reconsider."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Advisor Ghrim",
+                        "text": "However, you are also a busy hero, and thus I understand your reluctance."
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -1835,10 +1904,28 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'd like to look at what you have for sale."
+            "text": "I'd like to look at what you have for sale.",
+            "steps": [
+              {
+                "player": "I'd like to look at what you have for sale."
+              },
+              {
+                "type": "action",
+                "text": "Miscellanian Clothes Shop opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Miscellanian Clothes Shop",
+                "id": "RkIdJQ"
+              }
+            ]
           },
           {
-            "text": "No thank you, I'm fine."
+            "text": "No thank you, I'm fine.",
+            "steps": [
+              {
+                "player": "No thank you, I'm fine."
+              }
+            ]
           },
           {
             "text": "What's it like living down here?",
@@ -1884,10 +1971,28 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you show me what you have for sale?"
+            "text": "Could you show me what you have for sale?",
+            "steps": [
+              {
+                "player": "Could you show me what you have for sale?"
+              },
+              {
+                "type": "action",
+                "text": "Miscellanian Food Shop opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Miscellanian Food Shop",
+                "id": "aQ_OCD"
+              }
+            ]
           },
           {
-            "text": "No thank you, I don't need food just now."
+            "text": "No thank you, I don't need food just now.",
+            "steps": [
+              {
+                "player": "No thank you, I don't need food just now."
+              }
+            ]
           },
           {
             "text": "What's it like living down here?",
@@ -1933,10 +2038,28 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please. What are you selling?"
+            "text": "Yes please. What are you selling?",
+            "steps": [
+              {
+                "player": "Yes please. What are you selling?"
+              },
+              {
+                "type": "action",
+                "text": "Miscellanian General Store opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Miscellanian General Store",
+                "id": "N3GdnZ"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           },
           {
             "text": "What's it like living down here?",
@@ -1987,10 +2110,28 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, please."
+            "text": "Yes, please.",
+            "steps": [
+              {
+                "player": "Yes, please."
+              },
+              {
+                "type": "action",
+                "text": "The Esoterican Arms store opens.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "The Esoterican Arms store",
+                "id": "NeZJZW"
+              }
+            ]
           },
           {
-            "text": "No, thank you."
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              }
+            ]
           },
           {
             "text": "What's it like living down here?",
@@ -2062,7 +2203,12 @@
             ]
           },
           {
-            "text": "Good day."
+            "text": "Good day.",
+            "steps": [
+              {
+                "player": "Good day."
+              }
+            ]
           }
         ]
       }
@@ -2113,7 +2259,12 @@
             ]
           },
           {
-            "text": "Good day."
+            "text": "Good day.",
+            "steps": [
+              {
+                "player": "Good day."
+              }
+            ]
           }
         ]
       }
@@ -2159,7 +2310,12 @@
             ]
           },
           {
-            "text": "Good day."
+            "text": "Good day.",
+            "steps": [
+              {
+                "player": "Good day."
+              }
+            ]
           }
         ]
       }
@@ -3751,6 +3907,84 @@
       {
         "type": "unavailable",
         "id": "QUD_Vd"
+      }
+    ]
+  },
+  "branches": {
+    "jump-e89bf640b7a48427": [
+      {
+        "type": "choice",
+        "prompt": "Start the Royal Trouble quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Very well, I'll sort it out."
+              },
+              {
+                "type": "line",
+                "speaker": "Advisor Ghrim",
+                "text": "Thank you, Your Royal Highness."
+              },
+              {
+                "type": "line",
+                "speaker": "Advisor Ghrim",
+                "text": "I suggest you talk to the prince and princess to find out more about the situation."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is in a relationship with Princess Astrid:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Advisor Ghrim",
+                    "text": "Princess Astrid has been asking after you. She would very much like to see you once again."
+                  }
+                ],
+                "id": "R2NoGA"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is in a relationship with Prince Brand:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Advisor Ghrim",
+                    "text": "Prince Brand has been asking after you. He would very much like to see you once again."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "j4Z8Ra"
+              }
+            ],
+            "hook": "quest:royal-trouble:start",
+            "quest": "Royal Trouble"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, I don't have the time at the moment."
+              },
+              {
+                "type": "line",
+                "speaker": "Advisor Ghrim",
+                "text": "You are the regent of this kingdom, Your Royal Highness. I would urge you to reconsider."
+              },
+              {
+                "type": "line",
+                "speaker": "Advisor Ghrim",
+                "text": "However, you are also a busy hero, and thus I understand your reluctance."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

@@ -58,7 +58,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -86,7 +92,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -135,7 +147,40 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you have any other quests for me?"
+            "text": "Do you have any other quests for me?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is on a free-to-play world:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Cook (Lumbridge)",
+                    "text": "I don't have anything for you to do right now, sorry."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NMPUpC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a members' world:",
+                "steps": [
+                  {
+                    "type": "reference",
+                    "target": "Transcript:Recipe for Disaster/Another Cook's Quest",
+                    "section": "",
+                    "text": "Continues in Transcript:Recipe for Disaster/Another Cook's Quest",
+                    "id": "HqcWnQ",
+                    "resolved": false,
+                    "page_available": true
+                  }
+                ],
+                "id": "r1C5xz"
+              }
+            ]
           },
           {
             "text": "Do you know what happened in the castle cellar?",
@@ -148,13 +193,59 @@
             ]
           },
           {
-            "text": "I am getting strong and mighty."
+            "text": "I am getting strong and mighty.",
+            "steps": [
+              {
+                "player": "I am getting strong and mighty. Grrr"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Glad to hear it."
+              }
+            ]
           },
           {
-            "text": "I keep on dying."
+            "text": "I keep on dying.",
+            "steps": [
+              {
+                "player": "I keep on dying."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Ah well, at least you keep coming back to life!"
+              }
+            ]
           },
           {
-            "text": "Can I use your range?"
+            "text": "Can I use your range?",
+            "steps": [
+              {
+                "player": "Can I use your range?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Go ahead - it's a very good range. It's easier to use than most other ranges."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Its called the Cook-o-matic 100. It uses a combination of state of the art temperature regulation and magic."
+              },
+              {
+                "player": "Will it mean my food will burn less often?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Well, that's what the salesman told us anyway..."
+              },
+              {
+                "player": "Thanks?"
+              }
+            ]
           }
         ]
       }
@@ -182,16 +273,61 @@
             ]
           },
           {
-            "text": "I have come to kill everyone in this castle!"
+            "text": "I have come to kill everyone in this castle!",
+            "steps": [
+              {
+                "player": "I have come to kill everyone in this castle!"
+              },
+              {
+                "type": "action",
+                "text": "Hans runs away from the player screaming",
+                "id": "-hDn8o"
+              },
+              {
+                "type": "line",
+                "speaker": "Hans",
+                "text": "Help! Help!"
+              }
+            ]
           },
           {
-            "text": "I don't know. I'm lost. Where am I?"
+            "text": "I don't know. I'm lost. Where am I?",
+            "steps": [
+              {
+                "player": "I don't know. I'm lost. Where am I?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hans",
+                "text": "You are in Lumbridge Castle, in the Kingdom of Misthalin. Across the river, the road leads north to Varrock, and to the west lies Draynor Village."
+              }
+            ]
           },
           {
-            "text": "Can you tell me how long I've been here?"
+            "text": "Can you tell me how long I've been here?",
+            "steps": [
+              {
+                "player": "Can you tell me how long I've been here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hans",
+                "text": "Ahh, I see all the newcomers arriving in Lumbridge, fresh-faced and eager for adventure. I remember you..."
+              },
+              {
+                "type": "line",
+                "speaker": "Hans",
+                "text": "You've spent [amount] days, [amount] hours, [amount] minutes in the world since you arrived [amount] days ago."
+              }
+            ]
           },
           {
-            "text": "Nothing."
+            "text": "Nothing.",
+            "steps": [
+              {
+                "player": "Nothing."
+              }
+            ]
           }
         ]
       }
@@ -295,7 +431,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -310,10 +452,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "Bob says he saw something in the cellar",
@@ -378,10 +614,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "What was I doing again?",
@@ -422,7 +752,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -444,10 +780,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "I dug through the rubble...",
@@ -493,7 +923,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -508,10 +944,111 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "player": "Where can I find money?"
+              },
+              {
+                "type": "line",
+                "speaker": "Duke Horacio",
+                "text": "I've heard that the blacksmiths are prosperous amongst the peasantry. Maybe you could try your hand at that?"
+              },
+              {
+                "type": "end"
+              }
+            ]
           },
           {
             "text": "I dug through the rubble...",
@@ -621,7 +1158,28 @@
             ]
           },
           {
-            "text": "Do you have anything to trade?"
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "player": "Do you have anything to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Only knowledge."
+              },
+              {
+                "player": "How much do you want for that then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "No, sorry, that was just my little joke. I'm not the trading type."
+              },
+              {
+                "player": "Ah well."
+              }
+            ]
           },
           {
             "text": "I'd better get going."
@@ -657,10 +1215,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "I found out about the symbol...",
@@ -706,7 +1358,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -1153,13 +1811,285 @@
         "type": "choice",
         "options": [
           {
-            "text": "I seek a shield that will protect me from dragonbreath."
+            "text": "I seek a shield that will protect me from dragonbreath.",
+            "steps": [
+              {
+                "player": "I seek a shield that will protect me from dragonbreath."
+              },
+              {
+                "type": "line",
+                "speaker": "Duke Horacio",
+                "text": "A knight going on a dragon quest, hmm? What dragon do you intend to slay?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Elvarg, the dragon of Crandor island!",
+                    "condition": "During Dragon Slayer I:",
+                    "steps": [
+                      {
+                        "player": "Elvarg, the dragon of Crandor island!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Duke Horacio",
+                        "text": "Elvarg? Are you sure?"
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Well, are you sure?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "player": "Yes."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Duke Horacio",
+                                "text": "Well, you're a braver [man/woman] than I!"
+                              },
+                              {
+                                "player": "Why is everyone so scared of this dragon?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Duke Horacio",
+                                "text": "Back in my father's day, Crandor was an important city-state. Politically it was as important as Falador and Varrock and its ships traded with every port."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Duke Horacio",
+                                "text": "But, one day, when I was little, all contact was lost. The trading ships and the diplomatic envoys just stopped coming."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Duke Horacio",
+                                "text": "I remember my father being very scared. He posted lookouts on the roof to warn if the dragon was approaching. All the city rulers worried that Elvarg would devastate the whole continent."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "I'd better leave that dragon alone.",
+                                    "steps": [
+                                      {
+                                        "player": "I'd better leave that dragon alone."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Duke Horacio",
+                                        "text": "That's a relief. I would hate to see such a promising adventurer cut down in [his/her] prime."
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "So, are you going to give me the shield or not?",
+                                    "steps": [
+                                      {
+                                        "player": "So, are you going to give me the shield or not?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Duke Horacio",
+                                        "text": "If you really think you're up to it then perhaps you are the one who can kill this dragon."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "The Duke hands you a heavy orange shield.",
+                                        "id": "LnbjYr"
+                                      },
+                                      {
+                                        "type": "action",
+                                        "action": "receive",
+                                        "text": "Anti-dragon shield",
+                                        "id": "igRDii"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Duke Horacio",
+                                        "text": "Take care out there. If you kill it..."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Duke Horacio",
+                                        "text": "If you kill it, for Saradomin's sake make sure it's really dead!"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Duke Horacio",
+                                "text": "Very wise. There are some monsters that are best left alone."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "7GKyg9"
+                  },
+                  {
+                    "text": "Oh, no dragon in particular",
+                    "steps": [
+                      {
+                        "player": "Oh, no dragon in particular. I just feel like killing a dragon."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has not finished Dragon Slayer I:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Duke Horacio",
+                            "text": "I don't have an infinite supply of these shields, you know. I'll only give one for a truly worthy cause."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "zHKrL2"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has finished Dragon Slayer I:",
+                        "steps": [
+                          {
+                            "player": "Oh, no dragon in particular. I just feel like killing a dragon."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Duke Horacio",
+                            "text": "Of course. Now you've slain Elvarg, you've earned the right to call the shield your own!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The Duke hands you the shield.",
+                            "id": "if_uB3"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Anti-dragon shield",
+                            "id": "emj6I8"
+                          }
+                        ],
+                        "id": "MzcOcB"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "I spoke to the generals in the goblin village...",
@@ -1210,7 +2140,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -1321,10 +2257,90 @@
             ]
           },
           {
-            "text": "Why do the Dorgeshuun live underground?"
+            "text": "Why do the Dorgeshuun live underground?",
+            "steps": [
+              {
+                "player": "Why do the Dorgeshuun live underground?"
+              },
+              {
+                "type": "line",
+                "speaker": "Mistag",
+                "text": "Our ancient legends say that goblins were created by an evil god in order to fight in a huge war. This god sent the Dorgeshuun tribe to fight a battle where all would die."
+              },
+              {
+                "type": "line",
+                "speaker": "Mistag",
+                "text": "But our ancestors escaped by hiding in a deep hole in the ground where our god could not find us. Eventually an earthquake sealed the hole and they were forever safe."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The war is over now, so you can return to the surface.",
+                    "steps": [
+                      {
+                        "player": "The war is over now, so you can return to the surface."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Mistag",
+                        "text": "Even if the gods are no longer at war, I find it hard to believe that a tribe of peaceful goblins would be safe above. I have heard of humans coming down into the caves to slaughter our people!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Mistag",
+                        "text": "But even if we could return, we would not want to. We are adapted to living underground, and we have built a home for ourselves that we do not want to leave."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What was the name of your god?",
+                    "steps": [
+                      {
+                        "player": "What was the name of your god?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Mistag",
+                        "text": "Our ancestors did not speak his name, thinking that to do so would attract his attention. His name has been unspoken for so long that it is now entirely forgotten."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Mistag",
+                        "text": "That is for the best. We have survived perfectly well without gods, and we do not want a return to the old ways."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "What happened to your arm?"
+            "text": "What happened to your arm?",
+            "steps": [
+              {
+                "player": "What happened to your arm?"
+              },
+              {
+                "type": "line",
+                "speaker": "Mistag",
+                "text": "I lost it in a mining accident a few years ago."
+              },
+              {
+                "type": "line",
+                "speaker": "Mistag",
+                "text": "This area is very unstable. That's why we put markers on the wall showing the safest path."
+              },
+              {
+                "type": "end"
+              }
+            ]
           },
           {
             "text": "Can you show me the way out of the mines?",
@@ -1374,10 +2390,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "I've made contact with the cave goblins...",
@@ -1418,10 +2528,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "What was I doing again?",
@@ -1470,7 +2674,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -1536,8 +2746,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wz1nWI"
+                "id": "wz1nWI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e81510f1c01baf6e"
+                  }
+                ]
               }
             ]
           }
@@ -1611,7 +2826,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -1626,10 +2847,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "Did you know Sigmund is a member of HAM?",
@@ -1693,7 +3008,13 @@
             ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iZx9o7"
+              }
+            ]
           }
         ]
       }
@@ -1708,10 +3029,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "I found the missing silverware in the HAM cave!",
@@ -1781,10 +3196,104 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RlDs-9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dFi-kP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AHm0E4"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xlvoxu"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "fGthc3"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           },
           {
             "text": "What was I doing again?",
@@ -1925,6 +3434,155 @@
       {
         "type": "unavailable",
         "id": "QUJ2Sw"
+      }
+    ]
+  },
+  "branches": {
+    "jump-e81510f1c01baf6e": [
+      {
+        "player": "Can you show me the way out of the mines?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mistag",
+        "text": "Certainly. Please hurry, you must avert the war!"
+      },
+      {
+        "type": "message",
+        "text": "Mistag shows you the way through the tunnels.",
+        "id": "yWjjdW"
+      }
+    ],
+    "iZx9o7": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sigmund",
+        "text": "I'm the Duke's advisor."
+      },
+      {
+        "player": "Can you give me any advice then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sigmund",
+        "text": "I only advise the Duke. But if you want to make yourself useful, there are evil goblins to slay on the other side of the river."
+      }
+    ],
+    "RlDs-9": [
+      {
+        "player": "Sure, no problem."
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "Thank you very much, stranger. I am sure the head wizard will reward you for such an interesting find."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "air talisman",
+        "id": "mej1XH"
+      },
+      {
+        "type": "message",
+        "text": "The Duke shows you a talisman.",
+        "id": "JjanrH"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "dFi-kP": [
+      {
+        "player": "Not right now."
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "As you wish, stranger, although I have this strange feeling that it is important. Unfortunately, I cannot leave my castle unattended."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "AHm0E4": [
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "The only task remotely approaching a quest is the delivery of that talisman I gave you to the head wizard of the Wizards' Tower,"
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "south-west of here. I suggest you deliver it to him as soon as possible. I have the oddest feeling that it is important..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "Xlvoxu": [
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "Did you speak to the head wizard for me yet, adventurer?"
+      },
+      {
+        "player": "No, I lost that air talisman that you gave me."
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "Ah, that would explain it. One of my servants found this outside, and it seemed too much of a coincidence that more than one strange"
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "object would appear on my land in such a short period of time. Please take this to the head wizard at the Wizards' Tower, south-west of here, and don't lose it this time."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "air talisman",
+        "id": "RL8KFj"
+      },
+      {
+        "type": "message",
+        "text": "The Duke hands you the talisman.",
+        "id": "_k1BJr"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "fGthc3": [
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "The only job I had was the delivery of that talisman, so I'm afraid not."
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "No, all is well for me."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "p5txee": [
+      {
+        "player": "Where can I find money?"
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "I've heard that the blacksmiths are prosperous amongst the peasantry. Maybe you could try your hand at that?"
       }
     ]
   }

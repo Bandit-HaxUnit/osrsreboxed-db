@@ -40,8 +40,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "QaWZJu"
+                        "id": "QaWZJu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c1c145213e07eb6d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -50,8 +55,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "ejJn2l"
+                        "id": "ejJn2l",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8068d00fb612c5de"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -100,7 +110,27 @@
                       {
                         "type": "choice",
                         "prompt": "Are you sure? Some charging resources may not be retrievable.",
-                        "options": []
+                        "options": [
+                          {
+                            "text": "Yes, I'm ok with this.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "What would you like the withdrawal threshold to be?",
+                                "id": "rwzbib"
+                              },
+                              {
+                                "type": "message",
+                                "text": "Your chargeable items will be charged with up to [value] charges on withdrawal. You can edit this value for individual items by toggling 'Bank item options' on in the bank settings menu, and right clicking the item.",
+                                "id": "o312B6"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No",
+                            "steps": []
+                          }
+                        ]
                       }
                     ]
                   },
@@ -178,6 +208,32 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-c1c145213e07eb6d": [
+      {
+        "player": "Yes, show me the prices of weapons and armour."
+      },
+      {
+        "type": "action",
+        "text": "Grand Exchange: Weapons and Armour opens",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Grand Exchange: Weapons and Armour",
+        "id": "dETh9U"
+      }
+    ],
+    "jump-8068d00fb612c5de": [
+      {
+        "player": "I'll leave you alone."
+      },
+      {
+        "npc": "Thank you, I have much on my mind."
+      },
+      {
+        "type": "end"
       }
     ]
   }

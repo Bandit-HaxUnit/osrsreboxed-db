@@ -86,7 +86,13 @@
             ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           }
         ]
       }
@@ -160,7 +166,13 @@
             ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           }
         ]
       }
@@ -423,8 +435,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "5kpfVy"
+                                    "id": "5kpfVy",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-78136db9e79ab285"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -499,8 +516,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "KCqifP"
+                        "id": "KCqifP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0839e7835847cef7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -538,8 +560,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "vGca-9"
+                        "id": "vGca-9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b2259f718a1678aa"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -640,8 +667,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "r6x4-R"
+                    "id": "r6x4-R",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-10ec38e2c1f78ef8"
+                      }
+                    ]
                   }
                 ]
               }
@@ -781,7 +813,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please!"
+            "text": "Yes please!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_oPfLy"
+              }
+            ]
           },
           {
             "text": "I've been sent here with a package for you.",
@@ -915,7 +953,17 @@
             ]
           },
           {
-            "text": "Oh, it's a rune shop. No thank you, then."
+            "text": "Oh, it's a rune shop. No thank you, then.",
+            "steps": [
+              {
+                "player": "Oh, it's a rune shop. No thank you, then."
+              },
+              {
+                "type": "line",
+                "speaker": "Aubury",
+                "text": "Well, if you find someone who does want runes, please send them my way."
+              }
+            ]
           }
         ]
       }
@@ -948,10 +996,22 @@
             ]
           },
           {
-            "text": "Yes please!"
+            "text": "Yes please!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_oPfLy"
+              }
+            ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Qja4cy"
+              }
+            ]
           }
         ]
       }
@@ -1021,10 +1081,22 @@
             "type": "choice",
             "options": [
               {
-                "text": "Yes please!"
+                "text": "Yes please!",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "_oPfLy"
+                  }
+                ]
               },
               {
-                "text": "No thank you."
+                "text": "No thank you.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Qja4cy"
+                  }
+                ]
               }
             ]
           }
@@ -1115,13 +1187,166 @@
             "type": "choice",
             "options": [
               {
-                "text": "Can you teleport me to the Rune Essence Mine?"
+                "text": "Can you teleport me to the Rune Essence Mine?",
+                "steps": [
+                  {
+                    "player": "Can you teleport me to the Rune Essence Mine?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Senventior disthine molenko!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player is teleported to the rune essence mine.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "SvUvek"
+                  }
+                ]
               },
               {
-                "text": "Who else knows the teleport to the Rune Essence Mine?"
+                "text": "Who else knows the teleport to the Rune Essence Mine?",
+                "steps": [
+                  {
+                    "player": "Who else knows the teleport to the Rune Essence Mine?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Apart from myself, there's also Aubury in Varrock, Wizard Cromperty in East Ardougne, Brimstail in the Tree Gnome Stronghold and Wizard Distentor in Yanille's Wizards' Guild."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Can you teleport me to the Rune Essence Mine?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "HEJGBR",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-4085a6935095beb2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Could you tell me about the old Wizards' Tower?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "PBBz_A",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-16e03db64d340015"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Thanks for the information.",
+                        "steps": [
+                          {
+                            "player": "Thanks for the information."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Archmage Sedridor",
+                            "text": "My pleasure."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               },
               {
-                "text": "Could you tell me about the old Wizards' Tower?"
+                "text": "Could you tell me about the old Wizards' Tower?",
+                "steps": [
+                  {
+                    "player": "Could you tell me about the old Wizards' Tower?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Of course. The first Wizards' Tower was built at the same time the Order of Wizards was founded. It was at the dawn of the Fifth Age, when the secrets of runecrafting were rediscovered."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "For years, the tower was a hub of magical research. Wizards of all races and religions were welcomed into our order."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Alas, that openness is what ultimately led to disaster. The wizards who served Zamorak, the evil god of chaos, tried to claim our magical discoveries in his name."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "They failed, but in retaliation, they burnt the entire tower to the ground. Years of work was destroyed."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "The tower was soon rebuilt of course, but even now we are still trying to regain knowledge that was lost."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "That's why I spend my time down here, in fact. This basement is all that is left of the old tower, and I believe there are still some secrets to discover here."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Of course, one secret I am no longer looking for is the teleportation incantation to the Rune Essence Mine. We have you to thank for that."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player did not speak to the Mage of Zamorak about the abyssal incantation post-quest:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "TZzviH"
+                      }
+                    ],
+                    "id": "fhNh4z"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player spoke to the Mage of Zamorak about the Z.M.I. post-quest:",
+                    "steps": [
+                      {
+                        "player": "I've heard a different take on how the tower burnt down. Something about a ritual gone wrong?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Archmage Sedridor",
+                        "text": "Nothing more than Zamorakian hearsay! They burnt the tower down and are now too cowardly to even admit it!"
+                      },
+                      {
+                        "player": "Fair enough."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "eoAI9B"
+                      }
+                    ],
+                    "id": "df82K2"
+                  }
+                ]
               },
               {
                 "text": "I'd better get going.",
@@ -1172,6 +1397,539 @@
     ]
   },
   "branches": {
+    "jump-78136db9e79ab285": [
+      {
+        "player": "Yes, certainly."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "He runs a rune shop in the south east of Varrock. Please, take this package of research notes to him. If all goes well, the secrets of the essence mine may soon be ours once more!"
+      },
+      {
+        "type": "message",
+        "text": "Sedridor hands you a package.",
+        "id": "-N0E2K"
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Best of luck, [player name]."
+      },
+      {
+        "type": "condition",
+        "text": "If the player gave the talisman to him while doubting his identity:",
+        "steps": [
+          {
+            "type": "end"
+          }
+        ],
+        "id": "J7-myn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player gave the talisman to him without doubting his identity:",
+        "steps": [
+          {
+            "player": "I don't remember telling you my name... How do you know it?"
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "Really now? I am the Archmage you know."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "A06WGi"
+      }
+    ],
+    "jump-0839e7835847cef7": [
+      {
+        "player": "Okay, here you are."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the talisman:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand the talisman to Sedridor.",
+            "id": "DvfTKd"
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "Hmm... Doesn't seem to be anything too special. Just a normal air talisman by the looks of things. Still, looks can be deceiving. Let me take a closer look..."
+          },
+          {
+            "type": "message",
+            "text": "Sedridor murmurs some sort of incantation and the talisman glows slightly.",
+            "id": "Lq9FZ3"
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "How interesting... It would appear I spoke too soon. There's more to this talisman than meets the eye. In fact, it may well be the last piece of the puzzle."
+          },
+          {
+            "player": "Puzzle?"
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "Indeed! The lost legacy of the first tower. This talisman may in fact be key to finding the forgotten essence mine!"
+          },
+          {
+            "player": "First tower? Forgotten essence mine? What are you on about?"
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "Ah, my apologies, adventurer. Allow me to fill you in."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Go ahead.",
+                "steps": [
+                  {
+                    "player": "Go ahead."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "As you are likely aware, when we cast spells, we do so using the power of runes."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "These runes are crafted from a highly unique material, and then imbued with magical power from various runic altars. Different altars create different runes with different magical effects."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "The process of imbuing runes is called runecrafting. Legend has it that this was once a common art, but the secrets of how to do it were lost until just under two hundred years ago."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "The rediscovery of runecrafting had such a large impact on the world, that it marked the dawn of the Fifth Age. It also resulted in the birth of our order, and the construction of the first Wizards' Tower."
+                  },
+                  {
+                    "player": "If it was the first tower, I'm guessing it doesn't exist anymore? What happened?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "It was burnt down by traitorous members of our own order. They followed the evil god of chaos, Zamorak, and they wished to claim our magical discoveries in his name."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "When the tower burnt down, much was lost, including an important incantation. A spell that could be used to teleport to a hidden essence mine."
+                  },
+                  {
+                    "player": "The essence mine you mentioned earlier, I assume?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Precisely. Rune essence is the material used to make runes, but it is incredibly rare. That essence mine was the only place it could be found that our order knew of."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Since the incantation was lost, we have struggled to maintain our stocks of rune essence."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "There are seemingly those out there that still know where to find some, but while they have been willing to sell essence to us, they have refused to share knowledge on how to find it ourselves."
+                  },
+                  {
+                    "player": "I'm starting to see why this is so important. So you think this talisman can help you rediscover that incantation?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "I do! All magic leaves traces, and from what I can tell, this talisman was used heavily during the time of the first tower."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "It would have been taken to the essence mine many times, and the magical energies there will have left an imprint on it. To think that it was hidden in Lumbridge all this time!"
+                  },
+                  {
+                    "player": "So what happens now?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "It is critical I share this discovery with my associate, Aubury, as soon as possible. He's not much of a wizard, but he's an expert on runecrafting, and his insight will be essential."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Would you be willing to visit him for me? I would go myself, but I wish to study this talisman some more."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, certainly.",
+                        "steps": [
+                          {
+                            "player": "Yes, certainly."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Archmage Sedridor",
+                            "text": "He runs a rune shop in the south east of Varrock. Please, take this package of research notes to him. If all goes well, the secrets of the essence mine may soon be ours once more!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Sedridor hands you a package.",
+                            "id": "-N0E2K"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Archmage Sedridor",
+                            "text": "Best of luck, [player name]."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player gave the talisman to him while doubting his identity:",
+                            "steps": [
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "J7-myn"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player gave the talisman to him without doubting his identity:",
+                            "steps": [
+                              {
+                                "player": "I don't remember telling you my name... How do you know it?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Archmage Sedridor",
+                                "text": "Really now? I am the Archmage you know."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "A06WGi"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, I'm busy.",
+                        "steps": [
+                          {
+                            "player": "No, I'm busy."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Archmage Sedridor",
+                            "text": "As you wish adventurer. I will continue to study this talisman you have brought me. Return here if you find yourself with some spare time to help me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Actually, I'm not interested.",
+                "steps": [
+                  {
+                    "player": "Actually, I'm not interested."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Oh... Well I guess the short of it is that this talisman could be key to helping us rediscover an important teleportation incantation."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "With it, we'll be able to access a hidden essence mine, our lost source of rune essence."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "It is critical I share this discovery with my associate, Aubury, as soon as possible. He's not much of a wizard, but he's an expert on runecrafting, and his insight will be essential."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Archmage Sedridor",
+                    "text": "Would you be willing to visit him for me? I would go myself, but I wish to study this talisman some more."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, certainly.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "5kpfVy",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-78136db9e79ab285"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, I'm busy.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "ahqTMV"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "qhrYdB"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the talisman:",
+        "steps": [
+          {
+            "player": "Okay, here you are."
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "..."
+          },
+          {
+            "player": "..."
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "Well?"
+          },
+          {
+            "player": "I don't seem to have it with me."
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "Hmm? You are a very odd person. Come back again when you have it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ucs9B_"
+      }
+    ],
+    "jump-b2259f718a1678aa": [
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "..."
+      },
+      {
+        "player": "..."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Well?"
+      },
+      {
+        "player": "I don't seem to have it with me."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Hmm? You are a very odd person. Come back again when you have it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-10ec38e2c1f78ef8": [
+      {
+        "player": "Actually, I'm not interested."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Oh... Well I guess the short of it is that this talisman could be key to helping us rediscover an important teleportation incantation."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "With it, we'll be able to access a hidden essence mine, our lost source of rune essence."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "It is critical I share this discovery with my associate, Aubury, as soon as possible. He's not much of a wizard, but he's an expert on runecrafting, and his insight will be essential."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Would you be willing to visit him for me? I would go myself, but I wish to study this talisman some more."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, certainly.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "5kpfVy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-78136db9e79ab285"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, I'm busy.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ahqTMV"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4085a6935095beb2": [
+      {
+        "player": "Can you teleport me to the Rune Essence Mine?"
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Senventior disthine molenko!"
+      },
+      {
+        "type": "action",
+        "text": "Player is teleported to the rune essence mine.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "SvUvek"
+      }
+    ],
+    "jump-16e03db64d340015": [
+      {
+        "player": "Could you tell me about the old Wizards' Tower?"
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Of course. The first Wizards' Tower was built at the same time the Order of Wizards was founded. It was at the dawn of the Fifth Age, when the secrets of runecrafting were rediscovered."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "For years, the tower was a hub of magical research. Wizards of all races and religions were welcomed into our order."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Alas, that openness is what ultimately led to disaster. The wizards who served Zamorak, the evil god of chaos, tried to claim our magical discoveries in his name."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "They failed, but in retaliation, they burnt the entire tower to the ground. Years of work was destroyed."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "The tower was soon rebuilt of course, but even now we are still trying to regain knowledge that was lost."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "That's why I spend my time down here, in fact. This basement is all that is left of the old tower, and I believe there are still some secrets to discover here."
+      },
+      {
+        "type": "line",
+        "speaker": "Archmage Sedridor",
+        "text": "Of course, one secret I am no longer looking for is the teleportation incantation to the Rune Essence Mine. We have you to thank for that."
+      },
+      {
+        "type": "condition",
+        "text": "If the player did not speak to the Mage of Zamorak about the abyssal incantation post-quest:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "TZzviH"
+          }
+        ],
+        "id": "fhNh4z"
+      },
+      {
+        "type": "condition",
+        "text": "If the player spoke to the Mage of Zamorak about the Z.M.I. post-quest:",
+        "steps": [
+          {
+            "player": "I've heard a different take on how the tower burnt down. Something about a ritual gone wrong?"
+          },
+          {
+            "type": "line",
+            "speaker": "Archmage Sedridor",
+            "text": "Nothing more than Zamorakian hearsay! They burnt the tower down and are now too cowardly to even admit it!"
+          },
+          {
+            "player": "Fair enough."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "eoAI9B"
+          }
+        ],
+        "id": "df82K2"
+      }
+    ],
+    "p5txee": [
+      {
+        "player": "Where can I find money?"
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "I've heard that the blacksmiths are prosperous amongst the peasantry. Maybe you could try your hand at that?"
+      }
+    ],
     "Qh_npu": [
       {
         "player": "I don't remember telling you my name... How do you know it?"
@@ -1183,6 +1941,24 @@
       },
       {
         "type": "end"
+      }
+    ],
+    "_oPfLy": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Aubury's Rune Shop.",
+        "id": "NN4tJn"
+      }
+    ],
+    "Qja4cy": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "type": "line",
+        "speaker": "Aubury",
+        "text": "Well, if you find someone who does want runes, please send them my way."
       }
     ]
   }

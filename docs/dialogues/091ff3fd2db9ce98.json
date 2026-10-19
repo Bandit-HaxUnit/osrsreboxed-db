@@ -33,8 +33,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "KDD1gs"
+                        "id": "KDD1gs",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b6ee4dfc8c020caf"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -43,8 +48,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "AhGFeX"
+                        "id": "AhGFeX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-687bd5f0ebead815"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -86,8 +96,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "pFOKr0"
+                        "id": "pFOKr0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1d8449a9fbbe8a75"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -96,8 +111,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "IQgUqL"
+                        "id": "IQgUqL",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-687bd5f0ebead815"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -142,8 +162,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "wa_IJi"
+                        "id": "wa_IJi",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1d8449a9fbbe8a75"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -152,8 +177,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "DYV5Pe"
+                        "id": "DYV5Pe",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b6ee4dfc8c020caf"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -162,8 +192,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "TikpvS"
+                        "id": "TikpvS",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e9e226821ca63efd"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -305,6 +340,203 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-b6ee4dfc8c020caf": [
+      {
+        "player": "Tell me about Enakhra."
+      },
+      {
+        "npc": "Enakhra? I have read only a little about her. She was one of the Mahjarrat who arrived in Gielinor many thousands of years ago."
+      },
+      {
+        "npc": "She supported Zamorak when he tried to gain power, and she apparently built a great temple in his honour somewhere in the desert."
+      },
+      {
+        "npc": "However, it is said that when she showed it to him, he was not impressed, and told her that he would rather have a weapon that could slay gods."
+      },
+      {
+        "npc": "That is the last anyone knows of what happened to her, and it took place several thousand years ago."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "pFOKr0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1d8449a9fbbe8a75"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Akthanakos.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "IQgUqL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-687bd5f0ebead815"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Interesting. Thanks for the information.",
+            "steps": [
+              {
+                "player": "Interesting. Thanks for the information."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-687bd5f0ebead815": [
+      {
+        "player": "Tell me about Akthanakos."
+      },
+      {
+        "npc": "An interesting choice of topic. Akthanakos is a Mahjarrat who was apparently worshipped as a god for a while in these parts. That was a long time ago, of course."
+      },
+      {
+        "npc": "Unlike many of his kin, he was against Zamorak's rise to power. Perhaps that's why he ended up out here. Zamorak has little sway in the desert."
+      },
+      {
+        "npc": "Whatever his reasons, he clearly took a liking to living here. He took on the head of a camel and even made an amulet that would allow him to understand their kind."
+      },
+      {
+        "npc": "Using it, he even trained some of the native camels to fight for him. Their name, 'Ugthanki', is derived from his."
+      },
+      {
+        "npc": "Since he disappeared, however, it is said that the Ugthanki became more violent and started attacking travellers."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "wa_IJi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1d8449a9fbbe8a75"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Enakhra.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "DYV5Pe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b6ee4dfc8c020caf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Interesting. Thanks for the information.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "TikpvS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e9e226821ca63efd"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1d8449a9fbbe8a75": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "npc": "I am a librarian from the great library of Menaphos. I left to travel the desert and learn more of its history."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about Enakhra.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "KDD1gs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b6ee4dfc8c020caf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Akthanakos.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "AhGFeX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-687bd5f0ebead815"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd better be off.",
+            "steps": [
+              {
+                "player": "I'd better be off."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e9e226821ca63efd": [
+      {
+        "player": "Interesting. Thanks for the information."
+      },
+      {
+        "type": "end"
       }
     ]
   }

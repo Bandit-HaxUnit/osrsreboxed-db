@@ -34,16 +34,103 @@
             ]
           },
           {
-            "text": "Can you explain the Gaze of Saradomin to me?"
+            "text": "Can you explain the Gaze of Saradomin to me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "2SDCLV"
+              }
+            ]
           },
           {
             "text": "Can I buy some armour?"
           },
           {
-            "text": "Can I switch respawns please?"
+            "text": "Can I switch respawns please?",
+            "steps": [
+              {
+                "player": "Can I switch respawns, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is not Falador:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sir Tiffy Cashien",
+                    "text": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Falador.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "FAy1JW"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "ipT1-t"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "uTBwMK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is Falador:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sir Tiffy Cashien",
+                    "text": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Lumbridge.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "12jyXH"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fQZhfB"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zTLHo1"
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mz-8Ox"
+              }
+            ]
           }
         ]
       }
@@ -197,16 +284,103 @@
             ]
           },
           {
-            "text": "Can you explain the Gaze of Saradomin to me?"
+            "text": "Can you explain the Gaze of Saradomin to me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "2SDCLV"
+              }
+            ]
           },
           {
             "text": "Can I buy some armour?"
           },
           {
-            "text": "Can I switch respawns please?"
+            "text": "Can I switch respawns please?",
+            "steps": [
+              {
+                "player": "Can I switch respawns, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is not Falador:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sir Tiffy Cashien",
+                    "text": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Falador.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "FAy1JW"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "ipT1-t"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "uTBwMK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is Falador:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sir Tiffy Cashien",
+                    "text": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Lumbridge.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "12jyXH"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fQZhfB"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zTLHo1"
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mz-8Ox"
+              }
+            ]
           }
         ]
       }
@@ -282,16 +456,103 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Can you explain the Gaze of Saradomin to me?"
+                    "text": "Can you explain the Gaze of Saradomin to me?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "2SDCLV"
+                      }
+                    ]
                   },
                   {
                     "text": "Can I buy some armour?"
                   },
                   {
-                    "text": "Can I switch respawns, please?"
+                    "text": "Can I switch respawns, please?",
+                    "steps": [
+                      {
+                        "player": "Can I switch respawns, please?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player's respawn point is not Falador:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Sir Tiffy Cashien",
+                            "text": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes, I want to respawn in Falador.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "FAy1JW"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, no thanks. I like my respawn point.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "ipT1-t"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "uTBwMK"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player's respawn point is Falador:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Sir Tiffy Cashien",
+                            "text": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes, I want to respawn in Lumbridge.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "12jyXH"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, no thanks. I like my respawn point.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "fQZhfB"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "zTLHo1"
+                      }
+                    ]
                   },
                   {
-                    "text": "Goodbye."
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "mz-8Ox"
+                      }
+                    ]
                   }
                 ]
               }
@@ -883,8 +1144,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "P4UvnF"
+                "id": "P4UvnF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5afbb8b1690b99ee"
+                  }
+                ]
               }
             ]
           },
@@ -893,8 +1159,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "zMKm0E"
+                "id": "zMKm0E",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0881437cf6454f9"
+                  }
+                ]
               }
             ]
           },
@@ -903,8 +1174,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WcLNqw"
+                "id": "WcLNqw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e67f9c5bf51d1bd6"
+                  }
+                ]
               }
             ]
           },
@@ -913,8 +1189,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XRPeBK"
+                "id": "XRPeBK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1bccbe6e2d208751"
+                  }
+                ]
               }
             ]
           }
@@ -1390,8 +1671,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vKN47_"
+                "id": "vKN47_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-12bd56ccccbef3f8"
+                  }
+                ]
               }
             ]
           },
@@ -1400,8 +1686,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cIeS-M"
+                "id": "cIeS-M",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-46f3e84de9cb160d"
+                  }
+                ]
               }
             ]
           },
@@ -1410,8 +1701,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "GAWwRB"
+                "id": "GAWwRB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bfb74f2d49b88ce3"
+                  }
+                ]
               }
             ]
           },
@@ -1420,8 +1716,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kaj-pu"
+                "id": "kaj-pu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ad456e5f5413760f"
+                  }
+                ]
               }
             ]
           }
@@ -1752,8 +2053,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "mXSRO1"
+                "id": "mXSRO1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-27d5ca0b6bff1544"
+                  }
+                ]
               }
             ]
           },
@@ -1762,8 +2068,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "c7wADu"
+                "id": "c7wADu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-aba350b8cec7359d"
+                  }
+                ]
               }
             ]
           },
@@ -1772,8 +2083,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kwvKww"
+                "id": "kwvKww",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fe92c3a884ccfbad"
+                  }
+                ]
               }
             ]
           },
@@ -1782,8 +2098,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ziif9B"
+                "id": "ziif9B",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-eeadea4977d40dd9"
+                  }
+                ]
               }
             ]
           }
@@ -1850,8 +2171,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "esfTCx"
+                "id": "esfTCx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5afbb8b1690b99ee"
+                  }
+                ]
               }
             ]
           },
@@ -1860,8 +2186,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "L5lXA2"
+                "id": "L5lXA2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0881437cf6454f9"
+                  }
+                ]
               }
             ]
           },
@@ -1870,8 +2201,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UONIaC"
+                "id": "UONIaC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e67f9c5bf51d1bd6"
+                  }
+                ]
               }
             ]
           },
@@ -1880,8 +2216,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "7zKX6v"
+                "id": "7zKX6v",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1bccbe6e2d208751"
+                  }
+                ]
               }
             ]
           }
@@ -2566,8 +2907,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wGsVrZ"
+                "id": "wGsVrZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5afbb8b1690b99ee"
+                  }
+                ]
               }
             ]
           },
@@ -2576,8 +2922,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sVCfL6"
+                "id": "sVCfL6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0881437cf6454f9"
+                  }
+                ]
               }
             ]
           },
@@ -2586,8 +2937,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "R-nx_U"
+                "id": "R-nx_U",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e67f9c5bf51d1bd6"
+                  }
+                ]
               }
             ]
           },
@@ -2596,8 +2952,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qDOGDY"
+                "id": "qDOGDY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1bccbe6e2d208751"
+                  }
+                ]
               }
             ]
           }
@@ -2866,10 +3227,76 @@
             ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ezekial Lovecraft",
+                "text": "I supply the local fishermen with the tools and bait they need to do their job."
+              },
+              {
+                "player": "Interesting. Have you been doing it long?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ezekial Lovecraft",
+                "text": "Why yes, all of my life.  I took over from my father, who inherited the business from his father and so on."
+              },
+              {
+                "type": "line",
+                "speaker": "Ezekial Lovecraft",
+                "text": "In fact, there have been Lovecraft's selling bait for over ten generations."
+              },
+              {
+                "player": "Wow, that's some lineage."
+              },
+              {
+                "type": "line",
+                "speaker": "Ezekial Lovecraft",
+                "text": "Oh yes, we have a long and interesting family history. For one reason or another the Lovecraft's have always been bait sellers or writers."
+              },
+              {
+                "player": "Hmm, yes well. I'm sure it's all fascinating, but I..."
+              },
+              {
+                "type": "line",
+                "speaker": "Ezekial Lovecraft",
+                "text": "Oh very, very fascinating, for instance my great grandfather Howard..."
+              },
+              {
+                "player": "Yawn. Oh, I'm sorry but I really must be getting on. I think my giraffe needs feeding."
+              },
+              {
+                "type": "line",
+                "speaker": "Ezekial Lovecraft",
+                "text": "Your?"
+              },
+              {
+                "player": "Giraffe. Sorry, but he gets cranky without enough sugar. Bye now!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ezekial Lovecraft",
+                "text": "Oh right, goodbye."
+              }
+            ]
           },
           {
-            "text": "Can I buy some fishing supplies please?"
+            "text": "Can I buy some fishing supplies please?",
+            "steps": [
+              {
+                "player": "Can I buy some fishing supplies please?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Lovecraft's Tackle",
+                "id": "XNufWp"
+              }
+            ]
           },
           {
             "text": "You are a bit too strange for me. Bye.",
@@ -3230,8 +3657,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "OPKdyO"
+                "id": "OPKdyO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5afbb8b1690b99ee"
+                  }
+                ]
               }
             ]
           },
@@ -3240,8 +3672,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "OMVBAr"
+                "id": "OMVBAr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0881437cf6454f9"
+                  }
+                ]
               }
             ]
           },
@@ -3250,8 +3687,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LSA77i"
+                "id": "LSA77i",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e67f9c5bf51d1bd6"
+                  }
+                ]
               }
             ]
           },
@@ -3260,8 +3702,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "mSmp8X"
+                "id": "mSmp8X",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1bccbe6e2d208751"
+                  }
+                ]
               }
             ]
           }
@@ -3643,6 +4090,671 @@
       {
         "type": "unavailable",
         "id": "mmX8iA"
+      }
+    ]
+  },
+  "branches": {
+    "jump-5afbb8b1690b99ee": [
+      {
+        "player": "What's the mission?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Well, I started to notice something about three weeks ago."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "The Mayor called a meeting of the town council. Nothing too strange about that, in and of itself."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "He was acting a bit strange, like he'd taken a blow to the head or something. At the end of the meeting he announces that he's going to be renovating the shrine just west of the town."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Now, I thought that was a bit off since he's about as religious as a dead dog on a termite mound."
+      },
+      {
+        "player": "Eeew!"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Quiet down, I'm talking here."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "I could have let that slip, save for the things he's been bringing in."
+      },
+      {
+        "player": "What, like surface to air ballistas, intercontinental exploding fireballs and quasi-futuristic henchman uniforms?"
+      },
+      {
+        "player": "The essential tools for world domination?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "No, mining equipment."
+      },
+      {
+        "player": "That doesn't sound very evil?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "As well as the mining equipment, he's been bringing in rune essence in large quantities."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Far beyond what's needed for a small village such as this."
+      },
+      {
+        "player": "Okay, that sounds suspicious. I'll look into it."
+      },
+      {
+        "player": "Anything else?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Yes, some of the villagers have been disappearing overnight and reappearing the next day in a dazed and confused state."
+      },
+      {
+        "player": "Are you sure they're not just getting drunk?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "They could be I suppose, but I'd rather you made sure."
+      },
+      {
+        "player": "Sure thing."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Anything else you need to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "0mS6Dp"
+      }
+    ],
+    "jump-f0881437cf6454f9": [
+      {
+        "player": "Tell me about Witchaven."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Well, what's to say. This place is falling apart."
+      },
+      {
+        "player": "I noticed it's a bit run down."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Run down? Hah! This place used to be a bustling hive of industry."
+      },
+      {
+        "player": "What happened to it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "The Fishing Platform happened to it."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "When you introduce a large scale operation like the Fishing Platform, it takes away the business from the little guy."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Almost overnight Witchaven became a ghost town."
+      },
+      {
+        "player": "That's very sad. However, you can't stand in the way of progress."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "I'm going to pretend you didn't say that [boy/girl]."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Remember, bigger is not always better."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "YQJ57w"
+      }
+    ],
+    "jump-e67f9c5bf51d1bd6": [
+      {
+        "player": "Who are the important people in Witchaven?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Hmm. There are only three people I recommend speaking to."
+      },
+      {
+        "player": "Right, who would that be?"
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Firstly go speak to Mayor Hobb. He was the first to be acting strangely."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "As well as that, he isn't looking too healthy."
+      },
+      {
+        "player": "Speak to the Mayor, check."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Next, speak to Brother Maledict at the church."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "He speaks to a lot of the villagers and has a good feel for what's going on in town."
+      },
+      {
+        "player": "Brother Maledict, right."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Finally, speak to Holgart the fisherman. I haven't seen him sailing in a while.  That is definitely a bit off."
+      },
+      {
+        "player": "Holgart, oh yes I've spoken to him before."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "That covers about everyone, but don't just limit yourself to those three.  Others may have some insight into what's been happening."
+      },
+      {
+        "player": "Will do Col. O'Niall. Thanks for the advice."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "joi_Yx"
+      }
+    ],
+    "jump-1bccbe6e2d208751": [
+      {
+        "player": "That's enough for now."
+      },
+      {
+        "type": "line",
+        "speaker": "Col. O'Niall",
+        "text": "Stay sharp [boy/girl]."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-12bd56ccccbef3f8": [
+      {
+        "player": "Tell me again, what's worrying you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "It's my congregation. They seem to be drifting away from me."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "With all the hardships this small village has endured in the past few years, the people of Witchaven have never needed the solace of Saradomin more."
+      },
+      {
+        "player": "Well that's understandable."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Yes indeed. However, less and less people have been attending my services lately."
+      },
+      {
+        "player": "I can see why that would worry you. Do you have any idea why they would not attend?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "The only thing I can think of, is that the Mayor has asked them to help improve the shrine."
+      },
+      {
+        "player": "Well, that would make sense. Hmm, one more thing."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "sHhk_e"
+      }
+    ],
+    "jump-46f3e84de9cb160d": [
+      {
+        "player": "What can you tell me about the shrine?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Ah yes, one of the wonders of Witchaven. That particular shrine has existed since before Witchaven was even founded."
+      },
+      {
+        "player": "Wow! Now that is old."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Over one hundred and fifty years old in fact."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "The role I now fulfill was originally given to one of the Temple Guardians, but in time that has been delegated to one of the ordained, such as myself."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "The shrine was abandoned when the village came into being. Since then it has fallen into disrepair and other less savoury elements have moved in."
+      },
+      {
+        "player": "You must be pleased that the Mayor is renovating the shrine."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Well yes, it came as something of a pleasant shock. I only hope he will let me visit it soon."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "He wants me to wait until it's ready to unveil."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "XaGfPr"
+      }
+    ],
+    "jump-bfb74f2d49b88ce3": [
+      {
+        "player": "Tell me about the people of Witchaven."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Ah, the people of Witchaven are the salt of the earth. Hardworking and very generous. Well, usually that is."
+      },
+      {
+        "player": "Not anymore?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Oh, most of them certainly. It's just that something has changed over the past few weeks."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "It's nothing I can put my finger on. My flock aren't exactly unfriendly anymore, just different."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Well, they used to be very rigorous in attending my services. Now they seem almost apathetic."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "They wander around the village in a listless state, everyone except the Mayor that is."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Since the opening of the Fishing Platform he was a man beset by worries. The only thing that occupied his mind was how to rescue his village from financial collapse."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Ordinarily, I would welcome his new found drive and energy, especially as it is directed towards renovating the shrine"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "I'm not sure but something about him has me worried."
+      },
+      {
+        "player": "Perhaps he thinks the shrine could bring new interest to the village?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Perhaps. Maybe I'm being a little paranoid.  I'll give it some thought."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "In the meantime, is there anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "0lpE3P"
+      }
+    ],
+    "jump-ad456e5f5413760f": [
+      {
+        "player": "That's enough for now."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Maledict",
+        "text": "Peace be with you child."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-27d5ca0b6bff1544": [
+      {
+        "player": "What can you tell me about Witchaven?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "The land has seen much sorrow, much loss."
+      },
+      {
+        "player": "Are you talking about the Fishing Platform?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Fishing Platform? Oh yes, that. No.  The platform will do much for this place."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "The platform heralds a new beginning for Witchaven, undreamed of by those who built it."
+      },
+      {
+        "player": "I thought it took away all the trade?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "This is true, but it has brought us so much more in return, so much more."
+      },
+      {
+        "player": "Hmm, and I thought the village hated the Fishing Platform."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "It was... a necessary step."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Is there anything else you need to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "kY2QHS"
+      }
+    ],
+    "jump-aba350b8cec7359d": [
+      {
+        "player": "What improvements are you making to the shrine?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Ahh, the shrine - the future, our destiny, our heritage."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "That which the shrine holds can unlock a new path for all the village of Witchaven. And in time the whole of Gielinor."
+      },
+      {
+        "player": "Wow, the whole of Gielinor? I thought it was just some old shrine to Saradomin."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "The history of that shrine should not be overlooked.  It is ancient beyond your knowledge and much that shaped our history is contained within its walls."
+      },
+      {
+        "player": "Sounds like a very interesting place. I may have to take a look."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "There is much to be done before it is opened."
+      },
+      {
+        "player": "So it's not completed yet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "When you are ready, it may be that you will be unable to keep yourself away."
+      },
+      {
+        "player": "You know, you really are a strange person."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Is there anything else you need to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "xdGlvO"
+      }
+    ],
+    "jump-fe92c3a884ccfbad": [
+      {
+        "player": "Do you know you look very ill?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Ill? No, merely tired."
+      },
+      {
+        "player": "But you've turned a slightly sickly colour."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "A touch of food poisoning perhaps."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "This has been known to turn the face and give the impression of severe illness."
+      },
+      {
+        "player": "I've seen food poisoning. People normally don't look like... that."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Time is all that is needed. Yes, time to... get better."
+      },
+      {
+        "player": "Well, I hope you get better soon."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Soon, all will be well again. Have no fear."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Is there anything else you need to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "oEBKna"
+      }
+    ],
+    "jump-eeadea4977d40dd9": [
+      {
+        "player": "Nothing at the moment thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Mayor Hobb",
+        "text": "Then please feel free to stay in our village a while longer. Farewell."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "2SDCLV": [
+      {
+        "player": "I don't really understand this 'Gaze of Saradomin' thing... Do you think you could explain what it does for me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Certainly [milady/sirrah]! As you know, we Temple Knights are personally favoured by Saradomin himself."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "And when I say personally favoured, I don't mean that sometime off in the future he's going to buy us all a drink!"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "He watches over each of us, and when we die he catches us as we fall, and ensures we arrive back at Falador castle safe and sound."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "We usually lose some equipment when he does so, but it's a small price to pay to be hale and hearty again, what?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Some lucky fellows have a similar system going already, but when they die they spawn in that squalid little swamp village Lumbridge."
+      },
+      {
+        "player": "Yeah, what kind of person would want to spawn there... Certainly not me, and I never have! Honest!"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Well, you should be glad that we offer you a step up then! Falador is clearly a far superior town to spend your time in!"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Was there something else you wanted to ask good old Tiffy, [milady/sirrah]?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "crG25A"
+      }
+    ],
+    "FAy1JW": [
+      {
+        "player": "Yes, I want to respawn in Falador."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Top-hole, what? Good old Fally is definitely the hot-spot nowadays!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "ipT1-t": [
+      {
+        "player": "Actually, no thanks. I like my respawn point."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "As you wish, what? Ta-ta for now."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "12jyXH": [
+      {
+        "player": "Yes, I want to respawn in Lumbridge."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Why anyone would want to visit that smelly little swamp village of oiks is quite beyond me, I'm afraid, but the deed is done now."
+      }
+    ],
+    "fQZhfB": [
+      {
+        "player": "Actually, no thanks. I like my respawn point."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "As you wish, what? Ta-ta for now."
+      }
+    ],
+    "mz-8Ox": [
+      {
+        "player": "Well, see you around Tiffy."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Ta-ta for now, old bean!"
       }
     ]
   }

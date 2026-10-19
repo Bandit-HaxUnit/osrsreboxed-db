@@ -73,8 +73,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "iRRlI0"
+                "id": "iRRlI0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-78faa60078078d42"
+                  }
+                ]
               }
             ]
           },
@@ -87,6 +92,24 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-78faa60078078d42": [
+      {
+        "player": "Could you tan something for me?"
+      },
+      {
+        "npc": "Of course."
+      },
+      {
+        "type": "action",
+        "text": "Tanning interface opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Tanning",
+        "id": "cUU4Bn"
       }
     ]
   }

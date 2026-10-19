@@ -112,8 +112,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "ujiucQ"
+                        "id": "ujiucQ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0a347c289943f11b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -122,8 +127,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "glSgVx"
+                        "id": "glSgVx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a6b34d0185415936"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -160,8 +170,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ZTyZqw"
+                        "id": "ZTyZqw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-810953bf637ff967"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -180,8 +195,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "253ypm"
+                        "id": "253ypm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a6b34d0185415936"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -718,7 +738,439 @@
         "type": "choice",
         "options": [
           {
-            "text": "What could you make for me?"
+            "text": "What could you make for me?",
+            "steps": [
+              {
+                "player": "What could you make for me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "I mostly just make what I find pretty. I sometimes make dye for the women's clothes to brighten the place up. I can make red, yellow and blue dyes. If you'd like some, just bring me the appropriate ingredients."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What do you need to make red dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make red dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "3 lots of redberries and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some red dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some red dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have redberries:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You don't have enough berries to make the red dye.",
+                                    "id": "jEM4Fl"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "Ga-EA_"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives red dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "bMfkaS"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "player": "I don't think I have all the ingredients yet."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "You know what you need to get, now come back when you have them. Goodbye for now."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "player": "I can do without dye at that price."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "That's your choice, but I would think you have killed for less. I can see it in your eyes."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get redberries?",
+                            "steps": [
+                              {
+                                "player": "Where do I get redberries?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "I pick mine from the woods south of Varrock. The food shop in Port Sarim sometimes has some as well."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "player": "What other colours can you make?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Aggie",
+                                        "text": "Red, yellow and blue. Which one would you like?"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "6QIgcS"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "player": "Thanks."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Aggie",
+                                        "text": "You're welcome!"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "ORu0kB",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-370b457b486f519c"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make yellow dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make yellow dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "Yellow is a strange colour to get, comes from onion skins. I need 2 onions and 5 coins to make yellow dye."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some yellow dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some yellow dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have enough onions:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You don't have enough onions to make the yellow dye.",
+                                    "id": "aCXhvA"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "83sE3M"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives yellow dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "WsCsbT"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "mxPhaA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-26a0ae2031e4c184"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FjzrtA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-ed9b8ebf8636407f"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get onions?",
+                            "steps": [
+                              {
+                                "player": "Where do I get onions?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "There are some onions growing on a farm to the East of here, next to the sheep field."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "rLlL2Z",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-370b457b486f519c"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "wFxQ2H"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "SVEOy8",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-370b457b486f519c"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make blue dye?",
+                    "steps": [
+                      {
+                        "player": "What do you need to make blue dye?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "2 woad leaves and 5 coins to you."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, make me some blue dye please.",
+                            "steps": [
+                              {
+                                "player": "Okay, make me some blue dye please."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have woad leaves:",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "You don't have enough woad leaves to make the blue dye.",
+                                    "id": "_-vloh"
+                                  }
+                                ],
+                                "id": "WUXHEJ"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player receives blue dye.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "4kcivD"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't think I have all the ingredients yet.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FS2GCJ",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-26a0ae2031e4c184"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I can do without dye at that price.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "A0YuXA",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-ed9b8ebf8636407f"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where do I get woad leaves?",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Aggie",
+                                "text": "Woad leaves are fairly hard to find. My other customers tell me the chief gardener in Falador grows them."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What other colours can you make?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "mUxHVs",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-370b457b486f519c"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Thanks",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "hbUv2u"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What other colours can you make?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "FDLPmi",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-370b457b486f519c"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I am happy the colour I am.",
+                    "steps": [
+                      {
+                        "player": "No thanks, I am happy the colour I am."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "You are easily pleased with yourself then. When you need dyes, come to me."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Could you think of a way to make skin paste?",
@@ -820,13 +1272,168 @@
             ]
           },
           {
-            "text": "Cool, do you turn people into frogs?"
+            "text": "Cool, do you turn people into frogs?",
+            "steps": [
+              {
+                "player": "Cool, do you turn people into frogs?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "Oh, not for years, but if you meet a talking chicken, you have probably met the professor in the manor north of here. A few years ago it was flying fish. That machine is a menace."
+              }
+            ]
           },
           {
-            "text": "You mad old witch, you can't help me."
+            "text": "You mad old witch, you can't help me.",
+            "steps": [
+              {
+                "player": "You mad old witch, you can't help me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 21-100 coins:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Oh, you like to call a witch names do you?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Aggie waves her hands about, and you seem to be five coins poorer.",
+                    "id": "ZgmmGS"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "That's a fine for insulting a witch. You should learn some respect."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2FpbvQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 101 or more coins:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Oh, you like to call a witch names do you?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Aggie waves her hands about, and you seem to be 20 coins poorer.",
+                    "id": "EIPyFf"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "That's a fine for insulting a witch. You should learn some respect."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "b-i7IK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying a pot of flour:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Oh, you like to call a witch names do you?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Aggie waves her hands about, and you seem to have a pot of flour less.",
+                    "id": "KCH5mX"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Thank you for your kind present of some flour. I am sure you never meant to insult me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "N62aqF"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "You should be careful about insulting a witch. You never know what shape you could wake up in."
+              }
+            ]
           },
           {
-            "text": "Can you make dyes for me please?"
+            "text": "Can you make dyes for me please?",
+            "steps": [
+              {
+                "player": "Can you make dyes for me please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "What sort of dye would you like? Red, yellow or blue?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What do you need to make red dye?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "N9OV1_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c1284ecd2f7c796f"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make yellow dye?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "cG1-Wx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c03c8f2b296857d4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make blue dye?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "RfmFzA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9492a044c859f49c"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -935,8 +1542,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "lJP-vJ"
+                                        "id": "lJP-vJ",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-2573b33c6e1572f7"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -991,8 +1603,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "0I4r_J"
+                                        "id": "0I4r_J",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-2573b33c6e1572f7"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1128,8 +1745,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "jq82me"
+                        "id": "jq82me",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0622782b4b1651d3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1212,8 +1834,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "aFVKiT"
+                                "id": "aFVKiT",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-0622782b4b1651d3"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1222,8 +1849,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "qAVYya"
+                                "id": "qAVYya",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e1b83fb2d66a065a"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1528,8 +2160,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "s0TJ_8"
+                                "id": "s0TJ_8",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-87e19395b4fcf134"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1538,8 +2175,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "moCf0i"
+                                "id": "moCf0i",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-d640d8eca1faa161"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1548,8 +2190,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "5PxcCX"
+                                "id": "5PxcCX",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-044ffaba30868ddf"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1562,8 +2209,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "OmpnYe"
+                        "id": "OmpnYe",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6b7d1074e074c969"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1572,8 +2224,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "SoL_o9"
+                        "id": "SoL_o9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-044ffaba30868ddf"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1627,8 +2284,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "IL4DKe"
+                                "id": "IL4DKe",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-166b173d03fa114a"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1637,8 +2299,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "0cVjf7"
+                                "id": "0cVjf7",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-87e19395b4fcf134"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1670,8 +2337,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "p5jDC9"
+                                "id": "p5jDC9",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-044ffaba30868ddf"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1684,8 +2356,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "GT8uqs"
+                        "id": "GT8uqs",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-87e19395b4fcf134"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1694,8 +2371,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "EeWQFu"
+                        "id": "EeWQFu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-044ffaba30868ddf"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -2006,6 +2688,1082 @@
       {
         "type": "unavailable",
         "id": "L4x1AB"
+      }
+    ]
+  },
+  "branches": {
+    "jump-0a347c289943f11b": [
+      {
+        "player": "What is the second thing you need?"
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "We need the key, or we need a copy made. If you can get some soft clay then you can copy the key..."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "...If you can convince Lady Keli to show it to you for a moment. She is very boastful. It should not be too hard."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "Bring the imprint to me, with a bar of bronze."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is the first thing I must do?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ZTyZqw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-810953bf637ff967"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What exactly is the second thing you need?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "IIcGOM"
+              }
+            ]
+          },
+          {
+            "text": "Okay, I better go find some things.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "253ypm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a6b34d0185415936"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a6b34d0185415936": [
+      {
+        "player": "Okay, I had better go find some things."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "May good luck travel with you. Don't forget to find Leela. It can't be done without her help."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-810953bf637ff967": [
+      {
+        "player": "What is the first thing I must do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "The prince is guarded by some stupid guards and a clever woman. The woman is our only way to get the prince out. Only she can walk freely about the area."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "I think you will need to tie her up. One coil of rope should do for that. Then, disguise the prince as her to get him out without suspicion."
+      },
+      {
+        "player": "How good must the disguise be?"
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "Only enough to fool the guards at a distance. Get a skirt like hers. Same colour, same style. We will only have a short time."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "Get a blonde wig, too. That is up to you to make or find. Something to colour the skin of the prince."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "My daughter and top spy, Leela, can help you. She has sent word that she has discovered where they are keeping the prince."
+      },
+      {
+        "type": "line",
+        "speaker": "Osman",
+        "text": "It's near Draynor Village. She is lurking somewhere near there now."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Explain the first thing again.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "9udnmt"
+              }
+            ]
+          },
+          {
+            "text": "What is the second thing you need?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ujiucQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0a347c289943f11b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, I better go find some things.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "glSgVx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a6b34d0185415936"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-370b457b486f519c": [
+      {
+        "player": "What other colours can you make?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Red, yellow and blue. Which one would you like?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "6QIgcS"
+      }
+    ],
+    "jump-26a0ae2031e4c184": [
+      {
+        "player": "I don't think I have all the ingredients yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "You know what you need to get, now come back when you have them. Goodbye for now."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ed9b8ebf8636407f": [
+      {
+        "player": "I can do without dye at that price."
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "That's your choice, but I would think you have killed for less. I can see it in your eyes."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c1284ecd2f7c796f": [
+      {
+        "player": "What do you need to make red dye?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "3 lots of redberries and 5 coins to you."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, make me some red dye please.",
+            "steps": [
+              {
+                "player": "Okay, make me some red dye please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have redberries:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't have enough berries to make the red dye.",
+                    "id": "jEM4Fl"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Ga-EA_"
+              },
+              {
+                "type": "action",
+                "text": "The player receives red dye.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "bMfkaS"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't think I have all the ingredients yet.",
+            "steps": [
+              {
+                "player": "I don't think I have all the ingredients yet."
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "You know what you need to get, now come back when you have them. Goodbye for now."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I can do without dye at that price.",
+            "steps": [
+              {
+                "player": "I can do without dye at that price."
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "That's your choice, but I would think you have killed for less. I can see it in your eyes."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Where do I get redberries?",
+            "steps": [
+              {
+                "player": "Where do I get redberries?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "I pick mine from the woods south of Varrock. The food shop in Port Sarim sometimes has some as well."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What other colours can you make?",
+                    "steps": [
+                      {
+                        "player": "What other colours can you make?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "Red, yellow and blue. Which one would you like?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "6QIgcS"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks",
+                    "steps": [
+                      {
+                        "player": "Thanks."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aggie",
+                        "text": "You're welcome!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What other colours can you make?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ORu0kB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-370b457b486f519c"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c03c8f2b296857d4": [
+      {
+        "player": "What do you need to make yellow dye?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Yellow is a strange colour to get, comes from onion skins. I need 2 onions and 5 coins to make yellow dye."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, make me some yellow dye please.",
+            "steps": [
+              {
+                "player": "Okay, make me some yellow dye please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough onions:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't have enough onions to make the yellow dye.",
+                    "id": "aCXhvA"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "83sE3M"
+              },
+              {
+                "type": "action",
+                "text": "The player receives yellow dye.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "WsCsbT"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't think I have all the ingredients yet.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "mxPhaA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-26a0ae2031e4c184"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I can do without dye at that price.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "FjzrtA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ed9b8ebf8636407f"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where do I get onions?",
+            "steps": [
+              {
+                "player": "Where do I get onions?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "There are some onions growing on a farm to the East of here, next to the sheep field."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What other colours can you make?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rLlL2Z",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-370b457b486f519c"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "wFxQ2H"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What other colours can you make?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "SVEOy8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-370b457b486f519c"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9492a044c859f49c": [
+      {
+        "player": "What do you need to make blue dye?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "2 woad leaves and 5 coins to you."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, make me some blue dye please.",
+            "steps": [
+              {
+                "player": "Okay, make me some blue dye please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have woad leaves:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "You don't have enough woad leaves to make the blue dye.",
+                    "id": "_-vloh"
+                  }
+                ],
+                "id": "WUXHEJ"
+              },
+              {
+                "type": "action",
+                "text": "The player receives blue dye.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "4kcivD"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't think I have all the ingredients yet.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "FS2GCJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-26a0ae2031e4c184"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I can do without dye at that price.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "A0YuXA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ed9b8ebf8636407f"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where do I get woad leaves?",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "Woad leaves are fairly hard to find. My other customers tell me the chief gardener in Falador grows them."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What other colours can you make?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "mUxHVs",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-370b457b486f519c"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "hbUv2u"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What other colours can you make?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "FDLPmi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-370b457b486f519c"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-2573b33c6e1572f7": [
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "There is no way to release him. The only key to the door is on a chain around my neck and the locksmith who made the lock died suddenly when he had finished."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "There is not another key like this in the world."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could I see the key please?",
+            "steps": [
+              {
+                "player": "Could I see the key please? Just for a moment. It would be something I can tell my grandchildren. When you are even more famous than you are now."
+              },
+              {
+                "type": "line",
+                "speaker": "Lady Keli",
+                "text": "As you put it that way I am sure you can see it. You cannot steal the key, it is on a Runite chain."
+              },
+              {
+                "type": "message",
+                "text": "Keli shows you a small key on a strong looking chain.",
+                "id": "SUZ731"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could I touch the key for a moment please?",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Lady Keli",
+                        "text": "Only for a moment then."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You put a piece of your soft clay in your hand. As you touch the key, you take an imprint of it.",
+                        "id": "YYiHut"
+                      },
+                      {
+                        "player": "Thank you so much, you are too kind, o great Keli."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Lady Keli",
+                        "text": "You are welcome, run along now, I am very busy."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I should not disturb someone as tough as you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "jKXCZk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That is a good way to keep secrets.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Lady Keli",
+                "text": "It is the best way I know. Dead men tell no tales."
+              },
+              {
+                "player": "I am glad I know none of your secrets, Keli."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I should not disturb someone as tough as you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "5gSERF"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0622782b4b1651d3": [
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "I have used a sword since I was a small girl. I stabbed three people before I was 6 years old."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "FJnVQg"
+      }
+    ],
+    "jump-e1b83fb2d66a065a": [
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "I need to do a lot of work, goodbye. When you get a little tougher, maybe I will give you a job."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-87e19395b4fcf134": [
+      {
+        "player": "Tell me about the life of a guard."
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "Well, the hours are good....."
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": ".... But most of those hours are a drag. If only I had spent more time in Knight school when I was a young boy. Maybe I wouldn't be here now, scared of Keli."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hey, chill out, I won't cause you trouble.",
+            "steps": [
+              {
+                "player": "Hey, chill out, I won't cause you trouble. I was just wondering what you do to relax."
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "You never relax with these people, but it's a good career for a young man and some of the shouting I rather like."
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "RESISTANCE IS USELESS!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So what do you buy with these great wages?",
+                    "steps": [
+                      {
+                        "player": "So what do you buy with these great wages?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Joe",
+                        "text": "Really, after working here, there's only time for a drink or three. All us guards go to the same bar and drink ourselves stupid."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Joe",
+                        "text": "It's what I enjoy these days, that fade into unconciousness. I can't resist the sight of a really cold beer."
+                      },
+                      {
+                        "type": "action",
+                        "text": "(Shows initial options without the option to offer beer)",
+                        "id": "TErl09"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about the life of a guard.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "s0TJ_8",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-87e19395b4fcf134"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Would you be interested in making a little more money?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "moCf0i",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d640d8eca1faa161"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I had better leave, I don't want trouble.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "5PxcCX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-044ffaba30868ddf"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What did you want to be when you were a boy?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "OmpnYe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6b7d1074e074c969"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I had better leave, I don't want trouble.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "SoL_o9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-044ffaba30868ddf"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-d640d8eca1faa161": [
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "WHAT?! Are you trying to bribe me? I may not be a great guard, but I am loyal. How DARE you try to bribe me!"
+      },
+      {
+        "player": "No, no, you got the wrong idea, totally. I just wondered if you wanted some part-time bodyguard work."
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "Oh. Sorry. No, I don't need money. As long as you were not offering me a bribe."
+      },
+      {
+        "type": "action",
+        "text": "(Shows initial options without the option to offer beer)",
+        "id": "QXgUjx"
+      }
+    ],
+    "jump-044ffaba30868ddf": [
+      {
+        "player": "I had better leave, I don't want trouble."
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "Thanks, I appreciate that. Talking on duty can be punishable by having your mouth stitched up. These are tough people, no mistake."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6b7d1074e074c969": [
+      {
+        "player": "What did you want to be when you were a boy?"
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "Well, I loved to sit by the lake, with my toes in the water and shoot the fish with my bow and arrow."
+      },
+      {
+        "player": "That was a strange hobby for a little boy."
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "It kept us from goblin hunting, which was what most boys did. What are you here for?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Chill out, I won't cause you trouble.",
+            "steps": [
+              {
+                "player": "Hey, chill out, I won't cause you trouble. I was just wondering what you do to relax."
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "You never relax with these people, but it's a good career for a young man and some of the shouting I rather like."
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "RESISTANCE IS USELESS!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So what do you buy with these great wages?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "IL4DKe",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-166b173d03fa114a"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about the life of a guard.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "0cVjf7",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-87e19395b4fcf134"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Would you be interested in making a little more money?",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Joe",
+                        "text": "WHAT?! Are you trying to bribe me? I may not be a great guard, but I am loyal. How DARE you try to bribe me!"
+                      },
+                      {
+                        "player": "No, no, you got the wrong idea, totally. I just wondered if you wanted some part-time bodyguard work."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Joe",
+                        "text": "Oh. Sorry. No, I don't need money. As long as you were not offering me a bribe."
+                      },
+                      {
+                        "type": "action",
+                        "text": "(Shows initial options without the option to offer beer)",
+                        "id": "QXgUjx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I had better leave, I don't want trouble.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "p5jDC9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-044ffaba30868ddf"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about the life of a guard.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "GT8uqs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-87e19395b4fcf134"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I had better leave, I don't want trouble.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "EeWQFu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-044ffaba30868ddf"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-166b173d03fa114a": [
+      {
+        "player": "So what do you buy with these great wages?"
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "Really, after working here, there's only time for a drink or three. All us guards go to the same bar and drink ourselves stupid."
+      },
+      {
+        "type": "line",
+        "speaker": "Joe",
+        "text": "It's what I enjoy these days, that fade into unconciousness. I can't resist the sight of a really cold beer."
+      },
+      {
+        "type": "action",
+        "text": "(Shows initial options without the option to offer beer)",
+        "id": "TErl09"
       }
     ]
   }

@@ -79,7 +79,13 @@
               {
                 "type": "jump",
                 "reference": "continue",
-                "id": "Nseynl"
+                "id": "Nseynl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b3e43430904e1f42"
+                  }
+                ]
               }
             ]
           },
@@ -107,7 +113,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "vHtrf_"
+                        "id": "vHtrf_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2db54219cb444a34"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -135,7 +147,13 @@
                               {
                                 "type": "jump",
                                 "reference": "continue",
-                                "id": "7C_ZCe"
+                                "id": "7C_ZCe",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-24f56c69e6094816"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -163,7 +181,13 @@
                                       {
                                         "type": "jump",
                                         "reference": "continue",
-                                        "id": "X_dDQ9"
+                                        "id": "X_dDQ9",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-f41f35b64a343dc9"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -191,7 +215,13 @@
                                               {
                                                 "type": "jump",
                                                 "reference": "continue",
-                                                "id": "ChXkN1"
+                                                "id": "ChXkN1",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-2db57b033f796a86"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           },
@@ -212,8 +242,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "below",
-                                                        "id": "zv0zP4"
+                                                        "id": "zv0zP4",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-33c15d0c7c8cadb7"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   }
@@ -226,8 +261,13 @@
                                             "steps": [
                                               {
                                                 "type": "jump",
-                                                "reference": "below",
-                                                "id": "0zIUAu"
+                                                "id": "0zIUAu",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-33c15d0c7c8cadb7"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           }
@@ -240,8 +280,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "VjZZcZ"
+                                        "id": "VjZZcZ",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-33c15d0c7c8cadb7"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -254,8 +299,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "Zet3rg"
+                                "id": "Zet3rg",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-33c15d0c7c8cadb7"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -268,8 +318,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "UwK6CU"
+                        "id": "UwK6CU",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-33c15d0c7c8cadb7"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -409,6 +464,659 @@
         "type": "message",
         "text": "You are handed a torn part of a clue scroll.",
         "id": "XaeLFO"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b3e43430904e1f42": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you help people find books?",
+            "steps": [
+              {
+                "player": "Do you help people find books?"
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "vHtrf_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2db54219cb444a34"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you stop shushing me?",
+            "steps": [
+              {
+                "player": "Can you stop shushing me?"
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you do anything useful at all?",
+                    "steps": [
+                      {
+                        "player": "Do you do anything useful at all?"
+                      },
+                      {
+                        "npc": "Shhhh!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "7C_ZCe",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-24f56c69e6094816"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What is wrong with you?",
+                    "steps": [
+                      {
+                        "player": "What is wrong with you?"
+                      },
+                      {
+                        "npc": "Shhhh!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "What is the point in you being here?",
+                            "steps": [
+                              {
+                                "player": "What is the point in you being here?"
+                              },
+                              {
+                                "npc": "Shhhh!"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "X_dDQ9",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f41f35b64a343dc9"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "How can I get a job like yours?",
+                            "steps": [
+                              {
+                                "player": "How can I get a job like yours?"
+                              },
+                              {
+                                "npc": "Shhhh!"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "You're an utterly useless person.",
+                                    "steps": [
+                                      {
+                                        "player": "You're an utterly useless person."
+                                      },
+                                      {
+                                        "npc": "Shhhh!"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "continue",
+                                        "id": "ChXkN1",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-2db57b033f796a86"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "HOW ABOUT I SHOUT REALLY LOUD THEN.",
+                                    "steps": [
+                                      {
+                                        "player": "HOW ABOUT I SHOUT REALLY LOUD THEN?"
+                                      },
+                                      {
+                                        "npc": "Shhhh!"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Sorry.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "zv0zP4",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-33c15d0c7c8cadb7"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Sorry.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "0zIUAu",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-33c15d0c7c8cadb7"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Sorry.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "VjZZcZ",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-33c15d0c7c8cadb7"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sorry.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Zet3rg",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-33c15d0c7c8cadb7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "UwK6CU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-33c15d0c7c8cadb7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-2db54219cb444a34": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you do anything useful at all?",
+            "steps": [
+              {
+                "player": "Do you do anything useful at all?"
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "7C_ZCe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-24f56c69e6094816"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is wrong with you?",
+            "steps": [
+              {
+                "player": "What is wrong with you?"
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What is the point in you being here?",
+                    "steps": [
+                      {
+                        "player": "What is the point in you being here?"
+                      },
+                      {
+                        "npc": "Shhhh!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "X_dDQ9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f41f35b64a343dc9"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How can I get a job like yours?",
+                    "steps": [
+                      {
+                        "player": "How can I get a job like yours?"
+                      },
+                      {
+                        "npc": "Shhhh!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "You're an utterly useless person.",
+                            "steps": [
+                              {
+                                "player": "You're an utterly useless person."
+                              },
+                              {
+                                "npc": "Shhhh!"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "ChXkN1",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2db57b033f796a86"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "HOW ABOUT I SHOUT REALLY LOUD THEN.",
+                            "steps": [
+                              {
+                                "player": "HOW ABOUT I SHOUT REALLY LOUD THEN?"
+                              },
+                              {
+                                "npc": "Shhhh!"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Sorry.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "zv0zP4",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-33c15d0c7c8cadb7"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Sorry.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "0zIUAu",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-33c15d0c7c8cadb7"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sorry.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "VjZZcZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-33c15d0c7c8cadb7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Zet3rg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-33c15d0c7c8cadb7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-24f56c69e6094816": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is the point in you being here?",
+            "steps": [
+              {
+                "player": "What is the point in you being here?"
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "X_dDQ9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f41f35b64a343dc9"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How can I get a job like yours?",
+            "steps": [
+              {
+                "player": "How can I get a job like yours?"
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "You're an utterly useless person.",
+                    "steps": [
+                      {
+                        "player": "You're an utterly useless person."
+                      },
+                      {
+                        "npc": "Shhhh!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "ChXkN1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2db57b033f796a86"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "HOW ABOUT I SHOUT REALLY LOUD THEN.",
+                    "steps": [
+                      {
+                        "player": "HOW ABOUT I SHOUT REALLY LOUD THEN?"
+                      },
+                      {
+                        "npc": "Shhhh!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Sorry.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "zv0zP4",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-33c15d0c7c8cadb7"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sorry.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "0zIUAu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-33c15d0c7c8cadb7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "VjZZcZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-33c15d0c7c8cadb7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f41f35b64a343dc9": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You're an utterly useless person.",
+            "steps": [
+              {
+                "player": "You're an utterly useless person."
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "ChXkN1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2db57b033f796a86"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "HOW ABOUT I SHOUT REALLY LOUD THEN.",
+            "steps": [
+              {
+                "player": "HOW ABOUT I SHOUT REALLY LOUD THEN?"
+              },
+              {
+                "npc": "Shhhh!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sorry.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "zv0zP4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-33c15d0c7c8cadb7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "0zIUAu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-33c15d0c7c8cadb7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-2db57b033f796a86": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sorry.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "zv0zP4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-33c15d0c7c8cadb7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-33c15d0c7c8cadb7": [
+      {
+        "player": "Sorry."
+      },
+      {
+        "npc": "That's better."
+      },
+      {
+        "type": "end"
       }
     ]
   }

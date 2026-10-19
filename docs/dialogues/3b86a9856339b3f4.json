@@ -1,4 +1,39 @@
 {
+  "branches": {
+    "jump-8f380701a6dd574e": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is the Shayzien Administration. The city of Shayzien is run from here."
+      },
+      {
+        "player": "It seems very quiet."
+      },
+      {
+        "npc": "A lot of focus right now is on the war with the lizardmen. Most senior members of the Shayzien Army, including Lord Shayzien himself, are working out of the Shayzien Encampment instead."
+      },
+      {
+        "player": "So the Shayzien Army are also responsible for running the city?"
+      },
+      {
+        "npc": "Indeed. There's more of a separation between the city of Shayzien and the Shayzien Army now than there used to be, but this will likely always be a military settlement."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "MivKju"
+      }
+    ],
+    "jump-4621f0cda454c7f2": [
+      {
+        "player": "See you later."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello there."
@@ -52,8 +87,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "ITn4X2"
+                      "id": "ITn4X2",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-8f380701a6dd574e"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -62,8 +102,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "DYfIW4"
+                      "id": "DYfIW4",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-4621f0cda454c7f2"
+                        }
+                      ]
                     }
                   ]
                 }

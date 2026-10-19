@@ -144,8 +144,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "WaznFh"
+                        "id": "WaznFh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1a88a910016829ae"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -201,8 +206,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "sKD8w7"
+                        "id": "sKD8w7",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1a88a910016829ae"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -258,8 +268,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "qUb_ML"
+                        "id": "qUb_ML",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1a88a910016829ae"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -498,8 +513,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "g4L_So"
+                            "id": "g4L_So",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-b49f031ede7de8c9"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -508,8 +528,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "uJRVkM"
+                            "id": "uJRVkM",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-2ed6c14e0f5bff3a"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -518,8 +543,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "FfFO1x"
+                            "id": "FfFO1x",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-b49f031ede7de8c9"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -800,8 +830,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "UXFTlC"
+                                "id": "UXFTlC",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5566d080c4bdb4a8"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -810,8 +845,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "OVfWOw"
+                                "id": "OVfWOw",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-7b069a5dfc7936d2"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -903,8 +943,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-tUhSn"
+                "id": "-tUhSn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d4d67691e8735386"
+                  }
+                ]
               }
             ]
           },
@@ -929,8 +974,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WcVbTS"
+                "id": "WcVbTS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2ed6c14e0f5bff3a"
+                  }
+                ]
               }
             ]
           },
@@ -948,8 +998,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "0Avtmg"
+                "id": "0Avtmg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d295ccdf6cf02be2"
+                  }
+                ]
               }
             ]
           }
@@ -958,6 +1013,232 @@
     ]
   },
   "branches": {
+    "jump-1a88a910016829ae": [
+      {
+        "player": "Not right now."
+      },
+      {
+        "npc": "Fair enough. Is there anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "QS_Nx5"
+      }
+    ],
+    "jump-b49f031ede7de8c9": [
+      {
+        "npc": "All the best."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2ed6c14e0f5bff3a": [
+      {
+        "player": "Can I purchase some League rewards?"
+      },
+      {
+        "npc": "Certainly! I have a number of unique rewards which you might be interested in."
+      },
+      {
+        "type": "condition",
+        "text": "If the Leagues Reward Shop is closed (between 28 October 2020 – 15 December 2020)",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The Leagues Reward Shop is temporarily closed.",
+            "id": "HZmB_u"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "8Zq04B"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Leagues Reward Shop",
+        "id": "65CRSi"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5566d080c4bdb4a8": [
+      {
+        "player": "Actually, let's talk about something else."
+      },
+      {
+        "npc": "Very well."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "vdur9p"
+      }
+    ],
+    "jump-7b069a5dfc7936d2": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "All the best."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d4d67691e8735386": [
+      {
+        "player": "What's a League?"
+      },
+      {
+        "npc": "Leagues are time-limited challenges that provide a unique twist on the world you know and love."
+      },
+      {
+        "npc": "With each League, you start afresh, with a limited amount of time to progress through the League."
+      },
+      {
+        "player": "A fresh start? Why would I want that?"
+      },
+      {
+        "npc": "Glory, gold, and the chance to do things in a different way!"
+      },
+      {
+        "npc": "First up, the glory. Within a League, you can earn League Points by completing various tasks."
+      },
+      {
+        "npc": "The more points you have at the end of the League, the better League Rank you will be given."
+      },
+      {
+        "npc": "Each League Rank will unlock a trophy for you. These trophies can be used to show off your accomplishments."
+      },
+      {
+        "npc": "If that doesn't interest you, how about gold! League Points can be used to buy things from the Leagues Reward Shop."
+      },
+      {
+        "npc": "You can keep these purchases for yourself or sell them on to others!"
+      },
+      {
+        "player": "And if glory and gold don't interest me?"
+      },
+      {
+        "npc": "Every League has unique rules and features to set it aside from the world you're used to."
+      },
+      {
+        "npc": "Not only that, but within this League, you can unlock powerful artefacts known as Fragments. Fragments completely change the way you progress through the League!"
+      },
+      {
+        "npc": "So even if glory and gold are not for you, you'll still find Leagues to be a whole lot of fun!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a free-to-play player:",
+        "steps": [
+          {
+            "player": "I see. So how do I take part?"
+          },
+          {
+            "npc": "Well sadly you're not eligible to take part in a League right now. I'll be happy to help once you are though."
+          },
+          {
+            "type": "end",
+            "reason": "members"
+          }
+        ],
+        "id": "p2fsox"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a member:",
+        "steps": [
+          {
+            "player": "I see, thanks for the information."
+          },
+          {
+            "npc": "My pleasure!"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Is there currently a League running?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "g4L_So",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b49f031ede7de8c9"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Can I purchase some League rewards?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "uJRVkM",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-2ed6c14e0f5bff3a"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Can we talk about League Trophies?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "FfFO1x",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b49f031ede7de8c9"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Goodbye.",
+                "steps": [
+                  {
+                    "player": "Goodbye."
+                  },
+                  {
+                    "npc": "All the best."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "XM7egA"
+      }
+    ],
+    "jump-d295ccdf6cf02be2": [
+      {
+        "player": "I'm good, thanks."
+      },
+      {
+        "npc": "Very well. I'll be here if you ever need to know anything about Leagues."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "mRwLNI": [
       {
         "player": "I'm good, thanks."

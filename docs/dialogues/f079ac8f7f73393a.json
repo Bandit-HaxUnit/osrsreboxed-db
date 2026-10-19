@@ -55,8 +55,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "frlXeh"
+                        "id": "frlXeh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9dbcfc067c457b0c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -130,8 +135,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "OM5H8g"
+                        "id": "OM5H8g",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-83438f809502e2c7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -357,8 +367,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qEdNf3"
+                "id": "qEdNf3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cdf6dd2ae60aeedb"
+                  }
+                ]
               }
             ]
           },
@@ -367,8 +382,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "19Ftpa"
+                "id": "19Ftpa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fa2dc561228e77a4"
+                  }
+                ]
               }
             ]
           },
@@ -398,7 +418,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'd like to travel to the iceberg."
+            "text": "I'd like to travel to the iceberg.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "6559Kz"
+              }
+            ]
           },
           {
             "text": "Can I transport My Arm in your boat?",
@@ -493,7 +519,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'd like to travel to the iceberg."
+            "text": "I'd like to travel to the iceberg.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "6559Kz"
+              }
+            ]
           },
           {
             "text": "Can I transport My Arm in your boat?",
@@ -1603,8 +1635,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "mW4fCO"
+                                "id": "mW4fCO",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-4a8fa45481bb9be5"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1955,7 +1992,18 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "player": "Can you make potions for me?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Apothecary's Potions",
+                "id": "bc12Bc"
+              }
+            ]
           },
           {
             "text": "Talk about Making Friends with My Arm.",
@@ -2019,7 +2067,151 @@
             ]
           },
           {
-            "text": "Talk about something else."
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about the Ratcatchers Quest.",
+                    "condition": "After the Ratcatchers quest:",
+                    "steps": [
+                      {
+                        "player": "You wouldn't be able to make any other cat potions, would you?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Apothecary",
+                        "text": "I have no plans to branch out into cat potions at the moment, but if there was sufficient demand for them I might change my mind."
+                      }
+                    ],
+                    "id": "t1XORf"
+                  },
+                  {
+                    "text": "Talk about Romeo & Juliet.",
+                    "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                    "steps": [
+                      {
+                        "type": "reference",
+                        "target": "Transcript:Apothecary",
+                        "section": "Romeo & Juliet",
+                        "text": "(Quest dialogue shows)",
+                        "id": "pmniE2",
+                        "resolved": false,
+                        "page_available": true
+                      }
+                    ],
+                    "id": "VLEiRD"
+                  },
+                  {
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Apothecary",
+                            "text": "Well I hear young Romeo's having a little woman trouble but other than that all's quiet on the eastern front. Can I do something for you?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "OaTWAr"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Apothecary",
+                            "text": "Sad about that affair with young Romeo and Juliet..."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Apothecary",
+                            "text": "I hear every time Romeo sees Juliet now he runs away screaming something about ghosts and Juliet's cousin?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Apothecary",
+                            "text": "Always did think he was a bit of a strange one..."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Apothecary",
+                            "text": "Anyway! Life goes on and so does business! Can I do something for you?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "x76V5W"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "player": "Do you know a potion to make hair fall out?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Apothecary",
+                        "text": "I do indeed. I gave it to my mother. That's why I now live alone."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Apothecary",
+                        "text": "But can I do something for you?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "_FM3_a"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "player": "Have you got any good potions to give away?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Apothecary",
+                        "text": "Sorry, charity is not my strong point. Do you need anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "D-uQYF"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -2378,8 +2570,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8l154G"
+                "id": "8l154G",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-88f33aa3f557e6f0"
+                  }
+                ]
               }
             ]
           }
@@ -2741,8 +2938,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "__X0SN"
+                    "id": "__X0SN",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-3103b3d0833f476b"
+                      }
+                    ]
                   }
                 ]
               },
@@ -2751,8 +2953,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "p5aNCs"
+                    "id": "p5aNCs",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7c27f81270da2363"
+                      }
+                    ]
                   }
                 ]
               }
@@ -2869,6 +3076,330 @@
       {
         "type": "unavailable",
         "id": "raNwAi"
+      }
+    ]
+  },
+  "branches": {
+    "jump-9dbcfc067c457b0c": [
+      {
+        "player": "Yes, I'll take your quest."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Good human! You not regret dis, Burntmeat is sure."
+      },
+      {
+        "player": "So tell me about this quest."
+      },
+      {
+        "type": "line",
+        "speaker": "Wolfbone",
+        "text": "I come from troll town called Weiss, up in cold mountains to the north. We heard of trolls here, an' wanted to meet."
+      },
+      {
+        "type": "line",
+        "speaker": "Wolfbone",
+        "text": "Our chief, Mother, want to trade. Weiss trolls invented stuff maybe these trolls want. An' maybe these trolls invented stuff we want in Weiss."
+      },
+      {
+        "type": "line",
+        "speaker": "Wolfbone",
+        "text": "So Mother want these trolls to send ambassador up to Weiss, maybe teach us their inventions, an' in return I teach Weiss inventions here."
+      },
+      {
+        "player": "So you're planning on sending someone to Weiss to teach them the technology invented by the Stronghold trolls?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "That correct! An' Burntmeat decided to send My Arm. He best troll to go to Weiss and teach stuff there. He already training assistant to take over goutweed farming."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why in the heck would you choose My Arm?",
+            "steps": [
+              {
+                "player": "Why in the heck would you choose My Arm?"
+              },
+              {
+                "type": "line",
+                "speaker": "Burntmeat",
+                "text": "My Arm is good choice! He been to distant lands, met strange people, come back with new learnings for Stronghold. He obviously best troll for dis job."
+              },
+              {
+                "player": "Okay."
+              },
+              {
+                "type": "jump",
+                "id": "OM5H8g",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-83438f809502e2c7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay."
+              },
+              {
+                "type": "line",
+                "speaker": "Burntmeat",
+                "text": "Wolfbone come from Weiss over icy mountains, but you not go that route. It too hard for Stronghold trolls. We not practiced climbing icy mountains."
+              },
+              {
+                "type": "line",
+                "speaker": "Wolfbone",
+                "text": "That correct. You find boat and go to Weiss by sea instead. Wolfbone tell you the way..."
+              },
+              {
+                "type": "message",
+                "text": "Wolfbone describes how to reach Weiss by sea.",
+                "id": "NRWlS-"
+              },
+              {
+                "type": "line",
+                "speaker": "Burntmeat",
+                "text": "Okieday, now you go fetch My Arm an' tell him where he got to go."
+              },
+              {
+                "player": "Okay..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-83438f809502e2c7": [
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Wolfbone come from Weiss over icy mountains, but you not go that route. It too hard for Stronghold trolls. We not practiced climbing icy mountains."
+      },
+      {
+        "type": "line",
+        "speaker": "Wolfbone",
+        "text": "That correct. You find boat and go to Weiss by sea instead. Wolfbone tell you the way..."
+      },
+      {
+        "type": "message",
+        "text": "Wolfbone describes how to reach Weiss by sea.",
+        "id": "NRWlS-"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Okieday, now you go fetch My Arm an' tell him where he got to go."
+      },
+      {
+        "player": "Okay..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-cdf6dd2ae60aeedb": [
+      {
+        "player": "Isn't there anything else you can teach them?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Stronghold trolls not really invented much else. We know bashing things with rocks make 'em dead, but maybe Weiss trolls know dat already."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "jY5VOH"
+      }
+    ],
+    "jump-fa2dc561228e77a4": [
+      {
+        "player": "Don't you mind leaving your home?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Eh... My Arm not mind. My Arm like seeing places, like dat jungle village where da nice people give us goutweed stuff."
+      },
+      {
+        "player": "Those nice people might have given you anything you liked, if it would make you stop damaging their village."
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Anyway, My Arm not mind going to Weiss. No family here now, not since My Other Arm died. Got apprentice ready to take over goutweed farming. Dis gonna be fine."
+      },
+      {
+        "player": "So My Arm very happy to go teach goutweed farming to trolls in Weiss. It so exciting!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Isn't there anything else you can teach them?",
+            "steps": [
+              {
+                "player": "Isn't there anything else you can teach them?"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Stronghold trolls not really invented much else. We know bashing things with rocks make 'em dead, but maybe Weiss trolls know dat already."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "jY5VOH"
+              }
+            ]
+          },
+          {
+            "text": "Wolfbone said we should go by sea.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "RM9-cl"
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yZNetH"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4a8fa45481bb9be5": [
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "Yes! If you kill the human who drove us out from the Keldagrim tunnels, Mother will call you a hero and be pleased for you to marry Snowflake. Can you go and do it?"
+      },
+      {
+        "player": "No, My Arm can't kill the Wise Old Man! The Wise Old Man is far too powerful."
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Dat a shame. But he know you, [player name], an' you helped him in fishy colony place. Maybe you ask him a favour now?"
+      },
+      {
+        "player": "You're suggesting I ask him to let you kill him, just so that you can marry Snowflake?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Please!"
+      },
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "Ah, no. He surely won't agree to die. But perhaps he can pretend he's dead, while My Arm tricks Mother into believing it. Can you ask him, [player name]?"
+      },
+      {
+        "player": "This is a very strange request!"
+      },
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "Please ask him, [player name]! For me and My Arm!"
+      }
+    ],
+    "jump-88f33aa3f557e6f0": [
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "I wrote down my inventions, but many of my notes are lost. Mother only ever cared about the Fire of Domination, and fires he could use for combat."
+      },
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "It can be hard to interest trolls in the delicate skill of Firemaking, sometimes. But perhaps Snowflake can find my lost notes, and carry on the science. She's far smarter than her father."
+      },
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "But I never invented a fire that could stave off the eternal dark, and... I feel it coming."
+      },
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "Snowflake, you must take over Weiss. You saw what Mother did to you, and to me, and to My Arm. Trolls will never be more than thuggish monsters as long as he rules."
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Mother did hit My Arm pretty hard."
+      },
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "I know what I must do. With My Arm at my side, I will avenge you. You were always more of a father to me than Mother ever could be."
+      },
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "Thank you, child..."
+      },
+      {
+        "type": "line",
+        "speaker": "Odd Mushroom",
+        "text": "..."
+      },
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3103b3d0833f476b": [
+      {
+        "player": "What do you want with goat dung?"
+      },
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "I think it will be useful to us. You will see why soon enough."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7c27f81270da2363": [
+      {
+        "player": "Okay, I'll be back."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "6559Kz": [
+      {
+        "type": "line",
+        "speaker": "Larry",
+        "text": "On the way I'll tell you the 42 ways penguins can torture you using a feather..."
       }
     ]
   }

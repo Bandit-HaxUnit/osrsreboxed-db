@@ -294,10 +294,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "Many greetings."
+            "text": "Many greetings.",
+            "steps": [
+              {
+                "player": "Many greetings."
+              },
+              {
+                "type": "line",
+                "speaker": "Seer",
+                "text": "Remember, whenever you set out to do something, something else must be done first."
+              }
+            ]
           },
           {
-            "text": "I seek knowledge and power!"
+            "text": "I seek knowledge and power!",
+            "steps": [
+              {
+                "player": "I seek knowledge and power!"
+              },
+              {
+                "type": "line",
+                "speaker": "Seer",
+                "text": "Knowledge comes from experience, power comes from battleaxes."
+              }
+            ]
           },
           {
             "text": "Could you wash this top for me?",
@@ -536,10 +556,21 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please. What are you selling?"
+            "text": "Yes please. What are you selling?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "1tzdVR"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           },
           {
             "text": "What do you need to mend my trousers?",
@@ -570,10 +601,21 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please. What are you selling?"
+            "text": "Yes please. What are you selling?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "1tzdVR"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           },
           {
             "text": "I have all I need to mend my trousers.",
@@ -1920,9 +1962,14 @@
             "id": "dSnuKD"
           },
           {
-            "type": "action",
-            "text": "Continues below from \"Ick... Alright then let's get started.\"",
-            "id": "ivZfhw"
+            "type": "jump",
+            "id": "ivZfhw",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-bdd781930c18e169"
+              }
+            ]
           }
         ],
         "id": "5maQBO"
@@ -2467,6 +2514,109 @@
     ]
   },
   "branches": {
+    "jump-bdd781930c18e169": [
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Ick... Alright then let's get started."
+      },
+      {
+        "type": "message",
+        "text": "Elena starts some tests on the apple.",
+        "id": "VI9T0I"
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Right.. lets see..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Okay, I've managed to isolate a small sample of the toxin. It's a byproduct of the mould that grows on these apples, it's not fatal so a counteractant shouldn't be necessary."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "How big is the store that you're going to affect?"
+      },
+      {
+        "player": "Well I was instructed to contaminate two of the three supply points in West Ardougne."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "That's over half of the food in the city! You're going to need a huge amount of the toxin to do that. You're also going to need to refine it too, or people will notice rotten apples in amongst the food."
+      },
+      {
+        "player": "This is starting to sound a little tricky, can't you make it for me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "I would, but I don't have the right equipment here to do anything in bulk."
+      },
+      {
+        "player": "Alright then, tell me the process and I'll get started."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Right then, the first thing to do is mash up a lot of rotten apples, then you will need to dissolve the toxin into a liquid that has a very low evaporation point, some form of solvent."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "I don't know as much about those kinds of chemicals but I believe naphtha will be perfect for this."
+      },
+      {
+        "player": "Ah yes, I've worked with naphtha before. The chemist in Rimmington helped me make it from coal tar."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Perfect. Well get yourself some naphtha and some mashed rotten apples and mix them together. Once you've done that, strain out any solids."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Finally, heat the mixture to evaporate off the solvent. Be careful of naked flames as the solvent will be highly flammable."
+      },
+      {
+        "player": "And that's all is it? Why isn't anything ever easy?"
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Sorry, I never said it would be simple. Here, you'll need this to strain out the solids."
+      },
+      {
+        "type": "message",
+        "text": "Elena hands you a large sieve.",
+        "id": "im129e"
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "You may want to check out the orchard just north of the city. I hear no one has tended it since the blight infected the trees there. I imagine it will have plenty of rotten apples."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "1tzdVR": [
+      {
+        "player": "Yes please. What are you selling?"
+      },
+      {
+        "type": "action",
+        "text": "Lletya Seamstress opens.",
+        "action": "open_shop",
+        "action_source": "text",
+        "target": "Lletya Seamstress",
+        "id": "vognGe"
+      }
+    ],
     "yvBLv1": [
       {
         "type": "line",

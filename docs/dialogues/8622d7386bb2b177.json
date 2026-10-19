@@ -376,7 +376,13 @@
                           {
                             "type": "jump",
                             "reference": "continue",
-                            "id": "johw-O"
+                            "id": "johw-O",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-7bb3f2dfe38ad3a4"
+                              }
+                            ]
                           }
                         ],
                         "id": "WQgWJb"
@@ -608,6 +614,77 @@
       },
       {
         "npc": "Oh... Sorry, we're not meant to talk to the nobles."
+      }
+    ]
+  },
+  "branches": {
+    "jump-7bb3f2dfe38ad3a4": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is there to do around here?",
+            "steps": [
+              {
+                "player": "What is there to do around here?"
+              },
+              {
+                "npc": "To do? Around here? Survive! Eke out an existence and just live for another day, that's it really."
+              },
+              {
+                "npc": "The juvinates organise work crews to mine the daeyalt, fix the walls, the castles and so on. If we refuse to do the work, they put us on double tithes and you can't do that for long before you dry up."
+              },
+              {
+                "npc": "If you want to escape, there's only one way. Anyone who survives in the theatre gets to leave. It's pointless though. No one survives."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "MnOYoJ"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything I can do to help?",
+            "steps": [
+              {
+                "player": "Is there anything I can do to help?"
+              },
+              {
+                "npc": "It's very nice of you to offer, my friend, but I shouldn't expect that you could do anything. The vampyres are just too powerful to overcome."
+              },
+              {
+                "npc": "They say this place once had a Saradominist Queen. Even she could not withstand the vampyres. Anyone who has challenged their power in the past has come undone."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "KKWRgu"
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "- Initial questions -",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "SIKdEN"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

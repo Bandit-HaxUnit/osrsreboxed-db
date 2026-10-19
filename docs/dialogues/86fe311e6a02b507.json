@@ -25,8 +25,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "_mS398"
+                        "id": "_mS398",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d2c49685cb4c6eee"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -35,8 +40,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Ug7Ojo"
+                        "id": "Ug7Ojo",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0936f8fb6ffc6c56"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -187,8 +197,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "__zY9n"
+                                        "id": "__zY9n",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-5e88a82af4a5b779"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -197,8 +212,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "tVvi7o"
+                                        "id": "tVvi7o",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-0936f8fb6ffc6c56"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -263,8 +283,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IMY_m_"
+                "id": "IMY_m_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5e88a82af4a5b779"
+                  }
+                ]
               }
             ]
           },
@@ -273,8 +298,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "dipOjH"
+                "id": "dipOjH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-92683d4ff0cb3254"
+                  }
+                ]
               }
             ]
           }
@@ -473,6 +503,313 @@
               },
               {
                 "npc": "Ok."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-d2c49685cb4c6eee": [
+      {
+        "player": "That wall doesn't look very good."
+      },
+      {
+        "npc": "No, it doesn't."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you going to tell me what happened?",
+            "steps": [
+              {
+                "player": "Are you going to tell me what happened?"
+              },
+              {
+                "npc": "I could do."
+              },
+              {
+                "player": "Ok, go on!"
+              },
+              {
+                "npc": "Someone smashed the wall when they were robbing the bank."
+              },
+              {
+                "player": "Someone's robbed the bank?"
+              },
+              {
+                "npc": "Yes."
+              },
+              {
+                "player": "But... was anyone hurt? Did they get anything valuable?"
+              },
+              {
+                "npc": "Yes, but we were able to get more staff and mend the wall easily enough."
+              },
+              {
+                "npc": "The Bank has already replaced all the stolen items that belonged to customers."
+              },
+              {
+                "player": "Oh, good... but the bank staff got hurt?"
+              },
+              {
+                "npc": "Yes, but the new ones are just as good."
+              },
+              {
+                "player": "You're not very nice, are you?"
+              },
+              {
+                "npc": "No-one's expecting me to be nice."
+              },
+              {
+                "player": "Anyway... So, someone's robbed the bank?"
+              },
+              {
+                "npc": "Yes."
+              },
+              {
+                "player": "Do you know who did it?"
+              },
+              {
+                "npc": "We are fairly sure we know who the robber was. The security recording was damaged in the attack, but it still shows his face clearly enough."
+              },
+              {
+                "player": "You've got a security recording?"
+              },
+              {
+                "npc": "Yes. Our insurers insisted that we install a magical scrying orb."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I see the recording?",
+                    "steps": [
+                      {
+                        "player": "Can I see the recording?"
+                      },
+                      {
+                        "npc": "I suppose so. But it's quite long."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "That's ok, show me the recording.",
+                            "steps": [
+                              {
+                                "player": "That's ok, show me the recording."
+                              },
+                              {
+                                "npc": "Alright... The bank's magical playback device will feed the recorded images into your mind. Just shut your eyes."
+                              },
+                              {
+                                "type": "unavailable",
+                                "id": "t7qrOn"
+                              },
+                              {
+                                "type": "action",
+                                "text": "Bank robbery recording plays",
+                                "id": "0SQYQn"
+                              },
+                              {
+                                "type": "unavailable",
+                                "id": "R8RODN"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Thanks, maybe another day.",
+                            "steps": [
+                              {
+                                "player": "Thanks, maybe another day."
+                              },
+                              {
+                                "npc": "Ok."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So who was the robber?",
+                    "steps": [
+                      {
+                        "player": "So who was the robber?"
+                      },
+                      {
+                        "npc": "I can't disclose that information."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can I see the recording?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "__zY9n",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5e88a82af4a5b779"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Alright, I'll stop bothering you now.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "tVvi7o",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-0936f8fb6ffc6c56"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Alright, I'll stop bothering you now.",
+            "steps": [
+              {
+                "player": "Alright, I'll stop bothering you now."
+              },
+              {
+                "npc": "Good day, [sir/ma'am]."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0936f8fb6ffc6c56": [
+      {
+        "player": "Alright, I'll stop bothering you now."
+      },
+      {
+        "npc": "Good day, [sir/ma'am]."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5e88a82af4a5b779": [
+      {
+        "player": "Can I see the recording?"
+      },
+      {
+        "npc": "I suppose so. But it's quite long."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That's ok, show me the recording.",
+            "steps": [
+              {
+                "player": "That's ok, show me the recording."
+              },
+              {
+                "npc": "Alright... The bank's magical playback device will feed the recorded images into your mind. Just shut your eyes."
+              },
+              {
+                "type": "unavailable",
+                "id": "t7qrOn"
+              },
+              {
+                "type": "action",
+                "text": "Bank robbery recording plays",
+                "id": "0SQYQn"
+              },
+              {
+                "type": "unavailable",
+                "id": "R8RODN"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Thanks, maybe another day.",
+            "steps": [
+              {
+                "player": "Thanks, maybe another day."
+              },
+              {
+                "npc": "Ok."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-92683d4ff0cb3254": [
+      {
+        "player": "So who was the robber?"
+      },
+      {
+        "npc": "I can't disclose that information."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see the recording?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "__zY9n",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5e88a82af4a5b779"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Alright, I'll stop bothering you now.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "tVvi7o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0936f8fb6ffc6c56"
+                  }
+                ]
               }
             ]
           }

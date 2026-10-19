@@ -141,8 +141,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "wi7iGb"
+                                "id": "wi7iGb",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-86574b16b1a65b2d"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -150,7 +155,82 @@
                             "text": "Ask about buying armour"
                           },
                           {
-                            "text": "Can I switch respawns, please?"
+                            "text": "Can I switch respawns, please?",
+                            "steps": [
+                              {
+                                "player": "Can I switch respawns, please?"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player's respawn point is not Falador:",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Sir Tiffy Cashien",
+                                    "text": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes, I want to respawn in Falador.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "FAy1JW"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Actually, no thanks. I like my respawn point.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "ipT1-t"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "uTBwMK"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player's respawn point is Falador:",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Sir Tiffy Cashien",
+                                    "text": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes, I want to respawn in Lumbridge.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "12jyXH"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Actually, no thanks. I like my respawn point.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "fQZhfB"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "zTLHo1"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -184,10 +264,95 @@
                             "text": "Can I buy some armour?"
                           },
                           {
-                            "text": "Can I switch respawns please?"
+                            "text": "Can I switch respawns please?",
+                            "steps": [
+                              {
+                                "player": "Can I switch respawns, please?"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player's respawn point is not Falador:",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Sir Tiffy Cashien",
+                                    "text": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes, I want to respawn in Falador.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "FAy1JW"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Actually, no thanks. I like my respawn point.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "ipT1-t"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "uTBwMK"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player's respawn point is Falador:",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Sir Tiffy Cashien",
+                                    "text": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes, I want to respawn in Lumbridge.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "12jyXH"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Actually, no thanks. I like my respawn point.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "fQZhfB"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "zTLHo1"
+                              }
+                            ]
                           },
                           {
-                            "text": "Goodbye."
+                            "text": "Goodbye.",
+                            "steps": [
+                              {
+                                "player": "Well, see you around Tiffy."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Sir Tiffy Cashien",
+                                "text": "Ta-ta for now, old bean!"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -406,7 +571,82 @@
                             "text": "Ask about buying armour."
                           },
                           {
-                            "text": "Can I switch respawns, please?"
+                            "text": "Can I switch respawns, please?",
+                            "steps": [
+                              {
+                                "player": "Can I switch respawns, please?"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player's respawn point is not Falador:",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Sir Tiffy Cashien",
+                                    "text": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes, I want to respawn in Falador.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "FAy1JW"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Actually, no thanks. I like my respawn point.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "ipT1-t"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "uTBwMK"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player's respawn point is Falador:",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Sir Tiffy Cashien",
+                                    "text": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes, I want to respawn in Lumbridge.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "12jyXH"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Actually, no thanks. I like my respawn point.",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "fQZhfB"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "zTLHo1"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -1430,7 +1670,82 @@
             "text": "Ask about buying armour."
           },
           {
-            "text": "Can I switch respawns, please?"
+            "text": "Can I switch respawns, please?",
+            "steps": [
+              {
+                "player": "Can I switch respawns, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is not Falador:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sir Tiffy Cashien",
+                    "text": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Falador.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "FAy1JW"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "ipT1-t"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "uTBwMK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is Falador:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sir Tiffy Cashien",
+                    "text": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Lumbridge.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "12jyXH"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fQZhfB"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zTLHo1"
+              }
+            ]
           }
         ]
       }
@@ -1483,8 +1798,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3_gsH8"
+                "id": "3_gsH8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-86574b16b1a65b2d"
+                  }
+                ]
               }
             ]
           },
@@ -1940,8 +2260,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QDmSYZ"
+                "id": "QDmSYZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9bbfbb247fee3031"
+                  }
+                ]
               }
             ]
           },
@@ -1975,8 +2300,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "RAzTVy"
+                        "id": "RAzTVy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6b19eaf2597bedc3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2000,8 +2330,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "uecXnO"
+                            "id": "uecXnO",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-c50d2e5952681aaf"
+                              }
+                            ]
                           }
                         ],
                         "id": "k3vIzO"
@@ -2028,8 +2363,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "xn_6Ww"
+                            "id": "xn_6Ww",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-3d2f05ebfc46fd45"
+                              }
+                            ]
                           }
                         ],
                         "id": "ktdCb5"
@@ -3495,8 +3835,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6HQSp7"
+                "id": "6HQSp7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4748ef59ddd50b8c"
+                  }
+                ]
               }
             ]
           },
@@ -3734,8 +4079,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bwfBLE"
+                "id": "bwfBLE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9bbfbb247fee3031"
+                  }
+                ]
               }
             ]
           },
@@ -4695,8 +5045,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2YjAVz"
+                "id": "2YjAVz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9bbfbb247fee3031"
+                  }
+                ]
               }
             ]
           },
@@ -5522,6 +5877,321 @@
     ]
   },
   "branches": {
+    "jump-86574b16b1a65b2d": [
+      {
+        "player": "What am I supposed to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "You are to go to Sir Amik Varze, leader of the White Knights of Falador, and are to tell him that you have decided not to join the Temple Knights."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "We will send him a messenger confirming this. He will offer you the opportunity to become his squire, you are to decline, and ask if you can be deputised instead."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "If you run into any problems with that, you are then to come and see me for further advice."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Understood?"
+      },
+      {
+        "player": "Um, yeah, I think so..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9bbfbb247fee3031": [
+      {
+        "player": "Hi Savant. I was just wondering if you could give me a little information about the Temple Knights?"
+      },
+      {
+        "player": "I've just realised that I really don't know very much about them..."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Well, you are not yet officially a full fledged Temple Knight now, are you Initiate [player name]?"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "I am afraid that means for security reasons I can only give you a brief overview of the organisation..."
+      },
+      {
+        "player": "Well, that's better than nothing right?"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "That is usually the case, yes, I agree. Well, let's see if I remember how this goes... 'Legends tell us that Lord Saradomin once walked these lands amongst us, and delivered his wisdom unto us"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "personally, so that we could grow wise in his honour."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "But then came the war, that shattered our lands, and the interloper banished our land from us!"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "But the wisdom of Saradomin knew that such events might occur, and he laid plans in secret amongst his most devout followers!"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Those warriors whose hearts were as pure as their minds were sharp were called to him, and were made into his Temple Knights, for they were the Knights that guarded his very first Temple."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "All who dwelled in his lands knew that the Temple Knights were the honoured, the blessed, the personally chosen warriors of Saradomin, and thus were they given great freedom and authority in all of our Lords"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "lands."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "But with Saradomin no longer with us, the Temple Knights were no longer honoured and respected by all!"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Rather, they were made targets by Saradomins enemies, and driven from the lands unjustly!"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Thus it was that they became a secret force, hidden from the eyes of Saradomins enemies, that could strike against evil in his name swiftly and quietly whenever they may be needed.'"
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Something like that I think, it's been a long time since I heard it last..."
+      },
+      {
+        "player": "Okay, thanks Savant."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6b19eaf2597bedc3": [
+      {
+        "type": "condition",
+        "text": "Outside of the White Knights' Castle:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Savant",
+            "text": "Our observation records are classified, you can't go viewing them in unsecure areas. I recommend you secure youself within the White Knights' Castle if you want to watch it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "OudWer"
+      },
+      {
+        "type": "condition",
+        "text": "Inside of the White Knights' Castle:",
+        "steps": [
+          {
+            "type": "jump",
+            "id": "uecXnO",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-c50d2e5952681aaf"
+              }
+            ]
+          }
+        ],
+        "id": "k3vIzO"
+      }
+    ],
+    "jump-c50d2e5952681aaf": [
+      {
+        "type": "condition",
+        "text": "Outside of the White Knights' Castle:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Savant",
+            "text": "Our observation records are classified, you can't go viewing them in unsecure areas. I recommend you secure youself within the White Knights' Castle if you want to watch it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NUjojF"
+      },
+      {
+        "type": "condition",
+        "text": "Inside of the White Knights' Castle:",
+        "steps": [
+          {
+            "type": "jump",
+            "id": "xn_6Ww",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-3d2f05ebfc46fd45"
+              }
+            ]
+          }
+        ],
+        "id": "ktdCb5"
+      }
+    ],
+    "jump-3d2f05ebfc46fd45": [
+      {
+        "type": "choice",
+        "prompt": "Select Dossier",
+        "options": [
+          {
+            "text": "Lord Daquarius",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "1hheMu"
+              }
+            ]
+          },
+          {
+            "text": "Zamorakian Research Mage",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "HQ7Qmq"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4748ef59ddd50b8c": [
+      {
+        "type": "line",
+        "speaker": "Mage of Zamorak",
+        "text": "Certainly. As I say, I have little information, but the cost was not too dear, was it?"
+      },
+      {
+        "player": "Get on with it, I haven't got all day to waste."
+      },
+      {
+        "type": "line",
+        "speaker": "Mage of Zamorak",
+        "text": "As you wish. As a powerful magician, I could sense his aura once I had encountered him, and it definitely moved East of here when he left me."
+      },
+      {
+        "player": "He went East. That's it? That's your 'information'?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mage of Zamorak",
+        "text": "I am sorry I cannot be more specific, but that is all of the information I have to offer..."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Okay, so Daquarius told us he was probably somewhere with furry animals of some kind, and this mage has told us that he is East of here..."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Any ideas? Frankly, I'm stumped. I just don't have enough information to work out where he might be..."
+      },
+      {
+        "player": "Hmmm. Wolf fur... and the East... I know where he is."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "You do?"
+      },
+      {
+        "player": "He will be in Canifis. He must be."
+      },
+      {
+        "type": "line",
+        "speaker": "Savant",
+        "text": "Wow, that's some good thinking [player name]! Okay, let's head there and get him!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "FAy1JW": [
+      {
+        "player": "Yes, I want to respawn in Falador."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Top-hole, what? Good old Fally is definitely the hot-spot nowadays!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "ipT1-t": [
+      {
+        "player": "Actually, no thanks. I like my respawn point."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "As you wish, what? Ta-ta for now."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "12jyXH": [
+      {
+        "player": "Yes, I want to respawn in Lumbridge."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Why anyone would want to visit that smelly little swamp village of oiks is quite beyond me, I'm afraid, but the deed is done now."
+      }
+    ],
+    "fQZhfB": [
+      {
+        "player": "Actually, no thanks. I like my respawn point."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "As you wish, what? Ta-ta for now."
+      }
+    ],
     "tG-tOn": [
       {
         "player": "Actually, no thanks."

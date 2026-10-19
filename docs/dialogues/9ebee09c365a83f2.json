@@ -1042,8 +1042,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rqldfi"
+                "id": "rqldfi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-60dac3e496c9ff59"
+                  }
+                ]
               }
             ],
             "id": "gHbQLF"
@@ -1062,8 +1067,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UNrzfk"
+                "id": "UNrzfk",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2f3cebd95e510a11"
+                  }
+                ]
               }
             ],
             "id": "uzDIC-"
@@ -1082,8 +1092,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LyDssC"
+                "id": "LyDssC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5106449499d2d1ad"
+                  }
+                ]
               }
             ],
             "id": "OsDb1T"
@@ -1377,19 +1392,298 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Charlie the Tramp",
+                "text": "Charles. Charles E. Trampin' at your service. Now, about that change you were going to give me..."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Kfx_xM"
+              }
+            ]
           },
           {
-            "text": "Sorry, I haven't got any."
+            "text": "Sorry, I haven't got any.",
+            "steps": [
+              {
+                "player": "Sorry, I haven't got any."
+              },
+              {
+                "type": "line",
+                "speaker": "Charlie the Tramp",
+                "text": "Thanks anyway."
+              }
+            ]
           },
           {
-            "text": "Go get a job!"
+            "text": "Go get a job!",
+            "steps": [
+              {
+                "player": "Go get a job!"
+              },
+              {
+                "type": "line",
+                "speaker": "Charlie the Tramp",
+                "text": "You startin? I hope your nose falls off!"
+              }
+            ]
           },
           {
-            "text": "Ok. Here you go."
+            "text": "Ok. Here you go.",
+            "steps": [
+              {
+                "player": "Ok. Here you go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Player gives Charlie 1 coin.)",
+                    "id": "SPAjYU"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Hey, thanks a lot!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No problem.",
+                        "steps": [
+                          {
+                            "player": "No problem."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Don't I get some sort of quest hint or something now?",
+                        "steps": [
+                          {
+                            "player": "So...don't I get some sort of quest hint or something now?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "Huh? What do you mean? That wasn't why I asked you for money."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "I just need to eat..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Vd68yh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have coins in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh wait. I haven't got any, sorry."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Thanks anyway."
+                  }
+                ],
+                "id": "jyd1Up"
+              }
+            ]
           },
           {
-            "text": "Is there anything down this alleyway?"
+            "text": "Is there anything down this alleyway?",
+            "steps": [
+              {
+                "player": "Is there anything down this alleyway?"
+              },
+              {
+                "type": "line",
+                "speaker": "Charlie the Tramp",
+                "text": "Funny you should mention that...there is actually."
+              },
+              {
+                "type": "line",
+                "speaker": "Charlie the Tramp",
+                "text": "The ruthless and notorious criminal gang known as the Black Arm Gang have their headquarters down there."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Thanks for the warning!",
+                    "steps": [
+                      {
+                        "player": "Thanks for the warning!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Charlie the Tramp",
+                        "text": "Don't worry about it."
+                      },
+                      {
+                        "player": "Do you think they would let me join?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has not yet joined either gang:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "You never know. You'll find a lady down there called Katrine. Speak to her."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "But don't upset her, she's pretty dangerous."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "DzQhzz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has already joined the Black Arm Gang:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "I was under the impression you were already a member..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "5dPPzz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has already joined the Phoenix Gang:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "No. You're a collaborator with the Phoenix Gang. There's no way they'll let you join now."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "How did you know I was in the Phoenix Gang?",
+                                "steps": [
+                                  {
+                                    "player": "How did YOU know I was in the Phoenix Gang?"
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Charlie the Tramp",
+                                    "text": "In my current profession I spend a lot of time on the streets and you hear these sorta things sometimes"
+                                  },
+                                  {
+                                    "player": "Any ideas how I could get in there then?"
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Charlie the Tramp",
+                                    "text": "Hmmm. I dunno."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Charlie the Tramp",
+                                    "text": "Your best bet would probably be to find someone else... Someone who ISN'T a member of the Phoenix Gang, and get them to infiltrate the ranks of the Black Arm Gang for you."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Charlie the Tramp",
+                                    "text": "If you find someone like that, tell 'em to come to me first."
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Ok. Good plan!",
+                                        "steps": [
+                                          {
+                                            "player": "Ok. Good plan!"
+                                          },
+                                          {
+                                            "type": "line",
+                                            "speaker": "Charlie the Tramp",
+                                            "text": "I'm not just a pretty face!"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Like who?",
+                                        "steps": [
+                                          {
+                                            "player": "Like who?"
+                                          },
+                                          {
+                                            "type": "line",
+                                            "speaker": "Charlie the Tramp",
+                                            "text": "There's plenty of other adventurers about besides yourself. I'm sure if you asked one of them nicely they would help you."
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Any ideas how I could get in there then?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "mRQWqU"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "FuMC4U"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you think they would let me join?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "1lHeWv"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I'm looking for a man named Marley. Have you seen him?",
@@ -1683,13 +1977,81 @@
             ]
           },
           {
-            "text": "Can you sell me any food?"
+            "text": "Can you sell me any food?",
+            "steps": [
+              {
+                "player": "Can you sell me any food?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Blue Moon Inn)",
+                "text": "I suppose I could sell you some cabbage, if you're willing to pay for it. Cabbage is good for you."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 1 GP in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "aU2lwl"
+                  }
+                ],
+                "id": "YySqxF"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a full inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "eWUy5a"
+                  }
+                ],
+                "id": "1Q53KI"
+              },
+              {
+                "type": "choice",
+                "prompt": "What would you like to say?",
+                "options": [
+                  {
+                    "text": "Alright, I'll buy a cabbage.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UJZAjw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I don't like cabbage.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "W4qbJ2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Can you give me any free food?"
+            "text": "Can you give me any free food?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "gB03C0"
+              }
+            ]
           },
           {
-            "text": "I don't want anything from this horrible kitchen."
+            "text": "I don't want anything from this horrible kitchen.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "8Hfiy_"
+              }
+            ]
           }
         ]
       }
@@ -1720,13 +2082,81 @@
             ]
           },
           {
-            "text": "Can you sell me any food?"
+            "text": "Can you sell me any food?",
+            "steps": [
+              {
+                "player": "Can you sell me any food?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Blue Moon Inn)",
+                "text": "I suppose I could sell you some cabbage, if you're willing to pay for it. Cabbage is good for you."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 1 GP in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "aU2lwl"
+                  }
+                ],
+                "id": "YySqxF"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a full inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "eWUy5a"
+                  }
+                ],
+                "id": "1Q53KI"
+              },
+              {
+                "type": "choice",
+                "prompt": "What would you like to say?",
+                "options": [
+                  {
+                    "text": "Alright, I'll buy a cabbage.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UJZAjw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I don't like cabbage.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "W4qbJ2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Can you give me any free food?"
+            "text": "Can you give me any free food?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "gB03C0"
+              }
+            ]
           },
           {
-            "text": "I don't want anything from this horrible kitchen."
+            "text": "I don't want anything from this horrible kitchen.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "8Hfiy_"
+              }
+            ]
           }
         ]
       }
@@ -1771,13 +2201,81 @@
             ]
           },
           {
-            "text": "Can you sell me any food?"
+            "text": "Can you sell me any food?",
+            "steps": [
+              {
+                "player": "Can you sell me any food?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Blue Moon Inn)",
+                "text": "I suppose I could sell you some cabbage, if you're willing to pay for it. Cabbage is good for you."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 1 GP in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "aU2lwl"
+                  }
+                ],
+                "id": "YySqxF"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a full inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "eWUy5a"
+                  }
+                ],
+                "id": "1Q53KI"
+              },
+              {
+                "type": "choice",
+                "prompt": "What would you like to say?",
+                "options": [
+                  {
+                    "text": "Alright, I'll buy a cabbage.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "UJZAjw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I don't like cabbage.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "W4qbJ2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Can you give me any free food?"
+            "text": "Can you give me any free food?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "gB03C0"
+              }
+            ]
           },
           {
-            "text": "I don't want anything from this horrible kitchen."
+            "text": "I don't want anything from this horrible kitchen.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "8Hfiy_"
+              }
+            ]
           }
         ]
       }
@@ -2583,9 +3081,180 @@
     ]
   },
   "branches": {
+    "jump-60dac3e496c9ff59": [
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "Yesh I am *hic*. What can thish dwarf do for you?"
+      },
+      {
+        "player": "Willow sent me. She needs your help with a job."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "Willow? Now that'sh a name I drink to forget!"
+      },
+      {
+        "player": "What do you mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "Willow alwaysh insishted on changing me waysh. I knows explosivesh. Just because I lost a couple of me fingersh a few yearsh back doesn't mean I'll do it again *hic*."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "I knew the exhact amount of dyn*hic*amite needed to blow that rich fool's shafe. We woulda been shet for life!"
+      },
+      {
+        "player": "I thought you were a team of archaeologists?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "Archaeologishts? Shure, if that's what you want to call ush?!"
+      },
+      {
+        "player": "Willow sent me to get you. She's found a new digsite and needs your expert knowledge on explosives."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "Hmmm... *hic*"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "Tell you what. If you beat me in a friendly game of rock paper s*hic*cissorsh, I'll join the team."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntof",
+        "text": "Whispers* We'll have the game upshtairs away from everyone."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2f3cebd95e510a11": [
+      {
+        "type": "jump",
+        "id": "rqldfi",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-60dac3e496c9ff59"
+          }
+        ]
+      }
+    ],
+    "jump-5106449499d2d1ad": [
+      {
+        "type": "jump",
+        "id": "UNrzfk",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-2f3cebd95e510a11"
+          }
+        ]
+      }
+    ],
     "wqyOMP": [
       {
         "player": "Well, that's everyone. I guess I should head off the entrance on the west side of Ice Mountain."
+      }
+    ],
+    "aU2lwl": [
+      {
+        "player": "Oh, I haven't got any money."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "Why are you asking me to sell you food if you haven't got any money? Go away!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "eWUy5a": [
+      {
+        "player": "Oh, I haven't got enough space to carry it."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "Why are you asking me to sell you food if you can't carry it? Go away!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "UJZAjw": [
+      {
+        "player": "Alright, I'll buy a cabbage."
+      },
+      {
+        "type": "action",
+        "text": "1 GP is deducted from inventory and and a cabbage gets placed.",
+        "id": "a5ku52"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "It's a deal. Now, make sure you eat it all up. Cabbage is good for you."
+      }
+    ],
+    "W4qbJ2": [
+      {
+        "player": "No thanks, I don't like cabbage."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "Bah! People these days only appreciate junk food."
+      }
+    ],
+    "gB03C0": [
+      {
+        "player": "Can you give me any free food?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "Can you give me any free money?"
+      },
+      {
+        "player": "Why should I give you free money?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "Why should I give you free food?"
+      },
+      {
+        "player": "Oh, forget it."
+      }
+    ],
+    "8Hfiy_": [
+      {
+        "player": "I don't want anything from this horrible kitchen."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "How dare you? I put a lot of effort into cleaning this kitchen. My daily sweat and elbow-grease keep this kitchen clean!"
+      },
+      {
+        "player": "Ewww!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook (Blue Moon Inn)",
+        "text": "Oh, just leave me alone."
       }
     ]
   }

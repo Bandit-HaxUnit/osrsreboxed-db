@@ -2955,8 +2955,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lxb5E9"
+                "id": "lxb5E9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bee4512be8c1bfc4"
+                  }
+                ]
               }
             ]
           },
@@ -2965,8 +2970,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "f6e1Nr"
+                "id": "f6e1Nr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d4a161ef63379f47"
+                  }
+                ]
               }
             ]
           },
@@ -2975,8 +2985,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "CAcI-V"
+                "id": "CAcI-V",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1ebec6cd4b47359a"
+                  }
+                ]
               }
             ]
           },
@@ -2985,8 +3000,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NnN6yk"
+                "id": "NnN6yk",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ed6d9d57f068a083"
+                  }
+                ]
               }
             ]
           },
@@ -3040,8 +3060,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "VXyVuC"
+        "id": "VXyVuC",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-6f674dcf72e21421"
+          }
+        ]
       }
     ],
     "burgher-buddy-after-relaying-the-information-speaking-to-the-throne-room-guard": [
@@ -3836,8 +3861,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UkaLmG"
+                "id": "UkaLmG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ef29fb700d729df1"
+                  }
+                ]
               }
             ]
           },
@@ -4473,8 +4503,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TZ-G70"
+                "id": "TZ-G70",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2324e59d8a07ffb0"
+                  }
+                ]
               }
             ]
           },
@@ -8162,6 +8197,193 @@
     ]
   },
   "branches": {
+    "jump-bee4512be8c1bfc4": [
+      {
+        "player": "Tell me about your husband."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "My husband is a typical Fremennik, being both headstrong and brave."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "We fell in love when we were young, but as there was a war between our isles, we were ordered to stop seeing each other by our parents."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "This didn't stop Mord climbing the wailing tower, on his side of the channel between our isles, to sing to me every night."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "After Mord's voice broke, his singing voice was lost, but I still listened to his terrible sonnets each and every night."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "Until one night there was no singing! Then, far below me, I heard a gentle voice calling my name."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "Mord had stolen his father's boat to come and fetch me from my prison"
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "and from that day forth we have lived in Rellekka."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "pM3E2J"
+      }
+    ],
+    "jump-d4a161ef63379f47": [
+      {
+        "player": "Tell me about Jatizso."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "My husband does not speak of the inhabitants of the isle of Jatizso much."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "He has little positive to say about his parents, so he chooses not to speak of them in my presence. The only thing I've noticed is that everyone on that island seems very sad..."
+      },
+      {
+        "type": "choice",
+        "prompt": "Who do you want to know about?",
+        "options": [
+          {
+            "text": "Tell me about King Sorvott IV.",
+            "steps": [
+              {
+                "player": "Tell me about King Sorvott IV."
+              },
+              {
+                "type": "line",
+                "speaker": "Maria Gunnars",
+                "text": "King Sorvott IV follows in the footsteps of a line of kings who have reigned since Jatizso himself passed away. It is rumoured that the King has no heir and is seeking a bride to bear him children. Given his"
+              },
+              {
+                "type": "line",
+                "speaker": "Maria Gunnars",
+                "text": "personality I'm not surprised he hasn't found a bride yet!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "lyFnks"
+              }
+            ]
+          },
+          {
+            "text": "What were you saying before?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "pnee2p"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1ebec6cd4b47359a": [
+      {
+        "player": "Tell me about Neitiznot."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "To be honest with you, I do not keep up to date with all the goings on here now that I have a home in Rellekka."
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "However, Neitiznot seems a happy place! The Burgher seems a wiser rule than King Sorvott, although I believe he is worried about the trolls at the moment. They seem to be a big threat."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "aezFdp"
+      }
+    ],
+    "jump-ed6d9d57f068a083": [
+      {
+        "player": "Can you ferry me to Neitiznot?"
+      },
+      {
+        "type": "line",
+        "speaker": "Maria Gunnars",
+        "text": "Let's set sail then."
+      },
+      {
+        "type": "message",
+        "text": "Leaving Rellekka for Neitiznot.",
+        "id": "y8Zfde"
+      }
+    ],
+    "jump-6f674dcf72e21421": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I have a look at your stock, please?",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Trade interface opens",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Trade",
+                "id": "5nQWfT"
+              }
+            ]
+          },
+          {
+            "text": "No, nothing just now thanks.",
+            "steps": [
+              {
+                "player": "No, nothing just now thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ef29fb700d729df1": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "FTSIP4"
+      }
+    ],
+    "jump-2324e59d8a07ffb0": [
+      {
+        "player": "Can you ferry me to Rellekka?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mord Gunnars",
+        "text": "Sure."
+      },
+      {
+        "type": "message",
+        "text": "Leaving Jatizso for Rellekka.",
+        "id": "ynQW7s"
+      }
+    ],
     "9k9fzt": [
       {
         "type": "line",

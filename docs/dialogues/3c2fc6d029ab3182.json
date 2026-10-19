@@ -179,8 +179,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nHVCiw"
+                "id": "nHVCiw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8928359c534ec602"
+                  }
+                ]
               }
             ]
           },
@@ -189,8 +194,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "dxj0rl"
+                "id": "dxj0rl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-67b13f96f2fc4800"
+                  }
+                ]
               }
             ]
           },
@@ -199,12 +209,151 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "a6sase"
+                "id": "a6sase",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6974588e0f0ff978"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-8928359c534ec602": [
+      {
+        "player": "I'd like to rename my boat."
+      },
+      {
+        "npc": "Sure thing, mate. Which one do you want me to rename?"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Rename Boat",
+        "id": "QSMmHf"
+      },
+      {
+        "npc": "Alright, the price is one glass of cider."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have cider in their inventory:",
+        "steps": [
+          {
+            "player": "Oh, I don't have any cider."
+          },
+          {
+            "npc": "Crying shame, mate. A crying shame indeed."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VxW56k"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has cider in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Pay a glass of cider to have [boat name] renamed?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "npc": "Alright, mate, I name your boat... [new boat name]!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I love it.",
+                        "steps": [
+                          {
+                            "player": "I love it."
+                          },
+                          {
+                            "npc": "Glad to hear it, mate."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'm not a fan.",
+                        "steps": [
+                          {
+                            "player": "I'm not a fan."
+                          },
+                          {
+                            "npc": "Sorry, mate. No refunds."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "Actually, I'd rather not."
+                  },
+                  {
+                    "npc": "Crying shame, mate. A crying shame indeed."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Fd4kxC"
+      }
+    ],
+    "jump-67b13f96f2fc4800": [
+      {
+        "player": "How did you end up here?"
+      },
+      {
+        "npc": "Was crew on some fancy merchant ship, but me and Biles went and fell off. Now we live here. It's just the two of us, but it's quite the effective kingdom we've established."
+      },
+      {
+        "player": "Kingdom?"
+      },
+      {
+        "npc": "Aye. Biles is the King. He's the one that runs things. Meanwhile, I handle the naming of everything."
+      },
+      {
+        "player": "I see..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6974588e0f0ff978": [
+      {
+        "player": "I'd best be off."
+      },
+      {
+        "npc": "Until next time, mate."
+      },
+      {
+        "type": "end"
       }
     ]
   }

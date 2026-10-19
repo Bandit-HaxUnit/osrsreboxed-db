@@ -353,8 +353,13 @@
                                   },
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "y1SXXR"
+                                    "id": "y1SXXR",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-16d78645568819e3"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -370,13 +375,59 @@
             ]
           },
           {
-            "text": "I am getting strong and mighty."
+            "text": "I am getting strong and mighty.",
+            "steps": [
+              {
+                "player": "I am getting strong and mighty. Grrr"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Glad to hear it."
+              }
+            ]
           },
           {
-            "text": "I keep on dying."
+            "text": "I keep on dying.",
+            "steps": [
+              {
+                "player": "I keep on dying."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Ah well, at least you keep coming back to life!"
+              }
+            ]
           },
           {
-            "text": "Can I use your range?"
+            "text": "Can I use your range?",
+            "steps": [
+              {
+                "player": "Can I use your range?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Go ahead - it's a very good range. It's easier to use than most other ranges."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Its called the Cook-o-matic 100. It uses a combination of state of the art temperature regulation and magic."
+              },
+              {
+                "player": "Will it mean my food will burn less often?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook (Lumbridge)",
+                "text": "Well, that's what the salesman told us anyway..."
+              },
+              {
+                "player": "Thanks?"
+              }
+            ]
           }
         ]
       }
@@ -2563,6 +2614,208 @@
     ]
   },
   "branches": {
+    "jump-16d78645568819e3": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well, you're obviously trustworthy, I guess I could tell you..."
+      },
+      {
+        "player": "Please do. The suffering of others always seems to turn out very profitable for me."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well... It's like this..."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Did you ever hear of Franizzard Van Lumbcook?"
+      },
+      {
+        "player": "Erm... Can't say I have."
+      },
+      {
+        "player": "And with a name like that, I'm sure I would remember."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well, he was a great chef, and also my ancestor."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "One hundred years ago there was a very important meeting held here in Lumbridge Castle, and he cooked a banquet for the meeting, which was so stupendously amazing that he was offered a job for life, along with all"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "of his descendants."
+      },
+      {
+        "player": "So you have your job because a hundred years ago your ancestor was a very good cook."
+      },
+      {
+        "player": "I don't see how that's much of a problem for you..."
+      },
+      {
+        "player": "In fact I would say you are a VERY LUCKY man indeed. Frankly, I'd have fired you by now if you worked for me."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Oooooh no.... You don't understand..."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "This big important secret meeting that Franizzard cooked for is held here in Lumbridge castle every 10 years, and tonight will be the tenth anniversary of it!"
+      },
+      {
+        "player": "Still not seeing the problem..."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well, I have always felt like a failure as a cook, and that my job here is down to the skills of my ancestor."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "I want to prove to the world that I am a great cook too!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "But to do that... (sigh) No, it just won't work..."
+      },
+      {
+        "player": "What won't? Come on man, pull yourself together and speak to me!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "(sniff) Weeeeelll... I thought that I would recreate the meal Franizzard cooked all of those years ago, the one that impressed"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "everybody so much... There's just this small problem though..."
+      },
+      {
+        "player": "Let me take a wild guess: You have the recipe but you don't have any of the ingredients, and OBVIOUSLY you can't just go and get them yourself?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Yes! However did you know?"
+      },
+      {
+        "player": "Call it a hunch."
+      },
+      {
+        "player": "Okay, tell me what you're after and then I'll decide if I want to help you or not."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well, they are common enough ingredients, although I must admit the recipe I am following is very strange indeed..."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "I will pay you upfront for any expenses you may incur while obtaining them, and of course you may keep the change for being so helpful to me."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Please can you help me? The feast is scheduled to start very soon, and I simply cannot leave!"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Recipe for Disaster quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "I would love to help you! What do I have to do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Well, I have an incredibly important banquet that I have to prepare for, and I am using an ancient cookbook to recreate the meal my famous ancestor made a hundred years ago."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Most of the ingredients I was able to obtain fairly easily, but there were some... oddities... that I have been unable to lay my hands on."
+              },
+              {
+                "player": "Like what?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "I need the following ingredients as soon as possible!"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "One Eye Of NewtA freshly made 'Dirty Blast'A rotten tomato"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "And a glass of greenman's ale."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "I have given you 100 coins to cover any expenses you may incur, feel free to keep the change."
+              },
+              {
+                "player": "I'll go look for those for you then!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:recipe-for-disaster:start",
+            "quest": "Recipe for Disaster"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "To be honest... I just can't be bothered."
+              },
+              {
+                "player": "Sorry about that."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Oh nooooo... What am I going to do now?"
+              },
+              {
+                "player": "Dunno. Maybe I'll change my mind and come back later and help you."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Oooohhh... I really hope you do..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "D88Xq6": [
       {
         "type": "line",

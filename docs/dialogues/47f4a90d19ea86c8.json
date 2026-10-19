@@ -11,7 +11,83 @@
         "type": "choice",
         "options": [
           {
-            "text": "Where am I exactly?"
+            "text": "Where am I exactly?",
+            "steps": [
+              {
+                "player": "Where am I exactly?"
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "This is the port of Piscarilius. Home to Kourend's finest fisherman, but beware of the thieves!"
+              },
+              {
+                "player": "Can you tell me about the other parts of Kourend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Certainly. To the west is the city of Arceuus, where they study magic at Kourend's Grand Library."
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Further west is Lovakengj, where you'll find our best miners and smithers working to arm the Shayzien soldiers to the south west."
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Finally, to the south you'll find Hosidius. They focus on agriculture to provide food for all of Great Kourend."
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you take me somewhere?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "wLO-lr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Kourend?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "geeKdY"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let's talk about your client...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "O-Q3Ds"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Ahzob8"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Can you take me back to Port Sarim please?"
@@ -156,13 +232,57 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you've got."
+            "text": "Let's see what you've got.",
+            "steps": [
+              {
+                "player": "Let's see what you've got."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Regath's Wares",
+                "id": "WDgsQl"
+              }
+            ]
           },
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Regath",
+                "text": "My name is Regath, traveller."
+              },
+              {
+                "player": "What is this place?"
+              },
+              {
+                "type": "line",
+                "speaker": "Regath",
+                "text": "This place is a union of the mystical and the mundane, where the magical realm reaches out to touch the humdrum world of commerce."
+              },
+              {
+                "type": "line",
+                "speaker": "Regath",
+                "text": "Or, in terms that you may understand more easily, this place is a shop that sells magic stuff for money. Though I also trade in various other items."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "FHy7rn"
+              }
+            ]
           },
           {
-            "text": "I don't need anything."
+            "text": "I don't need anything.",
+            "steps": [
+              {
+                "player": "I don't need anything."
+              }
+            ]
           },
           {
             "text": "Can I ask you about the Arceuus house?",
@@ -333,13 +453,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Horace",
+                "text": "Hello my friend, my name is Horace! You're in the city of Hosidius. Most everyone round here tends the farms. Without us, Kourend would have no crops at all."
+              },
+              {
+                "type": "line",
+                "speaker": "Horace",
+                "text": "So, do you need to buy or sell something today?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "6Ro2fW"
+              }
+            ]
           },
           {
-            "text": "Okay, let's trade"
+            "text": "Okay, let's trade",
+            "steps": [
+              {
+                "player": "Okay, let's trade."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Little Shop of Horace",
+                "id": "zvtm-J"
+              }
+            ]
           },
           {
-            "text": "No, I'm fine."
+            "text": "No, I'm fine.",
+            "steps": [
+              {
+                "player": "No, I'm fine."
+              }
+            ]
           },
           {
             "text": "Can I ask you about the Hosidius house?",
@@ -466,13 +622,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Munty",
+                "text": "Why, it's my little shop. I supply all kinds of items that the Lovakengj workers need. Though if you need pickaxes, you should visit Toothy in the sulphur mine."
+              },
+              {
+                "type": "line",
+                "speaker": "Munty",
+                "text": "Now, can I help you today?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "yTLbyX"
+              }
+            ]
           },
           {
-            "text": "Let's trade."
+            "text": "Let's trade.",
+            "steps": [
+              {
+                "player": "Let's trade."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Little Munty's Little Shop",
+                "id": "9EeFjx"
+              }
+            ]
           },
           {
-            "text": "No, I'm fine."
+            "text": "No, I'm fine.",
+            "steps": [
+              {
+                "player": "No, I'm fine."
+              }
+            ]
           },
           {
             "text": "Can I ask you about the Lovakengj house?",
@@ -599,10 +791,26 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's trade."
+            "text": "Let's trade.",
+            "steps": [
+              {
+                "player": "Let's trade."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Leenz's General Supplies",
+                "id": "td-wJE"
+              }
+            ]
           },
           {
-            "text": "I don't need anything right now."
+            "text": "I don't need anything right now.",
+            "steps": [
+              {
+                "player": "I don't need anything right now."
+              }
+            ]
           },
           {
             "text": "Can I ask you about the Piscarilius house?",
@@ -732,10 +940,31 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's trade."
+            "text": "Let's trade.",
+            "steps": [
+              {
+                "player": "Let's trade."
+              },
+              {
+                "type": "line",
+                "speaker": "Jennifer (Shayzien)",
+                "text": "Well me luv', I've got some special rations for the soldiers in the fields ou'there; courtesy of the mainland Void Knights. Take a looksie."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Jennifer's General Field Supplies",
+                "id": "5CeRPR"
+              }
+            ]
           },
           {
-            "text": "I don't need anything right now."
+            "text": "I don't need anything right now.",
+            "steps": [
+              {
+                "player": "I don't need anything right now."
+              }
+            ]
           },
           {
             "text": "Can I ask you about the Shayzien house?",
@@ -867,7 +1096,83 @@
         "type": "choice",
         "options": [
           {
-            "text": "Where am I exactly?"
+            "text": "Where am I exactly?",
+            "steps": [
+              {
+                "player": "Where am I exactly?"
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "This is the port of Piscarilius. Home to Kourend's finest fisherman, but beware of the thieves!"
+              },
+              {
+                "player": "Can you tell me about the other parts of Kourend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Certainly. To the west is the city of Arceuus, where they study magic at Kourend's Grand Library."
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Further west is Lovakengj, where you'll find our best miners and smithers working to arm the Shayzien soldiers to the south west."
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Finally, to the south you'll find Hosidius. They focus on agriculture to provide food for all of Great Kourend."
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you take me somewhere?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "wLO-lr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Kourend?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "geeKdY"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let's talk about your client...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "O-Q3Ds"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Ahzob8"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Can you take me back to Port Sarim please?"
@@ -994,7 +1299,88 @@
         "type": "choice",
         "options": [
           {
-            "text": "Where am I exactly?"
+            "text": "Where am I exactly?",
+            "steps": [
+              {
+                "player": "Where am I exactly?"
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "This is the port of Piscarilius. Home to Kourend's finest fisherman, but beware of the thieves!"
+              },
+              {
+                "player": "Can you tell me about the other parts of Kourend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Certainly. To the west is the city of Arceuus, where they study magic at Kourend's Grand Library."
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Further west is Lovakengj, where you'll find our best miners and smithers working to arm the Shayzien soldiers to the south west."
+              },
+              {
+                "type": "line",
+                "speaker": "Veos",
+                "text": "Finally, to the south you'll find Hosidius. They focus on agriculture to provide food for all of Great Kourend."
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you take me somewhere?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "wLO-lr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Kourend?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "geeKdY"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let's talk about your client...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "O-Q3Ds",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8d86a592a3c7b4d7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Ahzob8"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Can you take me back to Port Sarim please?"
@@ -1507,6 +1893,70 @@
       {
         "type": "unavailable",
         "id": "PM-kxi"
+      }
+    ]
+  },
+  "branches": {
+    "jump-8d86a592a3c7b4d7": [
+      {
+        "player": "Veos, enough is enough! I've suffered through enough. Exploding orbs and burning quills..."
+      },
+      {
+        "type": "line",
+        "speaker": "Veos",
+        "text": "[player name]? What are you talking about?"
+      },
+      {
+        "player": "You know darn well what I'm talking about!"
+      },
+      {
+        "type": "line",
+        "speaker": "Veos",
+        "text": "[player name], I haven't spoken with you since bringing you to Zeah, I have no idea what you're on ab--"
+      },
+      {
+        "type": "line",
+        "speaker": "Veos",
+        "text": "ARGH!"
+      },
+      {
+        "player": "Veos, this isn't funny anymore... Are you alright? I did all that your client asked for me..."
+      },
+      {
+        "type": "line",
+        "speaker": "Veos' Client",
+        "text": "You most certainly have."
+      },
+      {
+        "player": "Uhm... Veos?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veos' Client",
+        "text": "Heed my word. Your deeds will not go unthanked."
+      },
+      {
+        "player": "Who are you? What have you done with Veos?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veos' Client",
+        "text": "You care for this human? How pitiful."
+      },
+      {
+        "type": "line",
+        "speaker": "Veos' Client",
+        "text": "Worry not. I'll ensure he's fine. He is of good use to me."
+      },
+      {
+        "type": "line",
+        "speaker": "Veos' Client",
+        "text": "As for who I am... well. That is of no concern to you, human."
+      },
+      {
+        "type": "action",
+        "text": "(Continued below.)",
+        "id": "Q4vfEt"
       }
     ]
   }

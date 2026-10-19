@@ -1,4 +1,30 @@
 {
+  "branches": {
+    "jump-da2b3010fc995d2a": [
+      {
+        "player": "Actually, let's talk about something else."
+      },
+      {
+        "npc": "Very well."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "0Y2pUH"
+      }
+    ],
+    "jump-b22c151dd7b652e4": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "All the best."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Hello there. Do you have any questions about Leagues?"
@@ -352,8 +378,13 @@
                                   "steps": [
                                     {
                                       "type": "jump",
-                                      "reference": "below",
-                                      "id": "Yz5DQs"
+                                      "id": "Yz5DQs",
+                                      "steps": [
+                                        {
+                                          "type": "call",
+                                          "branch": "jump-da2b3010fc995d2a"
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
@@ -362,8 +393,13 @@
                                   "steps": [
                                     {
                                       "type": "jump",
-                                      "reference": "below",
-                                      "id": "0XFE5J"
+                                      "id": "0XFE5J",
+                                      "steps": [
+                                        {
+                                          "type": "call",
+                                          "branch": "jump-b22c151dd7b652e4"
+                                        }
+                                      ]
                                     }
                                   ]
                                 },

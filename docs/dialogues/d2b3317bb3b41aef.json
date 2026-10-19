@@ -78,8 +78,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "YDQkT7"
+                        "id": "YDQkT7",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-aacdb5be2d3bb2f1"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -154,8 +159,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LS0QZp"
+                "id": "LS0QZp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-aacdb5be2d3bb2f1"
+                  }
+                ]
               }
             ]
           },
@@ -171,9 +181,10 @@
               {
                 "type": "action",
                 "text": "(Shop interface opens.)",
-                "action": "open_interface",
+                "action": "open_shop",
                 "action_source": "text",
-                "id": "pS2Uwe"
+                "id": "pS2Uwe",
+                "target": "Mysterious Stranger (shop)"
               }
             ]
           },
@@ -618,6 +629,19 @@
     "before-theatre-release": [
       {
         "npc": "You should be careful around here friend. If I can tell you don't belong here, they probably can as well."
+      }
+    ]
+  },
+  "branches": {
+    "jump-aacdb5be2d3bb2f1": [
+      {
+        "type": "reference",
+        "target": "Transcript:A Night at the Theatre",
+        "section": "",
+        "text": "Continues in Transcript:A Night at the Theatre",
+        "id": "UI6gL4",
+        "resolved": false,
+        "page_available": true
       }
     ]
   }

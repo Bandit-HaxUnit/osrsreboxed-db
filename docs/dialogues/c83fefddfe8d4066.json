@@ -342,8 +342,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "dSRT7B"
+                        "id": "dSRT7B",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9308a91846e2c1ad"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -352,8 +357,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "WFhnno"
+                        "id": "WFhnno",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d50bfb22df312929"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -476,6 +486,177 @@
           }
         ],
         "id": "EEKE5E"
+      }
+    ]
+  },
+  "branches": {
+    "jump-9308a91846e2c1ad": [
+      {
+        "player": "Could I have one of those crazy hot kebabs of yours?"
+      },
+      {
+        "npc": "One super kebab coming up! Be careful, they really are as hot as they're made out to be."
+      },
+      {
+        "player": "Sure, sure."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 5 coins:",
+        "steps": [
+          {
+            "npc": "Here you go."
+          },
+          {
+            "player": "Thanks."
+          },
+          {
+            "npc": "Is there anything else I can do for you?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, actually.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "Q3yMcj"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks, I'm good.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "3Izr38"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "wvSDyw"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have enough coins:",
+        "steps": [
+          {
+            "player": "I seem to be short on coins. Sorry."
+          },
+          {
+            "npc": "Is there anything else I can do for you?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, actually.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "gjO06Y"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks, I'm good.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "kmHYVQ"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "xedraN"
+      }
+    ],
+    "jump-d50bfb22df312929": [
+      {
+        "player": "Would you sell me that bottle of special kebab sauce?"
+      },
+      {
+        "npc": "Well, that depends. What do you intend to do with it?"
+      },
+      {
+        "player": "Don't worry, I've no intention of setting up a rival kebab shop."
+      },
+      {
+        "npc": "But then what do you want it for?"
+      },
+      {
+        "player": "I don't know, but I think I could have a little bit of fun with it."
+      },
+      {
+        "npc": "You're not going to put it in Drunken Ali's drink, are you? That's what happened the last time I gave someone the sauce."
+      },
+      {
+        "player": "No, that would be a bit cliché. I think I'll come up with something more original."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory:",
+        "steps": [
+          {
+            "player": "Actually, I might get back to you on the sauce. I'm a bit overburdened as it is."
+          }
+        ],
+        "id": "Y8ytAH"
+      },
+      {
+        "type": "condition",
+        "text": "Otherwise:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "Ali the Kebab seller gives you the red hot sauce.",
+            "id": "ekGbm6"
+          },
+          {
+            "npc": "Just be careful with it, it's potent enough to give a camel the runs."
+          },
+          {
+            "player": "Thank you very much."
+          }
+        ],
+        "id": "tNA2KV"
+      },
+      {
+        "npc": "Is there anything else I can do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, actually.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "y2cG5o"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'm good.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "UYlV25"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

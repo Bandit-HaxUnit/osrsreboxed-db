@@ -62,8 +62,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "FXJU9U"
+                                        "id": "FXJU9U",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-e5dc0172df8e40ea"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -72,8 +77,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "1TAelm"
+                                        "id": "1TAelm",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-65e7882b3d46ce34"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -96,8 +106,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "2eqJAI"
+                                "id": "2eqJAI",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e5dc0172df8e40ea"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -130,8 +145,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "cYqZVN"
+                                        "id": "cYqZVN",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-e6c7b71cd0637733"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -140,8 +160,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "upL3nS"
+                                        "id": "upL3nS",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-8c6b48c8d67d7ecd"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -325,8 +350,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "bhzsev"
+                                "id": "bhzsev",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-df21b48b7eb8d6db"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -335,8 +365,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "wa6Ive"
+                                "id": "wa6Ive",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e5dc0172df8e40ea"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -345,8 +380,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "VXcUu9"
+                                "id": "VXcUu9",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-65e7882b3d46ce34"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -437,13 +477,126 @@
           {
             "text": "I'm in search of a quest.",
             "condition": "If the player has not started Shield of Arrav:",
-            "id": "dO-LFF"
+            "id": "dO-LFF",
+            "steps": [
+              {
+                "player": "I'm in search of a quest."
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Hmm... I don't believe there are any here."
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Let me think actually..."
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Ah, yes. I think I have something, if you're definitely interested?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's combat level is less than 10.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this quest, be aware that you combat level is lower than the recommended level of 10.",
+                    "id": "QLLOxo"
+                  }
+                ],
+                "id": "Lzzehj"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Shield of Arrav quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Of course."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Reldo",
+                        "text": "Well, if you look around for book called The Shield of Arrav, you'll find a quest in there."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Reldo",
+                        "text": "I'm not sure where the book is mind you... but I'm sure it's around here somewhere."
+                      },
+                      {
+                        "player": "Great! Thank you."
+                      }
+                    ],
+                    "hook": "quest:shield-of-arrav:start",
+                    "quest": "Shield of Arrav"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Actually, I don't think I am. Goodbye."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Do you have anything to trade?"
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "player": "Do you have anything to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Only knowledge."
+              },
+              {
+                "player": "How much do you want for that then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "No, sorry, that was just my little joke. I'm not the trading type."
+              },
+              {
+                "player": "Ah well."
+              }
+            ]
           },
           {
-            "text": "What do you do?"
+            "text": "What do you do?",
+            "steps": [
+              {
+                "player": "What do you do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "I am the palace librarian."
+              },
+              {
+                "player": "Ah. That's why you're in the library then."
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Yes."
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Although I would probably be in here even if I didn't work here. I like reading. Someday I hope to catalogue all of the information stored in these books so all may read it."
+              }
+            ]
           },
           {
             "text": "What do you know about the Imcando dwarves?",
@@ -652,7 +805,22 @@
                     ]
                   },
                   {
-                    "text": "What is that cape you're wearing?"
+                    "text": "What is that cape you're wearing?",
+                    "steps": [
+                      {
+                        "player": "What is that cape you're wearing?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Thurgo",
+                        "text": "It's a Skillcape of Smithing. It shows that I'm a master blacksmith, but that's only to be expected - after all, my ancestors were the greatest blacksmiths in dwarven history."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Thurgo",
+                        "text": "If you ever achieve level 99 Smithing you'll be able to wear a cape like this, and receive more experience when smelting gold ore."
+                      }
+                    ]
                   }
                 ]
               }
@@ -1075,6 +1243,390 @@
       {
         "type": "unavailable",
         "id": "Usi_0l"
+      }
+    ]
+  },
+  "branches": {
+    "jump-e5dc0172df8e40ea": [
+      {
+        "player": "I can make a new sword if you like..."
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "Thanks for the offer. I'd be surprised if you could though."
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "The thing is, this sword is a family heirloom. It has been passed down through Vyvin's family for five generations! It was originally made by the Imcando dwarves, who were"
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "a particularly skilled tribe of dwarven smiths. I doubt anyone could make it in the style they do."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So would these dwarves make another one?",
+            "steps": [
+              {
+                "player": "So would these dwarves make another one?"
+              },
+              {
+                "type": "line",
+                "speaker": "Squire",
+                "text": "I'm not a hundred percent sure the Imcando tribe exists anymore. I should think Reldo, the palace librarian in Varrock, will know; he has done a lot of research on the races of Gielinor."
+              },
+              {
+                "type": "line",
+                "speaker": "Squire",
+                "text": "I don't suppose you could try and track down the Imcando dwarves for me? I've got so much work to do..."
+              },
+              {
+                "type": "condition",
+                "text": "Without 10 Mining and while below 20 Combat:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it. Your combat level is also lower than the recommended level of 20.",
+                    "id": "Ibs1it"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "pGvlA5"
+                  }
+                ],
+                "id": "pS_d1C"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start The Knight's Sword quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player hasn't met Thurgo yet:",
+                        "steps": [
+                          {
+                            "player": "Ok, I'll give it a go."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Squire",
+                            "text": "Thank you very much! As I say, the best place to start should be with Reldo..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ofpWc0"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has already met Thurgo in The Giant Dwarf:",
+                        "steps": [
+                          {
+                            "player": "I'll help, I know an Imcando dwarf!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Squire",
+                            "text": "What, really? That is wonderful to hear! Where is he then?"
+                          },
+                          {
+                            "player": "He's living on a cliff at the very south end of Asgarnia, south of Port Sarim. I'll go right over to him."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Squire",
+                            "text": "Thank you very much!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "eopxAu"
+                      }
+                    ],
+                    "hook": "quest:the-knight-s-sword:start",
+                    "quest": "The Knight's Sword"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No. I've got lots of mining work to do."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Squire",
+                        "text": "Oh man... I'm in such trouble..."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I hope you find it soon.",
+            "steps": [
+              {
+                "player": "Well, I hope you find it soon."
+              },
+              {
+                "type": "line",
+                "speaker": "Squire",
+                "text": "Yes, me too. I'm not looking forward to telling Vyvin I've lost it. He's going to want it for the parade next week as well."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-65e7882b3d46ce34": [
+      {
+        "player": "Well, the kingdom is fairly abundant with swords..."
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "Yes. You can get bronze swords anywhere. But THIS isn't any old sword."
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "The thing is, this sword is a family heirloom. It has been passed down through Vyvin's family for five generations! It was originally made by the Imcando dwarves, who were"
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "a particularly skilled tribe of dwarven smiths. I doubt anyone could make it in the style they do."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So would these dwarves make another one?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "cYqZVN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e6c7b71cd0637733"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I hope you find it soon.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "upL3nS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8c6b48c8d67d7ecd"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e6c7b71cd0637733": [
+      {
+        "player": "So would these dwarves make another one?"
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "I'm not a hundred percent sure the Imcando tribe exists anymore. I should think Reldo, the palace librarian in Varrock, will know; he has done a lot of research on the races of Gielinor."
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "I don't suppose you could try and track down the Imcando dwarves for me? I've got so much work to do..."
+      },
+      {
+        "type": "condition",
+        "text": "Without 10 Mining and while below 20 Combat:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it. Your combat level is also lower than the recommended level of 20.",
+            "id": "Ibs1it"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "pGvlA5"
+          }
+        ],
+        "id": "pS_d1C"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start The Knight's Sword quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't met Thurgo yet:",
+                "steps": [
+                  {
+                    "player": "Ok, I'll give it a go."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Squire",
+                    "text": "Thank you very much! As I say, the best place to start should be with Reldo..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ofpWc0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already met Thurgo in The Giant Dwarf:",
+                "steps": [
+                  {
+                    "player": "I'll help, I know an Imcando dwarf!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Squire",
+                    "text": "What, really? That is wonderful to hear! Where is he then?"
+                  },
+                  {
+                    "player": "He's living on a cliff at the very south end of Asgarnia, south of Port Sarim. I'll go right over to him."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Squire",
+                    "text": "Thank you very much!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "eopxAu"
+              }
+            ],
+            "hook": "quest:the-knight-s-sword:start",
+            "quest": "The Knight's Sword"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No. I've got lots of mining work to do."
+              },
+              {
+                "type": "line",
+                "speaker": "Squire",
+                "text": "Oh man... I'm in such trouble..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8c6b48c8d67d7ecd": [
+      {
+        "player": "Well, I hope you find it soon."
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "Yes, me too. I'm not looking forward to telling Vyvin I've lost it. He's going to want it for the parade next week as well."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-df21b48b7eb8d6db": [
+      {
+        "player": "Well, do you know the VAGUE AREA you lost it in?"
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "No. I was carrying it for him all the way from where he had it stored in Lumbridge. It must have slipped from my pack during the trip, and you know what people are like these days..."
+      },
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "Someone will have just picked it up and kept it for themselves."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I can make a new sword if you like...",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "FXJU9U",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e5dc0172df8e40ea"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well, the kingdom is fairly abundant with swords...",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "1TAelm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-65e7882b3d46ce34"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well, I hope you find it soon.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "QNriGs"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

@@ -112,7 +112,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "BL0Rxe"
+                    "id": "BL0Rxe",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f46c2cd74ecca21d"
+                      }
+                    ]
                   }
                 ],
                 "id": "loMqQk"
@@ -127,7 +133,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "03svOF"
+                    "id": "03svOF",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f46c2cd74ecca21d"
+                      }
+                    ]
                   }
                 ],
                 "id": "TH_fZ1"
@@ -556,6 +568,36 @@
     ]
   },
   "branches": {
+    "jump-f46c2cd74ecca21d": [
+      {
+        "type": "choice",
+        "prompt": "Buy another whistle blueprint?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "npc": "Here you go, one whistle blueprint."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a Basic quetzal whistle blueprint",
+                "id": "tX2GIW"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "bT6Zxb": [
       {
         "npc": "Doesn't look like you've got anything I can feed to the birds here. You'll want to get some of the raw meats that the hunters bring back with them."

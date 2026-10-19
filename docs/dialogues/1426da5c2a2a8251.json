@@ -1,4 +1,17 @@
 {
+  "branches": {
+    "jump-a7b576d2e31efded": [
+      {
+        "player": "No thanks, Eadgar."
+      },
+      {
+        "npc": "Your loss!"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hi!"
@@ -149,8 +162,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "gBrckb"
+                      "id": "gBrckb",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-a7b576d2e31efded"
+                        }
+                      ]
                     }
                   ]
                 }

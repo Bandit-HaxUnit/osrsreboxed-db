@@ -549,8 +549,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MFK63N"
+                "id": "MFK63N",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d717faf7bbba0777"
+                  }
+                ]
               }
             ]
           }
@@ -725,8 +730,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nGp36H"
+                "id": "nGp36H",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d717faf7bbba0777"
+                  }
+                ]
               }
             ]
           }
@@ -981,8 +991,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rWJWTP"
+                "id": "rWJWTP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d717faf7bbba0777"
+                  }
+                ]
               }
             ]
           }
@@ -1000,6 +1015,22 @@
       },
       {
         "npc": "Hmm, I'm afraid I don't allow pets in my lectures, the demonstrations can scare them."
+      }
+    ]
+  },
+  "branches": {
+    "jump-d717faf7bbba0777": [
+      {
+        "player": "That's enough education for one day."
+      },
+      {
+        "npc": "Nonsense! There's always room for more."
+      },
+      {
+        "npc": "And remember, science isn't dull!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

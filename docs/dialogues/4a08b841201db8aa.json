@@ -149,8 +149,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "DoRA0N"
+                            "id": "DoRA0N",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-1408fa2075cacf10"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -159,8 +164,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "G6qooD"
+                            "id": "G6qooD",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-fdb39f8b775deff7"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -169,8 +179,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "KtWUWH"
+                            "id": "KtWUWH",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-dd829f4c72ca261f"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -179,8 +194,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "PWiCxP"
+                            "id": "PWiCxP",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-c93ed2c2344ca537"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -206,8 +226,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "SmhBo4"
+                            "id": "SmhBo4",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-1408fa2075cacf10"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -216,8 +241,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "s2IRtJ"
+                            "id": "s2IRtJ",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-fdb39f8b775deff7"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -226,8 +256,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "rAc-xM"
+                            "id": "rAc-xM",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-dd829f4c72ca261f"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -236,8 +271,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "v_-SOP"
+                            "id": "v_-SOP",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-c93ed2c2344ca537"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -295,8 +335,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "gzFdjJ"
+                        "id": "gzFdjJ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1408fa2075cacf10"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -305,8 +350,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "OvRLDh"
+                        "id": "OvRLDh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fdb39f8b775deff7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -315,8 +365,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "QZ1fEJ"
+                        "id": "QZ1fEJ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-dd829f4c72ca261f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -325,8 +380,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "yz6jAw"
+                        "id": "yz6jAw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c93ed2c2344ca537"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -413,6 +473,84 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-1408fa2075cacf10": [
+      {
+        "player": "Nope, it definitely says Saradomin."
+      },
+      {
+        "npc": "I think you're right! Hand it here, and let's see what's inside!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Damaged book (Saradomin)",
+        "id": "wZLOyL"
+      },
+      {
+        "npc": "Wow! It's a Holy Book of Saradomin! I thought these things had all vanished! Well, it's all yours, I hope you appreciate it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-fdb39f8b775deff7": [
+      {
+        "player": "Nope, it definitely says Zamorak."
+      },
+      {
+        "npc": "I think you're right! Hand it here, and let's see what's inside!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Damaged book (Zamorak)",
+        "id": "UDtF8K"
+      },
+      {
+        "npc": "Wow! It's an Unholy Book of Zamorak! I thought these things had all vanished! Well, it's all yours, I hope you appreciate it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-dd829f4c72ca261f": [
+      {
+        "player": "Nope, it definitely says Guthix."
+      },
+      {
+        "npc": "I think you're right! Hand it here, and let's see what's inside!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Damaged book (Guthix)",
+        "id": "frpSFr"
+      },
+      {
+        "npc": "Wow! It's Guthix's Book of Balance! I thought these things had all vanished! Well, it's all yours, I hope you appreciate it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c93ed2c2344ca537": [
+      {
+        "player": "I wish it were one of the other gods. I'd prefer my reward to be aligned to a different god, not Saradomin, Zamorak or Guthix."
+      },
+      {
+        "npc": "The sea's always washing up interesting stuff around my lighthouse. Perhaps I'll find something more suitable for you in future."
+      },
+      {
+        "npc": "For now, this casket definitely says Saradomin, Zamorak or Guthix. Which do you think it is?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "OyfUr6"
       }
     ]
   }

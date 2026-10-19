@@ -62,8 +62,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wpRfmV"
+                "id": "wpRfmV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a833635e572bffd2"
+                  }
+                ]
               }
             ]
           }
@@ -186,8 +191,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "bwEjPL"
+                        "id": "bwEjPL",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-69c9072eb75d54a2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -196,8 +206,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "lFX6B-"
+                        "id": "lFX6B-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f329a6311d4f002f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -206,8 +221,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "_NGMk6"
+                        "id": "_NGMk6",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-29dcb98657b59d66"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -240,6 +260,83 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-a833635e572bffd2": [
+      {
+        "player": "Is this your house?"
+      },
+      {
+        "npc": "No, I'm just one of the tenants. It belongs to the count who lives in the basement."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-69c9072eb75d54a2": [
+      {
+        "player": "Where can I get insulated armour from?"
+      },
+      {
+        "npc": "Well there were some pretty tough people here last week. Said they were Slayer Masters. They were planning on making some protective boots. You should speak to one of them."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Thanks, I'll do that.",
+            "steps": [
+              {
+                "player": "Thanks, I'll do that."
+              },
+              {
+                "npc": "No problem. See you later."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't want to run around after Slayer Masters, I'm going through.",
+            "steps": [
+              {
+                "player": "I don't want to run around after Slayer Masters, I'm going through."
+              },
+              {
+                "npc": "Fair enough, just don't say I didn't warn you"
+              },
+              {
+                "type": "action",
+                "text": "The player enters the portal machine into the Killerwatt plane.",
+                "id": "OO7no2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f329a6311d4f002f": [
+      {
+        "player": "Thanks, I think I'll stay here for a while then."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-29dcb98657b59d66": [
+      {
+        "player": "Thanks for the warning, but I'm not scared of any monster."
+      },
+      {
+        "npc": "Ok. Just don't say I didn't warn you"
+      },
+      {
+        "type": "action",
+        "text": "The player enters the portal machine into the Killerwatt plane.",
+        "id": "XAaYcY"
       }
     ]
   }

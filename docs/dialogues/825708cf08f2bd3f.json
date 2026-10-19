@@ -166,8 +166,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "y8kRJL"
+                "id": "y8kRJL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb548f4ea5cdb53d"
+                  }
+                ]
               }
             ]
           },
@@ -179,8 +184,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HTgLPX"
+                "id": "HTgLPX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5bc53a98d7ee305b"
+                  }
+                ]
               }
             ]
           },
@@ -192,12 +202,43 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XKcW6T"
+                "id": "XKcW6T",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-56b0350645d0a376"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-bb548f4ea5cdb53d": [
+      {
+        "npc": "Not that I'm aware of, just sit back and enjoy the sunshine bwana!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5bc53a98d7ee305b": [
+      {
+        "npc": "Sorry Bwana, I'm already busy, why not go and talk to Murcaily! He's around the village somewhere."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-56b0350645d0a376": [
+      {
+        "npc": "Well, I think that there's some work to be done...perhaps Murcaily can help you. He usually tends to the hardwood grove to the east of Trufitus's hut."
+      },
+      {
+        "type": "end"
       }
     ]
   }

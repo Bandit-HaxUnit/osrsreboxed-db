@@ -65,8 +65,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "FpwvUO"
+                        "id": "FpwvUO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f74e61ecb38b5b57"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -530,6 +535,40 @@
       },
       {
         "npc": "I don't need another tablet! One is enough, thank you."
+      }
+    ]
+  },
+  "branches": {
+    "jump-f74e61ecb38b5b57": [
+      {
+        "player": "Can you tell me more about the tools an archaeologist uses?"
+      },
+      {
+        "npc": "Of course! Let's see now... Rock picks are for splitting rocks or scraping away soil; you can get one from a cupboard in the Education Centre."
+      },
+      {
+        "player": "What about sample jars?"
+      },
+      {
+        "npc": "I think you'll find them scattered about pretty much everywhere, but I know you can get one from a cupboard somewhere in the Education Centre, just like the rock pick!"
+      },
+      {
+        "player": "Okay, what about a specimen brush?"
+      },
+      {
+        "npc": "We have a bit of a shortage of those at the moment. You could try borrowing one from a workman on the site... but I don't think they'd give it willingly."
+      },
+      {
+        "player": "Sounds like I'll need to be sneaky to get one of those, then... Okay - trowel?"
+      },
+      {
+        "npc": "Ahh... that you must earn by passing your exams! The examiner holds those."
+      },
+      {
+        "player": "Ahh, ok thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

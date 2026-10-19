@@ -128,8 +128,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "JnVU8x"
+                                    "id": "JnVU8x",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-49f8cd14816f8574"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -266,8 +271,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "AtHU8e"
+                                "id": "AtHU8e",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-705aeb50747e923d"
+                                  }
+                                ]
                               }
                             ],
                             "id": "aNARuU"
@@ -291,8 +301,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "ppVM85"
+                            "id": "ppVM85",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-49f8cd14816f8574"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -427,8 +442,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "fyAXrv"
+                                "id": "fyAXrv",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-67e43ec02a91837d"
+                                  }
+                                ]
                               }
                             ],
                             "id": "ZPm7eA"
@@ -439,8 +459,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "OhOpNX"
+                                "id": "OhOpNX",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-67e43ec02a91837d"
+                                  }
+                                ]
                               }
                             ],
                             "id": "42LbxS"
@@ -486,8 +511,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "M11QWW"
+                    "id": "M11QWW",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b6e301c2d4e8a40e"
+                      }
+                    ]
                   },
                   {
                     "type": "choice",
@@ -518,8 +548,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "Ybtu2o"
+                    "id": "Ybtu2o",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b6e301c2d4e8a40e"
+                      }
+                    ]
                   }
                 ],
                 "id": "aVG-Dm"
@@ -547,8 +582,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "qVgNMk"
+                    "id": "qVgNMk",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-710ec6a87e3f8f37"
+                      }
+                    ]
                   }
                 ],
                 "id": "Vdl_VS"
@@ -639,6 +679,128 @@
           }
         ],
         "id": "jmG-eh"
+      }
+    ]
+  },
+  "branches": {
+    "jump-49f8cd14816f8574": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-705aeb50747e923d": [
+      {
+        "type": "condition",
+        "text": "If the player still has multiple tiers of fossils in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "nbn57-"
+          }
+        ],
+        "id": "jA7hrW"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has only one tier of fossils in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "below",
+            "id": "FrAACX"
+          }
+        ],
+        "id": "c1ifl0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have any more fossils in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "below",
+            "id": "bxiChI"
+          }
+        ],
+        "id": "gUQJW5"
+      }
+    ],
+    "jump-67e43ec02a91837d": [
+      {
+        "type": "condition",
+        "text": "If the player still has fossils in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "L0KwG7"
+          }
+        ],
+        "id": "amutSG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have any more fossils in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "below",
+            "id": "_fS4VW"
+          }
+        ],
+        "id": "3zrHC7"
+      }
+    ],
+    "jump-b6e301c2d4e8a40e": [
+      {
+        "type": "action",
+        "text": "The player chooses how many medium fossils to trade with the Fossil Collector",
+        "id": "Teqs1c"
+      },
+      {
+        "type": "action",
+        "action": "give",
+        "text": "the chosen amount of mediun fossils to the Fossil Collector",
+        "id": "A0wCLo"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "[200x] amount of Numulite",
+        "id": "tQljLK"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "D0xUKS"
+      }
+    ],
+    "jump-710ec6a87e3f8f37": [
+      {
+        "type": "action",
+        "text": "The player chooses how many rare fossils to trade with the Fossil Collector",
+        "id": "diyyve"
+      },
+      {
+        "type": "action",
+        "action": "give",
+        "text": "the chosen amount of rare fossils to the Fossil Collector",
+        "id": "YtL6OI"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "[500x] amount of Numulite",
+        "id": "fJnWlA"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "4YHfhK"
       }
     ]
   }

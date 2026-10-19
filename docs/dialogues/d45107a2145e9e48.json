@@ -73,8 +73,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BVS1_j"
+                "id": "BVS1_j",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e917c63fef06cfa0"
+                  }
+                ]
               }
             ]
           },
@@ -83,8 +88,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XLtxNH"
+                "id": "XLtxNH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dbc0d76460d4ac91"
+                  }
+                ]
               }
             ]
           },
@@ -109,6 +119,29 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-e917c63fef06cfa0": [
+      {
+        "player": "Yes, please."
+      },
+      {
+        "type": "action",
+        "text": "The Esoterican Arms store opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "The Esoterican Arms store",
+        "id": "NeZJZW"
+      }
+    ],
+    "jump-dbc0d76460d4ac91": [
+      {
+        "player": "No, thank you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

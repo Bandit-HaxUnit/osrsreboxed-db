@@ -1,4 +1,85 @@
 {
+  "branches": {
+    "jump-6322b6e657fc1e73": [
+      {
+        "player": "What's wrong with that woman?"
+      },
+      {
+        "npc": "Oh, she's Lord Crombwick's wife and the first victim of the Sleeper Plague."
+      },
+      {
+        "player": "Lord Crombwick?"
+      },
+      {
+        "npc": "The ruler of this place. He lives in his manor, to the north."
+      },
+      {
+        "player": "Where's the Lord? Surely he should be down here with his wife?"
+      },
+      {
+        "npc": "Still in his manor. He hasn't left since she fell ill."
+      },
+      {
+        "player": "Why?"
+      },
+      {
+        "npc": "No one knows. The place looks like a mess and some say they've seen vampyres lurking."
+      },
+      {
+        "player": "How mysterious."
+      },
+      {
+        "npc": "Indeed."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "sIlNHA"
+      }
+    ],
+    "jump-bbd1fda3ca688898": [
+      {
+        "player": "How are things with the Sleeper Plague?"
+      },
+      {
+        "npc": "The one responsible was found out and executed. We haven't had any new cases since."
+      },
+      {
+        "player": "I see... And what of those still ill?"
+      },
+      {
+        "npc": "Well now that the cause has been dealt with, we can focus more heavily on a cure."
+      },
+      {
+        "player": "And how long will that take?"
+      },
+      {
+        "npc": "Well that depends..."
+      },
+      {
+        "player": "On what?"
+      },
+      {
+        "npc": "On how things progress... down below."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "XdLhPc"
+      }
+    ],
+    "jump-c92a47fac5ca689f": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Be safe, traveller."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello!"
@@ -91,8 +172,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "JJ1-1K"
+                      "id": "JJ1-1K",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-6322b6e657fc1e73"
+                        }
+                      ]
                     }
                   ],
                   "id": "giLhT6"
@@ -103,8 +189,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "c8dtxN"
+                      "id": "c8dtxN",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-bbd1fda3ca688898"
+                        }
+                      ]
                     }
                   ],
                   "id": "U1SHT_"
@@ -114,8 +205,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "mcJxXX"
+                      "id": "mcJxXX",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-c92a47fac5ca689f"
+                        }
+                      ]
                     }
                   ]
                 }

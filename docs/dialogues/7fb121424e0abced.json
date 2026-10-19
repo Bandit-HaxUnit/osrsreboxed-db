@@ -476,8 +476,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Y1dOOd"
+                        "id": "Y1dOOd",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1209016de34d6266"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -486,8 +491,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "JNDoP5"
+                        "id": "JNDoP5",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-aef63fc3c9d2f31e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -496,8 +506,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "vVbZ4V"
+                        "id": "vVbZ4V",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6da699aa20f28cd7"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -512,12 +527,180 @@
       {
         "type": "choice",
         "prompt": "What would you like to ask about?",
-        "options": []
+        "options": [
+          {
+            "text": "Could you help me with combining some items?",
+            "steps": [
+              {
+                "player": "Could you help me with combining some items?"
+              },
+              {
+                "npc": "Combining items? What items?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "You show the icon to Peer the Seer."
+                  }
+                ]
+              },
+              {
+                "player": "I have this icon from a ring. I was hoping to make something new with it."
+              },
+              {
+                "npc": "Surely a smith would be better placed to help you with that?"
+              },
+              {
+                "player": "Well I thought maybe you'd be able to help, given these are magic rings. The good magic that is... not the... whatever magic it is you don't like."
+              },
+              {
+                "npc": "Hmm... So the things you're planning to make are totally above board?"
+              },
+              {
+                "player": "When you say above board, where would making new rings by combining the icons with ancient vestiges from a long forgotten empire sit?"
+              },
+              {
+                "npc": "What kind of empire?"
+              },
+              {
+                "player": "Er... Definitely not one known for using dark and forbidden magic."
+              },
+              {
+                "npc": "Ah, well as long as it's not one of those kind of empires, then I see no problems."
+              },
+              {
+                "player": "Great!"
+              },
+              {
+                "npc": "Now it's quite simple really..."
+              },
+              {
+                "type": "unavailable",
+                "id": "U25hrc"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "npc": "Not a problem."
+              }
+            ]
+          }
+        ]
       }
     ],
     "standard-dialogue-when-using-the-right-click-deposit-items-option-before-completing-the-easy-fremennik-diary": [
       {
         "npc": "I cannot do that for you until you have completed the easy tier of the Fremennik achievement diary."
+      }
+    ]
+  },
+  "branches": {
+    "jump-1209016de34d6266": [
+      {
+        "player": "I was wondering if you could give me a reading on my future...?"
+      },
+      {
+        "npc": "Ah, you would like a prediction? I do not see that that would be so difficult... wait a moment..."
+      },
+      {
+        "type": "action",
+        "text": "Dialogue box disappears for a few seconds",
+        "id": "PtsAHR"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Here is your prediction: The enemy called [fire giant/ghost/goblin/green dragon/hobgoblin/lesser demon/moss giant/ogre/skeleton/zombie] is your lucky totem this day."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Here is your prediction: The stars tell me that you should use a [battleaxe/crossbow/dagger/javelin/long sword/mace/scimitar/short sword/spear/warhammer] in combat today."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Here is your prediction: The place called [Al Kharid/Ardougne/Burthorpe/Canifis/Falador/Karamja/Varrock/The Wilderness/Yanille] will be worth your time to visit."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Here is your prediction: You would be wise to train the skill [Agility/Cooking/Crafting/Fishing/Fletching/Herblore/Mining/Runecrafting/Smithing/Thieving] today."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Here is your prediction: The colour [black/blue/brown/cyan/green/pink/purple/red/white/yellow] will bring you luck this day."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "Here is your prediction: You will find luck today with the number [one/two/three/four/five/six/seven/eight/nine/ten]."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-aef63fc3c9d2f31e": [
+      {
+        "player": "Can you bank my stuff?"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "The Bank of Gielinor - Deposit Box",
+        "id": "HBJ1rp"
+      }
+    ],
+    "jump-6da699aa20f28cd7": [
+      {
+        "player": "Nothing really, I just stopped by to say hello."
+      },
+      {
+        "npc": "Well, hello to you too!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

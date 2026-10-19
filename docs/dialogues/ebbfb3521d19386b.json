@@ -302,8 +302,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "D475QW"
+                            "id": "D475QW",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-b7c665d1ea63bfe1"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -447,6 +452,88 @@
           }
         ],
         "id": "LLjQVv"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b7c665d1ea63bfe1": [
+      {
+        "npc": "Most certainly, having it equipped reduces your weight and I think it will really suit you. All that remains to be done is pay me 99000 gold!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm afraid I can't afford that.",
+            "steps": [
+              {
+                "player": "I'm afraid I can't afford that."
+              },
+              {
+                "npc": "So sad, too bad. Go and pickpocket some wealthy people and come back here once you're richer."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Certainly, here you go.",
+            "steps": [
+              {
+                "player": "Certainly, here you go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 99,000 coins:",
+                "steps": [
+                  {
+                    "player": "But, unfortunately, I don't have enough money with me."
+                  },
+                  {
+                    "npc": "Well, come back and see me when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "8cPPcF"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "jyvIdG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins and enough inventory space:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an Agility cape and hood",
+                    "id": "K11d9Z"
+                  },
+                  {
+                    "npc": "Excellent! That cape really does suit you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kZj5Ii"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

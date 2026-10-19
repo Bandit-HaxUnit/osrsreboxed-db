@@ -124,8 +124,13 @@
                                             "steps": [
                                               {
                                                 "type": "jump",
-                                                "reference": "above",
-                                                "id": "6XsNId"
+                                                "id": "6XsNId",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-83ded1eac6960343"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           },
@@ -260,6 +265,23 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-83ded1eac6960343": [
+      {
+        "npc": "Have fun with it."
+      },
+      {
+        "type": "action",
+        "text": "Player receives a Music cape and Music hood in exchange for 99,000 coins.",
+        "action": "receive",
+        "action_source": "text",
+        "id": "5oO1bZ"
+      },
+      {
+        "type": "end"
       }
     ]
   }

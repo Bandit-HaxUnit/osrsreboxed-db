@@ -372,13 +372,77 @@
             ]
           },
           {
-            "text": "I need another flail."
+            "text": "I need another flail.",
+            "steps": [
+              {
+                "player": "I need another flail."
+              },
+              {
+                "type": "line",
+                "speaker": "Ivan Strom",
+                "text": "I have some here, along with a few other things. It will cost you though."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ivan's Supplies",
+                "id": "NOO-QA"
+              }
+            ]
           },
           {
-            "text": "I need another Drakan's Medallion."
+            "text": "I need another Drakan's Medallion.",
+            "steps": [
+              {
+                "player": "I need another Drakan's Medallion."
+              },
+              {
+                "type": "line",
+                "speaker": "Ivan Strom",
+                "text": "Sure."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Drakan's medallion reclaim",
+                "id": "ZoWCuH"
+              },
+              {
+                "type": "condition",
+                "text": "If the player reclaims one medallion:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Ivan gives you another medallion.",
+                    "id": "2EDGf5"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qrxdL7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player reclaims multiple medallions:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Ivan gives you [number] medallions.",
+                    "id": "y79xjU"
+                  }
+                ],
+                "id": "w_NFFw"
+              }
+            ]
           },
           {
-            "text": "I'd better get going."
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              }
+            ]
           }
         ]
       }
@@ -862,8 +926,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RSOEFH"
+                "id": "RSOEFH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-840e8cca0874c4aa"
+                  }
+                ]
               }
             ]
           },
@@ -872,8 +941,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3OqEud"
+                "id": "3OqEud",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d1277c195bbb4ca7"
+                  }
+                ]
               }
             ]
           },
@@ -882,8 +956,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "OQCRKJ"
+                "id": "OQCRKJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e1e4f8c3a9910931"
+                  }
+                ]
               }
             ]
           }
@@ -917,8 +996,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "VTOv7Y"
+                "id": "VTOv7Y",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d1277c195bbb4ca7"
+                  }
+                ]
               }
             ]
           },
@@ -927,8 +1011,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MQLw5l"
+                "id": "MQLw5l",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e1e4f8c3a9910931"
+                  }
+                ]
               }
             ]
           }
@@ -945,7 +1034,58 @@
         "type": "choice",
         "options": [
           {
-            "text": "One Bloody Bracer please."
+            "text": "One Bloody Bracer please.",
+            "steps": [
+              {
+                "player": "One Bloody Bracer please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 99 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "XjfFCX"
+                  }
+                ],
+                "id": "mlw9o8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99 coins:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Roy",
+                    "text": "That will be 99 coins."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Here you go.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "0Uj90v"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'm not paying that!",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "PmKze5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zosSof"
+              }
+            ]
           },
           {
             "text": "We're looking for a friend of ours.",
@@ -1000,10 +1140,22 @@
             ]
           },
           {
-            "text": "What happened to Carl?"
+            "text": "What happened to Carl?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "32dg36"
+              }
+            ]
           },
           {
-            "text": "I'm not thirsty."
+            "text": "I'm not thirsty.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "UmYAGB"
+              }
+            ]
           }
         ]
       }
@@ -1018,7 +1170,58 @@
         "type": "choice",
         "options": [
           {
-            "text": "One Bloody Bracer please."
+            "text": "One Bloody Bracer please.",
+            "steps": [
+              {
+                "player": "One Bloody Bracer please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 99 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "XjfFCX"
+                  }
+                ],
+                "id": "mlw9o8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99 coins:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Roy",
+                    "text": "That will be 99 coins."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Here you go.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "0Uj90v"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'm not paying that!",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "PmKze5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zosSof"
+              }
+            ]
           },
           {
             "text": "We're looking for a friend of ours.",
@@ -1037,10 +1240,22 @@
             ]
           },
           {
-            "text": "What happened to Carl?"
+            "text": "What happened to Carl?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "32dg36"
+              }
+            ]
           },
           {
-            "text": "I'm not thirsty."
+            "text": "I'm not thirsty.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "UmYAGB"
+              }
+            ]
           }
         ]
       }
@@ -1072,8 +1287,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "eFAADD"
+                "id": "eFAADD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d1277c195bbb4ca7"
+                  }
+                ]
               }
             ]
           },
@@ -1082,8 +1302,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "l_Px9g"
+                "id": "l_Px9g",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e1e4f8c3a9910931"
+                  }
+                ]
               }
             ]
           }
@@ -1625,8 +1850,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RW9eoE"
+                "id": "RW9eoE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3c73edc9f5f57860"
+                  }
+                ]
               }
             ]
           },
@@ -1635,8 +1865,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JQMK4M"
+                "id": "JQMK4M",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-400bda39687ea8a9"
+                  }
+                ]
               }
             ]
           },
@@ -1909,8 +2144,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UlhQGe"
+                "id": "UlhQGe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0d8761bd9d79f7d9"
+                  }
+                ]
               }
             ]
           }
@@ -2411,8 +2651,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jvoTeF"
+                "id": "jvoTeF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-308e715b0a87c8f3"
+                  }
+                ]
               }
             ]
           },
@@ -2421,8 +2666,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_eERlx"
+                "id": "_eERlx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb6b658fb2b6ad83"
+                  }
+                ]
               }
             ]
           },
@@ -2431,8 +2681,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QMQdMv"
+                "id": "QMQdMv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-01fc3eb2f6fd39f7"
+                  }
+                ]
               }
             ]
           }
@@ -2614,8 +2869,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "zd19l2"
+                        "id": "zd19l2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fb6b658fb2b6ad83"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2638,8 +2898,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "AIPSHz"
+                "id": "AIPSHz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb6b658fb2b6ad83"
+                  }
+                ]
               }
             ]
           },
@@ -3075,8 +3340,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qufVty"
+                "id": "qufVty",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ea6736305b2d79c0"
+                  }
+                ]
               }
             ]
           },
@@ -3085,8 +3355,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8gUtyf"
+                "id": "8gUtyf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7e7a91445d59f3b0"
+                  }
+                ]
               }
             ]
           },
@@ -3185,8 +3460,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "VqAYaZ"
+                    "id": "VqAYaZ",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7e7a91445d59f3b0"
+                      }
+                    ]
                   }
                 ]
               },
@@ -3233,8 +3513,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "lL1QnE"
+                    "id": "lL1QnE",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7e7a91445d59f3b0"
+                      }
+                    ]
                   }
                 ]
               },
@@ -3748,8 +4033,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ehjlj9"
+                "id": "ehjlj9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f9bf112fcab1a722"
+                  }
+                ]
               }
             ]
           },
@@ -3758,8 +4048,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HgNC-F"
+                "id": "HgNC-F",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8410101179e2326a"
+                  }
+                ]
               }
             ]
           },
@@ -3768,8 +4063,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YuvO7N"
+                "id": "YuvO7N",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d5ee8e30e8b6ceb5"
+                  }
+                ]
               }
             ]
           },
@@ -3885,8 +4185,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_Jw-GB"
+                "id": "_Jw-GB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f9a8525e4f8a7b13"
+                  }
+                ]
               }
             ]
           },
@@ -3916,8 +4221,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KEqvwv"
+                "id": "KEqvwv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7c3afe93702bf420"
+                  }
+                ]
               }
             ]
           },
@@ -3926,8 +4236,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "hAWbFo"
+                "id": "hAWbFo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b4050d427193deff"
+                  }
+                ]
               }
             ]
           }
@@ -5373,8 +5688,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "GBRRgr"
+                "id": "GBRRgr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-78a065be3e270230"
+                  }
+                ]
               }
             ]
           },
@@ -5383,8 +5703,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Rn2PAP"
+                "id": "Rn2PAP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-730d76862181346c"
+                  }
+                ]
               }
             ]
           },
@@ -5393,8 +5718,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DbsDVw"
+                "id": "DbsDVw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-156de8441ea7fd45"
+                  }
+                ]
               }
             ]
           },
@@ -5403,8 +5733,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XW7bDS"
+                "id": "XW7bDS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f4c51629f6d0092c"
+                  }
+                ]
               }
             ]
           },
@@ -6838,8 +7173,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "97-OPl"
+                "id": "97-OPl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7c7463f442addce9"
+                  }
+                ]
               }
             ]
           }
@@ -9120,7 +9460,53 @@
             ]
           },
           {
-            "text": "I need another Drakan's Medallion."
+            "text": "I need another Drakan's Medallion.",
+            "steps": [
+              {
+                "player": "I need another Drakan's Medallion."
+              },
+              {
+                "type": "line",
+                "speaker": "Ivan Strom",
+                "text": "Sure."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Drakan's medallion reclaim",
+                "id": "ZoWCuH"
+              },
+              {
+                "type": "condition",
+                "text": "If the player reclaims one medallion:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Ivan gives you another medallion.",
+                    "id": "2EDGf5"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qrxdL7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player reclaims multiple medallions:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Ivan gives you [number] medallions.",
+                    "id": "y79xjU"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "w_NFFw"
+              }
+            ]
           },
           {
             "text": "Until next time.",
@@ -9147,6 +9533,906 @@
     ]
   },
   "branches": {
+    "jump-840e8cca0874c4aa": [
+      {
+        "player": "Let's get going."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I'm right behind you."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d1277c195bbb4ca7": [
+      {
+        "player": "Are you going to be okay when we find Veliaf?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I'll be fine. It's not like this is the first time Veliaf and I have had disagreements."
+      },
+      {
+        "player": "I feel like it's a bit more than just disagreements this time... Not to mention, we have no idea what sort of headspace he'll be in."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I've known him long enough that I could make a pretty good guess. For so long he tried his best to protect me... to protect all of us."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "After what happened in Darkmeyer, he finally realised he couldn't, and it broke him. Veliaf often said I was naive, but in truth, I think he was always the naive one."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Anyway, it doesn't really matter. I may get why he left, but that doesn't change the fact that I might just hate him for it."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "As for if I'll be okay when we find him? The truth is that I don't think I'll know until we do, so we may as well get to it."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "YBhlzh"
+      }
+    ],
+    "jump-e1e4f8c3a9910931": [
+      {
+        "player": "I need to do something else."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Alright, I'll meet you back outside the church. Just don't take too long."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3c73edc9f5f57860": [
+      {
+        "player": "Could you remind me who the Seven Priestly Warriors were?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Sure thing. During the Fourth Age, Drakan and his vampyres tried to invade Misthalin. The Seven Priestly Warriors led the army that stood against him."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "The war ended when the seven of them blessed the Salve, right here where Paterdomus was eventually built."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "It's said that all seven died in the battle when the river was blessed, with them being buried in the mausoleum below."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Of course, as it turns out, that wasn't actually true. Ivandis survived the battle. He journeyed into Morytania and eventually died there."
+      },
+      {
+        "player": "And if this journal you found is to be believed, he did so while trying to kill Drakan."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Indeed."
+      },
+      {
+        "player": "What about the other six? Who were they?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "There was Iriandul Caistlyn, Sarl Dunegun, Friar Twiblick, Derygull Templeton, Erysail the Pious and Essiandar Gar."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "rzBBNG"
+      }
+    ],
+    "jump-400bda39687ea8a9": [
+      {
+        "player": "How did you find out you were descended from Ivandis?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Truth be told, I'm surprised I didn't work it out sooner. Drezel never hid the fact that he wanted me to succeed him, and he and Veliaf always tried so hard to keep me safe."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I always just thought they were trying to look out for me, but eventually I realised it was more than that. That there was something else going on."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I searched through the library below and found some information on Ivandis' family. It took some work, but I was eventually able to link them directly to my mother, and to me."
+      },
+      {
+        "player": "Why didn't you tell us that you knew?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "At first I was angry, but I soon came to understand why. By that point though, there was no easy way to bring it up, and let's be honest, we often had more important things to worry about."
+      },
+      {
+        "player": "Very true."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "gzbsCE"
+      }
+    ],
+    "jump-0d8761bd9d79f7d9": [
+      {
+        "player": "I'll make my own way there."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Fair enough. Just let us know if you change your mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-308e715b0a87c8f3": [
+      {
+        "player": "Any thoughts on what to do next?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Not really. There's something off about these portraits though..."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "gZSUGw"
+      }
+    ],
+    "jump-fb6b658fb2b6ad83": [
+      {
+        "player": "Do you think things will be okay between you and Ivan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Is now really the best time for this?"
+      },
+      {
+        "player": "Well, as you keep pointing out, there's a high chance of us dying here, so we might not get another chance."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "So you're saying this is my opportunity to clear my conscience and die content?"
+      },
+      {
+        "player": "Maybe not exactly how I'd have put it..."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Well, given we're almost certainly dead anyway, I don't see how it matters anymore."
+      },
+      {
+        "player": "Oh, come on. If you really believe that, why bother coming here at all?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Why? Because I failed! I failed to protect the Myreque! I failed to protect Ivan! I made one promise to his mother, and I broke it!"
+      },
+      {
+        "player": "But Ivan's still alive! This isn't over yet!"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "This was over the second we agreed to Vanescula's plan! Now all of us are living on borrowed time. Me, you, Ivan, Safalaan... None of us are getting out of this alive."
+      },
+      {
+        "player": "So the only reason you came here is so you wouldn't have to die alone and drunk?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Pretty much."
+      },
+      {
+        "player": "I don't believe that, and deep down I don't think you do either."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Believe what you want, [player name]. It won't matter soon anyway."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "LZQvDh"
+      }
+    ],
+    "jump-01fc3eb2f6fd39f7": [
+      {
+        "player": "Agreed. Let's go."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ea6736305b2d79c0": [
+      {
+        "player": "Any thoughts on what to do next?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I'm not sure, but I wonder if there's more to some of these books than there first seems."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "1qyZVL"
+      }
+    ],
+    "jump-7e7a91445d59f3b0": [
+      {
+        "player": "Are you doing okay, Ivan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I don't know. I'm alive I guess, but I keep letting you down, [player name]. I'm sorry."
+      },
+      {
+        "player": "Don't be. I'm sorry that you have to be here, Ivan, but I'm glad you are. I wouldn't have got this far on my own."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I just wish I could be more like you and Veliaf. I thought I could be, but after what happened to the others..."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "The worst part is, I can't even mourn them. After Sani died, and Harold... I felt something. Now though... now I just feel empty. Empty... and afraid."
+      },
+      {
+        "player": "And yet you're still here. Even after all that's happened, you haven't lost hope, Ivan."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Yeah... hope. That's always been me, hasn't it. The hoper... The believer... But what good is hope now? What good has hope ever done us? It's just... worthless."
+      },
+      {
+        "player": "No. It's worth everything. It's the only reason we're still here, and it's the reason why I know that no matter what we'll face here, we'll win."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "You know, you're pretty good at this whole motivation thing. Much better than Veliaf."
+      },
+      {
+        "player": "Well... that's not saying much."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "He has his moments."
+      },
+      {
+        "player": "That he most certainly does."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "JXJZR6"
+      }
+    ],
+    "jump-f9bf112fcab1a722": [
+      {
+        "player": "What do you make of your brother's plan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "I must confess, I underestimated him. I thought he'd long since given up on... well, anything and everything really. Now I see the reality was far worse."
+      },
+      {
+        "player": "We lost some good people thanks to your underestimating."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Well, I hope you're not expecting an apology. You all knew what you were signing up for."
+      },
+      {
+        "player": "I see your time in the cells hasn't changed you."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "And why would it have? This is not my first time on the back foot. I survived all those previous times, and I will survive this time as well."
+      },
+      {
+        "player": "If you say so. Anyway, back to your brother's plan..."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Yes, like I say, rather unexpected, though I must admit, it is somewhat inspired."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "When we took Hallowvale, Lowerniel said it would be a new beginning for us, but it only took him a few hundred years to grow bored of that."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "That's when he started lamenting about this place instead. He longed to find a way back here, and for a time he actually found one."
+      },
+      {
+        "player": "He worked out how to get here before? How?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "I don't know exactly. My brother was once entrusted with a powerful artefact. I did wonder if that might have been connected, but the timelines don't add up..."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Anyway, however he did it, it didn't last. He eventually lost his way to get here. After that, he mostly withdrew from our society completely. I thought he'd given up, but now I suspect it was all part of a larger plan."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "I don't think he ever stopped trying to find a way back here, and I think he was already preparing for the day when he'd work out how to do so."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "You saw for yourself how my people responded to his announcement. I think it's fair to say that the prospect of returning to Vampyrium is not one that many take joy in."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "And yet... some might consider it more appealing than it once would have been."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "The overcrowding... The shutting down of the Haemalchemy Laboratory... I think he was intentionally pushing us to the brink. Putting us in a place where his plan seemed like the only option."
+      },
+      {
+        "player": "Hmm... Before we came here, we found a vampyrification lab. We did wonder why new vampyres were being made given the overcrowding issues."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Yes, especially given my brother's hatred for that process. A process he himself made I should point out. Still, I suppose hypocrisy has always been one of his many talents."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "Ct7PPE"
+      }
+    ],
+    "jump-8410101179e2326a": [
+      {
+        "player": "What do you know about this festival your brother is planning?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Ah, yes, the wonderful Night of the Blood Moon. It was once the way that the Drakan clan chose their new leaders. This was before the vampyre clans were united as one. Before we became civilised."
+      },
+      {
+        "player": "I'm not sure I could ever describe a vampyre as civilised."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Well, then you should be glad you never had to see how we used to live. That festival is a perfect example of something that should have remained forgotten, but of course, my brother can't help but cling to the past."
+      },
+      {
+        "player": "So this festival is how your brother became leader?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Yes. We were a lot more superstitious back then, though a lot stupider might be a better way to put it. We believed that a blood moon was the ultimate representation of power."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Whenever one occurred, the festival would take place. It was a whole night of killing. The one with the most kills by the end was said to embody the blood moon."
+      },
+      {
+        "player": "Embody the blood moon?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "'And when dawn comes, one will rise above all, and they will rise as the Blood Moon.'"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Like I said, we were stupid back then, and not overly creative. The victor would be granted the rather uninspired title of Blood Moon. They were the only one deemed worthy enough to lead the clan."
+      },
+      {
+        "player": "And now your brother wants to bring the festival back."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "He'll do anything but accept the truth. All of our problems... they come from him. He will never be the one to free us of them."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "-QD50D"
+      }
+    ],
+    "jump-d5ee8e30e8b6ceb5": [
+      {
+        "player": "What can you tell me about this land?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "It's a wretched place. Leaving was the best thing we ever did."
+      },
+      {
+        "player": "Why? What was life like here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Well, it was once the case that my people lived in separate clans spread across these lands. Life was short and brutal. There was nothing to take joy in. Survival was all that mattered."
+      },
+      {
+        "player": "What changed?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "A single visitor. We called him the Stranger from Afar. He uplifted us. He showed us that life could be more than mere survival. You wouldn't think it now, but back then my brother was his biggest believer."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "As you can probably imagine, such a fundamental shift in our society caused quite the stir, but also presented opportunities to those willing to take them..."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "My brother was one of those people. He set out to unite all the clans as one, with him as their leader. He called himself the Lord of Vampyrium, the first true ruler of these lands."
+      },
+      {
+        "player": "This Stranger from Afar... did he support that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "More than support it. He enabled it. Make no mistake though, it was not due to any benevolence. He had great ambition of his own, but he needed us to help him achieve it."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "And so, we remained here for centuries after that, enjoying our new lives of culture and civilisation, until eventually the Stranger from Afar returned."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "He guided us to your lands. There, we established a great empire for him, and for hundreds of years, we prospered. Vampyrium became nothing more than a horrible distant memory."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "You see, after all this time, it seems my brother has forgotten something that he once knew better than anyone. Change is inevitable, and those who refuse to accept it, die."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "nBZIod"
+      }
+    ],
+    "jump-f9a8525e4f8a7b13": [
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Well, it's safe to say I've had better days. It's not looking good for us at all."
+      },
+      {
+        "player": "No, but this isn't over yet. We'll work something out."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "I hope you're right."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "xoOWG1"
+      }
+    ],
+    "jump-7c3afe93702bf420": [
+      {
+        "player": "Would you be able to look after some things for me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Sure. I'll make sure they get back to your bank... provided we ever get back to Morytania..."
+      },
+      {
+        "type": "action",
+        "text": "Bank deposit interface opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Bank deposit",
+        "id": "xjr1P-"
+      }
+    ],
+    "jump-b4050d427193deff": [
+      {
+        "player": "I'd best get going."
+      },
+      {
+        "type": "line",
+        "speaker": "Ivan Strom",
+        "text": "Just be careful out there."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-78a065be3e270230": [
+      {
+        "player": "How did you end up allying with Sugadinti?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "After I managed to escape Drakan, I was alone and weak. I would not have survived these lands for long, but I was lucky enough that Sugadinti found me."
+      },
+      {
+        "player": "That feels kind of like what happened with us."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Yes, and much like yourselves, I was also highly mistrusting of Sugadinti at first. Had I been stronger, I may well have tried to kill him on the spot."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "And yet, over time, we have come to reach an understanding. Make no mistake, there is much we do not agree on. However, he is most certainly nothing like Drakan."
+      },
+      {
+        "player": "That's reassuring. Thank you."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "VVo6M7"
+      }
+    ],
+    "jump-730d76862181346c": [
+      {
+        "player": "I assume it's your blood we're using for this portal?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "It is."
+      },
+      {
+        "player": "Will it be powerful enough for all of us? Drakan's been planning this Night of the Blood Moon festival to gather the blood for his."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Sugadinti's disciples have been providing their blood for it as well. You need not fear. We have more than enough to ensure everyone here can use it."
+      },
+      {
+        "player": "Are they happy providing their blood?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "They are. I do not deny that their relationship with Sugadinti is complicated, and it is not one I totally approve of."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "However, it is a relationship that they are content with, and it has worked for them for thousands of years."
+      },
+      {
+        "player": "Fair enough. So after we use the portal, what then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "That is something that still has an element of debate to it."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Until recently, our plan was to remain here in Vampyrium until we were strong enough to defeat Drakan, but recent events have made that impossible."
+      },
+      {
+        "player": "And we're the ones responsible for those recent events. I'm sorry."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "You are not to blame. In hindsight, we should have revealed ourselves to you. At the time though, it seemed too risky. We did not want there to be any chance of Drakan and his kin learning about our plans."
+      },
+      {
+        "player": "But now those plans have changed. Drakan won't be defeated anymore. He'll just be trapped here instead. I'm guessing that's where the debate is?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Yes... Trapping Drakan here in the short term makes perfect sense, but the question is what do we do about him in the longer term. Sugadinti believes that once trapped here, he will have no hope of escape."
+      },
+      {
+        "player": "That was our hope as well, but I'm guessing you disagree?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "How can we be sure he won't find a way? Even if not him, what happens if someone one day works out how to open a new portal to Vampyrium? While he lives, how can this truly be over?"
+      },
+      {
+        "player": "Hmm... You make a fair point."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "But do I? Is it logic that drives these questions, or is it something else...?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "There is nothing left of who I once was. Drakan took everything from me, but then wouldn't even grant me the mercy of death. And now, all these years later, I find myself asking, what is it I'm still fighting for?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "I tell myself it's for the future. A future for my son... A future for all who have suffered at the hands of the vampyres..."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Once I would have prayed to Saradomin for that to be true... For a part of the old me to still remain... But he stopped listening to my prayers long ago. Now I wonder if deep down, only one thing drives me now..."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Vengeance."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "..."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Let us speak of something else."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "kge-8Q"
+      }
+    ],
+    "jump-156de8441ea7fd45": [
+      {
+        "player": "Do you mind if I ask about your family?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "I'd... prefer you didn't."
+      },
+      {
+        "player": "I understand. I'm sorry to have mentioned them."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "---Fz3"
+      }
+    ],
+    "jump-f4c51629f6d0092c": [
+      {
+        "player": "Could you tell me more about Hallowvale?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Hallowvale... The truth is, it's been so long that I barely remember it. The one memory that will never fade though, is the beauty of it."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "The rivers and the forests... The cities of blue and white stone... And looking over all of it, Everlight."
+      },
+      {
+        "player": "Everlight?"
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "Hallowvale wasn't always our home. My people once lived eternally in the light, in a floating city that followed the sun. We couldn't do that in Hallowvale, so we built a sun of our own."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "I suppose you could compare it to a lighthouse. It stood on the outskirts of our capital, ensuring that no part of our home fell into darkness."
+      },
+      {
+        "player": "That sounds incredible."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "It was... but now it's all gone. Sugadinti's disciples tell me nothing remains of Everlight now, nor much else of Hallowvale. Even its name has long since been lost to time."
+      },
+      {
+        "player": "But you're still here, and so is Safalaan. The light hasn't fully died yet, and for as long as we keep fighting, it never will."
+      },
+      {
+        "type": "line",
+        "speaker": "Efaritay Hallow",
+        "text": "I suppose we'll soon find out if you're right."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "vbH20A"
+      }
+    ],
+    "jump-7c7463f442addce9": [
+      {
+        "player": "I'll be back shortly."
+      },
+      {
+        "type": "line",
+        "speaker": "Sugadinti Vitur",
+        "text": "Do not take too long, my child."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "XjfFCX": [
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "That will be 99 coins."
+      },
+      {
+        "player": "I don't have that much."
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "Then for now, our business is at an end."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "0Uj90v": [
+      {
+        "player": "Here you go."
+      },
+      {
+        "type": "message",
+        "text": "You buy a Bloody Bracer.",
+        "id": "58Z72R"
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "Enjoy."
+      },
+      {
+        "player": "Thanks."
+      }
+    ],
+    "PmKze5": [
+      {
+        "player": "I'm not paying that!"
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "Then for now, our business is at an end."
+      }
+    ],
+    "32dg36": [
+      {
+        "player": "What happened to Carl?"
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "Carl?"
+      },
+      {
+        "player": "The old barkeep."
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "Oh yes, Carl!"
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "He had to leave I'm afraid. Fear not though. I have taken over things here."
+      },
+      {
+        "player": "And you are?"
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "Roy is the name. Now, could I interest you in one of our finest Bloody Bracers?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "23JMYg"
+      }
+    ],
+    "UmYAGB": [
+      {
+        "player": "I'm not thirsty."
+      },
+      {
+        "type": "line",
+        "speaker": "Roy",
+        "text": "Then for now, our business is at an end."
+      }
+    ],
     "OnBOtW": [
       {
         "player": "I'll be back shortly."

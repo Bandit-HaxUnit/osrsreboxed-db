@@ -60,8 +60,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "jcBvPu"
+                                "id": "jcBvPu",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2d321de51c648da0"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -142,8 +147,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "above",
-                                            "id": "wUfRt7"
+                                            "id": "wUfRt7",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-06501cb8857036a2"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -152,8 +162,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "below",
-                                            "id": "mQ_u5u"
+                                            "id": "mQ_u5u",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-f724955e888cd80a"
+                                              }
+                                            ]
                                           }
                                         ]
                                       }
@@ -193,8 +208,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "below",
-                                            "id": "sRDugT"
+                                            "id": "sRDugT",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-f724955e888cd80a"
+                                              }
+                                            ]
                                           }
                                         ]
                                       }
@@ -358,8 +378,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1KpPwY"
+                "id": "1KpPwY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2d321de51c648da0"
+                  }
+                ]
               }
             ]
           }
@@ -455,6 +480,134 @@
           }
         ],
         "id": "xILFMn"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2d321de51c648da0": [
+      {
+        "player": "Can I pay you for permanent access?"
+      },
+      {
+        "npc": "I suppose so, yes. My employer will let you in for free, forever, in exchange for 1,000,000 coins."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 1,000,000 coins:",
+        "steps": [
+          {
+            "player": "I haven't got 1,000,000 coins with me."
+          },
+          {
+            "npc": "Then perhaps you would rather pay 875 coins for one visit."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay, here's 875 coins.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "wUfRt7",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-06501cb8857036a2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Never mind.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "mQ_u5u",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f724955e888cd80a"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "TrDWrg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 1,000,000 coins:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay, here's 1,000,000 coins.",
+                "steps": [
+                  {
+                    "player": "Okay, here's 1,000,000 coins."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You give Saniboch 1,000,000 coins for permanent access to the dungeon.",
+                    "id": "8gYM4O"
+                  },
+                  {
+                    "npc": "Many thanks. You may now pass the door as many times as you wish, and I will not charge you again. May your death be a glorious one!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Never mind.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "sRDugT",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f724955e888cd80a"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "J438kY"
+      }
+    ],
+    "jump-06501cb8857036a2": [
+      {
+        "player": "Okay, here's 875 coins."
+      },
+      {
+        "type": "message",
+        "text": "You give Saniboch 875 coins.",
+        "id": "JQ_Dni"
+      },
+      {
+        "npc": "Many thanks. You may now pass the door. May your death be a glorious one!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f724955e888cd80a": [
+      {
+        "player": "Never mind."
+      },
+      {
+        "type": "end"
       }
     ]
   }

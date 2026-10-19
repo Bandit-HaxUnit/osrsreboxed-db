@@ -57,6 +57,86 @@
         "prompt": "Start the Rum Deal quest?",
         "options": [
           {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Yes! Your uncorroborated sob story has touched my heart. When do we set off?"
+              },
+              {
+                "npc": "You'll help! Wonderful!"
+              },
+              {
+                "npc": "But, alas, my half brother has a powerful ally, the mighty demon..."
+              },
+              {
+                "npc": "Err..."
+              },
+              {
+                "npc": "Err...Barrelor!"
+              },
+              {
+                "npc": "Yes, the mighty, fearsome, tall, deadly, oaken, round demon Barrelor the Destroyer."
+              },
+              {
+                "player": "Barrelor?"
+              },
+              {
+                "npc": "That's what I said!"
+              },
+              {
+                "npc": "Barrelor is an awesome opponent, and to reclaim my family sword you will need to defeat him, for he guards it within the deadly Trapped Pit of Barrelor."
+              },
+              {
+                "npc": "Wanna give it a shot?"
+              },
+              {
+                "type": "choice",
+                "options": []
+              }
+            ],
+            "hook": "quest:rum-deal:start",
+            "quest": "Rum Deal"
+          },
+          {
+            "text": "Of course, I fear no demon!",
+            "steps": [
+              {
+                "player": "Of course, I fear no demon!"
+              },
+              {
+                "npc": "Atta [boy/girl]!"
+              },
+              {
+                "npc": "When I am reinstated in my rightful place, I will not be a very wealthy man, as my half-brother has squandered my family fortune."
+              },
+              {
+                "npc": "However, I will gladly give you every bent penny of what is left, and starve in the gutter with my many, many adorable children, if you say you will help me."
+              }
+            ]
+          },
+          {
+            "text": "Not a chance, this sounds too dangerous.",
+            "steps": [
+              {
+                "player": "Not a chance, this sounds too dangerous."
+              },
+              {
+                "npc": "Look, I think I'll wait here for someone a little more... you know..."
+              },
+              {
+                "npc": "...heroic."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
             "text": "No.",
             "steps": [
               {
@@ -88,7 +168,85 @@
       },
       {
         "type": "choice",
-        "options": []
+        "options": [
+          {
+            "text": "Because I came to offer to help.",
+            "steps": [
+              {
+                "player": "Because I came to offer to help."
+              },
+              {
+                "npc": "Atta boy!"
+              },
+              {
+                "npc": "When I am reinstated in my rightful place, I will not be a very wealthy man, as my half-brother has squandered my family fortune."
+              },
+              {
+                "npc": "However, I will gladly give you every bent penny of what is left, and starve in the gutter with my many adorable children if you say you will help me.",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Nonsense! Keep the money!"
+                      }
+                    ]
+                  },
+                  {
+                    "player": "Nonsense! Keep the money! I will dispose of this evil half-brother of yours and leave you what little money is left to feed your family."
+                  },
+                  {
+                    "npc": "Wonderful! Just pick up your diversion and we'll leave!"
+                  },
+                  {
+                    "player": "What diversion?"
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "y5QuYp"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Great, I'll take the cash in used coins please."
+                      }
+                    ]
+                  },
+                  {
+                    "player": "Great, I'll take the cash in used coins please."
+                  },
+                  {
+                    "npc": "Er..."
+                  },
+                  {
+                    "npc": "Look, I think I'll wait here for someone a little more... you know..."
+                  },
+                  {
+                    "npc": "...heroic."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No reason.",
+            "steps": [
+              {
+                "player": "No reason. I was just in the area and I thought I would ask."
+              },
+              {
+                "npc": "I see..."
+              },
+              {
+                "npc": "Look, I think I'll wait here for someone a little more... you know..."
+              },
+              {
+                "npc": "...heroic."
+              }
+            ]
+          }
+        ]
       }
     ],
     "starting-rum-deal-talking-to-pirate-after-asking-him-for-a-reward": [

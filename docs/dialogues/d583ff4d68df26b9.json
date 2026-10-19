@@ -243,8 +243,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "kbyrKu"
+                        "id": "kbyrKu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-83739c5ed1924ea0"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -253,8 +258,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "rn5G2j"
+                        "id": "rn5G2j",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-00dd7072ca4b4f1a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -263,8 +273,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "QJHX6y"
+                        "id": "QJHX6y",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2568607a629a77a3"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -337,6 +352,108 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-83739c5ed1924ea0": [
+      {
+        "player": "I found Bolrie's diary. Do you know anything about it?"
+      },
+      {
+        "npc": "Of course! Bolrie is my grandfather... assuming he's still alive, at least."
+      },
+      {
+        "player": "Bolrie... Golrie... I should have guessed. You seem to like giving your children similar names, just to be confusing."
+      },
+      {
+        "npc": "Certainly, in our family that's true. King Bolren is also Bolrie's younger brother, in case you didn't know."
+      },
+      {
+        "player": "So that means you're King Bolren's grand-nephew, right?"
+      },
+      {
+        "npc": "That's right."
+      },
+      {
+        "player": "Does that mean that you're in line for the throne?"
+      },
+      {
+        "npc": "Gnomes don't have a hereditary monarchy. We have a democratic monarchy. We vote for our kings."
+      },
+      {
+        "player": "Oh, that's unusual. So you've never thought about being the King?"
+      },
+      {
+        "npc": "That might be fun. I wouldn't want to be like gramps though. He liked wars a bit too much. I do sometimes discuss the Khazard War with the hobgobbos, but they don't have a particularly sharp political sense."
+      },
+      {
+        "npc": "Personally, I don't think we should fight his troops head- on. We're smarter than that. We should come up with some ingenious method of defeating Khazard, like they did at the Battle of Atarisundri!"
+      },
+      {
+        "player": "You're very well informed for a gnome in a cave. Most gnomes I've talked to have forgotten most of their own history."
+      },
+      {
+        "npc": "Gnomes don't tend to dwell on the past, but I suppose I'm not a typical gnome. I get lots of time to think and read in here."
+      },
+      {
+        "player": "So have you heard from Bolrie recently?"
+      },
+      {
+        "npc": "No, the parcels stopped arriving a few years ago. I guess he's either found what he was looking for, or has died in the attempt."
+      },
+      {
+        "player": "What was he looking for?"
+      },
+      {
+        "npc": "I'm not sure. He was definitely obsessed with finding out as much as he could about elven magic. He also seemed to have a bit of a grudge against Glouphrie."
+      },
+      {
+        "player": "Maybe he's looking for Glouphrie."
+      },
+      {
+        "npc": "Who knows, eh? Who knows?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "VdnJns"
+      }
+    ],
+    "jump-00dd7072ca4b4f1a": [
+      {
+        "player": "Where did that crystal bowl come from?"
+      },
+      {
+        "npc": "A huge battle tortoise arrived a while back carrying a crate with it in. Sent by gramps, of course. It looks pretty, doesn't it? Would probably look great with some plants in it."
+      },
+      {
+        "player": "I don't think it's meant to be used as a plant pot."
+      },
+      {
+        "npc": "Well, what's it for then?"
+      },
+      {
+        "player": "It's a singing bowl. You can use it to shape elven crystal."
+      },
+      {
+        "npc": "Ohh... How exciting!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "x4ionJ"
+      }
+    ],
+    "jump-2568607a629a77a3": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "npc": "See you later."
+      },
+      {
+        "type": "end"
       }
     ]
   }

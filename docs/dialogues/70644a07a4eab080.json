@@ -215,8 +215,16 @@
                             "text": "If the player has 200 nuggets:",
                             "steps": [
                               {
-                                "type": "missing",
-                                "id": "ckYf8E"
+                                "type": "message",
+                                "text": "You pay Percy 200 nuggets.",
+                                "id": "percyBiggerSack"
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "below"
                               }
                             ],
                             "id": "3KwYrB"
@@ -233,8 +241,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "1BW_xO"
+                                "id": "1BW_xO",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-26420cc1b9c6d888"
+                                  }
+                                ]
                               }
                             ],
                             "id": "9S11oi"
@@ -277,8 +290,16 @@
                             "text": "If the player has 200 nuggets:",
                             "steps": [
                               {
-                                "type": "missing",
-                                "id": "dsGxMP"
+                                "type": "message",
+                                "text": "You pay Percy 200 nuggets.",
+                                "id": "percyBiggerSack"
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "below"
                               }
                             ],
                             "id": "pL1CUD"
@@ -295,8 +316,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "Tlo77k"
+                                "id": "Tlo77k",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e0e0580ad3039f86"
+                                  }
+                                ]
                               }
                             ],
                             "id": "YE6ElR"
@@ -323,8 +349,94 @@
                 "text": "If the player has only the bigger sack unlocked:",
                 "steps": [
                   {
-                    "type": "missing",
-                    "id": "5cZ0Yl"
+                    "npc": "Let me have a think..."
+                  },
+                  {
+                    "npc": "If ye've got level 57 Mining, ye could pay to use my restricted mine, up the ladder. 100 nuggets gives unlimited access."
+                  },
+                  {
+                    "npc": "I can give ye access to a special hopper in the restricted mine for 50 nuggets, but you'll need access to the restricted mine first."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Restricted mine access: 100 nuggets",
+                        "steps": [
+                          {
+                            "player": "I'd like to buy access to the restricted mine, please."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has 100 nuggets and is at least level 54 Mining:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You pay Percy 100 nuggets.",
+                                "id": "oc01u6"
+                              },
+                              {
+                                "npc": "Right, ye can go up there whenever ye likes. Just behave yerself, or my Ma will tan yer hide."
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "gDIrfC"
+                              }
+                            ],
+                            "id": "NWLyzF"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player is not at least level 57 Mining:",
+                            "steps": [
+                              {
+                                "npc": "Ye'll need level 57 Mining first. An' don't think ye can fool me with yer potions and fancy stat-boosts. Get yer level up for real."
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "zZbpUq"
+                              }
+                            ],
+                            "id": "2QIYv4"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have 100 nuggets:",
+                            "steps": [
+                              {
+                                "npc": "That'll be 100 nuggets. If ye ain't got enough, ye'd better do some more mining - that's how ye gets stuff round here!"
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "A63syc"
+                              }
+                            ],
+                            "id": "tIxEMT"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "initial"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "id": "TfuNDw"
@@ -372,8 +484,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "SUS28_"
+                                "id": "SUS28_",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-13a5cf97f53fe8a9"
+                                  }
+                                ]
                               }
                             ],
                             "id": "FZDMV9"
@@ -588,6 +705,39 @@
                 "npc": "Git yer hammer an' fix them wheels!"
               }
             ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-26420cc1b9c6d888": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "A63syc"
+      }
+    ],
+    "jump-e0e0580ad3039f86": [
+      {
+        "type": "jump",
+        "id": "1BW_xO",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-26420cc1b9c6d888"
+          }
+        ]
+      }
+    ],
+    "jump-13a5cf97f53fe8a9": [
+      {
+        "type": "jump",
+        "id": "Tlo77k",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-e0e0580ad3039f86"
           }
         ]
       }

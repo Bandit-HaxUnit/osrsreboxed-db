@@ -69,8 +69,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "AmxA-Q"
+                            "id": "AmxA-Q",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-d7b0996ee7fd6625"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -142,8 +147,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "z42kCE"
+                "id": "z42kCE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d7b0996ee7fd6625"
+                  }
+                ]
               }
             ]
           },
@@ -347,6 +357,24 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-d7b0996ee7fd6625": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "Ah welcome to my humble home, well actually it belongs to mummsie but she's getting on a bit so I look after the place for her."
+      },
+      {
+        "npc": "So are you interested in a challenge?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "QUNmB3"
       }
     ]
   }

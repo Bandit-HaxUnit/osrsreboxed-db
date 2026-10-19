@@ -450,8 +450,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "fLpXMJ"
+                "id": "fLpXMJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b1c6258f4d0940de"
+                  }
+                ]
               }
             ],
             "id": "bHrNRT"
@@ -519,6 +524,82 @@
     ]
   },
   "branches": {
+    "jump-b1c6258f4d0940de": [
+      {
+        "player": "I found this big fish..."
+      },
+      {
+        "npc": "Now that is a biggun! How she managed to wrangle one like that I'll never know."
+      },
+      {
+        "npc": "If you don't want it, I could take it off your hands for a few of those pearls!"
+      },
+      {
+        "player": "I'm interested... How many pearls are we talking?"
+      },
+      {
+        "npc": "I'll give you a hundred pearls for it. What do you say?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Trade in your golden tench for 100 molch pearls?",
+        "options": [
+          {
+            "text": "It's a deal.",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you REALLY sure?",
+                "options": [
+                  {
+                    "text": "No, keep the tench.",
+                    "steps": [
+                      {
+                        "player": "On seconds thoughts, I'd rather keep it."
+                      },
+                      {
+                        "npc": "As you wish."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, exchange the golden tench.",
+                    "steps": [
+                      {
+                        "player": "It's a deal."
+                      },
+                      {
+                        "npc": "Pleasure doing business with you!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Well, let me know if you change your mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "AaKrS1": [
       {
         "npc": "You're going to need to free up your hands first, though. Nothing in or on your hands."

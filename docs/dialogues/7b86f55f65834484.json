@@ -73,8 +73,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KXAryl"
+                "id": "KXAryl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0afb4fca7f47ed84"
+                  }
+                ]
               }
             ]
           },
@@ -169,8 +174,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "F1dtUh"
+                "id": "F1dtUh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1681bb01cfa2cf99"
+                  }
+                ]
               }
             ]
           }
@@ -249,12 +259,58 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XYGUUY"
+                "id": "XYGUUY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1681bb01cfa2cf99"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-0afb4fca7f47ed84": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "My name is Ignatius Vulcan. Once I was - like you - an adventurer, but that was before I realised the beauty and power of flame! Just look at this..."
+      },
+      {
+        "type": "action",
+        "text": "Ignatius makes a fire.",
+        "id": "tFOQwl"
+      },
+      {
+        "player": "Yeeouch!"
+      },
+      {
+        "npc": "Stare into the flame and witness the purity and power of fire! As my attraction to flame grew, so did my skills at firelighting. I began to neglect my combat skills, my Mining skills and my questing. Who needs such"
+      },
+      {
+        "npc": "mundane skills when one can harness the power of fire? After years of practice I am now the acknowledged Master of Flame! Everything must be purified by fire!"
+      },
+      {
+        "player": "Okaaaay! Err, I'll be going now. Umm, get better soon."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-1681bb01cfa2cf99": [
+      {
+        "player": "No, thanks."
+      },
+      {
+        "npc": "Okay, keep the fire burning."
+      },
+      {
+        "type": "end"
       }
     ]
   }
