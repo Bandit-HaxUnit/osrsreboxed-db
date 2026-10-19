@@ -31,6 +31,9 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
   shop-opening option is resolved **per NPC ID**, not per owner — an owner's IDs are per-location variants that do not always share a menu
   layout, so copying one variant's option across the rest silently mislabels them.
 - **Drops** are likewise a `scripts/` domain (**`scripts/drops/`**, output in **`docs/drops-json/`**), not a builder.
+- **Object examines** are a `scripts/` domain too (**`scripts/examines/`**, output **`docs/object-examines.json`**, minified):
+  object ID -> examine text from every page's `{{Infobox Scenery}}` (listed by the `infobox_scenery` bucket), per version.
+  The cache has no loc examines; OSRS sends them from the server.
 - **NPC click options** live in **`scripts/npcs/`** → **`docs/npcs-interactions.json`**, parsed from a cache NPC dump at the git-ignored
   `data/cache/dump.npc`. Option keys are the cache's **1-based** `op1`..`op5`; the RuneLite-format `ops` array in `monsters-cache-data.json` is
   0-based, so joining the two needs a `+1`.
