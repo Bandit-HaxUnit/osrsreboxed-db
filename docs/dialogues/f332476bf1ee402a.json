@@ -206,8 +206,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "below",
-                    "id": "EXzRC2"
+                    "id": "EXzRC2",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-63d66f3dedcb97c6"
+                      }
+                    ]
                   }
                 ]
               },
@@ -281,6 +286,20 @@
     ]
   },
   "branches": {
+    "jump-63d66f3dedcb97c6": [
+      {
+        "npc": "Be warned though. If you enter, you enter alone. No one else can help you with this one."
+      },
+      {
+        "player": "I see. I'll have to be careful then."
+      },
+      {
+        "npc": "Indeed. Good luck, traveller."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "rI1GXA": [
       {
         "npc": "Sorry, but I don't have anything for you. If I did have any of your items, but you died before collecting them, they'll now be lost."

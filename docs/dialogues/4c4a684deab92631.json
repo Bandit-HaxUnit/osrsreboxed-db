@@ -54,8 +54,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZTqq_e"
+                "id": "ZTqq_e",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0c23d5835d156046"
+                  }
+                ]
               }
             ]
           },
@@ -64,12 +69,41 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5DPjUb"
+                "id": "5DPjUb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-488c2c1dc1f32c28"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-0c23d5835d156046": [
+      {
+        "player": "What do you have?"
+      },
+      {
+        "npc": "Take a look."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Armoury",
+        "id": "vIf0Ci"
+      }
+    ],
+    "jump-488c2c1dc1f32c28": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

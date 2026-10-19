@@ -314,7 +314,18 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "player": "Let's see what you have."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "The Windbreaker",
+                "id": "sjEzEI"
+              }
+            ]
           },
           {
             "text": "I'd like to rent the basement room.",
@@ -413,10 +424,40 @@
             ]
           },
           {
-            "text": "What's with those big gates out there?"
+            "text": "What's with those big gates out there?",
+            "steps": [
+              {
+                "player": "What's with those big gates out there?"
+              },
+              {
+                "type": "line",
+                "speaker": "Bartender (The Windbreaker)",
+                "text": "I couldn't tell you to be honest. They've been here for a very long time. Apparently they came in quite useful during the war, and these days they do help stop any undesirable beasts wandering into town."
+              },
+              {
+                "type": "line",
+                "speaker": "Bartender (The Windbreaker)",
+                "text": "Anyway, did you want to buy a drink?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "dp62fC"
+              }
+            ]
           },
           {
-            "text": "Nothing for me, thanks."
+            "text": "Nothing for me, thanks.",
+            "steps": [
+              {
+                "player": "Nothing for me, thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Bartender (The Windbreaker)",
+                "text": "As you wish."
+              }
+            ]
           }
         ]
       }
@@ -791,8 +832,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Do_G97"
+                "id": "Do_G97",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2734621447798408"
+                  }
+                ]
               }
             ]
           },
@@ -801,8 +847,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "076kkA"
+                "id": "076kkA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-41884d4592c1ecaf"
+                  }
+                ]
               }
             ]
           },
@@ -811,8 +862,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "SGWIyr"
+                "id": "SGWIyr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-33781309c3869b1f"
+                  }
+                ]
               }
             ]
           },
@@ -833,10 +889,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "G1dKcu"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YDwG1y"
+              }
+            ]
           },
           {
             "text": "I hear you can offer help to those in need.",
@@ -923,10 +991,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "G1dKcu"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YDwG1y"
+              }
+            ]
           },
           {
             "text": "About the Emissaries...",
@@ -2006,8 +2086,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UI2FGe"
+                "id": "UI2FGe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-188c60857b3eae52"
+                  }
+                ]
               }
             ]
           },
@@ -2430,8 +2515,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WMn4HO"
+                "id": "WMn4HO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4113a7bf210fe6cf"
+                  }
+                ]
               }
             ]
           },
@@ -2440,8 +2530,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_-2I74"
+                "id": "_-2I74",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9ba12d02288aa5c0"
+                  }
+                ]
               }
             ]
           }
@@ -4044,8 +4139,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "XjLGny"
+                        "id": "XjLGny",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-670bac9e08a42cec"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4447,6 +4547,369 @@
     ]
   },
   "branches": {
+    "jump-2734621447798408": [
+      {
+        "player": "The Queen didn't seem very happy with you."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "That's parents for you. Do as I say, but not as I do. She was never afraid to get her own hands dirty. Did you know that before she was even my age, she became a champion in the Colosseum?"
+      },
+      {
+        "player": "You think she sees herself in you? If so, maybe she doesn't want you to make the mistakes that she once did?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "I suspect you are right, but I would prefer to learn from my own mistakes. Every ruler must forge their own path. The people will never follow a leader who cannot stand alone."
+      },
+      {
+        "player": "I suppose that makes sense, but I'm not sure how I feel about you learning from your mistakes while we infiltrate a dangerous cult together."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Fear not, iknami. I am confident that you will probably survive this mission."
+      },
+      {
+        "player": "That's good, I think..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "AXJHb4"
+      }
+    ],
+    "jump-41884d4592c1ecaf": [
+      {
+        "player": "Do you really think Metzli, Furia and Ennius are traitors?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Metzli has always been an odd one. Everyone was always quick to dismiss it as just a little side effect of spending a lot of time with dead people. Now I wonder if she used that to her advantage."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "No one cared to pay close attention to her. No one wanted to spend much time around her. She probably got away with all sorts of things without anyone even noticing."
+      },
+      {
+        "player": "But a traitor?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "The evidence seems to suggest so. Why else would she have disappeared after the attack?"
+      },
+      {
+        "player": "Maybe they captured her?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Maybe, but surely someone would have noticed. People generally don't go quietly when captured."
+      },
+      {
+        "player": "What about Furia and Ennius?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Well their family has of course produced traitors before, but they've never seemed to have much love for old Imafore."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "By the end of the war, I think he'd ended up killing more of his own family members than he left alive. Amazing what paranoia will do to a man."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Still, even if they never cared for him, his blood still runs in their veins, and they've never been short on ambition themselves."
+      },
+      {
+        "player": "If they are guilty... what will you do to them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "The same thing we do to all traitors in Varlamore."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "8zAYoj"
+      }
+    ],
+    "jump-33781309c3869b1f": [
+      {
+        "player": "What happens if they try to attack Servius again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "He's in the capital now, where I wanted him to be from the start. He should be much safer there."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Still, safer is not safe, especially if we do have traitors in our midst. At any moment we risk someone showing some basic competence and actually managing to kill him properly."
+      },
+      {
+        "player": "So you don't consider the enemy to be competent?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "All I'm saying is that if I'd have been the one trying to assassinate my father, I'd probably have done a half- decent job."
+      },
+      {
+        "player": "But if the enemy isn't a threat, why are you here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "What do you mean, iknami?"
+      },
+      {
+        "player": "If this isn't an enemy to be taken seriously, why do you feel you yourself need to be the one to deal with them? If they're incompetent, shouldn't anyone be able to handle them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "So you challenge me, iknami? I'm wounded. However, as I said before, I do not feel we can trust many people while we have potential traitors around us."
+      },
+      {
+        "player": "But if they've managed to position some of their members in very important roles, surely they can't be completely incompetent?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "We do not need to do this dance, [player name]. I understand that where you come from, there is a certain art to holding a conversation. We do not bother with that here. You may be direct."
+      },
+      {
+        "player": "I guess I just still don't know you that well. If we're about to infiltrate this cult together, I'd like to understand why you think it's important you do this yourself."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "I see. I understand your doubts, my friend. I suppose I have a few reasons for wanting to be here."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "First, I do truly believe this mission has the highest chance of success if fewer people know about it. While I am not convinced on the competence of our foe, I still do not intend to underestimate them."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Second, I suppose I feel a certain level of responsibility. My father was attacked on my watch. When someone falters, it is their duty to fix it, especially when they hold a position like mine."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "After all, a leader who sits by and lets others deal with his mistakes is not someone to have faith in."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "Finally, Servius is my father. Our relationship is not a simple one, but he is my father all the same. I would see to it personally that his attackers face justice."
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "I hope that satisfies you, iknami."
+      },
+      {
+        "player": "It does. Thank you, Itzla."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "S5xRjq"
+      }
+    ],
+    "jump-188c60857b3eae52": [
+      {
+        "player": "What are we meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Forebearer Janus",
+        "text": "It's quite simple: You just need to work out the passphrase and say it to me. You may use whatever you have available in this room to discover it."
+      },
+      {
+        "player": "Okay, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-4113a7bf210fe6cf": [
+      {
+        "player": "No, I'm not quite ready yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Forebearer Janus",
+        "text": "Speak to me again when you are."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9ba12d02288aa5c0": [
+      {
+        "player": "Can you remind me what this trial is?"
+      },
+      {
+        "type": "line",
+        "speaker": "Forebearer Janus",
+        "text": "The goal is simple: Survive. That is the only advice I can offer you."
+      },
+      {
+        "type": "line",
+        "speaker": "Forebearer Janus",
+        "text": "Now, are you ready to begin?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "vghGny"
+      }
+    ],
+    "jump-670bac9e08a42cec": [
+      {
+        "player": "Could I ask you about some words I found carved into the wall?"
+      },
+      {
+        "type": "line",
+        "speaker": "Prince Itzla Arkan",
+        "text": "I'll do my best."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Oma.",
+            "steps": [
+              {
+                "player": "Oma."
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "Oma? If I remember right, that means the number 'two'."
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "NRilhZ"
+              }
+            ]
+          },
+          {
+            "text": "Yeya.",
+            "steps": [
+              {
+                "player": "Yeya."
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "Yeya? That means..."
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "I think it means 'three'."
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "II1f3h"
+              }
+            ]
+          },
+          {
+            "text": "Naui.",
+            "steps": [
+              {
+                "player": "Naui."
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "Naui? Hmm..."
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "I'm afraid I don't know what that one means."
+              },
+              {
+                "player": "Not to worry. I'm sure I can still work it out."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "ol9fui"
+              }
+            ]
+          },
+          {
+            "text": "Zema.",
+            "steps": [
+              {
+                "player": "Zema."
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "Zema? Let's see... That could mean a few things. 'Together', 'people' and 'one' are the ones I remember."
+              },
+              {
+                "player": "Interesting... Thanks!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "zfKttB"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "G1dKcu": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Quetzacalli Gorge General Store",
+        "id": "KseGsF"
+      }
+    ],
+    "YDwG1y": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Shopkeeper (Quetzacalli Gorge)",
+        "text": "Very well."
+      }
+    ],
     "t8gLJV": [
       {
         "type": "line",

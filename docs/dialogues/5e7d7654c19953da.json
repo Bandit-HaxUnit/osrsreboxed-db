@@ -213,8 +213,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lUBNxu"
+                "id": "lUBNxu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-877e90f8b97b22b3"
+                  }
+                ]
               }
             ]
           },
@@ -223,8 +228,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ejCp3z"
+                "id": "ejCp3z",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-86e68c32cc006bf0"
+                  }
+                ]
               }
             ]
           },
@@ -233,8 +243,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ve5ltF"
+                "id": "ve5ltF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d2067606472a5d7e"
+                  }
+                ]
               }
             ]
           },
@@ -243,8 +258,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BwEPt3"
+                "id": "BwEPt3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e1f7ba9cde5b2669"
+                  }
+                ]
               }
             ]
           }
@@ -260,8 +280,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kg5lM3"
+                "id": "kg5lM3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d2067606472a5d7e"
+                  }
+                ]
               }
             ]
           }
@@ -411,6 +436,143 @@
           }
         ],
         "id": "HmV2eb"
+      }
+    ]
+  },
+  "branches": {
+    "jump-877e90f8b97b22b3": [
+      {
+        "player": "What do I do here?"
+      },
+      {
+        "npc": "A spare suit of plate armour need you will. Full helm, plate leggings and platebody yes? Placing it in the centre of the magical machines you will be doing. KA- POOF! The armour, it attacks most furiously as if"
+      },
+      {
+        "npc": "alive! Kill it you must, yes."
+      },
+      {
+        "player": "So I use a full set of plate armour on the centre plate of the machines and it will animate it? Then I have to kill my own armour... how bizarre!"
+      },
+      {
+        "npc": "Yes. It is as you are saying. For this earn tokens you will. Also gain experience in combat you will. Trained long and hard here have I."
+      },
+      {
+        "player": "You're not from around here are you...?"
+      },
+      {
+        "npc": "It is as you say."
+      },
+      {
+        "player": "So will I lose my armour?"
+      },
+      {
+        "npc": "Lose armour you will if damaged too much it becomes. Rare this is, but still possible. If kill you the armour does, also lose armour you will."
+      },
+      {
+        "player": "So, occasionally I might lose a bit because it's being bashed about and I'll obviously lose it if I die... that it?"
+      },
+      {
+        "npc": "It is as you say."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "J4PhaG"
+      }
+    ],
+    "jump-86e68c32cc006bf0": [
+      {
+        "player": "Where do the machines come from?"
+      },
+      {
+        "npc": "Make them I did, with magics."
+      },
+      {
+        "player": "Magic, in the Warrior's Guild?"
+      },
+      {
+        "npc": "A skilled warrior also am I. Harrallak mistakes does not make. Potential in my invention he sees and opportunity grasps."
+      },
+      {
+        "player": "I see, so you made the magical machines and Harrallak saw how they could be used in the guild to train warrior's combat... interesting. Harrallak certainly is an intelligent guy."
+      },
+      {
+        "npc": "It is as you say."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "WzL4vx"
+      }
+    ],
+    "jump-d2067606472a5d7e": [
+      {
+        "player": "May I claim my tokens please?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned Warrior guild tokens, but has no inventory space:",
+        "steps": [
+          {
+            "npc": "No space you have carry them for."
+          },
+          {
+            "player": "Right, I need space in my pack for them. I'll be back!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "hSoSUb"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned Warrior guild tokens:",
+        "steps": [
+          {
+            "npc": "Yes yes! Earned you have [number] token[s]!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Warrior guild tokens",
+            "id": "eVJhx_"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "iCPTpx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not earned Warrior guild tokens:",
+        "steps": [
+          {
+            "npc": "No tokens earned have you. In training activities participate you must."
+          },
+          {
+            "player": "Okay, I'll go see what I can find to do around here to earn some tokens."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "2EZ97m"
+      }
+    ],
+    "jump-e1f7ba9cde5b2669": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Health be with you travelling."
+      },
+      {
+        "type": "end"
       }
     ]
   }

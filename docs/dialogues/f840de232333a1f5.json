@@ -198,7 +198,13 @@
                               {
                                 "type": "jump",
                                 "reference": "continues",
-                                "id": "eu19au"
+                                "id": "eu19au",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5d27936fb3904c9e"
+                                  }
+                                ]
                               }
                             ],
                             "id": "M_0RcQ"
@@ -213,7 +219,13 @@
                               {
                                 "type": "jump",
                                 "reference": "continues",
-                                "id": "s8_onH"
+                                "id": "s8_onH",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5d27936fb3904c9e"
+                                  }
+                                ]
                               }
                             ],
                             "id": "Pk0d22"
@@ -470,6 +482,104 @@
         "type": "message",
         "text": "Roavar has given you another clue scroll!",
         "id": "MnGLjS"
+      }
+    ]
+  },
+  "branches": {
+    "jump-5d27936fb3904c9e": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sbott the Tanner.",
+            "steps": [
+              {
+                "player": "Tell me what you know about Sbott the Tanner."
+              },
+              {
+                "npc": "Hey, I won't hear a word said bad about that guy! He's an honest and hard-working wolf if I ever met one! He charges a lot for his job, but he's one of the best tanners I've ever seen - and I'm over four hundred"
+              },
+              {
+                "npc": "years old! You need stuff tanning, I recommend him!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Rufus the food seller.",
+            "steps": [
+              {
+                "player": "Know anything interesting about Rufus the food seller?"
+              },
+              {
+                "npc": "Ah yeah... good old Rufus... He's kind of getting on in years and doesn't like to come out of his wolf form so often, but let me tell you this: that guy is a hunter through and through. You seen how much food he"
+              },
+              {
+                "npc": "catches a day? That takes real dedication! Some of the young pups think just because a wolf has a bit of grey in his fur then he's past it, but I've seen him put those pups to shame in a hunt! He's a real inspiration to us"
+              },
+              {
+                "npc": "all!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Barker the clothes seller.",
+            "steps": [
+              {
+                "player": "Got anything to share about Barker the clothes seller?"
+              },
+              {
+                "npc": "Eh, I don't like the guy much, but you can't knock the quality of his stock. They're some fine quality threads you can get yourself there."
+              },
+              {
+                "player": "What's wrong with him?"
+              },
+              {
+                "npc": "Eh... I can't really tell you to be honest. Something about the guy just gets my hackles up everytime he opens his yap, know what I mean?"
+              },
+              {
+                "player": "No, not really."
+              },
+              {
+                "npc": "Lucky for you. I can't really explain it, I just don't like the guy. Does great clothes though, you got to give him that."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Fidelio the general store owner.",
+            "steps": [
+              {
+                "player": "I bet you have some juicy gossip about Fidelio the general store owner."
+              },
+              {
+                "npc": "That nut job? Oh sure, we all know about him. He was a real firebrand daredevil when he was younger, always taking risks to make himself a quick buck... he got himself caught up in the smuggling trade, sneaking over"
+              },
+              {
+                "npc": "the border into Misthalin and pretending to be a human so he could buy exotic items to sell."
+              },
+              {
+                "player": "Exotic items? From Misthalin? Like what?"
+              },
+              {
+                "npc": "Oh man, you name it! Flour... buckets... tinderboxes... chisels... he could get the lot! He's been doing it so long now though, his nerves are shot."
+              },
+              {
+                "npc": "Nowadays he's a disgrace, he can barely string a sentence together and jumps at his own shadow. Makes you feel ashamed to be a werewolf."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

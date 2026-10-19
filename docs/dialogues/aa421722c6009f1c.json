@@ -48,8 +48,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Cy2oO_"
+                        "id": "Cy2oO_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-335cc9159f769bd6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -58,8 +63,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "fAh__v"
+                        "id": "fAh__v",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5b3d9e5af1d36972"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -130,6 +140,35 @@
     "when-searching-through-his-drinks-cabinet": [
       {
         "npc": "Stay out of my drinks cabinet!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-335cc9159f769bd6": [
+      {
+        "player": "So can I guard the treasure room please?"
+      },
+      {
+        "npc": "Well, I might post you outside it sometimes. I prefer to be the only one allowed inside however."
+      },
+      {
+        "npc": "There's some pretty valuable artefacts in there! Those keys stay ONLY with the head guard and Scarface Pete."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "ZJZloS"
+      }
+    ],
+    "jump-5b3d9e5af1d36972": [
+      {
+        "player": "Well, I'd better sort my new room out."
+      },
+      {
+        "npc": "Yeah, I'll give you time to settle in. Better get a good nights sleep, I expect you to report for duty at oh five hundred hours tomorrow on the dot!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

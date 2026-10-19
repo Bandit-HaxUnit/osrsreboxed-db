@@ -371,8 +371,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qWiPfz"
+                "id": "qWiPfz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0d93d18643a9c359"
+                  }
+                ]
               }
             ]
           },
@@ -381,8 +386,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3JmTzn"
+                "id": "3JmTzn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2e94cb0eb50884b0"
+                  }
+                ]
               }
             ]
           }
@@ -410,8 +420,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5l6XaC"
+                "id": "5l6XaC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a516418fa1be6de2"
+                  }
+                ]
               }
             ]
           },
@@ -502,12 +517,126 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RKvATb"
+                "id": "RKvATb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2e94cb0eb50884b0"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-0d93d18643a9c359": [
+      {
+        "player": "Let's skip the training, I'm an expert already."
+      },
+      {
+        "npc": "Really? You don't look like one. Very well, upon your own head be it, I'll let you skip the training. Come back and speak to me if you find you're not the know-it-all you believe yourself to be."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2e94cb0eb50884b0": [
+      {
+        "player": "Nah, sounds boring."
+      },
+      {
+        "npc": "'Boring'? You'll get nowhere with that kind of attitude! Drop and give me ten!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Maybe next time, I need to go wash my hair.",
+            "steps": [
+              {
+                "player": "Maybe next time, I need to go wash my hair."
+              },
+              {
+                "npc": "You'll do as I say!"
+              },
+              {
+                "player": "Arrrghhh. Okay, okay!"
+              },
+              {
+                "type": "action",
+                "text": "The player performs the 'Push up' emote.",
+                "action": "emote",
+                "action_source": "text",
+                "id": "CGX6tY"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Sir, yes sir!",
+            "steps": [
+              {
+                "player": "Sir, yes sir!"
+              },
+              {
+                "npc": "Good to see you've learned some respect, make it five"
+              },
+              {
+                "player": "Yes sir!"
+              },
+              {
+                "type": "action",
+                "text": "The player performs the 'Push up' emote.",
+                "action": "emote",
+                "action_source": "text",
+                "id": "rGO4mn"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "But I already did...",
+            "steps": [
+              {
+                "player": "But I already did!"
+              },
+              {
+                "npc": "You did?"
+              },
+              {
+                "player": "Sir, yes sir!"
+              },
+              {
+                "npc": "I don't trust you in the slightest. Do as I tell you!"
+              },
+              {
+                "type": "action",
+                "text": "The player performs the 'Push up' emote.",
+                "action": "emote",
+                "action_source": "text",
+                "id": "so3jot"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a516418fa1be6de2": [
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Tutorial Progress",
+        "id": "EClxR9"
       }
     ]
   }

@@ -1,4 +1,25 @@
 {
+  "branches": {
+    "jump-7e04e3587e11cf92": [
+      {
+        "player": "Let's see what you've got."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The Deeper Lode",
+        "id": "Udwi7L"
+      }
+    ],
+    "jump-36a12e1fc52b014c": [
+      {
+        "player": "I'm alright, thank you."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What can I do for you, traveller?"
@@ -37,8 +58,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "Yzwddi"
+                      "id": "Yzwddi",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7e04e3587e11cf92"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -47,8 +73,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "ziHl6i"
+                      "id": "ziHl6i",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-36a12e1fc52b014c"
+                        }
+                      ]
                     }
                   ]
                 }

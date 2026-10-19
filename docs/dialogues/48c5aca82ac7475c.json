@@ -459,8 +459,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "WOfRZc"
+                                        "id": "WOfRZc",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-1c1ebbe3b7928e2a"
+                                          }
+                                        ]
                                       }
                                     ],
                                     "id": "ZAy_3q"
@@ -474,8 +479,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "evzZOo"
+                                    "id": "evzZOo",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-1c1ebbe3b7928e2a"
+                                      }
+                                    ]
                                   }
                                 ],
                                 "id": "fJjDJW"
@@ -501,8 +511,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "iD2WKB"
+                                        "id": "iD2WKB",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-cde2d47a3ce11361"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1133,6 +1148,235 @@
       {
         "type": "unavailable",
         "id": "zXi78c"
+      }
+    ]
+  },
+  "branches": {
+    "jump-1c1ebbe3b7928e2a": [
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "Okie dokey, watch out for evil cows."
+      },
+      {
+        "player": "Erm, okay."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-cde2d47a3ce11361": [
+      {
+        "player": "Okay. Let's start!"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "Okay. You will be presented with some people that you may have come across on your travels - it's up to you to recall their names. Guess three correctly without error and you will succeed in enchanting the egg."
+      },
+      {
+        "type": "action",
+        "text": "The player is given a vision of a character hatching out of an egg.",
+        "action": "receive",
+        "action_source": "text",
+        "id": "C0KEaW"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Traiborn",
+        "text": "Name that person!"
+      },
+      {
+        "type": "condition",
+        "text": "If correct name is chosen",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Wizard Traiborn",
+            "text": "Correct - and now the second character:"
+          },
+          {
+            "type": "action",
+            "text": "The player receives another vision.",
+            "action": "receive",
+            "action_source": "text",
+            "id": "tJzzt5"
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Traiborn",
+            "text": "Name that person!"
+          },
+          {
+            "type": "condition",
+            "text": "If correct name is chosen",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Wizard Traiborn",
+                "text": "Correct - and now the third and final character:"
+              },
+              {
+                "type": "action",
+                "text": "The player receives one last vision.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "6QLHmE"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Traiborn",
+                "text": "Name that person!"
+              },
+              {
+                "type": "condition",
+                "text": "If correct name is chosen",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Wizard Traiborn",
+                    "text": "Congratulations!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Wizard Traiborn",
+                    "text": "That's correct."
+                  },
+                  {
+                    "player": "That wasn't so bad. Now what?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Wizard Traiborn",
+                    "text": "Well, there is the case of the magic words of enchantment - repeat after me:"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Wizard Traiborn",
+                    "text": "Dandolino Zadribrim!"
+                  },
+                  {
+                    "player": "Dandy lino zadim!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Wizard Traiborn",
+                    "text": "Not quite, but it'll do. I will hold onto the Enchanted Egg for you until you need it."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player still has missing ingredients",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "wMYHoX"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has enchanted all ingredients",
+                    "steps": [
+                      {
+                        "player": "So I've enchanted all three ingredients now?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Traiborn",
+                        "text": "Indeed, best you go bake the cake! You can do it the same way as making an ordinary cake."
+                      },
+                      {
+                        "player": "Thank you."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "PeqLZp"
+                  }
+                ],
+                "id": "JwKOlk"
+              },
+              {
+                "type": "condition",
+                "text": "If wrong name is chosen",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "WOfRZc",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-1c1ebbe3b7928e2a"
+                      }
+                    ]
+                  }
+                ],
+                "id": "ZAy_3q"
+              }
+            ],
+            "id": "xPrZk0"
+          },
+          {
+            "type": "condition",
+            "text": "If wrong name is chosen",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "evzZOo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1c1ebbe3b7928e2a"
+                  }
+                ]
+              }
+            ],
+            "id": "fJjDJW"
+          }
+        ],
+        "id": "8y7MjJ"
+      },
+      {
+        "type": "condition",
+        "text": "If wrong name is chosen",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Wizard Traiborn",
+            "text": "Nope, that's not right, you'll have to start again."
+          },
+          {
+            "type": "choice",
+            "prompt": "Try again?",
+            "options": [
+              {
+                "text": "Okay. Let's start!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "iD2WKB",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-cde2d47a3ce11361"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ZvkMKf"
       }
     ]
   }

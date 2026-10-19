@@ -172,8 +172,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "NAdPOO"
+                                    "id": "NAdPOO",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-ff5538b94a774d31"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -257,6 +262,18 @@
     "if-given-anything-that-isn-t-an-angler-s-outfit-piece": [
       {
         "npc": "Nay, Gita Prymes won't take that."
+      }
+    ]
+  },
+  "branches": {
+    "jump-ff5538b94a774d31": [
+      {
+        "type": "message",
+        "text": "Gita Prymes exchanges your [outfit piece] for Spirit Angler kit.",
+        "id": "3sMFrS"
+      },
+      {
+        "type": "end"
       }
     ]
   }

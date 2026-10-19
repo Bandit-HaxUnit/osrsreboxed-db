@@ -340,8 +340,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2lvVgZ"
+                "id": "2lvVgZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-31a4ddeb1e23b94b"
+                  }
+                ]
               }
             ]
           },
@@ -595,8 +600,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "qycDCK"
+                "id": "qycDCK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8b2bb932be153520"
+                  }
+                ]
               }
             ]
           },
@@ -640,8 +650,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "sDLUZw"
+                        "id": "sDLUZw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-716a6bba05282ad2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2509,6 +2524,236 @@
       {
         "type": "unavailable",
         "id": "bQ7MeV"
+      }
+    ]
+  },
+  "branches": {
+    "jump-31a4ddeb1e23b94b": [
+      {
+        "player": "Fine, here's the money."
+      },
+      {
+        "type": "message",
+        "text": "You give Harpert 1,000 coins.",
+        "id": "u67nbM"
+      },
+      {
+        "type": "line",
+        "speaker": "Harpert",
+        "text": "Thanks. Climb the wall when you're ready. I'll distract the guard when you do."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8b2bb932be153520": [
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "The book seems to document a lot of the experiments being performed in that lab you found. Interestingly, the experiments were performed on vampyres themselves, as well as humans."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "It appears that they were trying to use the power of haemalchemy to modify both humans and vampyres."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is haemalchemy?",
+            "steps": [
+              {
+                "player": "What is haemalchemy?"
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "There are some that believe there is a hidden power in blood. Haemalchemy is the act of modifying blood, both magically and scientifically, to harness this power."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "It seems that the vampyres are strong believers in the power of haemalchemy as they've been experimenting quite heavily."
+              },
+              {
+                "player": "Why?"
+              },
+              {
+                "type": "jump",
+                "id": "sDLUZw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-716a6bba05282ad2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why?",
+            "steps": [
+              {
+                "player": "Why?"
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "It looks like they had two reasons. First of all they were looking for a way to increase the amount of blood that can be harvested from a human."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "Unsurprisingly, the vampyres here have multiplied much faster than the humans. Perhaps there's no longer enough blood to go around."
+              },
+              {
+                "player": "And the other reason?"
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "That's the more interesting one. As we're already aware, vampyres possess some form of immunity against our attacks."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "It starts off as only partial in juveniles and juvinates but by the time they become vyres they are totally invulnerable."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "This book implies that the vampyres immunity isn't perfect and that it can be overcome. It seems they were trying to improve this immunity."
+              },
+              {
+                "player": "Overcome? How?"
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "I haven't got that far yet I'm afraid."
+              },
+              {
+                "player": "Hmmm. I might actually be able to help with that bit. I was spying on Vanstrom and Ranis earlier for Safalaan and I heard Vanstrom say something quite interesting."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "What did he say?"
+              },
+              {
+                "player": "He implied that Serafina had discovered their weakness."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "Serafina? As in the Serafina who survived the Theatre of Blood?"
+              },
+              {
+                "player": "I believe so."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "That would actually make a lot of sense. We've always wondered how Serafina managed to survive all of the challenges in the Theatre."
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "But what if she never needed to? Maybe she took advantage of the vampyres weakness and forced them to let her leave?"
+              },
+              {
+                "player": "Do you think this is worth exploring?"
+              },
+              {
+                "type": "line",
+                "speaker": "Flaygian Screwte",
+                "text": "I do. I'll stay here and keep working on this book. You head out and see if you can find out what Serafina discovered. Safalaan should be able to help you."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-716a6bba05282ad2": [
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "It looks like they had two reasons. First of all they were looking for a way to increase the amount of blood that can be harvested from a human."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "Unsurprisingly, the vampyres here have multiplied much faster than the humans. Perhaps there's no longer enough blood to go around."
+      },
+      {
+        "player": "And the other reason?"
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "That's the more interesting one. As we're already aware, vampyres possess some form of immunity against our attacks."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "It starts off as only partial in juveniles and juvinates but by the time they become vyres they are totally invulnerable."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "This book implies that the vampyres immunity isn't perfect and that it can be overcome. It seems they were trying to improve this immunity."
+      },
+      {
+        "player": "Overcome? How?"
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "I haven't got that far yet I'm afraid."
+      },
+      {
+        "player": "Hmmm. I might actually be able to help with that bit. I was spying on Vanstrom and Ranis earlier for Safalaan and I heard Vanstrom say something quite interesting."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "What did he say?"
+      },
+      {
+        "player": "He implied that Serafina had discovered their weakness."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "Serafina? As in the Serafina who survived the Theatre of Blood?"
+      },
+      {
+        "player": "I believe so."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "That would actually make a lot of sense. We've always wondered how Serafina managed to survive all of the challenges in the Theatre."
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "But what if she never needed to? Maybe she took advantage of the vampyres weakness and forced them to let her leave?"
+      },
+      {
+        "player": "Do you think this is worth exploring?"
+      },
+      {
+        "type": "line",
+        "speaker": "Flaygian Screwte",
+        "text": "I do. I'll stay here and keep working on this book. You head out and see if you can find out what Serafina discovered. Safalaan should be able to help you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

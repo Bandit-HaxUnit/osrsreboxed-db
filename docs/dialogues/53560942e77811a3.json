@@ -104,8 +104,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cDzAf9"
+                "id": "cDzAf9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-be4c55c932714f8d"
+                  }
+                ]
               }
             ]
           },
@@ -125,8 +130,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PvMU94"
+                "id": "PvMU94",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bd61f81f0ab8e8bb"
+                  }
+                ]
               }
             ]
           }
@@ -281,7 +291,50 @@
         "type": "choice",
         "options": [
           {
-            "text": "Two jobs? That's got to be tough."
+            "text": "Two jobs? That's got to be tough.",
+            "steps": [
+              {
+                "player": "Two jobs? That's got to be tough."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Not when you combine them it isn't! I invent MAGIC things!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So what have you invented?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "GSj9b0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-895162cb5b1bf1c3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well, I shall leave you to your inventing.",
+                    "steps": [
+                      {
+                        "player": "Well, I shall leave you to your inventing."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Thanks for dropping by! Stop again anytime!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "So what have you invented?",
@@ -326,8 +379,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "1Ew-7D"
+                                "id": "1Ew-7D",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-4f3d0ad5d3971216"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -422,7 +480,24 @@
             ]
           },
           {
-            "text": "Can you teleport me to the Rune Essence?"
+            "text": "Can you teleport me to the Rune Essence?",
+            "steps": [
+              {
+                "player": "Can you teleport me to the Rune Essence?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Senventior disthine molenko!"
+              },
+              {
+                "type": "action",
+                "text": "Wizard Cromperty teleports the player to the rune essence mine.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "EkCGKW"
+              }
+            ]
           }
         ]
       }
@@ -622,6 +697,352 @@
       {
         "type": "unavailable",
         "id": "BZ2yKY"
+      }
+    ]
+  },
+  "branches": {
+    "jump-be4c55c932714f8d": [
+      {
+        "type": "line",
+        "speaker": "Kangai Mau",
+        "text": "We need it back."
+      },
+      {
+        "player": "Why does he have it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kangai Mau",
+        "text": "Lord Handelmort is an Ardougnese explorer which means he think he have the right to come to my tribal home, steal our stuff and put in his private museum."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start The Tribal Totem quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Ok, I will get it back."
+              },
+              {
+                "type": "line",
+                "speaker": "Kangai Mau",
+                "text": "Best of luck with that adventurer."
+              },
+              {
+                "player": "How can I find Handelmort's house? Ardougne is a big place..."
+              },
+              {
+                "type": "line",
+                "speaker": "Kangai Mau",
+                "text": "I don't know Ardougne. You tell me."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:tribal-totem:start",
+            "quest": "Tribal Totem"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Well good luck with that."
+              },
+              {
+                "type": "line",
+                "speaker": "Kangai Mau",
+                "text": "Let's hope I find some help soon."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-bd61f81f0ab8e8bb": [
+      {
+        "type": "line",
+        "speaker": "Kangai Mau",
+        "text": "I looking for someone brave to go on important mission for me. Someone skilled in thievery and sneaking about. I am told I can find such people in Brimhaven."
+      },
+      {
+        "player": "Tell me of this mission."
+      },
+      {
+        "type": "line",
+        "speaker": "Kangai Mau",
+        "text": "I need someone to go on a mission to the city of Ardougne. There you will find the house of Lord Handelmort. In his house he has our tribal totem."
+      },
+      {
+        "type": "line",
+        "speaker": "Kangai Mau",
+        "text": "We need it back."
+      },
+      {
+        "player": "Why does he have it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kangai Mau",
+        "text": "Lord Handelmort is an Ardougnese explorer which means he think he have the right to come to my tribal home, steal our stuff and put in his private museum."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start The Tribal Totem quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Ok, I will get it back."
+              },
+              {
+                "type": "line",
+                "speaker": "Kangai Mau",
+                "text": "Best of luck with that adventurer."
+              },
+              {
+                "player": "How can I find Handelmort's house? Ardougne is a big place..."
+              },
+              {
+                "type": "line",
+                "speaker": "Kangai Mau",
+                "text": "I don't know Ardougne. You tell me."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:tribal-totem:start",
+            "quest": "Tribal Totem"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Well good luck with that."
+              },
+              {
+                "type": "line",
+                "speaker": "Kangai Mau",
+                "text": "Let's hope I find some help soon."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-895162cb5b1bf1c3": [
+      {
+        "player": "So what have you invented?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So where is the other block?",
+            "steps": [
+              {
+                "player": "So where is the other block?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I be teleported please?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "1Ew-7D",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4f3d0ad5d3971216"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are the GPDT?",
+                    "steps": [
+                      {
+                        "player": "Who are the GPDT?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "The Gielinor Parcel Delivery Team. They come very highly recommended. Their motto is: 'We aim to deliver your stuff at some point after you have paid us!'"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I be teleported please?",
+            "steps": [
+              {
+                "player": "Can I be teleported please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, that sounds good. Teleport me!",
+                    "steps": [
+                      {
+                        "player": "Yes, that sounds good. Teleport me!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Okey dokey! Ready?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Dipsolum sententa sententi!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "(The player gets teleported to the GDPT Depot.)",
+                        "action": "teleport",
+                        "action_source": "text",
+                        "id": "bCwZ9I"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That sounds dangerous. Leave me here.",
+                    "steps": [
+                      {
+                        "player": "That sounds dangerous. Leave me here."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "As you wish."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well done, that's very clever.",
+            "steps": [
+              {
+                "player": "Well done, that's very clever."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Yes it is isn't it? Forgive me for feeling a little smug, this is a major breakthrough in the field of teleportation!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4f3d0ad5d3971216": [
+      {
+        "player": "Can I be teleported please?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, that sounds good. Teleport me!",
+            "steps": [
+              {
+                "player": "Yes, that sounds good. Teleport me!"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Okey dokey! Ready?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Dipsolum sententa sententi!"
+              },
+              {
+                "type": "action",
+                "text": "(The player gets teleported to the GDPT Depot.)",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "bCwZ9I"
+              }
+            ]
+          },
+          {
+            "text": "That sounds dangerous. Leave me here.",
+            "steps": [
+              {
+                "player": "That sounds dangerous. Leave me here."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "As you wish."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

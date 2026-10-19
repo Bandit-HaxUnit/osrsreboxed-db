@@ -233,8 +233,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "fe3iW-"
+                        "id": "fe3iW-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-88ea7e6b38f08008"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -260,8 +265,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "k7yNmK"
+                        "id": "k7yNmK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-88ea7e6b38f08008"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -287,6 +297,28 @@
         "type": "message",
         "text": "You need 46 Hunter to access the Burrow.",
         "id": "pzTTwH"
+      }
+    ]
+  },
+  "branches": {
+    "jump-88ea7e6b38f08008": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "We're mostly here to keep an eye on the local animal populations, and provide animal parts to the city."
+      },
+      {
+        "npc": "As for me personally, I'm the current master of this guild."
+      },
+      {
+        "player": "Current master?"
+      },
+      {
+        "npc": "A hunter's work is dangerous. We tend to go through members faster than other guilds. That said, I'm usually too busy with politics and paperwork to go out hunting these days."
+      },
+      {
+        "type": "end"
       }
     ]
   }

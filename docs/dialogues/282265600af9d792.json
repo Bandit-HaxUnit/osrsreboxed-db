@@ -1,4 +1,161 @@
 {
+  "branches": {
+    "jump-b0c3d921dfdaee0e": [
+      {
+        "player": "I'd like to set up trade offers please."
+      },
+      {
+        "type": "action",
+        "text": "(Grand Exchange interface opens.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Grand Exchange",
+        "id": "H4pxZL"
+      }
+    ],
+    "jump-22bc1a2978c5f4fa": [
+      {
+        "player": "Can you help me with item sets?"
+      },
+      {
+        "type": "action",
+        "text": "(Item Sets interface opens.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Item Sets",
+        "id": "eI4Tb_"
+      }
+    ],
+    "jump-665ee42aab2858ad": [
+      {
+        "player": "I'd like Exchange collection reminders on login, please."
+      },
+      {
+        "npc": "Okay, when you log in, we'll send you a message about any items that are waiting for you to collect them."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Thank you.",
+            "steps": [
+              {
+                "player": "Thank you."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't want Exchange collection reminders on login.",
+            "steps": [
+              {
+                "player": "I don't want Exchange collection reminders on login."
+              },
+              {
+                "npc": "Okay, when you log in, you will no longer be reminded about items waiting to be collected, unless the items only arrived after you logged out."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "F4f1qJ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2744cd4fca7e31f4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like Exchange collection reminders on login, please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "jL3Nbb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-665ee42aab2858ad"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-71985ac8ef2ebce8": [
+      {
+        "player": "I don't want Exchange collection reminders on login."
+      },
+      {
+        "npc": "Okay, when you log in, you will no longer be reminded about items waiting to be collected, unless the items only arrived after you logged out."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "F4f1qJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2744cd4fca7e31f4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd like Exchange collection reminders on login, please.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "jL3Nbb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-665ee42aab2858ad"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0d45c582e846a1d2": [
+      {
+        "player": "I'm fine, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2744cd4fca7e31f4": [
+      {
+        "player": "Thank you."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Welcome to the Grand Exchange. Would you like to trade now, or exchange item sets?"
@@ -71,8 +228,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "ukUf3f"
+                      "id": "ukUf3f",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-b0c3d921dfdaee0e"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -81,8 +243,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "xqX1VW"
+                      "id": "xqX1VW",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-22bc1a2978c5f4fa"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -92,8 +259,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "otEjbK"
+                      "id": "otEjbK",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-665ee42aab2858ad"
+                        }
+                      ]
                     }
                   ],
                   "id": "VQV_u0"
@@ -104,8 +276,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "vcCiNJ"
+                      "id": "vcCiNJ",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-71985ac8ef2ebce8"
+                        }
+                      ]
                     }
                   ],
                   "id": "F-1bZH"
@@ -115,8 +292,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "Xr19a4"
+                      "id": "Xr19a4",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-0d45c582e846a1d2"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -194,8 +376,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "F4f1qJ"
+                              "id": "F4f1qJ",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-2744cd4fca7e31f4"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -204,8 +391,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "jL3Nbb"
+                              "id": "jL3Nbb",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-665ee42aab2858ad"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -224,8 +416,13 @@
           "steps": [
             {
               "type": "jump",
-              "reference": "above",
-              "id": "0ZLjkd"
+              "id": "0ZLjkd",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-71985ac8ef2ebce8"
+                }
+              ]
             }
           ],
           "id": "ZzoQwO"

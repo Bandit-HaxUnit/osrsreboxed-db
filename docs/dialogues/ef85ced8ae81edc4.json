@@ -1,4 +1,56 @@
 {
+  "branches": {
+    "jump-3d20e1f0bc6b80ad": [
+      {
+        "npc": "Safe travels, friend."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-69fdf81afca86cb3": [
+      {
+        "player": "I want to buy a Shantay pass for 5 gold coins."
+      },
+      {
+        "npc": "Absolutely, friend."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 5 coins:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Shantay pass",
+            "id": "cPKwj9"
+          },
+          {
+            "type": "message",
+            "text": "You purchase a Shantay Pass.",
+            "id": "V087CY"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "sP_FIt"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 5 coins:",
+        "steps": [
+          {
+            "npc": "Sorry friend, the Shantay Pass is 5 gold coins. You don't seem to have enough money!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ET-5SP"
+      }
+    ]
+  },
   "steps": [
     {
       "type": "choice",
@@ -35,8 +87,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "R5PUtX"
+                      "id": "R5PUtX",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-3d20e1f0bc6b80ad"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -56,8 +113,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "Wkc3Mf"
+                      "id": "Wkc3Mf",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-69fdf81afca86cb3"
+                        }
+                      ]
                     }
                   ]
                 }

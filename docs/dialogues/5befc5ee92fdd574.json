@@ -123,7 +123,13 @@
                           {
                             "type": "jump",
                             "reference": "continues",
-                            "id": "K06FbI"
+                            "id": "K06FbI",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-67ccd751c3267b23"
+                              }
+                            ]
                           }
                         ],
                         "id": "O3O0GH"
@@ -140,7 +146,13 @@
                           {
                             "type": "jump",
                             "reference": "continues",
-                            "id": "oi_oLn"
+                            "id": "oi_oLn",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-67ccd751c3267b23"
+                              }
+                            ]
                           }
                         ],
                         "id": "qeSx96"
@@ -248,8 +260,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "njyRfu"
+                                "id": "njyRfu",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-074a841585585eeb"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1682,6 +1699,208 @@
       {
         "type": "unavailable",
         "id": "iJQUl9"
+      }
+    ]
+  },
+  "branches": {
+    "jump-67ccd751c3267b23": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Of course I'll help.",
+            "steps": [
+              {
+                "player": "Of course I'll help."
+              },
+              {
+                "type": "line",
+                "speaker": "Martin the Master Gardener",
+                "text": "I'm so glad to hear that."
+              },
+              {
+                "player": "You don't look it."
+              },
+              {
+                "type": "line",
+                "speaker": "Martin the Master Gardener",
+                "text": "Sorry, what was that?"
+              },
+              {
+                "player": "Oh, nothing. Don't worry about it."
+              },
+              {
+                "player": "So tell me about your problems."
+              },
+              {
+                "type": "jump",
+                "id": "njyRfu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-074a841585585eeb"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I have better things to do.",
+            "steps": [
+              {
+                "player": "Sorry, I have better things to do."
+              },
+              {
+                "type": "line",
+                "speaker": "Martin the Master Gardener",
+                "text": "Oh. Oh dear. Oh well, if there's nothing I can do to make you change your mind..."
+              },
+              {
+                "player": "No, nothing. My mind is made up."
+              },
+              {
+                "type": "line",
+                "speaker": "Martin the Master Gardener",
+                "text": "Well come back and chat to me if you change it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-074a841585585eeb": [
+      {
+        "type": "line",
+        "speaker": "Martin the Master Gardener",
+        "text": "It all seemed to start about a month ago. I grow roses, you know?"
+      },
+      {
+        "player": "Um, you seem to be getting side-tracked already."
+      },
+      {
+        "type": "line",
+        "speaker": "Martin the Master Gardener",
+        "text": "What? Oh sorry."
+      },
+      {
+        "type": "line",
+        "speaker": "Martin the Master Gardener",
+        "text": "As I was saying about a month ago I noticed that the yield on my prize rose bushes had dropped slightly. I immediately suspected Crown Gall, a disease that can be fatal to a Mister Lincoln."
+      },
+      {
+        "player": "You're not making much sense. Who's Mister Lincoln?"
+      },
+      {
+        "type": "line",
+        "speaker": "Martin the Master Gardener",
+        "text": "Sorry, Mister Lincoln's are the variety of roses that I specialise in. None of the plants showed any other symptoms of disease though. Then I noticed a reduced yield occurring in most of my other crops too."
+      },
+      {
+        "type": "line",
+        "speaker": "Martin the Master Gardener",
+        "text": "I spoke to other gardeners that I know, and they had all noticed similar problems."
+      },
+      {
+        "type": "line",
+        "speaker": "Martin the Master Gardener",
+        "text": "Vegetable patches are growing fewer vegetables, bushes are producing fewer berries and everything that is planted seems to be more prone to disease!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't trained their Farming:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Martin the Master Gardener",
+            "text": "If you were more interested in turning your hand to farming, you would have noticed it too."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "K06FbI",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-67ccd751c3267b23"
+              }
+            ]
+          }
+        ],
+        "id": "O3O0GH"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has trained some Farming:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Martin the Master Gardener",
+            "text": "You've done some farming, haven't you noticed a decrease in the amount of produce you are getting lately?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "oi_oLn",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-67ccd751c3267b23"
+              }
+            ]
+          }
+        ],
+        "id": "qeSx96"
+      },
+      {
+        "type": "message",
+        "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 50. One or more of your skill levels are also lower than recommended.",
+        "id": "YlG6-4"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Fairytale I - Growing Pains quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "So what do you want me to do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Martin the Master Gardener",
+                "text": "I'd like you to find out what is causing this terrible problem and to try and rectify whatever the problem is."
+              },
+              {
+                "player": "Do you have any ideas where I should start?"
+              },
+              {
+                "type": "line",
+                "speaker": "Martin the Master Gardener",
+                "text": "If I were you I would start by speaking to some of the other gardeners."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:fairytale-i-growing-pains:start",
+            "quest": "Fairytale I - Growing Pains"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "This doesn't sound like something I can help with. Good luck."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

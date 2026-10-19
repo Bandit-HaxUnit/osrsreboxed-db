@@ -13,6 +13,7 @@ def runtime_id(value):
 
 
 def compact_record(record):
+    source_ids = {}
     authoring = {
         key: record.pop(key)
         for key in ("source", "participants", "npc_ids")
@@ -39,23 +40,40 @@ def compact_record(record):
                 ) and "condition" not in node:
                     del node["id"]
                 else:
-                    node["id"] = runtime_id(node["id"])
+                    source_id = node["id"]
+                    node["id"] = runtime_id(source_id)
+                    if node["id"] in source_ids and source_ids[node["id"]] != source_id:
+                        raise ValueError(
+                            "Runtime ID collision; increase runtime_id width before publishing"
+                        )
+                    source_ids[node["id"]] = source_id
             node.pop("condition_key", None)
 
     visit(record["variants"])
-    ids = []
+    visit(record.get("branches", {}))
+    ids = {}
     from scripts.dialogues.hooks import walk
 
-    ids.extend(
-        n["id"]
-        for steps in record["variants"].values()
+    for node in (
+        n
+        for steps in [
+            *record["variants"].values(),
+            *record.get("branches", {}).values(),
+        ]
         for n in walk(steps)
         if "id" in n
-    )
-    if len(ids) != len(set(ids)):
-        raise ValueError(
-            "Runtime ID collision; increase runtime_id width before publishing"
-        )
+    ):
+        own = {
+            k: v
+            for k, v in node.items()
+            if k not in ("steps", "options")
+            and not (node.get("type") == "jump" and k == "reference")
+        }
+        if node["id"] in ids and ids[node["id"]] != own:
+            raise ValueError(
+                f"Runtime ID collision in {authoring.get('source', {}).get('page', '')}: {node['id']}"
+            )
+        ids[node["id"]] = own
     for steps in record["variants"].values():
         remove_terminal_ends(steps)
     deduplicate(record)
@@ -111,7 +129,7 @@ def deduplicate(record):
                 steps, ensure_ascii=False, sort_keys=True, separators=(",", ":")
             )
             candidates[key].append(steps)
-    branches = {}
+    branches = dict(record.get("branches", {}))
     for key, copies in candidates.items():
         branch = runtime_id(key)
         if branch in branches:

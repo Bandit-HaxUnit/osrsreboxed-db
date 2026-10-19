@@ -33,8 +33,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "VLAydS"
+                        "id": "VLAydS",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cb0dca73508603b2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -79,8 +84,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ePgyRM"
+                        "id": "ePgyRM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5d1c6519cd786375"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -89,8 +99,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "rWuzii"
+                        "id": "rWuzii",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-204d8d94693339b6"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -107,6 +122,110 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-cb0dca73508603b2": [
+      {
+        "player": "Do you know what's south of here?"
+      },
+      {
+        "npc": "No. We sent a scouting party in that direction, when we first established our camp. Some of the men got lost in the swamps. Eventually we listed them as dead."
+      },
+      {
+        "npc": "Then suddenly they returned, with a wild gleam in their eyes, raving about gods and snakes and all kinds of madness."
+      },
+      {
+        "npc": "We had to drive them out, in case their condition infected the rest of the troops. Their wives will be given a full widow pension when we return home."
+      },
+      {
+        "npc": "General Hining concluded that, whatever is down there, it's not affiliated with any of the elf factions, and it should be left alone."
+      },
+      {
+        "player": "Thank you."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's going on around here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ePgyRM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d1c6519cd786375"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "rWuzii",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-204d8d94693339b6"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5d1c6519cd786375": [
+      {
+        "player": "What's going on around here?"
+      },
+      {
+        "npc": "Sorry, I shouldn't give out sensitive information to civilians. You should go to General Hining, in the camp along the road."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you know what's south of here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "VLAydS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cb0dca73508603b2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-204d8d94693339b6": [
+      {
+        "player": "Okay, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

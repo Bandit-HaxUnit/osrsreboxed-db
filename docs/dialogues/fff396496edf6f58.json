@@ -280,8 +280,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "GYY9hk"
+                        "id": "GYY9hk",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-25a9877894289659"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -626,6 +631,17 @@
     ]
   },
   "branches": {
+    "jump-25a9877894289659": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you later."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "pmUsWS": [
       {
         "npc": "You need at least two inventory spaces, make some space and come back."

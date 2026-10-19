@@ -44,8 +44,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "oP9N5U"
+                        "id": "oP9N5U",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-109b02e3be4e6097"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -54,8 +59,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "fii8_s"
+                        "id": "fii8_s",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d966401531bb3290"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -117,8 +127,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "K2P8Zw"
+                        "id": "K2P8Zw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3859b9aa8044c251"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -127,8 +142,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "SyKg7p"
+                        "id": "SyKg7p",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5a97fb321401298d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -137,8 +157,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "pBUpli"
+                        "id": "pBUpli",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d966401531bb3290"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -167,12 +192,66 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yz81qz"
+                "id": "yz81qz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d966401531bb3290"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-109b02e3be4e6097": [
+      {
+        "player": "If you're a wizard, are you doing anything magical?"
+      },
+      {
+        "npc": "Always! But I'm not looking for any assistance from passing adventurers, if that's what you were thinking. Maybe another time."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "Gqo60Z"
+      }
+    ],
+    "jump-d966401531bb3290": [
+      {
+        "player": "Bye, Gary."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3859b9aa8044c251": [
+      {
+        "player": "Is the cat supposed to help you get runes too?"
+      },
+      {
+        "npc": "No! I know there are places where people think it's normal to swap cats for runes, but that will NOT happen to Sookie!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "CdmIAx"
+      }
+    ],
+    "jump-5a97fb321401298d": [
+      {
+        "player": "Can you open the portal to the Realm again?"
+      },
+      {
+        "npc": "The mementos expired, so no. I'm not really interested in repeating that project, anyway - I prefer my work to bring fresh challenges, rather than just recycling copies of stuff I did before."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "9jOo9G"
       }
     ]
   }

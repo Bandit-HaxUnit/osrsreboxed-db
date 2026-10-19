@@ -37,8 +37,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "y9_yWC"
+                "id": "y9_yWC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1394dde3850ea2e0"
+                  }
+                ]
               }
             ]
           },
@@ -47,8 +52,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "p69zo2"
+                "id": "p69zo2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c090905ee4c14242"
+                  }
+                ]
               }
             ]
           },
@@ -57,8 +67,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "P26ozD"
+                "id": "P26ozD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fdb9cf0a43e046b6"
+                  }
+                ]
               }
             ]
           }
@@ -165,6 +180,94 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-1394dde3850ea2e0": [
+      {
+        "player": "What are you selling?"
+      },
+      {
+        "npc": "See for yourself."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Durrik's Goods",
+        "id": "6C7vrD"
+      }
+    ],
+    "jump-c090905ee4c14242": [
+      {
+        "player": "Where do you get the things that you sell?"
+      },
+      {
+        "npc": "Does it matter?"
+      },
+      {
+        "player": "I'm just curious."
+      },
+      {
+        "npc": "Well, I have my methods."
+      },
+      {
+        "player": "That's not much of an answer."
+      },
+      {
+        "npc": "That's the way around here."
+      },
+      {
+        "player": "What does that mean?"
+      },
+      {
+        "npc": "Does it have to mean anything?"
+      },
+      {
+        "player": "Well... yes. Otherwise why would you have said it?"
+      },
+      {
+        "npc": "Alright then, riddle me this: Why are we here?"
+      },
+      {
+        "player": "Is that some sort of existential question, or...?"
+      },
+      {
+        "npc": "I suppose it could be, but I was specifically referring to this place. Why are we here?"
+      },
+      {
+        "player": "To mine?"
+      },
+      {
+        "npc": "For?"
+      },
+      {
+        "player": "Ore?"
+      },
+      {
+        "npc": "So they say. Plenty of ore elsewhere though."
+      },
+      {
+        "player": "If you're not here for ore, then why are you here?"
+      },
+      {
+        "npc": "Ah, but I can't answer that. Besides, even if I could, it would ruin the riddle. You'll just have to keep pondering it for yourself. Now, what are you buying?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "mAyhPr"
+      }
+    ],
+    "jump-fdb9cf0a43e046b6": [
+      {
+        "player": "Nothing, thanks."
+      },
+      {
+        "npc": "Suit yourself."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -176,7 +176,34 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you heal me? I'm injured."
+            "text": "Can you heal me? I'm injured.",
+            "steps": [
+              {
+                "player": "Can you heal me? I'm injured."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is already full Hitpoints:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jatziri, Teoki of Ralos",
+                    "text": "Of course."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The teoki whispers a prayer and you suddenly feel a bit better.",
+                    "id": "CHn2iD"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "IM7uUn"
+                  }
+                ],
+                "id": "D3jthA"
+              }
+            ]
           },
           {
             "text": "Mumpty Rumpty fell off a wall!",
@@ -216,10 +243,160 @@
             ]
           },
           {
-            "text": "What are you doing out here?"
+            "text": "What are you doing out here?",
+            "steps": [
+              {
+                "player": "What are you doing out here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jatziri, Teoki of Ralos",
+                "text": "I am Jatziri, one of the seven teoki in service to Ralos. Along with my counterpart from the Sect of Ranul, I am responsible for the temple of Tal Teok."
+              },
+              {
+                "player": "Where is your counterpart?"
+              },
+              {
+                "type": "condition",
+                "text": "Having completed Twilight's Promise but not The Heart of Darkness:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jatziri, Teoki of Ralos",
+                    "text": "That I would like to know myself. Tecuani left to attend to business elsewhere in the kingdom, but is yet to return."
+                  },
+                  {
+                    "player": "That sounds concerning."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Jatziri, Teoki of Ralos",
+                    "text": "It could well be. It is being looked into, but given the recent events at the Teomat, there are other matters that also require attention."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "ZOEzff"
+                  }
+                ],
+                "id": "OSmmoY"
+              },
+              {
+                "type": "condition",
+                "text": "Having completed The Final Dawn:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jatziri, Teoki of Ralos",
+                    "text": "Tecuani was unfortunately misled by the traitor Metzli. He joined with her cult along with a few other members of the Sect of Ranul."
+                  },
+                  {
+                    "player": "I'm sorry to hear that."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Jatziri, Teoki of Ralos",
+                    "text": "Don't be. He is no servant of Ranul. He will die the death of a traitor. Once that happens, a more fitting replacement will be chosen."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "RAfyEe"
+                  }
+                ],
+                "id": "1rsHSH"
+              },
+              {
+                "player": "So for now you're here alone? Does that make the work harder?"
+              },
+              {
+                "type": "condition",
+                "text": "If not during Scrambled!:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jatziri, Teoki of Ralos",
+                    "text": "Tal Teok is thankfully one of the easier holy sites to look after. That said, there was a small issue recently when some tourist decided to move in and make it their home."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not completed Scrambled!:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Jatziri, Teoki of Ralos",
+                        "text": "I'll need to handle that at some point, but they don't seem to be causing much trouble, so it is thankfully not a pressing concern."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "IRITX2"
+                      }
+                    ],
+                    "id": "wJ8aws"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Scrambled!:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Jatziri, Teoki of Ralos",
+                        "text": "However, the problem resolved itself in an unexpected way when he sadly fell from atop the temple steps. It seems it was a freak accident."
+                      },
+                      {
+                        "player": "Yes, I was actually there to witness it myself. It was horrible."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jatziri, Teoki of Ralos",
+                        "text": "Let us hope he can at least now find peace with Ranul."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "V7W88n"
+                      }
+                    ],
+                    "id": "9MWIzd"
+                  }
+                ],
+                "id": "KJGL5i"
+              },
+              {
+                "type": "condition",
+                "text": "If during Scrambled!:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jatziri, Teoki of Ralos",
+                    "text": "Tal Teok is thankfully one of the easier holy sites to look after. However, there is a small issue at the moment in that some tourist has decided to move in and make it their home."
+                  },
+                  {
+                    "player": "Yes, along with his egg, [egg name], but there's a bit of a problem! [Egg name]'s broken!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "1g1yGU"
+                  }
+                ],
+                "id": "CWFSsV"
+              }
+            ]
           },
           {
-            "text": "I'd better be off."
+            "text": "I'd better be off.",
+            "steps": [
+              {
+                "player": "I'd better be off."
+              },
+              {
+                "type": "line",
+                "speaker": "Jatziri, Teoki of Ralos",
+                "text": "Timoiva, and may the sun light your way."
+              }
+            ]
           }
         ]
       }
@@ -284,7 +461,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "sch_s0"
+              }
+            ]
           },
           {
             "text": "Are you the king?",
@@ -372,7 +555,13 @@
             ]
           },
           {
-            "text": "Nothing, thanks."
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5sVo6r"
+              }
+            ]
           }
         ]
       }
@@ -474,7 +663,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "sch_s0"
+              }
+            ]
           },
           {
             "text": "Where can I find your men?",
@@ -484,13 +679,24 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "dO4m3C"
+                "id": "dO4m3C",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4092f35da64f50df"
+                  }
+                ]
               }
             ]
           },
           {
-            "text": "Nothing, thanks."
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5sVo6r"
+              }
+            ]
           }
         ]
       }
@@ -596,8 +802,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "VNINoV"
+                "id": "VNINoV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-845978ad4d5cfe6b"
+                  }
+                ]
               }
             ]
           },
@@ -606,8 +817,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UV5Jnl"
+                "id": "UV5Jnl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4ef5a9cab600524d"
+                  }
+                ]
               }
             ]
           }
@@ -1036,8 +1252,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "aYt1Ml"
+                "id": "aYt1Ml",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-05023b547b5de8eb"
+                  }
+                ]
               }
             ]
           },
@@ -1046,8 +1267,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2bBh4n"
+                "id": "2bBh4n",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-700d6130974797b1"
+                  }
+                ]
               }
             ]
           }
@@ -1080,8 +1306,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "gKDNfb"
+                    "id": "gKDNfb",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-ed15c3a988366339"
+                      }
+                    ]
                   }
                 ]
               },
@@ -1150,8 +1381,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "wBLpFb"
+                    "id": "wBLpFb",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-ed15c3a988366339"
+                      }
+                    ]
                   }
                 ]
               },
@@ -1436,8 +1672,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tlW8j8"
+                "id": "tlW8j8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5dccc1796349b7a9"
+                  }
+                ]
               }
             ]
           },
@@ -1446,8 +1687,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KA-mt6"
+                "id": "KA-mt6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1d5b11886c66dfb2"
+                  }
+                ]
               }
             ]
           }
@@ -1562,7 +1808,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "sch_s0"
+              }
+            ]
           },
           {
             "text": "I've gathered your men.",
@@ -1578,7 +1830,13 @@
             ]
           },
           {
-            "text": "Nothing, thanks."
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5sVo6r"
+              }
+            ]
           }
         ]
       }
@@ -2165,10 +2423,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "sch_s0"
+              }
+            ]
           },
           {
-            "text": "Nothing, thanks."
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5sVo6r"
+              }
+            ]
           }
         ]
       }
@@ -2188,6 +2458,205 @@
       {
         "type": "unavailable",
         "id": "dXOOGi"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4092f35da64f50df": [
+      {
+        "type": "line",
+        "speaker": "King",
+        "text": "Nezketi should be in the temple just south of here, Kauayotl will most likely be just outside the main entrance into town, and Acatzin is right here in the inn."
+      },
+      {
+        "player": "Thanks! I'll have them gathered in no time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-845978ad4d5cfe6b": [
+      {
+        "player": "I can talk to the blacksmith."
+      },
+      {
+        "type": "line",
+        "speaker": "Acatzin",
+        "text": "Perfect! You'll find him in the western part of town, not far from here."
+      },
+      {
+        "player": "Okay, I'll be back soon."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-4ef5a9cab600524d": [
+      {
+        "player": "There's no time for this!"
+      },
+      {
+        "type": "line",
+        "speaker": "Acatzin",
+        "text": "Well, in that case, I think you'll need to help your egg without me."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-05023b547b5de8eb": [
+      {
+        "player": "I can get you some tea."
+      },
+      {
+        "type": "line",
+        "speaker": "Nezketi",
+        "text": "Kuani! There are plenty of damiana shrubs around here. I know of some just on the other side of the eastern wall. They make for the best tea. I like mine without any milk."
+      },
+      {
+        "type": "message",
+        "text": "Nezketi hands you an empty cup - presumably his vessel of choice.",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player doesn't have enough inventory space",
+            "steps": [
+              {
+                "player": "You'll have to just give me a moment to make some space for it."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "m0_j_t"
+          }
+        ],
+        "id": "MKmsN9"
+      },
+      {
+        "type": "line",
+        "speaker": "Nezketi",
+        "text": "Now, I trust you know how to make tea?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you remind me?",
+            "steps": [
+              {
+                "player": "Could you remind me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Nezketi",
+                "text": "You'll need to take the damiana leaves and add them to a bowl of water. You then need to boil the water before transferring the tea into a cup."
+              },
+              {
+                "player": "Alright, I'll be back soon with some tea."
+              },
+              {
+                "type": "line",
+                "speaker": "Nezketi",
+                "text": "Thank you, iknami."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Of course!",
+            "steps": [
+              {
+                "player": "Of course!"
+              },
+              {
+                "type": "line",
+                "speaker": "Nezketi",
+                "text": "Very good, iknami. In that case, I'll be here once you have some tea for me."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-700d6130974797b1": [
+      {
+        "player": "Now's not the time for tea!"
+      },
+      {
+        "type": "line",
+        "speaker": "Nezketi",
+        "text": "Well, I don't think I'll be much use without it..."
+      }
+    ],
+    "jump-ed15c3a988366339": [
+      {
+        "player": "Could you remind me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Nezketi",
+        "text": "You'll need to take the damiana leaves and add them to a bowl of water. You then need to boil the water before transferring the tea into a cup."
+      },
+      {
+        "player": "Alright, I'll be back soon with some tea."
+      },
+      {
+        "type": "line",
+        "speaker": "Nezketi",
+        "text": "Thank you, iknami."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5dccc1796349b7a9": [
+      {
+        "player": "I see. Well, maybe I can help out with that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kauayotl",
+        "text": "That would be appreciated. I reckon a couple of planks and some nails should be all you need to get it fixed. I'm sure you can find some around here somewhere. Oh, and don't forget your hammer and saw!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-1d5b11886c66dfb2": [
+      {
+        "player": "We have bigger problems right now!"
+      },
+      {
+        "type": "line",
+        "speaker": "Kauayotl",
+        "text": "My friend, I know your plight, but the cart must be sorted before I can do anything else. I'm sorry."
+      }
+    ],
+    "sch_s0": [
+      {
+        "player": "Let's see what you have."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The King's Inn",
+        "id": "bUtKP0"
+      }
+    ],
+    "5sVo6r": [
+      {
+        "player": "Nothing, thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "King (Tal Teklan)",
+        "text": "Fair enough."
       }
     ]
   }

@@ -319,12 +319,30 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "GkwRtu"
+                "id": "GkwRtu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-26ce19104739985f"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-26ce19104739985f": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Farewell [brave warrior/fair lady], I do hope you enjoy my guild."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -1,4 +1,31 @@
 {
+  "branches": {
+    "jump-37e878030fdd0be1": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "npc": "No problem."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6fee3658c662e0a8": [
+      {
+        "player": "I'll have a look."
+      },
+      {
+        "npc": "Great stuff."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Grand Tree Groceries",
+        "id": "hgMtpZ"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello there."
@@ -82,8 +109,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "V8CLH2"
+                          "id": "V8CLH2",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-37e878030fdd0be1"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -92,8 +124,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "88O6RY"
+                          "id": "88O6RY",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-6fee3658c662e0a8"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -118,8 +155,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "rKUvU8"
+                          "id": "rKUvU8",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-37e878030fdd0be1"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -128,8 +170,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "XBk5iZ"
+                          "id": "XBk5iZ",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-6fee3658c662e0a8"
+                            }
+                          ]
                         }
                       ]
                     }

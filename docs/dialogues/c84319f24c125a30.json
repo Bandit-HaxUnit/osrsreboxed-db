@@ -281,8 +281,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "HfZpYR"
+                            "id": "HfZpYR",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-c66982038d83ca24"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -348,8 +353,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "GiC79X"
+                            "id": "GiC79X",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-c66982038d83ca24"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -358,8 +368,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "Z6oFh5"
+                            "id": "Z6oFh5",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-f5e627763afceea0"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -747,8 +762,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "uMDSg2"
+                        "id": "uMDSg2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-51e71e4e2bfbbe54"
+                          }
+                        ]
                       }
                     ],
                     "id": "NydUBg"
@@ -900,6 +920,92 @@
           }
         ],
         "id": "3DEry2"
+      }
+    ]
+  },
+  "branches": {
+    "jump-c66982038d83ca24": [
+      {
+        "player": "Tell me about the Tears of Guthix."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "HuSag4"
+      }
+    ],
+    "jump-f5e627763afceea0": [
+      {
+        "player": "Tell me about the light-creatures."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "mwwxpT"
+      }
+    ],
+    "jump-51e71e4e2bfbbe54": [
+      {
+        "player": "Combine them. I understand it can't be undone."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has only one Guthixian icon and Staff of the Dead in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Juna combines your icon and staff to make a staff of balance.",
+            "id": "XInw5V"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "mkXJ-n"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than one Guthixian icon and Staff of the Dead in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Juna will offer to make multiple Staves of balance",
+            "id": "toQoNi"
+          },
+          {
+            "type": "action",
+            "text": "Player chooses how many Staves of balance to create",
+            "id": "8i5UKd"
+          },
+          {
+            "type": "condition",
+            "text": "If the player chooses to make one Staff of Balance:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uOuP1D"
+              }
+            ],
+            "id": "Wvzo6L"
+          },
+          {
+            "type": "condition",
+            "text": "If the player chooses to make more than one Staff of Balance:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Juna combines your icons and staffs to make [2-27] Staffs of Balance.",
+                "id": "fk092Y"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "K97feQ"
+          }
+        ],
+        "id": "teUNwO"
       }
     ]
   }

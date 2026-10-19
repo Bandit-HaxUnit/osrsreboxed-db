@@ -166,8 +166,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "AyTEHW"
+                        "id": "AyTEHW",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-66c608082d1d12f9"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -295,6 +300,21 @@
         "type": "jump",
         "reference": "initial",
         "id": "YmvswA"
+      }
+    ]
+  },
+  "branches": {
+    "jump-66c608082d1d12f9": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Toodles."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "S34aRP"
       }
     ]
   }

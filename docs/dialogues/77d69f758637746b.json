@@ -141,8 +141,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "VUnTQF"
+                            "id": "VUnTQF",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-522a5e4f447a7e5c"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -184,8 +189,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "bfO5xm"
+                            "id": "bfO5xm",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-522a5e4f447a7e5c"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -227,8 +237,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "lQgHn7"
+                            "id": "lQgHn7",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-522a5e4f447a7e5c"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -270,8 +285,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "lPCQWR"
+                            "id": "lPCQWR",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-522a5e4f447a7e5c"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -314,6 +334,19 @@
       },
       {
         "npc": "I don't like war! I don't believe that violence is ever justified, that's why I became a healer."
+      }
+    ]
+  },
+  "branches": {
+    "jump-522a5e4f447a7e5c": [
+      {
+        "player": "On second thoughts, no thanks."
+      },
+      {
+        "npc": "Ok, suit yourself."
+      },
+      {
+        "type": "end"
       }
     ]
   }

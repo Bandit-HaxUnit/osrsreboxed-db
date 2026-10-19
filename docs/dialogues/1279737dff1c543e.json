@@ -64,8 +64,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YuQ9hP"
+                "id": "YuQ9hP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9c2337306dff4027"
+                  }
+                ]
               }
             ]
           },
@@ -74,8 +79,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "z0Ybsa"
+                "id": "z0Ybsa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-739d816c8b477e93"
+                  }
+                ]
               }
             ]
           },
@@ -103,6 +113,29 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-9c2337306dff4027": [
+      {
+        "player": "Could you show me what you have for sale?"
+      },
+      {
+        "type": "action",
+        "text": "Miscellanian Food Shop opens.",
+        "action": "open_shop",
+        "action_source": "text",
+        "target": "Miscellanian Food Shop",
+        "id": "aQ_OCD"
+      }
+    ],
+    "jump-739d816c8b477e93": [
+      {
+        "player": "No thank you, I don't need food just now."
+      },
+      {
+        "type": "end"
       }
     ]
   }

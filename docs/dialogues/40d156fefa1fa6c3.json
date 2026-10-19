@@ -250,8 +250,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "7OfO7U"
+                "id": "7OfO7U",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3c9f6d59c7bc140e"
+                  }
+                ]
               }
             ]
           },
@@ -260,8 +265,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "zWHJjZ"
+                "id": "zWHJjZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-da987bb74c1461d1"
+                  }
+                ]
               }
             ]
           },
@@ -270,8 +280,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "77c7oJ"
+                "id": "77c7oJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-abd90eada6ec17ae"
+                  }
+                ]
               }
             ]
           }
@@ -549,6 +564,73 @@
     ]
   },
   "branches": {
+    "jump-3c9f6d59c7bc140e": [
+      {
+        "player": "What is Glory?"
+      },
+      {
+        "npc": "It's the measure of your progress inside the Colosseum."
+      },
+      {
+        "npc": "Speak to Gloria over there if you want to know the details."
+      },
+      {
+        "player": "Thanks."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "dXMFh0"
+      }
+    ],
+    "jump-da987bb74c1461d1": [
+      {
+        "player": "What do you do around here?"
+      },
+      {
+        "npc": "I'm Minimus. It's not my real name of course, but it seems to have stuck. I started out competing here as a gladiator when I was a young'n. After that I became one of the lanistas."
+      },
+      {
+        "player": "Lanistas?"
+      },
+      {
+        "npc": "The ones responsible for overseeing the selecting and training of the gladiators."
+      },
+      {
+        "npc": "Eventually, the kingdom gave me the role of Colosseum Master. I still make sure to fit some fighting in, but now I have the honor of managing the fights themselves."
+      },
+      {
+        "player": "So are you not training like the rest of the gladiators?"
+      },
+      {
+        "npc": "I have no need! I'm already one of the greatest fighters to grace this arena."
+      },
+      {
+        "player": "Are you at a disadvantage because of your height?"
+      },
+      {
+        "npc": "No! How dare you even suggest that! Those spindly human bodies are unfit to go toe to toe with a fine dwarf like myself!"
+      },
+      {
+        "npc": "Now, did you need anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "ZYPFEq"
+      }
+    ],
+    "jump-abd90eada6ec17ae": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "Farewell, Rookie."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "jpQGkA": [
       {
         "npc": "Very well, Grand Champion. Keep your trophy."

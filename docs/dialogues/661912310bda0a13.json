@@ -613,8 +613,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "aXSqbA"
+                "id": "aXSqbA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c47b1882855203b9"
+                  }
+                ]
               }
             ]
           },
@@ -623,8 +628,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3Lgn_W"
+                "id": "3Lgn_W",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-65b4259b84ed6330"
+                  }
+                ]
               }
             ]
           }
@@ -643,8 +653,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TCC5On"
+                "id": "TCC5On",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9f548cb69046c458"
+                  }
+                ]
               }
             ]
           },
@@ -663,8 +678,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PyQsto"
+                "id": "PyQsto",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c47b1882855203b9"
+                  }
+                ]
               }
             ]
           },
@@ -673,8 +693,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ymWtG0"
+                "id": "ymWtG0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-00b24c00ee5d46a2"
+                  }
+                ]
               }
             ]
           },
@@ -683,8 +708,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BmM5v3"
+                "id": "BmM5v3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-65b4259b84ed6330"
+                  }
+                ]
               }
             ]
           }
@@ -964,6 +994,335 @@
     "using-teleport-option-in-permanent-deadman-worlds": [
       {
         "npc": "I cannot teleport you in this version of Deadman."
+      }
+    ]
+  },
+  "branches": {
+    "jump-c47b1882855203b9": [
+      {
+        "type": "choice",
+        "prompt": "Would you like to adjust earning combat experience or hitpoints experience?",
+        "options": [
+          {
+            "text": "Combat experience.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has combat experience enabled:",
+                "steps": [
+                  {
+                    "npc": "Yes, I can help with that."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Disable combat experience gains?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "You will no longer gain combat experience. Talk to me again if you change your mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "giNi0j"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has combat experience disabled:",
+                "steps": [
+                  {
+                    "npc": "I've already stopped you from gaining combat experience, do you want to gain it again?"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Enable combat experience gains?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "You will now gain combat experience again. Talk to me again if you change your mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "fh-rTA"
+              }
+            ]
+          },
+          {
+            "text": "Hitpoints experience.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has hitpoints experience enabled:",
+                "steps": [
+                  {
+                    "npc": "Yes, I can help with that."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Disable hitpoints experience gains?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "You will no longer gain hitpoints experience. Talk to me again if you change your mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "h5pphC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has hitpoints experience disabled:",
+                "steps": [
+                  {
+                    "npc": "I've already stopped you from gaining hitpoints experience, do you want to gain it again?"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Enable hitpoints experience gains?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "You will now gain hitpoints experience again. Talk to me again if you change your mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "gDKU-N"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-65b4259b84ed6330": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9f548cb69046c458": [
+      {
+        "player": "Could you grant me access to Deadman: Annihilation?"
+      },
+      {
+        "npc": "Well, yes, but there's some information you're going to want first."
+      },
+      {
+        "type": "message",
+        "text": "Deadman: Annihilation is a temporary event. All progress made will be transferred to Permanent Deadman Mode upon its conclusion.",
+        "id": "3g1N8f"
+      },
+      {
+        "type": "message",
+        "text": "To use this account in Deadman: Annihilation, you will need to forfeit ALL progress associated with it in Permanent Deadman.",
+        "id": "7YkafR"
+      },
+      {
+        "type": "message",
+        "text": "This includes all of your stats and items and this process is irreversible. Your main save will be unaffected.",
+        "id": "NGgUQD"
+      },
+      {
+        "type": "message",
+        "text": "Afterwards, you will be able to play on Deadman: Annihilation worlds until their conclusion on the 21st of February, at which point your progress will be converted for use in Permanent Deadman.",
+        "id": "2dFMov"
+      },
+      {
+        "npc": "Now, if you wouldn't mind signing a few waivers..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "To do so, I accept the fact that I will lose all my stats and items.",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "prompt": "I know that I will be unable to get those stats and items back.",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "type": "choice",
+                                "prompt": "I accept the fact that I will lose any HiScores I have set.",
+                                "options": [
+                                  {
+                                    "text": "Yes.",
+                                    "steps": [
+                                      {
+                                        "type": "choice",
+                                        "prompt": "I am fine with losing access to Permanent Deadman worlds for now.",
+                                        "options": [
+                                          {
+                                            "text": "Yes.",
+                                            "steps": [
+                                              {
+                                                "npc": "Very well. To complete your conversion, you will need to switch to a Deadman: Annihilation world."
+                                              },
+                                              {
+                                                "npc": "If you leave Lumbridge, speak to me again, or log back in to a Permanent Deadman world, your account conversion will be cancelled."
+                                              },
+                                              {
+                                                "npc": "And yes, I'm making you choose a world yourself. This is a big decision, you know!"
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "No.",
+                                            "steps": [
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No.",
+                                    "steps": [
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-00b24c00ee5d46a2": [
+      {
+        "type": "condition",
+        "text": "If the store is open:",
+        "steps": [
+          {
+            "player": "Can I purchase some Deadman rewards?"
+          },
+          {
+            "npc": "Certainly! I have a number of unique rewards which you might be interested in."
+          },
+          {
+            "type": "action",
+            "action": "open_shop",
+            "target": "Deadman Reward Store",
+            "id": "yjDBYY"
+          }
+        ],
+        "id": "6wULmB"
+      },
+      {
+        "type": "condition",
+        "text": "If the store is closed:",
+        "steps": [
+          {
+            "npc": "Unfortunately the store is not currently available."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "k6lLJD"
       }
     ]
   }

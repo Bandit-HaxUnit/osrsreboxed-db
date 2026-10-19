@@ -280,8 +280,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "2b8eI4"
+                        "id": "2b8eI4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d6386fd05e10dae4"
+                          }
+                        ]
                       }
                     ],
                     "id": "ieEQmS"
@@ -295,8 +300,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "vlbytq"
+                        "id": "vlbytq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b597f0610b182cee"
+                          }
+                        ]
                       }
                     ],
                     "id": "gjdThT"
@@ -788,8 +798,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "xzi5WJ"
+                        "id": "xzi5WJ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-07d45fcb50cb3121"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -802,6 +817,72 @@
     ]
   },
   "branches": {
+    "jump-d6386fd05e10dae4": [
+      {
+        "npc": "You will need a talisman for the rune you would like to create. You can right-click on it and select the Locate option. This will tell you the rough location of the altar."
+      },
+      {
+        "npc": "When you find the ruined altar, use the talisman on it to be transported to a temple where you can craft your runes."
+      },
+      {
+        "npc": "Clicking on the temple's altar will imbue your rune essence with the altar's magical property."
+      },
+      {
+        "npc": "If you want to save yourself an inventory space, you could always try binding the talisman to a tiara."
+      },
+      {
+        "npc": "To make one, take a tiara and talisman to the ruins and use the tiara on the temple altar. This will bind the talisman to your tiara."
+      },
+      {
+        "npc": "Is there anything else you would like to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "io6njY"
+      }
+    ],
+    "jump-b597f0610b182cee": [
+      {
+        "npc": "Check the skill guide to see which runes you can craft."
+      },
+      {
+        "type": "action",
+        "text": "The skills panel is opened.",
+        "id": "pD59M8"
+      },
+      {
+        "npc": "You will need a talisman for the rune you would like to create. You can right-click on it and select the Locate option. This will tell you the rough location of the altar."
+      },
+      {
+        "npc": "When you find the ruined altar, use the talisman on it to be transported to a temple where you can craft your runes."
+      },
+      {
+        "npc": "Clicking on the temple's altar will imbue your rune essence with the altar's magical property."
+      },
+      {
+        "npc": "If you want to save yourself an inventory space, you could always try binding the talisman to a tiara."
+      },
+      {
+        "npc": "To make one, take a tiara and talisman to the ruins and use the tiara on the temple altar. This will bind the talisman to your tiara."
+      },
+      {
+        "npc": "Is there anything else you would like to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "iXmQK7"
+      }
+    ],
+    "jump-07d45fcb50cb3121": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "1BEVw9": [
       {
         "npc": "If you had enough space in your inventory I'd give you some air runes, come back when you do."

@@ -26,8 +26,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "uzCCoY"
+                "id": "uzCCoY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-077ab34f3424a94b"
+                  }
+                ]
               }
             ]
           },
@@ -231,10 +236,143 @@
         "type": "choice",
         "options": [
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "This is the Library Historical Archive. Here you'll find historical documents and texts from all eras of Great Kourend's history, dating all the way back to the first decade."
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "Are you looking for something in particular?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Which subject would you like to hear about?",
+                "options": [
+                  {
+                    "text": "What information do you have on Xeric?",
+                    "steps": [
+                      {
+                        "player": "What information do you have on Xeric?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Ah, Xeric. Our most infamous ruler... We do have extensive records regarding Xeric. You can examine some of the texts here or speak to Ektheme, our Xerician expert."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Is there something else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "jpr-Q3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What can you tell me about the Wintertodt?",
+                    "steps": [
+                      {
+                        "player": "What can you tell me about the Wintertodt?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "The Wintertodt, or the Winter beast as it was often known at the time, terrorised northern Kourend for five decades."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Logios is currently studying the Wintertodt Invasion, and we have various texts from that era."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Is there something else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "4J10IO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What can you tell me about Mount Quidamortem?",
+                    "steps": [
+                      {
+                        "player": "What can you tell me about Mount Quidamortem?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Our first records of the mountain date back to the 36th decade where a Shayzien patrol discovered the mountain during a survey of the Kebos Lowlands."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "King Shayzien VII was keen on conquering more land for Kourend and demanded his people explore suitable territories."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "The mountain became known as Mount Quidamortem after it was realised venturing towards the summit resulted in certain death."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Gnosi is our expert on Mount Quidamortem, but I'm afraid she's currently on an expedition to the temple near the summit of the mountain. However, we do have some texts available detailing the great expedition."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Is there something else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "n6nKUc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "None",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "My name is Istoria. I'm the chief historian and curator of the Library Historical Archive."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "S7pKqr"
+              }
+            ]
           },
           {
             "text": "I have a question about King Shayzien VII.",
@@ -292,10 +430,48 @@
             ]
           },
           {
-            "text": "How do I get out of here?"
+            "text": "How do I get out of here?",
+            "steps": [
+              {
+                "player": "How do I get out of here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "I can teleport you back to the Grand Library. Would you like to leave now?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Leave the Library Historical Archive?",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": []
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "oQAVD0"
+              }
+            ]
           }
         ]
       }
@@ -1081,6 +1257,153 @@
       {
         "type": "unavailable",
         "id": "EQxP3f"
+      }
+    ]
+  },
+  "branches": {
+    "jump-077ab34f3424a94b": [
+      {
+        "type": "condition",
+        "text": "If the player does not have the requirements to start the quest:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "I'm fine thank you. Thanks for asking though."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "wEQnk0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the requirements to start the quest:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "Well let me think..."
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "You know, there is something I wouldn't mind some help with."
+          },
+          {
+            "player": "Great! What is it?"
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "When I was a boy, my grandfather would tell me the story of my ancestor, Magnus Rimor. He was a great explorer who lived a thousand years ago."
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "One day, Magnus was approached by none other than King Shayzien VII himself. The King asked him to lead an expedition to explore Mount Quidamortem in the Kebos Lowlands."
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "Alas, according to records, the party never returned and were declared to have perished in the field."
+          },
+          {
+            "player": "That's very interesting and all but why are you telling me this?"
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "A few days ago, I received a parcel. There was no name on it and I never saw the person that delivered it. Inside, I found something truly fascinating."
+          },
+          {
+            "player": "What was it?"
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "There was an old journal, along with a note. The note claims that the journal was stolen from the Tower of Magic during the uprising against Xeric."
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "But that's not all. Apparently the journal was written by King Shayzien VII himself!"
+          },
+          {
+            "player": "Again, really great and all but I still don't see where I come into this."
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "Most of the journal is illegible but I've still managed to find a few readable extracts. Listen to this one..."
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "'Quidamortem's creatures are compatible. The experimentation is proving successful and we will soon be ready to mass produce.'"
+          },
+          {
+            "player": "So?"
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "That extract had a date in the 37th decade but the expedition was declared a failure in the 36th decade! If the expedition truly was a failure, why was the King writing about Quidamortem years later?"
+          },
+          {
+            "player": "Maybe there was another expedition."
+          },
+          {
+            "type": "line",
+            "speaker": "Phileas Rimor",
+            "text": "Maybe. Or maybe someone wasn't telling the truth about that expedition. Regardless, I must find out what really happened. Can you help me?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Start the Tale of the Righteous quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "What do you need?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Phileas Rimor",
+                    "text": "We need to find out more about that expedition. The Library Historical Archive should have records on it. Talk to Archeio in the Arceuus Library. He can take you there."
+                  },
+                  {
+                    "player": "That doesn't sound too hard. Leave it with me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "hook": "quest:tale-of-the-righteous:start",
+                "quest": "Tale of the Righteous"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "I've got other things to do."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Phileas Rimor",
+                    "text": "Oh, okay then."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "JlgSJ-"
       }
     ]
   }

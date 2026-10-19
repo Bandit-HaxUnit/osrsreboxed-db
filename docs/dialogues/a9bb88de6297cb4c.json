@@ -81,8 +81,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "utZOvp"
+                    "id": "utZOvp",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-47a4af120951eaab"
+                      }
+                    ]
                   }
                 ]
               },
@@ -91,8 +96,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "W1tjgK"
+                    "id": "W1tjgK",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b82ef4f842bace75"
+                      }
+                    ]
                   }
                 ]
               }
@@ -143,6 +153,35 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-47a4af120951eaab": [
+      {
+        "player": "Yes, I can spare a little money."
+      },
+      {
+        "type": "action",
+        "text": "Player gives the tramp 1 coin.",
+        "id": "YcvhmA"
+      },
+      {
+        "npc": "Thanks, mate!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b82ef4f842bace75": [
+      {
+        "player": "Sorry, you'll have to earn it yourself, just like I did."
+      },
+      {
+        "npc": "Please yourself."
+      },
+      {
+        "type": "end"
       }
     ]
   }

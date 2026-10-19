@@ -154,8 +154,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "tPf01I"
+                        "id": "tPf01I",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-19fac3edf2aa8403"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -164,8 +169,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "5PQdvX"
+                        "id": "5PQdvX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0d2edde087c865ea"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -815,6 +825,165 @@
     ]
   },
   "branches": {
+    "jump-19fac3edf2aa8403": [
+      {
+        "player": "Can I go inside?"
+      },
+      {
+        "type": "condition",
+        "text": "If Petrified Pete doesn't have any of the player's items:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player doesn't have access to the Volcanic Mine:",
+            "steps": [
+              {
+                "npc": "There are some crazy things down there, I don't think you're capable."
+              },
+              {
+                "type": "message",
+                "text": "You need at least 50 Mining to enter the Volcanic Mine.",
+                "id": "2FgAd4"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "dPc25F"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has access to the Volcanic Mine:",
+            "steps": [
+              {
+                "npc": "Well luckily for you, or rather, unlucky for you, I'll let you go inside as you've definitely got the mining skills."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not paid the entry fee:",
+                "steps": [
+                  {
+                    "npc": "I'll have to charge you though - upkeep of this place ain't cheap and cheerful. I'll need 30 Numulites for one visit or 3,000 for unlimited trips."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have enough numulite:",
+                    "steps": [
+                      {
+                        "player": "I don't have 30 Numulites with me unfortunately."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "c8s-ri"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has enough numulite:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Pay 30 Numulites for one visit.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You hand over 30 Numulites to Pete.",
+                                "id": "TI4Dib"
+                              },
+                              {
+                                "npc": "Thanks [player name]. That will grant you access to the mine. You're a crazy one."
+                              },
+                              {
+                                "type": "message",
+                                "text": "You can now enter the Volcanic Mine. Should you leave, Pete would expect payment again.",
+                                "id": "3i2OCS"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Pay 3,000 Numulites for permanent access.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You hand over 3,000 Numulites to Pete.",
+                                "id": "oO0ZBL"
+                              },
+                              {
+                                "npc": "Thanks [player name]. That will grant you permanent access to the mine. You're a crazy one."
+                              },
+                              {
+                                "type": "message",
+                                "text": "You can now enter the Volcanic Mine. Pete will not ask you for payment again.",
+                                "id": "7cHwE5"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Keep your Numulites.",
+                            "steps": [
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "V_xe1k"
+                  }
+                ],
+                "id": "RvbjeF"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has paid the entry fee:",
+                "steps": [
+                  {
+                    "npc": "You've already paid the entrance fee too, so you can head right on in."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JncXSY"
+              }
+            ],
+            "id": "wealBT"
+          }
+        ],
+        "id": "y2Zv6L"
+      },
+      {
+        "type": "condition",
+        "text": "If Petrified Pete has any of the player's items:",
+        "steps": [
+          {
+            "npc": "I've got some of your stuff that you left here earlier. You'd better deal with it before trying to go into the cavern again."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Petrified Pete's Item Retrieval Service",
+            "id": "UnH9dR"
+          }
+        ],
+        "id": "oysIYl"
+      }
+    ],
+    "jump-0d2edde087c865ea": [
+      {
+        "player": "I'll leave you be."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "4Rv2KA": [
       {
         "npc": "Sorry, I've got nothing for you. I'm not sure what you'd have been doing in there anyway, since I wouldn't expect to let you in."

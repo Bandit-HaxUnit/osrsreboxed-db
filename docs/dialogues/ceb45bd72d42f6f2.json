@@ -148,8 +148,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "iw3FTf"
+                "id": "iw3FTf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4444bbfb838c97bf"
+                  }
+                ]
               }
             ]
           },
@@ -158,8 +163,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nDZhld"
+                "id": "nDZhld",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e9aca3e9b058924b"
+                  }
+                ]
               }
             ]
           },
@@ -168,8 +178,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "odJ5NN"
+                "id": "odJ5NN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-43cb4b2c1ece537c"
+                  }
+                ]
               }
             ]
           }
@@ -277,6 +292,50 @@
             "id": "Dqcd81"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-4444bbfb838c97bf": [
+      {
+        "player": "Why are you here?"
+      },
+      {
+        "npc": "Ever heard of criminals returning to the scene of the crime? Thats why."
+      },
+      {
+        "player": "I'm not sure this one is going to return any time soon."
+      },
+      {
+        "npc": "Well never say never, [player name]. Now be on your way."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e9aca3e9b058924b": [
+      {
+        "player": "I need another ring."
+      },
+      {
+        "npc": "Very well, but it will cost you..."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Ring of shadows shop",
+        "id": "zNvs5S"
+      }
+    ],
+    "jump-43cb4b2c1ece537c": [
+      {
+        "player": "I'd best get going."
+      },
+      {
+        "npc": "Until next time, [player name]."
+      },
+      {
+        "type": "end"
       }
     ]
   }

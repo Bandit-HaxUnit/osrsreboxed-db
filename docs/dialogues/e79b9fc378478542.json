@@ -67,8 +67,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "KEwsmu"
+                                "id": "KEwsmu",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-77f7f648b3957f9a"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -92,8 +97,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "HWlRzp"
+                        "id": "HWlRzp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f0efcd504c225506"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -102,8 +112,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "s5xw7n"
+                        "id": "s5xw7n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-dc3d5520eb92eff0"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -141,8 +156,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "7iUxDE"
+                        "id": "7iUxDE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-28de3985cc6df343"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -151,8 +171,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "76wNTb"
+                        "id": "76wNTb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-dc3d5520eb92eff0"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -316,6 +341,289 @@
     "swinging-the-bullroarer-near-the-forester": [
       {
         "npc": "You'll have better luck getting someone's attention if you use it in the jungle."
+      }
+    ]
+  },
+  "branches": {
+    "jump-77f7f648b3957f9a": [
+      {
+        "player": "Okay, thanks."
+      },
+      {
+        "npc": "You're welcome! See you around..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f0efcd504c225506": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "I'm a forester, and I specialise in exotic woods. I haven't gone into the Kharazi myself, but I've found some interesting tree specimens out here."
+      },
+      {
+        "npc": "If you do find a safe path into the jungle, do come and let me know. I'd love to have a nose around in there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I get into the Kharazi Jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "7iUxDE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-28de3985cc6df343"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you seen any Kharazi tribespeople in the jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "76wNTb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc3d5520eb92eff0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "09uOtu"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-dc3d5520eb92eff0": [
+      {
+        "player": "Have you seen any Kharazi tribespeople in the jungle?"
+      },
+      {
+        "npc": "Oh yes, I've met loads of them! Lovely lot. I haven't seen many about recently, though."
+      },
+      {
+        "npc": "If you're looking to say hello, you'll need a Bullroarer. If you swing it above your head it makes a loud noise - that should attract someone's attention."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have a Bullroarer I could borrow?",
+            "steps": [
+              {
+                "player": "Do you have a Bullroarer I could borrow?"
+              },
+              {
+                "npc": "I wish I did! But I just have the one, and I've grown fond of it. Besides, I might need it if I ever get lost in the jungle."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Will you trade something for it?",
+                    "steps": [
+                      {
+                        "player": "Will you trade something for it?"
+                      },
+                      {
+                        "npc": "Hmm, maybe. Tell you what, you show me something interesting and I'll see if it's worth my Bullroarer. How about that?"
+                      },
+                      {
+                        "player": "It's a deal!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "qgLRAq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I get into the Kharazi jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "oeZumO"
+              }
+            ]
+          },
+          {
+            "text": "Ok thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              },
+              {
+                "npc": "You're welcome! See you around..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-28de3985cc6df343": [
+      {
+        "player": "How do I get into the Kharazi Jungle?"
+      },
+      {
+        "npc": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+      },
+      {
+        "npc": "Apparently he was on a mission to map the area. How foolish is that?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Actually, I plan to map the jungle myself.",
+            "steps": [
+              {
+                "player": "Actually, I plan to map the jungle myself."
+              },
+              {
+                "npc": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+              },
+              {
+                "npc": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+              },
+              {
+                "npc": "Best of luck though... Guthix knows, you'll need it."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have any other tips about the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "player": "Do you have any other tips about the Kharazi Jungle?"
+                      },
+                      {
+                        "npc": "Not really. Just be careful - there's a lot of weird stuff going on in there lately."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Bsw4pl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "KEwsmu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-77f7f648b3957f9a"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Are you calling me foolish?",
+            "steps": [
+              {
+                "player": "Are you calling me foolish?"
+              },
+              {
+                "npc": "Er... maybe? I'll just be on my way..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HWlRzp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0efcd504c225506"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you seen any Kharazi tribespeople in the jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "s5xw7n",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc3d5520eb92eff0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "HFNoRd"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

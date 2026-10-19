@@ -52,8 +52,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "EzuUu2"
+                                "id": "EzuUu2",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2a6d81d725c38731"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -62,8 +67,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "W-zEZH"
+                                "id": "W-zEZH",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c62ebe3a22af479a"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -72,8 +82,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "Uv8Z7P"
+                                "id": "Uv8Z7P",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-1cf6eb59aeb8ff72"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -82,8 +97,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "hksNJ_"
+                                "id": "hksNJ_",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-130ba617e539f7e8"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -123,8 +143,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "L07eFj"
+                "id": "L07eFj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cc02a0e76678a1f4"
+                  }
+                ]
               }
             ]
           },
@@ -145,8 +170,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pgR14h"
+                "id": "pgR14h",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb20ef6cce38b849"
+                  }
+                ]
               }
             ]
           },
@@ -164,8 +194,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bjsZcr"
+                "id": "bjsZcr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6f3fc4fa5834e466"
+                  }
+                ]
               }
             ]
           }
@@ -243,8 +278,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "fhHgHr"
+                        "id": "fhHgHr",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-52eee965ed6009f9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -385,6 +425,374 @@
       },
       {
         "player": "No thanks, I think I have a fair idea of what is going on in the town now."
+      }
+    ]
+  },
+  "branches": {
+    "jump-2a6d81d725c38731": [
+      {
+        "player": "Tell me about the Menaphites."
+      },
+      {
+        "npc": "They're a bad bunch, always starting fights down in the Asp and Snake. Word on the street is that they're led by some deranged priest. Nobody's ever seen them though - they do all their deals through Ali 'the"
+      },
+      {
+        "npc": "Operator'. I reckon they're up to something, but they're such a close knit group that little ever slips out."
+      },
+      {
+        "npc": "Do you need any other information?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes tell me about...",
+            "steps": [
+              {
+                "player": "Yes, tell me about..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The Menaphites",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "EzuUu2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2a6d81d725c38731"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The bandits",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "W-zEZH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c62ebe3a22af479a"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The Mayor",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Uv8Z7P",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1cf6eb59aeb8ff72"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The town",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "hksNJ_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-130ba617e539f7e8"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Come back if you need any info about anything in the town."
+              },
+              {
+                "player": "I will do thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c62ebe3a22af479a": [
+      {
+        "player": "Tell me about the bandits."
+      },
+      {
+        "npc": "There's not much to say, really. They're just a group of local thugs led by the biggest and strongest amongst them. If they have any other plans, I don't know about it."
+      },
+      {
+        "npc": "Do you need any other information?"
+      },
+      {
+        "type": "jump",
+        "id": "L07eFj",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-cc02a0e76678a1f4"
+          }
+        ]
+      }
+    ],
+    "jump-1cf6eb59aeb8ff72": [
+      {
+        "player": "Tell me about the Mayor."
+      },
+      {
+        "npc": "The mayor is a spineless coward! He never stands up to anybody. That's why the Menaphites are so strong now! He let them stay, and then they started causing trouble. When he realised his mistake, he hired a band"
+      },
+      {
+        "npc": "of local thugs to drive them out, but they saw how weak he was and turned on us too. Now we've got bandits and Menaphites, and the mayor isn't doing anything!"
+      },
+      {
+        "npc": "Do you need any other information?"
+      },
+      {
+        "type": "jump",
+        "id": "pgR14h",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-fb20ef6cce38b849"
+          }
+        ]
+      }
+    ],
+    "jump-130ba617e539f7e8": [
+      {
+        "player": "Tell me about the town."
+      },
+      {
+        "npc": "It's boring! We're not as big as Menaphos or as powerful as Al Kharid, and we've got a really nasty crime problem. It's no wonder so many grown-ups have left."
+      },
+      {
+        "npc": "Do you need any other information?"
+      },
+      {
+        "type": "jump",
+        "id": "bjsZcr",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-6f3fc4fa5834e466"
+          }
+        ]
+      }
+    ],
+    "jump-cc02a0e76678a1f4": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes tell me about...",
+            "steps": [
+              {
+                "player": "Yes, tell me about..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The Menaphites",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "EzuUu2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2a6d81d725c38731"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The bandits",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "W-zEZH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c62ebe3a22af479a"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The Mayor",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Uv8Z7P",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1cf6eb59aeb8ff72"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The town",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "hksNJ_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-130ba617e539f7e8"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Come back if you need any info about anything in the town."
+              },
+              {
+                "player": "I will do thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-fb20ef6cce38b849": [
+      {
+        "type": "jump",
+        "id": "L07eFj",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-cc02a0e76678a1f4"
+          }
+        ]
+      }
+    ],
+    "jump-6f3fc4fa5834e466": [
+      {
+        "type": "jump",
+        "id": "pgR14h",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-fb20ef6cce38b849"
+          }
+        ]
+      }
+    ],
+    "jump-52eee965ed6009f9": [
+      {
+        "player": "Yes, tell me about..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "The Menaphites",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "EzuUu2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2a6d81d725c38731"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The bandits",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "W-zEZH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c62ebe3a22af479a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The Mayor",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Uv8Z7P",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1cf6eb59aeb8ff72"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The town",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "hksNJ_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-130ba617e539f7e8"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

@@ -318,9 +318,14 @@
         "player": "Right, you told me the only goutweed anywhere in the world was in your storage room."
       },
       {
-        "type": "action",
-        "text": "Continues above from \"Yah. But Burntmeat is hearing where goutweed is growing again.\"",
-        "id": "y5uhyy"
+        "type": "jump",
+        "id": "y5uhyy",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-4b01e88dd5b027a9"
+          }
+        ]
       }
     ],
     "starting-off-talking-to-burntmeat-after-agreeing-to-help-my-arm": [
@@ -820,9 +825,14 @@
         "text": "You done good fetching dat goutweedy lump. My Arm very impressed."
       },
       {
-        "type": "action",
-        "text": "Continues from \"So what are you going to do now?\" above.",
-        "id": "HBqS69"
+        "type": "jump",
+        "id": "HBqS69",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-3aa9ffb49df2ee24"
+          }
+        ]
       }
     ],
     "starting-off-talking-to-burntmeat-after-my-arm-eats-the-goutweedy-lump": [
@@ -938,9 +948,14 @@
     ],
     "fertiliser-talking-to-my-arm-after-losing-the-manual": [
       {
-        "type": "action",
-        "text": "Continues from \"Dat farmer I ate had a book with him.\"",
-        "id": "cwQVfc"
+        "type": "jump",
+        "id": "cwQVfc",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-3d770e00325e4180"
+          }
+        ]
       }
     ],
     "fertiliser-talking-to-my-arm-again-after-reading-the-manual": [
@@ -1459,7 +1474,29 @@
             ]
           },
           {
-            "text": "I'd like to go to Rimmington."
+            "text": "I'd like to go to Rimmington.",
+            "steps": [
+              {
+                "player": "I'd like to go to Rimmington."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 30 coins:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Captain Barnaby",
+                    "text": "Come back when you've got 30 coins for me."
+                  }
+                ],
+                "id": "YAFFK-"
+              },
+              {
+                "type": "message",
+                "text": "You board the ship and sail to Rimmington.",
+                "id": "pMlwta"
+              }
+            ]
           },
           {
             "text": "I think I'll come back another time.",
@@ -2122,7 +2159,27 @@
             ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Murcaily",
+                "text": "Well, I tend the hardwood grove nearby, you can enter if you like and harvest some of the very fine hardwood that grows within."
+              },
+              {
+                "type": "line",
+                "speaker": "Murcaily",
+                "text": "Apart from that I'm a simple Tai Bwo Wannai villager...I like to try and find out what's going on in the mainland and the rest of the known world."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "IHoMsx"
+              }
+            ]
           },
           {
             "text": "Is there anything interesting to do around here?"
@@ -2162,9 +2219,14 @@
             "text": "Yes, Bwana, I remember. We owe you big-time for the work you done in Tai Bwo Wannai Village, so I can let you have a hardy gout tuber for your friend to grow on his mountain."
           },
           {
-            "type": "action",
-            "text": "Continues from \"So this hardy tuber will grow like any other herb seed?\" above.",
-            "id": "3XvTqR"
+            "type": "jump",
+            "id": "3XvTqR",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-89ae0f57f3d9d3d8"
+              }
+            ]
           }
         ],
         "id": "RdAYao"
@@ -2739,6 +2801,773 @@
       {
         "type": "unavailable",
         "id": "2F4as_"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4b01e88dd5b027a9": [
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Yah. But Burntmeat is hearing where goutweed is growing again."
+      },
+      {
+        "player": "Oh? How did you hear that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Well, I was cooking dis adventurer..."
+      },
+      {
+        "type": "action",
+        "text": "Cutscene begins.",
+        "id": "ip-xOh"
+      },
+      {
+        "type": "line",
+        "speaker": "Adventurer",
+        "text": "You like my armour? If you let me go, I'll let you keep it!"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Nah, silly red metal just hurt troll teeth."
+      },
+      {
+        "type": "action",
+        "text": "Burntmeat knocks aside the dragon platelegs and uncovers goutweed.",
+        "id": "lPUzrg"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Huh? What dis? You got goutweed here!"
+      },
+      {
+        "type": "line",
+        "speaker": "Adventurer",
+        "text": "You can have that too! Just let me go!"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Only place find goutweed is my storeroom. You bin stealing?"
+      },
+      {
+        "type": "line",
+        "speaker": "Adventurer",
+        "text": "No! I-I- I grew that myself!"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "What say? Goutweed not grow now. Trolls pick it all."
+      },
+      {
+        "type": "line",
+        "speaker": "Adventurer",
+        "text": "No, no; I grew it."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Humans grow goutweed? You lying to Burntmeat!"
+      },
+      {
+        "type": "line",
+        "speaker": "Adventurer",
+        "text": "You can get the gout tuber from Tai Bwo Wannai Village. Go there and ask Murcaily. Then you plant it in a farming patch."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Mmmm. Burntmeat think that sound good. But Burntmeat cook you first."
+      },
+      {
+        "type": "line",
+        "speaker": "Adventurer",
+        "text": "Oh b..."
+      },
+      {
+        "type": "action",
+        "text": "Cutscene ends.",
+        "id": "aB2JDl"
+      },
+      {
+        "player": "You killed that poor chap! What had he ever done to you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Well, he give me mighty sore tummy later. I think I forget to wash his feet."
+      },
+      {
+        "player": "Anyway, why did you tell me about all that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Ah! Der man I cooked, he say humans growing goutweed again. Now, if humans growing goutweed, maybe trolls can grow goutweed too, yah?"
+      },
+      {
+        "player": "You want to become a farmer?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "No, not me. Burntmeat stick to what he best at doing. But I got me an assistant wanting to learn farming. He called My Arm."
+      },
+      {
+        "player": "Your assistant's called WHAT?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "He called My Arm."
+      },
+      {
+        "player": "My...?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "My Arm."
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Yep, My Arm."
+      },
+      {
+        "player": "But why is he called..."
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "It a perfectly good troll name."
+      },
+      {
+        "player": "Alright, enough! What do you want me to do for this Arm person?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "You gonna help My Arm grow goutweed."
+      },
+      {
+        "player": "Look, you're a vicious monster who eats innocent people! Why should I ever help you again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "See, [player name], if My Arm learns to grow goutweed, I get as much goutweed as I ever want. If dat happens, I promise you I never cook another human in my life."
+      },
+      {
+        "player": "Never?"
+      },
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "Never. Burntmeat promises. Goat taste just as good as human if you add enough goutweed. Now you go talk to My Arm; he tell you what to do."
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Can I have all that dragon stuff as my reward?",
+            "steps": [
+              {
+                "player": "Can I have all that dragon stuff as my reward?"
+              },
+              {
+                "type": "line",
+                "speaker": "Burntmeat",
+                "text": "What dragon stuff you talking 'bout?"
+              },
+              {
+                "player": "When you were telling me about the man you cooked who talked about goutweed, there was loads of valuable stuff on the floor. Can I have it? PLEASE!"
+              },
+              {
+                "type": "line",
+                "speaker": "Burntmeat",
+                "text": "Sorry, Player - Burntmeat chucked dat stuff away. It no good to eat. Red metal clothes hurt troll teeth, and big whip thing get stuck in throat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Swan Song:",
+                "steps": [
+                  {
+                    "player": "Gah! You're worse than the old man who wouldn't give me his hat!"
+                  }
+                ],
+                "id": "Q37xrs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Swan Song:",
+                "steps": [
+                  {
+                    "player": "..."
+                  }
+                ],
+                "id": "AL_PFX"
+              },
+              {
+                "type": "line",
+                "speaker": "Burntmeat",
+                "text": "You go help My Arm now."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Alright, I'll lend him a hand.",
+            "steps": [
+              {
+                "player": "Alright, I'll lend him a hand. But you'd better keep that promise about not cooking any more people!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3aa9ffb49df2ee24": [
+      {
+        "player": "So what are you going to do now?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Well, now My Arm know dese goutweedy lump things exist, you help me grow one, yah?"
+      },
+      {
+        "player": "Alright. Where do you need me to start?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "My Arm done tried farming before. I stick all kindsa things in da ground, but nothing ever grow, not even when I water 'em."
+      },
+      {
+        "player": "What did you plant?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "I bin planting everythin', [player name]. Sticks, rocks, dead goats... you name it."
+      },
+      {
+        "player": "And none of those things grew?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Nope, not even a smidgen. My Arm dug 'em up again to see."
+      },
+      {
+        "player": "So did you try getting help from someone who knows about farming?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Yah, My Arm found a nice farmer and ate him, but he not help much. He taste kinda boring too."
+      },
+      {
+        "player": "You're not very clever, are you?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "My ol' mum say I clever enough. What you getting at?"
+      },
+      {
+        "player": "Oh, nothing. Maybe I should see where you've been doing all this farming?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Sure t'ing, Player. I show you..."
+      },
+      {
+        "type": "message",
+        "text": "My Arm leads you through the Troll Stronghold...",
+        "id": "jbA7d4"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Hurry up, <player name>!"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Dis is Troll Generals' cave."
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Climb up 'ere."
+      }
+    ],
+    "jump-3d770e00325e4180": [
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Dat farmer I ate had a book with him. My Arm is hopin' you knows how to read."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "farming manual",
+        "id": "jAIKOr"
+      },
+      {
+        "player": "Farmer Gricoller's Farming Manual?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "My Arm not know what in book, so you read it, yuh? Perhaps it tell you how to grow t'ings up on mountain."
+      },
+      {
+        "player": "Alright, I'll have a look inside."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-89ae0f57f3d9d3d8": [
+      {
+        "player": "So this hardy tuber will grow like any other herb seed?"
+      },
+      {
+        "type": "line",
+        "speaker": "Murcaily",
+        "text": "It grows much faster than any other I have seen, Bwana. But remember, although it is hardy enough to grow in the cold mountain lands, it may still become diseased."
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "player": "Hang on. I can't hold any more stuff just now. I'll get back to you in a minute."
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "You are wise, Bwana. I have seen many an adventurer accidentally drop valuable items on the floor through trying to hold too many things."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "U9iWZr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory isn't full:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Murcaily has given you a hardy gout tuber.",
+            "id": "acPab2"
+          },
+          {
+            "type": "action",
+            "text": "Cutscene begins.",
+            "id": "tEd55o"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "My Arm bored..."
+          },
+          {
+            "type": "action",
+            "text": "Fade to Murcaily and the player.",
+            "id": "5pmHjp"
+          },
+          {
+            "type": "message",
+            "text": "Da Rumble in da Jungle!",
+            "id": "9vyFF0"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "What is this noise?"
+          },
+          {
+            "type": "action",
+            "text": "Fade to My Arm hitting a medium jungle.",
+            "id": "OviJ7B"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Where's da goutweed?"
+          },
+          {
+            "type": "action",
+            "text": "Qutiedoll approaches My Arm.",
+            "id": "gpwtb9"
+          },
+          {
+            "type": "line",
+            "speaker": "Qutiedoll",
+            "text": "Agh - a troll!"
+          },
+          {
+            "type": "action",
+            "text": "My Arm hits the medium jungle again.",
+            "id": "GvdmaW"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Want goutweed!"
+          },
+          {
+            "type": "line",
+            "speaker": "Qutiedoll",
+            "text": "Eek!"
+          },
+          {
+            "type": "action",
+            "text": "Qutiedoll runs away. Murcaily approaches My Arm.",
+            "id": "usBBLa"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "Hey!"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "What are you doing?"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "My Arm want goutweed!"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "Be careful!"
+          },
+          {
+            "type": "action",
+            "text": "A broodoo victim appears.",
+            "id": "FEmTAP"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "A broodoo man!"
+          },
+          {
+            "type": "action",
+            "text": "Murcaily runs away.",
+            "id": "RNGZXS"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Has you got goutweed?"
+          },
+          {
+            "type": "action",
+            "text": "The broodoo victim attacks My Arm.",
+            "id": "GTqINW"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Ow!"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Grrr!"
+          },
+          {
+            "type": "action",
+            "text": "My Arm punches the broodoo victim away.",
+            "id": "7dh2Qc"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Still want goutweed!"
+          },
+          {
+            "type": "action",
+            "text": "My Arm starts hitting another medium jungle. Murcaily returns with Jagdakobo.",
+            "id": "b4deYq"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "Jagdakobo - here is the monster!"
+          },
+          {
+            "type": "line",
+            "speaker": "Jagdakobo",
+            "text": "Prepare to die!"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Where you keep goutweed?"
+          },
+          {
+            "type": "action",
+            "text": "Jagdakobo attacks My Arm.",
+            "id": "lXZclm"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Ow!"
+          },
+          {
+            "type": "action",
+            "text": "Jagdakobo and My Arm fight.",
+            "id": "Ez6kNs"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "You got issues!"
+          },
+          {
+            "type": "action",
+            "text": "My Arm punches Jagdakobo away.",
+            "id": "6GltO4"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Humans all mental."
+          },
+          {
+            "type": "action",
+            "text": "Cut to Murcaily and the player. Murcaily cries.",
+            "id": "frGto4"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "Make it go away!"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "I'll give you anything!"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "My Arm want goutweed!"
+          },
+          {
+            "type": "line",
+            "speaker": "Murcaily",
+            "text": "Okay, here you go."
+          },
+          {
+            "type": "action",
+            "text": "Murcaily walks to the player.",
+            "id": "2YvRod"
+          },
+          {
+            "type": "message",
+            "text": "Murcaily has given you lots more hardy gout tubers.",
+            "id": "zFrk_S"
+          },
+          {
+            "type": "action",
+            "text": "Cutscene ends.",
+            "id": "SAtd2w"
+          },
+          {
+            "player": "What the heck was all THAT about?"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "You take far too long chattin' with Murcaily. My Arm come in to hurry things up."
+          },
+          {
+            "player": "You could have really damaged their village!"
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Silly humans got such flimsy homes. One good thump an' der walls come down."
+          },
+          {
+            "player": "If you ever come to [location of player-owned house], I'm not letting you into my house."
+          },
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Anyway, you got da goutweedy stuff, right?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has the hardy gout tubers:",
+            "steps": [
+              {
+                "player": "Yes, I've got plenty of hardy gout tubers."
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Right. Let's get back to da ship an' go back to Ardougne. My Arm fink you need to go to da bank."
+              },
+              {
+                "player": "What do you think I need from the bank?"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "See, [player name], My Arm done tried planting stuff before, an' da birds around Trollheim Mountain, dey got... interested."
+              },
+              {
+                "player": "The birds got interested in watching your farm?"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Yuh, an' dere was a great BIG one wot started trying to eat whatever I planted."
+              },
+              {
+                "player": "Exactly how BIG was this bird?"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "It pretty BIG. You might wanna get some food an' stuff."
+              },
+              {
+                "player": "Are we talking bigger than... a pigeon?"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "How 'bout we just go back to Ardougne so you can get your fightin' stuff..."
+              },
+              {
+                "type": "action",
+                "text": "Cutscene begins.",
+                "id": "g6kLNy"
+              },
+              {
+                "type": "message",
+                "text": "My Arm is thinking...",
+                "id": "DUZt_6"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Dat captain didn't look very happy to see us again."
+              },
+              {
+                "player": "No, he wasn't."
+              },
+              {
+                "type": "message",
+                "text": "My Arm is thinking...",
+                "id": "2OB8z1"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "What was dat you said to him?"
+              },
+              {
+                "player": "I told him he'd better take us back, or else..."
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Or else what?"
+              },
+              {
+                "player": "Or else I'd let my arm loose on him."
+              },
+              {
+                "type": "message",
+                "text": "My Arm is thinking...",
+                "id": "vdMdMW"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "So... are we dere yet?"
+              },
+              {
+                "type": "message",
+                "text": "Ardougne has never seemed so far away...",
+                "id": "Z7wOx2"
+              },
+              {
+                "type": "action",
+                "text": "Cutscene ends.",
+                "id": "6HsETB"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "You probably wanna go to bank now to fetch yer fightin' stuff. When you finished, go back to da Troll Stronghold. My Arm gonna be waitin' by our farming patch on da roof."
+              },
+              {
+                "player": "How are you going to get back to the Troll Stronghold?"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Dat not your problem."
+              },
+              {
+                "player": "Alright, I'll see you there."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "JwEK4I"
+          },
+          {
+            "type": "condition",
+            "text": "If the player doesn't have the hardy gout tubers:",
+            "steps": [
+              {
+                "player": "Actually, I seem to have thrown it away."
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "You is dumber than a spotted kebbit! Go back an' ask Murcaily for some more!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "BFSVSd"
+          }
+        ],
+        "id": "2jcnpj"
       }
     ]
   }

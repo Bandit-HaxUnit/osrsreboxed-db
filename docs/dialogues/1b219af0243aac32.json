@@ -351,8 +351,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "R8ZhPZ"
+                "id": "R8ZhPZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-67e25e74b530a40a"
+                  }
+                ]
               }
             ]
           },
@@ -361,8 +366,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yaKPZw"
+                "id": "yaKPZw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-863c629a52cc87d0"
+                  }
+                ]
               }
             ]
           },
@@ -400,8 +410,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "r_At2O"
+                "id": "r_At2O",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-67e25e74b530a40a"
+                  }
+                ]
               }
             ]
           },
@@ -410,8 +425,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QcTn-t"
+                "id": "QcTn-t",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-863c629a52cc87d0"
+                  }
+                ]
               }
             ]
           },
@@ -486,6 +506,186 @@
         "type": "message",
         "text": "You're not sure they can help you with this.",
         "id": "fnTR3K"
+      }
+    ]
+  },
+  "branches": {
+    "jump-67e25e74b530a40a": [
+      {
+        "player": "I need another assignment."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have an assignment yet:",
+        "steps": [
+          {
+            "npc": "Excellent, you're doing great. Your new task is to kill [amount] [task monster]."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZzYp98"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has an assignment:",
+        "steps": [
+          {
+            "npc": "You're still hunting [monster]; you have [amount] to go. Come back when you've finished your task."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "pn0g9W"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+        "steps": [
+          {
+            "npc": "You're still hunting [monster], with [amount] to go."
+          },
+          {
+            "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please cancel it.",
+                "steps": [
+                  {
+                    "player": "Yes, please cancel it."
+                  },
+                  {
+                    "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No, thanks, I want to try doing it.",
+                "steps": [
+                  {
+                    "player": "No, thanks, I want to try doing it."
+                  },
+                  {
+                    "npc": "Good luck with that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "z7BTv5"
+      }
+    ],
+    "jump-863c629a52cc87d0": [
+      {
+        "player": "Let's talk about the difficulty of my assignments."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has disabled combat checking:",
+        "steps": [
+          {
+            "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I can handle any task.",
+                "steps": [
+                  {
+                    "player": "That's fine - I can handle any task."
+                  },
+                  {
+                    "npc": "That's the spirit."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "In future, please don't give anything too tough.",
+                "steps": [
+                  {
+                    "player": "In future, please don't give anything too tough."
+                  },
+                  {
+                    "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Slayer Masters will now take the player's combat level into account.",
+                    "id": "c9lqEb"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "UIP1mi"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enabled combat checking:",
+        "steps": [
+          {
+            "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I don't want anything too tough.",
+                "steps": [
+                  {
+                    "player": "That's fine - I don't want anything too tough."
+                  },
+                  {
+                    "npc": "Okay, we'll keep checking your combat level."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Stop checking my combat level - I can take anything!",
+                "steps": [
+                  {
+                    "player": "Stop checking my combat level - I can take anything!"
+                  },
+                  {
+                    "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Slayer Masters will no longer take the player's combat level into account.",
+                    "id": "2UL75H"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "34HUEv"
       }
     ]
   }

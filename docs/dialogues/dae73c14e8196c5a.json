@@ -68,8 +68,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "urPNHE"
+                "id": "urPNHE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-555a5292c357fac3"
+                  }
+                ]
               }
             ]
           },
@@ -82,6 +87,28 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-555a5292c357fac3": [
+      {
+        "player": "Why are you carrying that toolbox?"
+      },
+      {
+        "npc": "It's the fizgog! It's picking up cable again!"
+      },
+      {
+        "player": "Uh, right. So is it safe to use the fairy rings then?"
+      },
+      {
+        "npc": "Sure, as long as you have been given permission to use them. You should just be aware that using the fairy rings sometimes has strange results, the locations that you have been to may affect the locations you are"
+      },
+      {
+        "npc": "trying to reach. I could fix it by replacing the fizgog and the whosprangit, I've put in a request for some new parts but they're pretty hard to get hold of, it seems."
+      },
+      {
+        "type": "end"
       }
     ]
   }

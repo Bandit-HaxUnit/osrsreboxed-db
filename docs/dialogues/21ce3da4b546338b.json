@@ -83,8 +83,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XyRa3A"
+                "id": "XyRa3A",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-279ea8bbd250a83f"
+                  }
+                ]
               }
             ]
           },
@@ -116,8 +121,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "axtq3o"
+                        "id": "axtq3o",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-279ea8bbd250a83f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -154,8 +164,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PCNDci"
+                "id": "PCNDci",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1a404b2c6c666ea3"
+                  }
+                ]
               }
             ]
           }
@@ -199,6 +214,32 @@
         "type": "message",
         "text": "The Speedrunning Rewards Shop will open on the 28th September 2022.",
         "id": "ywWjeI"
+      }
+    ]
+  },
+  "branches": {
+    "jump-279ea8bbd250a83f": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "action",
+        "text": "Speedrunning Reward Shop interface opens.",
+        "action": "open_shop",
+        "action_source": "text",
+        "target": "Speedrunning Reward Shop",
+        "id": "enxKcR"
+      }
+    ],
+    "jump-1a404b2c6c666ea3": [
+      {
+        "player": "I'll pass."
+      },
+      {
+        "npc": "Fair enough."
+      },
+      {
+        "type": "end"
       }
     ]
   }

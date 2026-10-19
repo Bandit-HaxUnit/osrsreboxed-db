@@ -34,8 +34,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "w9S4VZ"
+                        "id": "w9S4VZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d92b9abe18d2f8c2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -155,6 +160,42 @@
             "steps": []
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-d92b9abe18d2f8c2": [
+      {
+        "player": "Do you have any of my items?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no items in Orrvor quo Maten's collection:",
+        "steps": [
+          {
+            "npc": "I do not. If I did have any of your items, but you died before collecting them, they'll now be lost."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VQIsnv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items in Orrvor quo Maten's collection:",
+        "steps": [
+          {
+            "npc": "I do. I suppose you want them back."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Orrvor quo Maten's Item Retrieval Service",
+            "id": "Dz64CA"
+          }
+        ],
+        "id": "at-lZt"
       }
     ]
   }

@@ -173,8 +173,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2uW56v"
+                "id": "2uW56v",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6060f40f731e495a"
+                  }
+                ]
               }
             ]
           },
@@ -183,8 +188,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Xf8QlY"
+                "id": "Xf8QlY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1c3c5991120a3f48"
+                  }
+                ]
               }
             ]
           },
@@ -193,12 +203,58 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "GYXJxJ"
+                "id": "GYXJxJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dbce3090b583320d"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-6060f40f731e495a": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "I'm the overseer for Mistrock. I make sure everything around here is running as it should be."
+      },
+      {
+        "player": "And you do that from the pub?"
+      },
+      {
+        "npc": "Am I not allowed a break from time to time?"
+      },
+      {
+        "player": "I suppose."
+      },
+      {
+        "npc": "Hmph!"
+      }
+    ],
+    "jump-1c3c5991120a3f48": [
+      {
+        "player": "You said the Imcando were your ancestors?"
+      },
+      {
+        "npc": "That's right. The Lovakengj dwarves were born from the Imcando and we were born from the Lovakengj. If you want to know more, find a historian."
+      }
+    ],
+    "jump-dbce3090b583320d": [
+      {
+        "player": "Not really."
+      },
+      {
+        "npc": "Then be on your way so that I can have a drink."
+      },
+      {
+        "type": "end"
       }
     ]
   }

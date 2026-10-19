@@ -42,8 +42,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KfkhDy"
+                "id": "KfkhDy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b91fea1c90fb1141"
+                  }
+                ]
               }
             ]
           },
@@ -59,6 +64,16 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-b91fea1c90fb1141": [
+      {
+        "player": "Good day."
+      },
+      {
+        "type": "end"
       }
     ]
   }

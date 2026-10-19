@@ -492,7 +492,120 @@
         "type": "choice",
         "options": [
           {
-            "text": "What ales are you serving?"
+            "text": "What ales are you serving?",
+            "steps": [
+              {
+                "player": "What ales are you serving?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaylee",
+                "text": "Well, we've got Asgarnian Ale, Wizard's Mind Bomb and Dwarven Stout, all for only 3 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "One Asgarnian Ale, please.",
+                    "steps": [
+                      {
+                        "player": "One Asgarnian Ale, please."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MMftn1"
+                          }
+                        ],
+                        "id": "RQ9XtY"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "-QmyPf"
+                          }
+                        ],
+                        "id": "xXhGTs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll try the Mind Bomb.",
+                    "steps": [
+                      {
+                        "player": "I'll try the Mind Bomb."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MMftn1"
+                          }
+                        ],
+                        "id": "2Kq1DU"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "mb4SNV"
+                          }
+                        ],
+                        "id": "51GBN_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I have a Dwarven Stout?",
+                    "steps": [
+                      {
+                        "player": "Can I have a Dwarven Stout?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MMftn1"
+                          }
+                        ],
+                        "id": "cAkioE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "KllERs"
+                          }
+                        ],
+                        "id": "CRZ8lR"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't feel like any of those.",
+                    "steps": [
+                      {
+                        "player": "I don't feel like any of those."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "What can you tell me about dwarves and ale?",
@@ -581,7 +694,120 @@
         "type": "choice",
         "options": [
           {
-            "text": "What ales are you serving?"
+            "text": "What ales are you serving?",
+            "steps": [
+              {
+                "player": "What ales are you serving?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaylee",
+                "text": "Well, we've got Asgarnian Ale, Wizard's Mind Bomb and Dwarven Stout, all for only 3 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "One Asgarnian Ale, please.",
+                    "steps": [
+                      {
+                        "player": "One Asgarnian Ale, please."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MMftn1"
+                          }
+                        ],
+                        "id": "RQ9XtY"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "-QmyPf"
+                          }
+                        ],
+                        "id": "xXhGTs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll try the Mind Bomb.",
+                    "steps": [
+                      {
+                        "player": "I'll try the Mind Bomb."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MMftn1"
+                          }
+                        ],
+                        "id": "2Kq1DU"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "mb4SNV"
+                          }
+                        ],
+                        "id": "51GBN_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I have a Dwarven Stout?",
+                    "steps": [
+                      {
+                        "player": "Can I have a Dwarven Stout?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MMftn1"
+                          }
+                        ],
+                        "id": "cAkioE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "KllERs"
+                          }
+                        ],
+                        "id": "CRZ8lR"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't feel like any of those.",
+                    "steps": [
+                      {
+                        "player": "I don't feel like any of those."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "What can you tell me about dwarves and ale?",
@@ -913,8 +1139,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "H1YdyT"
+                "id": "H1YdyT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-96fe8db8c5212dbc"
+                  }
+                ]
               }
             ],
             "id": "ZcYqOu"
@@ -998,6 +1229,81 @@
     ]
   },
   "branches": {
+    "jump-96fe8db8c5212dbc": [
+      {
+        "type": "action",
+        "text": "The following dialogue will change depending on what items the player has:",
+        "id": "cp49Z_"
+      },
+      {
+        "player": "[I have the egg/I don't have an egg, I'll look for some chickens], [I have a pot of flour/I don't have a pot of flour, but I'll investigate the windmills], [I have the bucket of milk/I don't have any milk but I'll check out the cows], [I have the bowl of water!/I don't have a bowl of water]."
+      },
+      {
+        "type": "line",
+        "speaker": "Rohak",
+        "text": "That's all well and good...but come back when you have all the ingredients. You're lucky Dwarves stick to their word else I might not make these cakes for you."
+      },
+      {
+        "player": "Okay okay I'll get right on it! Keep your beard on!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rohak",
+        "text": "What did you say?"
+      },
+      {
+        "player": "N..n...nothing honest!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "MMftn1": [
+      {
+        "type": "line",
+        "speaker": "Kaylee",
+        "text": "I said 3 coins! You haven't got 3 coins!"
+      },
+      {
+        "player": "Sorry, I'll come back another day."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "-QmyPf": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "an Asgarnian Ale",
+        "id": "sDOJm1"
+      },
+      {
+        "player": "Thanks, Kaylee."
+      }
+    ],
+    "mb4SNV": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a Wizard's mind bomb",
+        "id": "HdmZhe"
+      },
+      {
+        "player": "Thanks, Kaylee."
+      }
+    ],
+    "KllERs": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a Dwarven Stout",
+        "id": "6PAoLg"
+      },
+      {
+        "player": "Thanks, Kaylee."
+      }
+    ],
     "jhrwBw": [
       {
         "type": "line",

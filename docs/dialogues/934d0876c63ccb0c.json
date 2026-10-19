@@ -77,8 +77,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nTS9qg"
+                "id": "nTS9qg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d451228e6f91d3e7"
+                  }
+                ]
               }
             ]
           }
@@ -173,6 +178,25 @@
           }
         ],
         "id": "YHKV66"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d451228e6f91d3e7": [
+      {
+        "player": "..."
+      },
+      {
+        "npc": "..."
+      },
+      {
+        "player": "..."
+      },
+      {
+        "npc": "Okay then."
+      },
+      {
+        "type": "end"
       }
     ]
   }

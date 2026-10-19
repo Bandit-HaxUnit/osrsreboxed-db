@@ -556,8 +556,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "Wynoz9"
+        "id": "Wynoz9",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-old-coin": [
@@ -566,8 +571,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "lRZlnk"
+        "id": "lRZlnk",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-ancient-coin": [
@@ -576,8 +586,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "WQ69pR"
+        "id": "WQ69pR",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-ancient-symbol": [
@@ -586,8 +601,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "kVI95J"
+        "id": "kVI95J",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-old-symbol": [
@@ -596,8 +616,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "kIYJpC"
+        "id": "kIYJpC",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-arrowheads": [
@@ -606,8 +631,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "gEWl7W"
+        "id": "gEWl7W",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-jewellery": [
@@ -616,8 +646,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "j6iM6s"
+        "id": "j6iM6s",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-old-chipped-vase": [
@@ -626,8 +661,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "cPsrqJ"
+        "id": "cPsrqJ",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "xzQEqh"
+          }
+        ]
       }
     ],
     "using-items-on-thias-leacke-any-other-item": [
@@ -636,6 +676,30 @@
       },
       {
         "npc": "Thank you, but I don't need that"
+      }
+    ]
+  },
+  "branches": {
+    "jump-0857495462f0a0e9": [
+      {
+        "player": "I found these old necklaces."
+      },
+      {
+        "npc": "An interesting find... Here, let me offer you something in return."
+      },
+      {
+        "player": "Oh! Okay."
+      },
+      {
+        "type": "message",
+        "text": "The archaeologist gives you [5x] coins... must have been worth a lot in his day!",
+        "id": "7FHZMG"
+      }
+    ],
+    "xzQEqh": [
+      {
+        "type": "call",
+        "branch": "jump-0857495462f0a0e9"
       }
     ]
   }

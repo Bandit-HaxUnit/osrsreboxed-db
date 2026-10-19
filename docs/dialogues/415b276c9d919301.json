@@ -114,8 +114,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kbB-Hz"
+                "id": "kbB-Hz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c7b347ef3ac339a1"
+                  }
+                ]
               }
             ]
           },
@@ -124,8 +129,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kg9R4e"
+                "id": "kg9R4e",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc7660cf54cca24d"
+                  }
+                ]
               }
             ]
           },
@@ -134,12 +144,89 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xAOnAN"
+                "id": "xAOnAN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7af33855165b9ce7"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-c7b347ef3ac339a1": [
+      {
+        "player": "How's the tea coming along?"
+      },
+      {
+        "npc": "Oh! Yes, the water is boiling. Just give me a minute!"
+      },
+      {
+        "player": "I'm so thirsty."
+      },
+      {
+        "npc": "I know, the desert is forever hot. Thirsty work here!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "pe-8Ko"
+      }
+    ],
+    "jump-dc7660cf54cca24d": [
+      {
+        "player": "How's business here? Seems quite out the way."
+      },
+      {
+        "npc": "Hmm..."
+      },
+      {
+        "player": "Not good?"
+      },
+      {
+        "npc": "It's not that. It's just that I've been having issues with a few thieves lately. Four to be precise!"
+      },
+      {
+        "player": "They've been stealing your tea?"
+      },
+      {
+        "npc": "There have been a few break-ins. A recent shipment from Karamja has been taken! That was some of the finest stuff I've ever managed to get my hands on."
+      },
+      {
+        "player": "That's awful. If I see any shifty characters, I'll be sure to teach them a lesson."
+      },
+      {
+        "npc": "Ha! Very courageous, adventurer! These thieves are big and brutish. I wouldn't start something you may not be able to finish."
+      },
+      {
+        "player": "I'm pretty tough. I think I can handle them."
+      },
+      {
+        "npc": "If you say so."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "q4RC0Z"
+      }
+    ],
+    "jump-7af33855165b9ce7": [
+      {
+        "player": "I'd best be heading off."
+      },
+      {
+        "npc": "You're leaving? But the tea is almost done!"
+      },
+      {
+        "player": "I've been waiting quite a while. Perhaps another time."
+      },
+      {
+        "type": "end"
       }
     ]
   }

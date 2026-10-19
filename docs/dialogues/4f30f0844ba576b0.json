@@ -1,4 +1,23 @@
 {
+  "branches": {
+    "jump-a80851fb7b4c5869": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is the Library Historical Archive. Here you'll find historical documents and texts from all eras of Great Kourend's history, dating all the way back to the first decade."
+      },
+      {
+        "npc": "If you're looking for something specific you should speak to Istoria."
+      },
+      {
+        "player": "Great, thanks!"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Hello, how can I help you?"
@@ -23,8 +42,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "gkY1Qg"
+                      "id": "gkY1Qg",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-a80851fb7b4c5869"
+                        }
+                      ]
                     }
                   ]
                 },

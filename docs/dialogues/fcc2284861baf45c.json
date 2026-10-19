@@ -556,8 +556,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "9qKPqP"
+        "id": "9qKPqP",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-old-coin": [
@@ -566,8 +571,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "y67wfR"
+        "id": "y67wfR",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-ancient-coin": [
@@ -576,8 +586,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "2INaUE"
+        "id": "2INaUE",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-ancient-symbol": [
@@ -586,8 +601,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "kWXGWO"
+        "id": "kWXGWO",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-old-symbol": [
@@ -596,8 +616,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "n_SSl1"
+        "id": "n_SSl1",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-arrowheads": [
@@ -606,8 +631,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "-Uftm6"
+        "id": "-Uftm6",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-jewellery": [
@@ -616,8 +646,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "Ld0otI"
+        "id": "Ld0otI",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-old-chipped-vase": [
@@ -626,8 +661,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "9u2RcS"
+        "id": "9u2RcS",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "5KKnGq"
+          }
+        ]
       }
     ],
     "using-items-on-sinco-doar-any-other-item": [
@@ -636,6 +676,30 @@
       },
       {
         "npc": "Thank you, but I don't need that"
+      }
+    ]
+  },
+  "branches": {
+    "jump-c849aa2cd8bc5640": [
+      {
+        "player": "I found these old necklaces."
+      },
+      {
+        "npc": "An interesting find... Here, let me offer you something in return."
+      },
+      {
+        "player": "Oh! Okay."
+      },
+      {
+        "type": "message",
+        "text": "The archaeologist gives you [5x] coins... must have been worth a lot in his day!",
+        "id": "mYNgEq"
+      }
+    ],
+    "5KKnGq": [
+      {
+        "type": "call",
+        "branch": "jump-c849aa2cd8bc5640"
       }
     ]
   }

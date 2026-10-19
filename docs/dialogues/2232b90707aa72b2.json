@@ -87,8 +87,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZiABXY"
+                "id": "ZiABXY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b05c583336793125"
+                  }
+                ]
               }
             ]
           },
@@ -176,8 +181,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1D7jcP"
+                "id": "1D7jcP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8c5718945059921d"
+                  }
+                ]
               }
             ]
           }
@@ -202,6 +212,75 @@
       },
       {
         "npc": "Oh, thank you Saradomin! I will meditate on what this message means!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b05c583336793125": [
+      {
+        "player": "Well, that's friendly."
+      },
+      {
+        "npc": "I SAID go AWAY."
+      },
+      {
+        "player": "Okay, okay... sheesh, what a grouch."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8c5718945059921d": [
+      {
+        "player": "I've come to repossess your house."
+      },
+      {
+        "npc": "Under what grounds???"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Repeated failure on mortgage repayments.",
+            "steps": [
+              {
+                "player": "Repeated failure on mortgage repayments."
+              },
+              {
+                "npc": "What?"
+              },
+              {
+                "npc": "But... I don't have a mortgage! I built this house myself!"
+              },
+              {
+                "player": "Sorry. I must have got the wrong address. All the houses look the same around here."
+              },
+              {
+                "npc": "What? What houses? What ARE you talking about???"
+              },
+              {
+                "player": "Never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't know, I just wanted this house.",
+            "steps": [
+              {
+                "player": "I don't know. I just wanted this house..."
+              },
+              {
+                "npc": "Oh... go away and stop wasting my time!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

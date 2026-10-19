@@ -53,8 +53,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "ewprzx"
+                        "id": "ewprzx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-09f3fe01ce8d8dbf"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -97,8 +102,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "Zn8pGm"
+                                "id": "Zn8pGm",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-09f3fe01ce8d8dbf"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -148,6 +158,19 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-09f3fe01ce8d8dbf": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "Yeah, you stay out of trouble."
+      },
+      {
+        "type": "end"
       }
     ]
   }

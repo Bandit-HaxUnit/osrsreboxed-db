@@ -11,7 +11,8 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[A-Za-z0-9_-]{6}$"
+          "description": "Optional runtime binding: a generated hash or a reviewed semantic ID.",
+          "pattern": "^[A-Za-z0-9_:-]+$"
         },
         "npc": {
           "type": "string"
@@ -81,7 +82,7 @@
         },
         "branch": {
           "type": "string",
-          "pattern": "^[A-Za-z0-9_-]{6}$"
+          "pattern": "^[A-Za-z0-9_:-]+$"
         },
         "variant": {
           "type": "string"
@@ -89,40 +90,6 @@
       },
       "additionalProperties": false,
       "allOf": [
-        {
-          "if": {
-            "anyOf": [
-              {
-                "required": [
-                  "condition"
-                ]
-              },
-              {
-                "required": [
-                  "type"
-                ],
-                "properties": {
-                  "type": {
-                    "not": {
-                      "enum": [
-                        "line",
-                        "end",
-                        "call",
-                        "choice",
-                        "random"
-                      ]
-                    }
-                  }
-                }
-              }
-            ]
-          },
-          "then": {
-            "required": [
-              "id"
-            ]
-          }
-        },
         {
           "if": {
             "required": [

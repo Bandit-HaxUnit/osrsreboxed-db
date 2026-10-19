@@ -77,8 +77,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "e4VvAa"
+                        "id": "e4VvAa",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-968d66d5aed60c37"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -87,8 +92,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "T3pdPT"
+                        "id": "T3pdPT",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "hC784Q"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -116,8 +126,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Keve6E"
+                        "id": "Keve6E",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-968d66d5aed60c37"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -126,8 +141,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "subtco"
+                        "id": "subtco",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "hC784Q"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -163,8 +183,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "Hqt5hM"
+                            "id": "Hqt5hM",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-968d66d5aed60c37"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -173,8 +198,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "_sZLq8"
+                            "id": "_sZLq8",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "hC784Q"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -217,8 +247,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "FpgmzH"
+                                    "id": "FpgmzH",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-968d66d5aed60c37"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -227,8 +262,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "iqMoYq"
+                                    "id": "iqMoYq",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "hC784Q"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -253,8 +293,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "B9Pomr"
+                                    "id": "B9Pomr",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-968d66d5aed60c37"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -263,8 +308,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "TkHr67"
+                                    "id": "TkHr67",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "hC784Q"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -318,8 +368,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xe-dlN"
+                "id": "xe-dlN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ecb6c05b0a20f424"
+                  }
+                ]
               }
             ]
           },
@@ -328,8 +383,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "SkwQNY"
+                "id": "SkwQNY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0791a3494477eb1"
+                  }
+                ]
               }
             ]
           }
@@ -397,8 +457,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "qAJ2Iw"
+                        "id": "qAJ2Iw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "hC784Q"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -469,6 +534,125 @@
         "action": "teleport",
         "action_source": "text",
         "id": "_mMPtk"
+      }
+    ]
+  },
+  "branches": {
+    "jump-968d66d5aed60c37": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 10,000 coins:",
+        "steps": [
+          {
+            "npc": "Doesn't look like you have enough money. I charge 10,000 coins for the journey."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WeN-ol"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 10,000 coins:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "Player gives Andras 10,000 coins.",
+            "id": "oKRC_P"
+          },
+          {
+            "type": "action",
+            "text": "Andras transports the player to Slepe.",
+            "action": "teleport",
+            "action_source": "text",
+            "id": "DBbfR9"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1MJLzm"
+      }
+    ],
+    "jump-be872385ca92ddd2": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ecb6c05b0a20f424": [
+      {
+        "player": "Where's Slepe?"
+      },
+      {
+        "npc": "It's a small village to the south of here. You can walk but the boat is safer and faster."
+      },
+      {
+        "player": "Is there anything to do there?"
+      },
+      {
+        "npc": "I guess that depends what interests you. The place is pretty quiet, though there's been rumours recently of a great evil making its home beneath the village."
+      },
+      {
+        "npc": "There's also Ver Sinhaza to the south, home to the Theatre of Blood. It's definitely worth having a look around, even if you don't intend to participate yourself."
+      },
+      {
+        "npc": "So, do you want to go to Slepe?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "e4VvAa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-968d66d5aed60c37"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "T3pdPT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-be872385ca92ddd2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f0791a3494477eb1": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "hC784Q": [
+      {
+        "type": "call",
+        "branch": "jump-be872385ca92ddd2"
       }
     ]
   }

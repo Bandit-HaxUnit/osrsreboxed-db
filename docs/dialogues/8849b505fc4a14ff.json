@@ -29,8 +29,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "6JQT_J"
+                        "id": "6JQT_J",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ea464d7f9b6e25f7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -39,8 +44,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "2V0Ld4"
+                        "id": "2V0Ld4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c03f8d2d7f72b6e5"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -297,6 +307,27 @@
       },
       {
         "npc": "Because I put it there, you fool! If you want an anvil by a bank, I suggest you find your own!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-ea464d7f9b6e25f7": [
+      {
+        "player": "Show me what you've got."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Lost Property shop",
+        "id": "B70SU2"
+      }
+    ],
+    "jump-c03f8d2d7f72b6e5": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

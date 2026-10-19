@@ -48,8 +48,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "yRx6dP"
+                        "id": "yRx6dP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-48b29d9ee82dcd8e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -205,8 +210,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "wtKM8E"
+                            "id": "wtKM8E",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-47f86c0646b1687d"
+                              }
+                            ]
                           }
                         ],
                         "id": "NG8NHz"
@@ -448,6 +458,33 @@
       },
       {
         "npc": "Hmm, well it looks like you've got the hang of setting falcons on creatures. However, I suggest you keep track of it; left to its own devices it'll be more than happy to fly off on its own to find food."
+      }
+    ]
+  },
+  "branches": {
+    "jump-48b29d9ee82dcd8e": [
+      {
+        "player": "Do you have any quests I could do?"
+      },
+      {
+        "npc": "A quest? What a strange notion. Do you normally go around asking complete strangers for quests?"
+      },
+      {
+        "player": "Er, yes, now you come to mention it."
+      },
+      {
+        "npc": "Oh, ok then. Well, no, I don't; sorry."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-47f86c0646b1687d": [
+      {
+        "npc": "Don't worry; I'll keep an eye on you to make sure you don't upset it too much."
+      },
+      {
+        "type": "end"
       }
     ]
   }

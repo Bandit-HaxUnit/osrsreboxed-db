@@ -115,8 +115,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uiIVLp"
+                "id": "uiIVLp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-45ced82f8cace0ad"
+                  }
+                ]
               }
             ],
             "id": "n46Yh5"
@@ -143,8 +148,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yTv-7u"
+                "id": "yTv-7u",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-06357729e6202af4"
+                  }
+                ]
               }
             ]
           },
@@ -169,6 +179,61 @@
       },
       {
         "npc": "I'm getting out of here Bwana, the place is infested with Zombies."
+      }
+    ]
+  },
+  "branches": {
+    "jump-45ced82f8cace0ad": [
+      {
+        "type": "action",
+        "text": "The player can choose to deposit coins, rounded down to the nearest in multiple of 20.",
+        "id": "Q_XPiI"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "_vziNs"
+      }
+    ],
+    "jump-06357729e6202af4": [
+      {
+        "type": "condition",
+        "text": "If the coffer is already empty:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "It's already empty.",
+            "id": "bFPlIM"
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "0XmktF"
+          }
+        ],
+        "id": "OtoCac"
+      },
+      {
+        "type": "condition",
+        "text": "If there are coins inside the coffer:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The players withdraws all of the coins currently in the coffer",
+            "id": "gP9TY2"
+          },
+          {
+            "type": "message",
+            "text": "You withdraw [number] coins.",
+            "id": "0yBm6E"
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "dRBk0i"
+          }
+        ],
+        "id": "GYhMDH"
       }
     ]
   }

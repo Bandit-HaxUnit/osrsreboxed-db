@@ -1,4 +1,28 @@
 {
+  "branches": {
+    "jump-95ce251dcb7748b0": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Poison chalice",
+        "id": "DaUoz-"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e45f9e21b4f384bb": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Hello bold adventurer."
@@ -63,8 +87,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "MNq5vP"
+                              "id": "MNq5vP",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-95ce251dcb7748b0"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -73,8 +102,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "_ydjFt"
+                              "id": "_ydjFt",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-e45f9e21b4f384bb"
+                                }
+                              ]
                             }
                           ]
                         }

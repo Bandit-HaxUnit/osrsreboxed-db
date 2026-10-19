@@ -175,8 +175,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "VYa75b"
+                        "id": "VYa75b",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3d871a91190f959e"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -368,6 +373,17 @@
     ]
   },
   "branches": {
+    "jump-3d871a91190f959e": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you later!"
+      },
+      {
+        "type": "end"
+      }
+    ],
     "pmUsWS": [
       {
         "npc": "You need at least two inventory spaces, make some space and come back."

@@ -81,8 +81,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZNViUd"
+                "id": "ZNViUd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4544cfbb05ea241e"
+                  }
+                ]
               }
             ]
           },
@@ -124,6 +129,61 @@
         "type": "message",
         "text": "Kangai Mau has given you another clue scroll!",
         "id": "_AKn89"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4544cfbb05ea241e": [
+      {
+        "npc": "We need it back."
+      },
+      {
+        "player": "Why does he have it?"
+      },
+      {
+        "npc": "Lord Handelmort is an Ardougnese explorer which means he think he have the right to come to my tribal home, steal our stuff and put in his private museum."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start The Tribal Totem quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Ok, I will get it back."
+              },
+              {
+                "npc": "Best of luck with that adventurer."
+              },
+              {
+                "player": "How can I find Handelmort's house? Ardougne is a big place..."
+              },
+              {
+                "npc": "I don't know Ardougne. You tell me."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:tribal-totem:start",
+            "quest": "Tribal Totem"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Well good luck with that."
+              },
+              {
+                "npc": "Let's hope I find some help soon."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

@@ -2796,8 +2796,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "i2hfWx"
+                "id": "i2hfWx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4766679264120b80"
+                  }
+                ]
               }
             ]
           }
@@ -2985,7 +2990,240 @@
         "type": "choice",
         "options": [
           {
-            "text": "The state of the island."
+            "text": "The state of the island.",
+            "steps": [
+              {
+                "player": "Hi, how are things going?"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "Well hopefully a lot better now that you've initiated the calm between the Moon Clan and the Fremenniks. Remember, if you want to use our Lunar Spells at any time, pray at the altar beside me and you can modify"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "your knowledge!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost their Lunar staff:",
+                "steps": [
+                  {
+                    "player": "I've misplaced my staff."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "I knew you'd do that, and I used my magic to teleport it back to me."
+                  },
+                  {
+                    "player": "Erm, that doesn't sound too realistic. Thanks!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "Look, do you want it or not?"
+                  },
+                  {
+                    "player": "Sorry, yes. Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "nmADQo"
+                      }
+                    ],
+                    "id": "fq6h_-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be 30000 coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "s1VFU-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "d0ggdb"
+                                  }
+                                ],
+                                "id": "5vzxJN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DZxM9C"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ID8Uon"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Lunar staff, but has lost any of their Lunar equipment:",
+                "steps": [
+                  {
+                    "player": "I've lost my Lunar [item]."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jwRBOM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7b_j5W"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7wciII"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "YD5_C7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "VgCfDQ"
+                      }
+                    ],
+                    "id": "QjbNFr"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be [number] coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "czDgHR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "plah_m"
+                                  }
+                                ],
+                                "id": "tOJ47p"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "6hFKzZ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "cPbMVy"
+                  }
+                ],
+                "id": "-B7QlG"
+              }
+            ]
           },
           {
             "text": "Cyrisus.",
@@ -3122,7 +3360,8 @@
             ]
           },
           {
-            "text": "Nothing."
+            "text": "Nothing.",
+            "steps": []
           }
         ]
       }
@@ -3150,7 +3389,240 @@
         "type": "choice",
         "options": [
           {
-            "text": "The state of the island."
+            "text": "The state of the island.",
+            "steps": [
+              {
+                "player": "Hi, how are things going?"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "Well hopefully a lot better now that you've initiated the calm between the Moon Clan and the Fremenniks. Remember, if you want to use our Lunar Spells at any time, pray at the altar beside me and you can modify"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "your knowledge!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost their Lunar staff:",
+                "steps": [
+                  {
+                    "player": "I've misplaced my staff."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "I knew you'd do that, and I used my magic to teleport it back to me."
+                  },
+                  {
+                    "player": "Erm, that doesn't sound too realistic. Thanks!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "Look, do you want it or not?"
+                  },
+                  {
+                    "player": "Sorry, yes. Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "nmADQo"
+                      }
+                    ],
+                    "id": "fq6h_-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be 30000 coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "s1VFU-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "d0ggdb"
+                                  }
+                                ],
+                                "id": "5vzxJN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DZxM9C"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ID8Uon"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Lunar staff, but has lost any of their Lunar equipment:",
+                "steps": [
+                  {
+                    "player": "I've lost my Lunar [item]."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jwRBOM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7b_j5W"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7wciII"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "YD5_C7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "VgCfDQ"
+                      }
+                    ],
+                    "id": "QjbNFr"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be [number] coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "czDgHR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "plah_m"
+                                  }
+                                ],
+                                "id": "tOJ47p"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "6hFKzZ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "cPbMVy"
+                  }
+                ],
+                "id": "-B7QlG"
+              }
+            ]
           },
           {
             "text": "Cyrisus.",
@@ -3177,7 +3649,8 @@
             ]
           },
           {
-            "text": "Nothing."
+            "text": "Nothing.",
+            "steps": []
           }
         ]
       }
@@ -3192,7 +3665,240 @@
         "type": "choice",
         "options": [
           {
-            "text": "The state of the island."
+            "text": "The state of the island.",
+            "steps": [
+              {
+                "player": "Hi, how are things going?"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "Well hopefully a lot better now that you've initiated the calm between the Moon Clan and the Fremenniks. Remember, if you want to use our Lunar Spells at any time, pray at the altar beside me and you can modify"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "your knowledge!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost their Lunar staff:",
+                "steps": [
+                  {
+                    "player": "I've misplaced my staff."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "I knew you'd do that, and I used my magic to teleport it back to me."
+                  },
+                  {
+                    "player": "Erm, that doesn't sound too realistic. Thanks!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "Look, do you want it or not?"
+                  },
+                  {
+                    "player": "Sorry, yes. Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "nmADQo"
+                      }
+                    ],
+                    "id": "fq6h_-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be 30000 coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "s1VFU-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "d0ggdb"
+                                  }
+                                ],
+                                "id": "5vzxJN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DZxM9C"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ID8Uon"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Lunar staff, but has lost any of their Lunar equipment:",
+                "steps": [
+                  {
+                    "player": "I've lost my Lunar [item]."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jwRBOM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7b_j5W"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7wciII"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "YD5_C7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "VgCfDQ"
+                      }
+                    ],
+                    "id": "QjbNFr"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be [number] coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "czDgHR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "plah_m"
+                                  }
+                                ],
+                                "id": "tOJ47p"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "6hFKzZ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "cPbMVy"
+                  }
+                ],
+                "id": "-B7QlG"
+              }
+            ]
           },
           {
             "text": "Cyrisus.",
@@ -3245,7 +3951,8 @@
             ]
           },
           {
-            "text": "Nothing."
+            "text": "Nothing.",
+            "steps": []
           }
         ]
       }
@@ -3362,7 +4069,240 @@
         "type": "choice",
         "options": [
           {
-            "text": "The state of the island."
+            "text": "The state of the island.",
+            "steps": [
+              {
+                "player": "Hi, how are things going?"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "Well hopefully a lot better now that you've initiated the calm between the Moon Clan and the Fremenniks. Remember, if you want to use our Lunar Spells at any time, pray at the altar beside me and you can modify"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "your knowledge!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost their Lunar staff:",
+                "steps": [
+                  {
+                    "player": "I've misplaced my staff."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "I knew you'd do that, and I used my magic to teleport it back to me."
+                  },
+                  {
+                    "player": "Erm, that doesn't sound too realistic. Thanks!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "Look, do you want it or not?"
+                  },
+                  {
+                    "player": "Sorry, yes. Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "nmADQo"
+                      }
+                    ],
+                    "id": "fq6h_-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be 30000 coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "s1VFU-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "d0ggdb"
+                                  }
+                                ],
+                                "id": "5vzxJN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DZxM9C"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ID8Uon"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Lunar staff, but has lost any of their Lunar equipment:",
+                "steps": [
+                  {
+                    "player": "I've lost my Lunar [item]."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jwRBOM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7b_j5W"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7wciII"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "YD5_C7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "VgCfDQ"
+                      }
+                    ],
+                    "id": "QjbNFr"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be [number] coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "czDgHR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "plah_m"
+                                  }
+                                ],
+                                "id": "tOJ47p"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "6hFKzZ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "cPbMVy"
+                  }
+                ],
+                "id": "-B7QlG"
+              }
+            ]
           },
           {
             "text": "Cyrisus.",
@@ -3389,7 +4329,8 @@
             ]
           },
           {
-            "text": "Nothing."
+            "text": "Nothing.",
+            "steps": []
           }
         ]
       }
@@ -3496,7 +4437,240 @@
         "type": "choice",
         "options": [
           {
-            "text": "The state of the island."
+            "text": "The state of the island.",
+            "steps": [
+              {
+                "player": "Hi, how are things going?"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "Well hopefully a lot better now that you've initiated the calm between the Moon Clan and the Fremenniks. Remember, if you want to use our Lunar Spells at any time, pray at the altar beside me and you can modify"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "your knowledge!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost their Lunar staff:",
+                "steps": [
+                  {
+                    "player": "I've misplaced my staff."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "I knew you'd do that, and I used my magic to teleport it back to me."
+                  },
+                  {
+                    "player": "Erm, that doesn't sound too realistic. Thanks!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "Look, do you want it or not?"
+                  },
+                  {
+                    "player": "Sorry, yes. Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "nmADQo"
+                      }
+                    ],
+                    "id": "fq6h_-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be 30000 coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "s1VFU-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "d0ggdb"
+                                  }
+                                ],
+                                "id": "5vzxJN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DZxM9C"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ID8Uon"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Lunar staff, but has lost any of their Lunar equipment:",
+                "steps": [
+                  {
+                    "player": "I've lost my Lunar [item]."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jwRBOM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7b_j5W"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7wciII"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "YD5_C7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "VgCfDQ"
+                      }
+                    ],
+                    "id": "QjbNFr"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be [number] coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "czDgHR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "plah_m"
+                                  }
+                                ],
+                                "id": "tOJ47p"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "6hFKzZ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "cPbMVy"
+                  }
+                ],
+                "id": "-B7QlG"
+              }
+            ]
           },
           {
             "text": "Cyrisus.",
@@ -3528,7 +4702,8 @@
             ]
           },
           {
-            "text": "Nothing."
+            "text": "Nothing.",
+            "steps": []
           }
         ]
       }
@@ -3746,7 +4921,240 @@
         "type": "choice",
         "options": [
           {
-            "text": "The state of the island."
+            "text": "The state of the island.",
+            "steps": [
+              {
+                "player": "Hi, how are things going?"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "Well hopefully a lot better now that you've initiated the calm between the Moon Clan and the Fremenniks. Remember, if you want to use our Lunar Spells at any time, pray at the altar beside me and you can modify"
+              },
+              {
+                "type": "line",
+                "speaker": "Oneiromancer",
+                "text": "your knowledge!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost their Lunar staff:",
+                "steps": [
+                  {
+                    "player": "I've misplaced my staff."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "I knew you'd do that, and I used my magic to teleport it back to me."
+                  },
+                  {
+                    "player": "Erm, that doesn't sound too realistic. Thanks!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Oneiromancer",
+                    "text": "Look, do you want it or not?"
+                  },
+                  {
+                    "player": "Sorry, yes. Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "nmADQo"
+                      }
+                    ],
+                    "id": "fq6h_-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be 30000 coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "s1VFU-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "d0ggdb"
+                                  }
+                                ],
+                                "id": "5vzxJN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DZxM9C"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ID8Uon"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Lunar staff, but has lost any of their Lunar equipment:",
+                "steps": [
+                  {
+                    "player": "I've lost my Lunar [item]."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jwRBOM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7b_j5W"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7wciII"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "YD5_C7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "VgCfDQ"
+                      }
+                    ],
+                    "id": "QjbNFr"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Oneiromancer",
+                        "text": "But it's going to cost you! It will be [number] coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "XHpVnq"
+                                  }
+                                ],
+                                "id": "czDgHR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "plah_m"
+                                  }
+                                ],
+                                "id": "tOJ47p"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "6hFKzZ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "cPbMVy"
+                  }
+                ],
+                "id": "-B7QlG"
+              }
+            ]
           },
           {
             "text": "Cyrisus.",
@@ -3848,13 +5256,135 @@
             ]
           },
           {
-            "text": "Nothing."
+            "text": "Nothing.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
           }
         ]
       },
       {
         "type": "unavailable",
         "id": "OHRBxK"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4766679264120b80": [
+      {
+        "type": "action",
+        "text": "Continues above with a random conversation",
+        "id": "g_2AMh"
+      }
+    ],
+    "nmADQo": [
+      {
+        "player": "Actually, I'll have to come back when I have a space to carry one."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "XHpVnq": [
+      {
+        "type": "line",
+        "speaker": "Oneiromancer",
+        "text": "Sorry dear, you don't have enough coins for that."
+      },
+      {
+        "player": "Oh, ok..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "d0ggdb": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "lunar staff",
+        "id": "7xM4K_"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jwRBOM": [
+      {
+        "type": "line",
+        "speaker": "Oneiromancer",
+        "text": "Oh dear, good job I pre-empted you!"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "6jqs-o"
+      }
+    ],
+    "7b_j5W": [
+      {
+        "type": "line",
+        "speaker": "Oneiromancer",
+        "text": "I already knew that. I got one especially."
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "xAWfpZ"
+      }
+    ],
+    "7wciII": [
+      {
+        "type": "line",
+        "speaker": "Oneiromancer",
+        "text": "Well of course, I know that already, so I got a backup for you."
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "t4N1iW"
+      }
+    ],
+    "YD5_C7": [
+      {
+        "type": "line",
+        "speaker": "Oneiromancer",
+        "text": "I know. Good job I knew you would drop it!"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "oiuWIz"
+      }
+    ],
+    "VgCfDQ": [
+      {
+        "player": "Unfortunately I don't have space to carry it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "plah_m": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "requested item",
+        "id": "ugsu76"
+      },
+      {
+        "type": "action",
+        "text": "Continues to next missing item, or ends dialogue if that was the last missing item.",
+        "id": "2Jv8Zd"
+      }
+    ],
+    "6hFKzZ": [
+      {
+        "type": "action",
+        "text": "Continues to next missing item, or ends dialogue if that was the last missing item.",
+        "id": "kLzEPu"
       }
     ]
   }

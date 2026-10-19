@@ -109,8 +109,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "VHjjOe"
+                "id": "VHjjOe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb778624794f6f95"
+                  }
+                ]
               }
             ]
           },
@@ -119,8 +124,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Q_-Z10"
+                "id": "Q_-Z10",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9bc03f965ab4e401"
+                  }
+                ]
               }
             ]
           }
@@ -165,6 +175,36 @@
       },
       {
         "npc": "I suspect you should."
+      }
+    ]
+  },
+  "branches": {
+    "jump-fb778624794f6f95": [
+      {
+        "type": "action",
+        "text": "Player is transported to Yama's Domain.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "UnVsp1"
+      },
+      {
+        "type": "message",
+        "text": "You enter Yama's Domain.",
+        "id": "T2QUyL"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9bc03f965ab4e401": [
+      {
+        "player": "I think I'd rather stay here."
+      },
+      {
+        "npc": "Weakness! Cowardice! Disgusting. Begone, human!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

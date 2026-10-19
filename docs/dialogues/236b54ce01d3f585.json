@@ -55,8 +55,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "MmWjZb"
+                        "id": "MmWjZb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c26f5e583235b204"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -201,8 +206,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "d0KNNo"
+                "id": "d0KNNo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f07372db7a31dd37"
+                  }
+                ]
               }
             ]
           },
@@ -356,12 +366,208 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1CrlyI"
+                "id": "1CrlyI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-302ff3486099f3c4"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-c26f5e583235b204": [
+      {
+        "player": "What can you do for me?"
+      },
+      {
+        "npc": "Well, if you'd like, I can make it so you respawn in our Enclave. It'll put you right in the heart of all the chaos that surrounds us."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me more.",
+            "steps": [
+              {
+                "player": "Tell me more."
+              },
+              {
+                "npc": "This is how it'll work: When you die, you'll respawn right here in Ferox Enclave, just outside the pub we've set up. You will lose your items as normal of course."
+              },
+              {
+                "npc": "I won't be able to do anything if you die somewhere like Castle Wars or the Emir's Arena; they have their own magic to keep you safe."
+              },
+              {
+                "npc": "It'll cost you though! Transporting you here is no easy task. 5 million coins should do it, that'd be a one time fee of course."
+              },
+              {
+                "type": "condition",
+                "text": "Without at least five million coins in the inventory:",
+                "steps": [
+                  {
+                    "player": "I don't have that much money on me."
+                  },
+                  {
+                    "npc": "Understandable, you'd have to be a brave [man/woman] to be carrying that much gold out here."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-4ixfH"
+              },
+              {
+                "type": "condition",
+                "text": "With at least five million coins in the inventory:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay, switch my respawn to Ferox Enclave.",
+                        "steps": [
+                          {
+                            "player": "Okay, switch my respawn to Ferox Enclave."
+                          },
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "5 million coins",
+                            "id": "hQ0o-u"
+                          },
+                          {
+                            "npc": "Thank you, you'll respawn in the Enclave from here on out."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'm not interested.",
+                        "steps": [
+                          {
+                            "player": "I'm not interested."
+                          },
+                          {
+                            "npc": "Can't say I blame you, this wouldn't be my choice either."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "I1NYYx"
+              }
+            ]
+          },
+          {
+            "text": "That doesn't interest me.",
+            "steps": [
+              {
+                "player": "That doesn't interest me."
+              },
+              {
+                "npc": "Come find me if you change your mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f07372db7a31dd37": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "You're surrounded by a relic of a long lost kingdom."
+      },
+      {
+        "player": "What happened here?"
+      },
+      {
+        "npc": "Oh, I couldn't really tell you that."
+      },
+      {
+        "npc": "This place has sat in ruin for an age, slowly destroyed by the harsh climate of the Wilderness."
+      },
+      {
+        "player": "If it's a ruin, what's the point in being here?"
+      },
+      {
+        "npc": "I search for knowledge. I want to know what happened to this part of the world."
+      },
+      {
+        "npc": "Whilst looking for answers, I slowly turned this broken town into a safe haven for travellers. Welcome to Ferox Enclave."
+      },
+      {
+        "player": "Quite a dangerous place for a town, don't you think?"
+      },
+      {
+        "npc": "It is, but that's why it's needed! Look around, you can see how many others share my opinion."
+      },
+      {
+        "npc": "You'll find yourself quite safe inside my enclave - the protective barriers should keep any troublemakers out."
+      },
+      {
+        "npc": "I will warn you though, if you've had Teleblock cast upon you, I will not allow you back into the Enclave. You'd be a danger to the others gathered here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What can you do for me?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "MmWjZb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c26f5e583235b204"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be heading off then.",
+            "steps": [
+              {
+                "player": "Thanks for the information! I'll take a look around."
+              },
+              {
+                "npc": "Tread carefully my friend."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-302ff3486099f3c4": [
+      {
+        "player": "Never mind, I'm just looking around."
+      },
+      {
+        "npc": "So be it."
+      },
+      {
+        "type": "end"
       }
     ]
   }

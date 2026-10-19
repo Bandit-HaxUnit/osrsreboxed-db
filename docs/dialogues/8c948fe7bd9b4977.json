@@ -233,8 +233,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "g9qpgx"
+                "id": "g9qpgx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b27a233a62cfcb1a"
+                  }
+                ]
               }
             ]
           },
@@ -264,8 +269,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PvcIjQ"
+                "id": "PvcIjQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-33680b777080c6d2"
+                  }
+                ]
               }
             ]
           },
@@ -303,6 +313,73 @@
       },
       {
         "player": "Okay, then. I'm going in to have a look!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b27a233a62cfcb1a": [
+      {
+        "player": "Who does this statue represent?"
+      },
+      {
+        "npc": "That, my dear, is the statue of the great god Saradomin himself. Stand and admire in awe, for you are in the presence of greatness!"
+      },
+      {
+        "player": "...Yay Zamorak...!"
+      },
+      {
+        "npc": "WHAT?!?!"
+      },
+      {
+        "player": "Uh...I said I've lost my anorak!"
+      },
+      {
+        "npc": "I see. I'm afraid I haven't seen it."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "G_lhMh"
+      }
+    ],
+    "jump-33680b777080c6d2": [
+      {
+        "player": "What are you doing here?"
+      },
+      {
+        "npc": "I'm investigating something for someone."
+      },
+      {
+        "player": "That doesn't really explain anything!"
+      },
+      {
+        "npc": "I never said it would."
+      },
+      {
+        "player": "So what are you investigating?"
+      },
+      {
+        "npc": "I'm afraid I can't say."
+      },
+      {
+        "player": "Okay, so who are you investigating it for?"
+      },
+      {
+        "npc": "I'm afraid I can't say that either."
+      },
+      {
+        "player": "Okay, so is there anything you CAN say?"
+      },
+      {
+        "npc": "I can say that I can't say anything about what you want me to say!"
+      },
+      {
+        "player": "Okay, I think you've said enough!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "a3RDzG"
       }
     ]
   }

@@ -31,8 +31,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "hf76zm"
+                "id": "hf76zm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d4928bb2addaa86e"
+                  }
+                ]
               }
             ]
           },
@@ -41,8 +46,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "7g0dk9"
+                "id": "7g0dk9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-34cebe61f52688d9"
+                  }
+                ]
               }
             ]
           },
@@ -51,8 +61,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "UxHTNa"
+                "id": "UxHTNa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9abef4e56571eefe"
+                  }
+                ]
               }
             ]
           }
@@ -80,8 +95,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "zmUutW"
+                        "id": "zmUutW",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7d83c4ead8c5587f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -90,8 +110,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "d7qxNI"
+                        "id": "d7qxNI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ce2936b8cc6e1b23"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -100,8 +125,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "mvAkqI"
+                        "id": "mvAkqI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fc8331c29b13722e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -110,8 +140,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "HazSeK"
+                        "id": "HazSeK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ab2dc2e2d35cbb2c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -120,8 +155,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "1R_Gr3"
+                        "id": "1R_Gr3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3bc6928b40f50e6b"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -469,6 +509,451 @@
         "action_source": "text",
         "target": "Interface showing the next clue",
         "id": "7KVthn"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d4928bb2addaa86e": [
+      {
+        "player": "I'd like to talk about sq'irks."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has sq'irkjuice in their inventory",
+        "steps": [
+          {
+            "player": "I have some sq'irk juice for you."
+          },
+          {
+            "type": "message",
+            "text": "Selim imparts some Thieving advice to you as a reward for the sq'irk juice. You gain [number] Thieving XP as a result.",
+            "id": "iXc_1S"
+          },
+          {
+            "npc": "Thank you very much. If you get some more sq'irks be sure to come back."
+          },
+          {
+            "player": "I will. It's been a pleasure doing business with you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NHGOO5"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no sq'irkjuice in their inventory",
+        "steps": [
+          {
+            "npc": "Of course. What would you like to know?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Where do I get sq'irks?",
+                "steps": [
+                  {
+                    "player": "Where do I get sq'irks?"
+                  },
+                  {
+                    "npc": "There is a sorceress near the south eastern edge of Al Kharid who grows them. She used to be friends with Osman, but they fell out."
+                  },
+                  {
+                    "player": "What happened?"
+                  },
+                  {
+                    "npc": "I don't know. All I know is she won't give us any more fruit."
+                  },
+                  {
+                    "player": "So all I have to do is ask her for some fruit for you?"
+                  },
+                  {
+                    "npc": "I doubt it will be that easy. She is not renowned for her generosity and is very secretive about her garden's location."
+                  },
+                  {
+                    "player": "Oh come on, it should be easy enough to find."
+                  },
+                  {
+                    "npc": "Her garden has remained hidden even from Osman. I believe it must be hidden by magical means."
+                  },
+                  {
+                    "player": "I see. And why can't you do this yourself?"
+                  },
+                  {
+                    "npc": "My work requires that I remain here."
+                  },
+                  {
+                    "player": "Okay. This should be an interesting task."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "nq5Vtr"
+                  }
+                ]
+              },
+              {
+                "text": "How should I squeeze the fruit?",
+                "steps": [
+                  {
+                    "player": "How should I squeeze the fruit?"
+                  },
+                  {
+                    "npc": "Use a pestle and mortar. Make sure you have an empty glass with you to collect the juice."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "QTK_Mg"
+                  }
+                ]
+              },
+              {
+                "text": "Is there a reward for getting these sq'irks?",
+                "steps": [
+                  {
+                    "player": "Is there a reward for getting these sq'irks?"
+                  },
+                  {
+                    "npc": "Of course. I'll train you in the art of Thieving for your troubles."
+                  },
+                  {
+                    "player": "How much training will you give?"
+                  },
+                  {
+                    "npc": "That depends on the quantity and ripeness of the sq'irks you put into the juice."
+                  },
+                  {
+                    "player": "That sounds fair enough."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "4g6POu"
+                  }
+                ]
+              },
+              {
+                "text": "What's so good about sq'irk juice?",
+                "steps": [
+                  {
+                    "player": "What's so good about sq'irk juice?"
+                  },
+                  {
+                    "npc": "It is a sweet nectar for a thief or spy. It makes light fingers lighter, fleet feet flightier and comes in four different colours for those who are easily amused."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Selim starts salivating at the thought of sq'irk juice.",
+                    "id": "uZiGd3"
+                  },
+                  {
+                    "player": "It wouldn't have addictive properties, would it?"
+                  },
+                  {
+                    "npc": "It only holds power over those with poor self-control. Something which I have an abundance of."
+                  },
+                  {
+                    "player": "I see."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "f6OfkH"
+                  }
+                ]
+              },
+              {
+                "text": "I should go.",
+                "steps": [
+                  {
+                    "player": "I should go."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "3-Vq49"
+      }
+    ],
+    "jump-34cebe61f52688d9": [
+      {
+        "player": "Could you sell me another Keris?"
+      },
+      {
+        "npc": "Would you like a dagger or a partisan?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "A dagger.",
+            "steps": [
+              {
+                "player": "A dagger."
+              },
+              {
+                "npc": "That will be 20,000 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'll take one.",
+                    "steps": [
+                      {
+                        "player": "I'll take one."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have enough coins:",
+                        "steps": [
+                          {
+                            "player": "Actually, I don't seem to have enough money on me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ZH7QVC"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has enough coins:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Selim hands you a Keris dagger in exchange for 20,000 coins.",
+                            "id": "-nvHfO"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "1f3Siz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's too much.",
+                    "steps": [
+                      {
+                        "player": "That's too much."
+                      },
+                      {
+                        "npc": "Well you know where I am if you reconsider."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "A partisan.",
+            "steps": [
+              {
+                "player": "A partisan."
+              },
+              {
+                "npc": "That will be 60,000 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'll take one.",
+                    "steps": [
+                      {
+                        "player": "I'll take one."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have enough coins:",
+                        "steps": [
+                          {
+                            "player": "Actually, I don't seem to have enough money on me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "D3sMpc"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has enough coins:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Selim hands you a Keris partisan in exchange for 60,000 coins.",
+                            "id": "DIC4H2"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "-dvb1Z"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's too much.",
+                    "steps": [
+                      {
+                        "player": "That's too much."
+                      },
+                      {
+                        "npc": "Well you know where I am if you reconsider."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Actually, I'm good.",
+            "steps": [
+              {
+                "player": "Actually, I'm good."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9abef4e56571eefe": [
+      {
+        "player": "I'm good, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7d83c4ead8c5587f": [
+      {
+        "player": "Where do I get sq'irks?"
+      },
+      {
+        "npc": "There is a sorceress near the south eastern edge of Al Kharid who grows them. She used to be friends with Osman, but they fell out."
+      },
+      {
+        "player": "What happened?"
+      },
+      {
+        "npc": "I don't know. All I know is she won't give us any more fruit."
+      },
+      {
+        "player": "So all I have to do is ask her for some fruit for you?"
+      },
+      {
+        "npc": "I doubt it will be that easy. She is not renowned for her generosity and is very secretive about her garden's location."
+      },
+      {
+        "player": "Oh come on, it should be easy enough to find."
+      },
+      {
+        "npc": "Her garden has remained hidden even from Osman. I believe it must be hidden by magical means."
+      },
+      {
+        "player": "I see. And why can't you do this yourself?"
+      },
+      {
+        "npc": "My work requires that I remain here."
+      },
+      {
+        "player": "Okay. This should be an interesting task."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "nq5Vtr"
+      }
+    ],
+    "jump-ce2936b8cc6e1b23": [
+      {
+        "player": "How should I squeeze the fruit?"
+      },
+      {
+        "npc": "Use a pestle and mortar. Make sure you have an empty glass with you to collect the juice."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "QTK_Mg"
+      }
+    ],
+    "jump-fc8331c29b13722e": [
+      {
+        "player": "Is there a reward for getting these sq'irks?"
+      },
+      {
+        "npc": "Of course. I'll train you in the art of Thieving for your troubles."
+      },
+      {
+        "player": "How much training will you give?"
+      },
+      {
+        "npc": "That depends on the quantity and ripeness of the sq'irks you put into the juice."
+      },
+      {
+        "player": "That sounds fair enough."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "4g6POu"
+      }
+    ],
+    "jump-ab2dc2e2d35cbb2c": [
+      {
+        "player": "What's so good about sq'irk juice?"
+      },
+      {
+        "npc": "It is a sweet nectar for a thief or spy. It makes light fingers lighter, fleet feet flightier and comes in four different colours for those who are easily amused."
+      },
+      {
+        "type": "message",
+        "text": "Selim starts salivating at the thought of sq'irk juice.",
+        "id": "uZiGd3"
+      },
+      {
+        "player": "It wouldn't have addictive properties, would it?"
+      },
+      {
+        "npc": "It only holds power over those with poor self-control. Something which I have an abundance of."
+      },
+      {
+        "player": "I see."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "f6OfkH"
+      }
+    ],
+    "jump-3bc6928b40f50e6b": [
+      {
+        "player": "I should go."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -1,4 +1,190 @@
 {
+  "branches": {
+    "jump-ec5064c47fe81f59": [
+      {
+        "player": "You don't need to worry!"
+      },
+      {
+        "npc": "I don't?"
+      },
+      {
+        "player": "The God Wars are over! The gods don't intervene directly in the affairs of mortals any more."
+      },
+      {
+        "npc": "Are you sure?"
+      },
+      {
+        "player": "Yes!"
+      },
+      {
+        "npc": "I do hope you're right! I still can't help being worried, though."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are you scared of the gods?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ZhjCoo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-07eef3032c9dd8eb"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Don't you want to worship the god of the goblins?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "LljyL-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ca224f19295fe680"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Q6dwx-"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ca224f19295fe680": [
+      {
+        "player": "Don't you want to worship the god of the goblins?"
+      },
+      {
+        "npc": "No! How could you even suggest that? We're not going to worship some supernatural being just because it's bigger and more powerful than us."
+      },
+      {
+        "npc": "It may seem to you that we're cowardly, hiding here from the gods all this time, but I know that every Dorgeshuun would rather die than submit to the rule of any god."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are you scared of the gods?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "sansR8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-07eef3032c9dd8eb"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You don't need to worry!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "s-BpTH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ec5064c47fe81f59"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "UZ6-jr"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-07eef3032c9dd8eb": [
+      {
+        "player": "Why are you scared of the gods?"
+      },
+      {
+        "npc": "Because they're so powerful, of course!"
+      },
+      {
+        "npc": "In the time of the great war, they forced all the goblin tribes to fight one another. Our ancestors weren't powerful enough to stand up to them."
+      },
+      {
+        "npc": "We've hidden down here for this long, but now the way to the surface is open, what if they find us again?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You don't need to worry!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "KJt38Q",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ec5064c47fe81f59"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Don't you want to worship the god of the goblins?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "trgPIf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ca224f19295fe680"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Goodbye."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Oh dear..."
@@ -53,8 +239,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "KJt38Q"
+                      "id": "KJt38Q",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-ec5064c47fe81f59"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -63,8 +254,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "trgPIf"
+                      "id": "trgPIf",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-ca224f19295fe680"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -112,8 +308,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "ZhjCoo"
+                      "id": "ZhjCoo",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-07eef3032c9dd8eb"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -122,8 +323,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "LljyL-"
+                      "id": "LljyL-",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-ca224f19295fe680"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -161,8 +367,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "sansR8"
+                      "id": "sansR8",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-07eef3032c9dd8eb"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -171,8 +382,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "s-BpTH"
+                      "id": "s-BpTH",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-ec5064c47fe81f59"
+                        }
+                      ]
                     }
                   ]
                 },

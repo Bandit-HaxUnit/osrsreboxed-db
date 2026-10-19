@@ -16,8 +16,13 @@
       },
       {
         "type": "jump",
-        "reference": "below",
-        "id": "X2oOXv"
+        "id": "X2oOXv",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-4458e983cf870dfb"
+          }
+        ]
       }
     ],
     "in-member-s-world-talk-to-in-a-non-leagues-world-repeated-dialogue": [
@@ -403,8 +408,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "j7LLxK"
+                                        "id": "j7LLxK",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-7c4b11277b656083"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -413,8 +423,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "9oY8Gi"
+                                        "id": "9oY8Gi",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-dfb3ba1269bc8511"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -619,6 +634,91 @@
         "type": "jump",
         "reference": "initial",
         "id": "ti4sdp"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4458e983cf870dfb": [
+      {
+        "player": "What's a League?"
+      },
+      {
+        "npc": "Leagues are time-limited challenges that provide a unique twist on the world you know and love."
+      },
+      {
+        "npc": "With each League, you start afresh, with a limited amount of time to progress through the League."
+      },
+      {
+        "player": "A fresh start? Why would I want that?"
+      },
+      {
+        "npc": "Glory, rewards, and the chance to do things in a different way!"
+      },
+      {
+        "npc": "First up, the glory. Within a League, you can earn League Points by completing various tasks."
+      },
+      {
+        "npc": "The more points you have, the better League Rank you will be given."
+      },
+      {
+        "npc": "Each League Rank will unlock a trophy for you. These trophies can be used to show off your accomplishments."
+      },
+      {
+        "npc": "If that doesn't interest you, perhaps another reward might be more appealing? League Points can be used to buy things from the Leagues Reward Shop."
+      },
+      {
+        "npc": "You can keep these purchases for yourself or sell them on to others!"
+      },
+      {
+        "player": "And if glory and rewards don't interest me?"
+      },
+      {
+        "npc": "Every League has unique rules and features. It's a very different world from the one you're used to."
+      },
+      {
+        "npc": "For one thing, within the Leagues, you can unlock powerful artefacts known as Relics which completely change the way you progress."
+      },
+      {
+        "npc": "So even if glory and rewards aren't your thing, you'll still find Leagues to be a whole lot of fun!"
+      },
+      {
+        "player": "I see. So how do I take part?"
+      },
+      {
+        "npc": "Well sadly, only Members are eligible to take part in Leagues. I'll be happy to help once you become one."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Become a member interface",
+        "id": "g-xcDY"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7c4b11277b656083": [
+      {
+        "player": "Actually, let's talk about something else."
+      },
+      {
+        "npc": "Very well."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "9ZRtI2"
+      }
+    ],
+    "jump-dfb3ba1269bc8511": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "All the best."
+      },
+      {
+        "type": "end"
       }
     ]
   }

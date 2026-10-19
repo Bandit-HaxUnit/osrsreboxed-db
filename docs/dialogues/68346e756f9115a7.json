@@ -1,4 +1,63 @@
 {
+  "branches": {
+    "jump-b6712f3a5e00443e": [
+      {
+        "player": "What are you guarding?"
+      },
+      {
+        "npc": "This path leads to the Doors of Dinh. You should be careful if you wish to travel any further."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the Doors of Dinh.",
+            "steps": [
+              {
+                "player": "Tell me about the Doors of Dinh."
+              },
+              {
+                "npc": "They're to keep the Wintertodt at bay. No-one knows what it really is, but centuries ago it came out of the northern wastes to terrorise the kingdom."
+              },
+              {
+                "npc": "The Doors were created by Dinh, a master smither, to imprison the Wintertodt."
+              },
+              {
+                "npc": "Now we keep a watch on the pass, so that the armies can be summoned if the Wintertodt ever escapes."
+              },
+              {
+                "player": "Okay, thanks for the warning."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks for the warning.",
+            "steps": [
+              {
+                "player": "Okay, thanks for the warning."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "fi-ZNR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8652753c9d4125bf": [
+      {
+        "player": "I'll leave you alone now."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What do you want?"
@@ -75,8 +134,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "djOYYk"
+                      "id": "djOYYk",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-b6712f3a5e00443e"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -85,8 +149,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "02hIxM"
+                      "id": "02hIxM",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-8652753c9d4125bf"
+                        }
+                      ]
                     }
                   ]
                 }

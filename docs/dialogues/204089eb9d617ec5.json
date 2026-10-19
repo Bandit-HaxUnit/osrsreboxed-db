@@ -201,8 +201,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "aCJMqC"
+                        "id": "aCJMqC",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e6a2d197d9564212"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -440,6 +445,17 @@
     ]
   },
   "branches": {
+    "jump-e6a2d197d9564212": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Goodbye adventurer."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "pmUsWS": [
       {
         "npc": "You need at least two inventory spaces, make some space and come back."

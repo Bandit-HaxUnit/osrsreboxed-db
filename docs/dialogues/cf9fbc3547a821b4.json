@@ -80,8 +80,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "rcP0-F"
+            "id": "rcP0-F",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-08b7e9273f82f8d4"
+              }
+            ]
           }
         ],
         "id": "n9Rpt5"
@@ -134,8 +139,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "FLlM82"
+            "id": "FLlM82",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-08b7e9273f82f8d4"
+              }
+            ]
           }
         ],
         "id": "uHExGz"
@@ -488,11 +498,101 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "GLOjqm"
+            "id": "GLOjqm",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-3bacf8e926981b67"
+              }
+            ]
           }
         ],
         "id": "VWBkT0"
+      }
+    ]
+  },
+  "branches": {
+    "jump-08b7e9273f82f8d4": [
+      {
+        "npc": "Of course! How is the young gnome? I rather liked him he was rather loud, but he had a good soul, and was very interested in elven magic."
+      },
+      {
+        "player": "I think Oaknock died of old age some time ago. He must have visited you a few hundred years ago though..."
+      },
+      {
+        "npc": "I keep forgetting, a hundred years is a long time for you. He was very interested in illusion magic, and how to prevent it. I gave him some advice and a few bits of equipment to help him."
+      },
+      {
+        "player": "A seed?"
+      },
+      {
+        "npc": "Of course. It grew into an axe. I hope he found it useful."
+      },
+      {
+        "player": "I think he did! Thanks."
+      },
+      {
+        "type": "message",
+        "text": "Ilfeen smiles serenely.",
+        "id": "YRuKmj"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3bacf8e926981b67": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That sounds great.",
+            "steps": [
+              {
+                "player": "That sounds great."
+              },
+              {
+                "type": "message",
+                "text": "You're handed a book.",
+                "id": "2hC8tB"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Crystal singing for beginners",
+                "id": "yhKgj3"
+              },
+              {
+                "player": "Thanks, I'll read all about it."
+              },
+              {
+                "npc": "Well, good luck."
+              },
+              {
+                "player": "See you later."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't need it, thanks.",
+            "steps": [
+              {
+                "player": "I don't need it, thanks."
+              },
+              {
+                "npc": "Well, good luck."
+              },
+              {
+                "player": "See you later."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

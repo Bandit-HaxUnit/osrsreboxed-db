@@ -124,8 +124,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "AceIfQ"
+                        "id": "AceIfQ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-10e8ba994c30dfb4"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -135,8 +140,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "m4-eRU"
+                        "id": "m4-eRU",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-91a3e0a16a5a9200"
+                          }
+                        ]
                       }
                     ],
                     "id": "K_lqbk"
@@ -147,8 +157,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "F1S9ry"
+                        "id": "F1S9ry",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2522120906da751b"
+                          }
+                        ]
                       }
                     ],
                     "id": "iZiltz"
@@ -159,8 +174,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "iqqEGr"
+                        "id": "iqqEGr",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c43235e7f7f74e76"
+                          }
+                        ]
                       }
                     ],
                     "id": "3bLdbY"
@@ -200,8 +220,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "RNP332"
+                        "id": "RNP332",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-91a3e0a16a5a9200"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -377,8 +402,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "-fn3sX"
+                                "id": "-fn3sX",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6d96be8ad031d331"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -387,8 +417,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "HIBGz3"
+                                "id": "HIBGz3",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-1b5b2f72d5661db7"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -533,8 +568,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "8KxjCy"
+                        "id": "8KxjCy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-10e8ba994c30dfb4"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -544,8 +584,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "V7xATg"
+                        "id": "V7xATg",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-91a3e0a16a5a9200"
+                          }
+                        ]
                       }
                     ],
                     "id": "JOIs67"
@@ -556,8 +601,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "BkNm11"
+                        "id": "BkNm11",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2522120906da751b"
+                          }
+                        ]
                       }
                     ],
                     "id": "cu4Tuq"
@@ -568,8 +618,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "NqXNrf"
+                        "id": "NqXNrf",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c43235e7f7f74e76"
+                          }
+                        ]
                       }
                     ],
                     "id": "ShakyI"
@@ -798,6 +853,451 @@
     ]
   },
   "branches": {
+    "jump-10e8ba994c30dfb4": [
+      {
+        "player": "Tell me about the guild."
+      },
+      {
+        "npc": "After the Shayzien Army cleared out the lizardmen in this area, I founded this guild with some fellow Hosidius farmers."
+      },
+      {
+        "player": "Why here? Why not within the safety of Kourend?"
+      },
+      {
+        "npc": "The heat of the volcano allows us to grow things here that would never survive in the climate of Kourend. The discoveries we have made are worth the extra risk."
+      },
+      {
+        "player": "Fair enough, anything else I should know about the guild?"
+      },
+      {
+        "npc": "The guild is split into three tiers, with only advanced farmers being allowed access to the upper echelons."
+      },
+      {
+        "npc": "Would you like to hear more about one of the tiers?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the beginner tier.",
+            "steps": [
+              {
+                "player": "Tell me about the beginner tier."
+              },
+              {
+                "npc": "In the beginner tier you can access farming patches for cacti, allotments, bushes and flowers. You'll also find some shops with useful farming supplies."
+              },
+              {
+                "npc": "Would you like to hear more about another tier?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "0VE7W4"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about the intermediate tier.",
+            "steps": [
+              {
+                "player": "Tell me about the intermediate tier."
+              },
+              {
+                "npc": "In the intermediate tier you can access farming patches for herbs and trees. You'll also find the anima and hespori patches which are unique to this guild."
+              },
+              {
+                "npc": "Would you like to hear more about another tier?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "T7dNpq"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about the advanced tier.",
+            "steps": [
+              {
+                "player": "Tell me about the advanced tier."
+              },
+              {
+                "npc": "In the advanced tier you can access farming patches for fruit trees and spirit trees. You'll also find the redwood and celastrus patches which are unique to this guild."
+              },
+              {
+                "npc": "Would you like to hear more about another tier?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "KewsaM"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-91a3e0a16a5a9200": [
+      {
+        "player": "I'd like a farming contract."
+      },
+      {
+        "npc": "What kind of contract would you like?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Easy Contract (Requires 45 Farming)",
+            "steps": [
+              {
+                "player": "Could I have an easy contract please?"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "new easy contract",
+                "id": "ZbHmkz"
+              },
+              {
+                "type": "condition",
+                "text": "If the contract involves a check-healthable plant:",
+                "steps": [
+                  {
+                    "npc": "Please could you grow [a/some] [plant(s)] for us? I'll reward you once you have checked [its/their] health."
+                  }
+                ],
+                "id": "DHoVyu"
+              },
+              {
+                "type": "condition",
+                "text": "If the contract does not involve a check-healthable plant:",
+                "steps": [
+                  {
+                    "npc": "Please could you grow some [plant]s for us? I'll reward you once they have been fully harvested."
+                  }
+                ],
+                "id": "Zo_Biv"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Medium Contract (Requires 65 Farming)",
+            "steps": [
+              {
+                "player": "Could I have a medium contract please?"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "new medium contract",
+                "id": "xUIyxF"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ZQ6r02"
+              }
+            ]
+          },
+          {
+            "text": "Hard Contract (Requires 85 Farming",
+            "steps": [
+              {
+                "player": "Could I have a hard contract please?"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "new hard contract",
+                "id": "RzAPRH"
+              },
+              {
+                "type": "condition",
+                "text": "If the contract involves a check-healthable plant:",
+                "steps": [
+                  {
+                    "npc": "Please could you grow [a/some] [plant(s)] for us? I'll reward you once you have checked [its/their] health."
+                  }
+                ],
+                "id": "iYrufb"
+              },
+              {
+                "type": "condition",
+                "text": "If the contract does not involve a check-healthable plant:",
+                "steps": [
+                  {
+                    "npc": "Please could you grow some [plant]s for us? I'll reward you once they have been fully harvested."
+                  }
+                ],
+                "id": "T5b4DQ"
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "pWNuGz"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-2522120906da751b": [
+      {
+        "player": "I've completed my farming contract."
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "npc": "You'll be wanting a reward then. Come back when you have some room to take it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "CVolcI"
+      },
+      {
+        "npc": "You'll be wanting a reward then. Here's a seed pack."
+      },
+      {
+        "type": "message",
+        "text": "Guildmaster Jane has given you a seed pack.",
+        "id": "W5mCd_"
+      },
+      {
+        "type": "choice",
+        "prompt": "Take another contract?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Easy Contract (Requires 45 Farming)",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "-fn3sX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6d96be8ad031d331"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Medium Contract (Requires 65 Farming)",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HIBGz3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1b5b2f72d5661db7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hard Contract (Requires 85 Farming)",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "8FBqoH"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No."
+              },
+              {
+                "npc": "Fair enough. Come back when you want another one."
+              }
+            ]
+          },
+          {
+            "text": "Take another [difficulty] contract.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "L_su7u"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c43235e7f7f74e76": [
+      {
+        "player": "What's my current farming contract?"
+      },
+      {
+        "type": "condition",
+        "text": "If the contract involves a check-healthable plant:",
+        "steps": [
+          {
+            "npc": "We need you to grow [a/some] [plant(s)]. I'll reward you once you have checked [its/their] health."
+          }
+        ],
+        "id": "Ma-Qjl"
+      },
+      {
+        "type": "condition",
+        "text": "If the contract does not involve a check-healthable plant:",
+        "steps": [
+          {
+            "npc": "We need you to grow some [plant]s. I'll reward you once they've been fully harvested."
+          }
+        ],
+        "id": "MjgIwK"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have anything easier?",
+            "steps": [
+              {
+                "player": "Do you have anything easier?"
+              },
+              {
+                "npc": "I suppose I could give you a different contract, if you're sure."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "player": "Yes please."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "new contract of a lower tier",
+                        "id": "c_B_6d"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Thank you.",
+            "steps": [
+              {
+                "player": "Thank you."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6d96be8ad031d331": [
+      {
+        "player": "Could I have an easy contract please?"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "new easy contract",
+        "id": "ZbHmkz"
+      },
+      {
+        "type": "condition",
+        "text": "If the contract involves a check-healthable plant:",
+        "steps": [
+          {
+            "npc": "Please could you grow [a/some] [plant(s)] for us? I'll reward you once you have checked [its/their] health."
+          }
+        ],
+        "id": "DHoVyu"
+      },
+      {
+        "type": "condition",
+        "text": "If the contract does not involve a check-healthable plant:",
+        "steps": [
+          {
+            "npc": "Please could you grow some [plant]s for us? I'll reward you once they have been fully harvested."
+          }
+        ],
+        "id": "Zo_Biv"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-1b5b2f72d5661db7": [
+      {
+        "player": "Could I have a medium contract please?"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "new medium contract",
+        "id": "xUIyxF"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "ZQ6r02"
+      }
+    ],
     "8qpys9": [
       {
         "npc": "Please could you grow [a/some] [plant(s)] for us? I'll reward you once you have checked [its/their] health."

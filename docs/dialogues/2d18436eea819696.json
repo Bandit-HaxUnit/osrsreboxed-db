@@ -199,8 +199,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Wsgch-"
+                        "id": "Wsgch-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f792f940b036bd17"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -376,6 +381,19 @@
         "type": "jump",
         "reference": "initial",
         "id": "hqKWPt"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f792f940b036bd17": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you later."
+      },
+      {
+        "type": "end"
       }
     ]
   }

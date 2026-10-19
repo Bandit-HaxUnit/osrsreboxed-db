@@ -73,8 +73,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "FkXzfg"
+                        "id": "FkXzfg",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-96762c5218ae531b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -83,8 +88,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "FbSz01"
+                        "id": "FbSz01",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-05a07893ff3f8e5e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -93,8 +103,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "sHOLBJ"
+                        "id": "sHOLBJ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-87a5474bca406bf3"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -363,8 +378,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "1ONLhO"
+                        "id": "1ONLhO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-96762c5218ae531b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -373,8 +393,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "TBdqkO"
+                        "id": "TBdqkO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-87a5474bca406bf3"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -387,8 +412,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1O080X"
+                "id": "1O080X",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-96762c5218ae531b"
+                  }
+                ]
               }
             ]
           },
@@ -397,8 +427,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "h56E8-"
+                "id": "h56E8-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b5787f489a87df6e"
+                  }
+                ]
               }
             ]
           },
@@ -407,8 +442,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5hf9sV"
+                "id": "5hf9sV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-87a5474bca406bf3"
+                  }
+                ]
               }
             ]
           }
@@ -465,6 +505,191 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-96762c5218ae531b": [
+      {
+        "player": "Tell me about the prices of runes."
+      },
+      {
+        "type": "action",
+        "text": "The Grand Exchange market guide prices of runes are displayed.",
+        "id": "1gU5hm"
+      }
+    ],
+    "jump-05a07893ff3f8e5e": [
+      {
+        "player": "Combine the charges on my teleport jewellery, please."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no jewellery that can be combined:",
+        "steps": [
+          {
+            "npc": "Arrr, ye've got nothing that I can combine."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eLfz3I"
+      },
+      {
+        "type": "missing",
+        "id": "UV7tCn"
+      },
+      {
+        "type": "condition",
+        "text": "Unknown exact condition, possible if the player has only one piece of dragonstone jewellery:",
+        "steps": [
+          {
+            "npc": "Arrr, ye've nothing I can combine. Maybe ye needs to take yer stuff up to the Wilderness and charge it on the Fountain of Rune. It be more powerful than me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "15ln-T"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have inventory space:",
+        "steps": [
+          {
+            "npc": "Arrr, I think ye be a bit short of inventory space."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "GqA35K"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough inventory space and jewellery to be decanted:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "All jewellery in the inventory is decanted.",
+            "id": "WHRCW9"
+          },
+          {
+            "npc": "Arr, all done."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6QwkZo"
+      }
+    ],
+    "jump-87a5474bca406bf3": [
+      {
+        "player": "I got to go, erm, swab some decks! Yarr!"
+      },
+      {
+        "npc": "Defer your speech right there! Quit this derogatory and somewhat narrow-minded allusion that all folks of sea voyage are only concerned with washing the decks, looking after parrots and drinking rum. I'll have ye"
+      },
+      {
+        "npc": "know there is much more to a pirate than meets the eye."
+      },
+      {
+        "player": "Aye-aye, captain!"
+      },
+      {
+        "npc": "..."
+      },
+      {
+        "player": "Oh, come on! Lighten up!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b5787f489a87df6e": [
+      {
+        "player": "I hear you deal in rings of forging?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have any ruby rings if their inventory:",
+        "steps": [
+          {
+            "npc": "Arrrr, bring me yer ruby rings to enchant."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bxY2PC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has ruby rings, but less than 250 coins:",
+        "steps": [
+          {
+            "npc": "Arrrr, but they arrre 250gp per ring."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "qcZXMr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has ruby rings and at least 250 coins:",
+        "steps": [
+          {
+            "npc": "Arrr, 250gp per ring. How many would ye like me to enchant?"
+          },
+          {
+            "type": "input",
+            "text": "How many rings of forging?",
+            "id": "e8DRky"
+          },
+          {
+            "type": "condition",
+            "text": "If the player inputs 0:",
+            "steps": [
+              {
+                "npc": "Arrr, be seeing ya."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "59p38e"
+          },
+          {
+            "type": "condition",
+            "text": "If the player inputs more than 0:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "of ruby rings and # of rings {{X}} 250 coins",
+                "id": "VCmL-1"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "of rings of forging",
+                "id": "6AJHrQ"
+              },
+              {
+                "npc": "Arrr, pleasure doin' business with ya."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "X09WWP"
+          }
+        ],
+        "id": "CMRtgh"
       }
     ]
   }

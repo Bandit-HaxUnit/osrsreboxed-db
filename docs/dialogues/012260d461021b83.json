@@ -178,8 +178,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lnYwAc"
+                "id": "lnYwAc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-191b992d76e531af"
+                  }
+                ]
               }
             ]
           },
@@ -188,8 +193,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "7M9IUN"
+                "id": "7M9IUN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0b6b1052a20f99b2"
+                  }
+                ]
               }
             ]
           },
@@ -236,8 +246,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UOOK-R"
+                "id": "UOOK-R",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-30a195ae1909104f"
+                  }
+                ]
               }
             ]
           },
@@ -246,8 +261,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nupIst"
+                "id": "nupIst",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d6ffb7ba4a4f2a4"
+                  }
+                ]
               }
             ]
           }
@@ -266,8 +286,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TyQheJ"
+                "id": "TyQheJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-191b992d76e531af"
+                  }
+                ]
               }
             ]
           },
@@ -276,8 +301,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "S17cUA"
+                "id": "S17cUA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0b6b1052a20f99b2"
+                  }
+                ]
               }
             ]
           },
@@ -300,8 +330,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KXWPlW"
+                "id": "KXWPlW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-30a195ae1909104f"
+                  }
+                ]
               }
             ]
           },
@@ -310,12 +345,172 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "w6oMkv"
+                "id": "w6oMkv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d6ffb7ba4a4f2a4"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-191b992d76e531af": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is the Library Historical Archive. Here you'll find historical documents and texts from all eras of Great Kourend's history, dating all the way back to the first decade."
+      },
+      {
+        "npc": "Are you looking for something in particular?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Which subject would you like to hear about?",
+        "options": [
+          {
+            "text": "What information do you have on Xeric?",
+            "steps": [
+              {
+                "player": "What information do you have on Xeric?"
+              },
+              {
+                "npc": "Ah, Xeric. Our most infamous ruler... We do have extensive records regarding Xeric. You can examine some of the texts here or speak to Ektheme, our Xerician expert."
+              },
+              {
+                "npc": "Is there something else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "jpr-Q3"
+              }
+            ]
+          },
+          {
+            "text": "What can you tell me about the Wintertodt?",
+            "steps": [
+              {
+                "player": "What can you tell me about the Wintertodt?"
+              },
+              {
+                "npc": "The Wintertodt, or the Winter beast as it was often known at the time, terrorised northern Kourend for five decades."
+              },
+              {
+                "npc": "Logios is currently studying the Wintertodt Invasion, and we have various texts from that era."
+              },
+              {
+                "npc": "Is there something else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "4J10IO"
+              }
+            ]
+          },
+          {
+            "text": "What can you tell me about Mount Quidamortem?",
+            "steps": [
+              {
+                "player": "What can you tell me about Mount Quidamortem?"
+              },
+              {
+                "npc": "Our first records of the mountain date back to the 36th decade where a Shayzien patrol discovered the mountain during a survey of the Kebos Lowlands."
+              },
+              {
+                "npc": "King Shayzien VII was keen on conquering more land for Kourend and demanded his people explore suitable territories."
+              },
+              {
+                "npc": "The mountain became known as Mount Quidamortem after it was realised venturing towards the summit resulted in certain death."
+              },
+              {
+                "npc": "Gnosi is our expert on Mount Quidamortem, but I'm afraid she's currently on an expedition to the temple near the summit of the mountain. However, we do have some texts available detailing the great expedition."
+              },
+              {
+                "npc": "Is there something else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "n6nKUc"
+              }
+            ]
+          },
+          {
+            "text": "None",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0b6b1052a20f99b2": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "My name is Istoria. I'm the chief historian and curator of the Library Historical Archive."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "S7pKqr"
+      }
+    ],
+    "jump-30a195ae1909104f": [
+      {
+        "player": "How do I get out of here?"
+      },
+      {
+        "npc": "I can teleport you back to the Grand Library. Would you like to leave now?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Leave the Library Historical Archive?",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5d6ffb7ba4a4f2a4": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "oQAVD0"
       }
     ]
   }

@@ -189,8 +189,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "vOITR7"
+                                    "id": "vOITR7",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-a0031bddbc4006c8"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -210,8 +215,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "DTbtMh"
+                        "id": "DTbtMh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a0031bddbc4006c8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -304,6 +314,62 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-a0031bddbc4006c8": [
+      {
+        "player": "I'd like to claim my League trophies."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not earned any points during the Twisted League:",
+        "steps": [
+          {
+            "npc": "You have not earned any League trophies. If you want a League trophy you should participate next time a League comes around!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZuIY58"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned points during the Twisted League:",
+        "steps": [
+          {
+            "npc": "Of course, here are the trophies you have earned."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have enough inventory space:",
+            "steps": [
+              {
+                "npc": "You do not have enough space for all the League trophies you can claim. Come back to me when you have more space."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "S6KFW6"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has claimed all eligible trophies:",
+            "steps": [
+              {
+                "npc": "You have already claimed all of the League trophies which you have earned."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "zGWKYJ"
+          }
+        ],
+        "id": "6UofJn"
       }
     ]
   }

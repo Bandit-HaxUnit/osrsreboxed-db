@@ -28,8 +28,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "i2xBL-"
+                        "id": "i2xBL-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-525bd50fba291639"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -38,8 +43,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "LSKRzr"
+                        "id": "LSKRzr",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b203c4dc5bd57a6b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -48,8 +58,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "wPWKer"
+                        "id": "wPWKer",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d02bbffc80e371b0"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -88,8 +103,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "eZDAsc"
+                        "id": "eZDAsc",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-936886ecce90a103"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -471,6 +491,59 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-525bd50fba291639": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "npc": "I'm a fruit farmer. But now I'm a bit too old for that. Maybe I should try writing books again, like I did when I was younger."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "g3XeIJ"
+      }
+    ],
+    "jump-b203c4dc5bd57a6b": [
+      {
+        "player": "I'd like to work on your farm."
+      },
+      {
+        "npc": "Alright. Take a handful of seeds from the table, and head into the farm. When you've harvested some fruit, deposit it straight into the sacks."
+      },
+      {
+        "npc": "Remember, you have to water the plants at each stage, otherwise they die of the blight. Fertiliser makes them grow faster... or die faster if you don't water them."
+      },
+      {
+        "npc": "You'll gain a little extra experience if you grow enough of the fruit successfully."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d02bbffc80e371b0": [
+      {
+        "player": "Have you any rewards?"
+      },
+      {
+        "type": "action",
+        "text": "(Game opens the rewards interface for the Tithe Farm.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "rewards interface for the Tithe Farm",
+        "id": "4pbBkQ"
+      }
+    ],
+    "jump-936886ecce90a103": [
+      {
+        "player": "I need to go."
+      },
+      {
+        "type": "end"
       }
     ]
   }

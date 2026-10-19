@@ -86,8 +86,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DYc9ex"
+                "id": "DYc9ex",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5b3d41d5d2d62bb0"
+                  }
+                ]
               }
             ]
           },
@@ -96,12 +101,41 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tRcR4B"
+                "id": "tRcR4B",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d174d9edfc81e27"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-5b3d41d5d2d62bb0": [
+      {
+        "player": "How is the camp holding up?"
+      },
+      {
+        "npc": "The whole place is falling apart, to be honest. I'd jump at the chance to shut it all down for good."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5d174d9edfc81e27": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "Until next time."
+      },
+      {
+        "type": "end"
       }
     ]
   }

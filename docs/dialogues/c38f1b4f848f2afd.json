@@ -172,8 +172,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "cHApXX"
+                        "id": "cHApXX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cea12763bd2a4909"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -373,6 +378,19 @@
           }
         ],
         "id": "4wdotQ"
+      }
+    ]
+  },
+  "branches": {
+    "jump-cea12763bd2a4909": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you later."
+      },
+      {
+        "type": "end"
       }
     ]
   }

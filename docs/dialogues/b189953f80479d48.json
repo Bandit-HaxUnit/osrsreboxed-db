@@ -1008,8 +1008,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "O1ilW9"
+                                        "id": "O1ilW9",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-f0f85c0a068892a4"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1018,8 +1023,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "EfCSQa"
+                                        "id": "EfCSQa",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-ba50c3bfa3c5fcd3"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1028,8 +1038,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "KBi4ZC"
+                                        "id": "KBi4ZC",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-27d548fe01e61945"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -1253,6 +1268,130 @@
       {
         "type": "unavailable",
         "id": "Hypo2L"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f0f85c0a068892a4": [
+      {
+        "player": "How dare you call me a fool! I will work for whom I want!"
+      },
+      {
+        "type": "line",
+        "speaker": "Guardian of Armadyl",
+        "text": "We must cleanse the temple!"
+      },
+      {
+        "type": "action",
+        "text": "The guardian attacks the player.",
+        "id": "Z00rUz"
+      }
+    ],
+    "jump-ba50c3bfa3c5fcd3": [
+      {
+        "player": "I just thought of something I must do!"
+      },
+      {
+        "type": "line",
+        "speaker": "Guardian of Armadyl",
+        "text": "An agent of evil cannot be allowed to leave!"
+      },
+      {
+        "type": "action",
+        "text": "The guardian attacks the player.",
+        "id": "GUJaTp"
+      }
+    ],
+    "jump-27d548fe01e61945": [
+      {
+        "player": "You're right, it's time for my yearly bath."
+      },
+      {
+        "type": "message",
+        "text": "The guardian splashes holy water over you.",
+        "id": "SCMYbP"
+      },
+      {
+        "type": "line",
+        "speaker": "Guardian of Armadyl",
+        "text": "You have been cleansed!"
+      },
+      {
+        "type": "line",
+        "speaker": "Guardian of Armadyl",
+        "text": "Lucien must not get hold of the staff! He would become too powerful!"
+      },
+      {
+        "type": "line",
+        "speaker": "Guardian of Armadyl",
+        "text": "Hast thou come across the undead necromancer? It was he that raised an army of the undead against Varrock a generation ago. If you know where he is you can help us defeat him."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ok! I'll help!",
+            "steps": [
+              {
+                "player": "Ok! I'll help!"
+              },
+              {
+                "type": "line",
+                "speaker": "Guardian of Armadyl",
+                "text": "So he is close by?"
+              },
+              {
+                "player": "Yes!"
+              },
+              {
+                "type": "line",
+                "speaker": "Guardian of Armadyl",
+                "text": "He must be gaining in power again. If you can defeat him he will be banished from this plane for a while. You will need this pendant to attack him."
+              },
+              {
+                "type": "unavailable",
+                "id": "9p_LQ7"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No! I shall not turn against my employer!",
+            "steps": [
+              {
+                "player": "No! I shall not turn against my employer!"
+              },
+              {
+                "type": "line",
+                "speaker": "Guardian of Armadyl",
+                "text": "Fool! You will die for your sins!"
+              },
+              {
+                "type": "action",
+                "text": "The guardian attacks the player.",
+                "id": "yrI1iq"
+              }
+            ]
+          },
+          {
+            "text": "I need time to think.",
+            "steps": [
+              {
+                "player": "I need time to think."
+              },
+              {
+                "type": "line",
+                "speaker": "Guardian of Armadyl",
+                "text": "Linger a while and be at peace."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

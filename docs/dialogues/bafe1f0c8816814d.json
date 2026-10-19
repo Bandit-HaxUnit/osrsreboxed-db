@@ -170,8 +170,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "wbQ03b"
+                        "id": "wbQ03b",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-79bf0d81431390ad"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -190,8 +195,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "PmFFwb"
+                        "id": "PmFFwb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6628fd2aed919e39"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -425,6 +435,58 @@
             "id": "6_uRTm"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-79bf0d81431390ad": [
+      {
+        "player": "What about the stone circle full of dark wizards?"
+      },
+      {
+        "npc": "That used to be OUR stone circle. Unfortunately, many many years ago, dark wizards cast a wicked spell upon it so that they could corrupt its power for their own evil ends."
+      },
+      {
+        "npc": "When they cursed the rocks for their rituals they made them useless to us and our magics. We require a brave adventurer to go on a quest for us to help purify the circle of Varrock."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Druidic Ritual quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "6huYtt"
+              }
+            ],
+            "hook": "quest:druidic-ritual:start",
+            "quest": "Druidic Ritual"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "qtU2fo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6628fd2aed919e39": [
+      {
+        "player": "Well, I'll be on my way now."
+      },
+      {
+        "npc": "Goodbye adventurer. I feel we shall meet again."
+      },
+      {
+        "type": "end"
       }
     ]
   }

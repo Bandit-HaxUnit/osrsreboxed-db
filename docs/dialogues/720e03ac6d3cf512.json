@@ -47,8 +47,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "12QSD7"
+                "id": "12QSD7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f3bb1a5ef9354ef6"
+                  }
+                ]
               }
             ]
           },
@@ -113,8 +118,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "_sngwr"
+                            "id": "_sngwr",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-315d573ad0ea5c7d"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -243,6 +253,104 @@
     "talk-to-rory": [
       {
         "npc": "Ahh I see you've met Rory. As a young Cyclops he's not ready for combat yet so he keeps me company."
+      }
+    ]
+  },
+  "branches": {
+    "jump-f3bb1a5ef9354ef6": [
+      {
+        "type": "condition",
+        "text": "If the player has not shown her a rune defender:",
+        "steps": [
+          {
+            "npc": "You'll need to display your skills as a Warrior before I can allow you to enter the room."
+          },
+          {
+            "player": "How can I do that?"
+          },
+          {
+            "npc": "Bring me a Rune Defender and I shall unlock the door for you, this shows me you have dedicated enough time to fighting the Cyclops upstairs."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I have a Rune Defender here.",
+                "steps": [
+                  {
+                    "player": "I have a Rune Defender here, please let me in!"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have a rune defender:",
+                    "steps": [
+                      {
+                        "npc": "And the Wise Old Man is my Dad... come back when you have the Rune Defender!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Yo_F7L"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has a rune defender:",
+                    "steps": [
+                      {
+                        "npc": "Very well, I've unlocked the door but you'll still need 100 tokens from upstairs before you can enter as well as 10 for every minute you want to stay inside. Have fun in there!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "qmAT3g"
+                  }
+                ]
+              },
+              {
+                "text": "Bye!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "_sngwr",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-315d573ad0ea5c7d"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "i_oUi3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already show her a rune defender:",
+        "steps": [
+          {
+            "npc": "Yes, you have already proved yourself to me, the door is unlocked."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bdmFzx"
+      }
+    ],
+    "jump-315d573ad0ea5c7d": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you around."
+      },
+      {
+        "type": "end"
       }
     ]
   }

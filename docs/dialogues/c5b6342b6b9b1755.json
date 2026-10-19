@@ -210,8 +210,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "JYXpc3"
+                    "id": "JYXpc3",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-2beb3e929a93cd46"
+                      }
+                    ]
                   }
                 ]
               },
@@ -220,8 +225,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "XGpVcA"
+                    "id": "XGpVcA",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-89ed89f564fcb8f5"
+                      }
+                    ]
                   }
                 ]
               }
@@ -242,8 +252,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "batTlv"
+                    "id": "batTlv",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-2a2deaf45a691309"
+                      }
+                    ]
                   }
                 ]
               },
@@ -252,8 +267,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "AUN7ow"
+                    "id": "AUN7ow",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-9e1241447085d90e"
+                      }
+                    ]
                   }
                 ]
               }
@@ -471,6 +491,66 @@
       },
       {
         "npc": "Suit yerself.."
+      }
+    ]
+  },
+  "branches": {
+    "jump-2beb3e929a93cd46": [
+      {
+        "type": "message",
+        "text": "You hand over the artefact(s) and Simon hands you 10000 coins.",
+        "id": "xCY7EK"
+      },
+      {
+        "npc": "Ripper! Thanks a bundle, mate! Thanks to you I can fulfill me contract. You're a true blue! The boss will be pleased."
+      },
+      {
+        "player": "Glad I was able to help... but who is your boss? I thought you worked for the museum?"
+      },
+      {
+        "npc": "Mind your own bizzo, mate. But if you get any more, you know where I am!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-89ed89f564fcb8f5": [
+      {
+        "player": "I have one, but I want to keep it for now."
+      },
+      {
+        "npc": "Careful, mate, people might come looking for a thing like that!"
+      },
+      {
+        "player": "Thanks for the advice, but I'll hang onto it for now."
+      },
+      {
+        "npc": "Bye, cobber."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2a2deaf45a691309": [
+      {
+        "type": "message",
+        "text": "You hand over the artefact(s) and Simon hands you [10000 per Pyramid top] coins.",
+        "id": "0iaVVb"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "PAX0MO"
+      }
+    ],
+    "jump-9e1241447085d90e": [
+      {
+        "player": "I have some, but I want to keep them for now."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "ls7kPW"
       }
     ]
   }

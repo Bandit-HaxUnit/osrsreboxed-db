@@ -37,8 +37,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "51M-Fu"
+                "id": "51M-Fu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb0e710491c4037a"
+                  }
+                ]
               }
             ]
           },
@@ -341,6 +346,16 @@
       },
       {
         "npc": "No, I'm not greedy!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-bb0e710491c4037a": [
+      {
+        "npc": "Suit yourself."
+      },
+      {
+        "type": "end"
       }
     ]
   }

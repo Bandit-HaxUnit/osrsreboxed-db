@@ -1,4 +1,14 @@
 {
+  "branches": {
+    "jump-0ad7c1d23af2ec4f": [
+      {
+        "player": "I'll let you get back to it."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What do you want?"
@@ -57,8 +67,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "-0uIbH"
+                      "id": "-0uIbH",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-0ad7c1d23af2ec4f"
+                        }
+                      ]
                     }
                   ]
                 }

@@ -260,8 +260,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "uuOmXe"
+                            "id": "uuOmXe",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-bf716bc5d08f39bb"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -298,8 +303,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tJp1yt"
+                "id": "tJp1yt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-956699cf37c08497"
+                  }
+                ]
               }
             ]
           },
@@ -308,8 +318,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cqA1WL"
+                "id": "cqA1WL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b0105a22da09c6a5"
+                  }
+                ]
               }
             ]
           },
@@ -318,8 +333,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8DmiKo"
+                "id": "8DmiKo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fa3399796cbc0185"
+                  }
+                ]
               }
             ]
           },
@@ -328,12 +348,198 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ud89Bw"
+                "id": "ud89Bw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3949a1af7fe3e93b"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-bf716bc5d08f39bb": [
+      {
+        "npc": "Most certainly; unfortunately being such a prestigious item, they are appropriately expensive. I'm afraid I must ask you for the princely sum of 99000 gold!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "99000 gold! Are you mad?",
+            "steps": [
+              {
+                "player": "99000! Are you mad?"
+              },
+              {
+                "npc": "Not at all; there are many other adventurers who would love the opportunity to purchase such a prestigious item! You can find me here if you change your mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I would gladly pay such a paltry sum for a splendid cape.",
+            "steps": [
+              {
+                "player": "I would gladly pay such a paltry sum for a splendid cape."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 99,000 coins in their inventory:",
+                "steps": [
+                  {
+                    "player": "But, unfortunately, I don't have enough money with me."
+                  },
+                  {
+                    "npc": "Well come back and see me when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "hierHL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "sONw-s"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins and enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Excellent! Wear that cape with pride my friend."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an Attack cape and hood and pays 99,000 coins",
+                    "id": "Gs7r5a"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qKXwsT"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-956699cf37c08497": [
+      {
+        "player": "Black Knight? Why are you here?"
+      },
+      {
+        "npc": "Indeed I was, however their... methods... did not match with my ideals.. so I left. Harrallak, recognising my talent as a warrior, took me in and offered me a job here."
+      },
+      {
+        "player": "Hmm... well if Harrallak trusts you, I guess I can."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "DbP3uc"
+      }
+    ],
+    "jump-b0105a22da09c6a5": [
+      {
+        "player": "What's the Dummy Room all about?"
+      },
+      {
+        "npc": "Ahh yes, the dummies. Another ingenious invention of the noble Dwarf Gamfred. They're mechanical you see and pop up out of the floor. You have to hit them with the correct attack mode before they disappear again."
+      },
+      {
+        "player": "So how do I tell which one is which?"
+      },
+      {
+        "npc": "There are two different ways. One indication is their colour, the other is the pose and weapons they are holding, for instance, the one holding daggers you will need to hit with a piercing attack."
+      },
+      {
+        "npc": "In the room you will find a poster on the wall which can help you recognise each different dummy."
+      },
+      {
+        "player": "That sounds ingenious!"
+      },
+      {
+        "npc": "Indeed, you may find that you need several weapons to be successful 100% of the time, but keep trying. The weapons shop upstairs may help you there."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "zD-liY"
+      }
+    ],
+    "jump-fa3399796cbc0185": [
+      {
+        "player": "May I claim my tokens please?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has tokens to claim:",
+        "steps": [
+          {
+            "npc": "Of course! Here you go, you've earned [amount] tokens!"
+          },
+          {
+            "type": "action",
+            "text": "Player receives [amount] Warrior guild tokens.",
+            "action": "receive",
+            "action_source": "text",
+            "id": "fS1N35"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ocYuDB"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no tokens to claim:",
+        "steps": [
+          {
+            "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+          },
+          {
+            "player": "Ok, I'll go see what I can find."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "irH5V5"
+      }
+    ],
+    "jump-3949a1af7fe3e93b": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Farewell warrior. Stay away from the dark side."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -94,8 +94,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "zHi_S1"
+                        "id": "zHi_S1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cd88ec567860fb2c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -209,6 +214,50 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-cd88ec567860fb2c": [
+      {
+        "player": "Wow how do you finish each others sentences like that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "We are a gestalt entity. We each have our own body, but our minds"
+      },
+      {
+        "type": "line",
+        "speaker": "Tirrie",
+        "text": "are united and we all think as one. Well except when Hallak doth leaveth"
+      },
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "the toilet seat up."
+      },
+      {
+        "npc": "That's the way it's meant to be!"
+      },
+      {
+        "type": "line",
+        "speaker": "Nirrie",
+        "text": "Ok we're a mostly gestalt entity. We each have own body, but"
+      },
+      {
+        "npc": "our minds are united, except for some parts which aren't. We mostly"
+      },
+      {
+        "type": "line",
+        "speaker": "Tirrie",
+        "text": "think as one."
+      },
+      {
+        "player": "That doesn't really have the same ring to it."
+      },
+      {
+        "type": "end"
       }
     ]
   }

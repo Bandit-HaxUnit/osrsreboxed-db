@@ -3947,8 +3947,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RfYX3U"
+                "id": "RfYX3U",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-24ccde142f7910d2"
+                  }
+                ]
               }
             ]
           },
@@ -3957,8 +3962,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Vs6c2E"
+                "id": "Vs6c2E",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c3dc2f9cc51f3161"
+                  }
+                ]
               }
             ]
           },
@@ -3967,8 +3977,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bWCo9T"
+                "id": "bWCo9T",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb0f7d8c43135096"
+                  }
+                ]
               }
             ]
           },
@@ -3977,8 +3992,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "K3Hpu1"
+                "id": "K3Hpu1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-44f480cf2b83aebb"
+                  }
+                ]
               }
             ]
           }
@@ -6004,6 +6024,67 @@
       {
         "type": "unavailable",
         "id": "Mm_OKC"
+      }
+    ]
+  },
+  "branches": {
+    "jump-24ccde142f7910d2": [
+      {
+        "player": "I'm a monkey's brother!"
+      },
+      {
+        "type": "line",
+        "speaker": "Monkey Child",
+        "text": "Ook! But I don't have any brothers!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c3dc2f9cc51f3161": [
+      {
+        "player": "I knew your sister's mother!"
+      },
+      {
+        "type": "line",
+        "speaker": "Monkey Child",
+        "text": "But I don't have any sisters! Ook Ook!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-fb0f7d8c43135096": [
+      {
+        "player": "I'm just a monkey lover!"
+      },
+      {
+        "type": "line",
+        "speaker": "Monkey Child",
+        "text": "Aunty told me not to talk to monkey lovers! Ook!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-44f480cf2b83aebb": [
+      {
+        "player": "Well I'll be a monkey's uncle!"
+      },
+      {
+        "type": "line",
+        "speaker": "Monkey Child",
+        "text": "Uh ah! You do look like my uncle!"
+      },
+      {
+        "type": "action",
+        "text": "The player performs the laugh emote.",
+        "action": "emote",
+        "action_source": "text",
+        "id": "RO3XS3"
+      },
+      {
+        "type": "end"
       }
     ]
   }

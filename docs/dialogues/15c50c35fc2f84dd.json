@@ -211,8 +211,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PnblMr"
+                "id": "PnblMr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2b793db6f1bf8782"
+                  }
+                ]
               }
             ]
           },
@@ -225,6 +230,18 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-2b793db6f1bf8782": [
+      {
+        "type": "message",
+        "text": "Eblis gives you a little signet. Its shape matches the icon you saw on the altar in the pyramid.",
+        "id": "ZyuH4y"
+      },
+      {
+        "type": "end"
       }
     ]
   }

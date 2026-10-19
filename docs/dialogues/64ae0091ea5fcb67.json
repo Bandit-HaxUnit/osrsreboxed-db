@@ -163,8 +163,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "oDZpz_"
+                "id": "oDZpz_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-30ec27deea036a3f"
+                  }
+                ]
               }
             ],
             "id": "2zrus-"
@@ -275,8 +280,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "DkMJdY"
+            "id": "DkMJdY",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-c51ff11a95fa1202"
+              }
+            ]
           }
         ],
         "id": "X3BjHV"
@@ -310,6 +320,178 @@
     "using-items-on-amy-hammer": [
       {
         "npc": "That's a hammer. It's pretty useful."
+      }
+    ]
+  },
+  "branches": {
+    "jump-30ec27deea036a3f": [
+      {
+        "player": "I'd like a construction contract."
+      },
+      {
+        "npc": "What kind of contract would you like?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Beginner Contract",
+            "steps": [
+              {
+                "player": "Could I have a beginner contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "7ETr0K"
+              }
+            ]
+          },
+          {
+            "text": "Novice Contract (Requires 20 Construction)",
+            "steps": [
+              {
+                "player": "Could I have a novice contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "QGj35K"
+              }
+            ]
+          },
+          {
+            "text": "Adept Contract (Requires 50 Construction)",
+            "steps": [
+              {
+                "player": "Could I have an adept contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "t8FJdM"
+              }
+            ]
+          },
+          {
+            "text": "Expert Contract (Requires 70 Construction)",
+            "steps": [
+              {
+                "player": "Could I have an expert contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "vX4ZvP"
+              }
+            ]
+          },
+          {
+            "text": "I'll pass actually.",
+            "steps": [
+              {
+                "player": "I'll pass actually."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c51ff11a95fa1202": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Beginner Contract",
+            "steps": [
+              {
+                "player": "Could I have a beginner contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "7ETr0K"
+              }
+            ]
+          },
+          {
+            "text": "Novice Contract (Requires 20 Construction)",
+            "steps": [
+              {
+                "player": "Could I have a novice contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "QGj35K"
+              }
+            ]
+          },
+          {
+            "text": "Adept Contract (Requires 50 Construction)",
+            "steps": [
+              {
+                "player": "Could I have an adept contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "t8FJdM"
+              }
+            ]
+          },
+          {
+            "text": "Expert Contract (Requires 70 Construction)",
+            "steps": [
+              {
+                "player": "Could I have an expert contract please?"
+              },
+              {
+                "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+              },
+              {
+                "type": "action",
+                "text": "Go see [client] [area] [city], [location description]",
+                "id": "vX4ZvP"
+              }
+            ]
+          },
+          {
+            "text": "I'll pass actually.",
+            "steps": [
+              {
+                "player": "I'll pass actually."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

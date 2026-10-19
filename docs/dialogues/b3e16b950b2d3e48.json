@@ -42,8 +42,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "0-nASw"
+                "id": "0-nASw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ae20533d0b82e502"
+                  }
+                ]
               }
             ]
           },
@@ -108,12 +113,35 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kkdmTJ"
+                "id": "kkdmTJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-96655a9ebc83c483"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-ae20533d0b82e502": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Zenesha's Plate Mail Body Shop.",
+        "id": "yzT0_d"
+      }
+    ],
+    "jump-96655a9ebc83c483": [
+      {
+        "player": "Sorry, I'm not interested."
+      },
+      {
+        "type": "end"
       }
     ]
   }

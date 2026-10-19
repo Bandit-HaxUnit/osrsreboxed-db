@@ -180,8 +180,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "iMqlbV"
+                                        "id": "iMqlbV",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-105f59b68157138a"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -225,8 +230,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "rdpTHj"
+                            "id": "rdpTHj",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-4d71111396106e41"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -272,8 +282,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "97S0KH"
+                        "id": "97S0KH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-30bb6c66dd24c23d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -282,8 +297,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "gqn_fy"
+                        "id": "gqn_fy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b42644efcb0951a2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -292,8 +312,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "sKMxfv"
+                        "id": "sKMxfv",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-482a12c0e2cfc697"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -336,8 +361,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "hZIiSV"
+                        "id": "hZIiSV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-30bb6c66dd24c23d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -346,8 +376,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "8punCq"
+                        "id": "8punCq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d645918e2023b00b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -356,8 +391,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Gf6q6w"
+                        "id": "Gf6q6w",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-482a12c0e2cfc697"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -410,6 +450,35 @@
         "type": "choice",
         "options": [
           {
+            "text": "Okay, here's 200 numulites.",
+            "condition": "If the player has 200 numulites:",
+            "steps": [
+              {
+                "player": "Okay, here's 200 numulites."
+              },
+              {
+                "type": "action",
+                "action": "give",
+                "text": "200 numulites to Ceto",
+                "id": "RAzLnD"
+              },
+              {
+                "type": "action",
+                "text": "The player enters the drift net fishing instance.",
+                "id": "Ggdjx_"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "07HZnc"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
             "text": "Maybe another time.",
             "steps": [
               {
@@ -417,8 +486,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rZBDhE"
+                "id": "iHyvJ9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-105f59b68157138a"
+                  }
+                ]
               }
             ]
           },
@@ -427,8 +501,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "D8K5i8"
+                "id": "nU22cr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4d71111396106e41"
+                  }
+                ]
               }
             ]
           }
@@ -699,6 +778,425 @@
             "steps": [
               {
                 "npc": "Twolegs are so shellfish."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-105f59b68157138a": [
+      {
+        "player": "Maybe another time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-4d71111396106e41": [
+      {
+        "player": "Can I pay for permanent access?"
+      },
+      {
+        "npc": "I suppose so. Give me 20,000 numulites and I'll stop charging you for entry forever."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 20,000 numulites in their inventory:",
+        "steps": [
+          {
+            "player": "Maybe another time."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "QK9yQH"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 20,000 numulites in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay, here's 20,000 numulites.",
+                "steps": [
+                  {
+                    "player": "Okay, here's 20,000 numulites."
+                  },
+                  {
+                    "npc": "Thanks - no more entry fees for you!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Maybe another time.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "iMqlbV",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-105f59b68157138a"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "swNNeI"
+      }
+    ],
+    "jump-30bb6c66dd24c23d": [
+      {
+        "player": "I'd like to enter a private instance please."
+      },
+      {
+        "type": "condition",
+        "text": "If does not have the level requirements to drift net fish:",
+        "steps": [
+          {
+            "npc": "Sorry, but you're really not experienced enough to use my cavern."
+          },
+          {
+            "type": "message",
+            "text": "You need level 47 Fishing and level 44 Hunter to enter the fishing cavern.",
+            "id": "o2UlfL"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "-Iyu4T"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the level requirements to drift net fish, but has not paid for any access:",
+        "steps": [
+          {
+            "npc": "I'll want 200 numulites first. If you pay me that, I'll let you in there as much as you like for the rest of this day."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay, here's 200 numulites.",
+                "condition": "If the player has 200 numulites:",
+                "steps": [
+                  {
+                    "player": "Okay, here's 200 numulites."
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "200 numulites to Ceto",
+                    "id": "duADZf"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player enters the drift net fishing instance.",
+                    "id": "XRJAf2"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "dwVj_Z"
+              },
+              {
+                "text": "Maybe another time.",
+                "steps": [
+                  {
+                    "player": "Maybe another time."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Can I pay for permanent access?",
+                "steps": [
+                  {
+                    "player": "Can I pay for permanent access?"
+                  },
+                  {
+                    "npc": "I suppose so. Give me 20,000 numulites and I'll stop charging you for entry forever."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have at least 20,000 numulites in their inventory:",
+                    "steps": [
+                      {
+                        "player": "Maybe another time."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "QK9yQH"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 20,000 numulites in their inventory:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, here's 20,000 numulites.",
+                            "steps": [
+                              {
+                                "player": "Okay, here's 20,000 numulites."
+                              },
+                              {
+                                "npc": "Thanks - no more entry fees for you!"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Maybe another time.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "iMqlbV",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-105f59b68157138a"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "swNNeI"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "AdChuL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has paid to access the instance for the day:",
+        "steps": [
+          {
+            "npc": "You've already paid for access for the rest of today. You can come and go all day."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I understand. Thanks.",
+                "steps": [
+                  {
+                    "player": "I understand. Thanks."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player enters the drift net fishing instance.",
+                    "id": "_p8Tdj"
+                  }
+                ]
+              },
+              {
+                "text": "Can I pay for permanent access?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "rdpTHj",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-4d71111396106e41"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "3k4J_i"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has paid for permanent access:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player enters the drift net fishing instance.",
+            "id": "occ6T6"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "tyB1hS"
+      }
+    ],
+    "jump-b42644efcb0951a2": [
+      {
+        "player": "How do I catch fish here?"
+      },
+      {
+        "npc": "Ahh well, I've set up a pretty good fish trap here, the terrain really lends itself to it. But you'll need a couple of drift nets."
+      },
+      {
+        "player": "How do I get those?"
+      },
+      {
+        "npc": "Well I weave mine from my sisters' hair, but you'll have to make do with some plant fibres I guess. I think the twolegs have ways to do that, right?"
+      },
+      {
+        "player": "Yes, usually we use jute on a loom."
+      },
+      {
+        "npc": "Fintastic. You may also find something spikey helps to disturb the fish and make them panic."
+      },
+      {
+        "player": "Spikey?"
+      },
+      {
+        "npc": "Yes, something with lots of spikes, maybe like a trident."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to enter a private instance please.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "hZIiSV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-30bb6c66dd24c23d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "8punCq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d645918e2023b00b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Bye.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Gf6q6w",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-482a12c0e2cfc697"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-482a12c0e2cfc697": [
+      {
+        "player": "Bye"
+      },
+      {
+        "npc": "Sea you later."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d645918e2023b00b": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "My name is Ceto. I used to be a carefree soul, but now that the twolegs are interested in these little bits of bone, I just keep my little fish farm going and the twolegs pay me a few squid."
+      },
+      {
+        "player": "Shouldn't you be with your people or something?"
+      },
+      {
+        "npc": "Well, they said I was too young to swim with them, and I should be responsible and get a job. They're so old school."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to enter a private instance please.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "97S0KH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-30bb6c66dd24c23d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I catch fish here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "gqn_fy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b42644efcb0951a2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Bye.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "sKMxfv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-482a12c0e2cfc697"
+                  }
+                ]
               }
             ]
           }

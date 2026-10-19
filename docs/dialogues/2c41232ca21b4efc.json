@@ -658,8 +658,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "picP2I"
+                "id": "picP2I",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ad10419595471a03"
+                  }
+                ]
               }
             ]
           },
@@ -668,8 +673,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "oiVIyw"
+                "id": "oiVIyw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-aad29ed69dd633cb"
+                  }
+                ]
               }
             ]
           },
@@ -687,8 +697,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "aOILEq"
+                        "id": "aOILEq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bf499f32ec5ab51d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -707,8 +722,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "zZceIH"
+                        "id": "zZceIH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4783c65fbb65d9b6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -783,7 +803,13 @@
             ]
           },
           {
-            "text": "What's it like living so close to the wilderness?"
+            "text": "What's it like living so close to the wilderness?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "JaXoZ_"
+              }
+            ]
           },
           {
             "text": "How did Dave come to be evil?",
@@ -901,13 +927,95 @@
             ]
           },
           {
-            "text": "What's it like living so close to the wilderness?"
+            "text": "What's it like living so close to the wilderness?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "JaXoZ_"
+              }
+            ]
           },
           {
-            "text": "How did Dave come to be evil?"
+            "text": "How did Dave come to be evil?",
+            "steps": [
+              {
+                "player": "How did Dave come to be evil?"
+              },
+              {
+                "type": "line",
+                "speaker": "Doris",
+                "text": "Oh, I don't know really. He's always been evil, I think. Maybe growing up so close to the wilderness has affected him in some way."
+              },
+              {
+                "type": "line",
+                "speaker": "Doris",
+                "text": "When he was little he used to want to go into Edgeville dungeon. You know how kids are, always wanting to be dungeon adventurers! But he didn't want to be a hero, he wanted to be a monster!"
+              },
+              {
+                "type": "line",
+                "speaker": "Doris",
+                "text": "And then he spent all summer building a tree-house. Except it wasn't a tree-house, of course, it was his Tower of Fear!"
+              },
+              {
+                "type": "line",
+                "speaker": "Doris",
+                "text": "Of course I was hoping he'd have grown out of it by now and maybe even left home. But at least it keeps him happy."
+              }
+            ]
           },
           {
-            "text": "What's happened to my cat?"
+            "text": "What's happened to my cat?",
+            "steps": [
+              {
+                "player": "What's happened to my cat?"
+              },
+              {
+                "type": "line",
+                "speaker": "Doris",
+                "text": "Oh, poor thing. The hell-rats do that, you know. I think a nice drink of milk would sort it out. Shall I give it one?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please!",
+                    "steps": [
+                      {
+                        "player": "Yes please!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Doris",
+                        "text": "Here puss..."
+                      },
+                      {
+                        "type": "action",
+                        "text": "(The player's hellcat turns into the colour it had as a normal cat.)",
+                        "id": "wjnaiA"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Your hell-cat transforms into an ordinary cat.",
+                        "id": "mvjnat"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, I like it this way.",
+                    "steps": [
+                      {
+                        "player": "No, I like it this way."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Doris",
+                        "text": "Well, I suppose as long as the cat is all right, it doesn't matter what it looks like."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -974,6 +1082,261 @@
       {
         "type": "unavailable",
         "id": "9HYjyS"
+      }
+    ]
+  },
+  "branches": {
+    "jump-ad10419595471a03": [
+      {
+        "player": "Nice basement!"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "Nice?!"
+      },
+      {
+        "player": "I mean, evil!"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "Yeah! I'm going to use it to summon DEMONS to DO MY BIDDING, or raise an ARMY OF THE UNDEAD! And then I'm going to totally, like, take over the world!"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "Ah-ha-ha-ha-ha-haa!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "ZxNAs4"
+      }
+    ],
+    "jump-aad29ed69dd633cb": [
+      {
+        "player": "Weren't you going to give up evil?"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "Yeah, well..."
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "I did try. I wore this bright red jumper and I got up in the morning and spent the day outside in the sunshine..."
+      },
+      {
+        "type": "message",
+        "text": "Dave shudders*",
+        "id": "S-3TvE"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "But I couldn't keep it up. I just didn't find anything good very interesting, you know?"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "Sometimes I worry about the consequences of evil. I don't really want anyone to get hurt, not like what happened with Denath."
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "But I can't not be evil! It's just who I am!"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "Ah-ha-ha-ha-ha-haa!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "7OLetD"
+      }
+    ],
+    "jump-bf499f32ec5ab51d": [
+      {
+        "player": "Although you're here, you're also still in the time freeze."
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "What?"
+      },
+      {
+        "player": "I mean, the whole room was frozen in time at the moment the culinomancer cast his spell, right?"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "What? I didn't notice anything."
+      },
+      {
+        "player": "Of course you didn't! You were frozen!"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "So how can I be there and also here? Which one is me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "I mean, I feel like I'm me, but what if I'm not me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "That would be terrible!"
+      },
+      {
+        "player": "They're both you!"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "How does that work?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "FwEJOn"
+      }
+    ],
+    "jump-4783c65fbb65d9b6": [
+      {
+        "player": "I've to take the food back in time to give it to you."
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "Why?"
+      },
+      {
+        "player": "Because otherwise you won't be saved from the culinomancer's spell."
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "But I was saved from the spell! I remember it!"
+      },
+      {
+        "player": "Exactly! That's why I know I have to go back and save you!"
+      },
+      {
+        "type": "line",
+        "speaker": "Evil Dave",
+        "text": "What will happen if you don't?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I can't not, I already have!",
+            "steps": [
+              {
+                "player": "I can't not, because I already have!"
+              },
+              {
+                "type": "line",
+                "speaker": "Evil Dave",
+                "text": "What?"
+              },
+              {
+                "player": "The fact that you're here means I already did save you, which means that you have to tell me the correct recipe. It's logically impossible for you not to!"
+              },
+              {
+                "type": "line",
+                "speaker": "Evil Dave",
+                "text": "I don't understand this at all."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "gmG4Wf"
+              }
+            ]
+          },
+          {
+            "text": "There will be a temporal paradox and the universe will implode!",
+            "steps": [
+              {
+                "player": "There will be a temporal paradox and the universe will implode!"
+              },
+              {
+                "type": "line",
+                "speaker": "Evil Dave",
+                "text": "Oh no! That would be bad, and not even in an evil way!"
+              },
+              {
+                "player": "Exactly! So you've got to tell me the recipe!"
+              },
+              {
+                "type": "line",
+                "speaker": "Evil Dave",
+                "text": "But I still don't understand why you need the recipe when you've already saved me!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "MjLFwC"
+              }
+            ]
+          },
+          {
+            "text": "I don't know",
+            "steps": [
+              {
+                "player": "I don't know."
+              },
+              {
+                "type": "line",
+                "speaker": "Evil Dave",
+                "text": "That's not very helpful. I don't even understand why you need the recipe anyway."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "SqnsY4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "JaXoZ_": [
+      {
+        "player": "What's it like living so close to the wilderness?"
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "Oh, it's not all that bad. It was a bit scary at first but as long as I don't go past the warning signs I'm all right."
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "It's actually pretty quiet here. I used to live in Lumbridge and, let me tell you, that's the dangerous place for people like me."
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "Thieves were picking people's pockets with impunity, and killing them on the streets in broad daylight!"
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "And there weren't even any guards to protect us! Not that the guards in the other cities do much good to protect people from what I've heard."
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "I just thank goodness I haven't got an Attack option any more! I wouldn't last five minutes!"
       }
     ]
   }

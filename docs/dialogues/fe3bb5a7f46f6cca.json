@@ -262,8 +262,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QK7O72"
+                "id": "QK7O72",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-831723796be9114b"
+                  }
+                ]
               }
             ]
           },
@@ -308,13 +313,65 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me about the Wintertodt."
+            "text": "Tell me about the Wintertodt.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "cH6rPT"
+              }
+            ]
           },
           {
-            "text": "Tell me about the Doors of Dinh."
+            "text": "Tell me about the Doors of Dinh.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "aBpImT"
+              }
+            ]
           },
           {
-            "text": "Tell me about yourself."
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "The name's Undor. You'll struggle to find a dwarf in this land who knows more about metalwork than me."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "One day I hope to be as good as the legendary Dinh himself."
+              },
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "zt_QMi"
+                  }
+                ],
+                "id": "yC9gQy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tQO_TN"
+                  }
+                ],
+                "id": "Ht_Cjw"
+              }
+            ]
           },
           {
             "text": "I've been sent to help you.",
@@ -420,7 +477,13 @@
             ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pt-6GE"
+              }
+            ]
           }
         ]
       }
@@ -435,13 +498,65 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me about the Wintertodt."
+            "text": "Tell me about the Wintertodt.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "cH6rPT"
+              }
+            ]
           },
           {
-            "text": "Tell me about the Doors of Dinh."
+            "text": "Tell me about the Doors of Dinh.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "aBpImT"
+              }
+            ]
           },
           {
-            "text": "Tell me about yourself."
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "The name's Undor. You'll struggle to find a dwarf in this land who knows more about metalwork than me."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "One day I hope to be as good as the legendary Dinh himself."
+              },
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "zt_QMi"
+                  }
+                ],
+                "id": "yC9gQy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tQO_TN"
+                  }
+                ],
+                "id": "Ht_Cjw"
+              }
+            ]
           },
           {
             "text": "Let's talk about my quest.",
@@ -465,7 +580,13 @@
             ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pt-6GE"
+              }
+            ]
           }
         ]
       }
@@ -652,13 +773,65 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me about the Wintertodt."
+            "text": "Tell me about the Wintertodt.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "cH6rPT"
+              }
+            ]
           },
           {
-            "text": "Tell me about the Doors of Dinh."
+            "text": "Tell me about the Doors of Dinh.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "aBpImT"
+              }
+            ]
           },
           {
-            "text": "Tell me about yourself."
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "The name's Undor. You'll struggle to find a dwarf in this land who knows more about metalwork than me."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "One day I hope to be as good as the legendary Dinh himself."
+              },
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "zt_QMi"
+                  }
+                ],
+                "id": "yC9gQy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tQO_TN"
+                  }
+                ],
+                "id": "Ht_Cjw"
+              }
+            ]
           },
           {
             "text": "Let's talk about my quest.",
@@ -734,7 +907,13 @@
             ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pt-6GE"
+              }
+            ]
           }
         ]
       }
@@ -749,13 +928,65 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me about the Wintertodt."
+            "text": "Tell me about the Wintertodt.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "cH6rPT"
+              }
+            ]
           },
           {
-            "text": "Tell me about the Doors of Dinh."
+            "text": "Tell me about the Doors of Dinh.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "aBpImT"
+              }
+            ]
           },
           {
-            "text": "Tell me about yourself."
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "The name's Undor. You'll struggle to find a dwarf in this land who knows more about metalwork than me."
+              },
+              {
+                "type": "line",
+                "speaker": "Undor",
+                "text": "One day I hope to be as good as the legendary Dinh himself."
+              },
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "zt_QMi"
+                  }
+                ],
+                "id": "yC9gQy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player completed The Forsaken Tower:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tQO_TN"
+                  }
+                ],
+                "id": "Ht_Cjw"
+              }
+            ]
           },
           {
             "text": "Let's talk about my quest.",
@@ -771,7 +1002,13 @@
             ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pt-6GE"
+              }
+            ]
           }
         ]
       }
@@ -884,6 +1121,121 @@
       {
         "type": "unavailable",
         "id": "a8yqWW"
+      }
+    ]
+  },
+  "branches": {
+    "jump-831723796be9114b": [
+      {
+        "player": "What are the Doors of Dinh?"
+      },
+      {
+        "type": "line",
+        "speaker": "Councillor Unkar",
+        "text": "They are a great set of doors built by a legendary smith, Dinh, in the early days of Kourend. They were created to imprison a deadly beast known as the Wintertodt."
+      },
+      {
+        "type": "line",
+        "speaker": "Councillor Unkar",
+        "text": "Unfortunately, although the Doors kept the beast contained for over a thousand years, they've recently started to fail. The master smith, Undor, was sent to investigate."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "c3HquK"
+      }
+    ],
+    "cH6rPT": [
+      {
+        "player": "Tell me about the Wintertodt."
+      },
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "They say it's some kind of powerful fire spirit."
+      },
+      {
+        "player": "Don't you mean ice?"
+      },
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "Aye that as well."
+      },
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "What it is doesn't bother me, just as long as we keep it behind the Doors."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "wKuFux"
+      }
+    ],
+    "aBpImT": [
+      {
+        "player": "Tell me about the Doors of Dinh."
+      },
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "The Doors were built by Dinh to contain the Wintertodt. This was over a thousand years ago and they still stand today."
+      },
+      {
+        "player": "Who was Dinh?"
+      },
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "Dinh was the greatest smith that the world has ever seen. I am the finest smith around today and even I cannot match his abilities."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "EYR2Zf"
+      }
+    ],
+    "zt_QMi": [
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "They say the doors are failing and the Wintertodt is trying to escape. I'm here to prove to them that the Doors are fine."
+      },
+      {
+        "player": "And are they?"
+      },
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "Of course they are! They were made by Dinh himself."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "3kDDwj"
+      }
+    ],
+    "tQO_TN": [
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "I'm just here to keep an eye on things. Even though the Doors are fixed now, it will take many years for things to get back to normal."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "VAwwuu"
+      }
+    ],
+    "pt-6GE": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "line",
+        "speaker": "Undor",
+        "text": "Until next time [laddie/lass]."
       }
     ]
   }

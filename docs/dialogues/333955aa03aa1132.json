@@ -1,4 +1,112 @@
 {
+  "branches": {
+    "jump-06ec1d8834d234d2": [
+      {
+        "player": "What do you dwarves do with the ore you mine?"
+      },
+      {
+        "npc": "What do you think? We smelt it into bars, smith the metal to make armour and weapons, then we exchange them for goods and services."
+      },
+      {
+        "player": "I don't see many dwarves selling armour or weapons here."
+      },
+      {
+        "npc": "No, this is only a mining outpost. We dwarves don't much like to settle in human cities. Most of the ore is carted off to Keldagrim, the great dwarven city. They've got a special blast furnace up there - it makes"
+      },
+      {
+        "npc": "smelting the ore so much easier. There are plenty of dwarven traders working in Keldagrim. Anyway, can I help you with anything else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What have you got in the guild?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "GrDz9w",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f447ad542c90268e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'm fine.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "6hEIi_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e5c3392254fd998a"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e5c3392254fd998a": [
+      {
+        "player": "No thanks, I'm fine."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f447ad542c90268e": [
+      {
+        "npc": "All sorts of things! There's plenty of coal rocks along with some iron, mithril and adamantite as well."
+      },
+      {
+        "npc": "Deeper in the guild you'll find even more rocks including some runite! The best bit though is our amethyst mine, the only one in the land!"
+      },
+      {
+        "npc": "There's no better mining site anywhere!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you dwarves do with the ore you mine?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "fXxeJy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-06ec1d8834d234d2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'm fine.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "nOJ1Ev",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e5c3392254fd998a"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Welcome to the Mining Guild. My name's Gadrin and I'm the Guildmaster. Can I help you with anything?"
@@ -26,8 +134,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "fXxeJy"
+                      "id": "fXxeJy",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-06ec1d8834d234d2"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -36,8 +149,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "nOJ1Ev"
+                      "id": "nOJ1Ev",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-e5c3392254fd998a"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -71,8 +189,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "GrDz9w"
+                      "id": "GrDz9w",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-f447ad542c90268e"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -81,8 +204,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "6hEIi_"
+                      "id": "6hEIi_",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-e5c3392254fd998a"
+                        }
+                      ]
                     }
                   ]
                 }

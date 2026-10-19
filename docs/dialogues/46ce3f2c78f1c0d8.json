@@ -108,8 +108,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "SoMqti"
+                "id": "SoMqti",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f4c23b431be3615d"
+                  }
+                ]
               }
             ]
           },
@@ -163,6 +168,58 @@
           }
         ],
         "id": "rAIoV7"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f4c23b431be3615d": [
+      {
+        "player": "Yes, of course."
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "npc": "Oh dear, you don't have any free inventory space.  Talk to me again when you have."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZRAVlb"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "an Easter basket",
+        "id": "rxJLBL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a rubber chicken equipped, in their inventory or in their bank:",
+        "steps": [
+          {
+            "npc": "Splendid, splendid!  Here's a basket of eggs.  Hand out as many as you can before they disappear and then come back to me.  You've only got two minutes!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gj5BVy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a rubber chicken:",
+        "steps": [
+          {
+            "npc": "Splendid, splendid!  Here's a basket of eggs.  Hand out as many as you can before they disappear and then come back to me for your reward.  You've only got two minutes!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zfVV6Z"
       }
     ]
   }

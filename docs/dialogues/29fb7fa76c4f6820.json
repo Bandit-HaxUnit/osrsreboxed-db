@@ -556,8 +556,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "EZK9xh"
+        "id": "EZK9xh",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-old-coin": [
@@ -566,8 +571,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "_wGyun"
+        "id": "_wGyun",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-ancient-coin": [
@@ -576,8 +586,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "9Dfh_n"
+        "id": "9Dfh_n",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-ancient-symbol": [
@@ -586,8 +601,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "OvZYpa"
+        "id": "OvZYpa",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-old-symbol": [
@@ -596,8 +616,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "j6tDhM"
+        "id": "j6tDhM",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-arrowheads": [
@@ -606,8 +631,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "xIBWxt"
+        "id": "xIBWxt",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-jewellery": [
@@ -616,8 +646,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "ofVbBR"
+        "id": "ofVbBR",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-old-chipped-vase": [
@@ -626,8 +661,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "cZUvS6"
+        "id": "cZUvS6",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "hQUFFI"
+          }
+        ]
       }
     ],
     "using-items-on-barnabus-hurma-any-other-item": [
@@ -636,6 +676,30 @@
       },
       {
         "npc": "Thank you, but I don't need that"
+      }
+    ]
+  },
+  "branches": {
+    "jump-07b6929252d3acdf": [
+      {
+        "player": "I found these old necklaces."
+      },
+      {
+        "npc": "An interesting find... Here, let me offer you something in return."
+      },
+      {
+        "player": "Oh! Okay."
+      },
+      {
+        "type": "message",
+        "text": "The archaeologist gives you [5x] coins... must have been worth a lot in his day!",
+        "id": "ocEuOD"
+      }
+    ],
+    "hQUFFI": [
+      {
+        "type": "call",
+        "branch": "jump-07b6929252d3acdf"
       }
     ]
   }

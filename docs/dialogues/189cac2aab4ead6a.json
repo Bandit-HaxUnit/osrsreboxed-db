@@ -222,8 +222,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "9xuSN1"
+                            "id": "9xuSN1",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-730c9aedda116a5e"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -274,7 +279,38 @@
                   },
                   {
                     "type": "random",
-                    "options": []
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Port Wizard Perrie/Peter/Petra",
+                            "text": "Another recovery? This won't take long..."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Port Wizard Perrie/Peter/Petra",
+                            "text": "Need a recovery? One moment please..."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Port Wizard Perrie/Peter/Petra",
+                            "text": "Recovery is it? Right, give me a moment..."
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "type": "condition",
@@ -377,8 +413,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "vitFlC"
+                                "id": "vitFlC",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-42cc099f82c936a4"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -400,7 +441,27 @@
                   {
                     "type": "choice",
                     "prompt": "Are you sure you want to destroy your boat?",
-                    "options": []
+                    "options": [
+                      {
+                        "text": "Yes, destroy it.",
+                        "steps": [
+                          {
+                            "npc": "There you go. Your boat has been broken up into scrap."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, don't destroy it.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "id": "f2XKjP"
@@ -493,6 +554,22 @@
     ]
   },
   "branches": {
+    "jump-730c9aedda116a5e": [
+      {
+        "npc": "Understandable. Come back at any time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-42cc099f82c936a4": [
+      {
+        "npc": "There you go. Your boat has been broken up into scrap."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "pZWhCS": [
       {
         "npc": "I'm afraid you don't seem to own any boats."

@@ -475,6 +475,101 @@
         "type": "choice",
         "options": [
           {
+            "text": "You're a vampyre aren't you?",
+            "steps": [
+              {
+                "player": "You're a vampyre aren't you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sinister Stranger",
+                "text": "Just because I can't stand ze smell ov garlic und I don't like bright sunlight doesn't necessarily mean I'm ein vampyre!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Is it nice there?",
+            "steps": [
+              {
+                "player": "Is it nice there?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sinister Stranger",
+                "text": "It is vonderful! Ze vomen are beautiful und ze nights are long!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "You're a vampyre aren't you?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "EB3K17",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3fb8cc2945416b01"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So you like fishing?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "0teUsb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-aeb9d2fa0feb447a"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well, good luck with the fishing.",
+                    "steps": [
+                      {
+                        "player": "Well, good luck with the fishing."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sinister Stranger",
+                        "text": "Luck haz notsing to do vith it it is all in ze technique."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "So you like fishing?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "uGxiSY"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
             "text": "So... you like fishing?",
             "steps": [
               {
@@ -498,8 +593,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "U1ZFhS"
+                        "id": "ROBtrE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3fb8cc2945416b01"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -521,8 +621,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "jBEhAn"
+                        "id": "mMcPeV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8090a471e8441c9f"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -658,7 +763,37 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me a story then."
+            "text": "Tell me a story then.",
+            "steps": [
+              {
+                "player": "Tell me a story then."
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Well, when I were a young man we used to take fishing trips over to Catherby; The fishing over there - now that was something!"
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Anyway, we decided to do a bit of fishing with our nets, I wasn't having the best of days turning up nothing but old boots and bits of seaweed. Then my net suddenly got really heavy!"
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "I pulled it up..."
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "To my amazement I'd caught this little chest thing!"
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Even more amazing was when I opened it it contained a diamond the size of a radish! That's the best catch I've ever had!"
+              }
+            ]
           },
           {
             "text": "Are you entering the fishing competition?",
@@ -736,13 +871,164 @@
             ]
           },
           {
-            "text": "Sorry, I don't have time now."
+            "text": "Sorry, I don't have time now.",
+            "steps": [
+              {
+                "player": "Sorry, I don't have time now."
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Sigh..."
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Young people - always in such a rush."
+              }
+            ]
           },
           {
-            "text": "Can I buy one of your fishing rods?"
+            "text": "Can I buy one of your fishing rods?",
+            "steps": [
+              {
+                "player": "Can I buy one of your fishing rods?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a fishing rod in their inventory:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Grandpa Jack",
+                    "text": "But young man, you have your own. I'll not sell you mine when you already have one!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "PHxwDp"
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Of course you can young man. Let's see now...I think 5 gold is a fair price for a rod which has won the Fishing contest before eh?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has insufficient coins:",
+                "steps": [
+                  {
+                    "player": "I don't have enough money for that, I'll go get some and come back."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Grandpa Jack",
+                    "text": "Right you are. I'll be here."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "DMSg4m"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Very fair, I'll buy that rod!",
+                    "steps": [
+                      {
+                        "player": "Very fair, I'll buy that rod!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grandpa Jack",
+                        "text": "Excellent choice!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has insufficient inventory space:",
+                        "steps": [
+                          {
+                            "player": "Only problem is, I don't have any space to carry one right now. Let me get back to you on that."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Grandpa Jack",
+                            "text": "Right you are. I'll be here."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "vBGi8i"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You hand over the money and receive a fishing rod.",
+                        "id": "qkk2D3"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grandpa Jack",
+                        "text": "You're welcome young 'un."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's too rich for me, I'll go to Catherby.",
+                    "steps": [
+                      {
+                        "player": "That's too rich for me, I'll go to Catherby."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grandpa Jack",
+                        "text": "If you're sure.... passing up an opportunity of a lifetime you are."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "I've forgotten how to fish, can you remind me?"
+            "text": "I've forgotten how to fish, can you remind me?",
+            "steps": [
+              {
+                "player": "I've forgotten how to fish, can you remind me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Of course! Let me see now...You'll need a rod and bait. You can fish with a net too, but not in the competition."
+              },
+              {
+                "player": "Ok... I think I can get those at Catherby."
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Then simply find yourself a fishing spot, either in the competition near here, or wherever you can - I recommend net fishing in Catherby. Net or Lure the fish in the fishing spot by clicking on it and then be"
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "patient..."
+              },
+              {
+                "player": "It's that simple?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grandpa Jack",
+                "text": "Yep! Go get em tiger."
+              }
+            ]
           }
         ]
       }
@@ -1173,6 +1459,42 @@
     ]
   },
   "branches": {
+    "jump-3fb8cc2945416b01": [
+      {
+        "player": "You're a vampyre aren't you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sinister Stranger",
+        "text": "Just because I can't stand ze smell ov garlic und I don't like bright sunlight doesn't necessarily mean I'm ein vampyre!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-aeb9d2fa0feb447a": [
+      {
+        "type": "line",
+        "speaker": "Sinister Stranger",
+        "text": "Luck haz notsing to do vith it it is all in ze technique."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8090a471e8441c9f": [
+      {
+        "player": "Well, good luck with the fishing."
+      },
+      {
+        "type": "line",
+        "speaker": "Sinister Stranger",
+        "text": "Luck haz notsing to do vith it it is all in ze technique."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "Pgt_Tp": [
       {
         "player": "You're a grumpy little man aren't you?"

@@ -160,8 +160,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2DPhy7"
+                "id": "2DPhy7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3f184a8aa89c1ad1"
+                  }
+                ]
               }
             ]
           },
@@ -191,8 +196,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "0NP-sb"
+                "id": "0NP-sb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-36fab8117fc71d30"
+                  }
+                ]
               }
             ]
           }
@@ -325,7 +335,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "yJyHoO"
+              }
+            ]
           },
           {
             "text": "Are you free to talk about my quest?",
@@ -653,7 +669,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "yJyHoO"
+              }
+            ]
           },
           {
             "text": "Are you free to talk about my quest?",
@@ -796,7 +818,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "yJyHoO"
+              }
+            ]
           },
           {
             "text": "Are you free to talk about my quest?",
@@ -1044,8 +1072,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "fMQLFm"
+        "id": "fMQLFm",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-0ea4e3fe1a419ffe"
+          }
+        ]
       }
     ],
     "fox-tracking-talking-to-fox-before-getting-the-fur-sample-with-inventory-space": [
@@ -1147,7 +1180,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "yJyHoO"
+              }
+            ]
           },
           {
             "text": "Are you free to talk about my quest?",
@@ -1280,8 +1319,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "rGAlxQ"
+        "id": "rGAlxQ",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-c2518a730812586a"
+          }
+        ]
       }
     ],
     "fox-tracking-talking-to-fox-after-giving-atza-the-material": [
@@ -1693,6 +1737,166 @@
       {
         "type": "unavailable",
         "id": "f9Vgf2"
+      }
+    ]
+  },
+  "branches": {
+    "jump-3f184a8aa89c1ad1": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster Apatura",
+        "text": "We're mostly here to keep an eye on the local animal populations, and provide animal parts to the city."
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster Apatura",
+        "text": "As for me personally, I'm the current master of this guild."
+      },
+      {
+        "player": "Current master?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster Apatura",
+        "text": "A hunter's work is dangerous. We tend to go through members faster than other guilds. That said, I'm usually too busy with politics and paperwork to go out hunting these days."
+      },
+      {
+        "player": "Could I hunt with the guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster Apatura",
+        "text": "Absolutely! There's always more work to be done. Head down into the Burrow and talk to the other hunters to get an idea of what we need help with."
+      }
+    ],
+    "jump-36fab8117fc71d30": [
+      {
+        "player": "I'd better be off."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0ea4e3fe1a419ffe": [
+      {
+        "type": "line",
+        "speaker": "Guild Hunter Fox",
+        "text": "As I was tracking it, I was attacked and knocked out. When I came to, it was gone."
+      },
+      {
+        "player": "Gone?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guild Hunter Fox",
+        "text": "Without a trace, as well as most of my hunting equipment."
+      },
+      {
+        "player": "Do you think someone attacked you for it, or was it just an opportunist looting you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guild Hunter Fox",
+        "text": "I was unconscious."
+      },
+      {
+        "player": "Right, of course."
+      },
+      {
+        "type": "line",
+        "speaker": "Guild Hunter Fox",
+        "text": "You've already done me a huge favour, but I don't suppose I could ask for one more small one?"
+      },
+      {
+        "player": "I suppose I could. Especially if it goes towards repairing that cat's bed and getting you back to the guild."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Guild Hunter Fox",
+            "text": "Well it's your lucky day! Make some room and I'll give you the sample needed to fix the bed."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "nG-8od"
+      },
+      {
+        "type": "line",
+        "speaker": "Guild Hunter Fox",
+        "text": "Well it's your lucky day! Take this sample to a woman called Atza in Outer Fortis. She'll have exactly what we need."
+      },
+      {
+        "player": "Where in the outskirts can I find her? And... what exactly do we need, again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guild Hunter Fox",
+        "text": "She lives by the south western gate of the city. She'll be able to give us the matching fur to repair the cat's bed with."
+      },
+      {
+        "type": "message",
+        "text": "Fox gives you a fur sample.",
+        "id": "PGRj0H"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c2518a730812586a": [
+      {
+        "type": "line",
+        "speaker": "Atza",
+        "text": "Oh... Fox usually helps me with my chores when he visits."
+      },
+      {
+        "player": "That's funny. He didn't mention that to me."
+      },
+      {
+        "type": "line",
+        "speaker": "Atza",
+        "text": "That's alright, I'm sure a capable adventurer like you will manage fine. Fox was going to assemble some equipment for me. You can manage that, can't you?"
+      },
+      {
+        "player": "I suppose so. Where do I start?"
+      },
+      {
+        "type": "line",
+        "speaker": "Atza",
+        "text": "It's all in that pile on the floor there. You can work it out, I'm sure."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "yJyHoO": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster Apatura",
+        "text": "We're mostly here to keep an eye on the local animal populations, and provide animal parts to the city."
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster Apatura",
+        "text": "As for me personally, I'm the current master of this guild."
+      },
+      {
+        "player": "Current master?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster Apatura",
+        "text": "A hunter's work is dangerous. We tend to go through members faster than other guilds. That said, I'm usually too busy with politics and paperwork to go out hunting these days."
       }
     ]
   }

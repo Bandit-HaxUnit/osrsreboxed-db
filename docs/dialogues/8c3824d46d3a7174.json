@@ -1,4 +1,378 @@
 {
+  "branches": {
+    "jump-fb91b796bf304f23": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "The world map opens and pans to the location of the Al Kharid mine.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "The world map",
+                "id": "04JHqE"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "BYwecQ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-d9d022ac5632af43": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Rocks and Ores.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Clay and Rune Essence.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Clay can be mined in many places. Try south west of Varrock or the crafting guild. See the crafting tutor upstairs in Lumbridge Castle for more information on what you can make with clay.",
+                        "id": "agoCGr"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Rune Essence can only be mined at secret places... I don't know where these are but you can speak to the Duke of Lumbridge to find out more.",
+                        "id": "kNlfU8"
+                      },
+                      {
+                        "npc": "You can make all sorts of things from clay, if you have the crafting skill. Rune Essence is used for magic to cast spells."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Teach me about mining.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "oXCT9a"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Teach me about different rocks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "wL7m5E"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Copper and Tin.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Rocks which yield copper ore can be found around here, and other places such as Al Kharid, Rimmington or Varrock mines. They're quite common.",
+                        "id": "XPZNLG"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Tin ore is much the same as copper. It can be found around this area as well as Varrock, Al Kharid and the Barbarian Village.",
+                        "id": "58j1-f"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Teach me about mining.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "bqKBWU"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Teach me about different rocks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "uLsGp_"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Iron and Coal.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Iron can be mined around Rimmington, Al Kharid and Varrock. It's tricky to smelt though - see the boy at the furnace in Lumbridge for tips.",
+                        "id": "PuU908"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Look for this icon on your minimap to find the furnace.",
+                        "id": "__NVws"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You'll need to be a fairly good miner before you can start mining coal. You can find it in the Dwarf mine, Al Kharid and quite a few other places.",
+                        "id": "SGhUJT"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Teach me about mining.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "uiFwg9"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Teach me about different rocks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "8DrIaJ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Teach me about mining.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "gNwdDd"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "More...",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Silver and Gold.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Silver can be mined to help you with your crafting. You can find it in the Crafting guild, Al Kharid and many other mines.",
+                                "id": "3nkR35"
+                              },
+                              {
+                                "type": "message",
+                                "text": "Gold requires quite a lot of experience in mining before you can successfully extract it from the rocks. It can be found in Al Kharid, the Crafting guild, Rimmington and other places.",
+                                "id": "vfe-8C"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Teach me about mining.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "TQfgYd"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Teach me about different rocks.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous2",
+                                        "id": "S4NWLt"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Mithril, Adamantite and Runite.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Mithril and Adamantite rocks are fairly rare and require great skill to mine. You can find them in Al Kharid, the Dwarven mines, Lumbridge Swamps and other places.",
+                                "id": "9YnJ7b"
+                              },
+                              {
+                                "type": "message",
+                                "text": "Runite is the most prized of ores and is very rare. I'll leave you to find where to mine it.",
+                                "id": "hdClYi"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Teach me about mining.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "9uvyGc"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Teach me about different rocks.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous2",
+                                        "id": "blrgni"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Teach me about mining.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "OE60Sg"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Back...",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "2RZ8D3"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Pickaxes.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Bronze, Iron and Steel.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The Bronze Pick is your basic tool of the trade. You can buy one from Bob's Axe shop very cheaply, that's north of here in Lumbridge, I also heard that exploring the castle walls may yield a surprise or two.",
+                        "id": "qck5Ff"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The Iron and Steel Picks are faster than the bronze pickaxe, but you will need to progress with your mining a little before you can use them. You can buy them from Nurmof in the Dwarven mines.",
+                        "id": "ulGeDh"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "DG0AEG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Mithril, Adamantite and Runite.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Mithril, Adamantite, and Rune Picks may be used as you progress with your skill of mining. They can be obtained from Nurmof in the Dwarven mines.",
+                        "id": "02D1CP"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "6xqUw3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Teach me about mining.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "4tbtY9"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Teach me about mining.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1RRI46"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fm5tJf": [
+      {
+        "type": "call",
+        "branch": "jump-d9d022ac5632af43"
+      }
+    ]
+  },
   "steps": [
     {
       "type": "choice",
@@ -31,7 +405,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "-TEZMl"
+                  "id": "-TEZMl",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-fb91b796bf304f23"
+                    }
+                  ]
                 }
               ],
               "id": "LFXuEc"
@@ -46,7 +426,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "5WK-fC"
+                  "id": "5WK-fC",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-fb91b796bf304f23"
+                    }
+                  ]
                 }
               ],
               "id": "rxEwoH"
@@ -61,7 +447,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "6KQVu7"
+                  "id": "6KQVu7",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-fb91b796bf304f23"
+                    }
+                  ]
                 }
               ],
               "id": "S2yWNe"
@@ -111,7 +503,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "N5il29"
+                  "id": "N5il29",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "fm5tJf"
+                    }
+                  ]
                 }
               ],
               "id": "ffySp9"
@@ -126,7 +524,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "QDkrkM"
+                  "id": "QDkrkM",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "fm5tJf"
+                    }
+                  ]
                 }
               ],
               "id": "xG7VVe"
@@ -141,7 +545,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "G1i4uF"
+                  "id": "G1i4uF",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "fm5tJf"
+                    }
+                  ]
                 }
               ],
               "id": "Hxxtzd"
@@ -218,7 +628,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "WQclhc"
+                  "id": "WQclhc",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "fm5tJf"
+                    }
+                  ]
                 }
               ],
               "id": "zhKDJ9"
@@ -233,7 +649,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "IFnn3S"
+                  "id": "IFnn3S",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "fm5tJf"
+                    }
+                  ]
                 }
               ],
               "id": "7Zk-hH"
@@ -248,7 +670,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "BdIdhH"
+                  "id": "BdIdhH",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "fm5tJf"
+                    }
+                  ]
                 }
               ],
               "id": "1veLde"
@@ -391,7 +819,13 @@
                 {
                   "type": "jump",
                   "reference": "continue",
-                  "id": "31rpUv"
+                  "id": "31rpUv",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "fm5tJf"
+                    }
+                  ]
                 }
               ],
               "id": "xqcxHu"

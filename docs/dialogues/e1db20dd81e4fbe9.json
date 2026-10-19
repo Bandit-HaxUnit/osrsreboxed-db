@@ -115,7 +115,13 @@
                       {
                         "type": "jump",
                         "reference": "continues",
-                        "id": "rs-1Bi"
+                        "id": "rs-1Bi",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a3481757eee8ba3a"
+                          }
+                        ]
                       }
                     ],
                     "id": "JicjbH"
@@ -220,8 +226,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "34cWEO"
+                                "id": "34cWEO",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-9d848acfb64aaf25"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -648,6 +659,90 @@
     ]
   },
   "branches": {
+    "jump-a3481757eee8ba3a": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "TzTok-Jad",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Without a Slayer helmet:",
+                "steps": [
+                  {
+                    "npc": "You don't appear to have any regular Slayer Helmets in your inventory."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "T8Rwwt"
+              },
+              {
+                "type": "condition",
+                "text": "With a Slayer helmet:",
+                "steps": [
+                  {
+                    "npc": "There you go."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "selected Slayer helmet",
+                    "id": "E5W-9o"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "SWdLct"
+              }
+            ]
+          },
+          {
+            "text": "Verzik Vitur",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "V9Gqna"
+              }
+            ]
+          },
+          {
+            "text": "TzKal-Zuk",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yIz2VG"
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "34cWEO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9d848acfb64aaf25"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9d848acfb64aaf25": [
+      {
+        "player": "I have to go."
+      }
+    ],
     "rWhQLE": [
       {
         "npc": "You need at least 2 inventory spaces. Make some space and come back."

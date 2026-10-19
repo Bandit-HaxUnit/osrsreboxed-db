@@ -3836,9 +3836,14 @@
                             "text": "Very well. Now, I recently managed to make contact with the elves that inhabit the western lands."
                           },
                           {
-                            "type": "action",
-                            "text": "Continues below from \"Elves? I've never seen an elf before.\"",
-                            "id": "3smTin"
+                            "type": "jump",
+                            "id": "3smTin",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-59e1ff80760a33e2"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -3979,9 +3984,14 @@
                     "text": "Excellent. Do you have a plan in place?",
                     "steps": [
                       {
-                        "type": "action",
-                        "text": "Continues above after \"I assume you have a plan?\"",
-                        "id": "MFjdyx"
+                        "type": "jump",
+                        "id": "MFjdyx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-dfd7e88581bbd24a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -3990,8 +4000,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "l-EcIy"
+                        "id": "l-EcIy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8b5c5dd183f73fa8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -4032,8 +4047,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MXfjRS"
+                "id": "MXfjRS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6b413039763bd0a3"
+                  }
+                ]
               }
             ]
           },
@@ -4042,8 +4062,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IVyOuO"
+                "id": "IVyOuO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8d5a1707138f1b1d"
+                  }
+                ]
               }
             ]
           },
@@ -4052,8 +4077,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jgF8yd"
+                "id": "jgF8yd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8b5c5dd183f73fa8"
+                  }
+                ]
               }
             ]
           }
@@ -4069,6 +4099,456 @@
       {
         "type": "unavailable",
         "id": "vemwFx"
+      }
+    ]
+  },
+  "branches": {
+    "jump-59e1ff80760a33e2": [
+      {
+        "player": "Elves? I've never seen an elf before."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "Well that may well change soon. Apparently, my brother has been causing them quite a bit of trouble. As such, they've agreed to help us get rid of him once and for all."
+      },
+      {
+        "player": "So what do I need to do?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "You are to head into the Underground Pass and through the Well of Voyage. The mages should have it repaired by the time you arrive."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "Once you are through, you will be met by some representatives of Lord Iorwerth."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "With their help, you are to find my brother and kill him. Once that's done, return to me."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Regicide quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:Regicide",
+                "section": "",
+                "text": "Continues in Transcript:Regicide",
+                "id": "W65Mvn",
+                "resolved": false,
+                "page_available": true
+              }
+            ],
+            "hook": "quest:regicide:start",
+            "quest": "Regicide"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Actually, I don't think I'm ready for this yet."
+              },
+              {
+                "type": "line",
+                "speaker": "King Lathas",
+                "text": "As you wish. Return to me when you are ready and we will begin."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-dfd7e88581bbd24a": [
+      {
+        "type": "condition",
+        "text": "If the player does not have the requirements for Regicide:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "I do indeed. However, I fear you are not yet ready to carry it out. Return to me when you are and we will begin."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eumAOL"
+      },
+      {
+        "type": "condition",
+        "text": "Unknown condition:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "I do indeed. However, I worry you might not be ready to carry it out. Are you sure you're up for it?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I can handle it.",
+                "steps": [
+                  {
+                    "player": "I can handle it."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "King Lathas",
+                    "text": "Very well. Now, I recently managed to make contact with the elves that inhabit the western lands."
+                  },
+                  {
+                    "type": "jump",
+                    "id": "3smTin",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-59e1ff80760a33e2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "I don't think I'm ready yet.",
+                "steps": [
+                  {
+                    "player": "I don't think I'm ready yet."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "King Lathas",
+                    "text": "Very well. Return to me when you are and we will begin."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Mw_lTN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the requirements for Regicide:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "I do indeed. I recently managed to make contact with the elves that inhabit the western lands."
+          },
+          {
+            "player": "Elves? I've never seen an elf before."
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "Well that may well change soon. Apparently, my brother has been causing them quite a bit of trouble. As such, they've agreed to help us get rid of him once and for all."
+          },
+          {
+            "player": "So what do I need to do?"
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "You are to head into the Underground Pass and through the Well of Voyage. The mages should have it repaired by the time you arrive."
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "Once you are through, you will be met by some representatives of Lord Iorwerth."
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "With their help, you are to find my brother and kill him. Once that's done, return to me."
+          },
+          {
+            "type": "choice",
+            "prompt": "Start the Regicide quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "type": "reference",
+                    "target": "Transcript:Regicide",
+                    "section": "",
+                    "text": "Continues in Transcript:Regicide",
+                    "id": "W65Mvn",
+                    "resolved": false,
+                    "page_available": true
+                  }
+                ],
+                "hook": "quest:regicide:start",
+                "quest": "Regicide"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "Actually, I don't think I'm ready for this yet."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "King Lathas",
+                    "text": "As you wish. Return to me when you are ready and we will begin."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "JFOT5p"
+      }
+    ],
+    "jump-8b5c5dd183f73fa8": [
+      {
+        "player": "Sounds good. See you later."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "Farewell adventurer. Return to me once you are ready to begin."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6b413039763bd0a3": [
+      {
+        "player": "I assume you have a plan?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the requirements for Regicide:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "I do indeed. However, I fear you are not yet ready to carry it out. Return to me when you are and we will begin."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eumAOL"
+      },
+      {
+        "type": "condition",
+        "text": "Unknown condition:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "I do indeed. However, I worry you might not be ready to carry it out. Are you sure you're up for it?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I can handle it.",
+                "steps": [
+                  {
+                    "player": "I can handle it."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "King Lathas",
+                    "text": "Very well. Now, I recently managed to make contact with the elves that inhabit the western lands."
+                  },
+                  {
+                    "type": "jump",
+                    "id": "3smTin",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-59e1ff80760a33e2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "I don't think I'm ready yet.",
+                "steps": [
+                  {
+                    "player": "I don't think I'm ready yet."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "King Lathas",
+                    "text": "Very well. Return to me when you are and we will begin."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Mw_lTN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the requirements for Regicide:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "I do indeed. I recently managed to make contact with the elves that inhabit the western lands."
+          },
+          {
+            "player": "Elves? I've never seen an elf before."
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "Well that may well change soon. Apparently, my brother has been causing them quite a bit of trouble. As such, they've agreed to help us get rid of him once and for all."
+          },
+          {
+            "player": "So what do I need to do?"
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "You are to head into the Underground Pass and through the Well of Voyage. The mages should have it repaired by the time you arrive."
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "Once you are through, you will be met by some representatives of Lord Iorwerth."
+          },
+          {
+            "type": "line",
+            "speaker": "King Lathas",
+            "text": "With their help, you are to find my brother and kill him. Once that's done, return to me."
+          },
+          {
+            "type": "choice",
+            "prompt": "Start the Regicide quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "type": "reference",
+                    "target": "Transcript:Regicide",
+                    "section": "",
+                    "text": "Continues in Transcript:Regicide",
+                    "id": "W65Mvn",
+                    "resolved": false,
+                    "page_available": true
+                  }
+                ],
+                "hook": "quest:regicide:start",
+                "quest": "Regicide"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "Actually, I don't think I'm ready for this yet."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "King Lathas",
+                    "text": "As you wish. Return to me when you are ready and we will begin."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "JFOT5p"
+      }
+    ],
+    "jump-8d5a1707138f1b1d": [
+      {
+        "player": "What's the deal with your brother again?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "My brother, King Tyras, was always a bit of an explorer. He went on numerous expeditions to the lands west of here. On one of these expeditions, he was captured by the forces of the Dark Lord."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "The Dark Lord agreed to spare his life, but only on one condition... That he would drink from the Chalice of Eternity. The chalice corrupted him. He joined forces with the Dark Lord, the embodiment of pure evil..."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "As a result, I had a wall built around West Ardougne to act as a barrier between him and the rest of the world. Tyras is king of West Ardougne, sealing off the city was the only way to stop him and the Dark Lord."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "I knew people would never believe the truth, so I had the plague made up as an excuse for the cordon. I'm not proud of it, but it was the only way to keep people safe."
+      },
+      {
+        "player": "But now we're ready to stop him."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "Indeed we are. My brother has been gathering strength in the west, preparing to move against us. But now that we have a way through, we can move against him first."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Excellent. Do you have a plan in place?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "MFjdyx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dfd7e88581bbd24a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sounds good. See you later.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "l-EcIy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8b5c5dd183f73fa8"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

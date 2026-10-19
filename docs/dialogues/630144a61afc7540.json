@@ -69,8 +69,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "e0MLNt"
+                        "id": "e0MLNt",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8b988d1f8bfba91f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -79,8 +84,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "blz9Ut"
+                        "id": "blz9Ut",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6468cd16e6947539"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -123,6 +133,65 @@
     "when-attempting-to-kill-monsters-that-aren-t-part-of-a-player-s-slayer-task": [
       {
         "npc": "cough* that isn't your assignment wheeze*"
+      }
+    ]
+  },
+  "branches": {
+    "jump-8b988d1f8bfba91f": [
+      {
+        "player": "Are you alright?"
+      },
+      {
+        "npc": "Of course I'm wheeze* alright. I'm fed up with you young folk asking cough cough* if I'm alright just because I like a bit of smoke splutter* in my tubes."
+      },
+      {
+        "npc": "Don't you come lecturing me on cough* air quality, young man - I've breathed smoke all my life, man and boy and euuurgh* and there's no ghhuk* scientific evidence that it's harmful."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you alright?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "e0MLNt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8b988d1f8bfba91f"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I think I'll leave you alone.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "blz9Ut",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6468cd16e6947539"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6468cd16e6947539": [
+      {
+        "player": "I think I'll leave you alone."
+      },
+      {
+        "npc": "cough cough cough ghhuk*"
+      },
+      {
+        "type": "end"
       }
     ]
   }

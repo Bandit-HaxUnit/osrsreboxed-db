@@ -173,12 +173,32 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6mrKkS"
+                "id": "6mrKkS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-87b05398958fb26a"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-87b05398958fb26a": [
+      {
+        "player": "I have to go."
+      },
+      {
+        "npc": "Stay vigilant, friend."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "i_38ZG"
       }
     ]
   }

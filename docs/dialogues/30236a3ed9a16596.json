@@ -36,8 +36,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "3sGcv1"
+                        "id": "3sGcv1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c8e4363e134e8ac2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -46,8 +51,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "UTl4tQ"
+                        "id": "UTl4tQ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3f0eb6156d645260"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -90,6 +100,24 @@
       {
         "type": "unavailable",
         "id": "0PIXTL"
+      }
+    ]
+  },
+  "branches": {
+    "jump-c8e4363e134e8ac2": [
+      {
+        "npc": "Hand me the banknotes you wish me to exchange."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3f0eb6156d645260": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

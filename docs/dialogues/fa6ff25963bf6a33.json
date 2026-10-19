@@ -1,4 +1,36 @@
 {
+  "branches": {
+    "jump-935013fade1ce0a8": [
+      {
+        "player": "Tell me more about the invasion."
+      },
+      {
+        "npc": "More than 137 decades ago, seemingly from nowhere, the Wintertodt began terrorising the lands north of Kourend, freezing everything within its path."
+      },
+      {
+        "npc": "After five decades of this terror, the people of Kourend were able to quell the beast, containing it in an icy prison."
+      },
+      {
+        "npc": "The Wintertodt remained subdued until very recently, when it began to threaten Kourend once more."
+      },
+      {
+        "npc": "Fortunately, the Order of the Sacred Flame is able to contain the Wintertodt and prevent another attack."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "JJUDpa"
+      }
+    ],
+    "jump-3beb2d20b416812e": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello. What are you doing here?"
@@ -48,8 +80,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "9onv1v"
+                      "id": "9onv1v",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-935013fade1ce0a8"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -58,8 +95,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "ifecsd"
+                      "id": "ifecsd",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-3beb2d20b416812e"
+                        }
+                      ]
                     }
                   ]
                 }

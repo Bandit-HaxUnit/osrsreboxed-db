@@ -55,8 +55,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "h2cDBb"
+                "id": "h2cDBb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3929205a0c8f992d"
+                  }
+                ]
               }
             ]
           },
@@ -65,8 +70,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "SSqW8Q"
+                "id": "SSqW8Q",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c71c1beeb79d4ffb"
+                  }
+                ]
               }
             ]
           }
@@ -118,6 +128,30 @@
         "type": "message",
         "text": "You do not have enough Shayzien favour. Current favour: [current favour in %] - Required: 100.0%",
         "id": "g4jfMA"
+      }
+    ]
+  },
+  "branches": {
+    "jump-3929205a0c8f992d": [
+      {
+        "player": "Sure, let's fight."
+      },
+      {
+        "npc": "To the arena!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c71c1beeb79d4ffb": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "I'll be here if you ever change your mind. I love a good fight."
+      },
+      {
+        "type": "end"
       }
     ]
   }

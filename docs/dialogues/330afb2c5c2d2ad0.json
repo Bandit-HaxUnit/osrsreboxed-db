@@ -47,8 +47,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "pE74Sp"
+                            "id": "pE74Sp",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-1b227b23cd94b75c"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -57,8 +62,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "mUE_4W"
+                            "id": "mUE_4W",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-bef1f4591baf45cf"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -123,8 +133,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "6_SLNB"
+                            "id": "6_SLNB",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-1b227b23cd94b75c"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -133,8 +148,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "5kVW3s"
+                            "id": "5kVW3s",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-bef1f4591baf45cf"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -267,6 +287,27 @@
     "using-items-on-the-elite-void-knight-using-any-other-item": [
       {
         "npc": "No thank you."
+      }
+    ]
+  },
+  "branches": {
+    "jump-1b227b23cd94b75c": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "npc": "Very well. Hand me the top or robe you wish me to upgrade. It costs 200 Commendation points to upgrade each item."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-bef1f4591baf45cf": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

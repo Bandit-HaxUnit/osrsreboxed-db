@@ -20,7 +20,8 @@
         "text": "If the player has a combat level less than 20:",
         "steps": [
           {
-            "type": "unavailable",
+            "type": "message",
+            "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 20.",
             "id": "KjL0_I"
           }
         ],
@@ -206,8 +207,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XbdOkN"
+                "id": "XbdOkN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4e236618e8e69343"
+                  }
+                ]
               }
             ]
           }
@@ -415,8 +421,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "XZpCok"
+                                "id": "XZpCok",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a9dda60e951d81d5"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -425,8 +436,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "aZFS0Y"
+                                "id": "aZFS0Y",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-566892e7ad89097f"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -586,8 +602,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "qudcBx"
+                    "id": "qudcBx",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-9016d2a06deabfb0"
+                      }
+                    ]
                   }
                 ]
               },
@@ -596,8 +617,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "fZ-opx"
+                    "id": "fZ-opx",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-2fdc12bcf4bee37c"
+                      }
+                    ]
                   }
                 ]
               },
@@ -606,8 +632,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "41thMH"
+                    "id": "41thMH",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-a9dda60e951d81d5"
+                      }
+                    ]
                   }
                 ]
               },
@@ -713,6 +744,206 @@
       {
         "type": "unavailable",
         "id": "nXdy7g"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4e236618e8e69343": [
+      {
+        "player": "Alright, I'll see about paying him a visit."
+      },
+      {
+        "type": "line",
+        "speaker": "Morgan",
+        "text": "Thank you, brave adventurer."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a9dda60e951d81d5": [
+      {
+        "player": "So you were once a proper vampyre hunter?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Yesh! I travelled their homeland to the easht. Morytania! I killed lotsh of vampyres over there!"
+      },
+      {
+        "player": "What was the most dangerous vampyre you killed?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Dangerous? Oh, well... Ish never killed one of the really dangerous ones."
+      },
+      {
+        "player": "Why not?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Can't. Theysh too strong. Nothing cansh hurt them."
+      },
+      {
+        "player": "Oh... But what if Count Draynor's like that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Yoush don't get many vampyres around here. Pretty much none, actshually. There's speshial magic that stops them coming over here. Any that are here... theysh weak... and trapped."
+      },
+      {
+        "player": "So how come you've never tried to kill him yourself?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Why bother? Hesh not killed anyone in a long time, so no one really caresh about him that much, apart from the odd adventurer thatsh looking to prove themshelves."
+      },
+      {
+        "player": "I see. Fair enough."
+      },
+      {
+        "type": "choice",
+        "options": []
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "eu9wZz"
+      }
+    ],
+    "jump-566892e7ad89097f": [
+      {
+        "player": "I'd best get going."
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Good luck, matey..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9016d2a06deabfb0": [
+      {
+        "player": "What do I need to do again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Go to Draynor Manor. Find the vampyre inshide and show him what for! When hesh weak, use a hammer to drive that stake I gave you in! Mosht general stores have them."
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Oh, and yoush should take some garlic with you as well. Vampyres don't likesh garlic."
+      },
+      {
+        "player": "Garlic? Hmm... I'll see if Morgan knows where I can get some."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "97n8f_"
+      }
+    ],
+    "jump-2fdc12bcf4bee37c": [
+      {
+        "player": "You said no one's ever seen Count Draynor?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "No, butsh every now and then someonesh tried to kill him."
+      },
+      {
+        "player": "But they've never come back? Meaning someone or something killed them most likely. Presumably Count Draynor?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Yesh, I'd say so."
+      },
+      {
+        "player": "So why does he never leave his manor?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Who knowsh. Most likely he's grown too weak to do ssho."
+      },
+      {
+        "player": "Weak? So he shouldn't be too hard to kill then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Even a weak vampyre ish very dangerous. Just go ashk those other adventurers thatsh never came back."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do I need to do again?",
+            "steps": [
+              {
+                "player": "What do I need to do again?"
+              },
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Go to Draynor Manor. Find the vampyre inshide and show him what for! When hesh weak, use a hammer to drive that stake I gave you in! Mosht general stores have them."
+              },
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Oh, and yoush should take some garlic with you as well. Vampyres don't likesh garlic."
+              },
+              {
+                "player": "Garlic? Hmm... I'll see if Morgan knows where I can get some."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "97n8f_"
+              }
+            ]
+          },
+          {
+            "text": "So you were once a proper vampyre hunter?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "XZpCok",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a9dda60e951d81d5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd best get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "aZFS0Y",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-566892e7ad89097f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

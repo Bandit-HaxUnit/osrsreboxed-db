@@ -1,4 +1,38 @@
 {
+  "branches": {
+    "jump-11041efcb9654022": [
+      {
+        "player": "Can you show me the way to the mines?"
+      },
+      {
+        "npc": "All right. Follow me."
+      },
+      {
+        "type": "message",
+        "text": "Kazgar shows you the way through the tunnels.",
+        "id": "m471ps"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-aa278c81cd97bb28": [
+      {
+        "player": "Can you show me the way to the water mill cellar?"
+      },
+      {
+        "npc": "Of course!"
+      },
+      {
+        "type": "message",
+        "text": "Kazgar shows you the way through the tunnels.",
+        "id": "ccERZh"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Hello, surface-dweller."
@@ -69,8 +103,13 @@
           "steps": [
             {
               "type": "jump",
-              "reference": "above",
-              "id": "qOubuL"
+              "id": "qOubuL",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-11041efcb9654022"
+                }
+              ]
             }
           ]
         },
@@ -79,8 +118,13 @@
           "steps": [
             {
               "type": "jump",
-              "reference": "above",
-              "id": "qpC-FJ"
+              "id": "qpC-FJ",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-aa278c81cd97bb28"
+                }
+              ]
             }
           ]
         },

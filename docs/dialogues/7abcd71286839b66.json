@@ -78,7 +78,20 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "Elder Raley's Herblore Stall opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Elder Raley's Herblore Stall",
+                "id": "JtTYM7"
+              }
+            ]
           },
           {
             "text": "Have you seen Floopa?",
@@ -97,10 +110,43 @@
             ]
           },
           {
-            "text": "So this isn't your stall?"
+            "text": "So this isn't your stall?",
+            "steps": [
+              {
+                "player": "So this isn't your stall?"
+              },
+              {
+                "type": "line",
+                "speaker": "Mag",
+                "text": "No. Elder Raley's teaching me to become a herbalist myself, but he's always quite busy, so I normally look after the stall for him."
+              },
+              {
+                "player": "I see. Fair enough."
+              },
+              {
+                "type": "line",
+                "speaker": "Mag",
+                "text": "So, would you like to buy some herblore supplies?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "Bpiqt8"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Mag",
+                "text": "Okay, well, you know where to find me if you change your mind."
+              }
+            ]
           }
         ]
       }
@@ -115,7 +161,20 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "Elder Coco's Crafting Stall opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Elder Coco's Crafting Stall",
+                "id": "pNJTnP"
+              }
+            ]
           },
           {
             "text": "Have you seen Floopa?",
@@ -134,7 +193,17 @@
             ]
           },
           {
-            "text": "Not right now, thanks."
+            "text": "Not right now, thanks.",
+            "steps": [
+              {
+                "player": "Not right now, thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Coco",
+                "text": "Well, if you change your mind, I'll be here."
+              }
+            ]
           }
         ]
       }
@@ -149,7 +218,25 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "player": "Let's see what you have."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Strom",
+                "text": "You won't be disappointed."
+              },
+              {
+                "type": "action",
+                "text": "Elder Strom's Hunting Stall opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Elder Strom's Hunting Stall",
+                "id": "PEuuqE"
+              }
+            ]
           },
           {
             "text": "Have you seen Floopa?",
@@ -168,7 +255,17 @@
             ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Strom",
+                "text": "As you wish."
+              }
+            ]
           }
         ]
       }
@@ -183,7 +280,25 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'll take a look."
+            "text": "I'll take a look.",
+            "steps": [
+              {
+                "player": "I'll take a look."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Krill",
+                "text": "Very good."
+              },
+              {
+                "type": "action",
+                "text": "Elder Krill's Fishing Stall opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Elder Krill's Fishing Stall",
+                "id": "Dbz50d"
+              }
+            ]
           },
           {
             "text": "Have you seen Floopa?",
@@ -202,10 +317,53 @@
             ]
           },
           {
-            "text": "Do you often sell to humans?"
+            "text": "Do you often sell to humans?",
+            "steps": [
+              {
+                "player": "Do you often sell to humans?"
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Krill",
+                "text": "Oh yes. In fact, I sell to humans far more than I sell to tortugans. Most of our kind have no issues with catching their own fish, and can normally do so without all these tools you humans use."
+              },
+              {
+                "player": "Surely business is quite slow then? There aren't many humans around here."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Krill",
+                "text": "Not on the island itself, but we do sometimes allow human vessels to dock here for trade. However, truth be told, I don't need to do much trading with them these days."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Krill",
+                "text": "It's a lot of effort, and at my age, there is little need in trying to make a large profit. As long as I have enough to get by, I'm happy."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Krill",
+                "text": "Anyway, did you want to buy anything?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "J05V9p"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Krill",
+                "text": "As you wish."
+              }
+            ]
           }
         ]
       }
@@ -220,7 +378,20 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "player": "Let's see what you have."
+              },
+              {
+                "type": "action",
+                "text": "Elder Blunn's Spear and Shield Stall opens.",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Elder Blunn's Spear and Shield Stall",
+                "id": "i0NKN4"
+              }
+            ]
           },
           {
             "text": "Have you seen Floopa?",
@@ -239,10 +410,48 @@
             ]
           },
           {
-            "text": "Do you make these yourself?"
+            "text": "Do you make these yourself?",
+            "steps": [
+              {
+                "player": "Do you make these yourself?"
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Blunn",
+                "text": "I do. It is an important service I provide to our people. My spears in particular are quite desirable."
+              },
+              {
+                "player": "How come?"
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Blunn",
+                "text": "All tortugans must make their own spear as part of their Trial by Water, but those spears are quite personal and many prefer not to risk damaging them."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Blunn",
+                "text": "My spears are of high quality, but lack the sentimental elements. They are seen as ideal by many tortugans. Would you like to buy one? Or perhaps you'd be more interested in something else I have for sale?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "7dkuAz"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Elder Blunn",
+                "text": "Very well."
+              }
+            ]
           }
         ]
       }
@@ -1224,8 +1433,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "o32Jfr"
+                    "id": "o32Jfr",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f80eabcfe9701bb2"
+                      }
+                    ]
                   }
                 ]
               }
@@ -1567,6 +1781,19 @@
     ]
   },
   "branches": {
+    "jump-f80eabcfe9701bb2": [
+      {
+        "player": "Actually, I'd like to disembark."
+      },
+      {
+        "type": "line",
+        "speaker": "Spencer Brentwood",
+        "text": "Very well."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "hnXUQf": [
       {
         "player": "Actually, I'd like to disembark."

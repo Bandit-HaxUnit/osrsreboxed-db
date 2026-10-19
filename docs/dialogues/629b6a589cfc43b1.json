@@ -102,8 +102,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "64toNM"
+                        "id": "64toNM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fcbd3606290b45c7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -355,6 +360,79 @@
       {
         "type": "unavailable",
         "id": "IE8MPR"
+      }
+    ]
+  },
+  "branches": {
+    "jump-fcbd3606290b45c7": [
+      {
+        "player": "I am in search of a quest."
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "Hmmm... Maybe I can think of something for you."
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "Would you like to become more proficient in the dark arts?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Witch's Potion quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Yes, help me become one with my darker side."
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "Okay, I'm going to make a potion to help bring out your darker self."
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "You will need certain ingredients."
+              },
+              {
+                "player": "What do I need?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "You need an eye of newt, a rat's tail, an onion... Oh and a piece of burnt meat."
+              },
+              {
+                "player": "Great, I'll go and get them."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:witch-s-potion:start",
+            "quest": "Witch's Potion"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, I have my principles and honour."
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "Suit yourself, but you're missing out."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

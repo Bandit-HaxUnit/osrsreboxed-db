@@ -145,8 +145,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "8koVKF"
+        "id": "8koVKF",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-0c612d154b0810ef"
+          }
+        ]
       }
     ],
     "standard-dialogue-with-oldak": [
@@ -179,8 +184,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "_LzlzI"
+        "id": "_LzlzI",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-0c612d154b0810ef"
+          }
+        ]
       }
     ],
     "standard-dialogue-with-the-goblin-scribe": [
@@ -221,8 +231,141 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "7I6EY_"
+        "id": "7I6EY_",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-0c612d154b0810ef"
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-0c612d154b0810ef": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "A giant frog found its way into the mines, but I helped the guards to drive it off!"
+              },
+              {
+                "npc": "It got away in the end. But it was the biggest I'd ever seen!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "I've been thinking about my destiny..."
+              },
+              {
+                "npc": "What was it Juna said to me? 'Your destiny is to lead all goblins into a new age.'"
+              },
+              {
+                "npc": "'All goblins.' Not just the Dorgeshuun, all goblins..."
+              },
+              {
+                "npc": "And what does it even mean, my destiny? Is it something I'm certain to do, or just something I ought to do? How can I know?"
+              },
+              {
+                "npc": "I talked to Juna about it, but she wouldn't tell me anything. She just said, 'You will know, when the time is right.'"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "I've been helping Oldak with his experiments!"
+              },
+              {
+                "npc": "I took his magic ball all over the caves and even to Lumbridge to test what happened when I broke it, and I always ended up back here."
+              },
+              {
+                "npc": "You might find one of those balls useful if you wanted to visit me! Perhaps you should talk to Oldak."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "I went on another visit to Lumbridge! I still can't convince other Dorgeshuun to go to the surface with me, though."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "condition": "After completing Another Slice of H.A.M. and if the player has the ancient mace:",
+            "steps": [
+              {
+                "npc": "You've still got that ancient mace..."
+              },
+              {
+                "npc": "It must be my imagination, but I can almost feel the power coming off it, like it's calling out to me."
+              },
+              {
+                "npc": "You should keep it safe, [player name]!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "6RrYoL"
+          },
+          {
+            "text": "Dialogue 6",
+            "condition": "After completing Another Slice of H.A.M. and if the player doesn't have the ancient mace:",
+            "steps": [
+              {
+                "npc": "I thought you had the ancient goblin mace, [player name]. But I found it in the caves."
+              },
+              {
+                "npc": "When I picked it up I felt strange... it was as if someone was watching to me, urging me to do something, but I don't know what!"
+              },
+              {
+                "npc": "I gave it to Tegdak. If you want to have it again you should talk to him."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "Qi5YEV"
+          },
+          {
+            "text": "Dialogue 7",
+            "condition": "After completing Another Slice of H.A.M.:",
+            "steps": [
+              {
+                "npc": "I visited the goblin village again. I wanted to learn more about their legend of the 'Chosen Commander'."
+              },
+              {
+                "npc": "But I didn't find out any more. They couldn't decide whether I really was the Chosen Commander or not, and they just got into a big argument about it."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "WkGuQj"
+          }
+        ]
       }
     ]
   }

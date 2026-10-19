@@ -111,8 +111,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "R7a6DC"
+                            "id": "R7a6DC",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-71a98ad3cce15896"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -168,6 +173,19 @@
       },
       {
         "npc": "Excuse me for rushing off like this, but I must get back to my workroom."
+      }
+    ]
+  },
+  "branches": {
+    "jump-71a98ad3cce15896": [
+      {
+        "player": "Actually, no thanks. I like my respawn point."
+      },
+      {
+        "npc": "Well then, leave me to my business."
+      },
+      {
+        "type": "end"
       }
     ]
   }

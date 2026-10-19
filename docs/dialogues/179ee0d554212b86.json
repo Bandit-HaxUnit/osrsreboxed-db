@@ -129,8 +129,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xNVaRt"
+                "id": "xNVaRt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b7a012899b51f0fe"
+                  }
+                ]
               }
             ]
           },
@@ -139,8 +144,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "R9qCu_"
+                "id": "R9qCu_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c6cc3114f77bb499"
+                  }
+                ]
               }
             ]
           }
@@ -155,6 +165,30 @@
       },
       {
         "npc": "You shouldn't be here, slave. Go back to your master before you get yourself killed."
+      }
+    ]
+  },
+  "branches": {
+    "jump-b7a012899b51f0fe": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Garlic Cocktail Supply",
+        "id": "YKw5Qu"
+      }
+    ],
+    "jump-c6cc3114f77bb499": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "Clear off then."
+      },
+      {
+        "type": "end"
       }
     ]
   }

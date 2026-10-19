@@ -349,8 +349,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "-87Uc0"
+                                "id": "-87Uc0",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a99650a5ada04e0b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -359,8 +364,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "YUMo81"
+                                "id": "YUMo81",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-39987b9788a0492f"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -537,6 +547,32 @@
         "type": "jump",
         "reference": "initial",
         "id": "H0dJz8"
+      }
+    ]
+  },
+  "branches": {
+    "jump-a99650a5ada04e0b": [
+      {
+        "player": "Actually, let's talk about something else."
+      },
+      {
+        "npc": "Very well."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "if4xFE"
+      }
+    ],
+    "jump-39987b9788a0492f": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "All the best."
+      },
+      {
+        "type": "end"
       }
     ]
   }

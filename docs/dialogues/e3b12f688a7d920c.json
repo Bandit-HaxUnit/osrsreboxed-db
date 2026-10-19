@@ -58,8 +58,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NCIrCh"
+                "id": "NCIrCh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-49990a981fd4559e"
+                  }
+                ]
               }
             ]
           },
@@ -68,8 +73,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WWgvj7"
+                "id": "WWgvj7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-77a75b4ca687cd75"
+                  }
+                ]
               }
             ]
           },
@@ -94,6 +104,29 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-49990a981fd4559e": [
+      {
+        "player": "Yes please. What are you selling?"
+      },
+      {
+        "type": "action",
+        "text": "Miscellanian General Store opens.",
+        "action": "open_shop",
+        "action_source": "text",
+        "target": "Miscellanian General Store",
+        "id": "N3GdnZ"
+      }
+    ],
+    "jump-77a75b4ca687cd75": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

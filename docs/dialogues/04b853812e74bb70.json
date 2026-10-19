@@ -43,8 +43,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "oXkknR"
+                                "id": "oXkknR",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-b22737aff2bbff0c"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -234,8 +239,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "uBHdLf"
+            "id": "uBHdLf",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-8258309c6ea46d5a"
+              }
+            ]
           }
         ],
         "id": "6vW17t"
@@ -257,6 +267,89 @@
       },
       {
         "npc": "We're about to launch!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b22737aff2bbff0c": [
+      {
+        "player": "What kind of work?"
+      },
+      {
+        "npc": "Ah well you see we try to keep Gielinor as Guthix intended, it's very challenging. Actually we've been having some problems recently, maybe you could help us?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yeah ok, what's the problem?",
+            "steps": [
+              {
+                "player": "Yeah ok, what's the problem?"
+              },
+              {
+                "npc": "Well the order has become quite diminished over the years, it's a very long process to learn the skills of a Void Knight. Recently there have been breaches into our realm from somewhere else, and strange creatures"
+              },
+              {
+                "npc": "have been pouring through. We can't let that happen, and we'd be very grateful if you'd help us."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How can I help?",
+                    "steps": [
+                      {
+                        "player": "How can I help?"
+                      },
+                      {
+                        "npc": "We send launchers from our outpost to the nearby islands. If you go and wait in the lander there that'd really help."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sorry, but I can't.",
+                    "steps": [
+                      {
+                        "player": "Sorry, but I can't."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What's 'Gielinor'?",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I'd rather not, sorry.",
+            "steps": [
+              {
+                "player": "I'd rather not, sorry."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8258309c6ea46d5a": [
+      {
+        "type": "end"
       }
     ]
   }

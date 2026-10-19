@@ -101,8 +101,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "DlnDCH"
+                            "id": "DlnDCH",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-5af07db87284e7b7"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -161,8 +166,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "chiw-y"
+                            "id": "chiw-y",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-63215e8ffe93ccc7"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -220,7 +230,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "NE9H-v"
+              }
+            ]
           },
           {
             "text": "There's been a death in Arceuus.",
@@ -255,10 +271,82 @@
             ]
           },
           {
-            "text": "Tell me about the Kourend Council."
+            "text": "Tell me about the Kourend Council.",
+            "steps": [
+              {
+                "player": "Tell me about the Kourend Council."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "Kourend's last King, Kharedst IV, had only one child when he died. She was too young to take the throne, so the Kourend Council was formed to look after things until she came of age."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "Alas, she was very close to her father and his sudden death drove her to insanity. With no suitable ruler, the Kourend Council was made permanent."
+              },
+              {
+                "player": "How is the Council structured?"
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "The Kourend Council is made up of four councillors. Every four years there is an election for the people to decide who the councillors should be."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "One of the councillors holds the position of Head Councillor and this rotates every year. I am the current Head Councillor."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed The Queen of Thieves:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "EmeMv5"
+                  }
+                ],
+                "id": "LD3QIM"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed The Queen of Thieves:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LP93ez"
+                  }
+                ],
+                "id": "VMfwHc"
+              },
+              {
+                "player": "So where do the five houses fit in?"
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "The five houses of Kourend each have their own leader who rules over their city. The leaders of the individual houses must enforce and obey the laws set out by the Kourend Council, but can otherwise rule as they see fit."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "I hope that helps."
+              },
+              {
+                "player": "Yes, thank you."
+              }
+            ]
           },
           {
-            "text": "Time for me to go."
+            "text": "Time for me to go.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "RRq3qj"
+              }
+            ]
           }
         ]
       }
@@ -276,7 +364,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "NE9H-v"
+              }
+            ]
           },
           {
             "text": "There's been a death in Arceuus.",
@@ -292,10 +386,82 @@
             ]
           },
           {
-            "text": "Tell me about the Kourend Council."
+            "text": "Tell me about the Kourend Council.",
+            "steps": [
+              {
+                "player": "Tell me about the Kourend Council."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "Kourend's last King, Kharedst IV, had only one child when he died. She was too young to take the throne, so the Kourend Council was formed to look after things until she came of age."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "Alas, she was very close to her father and his sudden death drove her to insanity. With no suitable ruler, the Kourend Council was made permanent."
+              },
+              {
+                "player": "How is the Council structured?"
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "The Kourend Council is made up of four councillors. Every four years there is an election for the people to decide who the councillors should be."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "One of the councillors holds the position of Head Councillor and this rotates every year. I am the current Head Councillor."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed The Queen of Thieves:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "EmeMv5"
+                  }
+                ],
+                "id": "LD3QIM"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed The Queen of Thieves:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LP93ez"
+                  }
+                ],
+                "id": "VMfwHc"
+              },
+              {
+                "player": "So where do the five houses fit in?"
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "The five houses of Kourend each have their own leader who rules over their city. The leaders of the individual houses must enforce and obey the laws set out by the Kourend Council, but can otherwise rule as they see fit."
+              },
+              {
+                "type": "line",
+                "speaker": "Councillor Andrews",
+                "text": "I hope that helps."
+              },
+              {
+                "player": "Yes, thank you."
+              }
+            ]
           },
           {
-            "text": "Time for me to go."
+            "text": "Time for me to go.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "RRq3qj"
+              }
+            ]
           }
         ]
       }
@@ -349,8 +515,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "rFjfCD"
+                "id": "rFjfCD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b216720a959e7387"
+                  }
+                ]
               }
             ]
           },
@@ -1098,6 +1269,128 @@
       {
         "type": "unavailable",
         "id": "GewklE"
+      }
+    ]
+  },
+  "branches": {
+    "jump-5af07db87284e7b7": [
+      {
+        "type": "line",
+        "speaker": "Mori",
+        "text": "You... You're right. We should let the Kourend Council know. Could you help? I don't want to leave her."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start The Ascent of Arceuus quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Of course I'll help."
+              },
+              {
+                "type": "line",
+                "speaker": "Mori",
+                "text": "Thank you... Could you head to Kourend Castle and let Councillor Andrews know what's happened? He's in charge of the council."
+              },
+              {
+                "player": "Will do. I'll be back soon."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:the-ascent-of-arceuus:start",
+            "quest": "The Ascent of Arceuus"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Actually I have something else to do."
+              },
+              {
+                "type": "line",
+                "speaker": "Mori",
+                "text": "Oh... Okay..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-63215e8ffe93ccc7": [
+      {
+        "player": "I shouldn't get involved."
+      },
+      {
+        "type": "line",
+        "speaker": "Mori",
+        "text": "Oh... Okay..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b216720a959e7387": [
+      {
+        "type": "line",
+        "speaker": "Mori",
+        "text": "Well... if the Council won't help us, maybe Lord Arceuus will. He doesn't show his face in public much these days but he can't ignore the death of one of his own."
+      },
+      {
+        "player": "Good idea. Where can I find him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mori",
+        "text": "He'll be in the Tower of Magic, north west of here."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "NE9H-v": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Councillor Andrews",
+        "text": "My name is David Andrews. I'm the Head Councillor of the Kourend Council."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "MsaEsm"
+      }
+    ],
+    "EmeMv5": [
+      {
+        "type": "line",
+        "speaker": "Councillor Andrews",
+        "text": "The other councillors are Councillor Hughes, Councillor Unkar and Councillor Orson."
+      }
+    ],
+    "LP93ez": [
+      {
+        "type": "line",
+        "speaker": "Councillor Andrews",
+        "text": "The other councillors are Councillor Unkar and Councillor Orson. The fourth seat on the Council is currently vacent after the recent arrest of Councillor Hughes."
+      }
+    ],
+    "RRq3qj": [
+      {
+        "player": "Time for me to go."
+      },
+      {
+        "type": "line",
+        "speaker": "Councillor Andrews",
+        "text": "Good day citizen."
       }
     ]
   }

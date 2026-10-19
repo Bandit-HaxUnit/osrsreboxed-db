@@ -82,8 +82,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "54PxUU"
+                "id": "54PxUU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-94c79e28ad43b7da"
+                  }
+                ]
               }
             ]
           },
@@ -92,12 +97,35 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Vum3G-"
+                "id": "Vum3G-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-26e5abade7b7f1cd"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-94c79e28ad43b7da": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Lumbridge General Store",
+        "id": "zD1X1X"
+      }
+    ],
+    "jump-26e5abade7b7f1cd": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

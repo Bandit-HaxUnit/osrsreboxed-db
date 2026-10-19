@@ -40,8 +40,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "trhPFl"
+                                "id": "trhPFl",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-438269a5c2568358"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -75,8 +80,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "AOQcpo"
+                                "id": "AOQcpo",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-438269a5c2568358"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -255,6 +265,75 @@
             "steps": [
               {
                 "npc": "Hit the dummy before I come over there and hit you!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-438269a5c2568358": [
+      {
+        "player": "Can I have some armour like yours?"
+      },
+      {
+        "npc": "Only guards of Varrock can wear this armour."
+      },
+      {
+        "player": "Well, I could become a guard of Varrock."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has level 31 Thieving or higher:",
+        "steps": [
+          {
+            "npc": "Oh yeah? I see you've got a Thieving level of [thieving level]. That must give you quite a long criminal record."
+          },
+          {
+            "player": "I could repent of my evil ways if you like."
+          }
+        ],
+        "id": "2t7XxQ"
+      },
+      {
+        "npc": "So you really want to be a guard, huh?"
+      },
+      {
+        "player": "Yes, that's right."
+      },
+      {
+        "npc": "Does it worry you that the life expectancy of a guard is about 30 seconds?"
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "No, that doesn't worry me.",
+            "steps": [
+              {
+                "player": "No, that doesn't worry me."
+              },
+              {
+                "npc": "Bah! You just failed the intelligence test. Go away, civilian."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Actually, forget it.",
+            "steps": [
+              {
+                "player": "Actually, forget it."
+              },
+              {
+                "npc": "Go away, coward."
+              },
+              {
+                "type": "end"
               }
             ]
           }

@@ -104,8 +104,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "PdVzaS"
+                        "id": "PdVzaS",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2a78ca5f7ae80311"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -202,8 +207,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "7X2wys"
+                        "id": "7X2wys",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-706421babc79bd8e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -212,8 +222,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "wFk0Hw"
+                        "id": "wFk0Hw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-26d63841720261a3"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -499,6 +514,241 @@
           }
         ],
         "id": "XGk1JX"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2a78ca5f7ae80311": [
+      {
+        "player": "Weren't you going to give up evil?"
+      },
+      {
+        "npc": "Yeah, well..."
+      },
+      {
+        "npc": "I did try. I wore this bright red jumper and I got up in the morning and spent the day outside in the sunshine..."
+      },
+      {
+        "type": "unavailable",
+        "id": "GeEKgh"
+      },
+      {
+        "npc": "But I couldn't keep it up. I just didn't find anything good very interesting, you know?"
+      },
+      {
+        "npc": "Sometimes I worry about the consequences of evil. I don't really want anyone to get hurt, not like what happened with Denath."
+      },
+      {
+        "npc": "But I can't not be evil! It's just who I am!"
+      },
+      {
+        "npc": "Ah-ha-ha-ha-ha-haa!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Nice basement!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "7X2wys",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-706421babc79bd8e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "See you later.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "wFk0Hw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-26d63841720261a3"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-706421babc79bd8e": [
+      {
+        "player": "Nice basement!"
+      },
+      {
+        "npc": "Nice?!"
+      },
+      {
+        "player": "I mean, evil!"
+      },
+      {
+        "npc": "Yeah! I'm going to use it to summon DEMONS to DO MY BIDDING, or raise an ARMY OF THE UNDEAD! And then I'm going to totally, like, take over the world!"
+      },
+      {
+        "npc": "Ah-ha-ha-ha-ha-haa!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So have you had any luck with the demon-summoning?",
+            "steps": [
+              {
+                "player": "So have you had any luck with the demon-summoning?"
+              },
+              {
+                "npc": "Well, I thought I should start small, so I asked Wizard Grayzag for some help with summoning imps..."
+              },
+              {
+                "player": "And did you manage to summon any?"
+              },
+              {
+                "npc": "Well, not imps, exactly. It turns out they're not the lowest form of demon after all. I got these hell-rats."
+              },
+              {
+                "npc": "They're hardly evil at all! They're just like regular rats only they smell vaguely of sulphur!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "xntSNb"
+              }
+            ]
+          },
+          {
+            "text": "Weren't you going to give up evil?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "PdVzaS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2a78ca5f7ae80311"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "See you later.",
+            "steps": [
+              {
+                "player": "See you later!"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "If my ARMY OF DARKNESS doesn't get you first!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Soon you will return to bow before my EVIL THRONE!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "If you can find your way out of my BASEMENT OF DOOM!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "And together we will lead Gielinor into a NEW DARK AGE!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "npc": "Of course you will return! There is no escape from my DARK POWER!"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-26d63841720261a3": [
+      {
+        "player": "See you later!"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "If my ARMY OF DARKNESS doesn't get you first!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Soon you will return to bow before my EVIL THRONE!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "If you can find your way out of my BASEMENT OF DOOM!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "And together we will lead Gielinor into a NEW DARK AGE!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Of course you will return! There is no escape from my DARK POWER!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "end"
       }
     ]
   }

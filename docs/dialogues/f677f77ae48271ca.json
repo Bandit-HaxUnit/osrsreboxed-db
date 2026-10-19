@@ -431,8 +431,13 @@
                                   },
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "MY4YvS"
+                                    "id": "MY4YvS",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-b050ffaa9b40e299"
+                                      }
+                                    ]
                                   }
                                 ],
                                 "id": "vDCHoJ"
@@ -467,6 +472,61 @@
           {
             "text": "Neither - I'm a polite person.",
             "steps": []
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-b050ffaa9b40e299": [
+      {
+        "npc": "She's never heard them."
+      },
+      {
+        "player": "Why not?"
+      },
+      {
+        "npc": "I suspect she loves another - Ollie, another camel who roams with her to the north."
+      },
+      {
+        "npc": "So I shall stay here and compose poems for her."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why not tell her how you feel?",
+            "steps": [
+              {
+                "player": "Why not tell her how you feel?"
+              },
+              {
+                "npc": "She seems happy enough as she is, and I have my poems to comfort me."
+              },
+              {
+                "player": "Well, best of luck with that."
+              },
+              {
+                "npc": "If you want to hear my poems once more, please come back again."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Well, best of luck with that.",
+            "steps": [
+              {
+                "player": "Well, best of luck with that."
+              },
+              {
+                "npc": "If you want to hear my poems once more, please come back again."
+              },
+              {
+                "type": "end"
+              }
+            ]
           }
         ]
       }

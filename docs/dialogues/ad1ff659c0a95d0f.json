@@ -1,4 +1,45 @@
 {
+  "branches": {
+    "jump-53341a581d91b170": [
+      {
+        "player": "What are you doing?"
+      },
+      {
+        "npc": "Exploring. Isn't it exciting?"
+      },
+      {
+        "player": "Isn't it just! Found anything interesting?"
+      },
+      {
+        "npc": "This sanctuary has been sealed for centuries and it's full to the brim with history of my sect... Everything is interesting!"
+      },
+      {
+        "player": "How do you even know where to begin?"
+      },
+      {
+        "npc": "I... Don't. It might explain the aimless wandering."
+      },
+      {
+        "player": "Huh, I've always wondered why so many people do that."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "v09G6S"
+      }
+    ],
+    "jump-eaf2317e3ca87b2e": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Be safe, traveller."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello!"
@@ -121,8 +162,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "pBkxik"
+                      "id": "pBkxik",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-53341a581d91b170"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -131,8 +177,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "FcRiD8"
+                      "id": "FcRiD8",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-eaf2317e3ca87b2e"
+                        }
+                      ]
                     }
                   ]
                 }

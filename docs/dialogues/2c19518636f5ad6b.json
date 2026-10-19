@@ -1179,7 +1179,63 @@
           {
             "type": "choice",
             "prompt": "Which book would you like to read?",
-            "options": []
+            "options": [
+              {
+                "text": "1001 Ways To Eat Fried Gizzards"
+              },
+              {
+                "text": "Practical Gardening For The Headless"
+              },
+              {
+                "text": "Human Taxidermy for Nincompoops"
+              },
+              {
+                "text": "The Joy of Gravedigging",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "As you pull the book a hidden latch springs into place, and the bookcase swings open, revealing a secret compartment.",
+                    "id": "CYeNU0"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have the marble amulet:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "marble amulet",
+                        "id": "T6feip"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You find a marble amulet in the secret compartment.",
+                        "id": "DaP57S"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "e34ssw"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If marble or star amulet is in the player's inventory:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The secret compartment is empty.",
+                        "id": "49XKZQ"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "YpI73k"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "id": "ruwDWa"
@@ -1191,7 +1247,54 @@
           {
             "type": "choice",
             "prompt": "Which book would you like to read?",
-            "options": []
+            "options": [
+              {
+                "text": "Chimney Sweeping on a Budget"
+              },
+              {
+                "text": "Handy Maggot Avoidance Techniques",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "As you pull the book a hidden latch springs into place, and the bookcase swings open, revealing a secret compartment.",
+                    "id": "CM-EFx"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Without the obsidian amulet:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "obsidian amulet",
+                        "id": "3AyrSG"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You find an obsidian amulet in the secret compartment.",
+                        "id": "jHo2MB"
+                      }
+                    ],
+                    "id": "GW76rD"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If obsidian or star amulet is in the backpack:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The secret compartment is empty.",
+                        "id": "4waEsa"
+                      }
+                    ],
+                    "id": "b2PJlI"
+                  }
+                ]
+              },
+              {
+                "text": "My Family and Other Zombies"
+              }
+            ]
           }
         ],
         "id": "umNfkS"
@@ -1538,8 +1641,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yHXUj4"
+                "id": "yHXUj4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e15229853840dc48"
+                  }
+                ]
               }
             ]
           },
@@ -1548,8 +1656,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "w_QoTu"
+                "id": "w_QoTu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8752a8e48ed45cdc"
+                  }
+                ]
               }
             ]
           },
@@ -1558,8 +1671,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nSToNA"
+                "id": "nSToNA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-035507bae1acde93"
+                  }
+                ]
               }
             ]
           },
@@ -1568,8 +1686,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8hy5Mn"
+                "id": "8hy5Mn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c5564f03c3684c68"
+                  }
+                ]
               }
             ]
           }
@@ -1736,8 +1859,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JaT7gF"
+                "id": "JaT7gF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8e651139f177bff0"
+                  }
+                ]
               }
             ]
           },
@@ -1796,8 +1924,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "aNOo0X"
+                "id": "aNOo0X",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0911c5c033ac1a49"
+                  }
+                ]
               }
             ]
           }
@@ -2545,6 +2678,243 @@
       {
         "type": "unavailable",
         "id": "2gZ-P8"
+      }
+    ]
+  },
+  "branches": {
+    "jump-e15229853840dc48": [
+      {
+        "player": "What do you want me to do, again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Fenkenstrain",
+        "text": "I need you to get me enough dead body parts for me to stitch together a complete body, which I plan to bring to life."
+      },
+      {
+        "player": "Right...okay...if you insist."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8752a8e48ed45cdc": [
+      {
+        "player": "Why do you want to make a creature?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Fenkenstrain",
+        "text": "I came to the land of Morytania many years ago, to find a safe sanctuary for my experiments. This abandoned castle suited my purposes exactly."
+      },
+      {
+        "player": "What were you experimenting in?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Fenkenstrain",
+        "text": "Oh, perfectly innocent experiments - for the good of mankind."
+      },
+      {
+        "player": "Then why did you need to come to Morytania?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Fenkenstrain",
+        "text": "Enough questions, now. Get back to your work."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-035507bae1acde93": [
+      {
+        "player": "Will this creature put me out of a job?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Fenkenstrain",
+        "text": "No, my friend. I have a very special purpose in mind for this creature."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c5564f03c3684c68": [
+      {
+        "player": "I must get back to work, sir."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8e651139f177bff0": [
+      {
+        "player": "Can you tell me anything about Fenkenstrain?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not wearing the amulet of ghostspeak:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The Headless Gardener's neck twitches at you, but the lack of any head prevents him from speaking.",
+            "id": "-mbvUF"
+          }
+        ],
+        "id": "hvSyB5"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing the amulet of ghostspeak:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You feel power emanate from the Amulet of Ghostspeak, and the air around you vibrates with the ghostly voice of the Headless Gardener...",
+            "id": "W4MDwK"
+          },
+          {
+            "player": "Can you tell me anything about Fenkenstrain?"
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "Oi could tell you a few things about old Fenky, yeah."
+          },
+          {
+            "player": "Go on."
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "Once, this castle were full o' good folk - my friends. Fenky was just the castle doctor you know, to the Lord and the castle folk."
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "I don't know what happened to them all, but one by one they all disappeared. When they were gone a while, I went an dug graves for 'em, in the forest."
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "After a while there weren't no-one left, but the Lord, Fenkenstrain, and meself."
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "Old Fenky sent me into the Forest to dig 'im a pit. Never said what for. Then would you believe it, someone chops me head off."
+          },
+          {
+            "player": "Did you see who did it, before ..."
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "Before oi kicked the bucket, you mean?"
+          },
+          {
+            "player": "Umm..."
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "Don't worry yourself, I'm not worried about bein' dead. Worse things could happen, I suppose."
+          },
+          {
+            "type": "line",
+            "speaker": "Gardener Ghost",
+            "text": "One thing I do know is, there ain't no Lord of the castle anymore, 'cept for old Fenky. Makes you think a bit, don't it?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "TmaBI8"
+      }
+    ],
+    "jump-0911c5c033ac1a49": [
+      {
+        "player": "Can you tell me anything about Fenkenstrain?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not wearing the amulet of ghostspeak:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "gOLrG4"
+          }
+        ],
+        "id": "7kR14F"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing the amulet of ghostspeak:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You feel power emanate from the Amulet of Ghostspeak, and the air around you vibrates with the ghostly voice of the Headless Gardener...",
+            "steps": [
+              {
+                "player": "What happened to your head?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gardener Ghost",
+                "text": "Oi was in the old 'aunted Forest to the south, diggin' a pit for moi old maaster, old Fenkenstrain, when would you believe it, someone chops me head off. Awful bad luck, weren't it?"
+              },
+              {
+                "player": "Oh yes, dreadful bad luck."
+              },
+              {
+                "type": "line",
+                "speaker": "Gardener Ghost",
+                "text": "So oi thinks to meself, I don't needs any 'ead to be gettin on with me gardenin', long as I got me hands and me spade."
+              },
+              {
+                "player": "Would you show me where the place was?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already found the head:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gardener Ghost",
+                    "text": "No mate, you've found my head already, oi think."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "aAqF_Y"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the head:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The Gardener Ghost follows the player",
+                    "id": "bbby0M"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gardener Ghost",
+                    "text": "Well, oi s'pose oi've got 10 minutes to spare."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "vzjI6T"
+              }
+            ],
+            "id": "PDhxzS"
+          }
+        ],
+        "id": "xE2DR-"
       }
     ]
   }

@@ -34,8 +34,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "8Qmic-"
+                        "id": "8Qmic-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c3418d6d88ae2cd6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -74,8 +79,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "E9nRHt"
+                        "id": "E9nRHt",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-75f3ecabd41d986a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -159,6 +169,101 @@
           }
         ],
         "id": "sq30Dq"
+      }
+    ]
+  },
+  "branches": {
+    "jump-c3418d6d88ae2cd6": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "npc": "My name is Lars, and I am the founder of the woodcutting guild. I originally grew up in a Shayzien camp, and was raised on the battlefield."
+      },
+      {
+        "npc": "As I grew older, I found peace in Hosidius, and the joys of skilled labour. I turned in my battleaxe for a hatchet, and set up a guild for those also talented in the skill of woodcutting."
+      },
+      {
+        "npc": "Is there anything else I can help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the guild.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "E9nRHt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-75f3ecabd41d986a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all, thanks.",
+            "steps": [
+              {
+                "player": "That's all, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-75f3ecabd41d986a": [
+      {
+        "player": "Tell me about the guild."
+      },
+      {
+        "npc": "I founded the woodcutting guild when I retired from the Shayzien military. I spotted the ancient redwood trees in the hills many years ago from the Shayzien camp, and decided to construct the guild around them."
+      },
+      {
+        "npc": "You can find them to the West, just follow the path."
+      },
+      {
+        "npc": "However, if you're skilled in combat, or simply afraid of heights, the ent cavern may be more suited for you. The ents dwell deep beneath the ancient redwoods, and can be accessed through the cave to the North-West."
+      },
+      {
+        "npc": "Is there anything else I can help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "8Qmic-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c3418d6d88ae2cd6"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all, thanks.",
+            "steps": [
+              {
+                "player": "That's all, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

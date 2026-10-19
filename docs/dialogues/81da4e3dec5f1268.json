@@ -191,8 +191,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Zf4-v8"
+                        "id": "Zf4-v8",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8b79b68a91e0abb5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -249,8 +254,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JzwWi9"
+                "id": "JzwWi9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5f0cbcedef1c34b6"
+                  }
+                ]
               }
             ]
           }
@@ -510,7 +520,55 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Can you put some spikes on my Climbing boots?"
+                    "text": "Can you put some spikes on my Climbing boots?",
+                    "steps": [
+                      {
+                        "player": "Can you put some spikes on my Climbing boots?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Dunstan",
+                        "text": "For you, no problem."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Dunstan",
+                        "text": "Do you realise that you can only use the Climbing boots right now? The Spiked boots can only be used in the Icelands but no one's been able to get there for years!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, but I still want them.",
+                            "steps": [
+                              {
+                                "player": "Yes, but I still want them."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have an iron bar in their inventory:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "KNCrM9"
+                                  }
+                                ],
+                                "id": "BRhCHm"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Oh OK, I'll leave them thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "P5tfAL"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -546,8 +604,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "b4PZnn"
+                            "id": "b4PZnn",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-d2ca828ccbaebaa4"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -611,7 +674,13 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Is it OK if I use your anvil?"
+                    "text": "Is it OK if I use your anvil?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "Dan08L"
+                      }
+                    ]
                   },
                   {
                     "text": "Nothing, thanks."
@@ -653,16 +722,133 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Can you put some spikes on my Climbing boots?"
+                    "text": "Can you put some spikes on my Climbing boots?",
+                    "steps": [
+                      {
+                        "player": "Can you put some spikes on my Climbing boots?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Dunstan",
+                        "text": "For you, no problem."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Dunstan",
+                        "text": "Do you realise that you can only use the Climbing boots right now? The Spiked boots can only be used in the Icelands but no one's been able to get there for years!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, but I still want them.",
+                            "steps": [
+                              {
+                                "player": "Yes, but I still want them."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have an iron bar in their inventory:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "KNCrM9"
+                                  }
+                                ],
+                                "id": "BRhCHm"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Oh OK, I'll leave them thanks.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "P5tfAL"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "How is your son getting on?"
+                    "text": "How is your son getting on?",
+                    "steps": [
+                      {
+                        "player": "How is your son getting on?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "After Death Plateau:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Dunstan",
+                            "text": "He was captured by those blasted trolls! I don't know what to do. Even the imperial guard are too afraid to go rescue him."
+                          },
+                          {
+                            "player": "What happened?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Dunstan",
+                            "text": "Talk to Denulth, he can tell you all about it. Anything else before I get on with my work?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "l-Ga3M"
+                          }
+                        ],
+                        "id": "IE-gq4"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "After Troll Stronghold:",
+                        "steps": [
+                          {
+                            "player": "How is your son getting on?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Dunstan",
+                            "text": "He is getting on fine! He has just been promoted to Sergeant! I'm really proud of him!"
+                          },
+                          {
+                            "player": "I'm happy for you!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Dunstan",
+                            "text": "Anything else before I get on with my work?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "Uem9Xe"
+                          }
+                        ],
+                        "id": "Z28zqO"
+                      }
+                    ]
                   },
                   {
-                    "text": "Is it OK if I use your anvil?"
+                    "text": "Is it OK if I use your anvil?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "Dan08L"
+                      }
+                    ]
                   },
                   {
-                    "text": "Nothing, thanks."
+                    "text": "Nothing, thanks.",
+                    "steps": [
+                      {
+                        "player": "Nothing, thanks."
+                      }
+                    ]
                   }
                 ]
               }
@@ -806,8 +992,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "fKN0Yh"
+                        "id": "fKN0Yh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e77e2ba7344642b7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -816,8 +1007,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "sllPF2"
+                        "id": "sllPF2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-eb3fd535fc83faa3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -826,8 +1022,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "L9mCrf"
+                        "id": "L9mCrf",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8e2d0d2fd6891758"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1088,6 +1289,170 @@
       {
         "type": "unavailable",
         "id": "j6XRmY"
+      }
+    ]
+  },
+  "branches": {
+    "jump-8b79b68a91e0abb5": [
+      {
+        "player": "Errr... I've got to go."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5f0cbcedef1c34b6": [
+      {
+        "player": "So... what do you think about Ug?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aga",
+        "text": "Who?"
+      },
+      {
+        "player": "You know that wimpy, crying... nevermind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d2ca828ccbaebaa4": [
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Well, since you've helped my family out a couple of times, I'd be glad to build a sled for you."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Let me think..."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "..."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Yeah, that should do it. I will need some yew or maple logs, a bar of iron and some rope."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "I should have my designs ready by the time you have brought me all the materials."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e77e2ba7344642b7": [
+      {
+        "player": "Where can I get wax from?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "I don't know. I'm a smith! But maybe you should look for some bees."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "uD3T3O"
+      }
+    ],
+    "jump-eb3fd535fc83faa3": [
+      {
+        "player": "Where can I get swamp tar from?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "The swamp of course! It's south of Lumbridge."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "H3Ecir"
+      }
+    ],
+    "jump-8e2d0d2fd6891758": [
+      {
+        "player": "What else do I need?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "You will also need a cake tin to store the wax in."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "y6p26p"
+      }
+    ],
+    "KNCrM9": [
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Sorry, I'll need an Iron bar to make the spikes."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Anything else before I get on with my work?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous2",
+        "id": "QQ7GCB"
+      }
+    ],
+    "P5tfAL": [
+      {
+        "player": "Oh OK, I'll leave them thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Anything else before I get on with my work?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous2",
+        "id": "6YHhP_"
+      }
+    ],
+    "Dan08L": [
+      {
+        "player": "Is it OK if I use your anvil?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "So you're a smithy are you?"
+      },
+      {
+        "player": "I dabble."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "A fellow smith is welcome to use my anvil!"
+      },
+      {
+        "player": "Thanks!"
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Anything else before I get on with my work?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "xbYmAG"
       }
     ]
   }

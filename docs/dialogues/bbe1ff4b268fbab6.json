@@ -1,4 +1,58 @@
 {
+  "branches": {
+    "jump-f06e4ff954464393": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks, I'm ok.",
+            "steps": [
+              {
+                "player": "No thanks, I'm ok. Thanks for your time."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Yes, I'd like to talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "elAL38"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a209c1e242360a9e": [
+      {
+        "type": "jump",
+        "id": "pSn-7L",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-f06e4ff954464393"
+          }
+        ]
+      }
+    ],
+    "jump-b4b644ba2ecb0dbb": [
+      {
+        "type": "jump",
+        "id": "iOrWDR",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-a209c1e242360a9e"
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello there."
@@ -84,8 +138,13 @@
             },
             {
               "type": "jump",
-              "reference": "above",
-              "id": "pSn-7L"
+              "id": "pSn-7L",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-f06e4ff954464393"
+                }
+              ]
             }
           ],
           "id": "xhlr7J"
@@ -123,8 +182,13 @@
             },
             {
               "type": "jump",
-              "reference": "above",
-              "id": "iOrWDR"
+              "id": "iOrWDR",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-a209c1e242360a9e"
+                }
+              ]
             }
           ],
           "id": "Pj9q1v"
@@ -149,8 +213,13 @@
             },
             {
               "type": "jump",
-              "reference": "above",
-              "id": "N_EHVa"
+              "id": "N_EHVa",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-b4b644ba2ecb0dbb"
+                }
+              ]
             }
           ]
         }

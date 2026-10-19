@@ -731,8 +731,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "4JQGlo"
+                "id": "4JQGlo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc3a3b326de67381"
+                  }
+                ]
               }
             ]
           },
@@ -913,8 +918,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "iVK8PM"
+                "id": "iVK8PM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-42bce5f9a98292ab"
+                  }
+                ]
               }
             ]
           },
@@ -923,8 +933,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "EexwAF"
+                "id": "EexwAF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-87289c8ef7843302"
+                  }
+                ]
               }
             ]
           },
@@ -933,8 +948,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wdOWop"
+                "id": "wdOWop",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-90d88d415c4078ec"
+                  }
+                ]
               }
             ]
           },
@@ -983,8 +1003,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "OLUXCu"
+                "id": "OLUXCu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-71af7e07de673cfd"
+                  }
+                ]
               }
             ]
           },
@@ -993,8 +1018,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UyRmnU"
+                "id": "UyRmnU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5bf8d162c4d7e66a"
+                  }
+                ]
               }
             ]
           },
@@ -1003,8 +1033,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nNQwvO"
+                "id": "nNQwvO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d0ddf814ff903b4"
+                  }
+                ]
               }
             ]
           },
@@ -1013,8 +1048,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YfAf7q"
+                "id": "YfAf7q",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-042e5c9b518c35a9"
+                  }
+                ]
               }
             ]
           }
@@ -1034,7 +1074,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'll have a beer please."
+            "text": "I'll have a beer please.",
+            "steps": [
+              {
+                "player": "I'll have a beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Khazard Barman",
+                "text": "That'll be two coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xd9gqu"
+                  }
+                ],
+                "id": "a4nyKV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "4uEP-Z"
+                  }
+                ],
+                "id": "LZB3K6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for one."
+                  }
+                ],
+                "id": "SVPDpy"
+              }
+            ]
           },
           {
             "text": "I'd like a Khali Brew please."
@@ -1145,10 +1227,21 @@
             ]
           },
           {
-            "text": "Got any news?"
+            "text": "Got any news?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "b4Lhbi"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1166,7 +1259,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'll have a beer please."
+            "text": "I'll have a beer please.",
+            "steps": [
+              {
+                "player": "I'll have a beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Khazard Barman",
+                "text": "That'll be two coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xd9gqu"
+                  }
+                ],
+                "id": "a4nyKV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "4uEP-Z"
+                  }
+                ],
+                "id": "LZB3K6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for one."
+                  }
+                ],
+                "id": "SVPDpy"
+              }
+            ]
           },
           {
             "text": "I'd like a Khali Brew please."
@@ -1211,8 +1346,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "02Z5hY"
+                    "id": "02Z5hY",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-2b17bc08ff53c3d7"
+                      }
+                    ]
                   }
                 ],
                 "id": "pceDDA"
@@ -1220,10 +1360,21 @@
             ]
           },
           {
-            "text": "Got any news?"
+            "text": "Got any news?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "b4Lhbi"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1241,7 +1392,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'll have a beer please."
+            "text": "I'll have a beer please.",
+            "steps": [
+              {
+                "player": "I'll have a beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Khazard Barman",
+                "text": "That'll be two coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xd9gqu"
+                  }
+                ],
+                "id": "a4nyKV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "4uEP-Z"
+                  }
+                ],
+                "id": "LZB3K6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for one."
+                  }
+                ],
+                "id": "SVPDpy"
+              }
+            ]
           },
           {
             "text": "I'd like a Khali Brew please."
@@ -1281,10 +1474,21 @@
             ]
           },
           {
-            "text": "Got any news?"
+            "text": "Got any news?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "b4Lhbi"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1302,7 +1506,49 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'll have a beer please."
+            "text": "I'll have a beer please.",
+            "steps": [
+              {
+                "player": "I'll have a beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Khazard Barman",
+                "text": "That'll be two coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xd9gqu"
+                  }
+                ],
+                "id": "a4nyKV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "4uEP-Z"
+                  }
+                ],
+                "id": "LZB3K6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for one."
+                  }
+                ],
+                "id": "SVPDpy"
+              }
+            ]
           },
           {
             "text": "I'd like a Khali Brew please."
@@ -1334,10 +1580,21 @@
             ]
           },
           {
-            "text": "Got any news?"
+            "text": "Got any news?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "b4Lhbi"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1367,8 +1624,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kyA110"
+                "id": "kyA110",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-71af7e07de673cfd"
+                  }
+                ]
               }
             ]
           },
@@ -1377,8 +1639,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XSz-OW"
+                "id": "XSz-OW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5bf8d162c4d7e66a"
+                  }
+                ]
               }
             ]
           },
@@ -1387,8 +1654,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uwWUP0"
+                "id": "uwWUP0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d0ddf814ff903b4"
+                  }
+                ]
               }
             ]
           },
@@ -1397,8 +1669,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pLJ-QY"
+                "id": "pLJ-QY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-042e5c9b518c35a9"
+                  }
+                ]
               }
             ]
           }
@@ -2221,8 +2498,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "PDi7_i"
+        "id": "PDi7_i",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-db840d0cee80762b"
+          }
+        ]
       }
     ],
     "on-the-trail-talking-to-alomone-after-he-summons-khazard": [
@@ -2284,8 +2566,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "GSG5c1"
+                "id": "GSG5c1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5ce1338c3b2bb3e8"
+                  }
+                ]
               }
             ]
           },
@@ -2294,8 +2581,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pZu7Bx"
+                "id": "pZu7Bx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c2d61b0bdbb745f9"
+                  }
+                ]
               }
             ]
           },
@@ -2304,8 +2596,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tMMIRu"
+                "id": "tMMIRu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-eea0262eaee102dd"
+                  }
+                ]
               }
             ]
           },
@@ -2314,8 +2611,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Hc3vSw"
+                "id": "Hc3vSw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-38533ec63daea931"
+                  }
+                ]
               }
             ]
           }
@@ -3105,8 +3407,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "7W43WD"
+        "id": "7W43WD",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-26c90d302f1484a7"
+          }
+        ]
       }
     ],
     "the-mysterious-benefactor-talking-to-clivet-alomone-after-hazeel-and-khazard-leave": [
@@ -3145,7 +3452,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can I have another copy of that book?"
+            "text": "Can I have another copy of that book?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5GZm46"
+              }
+            ]
           },
           {
             "text": "I'm meant to be meeting some... friends... Have you seen them?",
@@ -3164,13 +3477,52 @@
             ]
           },
           {
-            "text": "How are you two doing?"
+            "text": "How are you two doing?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "6lRHZU"
+              }
+            ]
           },
           {
-            "text": "Can you note this basalt for me?"
+            "text": "Can you note this basalt for me?",
+            "steps": [
+              {
+                "player": "Can you note my basalt for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying basalt:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "lpN70e"
+                  }
+                ],
+                "id": "luj4-0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not carrying basalt:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Q6Kazm"
+                  }
+                ],
+                "id": "sGG-yL"
+              }
+            ]
           },
           {
-            "text": "I'll be off."
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "qli_Ha"
+              }
+            ]
           }
         ]
       }
@@ -3393,7 +3745,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can I have another copy of that book?"
+            "text": "Can I have another copy of that book?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5GZm46"
+              }
+            ]
           },
           {
             "text": "Have you seen anything odd around here recently?",
@@ -3441,13 +3799,52 @@
             ]
           },
           {
-            "text": "How are you two doing?"
+            "text": "How are you two doing?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "6lRHZU"
+              }
+            ]
           },
           {
-            "text": "Can you note this basalt for me?"
+            "text": "Can you note this basalt for me?",
+            "steps": [
+              {
+                "player": "Can you note my basalt for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying basalt:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "lpN70e"
+                  }
+                ],
+                "id": "luj4-0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not carrying basalt:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Q6Kazm"
+                  }
+                ],
+                "id": "sGG-yL"
+              }
+            ]
           },
           {
-            "text": "I'll be off."
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "qli_Ha"
+              }
+            ]
           }
         ]
       }
@@ -3462,7 +3859,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can I have another copy of that book?"
+            "text": "Can I have another copy of that book?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5GZm46"
+              }
+            ]
           },
           {
             "text": "Have you seen anything odd around here recently?",
@@ -3489,13 +3892,52 @@
             ]
           },
           {
-            "text": "How are you two doing?"
+            "text": "How are you two doing?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "6lRHZU"
+              }
+            ]
           },
           {
-            "text": "Can you note this basalt for me?"
+            "text": "Can you note this basalt for me?",
+            "steps": [
+              {
+                "player": "Can you note my basalt for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying basalt:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "lpN70e"
+                  }
+                ],
+                "id": "luj4-0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not carrying basalt:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Q6Kazm"
+                  }
+                ],
+                "id": "sGG-yL"
+              }
+            ]
           },
           {
-            "text": "I'll be off."
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "qli_Ha"
+              }
+            ]
           }
         ]
       }
@@ -3723,8 +4165,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_idOLA"
+                "id": "_idOLA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6540de430e76d24d"
+                  }
+                ]
               }
             ],
             "id": "X4NO3S"
@@ -3734,8 +4181,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "zGU0sZ"
+                "id": "zGU0sZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7fc81cd68e286fe2"
+                  }
+                ]
               }
             ]
           },
@@ -3744,8 +4196,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3lP0Y3"
+                "id": "3lP0Y3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-76739a6b701feb56"
+                  }
+                ]
               }
             ]
           },
@@ -4190,8 +4647,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "W9XRcM"
+                "id": "W9XRcM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-44a48a8be1b7824a"
+                  }
+                ]
               }
             ]
           },
@@ -4200,8 +4662,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HeaDl9"
+                "id": "HeaDl9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-89c74ae4b6a7f11e"
+                  }
+                ]
               }
             ]
           },
@@ -4210,8 +4677,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rlnr7d"
+                "id": "rlnr7d",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1b35c1b0d5b57f24"
+                  }
+                ]
               }
             ]
           },
@@ -4529,8 +5001,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "_7e3Fk"
+        "id": "_7e3Fk",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-f6c1ea066988ade5"
+          }
+        ]
       }
     ],
     "more-mahjarrat-more-problems-talking-to-hazeel-or-general-khazard-after-the-strange-barrier-disappears": [
@@ -4539,8 +5016,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "f4fxd7"
+        "id": "f4fxd7",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-cf3c7f2b5f82f2f6"
+          }
+        ]
       }
     ],
     "more-mahjarrat-more-problems-talking-to-hazeel-or-general-khazard-after-declining-the-teleport": [
@@ -4747,9 +5229,1327 @@
     ]
   },
   "branches": {
+    "jump-dc3a3b326de67381": [
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "I didn't see anyone leave or enter from the front of the building last night, so that makes sense. The window must have been their way in and out."
+      },
+      {
+        "player": "So it was likely someone who didn't have any other way to access the mansion. We can probably rule out staff and family members."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Agreed. Did you find anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "QSpJIX"
+      }
+    ],
+    "jump-42bce5f9a98292ab": [
+      {
+        "player": "The window was broken from the outside."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "I didn't see anyone leave or enter from the front of the building last night, so that makes sense. The window must have been their way in and out."
+      },
+      {
+        "player": "So it was likely someone who didn't have any other way to access the mansion. We can probably rule out staff and family members."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Agreed. Did you find anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "QSpJIX"
+      }
+    ],
+    "jump-87289c8ef7843302": [
+      {
+        "player": "Ceril was stabbed from behind."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "So he wasn't facing his killer. But if that were the case, why did Lady Carnillean say she heard him shouting? Surely he'd have been facing whoever he was shouting at."
+      },
+      {
+        "player": "That could mean there were two people in the room with him."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Let's hope not. One killer on the loose is bad enough."
+      },
+      {
+        "player": "There's something else as well. It looks like the blade used to kill him was unusually thin."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Really? How odd. I'll make a note to look into that once we're done here."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Anyway, did you find anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "GqUqcD"
+      }
+    ],
+    "jump-90d88d415c4078ec": [
+      {
+        "player": "A hidden room above us was broken into."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "A hidden room? What hidden room?"
+      },
+      {
+        "player": "It looks like it can only be accessed from in here. It doesn't seem like anyone has been in there for some time."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "What's in this room?"
+      },
+      {
+        "player": "There's a chest up there that's been broken into."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Do you think they took anything from it?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player opposed the cult:",
+        "steps": [
+          {
+            "player": "I'm not sure."
+          }
+        ],
+        "id": "EVpPXA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player helped the cult:",
+        "steps": [
+          {
+            "player": "I don't know. I don't think so."
+          }
+        ],
+        "id": "nRt3Fb"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "This raises more questions than answers. Was this actually a murder, or just a robbery gone wrong? And how was there a hidden room that we knew nothing about?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Did you find anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "l7nYBf"
+      }
+    ],
+    "jump-71af7e07de673cfd": [
+      {
+        "player": "Should we not look into the Hazeel Cult as well?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "They're definitely top suspects, but we don't have any actual evidence linking them to the crime. Until we do, this Evelot lead seems like a safer bet."
+      },
+      {
+        "player": "I see. Fair enough."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "NZnvot"
+      }
+    ],
+    "jump-5bf8d162c4d7e66a": [
+      {
+        "player": "Why can't you investigate the Khazard Army yourself?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "The matter is... complicated. On paper, General Khazard is an upstanding citizen, and his private army operates with approval from the crown. King Lathas even hired them for some peacekeeping once."
+      },
+      {
+        "player": "But?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "It's fair to say that Khazard is a bit... controversial. His war with the gnomes is creating more than a few problems for Kandarin, not to mention the rumours about the people fighting in his arena..."
+      },
+      {
+        "type": "condition",
+        "text": "If Song of the Elves has not been completed:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Guard",
+            "text": "For now though, King Lathas considers him a valuable ally. As such, it is preferred we maintain a good relationship with him and his army."
+          }
+        ],
+        "id": "m6_jmX"
+      },
+      {
+        "type": "condition",
+        "text": "If Song of the Elves has been completed:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Guard",
+            "text": "Unlike his predecessor, King Thoros is keen to slowly distance himself from Khazard. However, in the meantime, we have to maintain a good relationship with him and his army."
+          }
+        ],
+        "id": "olmtLe"
+      },
+      {
+        "player": "And that's where I come in. I understand."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "cAwXZy"
+      }
+    ],
+    "jump-5d0ddf814ff903b4": [
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "No need to worry. Some of our best are already out searching for him. I'm sure he won't get far."
+      },
+      {
+        "player": "Maybe I could help them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Your concern is appreciated, but they'll be fine. You're better off focusing on Evelot."
+      },
+      {
+        "player": "If you're sure."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "z45Jjr"
+      }
+    ],
+    "jump-042e5c9b518c35a9": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2b17bc08ff53c3d7": [
+      {
+        "player": "Do you know anyone called Evelot?"
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Barman",
+        "text": "Why do you ask?"
+      },
+      {
+        "player": "I'm looking for them."
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Barman",
+        "text": "It's not my place to go giving out information to people I don't know."
+      },
+      {
+        "player": "Are you sure? I could make it worth your while."
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Barman",
+        "text": "Are you suggesting that I'm the kind of person that would besmirch my honour for a measly bribe?"
+      },
+      {
+        "player": "Er..."
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Barman",
+        "text": "Because you'd be absolutely right! 100 coins will pay for the information you desire."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 100 coins:",
+        "steps": [
+          {
+            "player": "Alright, here's the money."
+          },
+          {
+            "type": "unavailable",
+            "id": "8Nhp3b"
+          },
+          {
+            "type": "line",
+            "speaker": "Khazard Barman",
+            "text": "Thank you very much."
+          },
+          {
+            "player": "So what can you tell me about Evelot?"
+          },
+          {
+            "type": "line",
+            "speaker": "Khazard Barman",
+            "text": "So oddly enough, she was in here not that long ago, but just before you arrived, one of the lads came in and spoke to her."
+          },
+          {
+            "player": "To say what?"
+          },
+          {
+            "type": "line",
+            "speaker": "Khazard Barman",
+            "text": "No idea, but she left in quite the hurry afterwards. Perhaps you'll be able to pick up her trail if you look around outside."
+          },
+          {
+            "player": "I might just do that. Thanks for the information."
+          },
+          {
+            "type": "line",
+            "speaker": "Khazard Barman",
+            "text": "Fancy a drink before you go?"
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "PLXMva"
+          }
+        ],
+        "id": "8h0Upv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 100 coins:",
+        "steps": [
+          {
+            "player": "Alright, I'll come back when I have the money."
+          },
+          {
+            "type": "line",
+            "speaker": "Khazard Barman",
+            "text": "Fancy a drink before you go?"
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "e_a7k8"
+          }
+        ],
+        "id": "55mz7l"
+      }
+    ],
+    "jump-db840d0cee80762b": [
+      {
+        "player": "I assure you, this is important."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Then speak."
+      },
+      {
+        "player": "A member of the Khazard Army called Evelot was hired to steal your restoration scroll from the Carnillean Mansion. She was meant to deliver it here, but of course, it had already been taken."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "And?"
+      },
+      {
+        "player": "During her escape, Ceril Carnillean was killed, but not by her. Someone else was there, but she doesn't know who."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Curious. Alomone, I trust this was not our work?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Not to my knowledge, my lord. Your loyal servant, Jones, was still stationed at the mansion, but he would not have acted without instruction."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Where is Jones now?"
+      },
+      {
+        "player": "He fled after the murder took place. The guards are still searching for him."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "The actions of a coward. He will come to regret that."
+      },
+      {
+        "player": "There's something else as well. The evidence I've found so far suggests that the killer was trying to frame Evelot."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "And you believe they were attempting to frame my followers and I as well?"
+      },
+      {
+        "player": "That's what I'm wondering."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Forgive me, my lord, but if they aimed to frame us, why would they also try to have your restoration scroll delivered here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "A question with many possible answers, my faithful servant."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Adventurer, you say this Evelot is part of the Khazard Army?"
+      },
+      {
+        "player": "That's right."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Then let us see what my Mahjarrat kin has to say about this. Alomone, summon Khazard."
+      },
+      {
+        "player": "Er... is now a bad time to mention that Khazard and I have a... complicated history?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Well then, I suggest you prepare yourself."
+      },
+      {
+        "player": "Oh boy..."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Vanar! Septinar! Filinar!"
+      }
+    ],
+    "jump-5ce1338c3b2bb3e8": [
+      {
+        "player": "Why should I help you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "You came to me, not the other way around. From that, I would assume that you already have some sort of motive in finding this killer. I care not what that motive is."
+      },
+      {
+        "player": "Aren't you worried about my loyalties?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player opposed the cult:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Loyalty means very little to my kind. You opposed me before, but now you have a chance to rectify that mistake. Do so, and you will be rewarded. Oppose me again, and you will die."
+          }
+        ],
+        "id": "LXmF8W"
+      },
+      {
+        "type": "condition",
+        "text": "If the player helped the cult:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Loyalty means very little to my kind. Still, without you, I might never have been awoken from my slumber."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Continue to support me and you will continue to be rewarded. The moment you oppose me, however, is the moment you die."
+          }
+        ],
+        "id": "-pTsn9"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "sjdJ-n"
+      }
+    ],
+    "jump-c2d61b0bdbb745f9": [
+      {
+        "player": "Can you think of any possible suspects?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Thousands. To have lived as long as I is to have made many friends, and many enemies. Any one of them may be responsible. Without further information, it is pointless to speculate."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "YlrU1Y"
+      }
+    ],
+    "jump-eea0262eaee102dd": [
+      {
+        "player": "What is this ritual you mentioned?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "It is nothing you need to concern yourself with."
+      },
+      {
+        "player": "The more information I have, the more help I can be."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "You can be of ample help by performing the task you've been assigned. This idle chatter achieves nothing."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "mEzMIJ"
+      }
+    ],
+    "jump-38533ec63daea931": [
+      {
+        "player": "I'll be on my way."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-26c90d302f1484a7": [
+      {
+        "player": "What? But we haven't found the killer."
+      },
+      {
+        "type": "condition",
+        "text": "If the player opposed the cult:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Khazard and I will deal with this matter now. As a reward for your work, consider your past transgressions against us forgiven. Now go."
+          }
+        ],
+        "id": "kNaKe9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player helped the cult:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Khazard and I will deal with this matter now. Once again, you have proven yourself a worthy ally to my followers and I. Now go."
+          }
+        ],
+        "id": "HdrAEo"
+      },
+      {
+        "player": "But..."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "A group of ice trolls have made their home near the fortress. I will join you there."
+      },
+      {
+        "player": "Ice trolls? Do you mean the trolls at Weiss?"
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Why are you still here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Hold on. Adventurer, you know of these trolls and their lands?"
+      },
+      {
+        "player": "Oh yes, I'm quite good friends with them. You see, there's this troll called My Arm..."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Nobody cares! Be gone from our sight."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "If the human knows these ice trolls, [he/she] may still be of use to us."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Why? We can make short work of any trolls that disturb us. We have no need for dead weight."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Until we know more about who we are dealing with, we should avoid attracting unneeded attention."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Enough of this nonsense! If you want subtlety, we can use the Shadow Realm."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "There are others who dwell in the Shadow Realm. I would prefer they be kept unaware of our presence in the north."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Fine, but on your head be it if this goes wrong."
+      },
+      {
+        "type": "condition",
+        "text": "If the player opposed the cult:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Adventurer, it seems we have further need of you after all. Meet us outside this troll settlement. Don't make us wait."
+          }
+        ],
+        "id": "OC1Htx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player helped the cult:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Alomone, in our absence, I trust you can take care of that matter we spoke of."
+          },
+          {
+            "type": "line",
+            "speaker": "Alomone",
+            "text": "It will be done, my lord."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Good. Now, adventurer, it seems we have further need of you after all. Meet us outside this troll settlement. Don't make us wait."
+          }
+        ],
+        "id": "lVrVYO"
+      },
+      {
+        "type": "action",
+        "text": "Hazeel and Khazard teleport away.",
+        "id": "tdT_B_"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6540de430e76d24d": [
+      {
+        "player": "I'm done asking questions. What now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "Now you tell us what you have discovered."
+      },
+      {
+        "player": "There's been a cave-in down in the mine. One of the trolls apparently saw a strange shadow near it."
+      },
+      {
+        "type": "line",
+        "speaker": "Dead Wolf (General Khazard)",
+        "text": "A shadow? Could just be troll superstition."
+      },
+      {
+        "player": "The cook at the Carnillean Mansion also mentioned seeing a shadow. That doesn't feel like a coincidence."
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "It sounds like we should investigate for ourselves. Adventurer, meet us down in this mine."
+      },
+      {
+        "type": "message",
+        "text": "Hazeel and Khazard depart.",
+        "id": "t1w8IH"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7fc81cd68e286fe2": [
+      {
+        "player": "Why would the killer come here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "Before the God Wars, a settlement of the old empire was found here. The fortress to the east is all that remains on the surface, but there is much still hidden below."
+      },
+      {
+        "player": "Like what?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "A great prison, sealed long ago. Half of the crest used to do so came into my possession, but it was seemingly taken by the Carnilleans after my defeat."
+      },
+      {
+        "player": "And the killer stole it from the Carnilleans? You think they mean to open the prison?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "That is our assumption."
+      },
+      {
+        "player": "Where's the other half of the crest?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "It was held by one of our kin, but we haven't felt his presence for some time. It's possible the killer already has it."
+      },
+      {
+        "player": "But why would someone want to open this prison? What's inside?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dead Wolf (General Khazard)",
+        "text": "You've been told enough, human. Finish your questions and let us get back to work."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "f-2ftL"
+      }
+    ],
+    "jump-76739a6b701feb56": [
+      {
+        "player": "What is this ritual you keep talking about?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "What do you know of our kind?"
+      },
+      {
+        "player": "The Mahjarrat? Not a lot to be honest."
+      },
+      {
+        "type": "line",
+        "speaker": "Dead Wolf (General Khazard)",
+        "text": "Then let's keep it that way. This question has no relevance to our purpose here, Hazeel. It doesn't warrant an answer."
+      },
+      {
+        "player": "If it's not relevant, why do you two keep talking about it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "It may be relevant, it may not be. It depends on who this killer is."
+      },
+      {
+        "player": "Well assuming it is relevant, what can you tell me about it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "The ritual is used by our kind to ensure our survival, and the next one is fast approaching. If the killer is one of our kin, their actions may be a means of preparing for it."
+      },
+      {
+        "player": "Preparing how?"
+      },
+      {
+        "type": "line",
+        "speaker": "Big Fish (Hazeel)",
+        "text": "For the rest of us to live, one of us must die. Many will go to great lengths to ensure they are not the one who is sacrificed."
+      },
+      {
+        "type": "line",
+        "speaker": "Dead Wolf (General Khazard)",
+        "text": "That's enough! You've already shared too much."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "odwp8o"
+      }
+    ],
+    "jump-44a48a8be1b7824a": [
+      {
+        "player": "Why would this other Mahjarrat hide himself here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Our rejuvenation ritual takes place right above us. There have been times in the past when the weaker of our number have tried to hide themselves nearby."
+      },
+      {
+        "player": "Why?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "To claim power from the ritual without the risk of being chosen as the sacrifice."
+      },
+      {
+        "player": "So I'm guessing this other Mahjarrat is quite a weak one then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "You are correct. When the Empty Lord fell, he was one of the few foolish enough to remain loyal. His decision not to join Lord Zamorak left him with few friends. He has slowly grown weak ever since."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "ILguHy"
+      }
+    ],
+    "jump-89c74ae4b6a7f11e": [
+      {
+        "player": "What's inside the prison that the assassin would want?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "The prison was sealed long ago by two of my traitorous kin. They did so to prevent a great horror from escaping, but it is believed by some that a powerful artefact was also sealed inside."
+      },
+      {
+        "player": "And the assassin wants this artefact?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Most likely. However, his attempts to claim it will risk unleashing what lies within."
+      },
+      {
+        "player": "Which you consider to be a problem?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "In an ideal world, I would see this artefact claimed in the name of Zamorak. But to risk unleashing an abomination of the Fallen Empire when the ritual is so close would not be wise."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "xZFDj2"
+      }
+    ],
+    "jump-1b35c1b0d5b57f24": [
+      {
+        "player": "What's the history between you and Khazard?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "That is none of your business. I have been generous enough to share a great deal of information with you so far, but I will not allow you to pry into personal matters."
+      },
+      {
+        "player": "Fair enough. Could you at least tell him to leave me alone? I feel like every time I turn my back, he's going to put his sword through it."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "And have I not already been stopping him from doing so? Besides, his anger is not without cause. You wronged him, did you not?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player opposed the cult:",
+        "steps": [
+          {
+            "player": "In my defence, he was doing some pretty nasty things. Not to mention, I also wronged you and you're not trying to have me killed constantly."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Yes, but you would be wise not to mistake my mercy for weakness. I am willing to forgive you for your past transgressions as I believe you can be of use."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "However, if I come to regret my choice, your fate will make the fires of Infernus seem welcoming in comparison."
+          }
+        ],
+        "id": "NEc1MD"
+      },
+      {
+        "type": "condition",
+        "text": "If the player helped the cult:",
+        "steps": [
+          {
+            "player": "In my defence, he was doing some pretty nasty things."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "If you do not have the stomach for certain... unpleasantries, you should not have allied yourself with me, either."
+          },
+          {
+            "player": "You seem more reasonable than Khazard, though."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Perhaps, but I trust you do not mistake that for weakness. If you wrong me, your fate will make the fires of Infernus seem welcoming in comparison."
+          }
+        ],
+        "id": "QbQzEx"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "2doPJS"
+      }
+    ],
+    "jump-f6c1ea066988ade5": [
+      {
+        "player": "You!"
+      },
+      {
+        "type": "action",
+        "text": "The assassin casts a spell and teleports him and Jhallan away.",
+        "id": "1jsvX1"
+      },
+      {
+        "player": "Oh, this is not good..."
+      },
+      {
+        "type": "action",
+        "text": "The player runs to Khazard back at the strange barrier.",
+        "id": "0QH9r5"
+      },
+      {
+        "player": "Khazard... we have a big problem!"
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "What have you done now?"
+      },
+      {
+        "player": "I found Jhallan, but the assassin captured him!"
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Jhallan was here? Great. Hazeel!"
+      },
+      {
+        "type": "action",
+        "text": "Hazeel appears.",
+        "id": "vvqW3S"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "What is it?"
+      },
+      {
+        "player": "The assassin captured Jhallan!"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Then he now has everything he needs to enter the prison."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "What's our next..."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "Hang on..."
+      },
+      {
+        "type": "action",
+        "text": "The strange barrier disappears.",
+        "id": "BsyVHb"
+      },
+      {
+        "player": "Soooo..."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "What a mess."
+      },
+      {
+        "player": "I don't understand. I didn't even see anything."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "It seems your friend has quite the range of abilities. He used the Shadow Realm."
+      },
+      {
+        "player": "So he got inside? Do we follow him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "No good will come out of going in there. We have failed."
+      },
+      {
+        "player": "So we're not going to do anything?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Guards will need positioning here to warn us if this assassin remerges. Until then, we can only hope that he meets a swift end in the prison."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "I can have a detachment of soldiers despatched here at once. We'll need to keep things light to ensure the trolls don't notice our work. Not to mention our kin..."
+      },
+      {
+        "player": "What about Jhallan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Still a prisoner of this assassin, no doubt. To what end, who can say."
+      },
+      {
+        "player": "Is there really nothing else we can do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "No. Word will be sent to you if there are any developments, but for now, you should leave. I suggest you return to the authorities in Ardougne and inform them that their killer will not be found."
+      },
+      {
+        "player": "But there's still so many unanswered questions!"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "And perhaps one day they will be answered, but to dwell on them now achieves nothing."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "We should get to work."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Agreed. Adventurer, we are done here. If you wish, I can provide you with a teleport to Ardougne."
+      },
+      {
+        "type": "choice",
+        "prompt": "Teleport to East Ardougne? You can only use this teleport once.",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Alright."
+              },
+              {
+                "type": "action",
+                "text": "Hazeel teleports the player.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "kQnPVV"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'll make my own way."
+              },
+              {
+                "type": "line",
+                "speaker": "Hazeel",
+                "text": "Very well."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-cf3c7f2b5f82f2f6": [
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "What a mess."
+      },
+      {
+        "player": "I don't understand. I didn't even see anything."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "It seems your friend has quite the range of abilities. He used the Shadow Realm."
+      },
+      {
+        "player": "So he got inside? Do we follow him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "No good will come out of going in there. We have failed."
+      },
+      {
+        "player": "So we're not going to do anything?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Guards will need positioning here to warn us if this assassin remerges. Until then, we can only hope that he meets a swift end in the prison."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "I can have a detachment of soldiers despatched here at once. We'll need to keep things light to ensure the trolls don't notice our work. Not to mention our kin..."
+      },
+      {
+        "player": "What about Jhallan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Still a prisoner of this assassin, no doubt. To what end, who can say."
+      },
+      {
+        "player": "Is there really nothing else we can do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "No. Word will be sent to you if there are any developments, but for now, you should leave. I suggest you return to the authorities in Ardougne and inform them that their killer will not be found."
+      },
+      {
+        "player": "But there's still so many unanswered questions!"
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "And perhaps one day they will be answered, but to dwell on them now achieves nothing."
+      },
+      {
+        "type": "line",
+        "speaker": "General Khazard",
+        "text": "We should get to work."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel",
+        "text": "Agreed. Adventurer, we are done here. If you wish, I can provide you with a teleport to Ardougne."
+      },
+      {
+        "type": "choice",
+        "prompt": "Teleport to East Ardougne? You can only use this teleport once.",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Alright."
+              },
+              {
+                "type": "action",
+                "text": "Hazeel teleports the player.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "kQnPVV"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'll make my own way."
+              },
+              {
+                "type": "line",
+                "speaker": "Hazeel",
+                "text": "Very well."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "olnIpJ": [
       {
         "player": "I think I've seen everything I need to. I should check in with the guard."
+      }
+    ],
+    "Xd9gqu": [
+      {
+        "player": "Oh, I don't have enough money with me."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "4uEP-Z": [
+      {
+        "type": "message",
+        "text": "The barman gives you a beer in exchange for two coins.",
+        "id": "rrtfiM"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "b4Lhbi": [
+      {
+        "player": "Got any news?"
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Barman",
+        "text": "Not really, but if you want to see some action, keep an eye on the arena. I've seen some grand battles in my time. Ogres, goblins and even dragons have fought there."
+      },
+      {
+        "type": "line",
+        "speaker": "Khazard Barman",
+        "text": "Now, can I get you something?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "HvLGZR"
+      }
+    ],
+    "5GZm46": [
+      {
+        "player": "Can I have another copy of that book?"
+      },
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "Yes, I have another copy for you."
+      },
+      {
+        "type": "message",
+        "text": "Snowflake gives you another tatty book of Odd Mushroom's writings.",
+        "id": "8DGaPQ"
+      },
+      {
+        "player": "Thanks."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "wJds1t"
+      }
+    ],
+    "6lRHZU": [
+      {
+        "player": "How are you two doing?"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Snowflake an' My Arm very happy. Maybe new herbie patch not da only place where new life gonna be growin' soon!"
+      },
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "Let's not get ahead of ourselves, dear! But the town is thriving; my people are much happier now they are no longer terrified of Father."
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Dem trolls likin' da goutweed too!"
+      },
+      {
+        "player": "That's nice."
+      }
+    ],
+    "lpN70e": [
+      {
+        "type": "message",
+        "text": "Snowflake converts your [item/items] to [a banknote/banknotes].",
+        "id": "WlHv57"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "Q6Kazm": [
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "You aren't carrying any basalt."
+      }
+    ],
+    "qli_Ha": [
+      {
+        "player": "I'll be off."
+      },
+      {
+        "type": "line",
+        "speaker": "Snowflake",
+        "text": "You will always be welcome back."
       }
     ]
   }

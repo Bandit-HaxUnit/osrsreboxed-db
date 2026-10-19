@@ -74,7 +74,28 @@
                               {
                                 "type": "choice",
                                 "prompt": "Start The Fremennik Trials quest?",
-                                "options": []
+                                "options": [
+                                  {
+                                    "text": "Yes.",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "0X_ya0"
+                                      }
+                                    ],
+                                    "hook": "quest:the-fremennik-trials:start",
+                                    "quest": "The Fremennik Trials"
+                                  },
+                                  {
+                                    "text": "No.",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "Jz8pz9"
+                                      }
+                                    ]
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -150,7 +171,28 @@
                       {
                         "type": "choice",
                         "prompt": "Start The Fremennik Trials quest?",
-                        "options": []
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "0X_ya0"
+                              }
+                            ],
+                            "hook": "quest:the-fremennik-trials:start",
+                            "quest": "The Fremennik Trials"
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Jz8pz9"
+                              }
+                            ]
+                          }
+                        ]
                       }
                     ]
                   },
@@ -236,8 +278,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cdwPCW"
+                "id": "cdwPCW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-aaff7c5d48daa1a0"
+                  }
+                ]
               }
             ]
           },
@@ -264,8 +311,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "FEjey2"
+                "id": "FEjey2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-27b48c6fe1b6d375"
+                  }
+                ]
               }
             ]
           },
@@ -274,8 +326,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "gRHryO"
+                "id": "gRHryO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d086334799fa8756"
+                  }
+                ]
               }
             ]
           },
@@ -928,6 +985,242 @@
           }
         ],
         "id": "B9vSme"
+      }
+    ]
+  },
+  "branches": {
+    "jump-aaff7c5d48daa1a0": [
+      {
+        "player": "Do you have any quests?"
+      },
+      {
+        "npc": "Quests, you say outerlander? Well, I would not call it a quest as such, but if you are brave of heart and strong of body, perhaps..."
+      },
+      {
+        "npc": "No, you would not be interested. Forget I said anything, outerlander."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I am interested.",
+            "steps": [
+              {
+                "player": "Actually, I would be very interested to hear what you have to offer."
+              },
+              {
+                "npc": "You would? These are unusual sentiments to hear from an outerlander! My suggestion was going to be that if you crave adventure and battle,"
+              },
+              {
+                "npc": "and your heart sings for glory, then perhaps you would be interested in joining our clan, and becoming a Fremennik yourself?"
+              },
+              {
+                "player": "What would that involve exactly?"
+              },
+              {
+                "npc": "Well, there are two ways to become a member of our clan and call yourself a Fremennik: be born a Fremennik, or be voted in by our council of elders."
+              },
+              {
+                "player": "Well, I think I've missed the first way, but how can I get the council of elders to vote to let me join your clan?"
+              },
+              {
+                "npc": "Well, that I cannot answer myself. You will need to speak to each of them and see what they require of you as proof of your dedication."
+              },
+              {
+                "npc": "There are twelve council members around this village; you will need to gain a majority vote of at least seven councillors in your favour."
+              },
+              {
+                "npc": "So what say you? Give me the word, and I will tell all of my tribe of your intentions, be they yea or nay."
+              },
+              {
+                "type": "choice",
+                "prompt": "Start The Fremennik Trials quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "I think I would enjoy the challenge of becoming an honorary Fremennik. Where and how do I start?"
+                      },
+                      {
+                        "npc": "As I say outerlander, you must find and speak to the twelve members of the council of elders, and see what tasks they might set you."
+                      },
+                      {
+                        "npc": "If you can gain the support of seven of the twelve, then you will be accepted as one of us without question."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "hook": "quest:the-fremennik-trials:start",
+                    "quest": "The Fremennik Trials"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No way do I want to become like YOU! Forget you, and forget your whole stupid town! You're a bunch of stupid primitives, from what I've seen!"
+                      },
+                      {
+                        "npc": "I am sorry to say that I expected such a response from an outerlander. I thought perhaps you might have been different to all the others..."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, I'm not interested.",
+            "steps": [
+              {
+                "player": "You're right. I really couldn't care less."
+              },
+              {
+                "npc": "It is as I thought outerlander. Your kind care nothing for the Fremennik, and we feel the same about you. This is the way of the world."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-27b48c6fe1b6d375": [
+      {
+        "type": "line",
+        "speaker": "Brundt",
+        "text": "As a matter of fact [Fremennik name], I do have a quest for you. Are you interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "I'm ready for adventure"
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt",
+                "text": "Excellent, now-"
+              },
+              {
+                "player": "So what will it be this time? Joining warring islands?"
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt",
+                "text": "I'm a fan of you enthusiasm, [Fremennik name], but-"
+              },
+              {
+                "player": "Would you have me slay a mighty daggermouth? Or do you need my expertise in conquering untamed lands?"
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt",
+                "text": "Nothing quite that fancy I'm afraid, [Fremennik name]. I just need you to investigate a minor disturbance."
+              },
+              {
+                "player": "Oh."
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt",
+                "text": "Freygerd and Reeso run the sandpit a little north of here. They mentioned they heard some rustling by their hut lat night and wanted an official to investigate. You've proven yourself more than worthy of our people's trust."
+              },
+              {
+                "player": "Well that doesn't sound so bad. I'll get right on it."
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt",
+                "text": "Thank you, [Fremennik name]."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Not right now."
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt",
+                "text": "Very well. Return when you wish to help."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-d086334799fa8756": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed Mountain Daughter:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "NHwg6R"
+          }
+        ],
+        "id": "PSMR0m"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Mountain Daughter:",
+        "steps": [
+          {
+            "player": "So how did the meeting go?"
+          },
+          {
+            "npc": "It went surprisingly well! We are at least at the point where we will freely acknowledge each other's existence now."
+          },
+          {
+            "npc": "You are definitely a great asset to the Fremennik, [Fremennik name]!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EdzhnH"
+      }
+    ],
+    "0X_ya0": [
+      {
+        "player": "I think I would enjoy the challenge of becoming an honorary Fremennik. Where and how do I start?"
+      },
+      {
+        "npc": "As I say outerlander, you must find and speak to the twelve members of the council of elders, and see what tasks they might set you."
+      },
+      {
+        "npc": "If you can gain the support of seven of the twelve, then you will be accepted as one of us without question."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "Jz8pz9": [
+      {
+        "player": "No way do I want to become like YOU! Forget you, and forget your whole stupid town! You're a bunch of stupid primitives, from what I've seen!"
+      },
+      {
+        "npc": "I am sorry to say that I expected such a response from an outerlander. I thought perhaps you might have been different to all the others..."
+      },
+      {
+        "type": "end"
       }
     ]
   }

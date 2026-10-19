@@ -1,4 +1,17 @@
 {
+  "branches": {
+    "jump-c0a4ce59a1de4d3c": [
+      {
+        "player": "I'm afraid not as I've something to attend to."
+      },
+      {
+        "npc": "A wise man once told me to never fear a drink... But perhaps I'm a little bias."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What can I do for you, traveller?"
@@ -98,8 +111,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "lM2npk"
+                      "id": "lM2npk",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-c0a4ce59a1de4d3c"
+                        }
+                      ]
                     }
                   ]
                 }

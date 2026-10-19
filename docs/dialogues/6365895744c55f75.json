@@ -65,8 +65,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "n66u_O"
+                "id": "n66u_O",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1d6413682bba1e04"
+                  }
+                ]
               }
             ]
           },
@@ -98,8 +103,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "iUIHBF"
+                        "id": "iUIHBF",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1d6413682bba1e04"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -108,8 +118,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ymMy_y"
+                        "id": "ymMy_y",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5fe247c203bd9fab"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -122,8 +137,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WMbWe3"
+                "id": "WMbWe3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5fe247c203bd9fab"
+                  }
+                ]
               }
             ]
           }
@@ -146,6 +166,30 @@
       {
         "type": "unavailable",
         "id": "F6ny_J"
+      }
+    ]
+  },
+  "branches": {
+    "jump-1d6413682bba1e04": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Events Reward Shop",
+        "id": "KbFHH0"
+      }
+    ],
+    "jump-5fe247c203bd9fab": [
+      {
+        "player": "I'll pass."
+      },
+      {
+        "npc": "Fair enough."
+      },
+      {
+        "type": "end"
       }
     ]
   }

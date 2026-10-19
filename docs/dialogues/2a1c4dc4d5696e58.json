@@ -168,8 +168,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "z6aLTD"
+                "id": "z6aLTD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1c77b7a65f73fcb9"
+                  }
+                ]
               }
             ]
           },
@@ -178,8 +183,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "AIQJn-"
+                "id": "AIQJn-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dd6c1a006a1e99fb"
+                  }
+                ]
               }
             ]
           }
@@ -248,6 +258,36 @@
           }
         ],
         "id": "QWfbuR"
+      }
+    ]
+  },
+  "branches": {
+    "jump-1c77b7a65f73fcb9": [
+      {
+        "player": "Remind me how this ritual works."
+      },
+      {
+        "npc": "Once I have brought you to the shrine, I will leave you there as an offering to Zulrah. You cannot use the boat to return."
+      },
+      {
+        "npc": "You can use your magical powers to flee from Zulrah's grasp, though that would defeat the point of the sacrifice, and you'll have to try again."
+      },
+      {
+        "npc": "When Zulrah inevitably kills you, I may be able to retrieve your dropped possessions. If so, I will hold them here."
+      },
+      {
+        "npc": "Now board the boat and prepare to be sacrificed."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-dd6c1a006a1e99fb": [
+      {
+        "player": "I'm off."
+      },
+      {
+        "type": "end"
       }
     ]
   }

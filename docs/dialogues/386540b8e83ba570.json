@@ -160,8 +160,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "f3OOE7"
+                "id": "f3OOE7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5e09582823ff9a78"
+                  }
+                ]
               }
             ]
           },
@@ -170,8 +175,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "svVl3t"
+                "id": "svVl3t",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-811f9c7c2197918f"
+                  }
+                ]
               }
             ]
           }
@@ -539,6 +549,40 @@
       },
       {
         "npc": "Hmph! Suit yourself, guvna."
+      }
+    ]
+  },
+  "branches": {
+    "jump-5e09582823ff9a78": [
+      {
+        "player": "Sounds good to me. Why don't you join my crew?"
+      },
+      {
+        "npc": "Aye aye, guvna. Bound to make some sovs wiv you, ain't I?"
+      },
+      {
+        "type": "message",
+        "text": "You recruit Jobless Jim as a crew member. He heads off in search of your boat.",
+        "id": "d9ffgr"
+      },
+      {
+        "type": "message",
+        "text": "You have recruited Jobless Jim as a crew member.",
+        "id": "_XtxWx"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-811f9c7c2197918f": [
+      {
+        "player": "Thanks for the offer, but I'm good at the moment."
+      },
+      {
+        "npc": "Hmph! Suit yourself, guvna."
+      },
+      {
+        "type": "end"
       }
     ]
   }

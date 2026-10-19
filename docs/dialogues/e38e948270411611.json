@@ -42,8 +42,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "soXq4c"
+                        "id": "soXq4c",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f8e838d5325a0440"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -52,8 +57,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "oRLUb2"
+                        "id": "oRLUb2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-47d85ef5fba94620"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -62,8 +72,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "KjS1-S"
+                        "id": "KjS1-S",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb62e96df5a5522c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -180,6 +195,48 @@
     "if-the-storerooms-are-full": [
       {
         "npc": "The storerooms are full, your Highness. You should talk to Advisor Ghrim to collect what we've gathered for you."
+      }
+    ]
+  },
+  "branches": {
+    "jump-f8e838d5325a0440": [
+      {
+        "player": "I'd like a rake, please."
+      },
+      {
+        "type": "action",
+        "text": "Player pays 15 GP and receives a Rake.",
+        "id": "PQ6-FG"
+      },
+      {
+        "npc": "Thank you! Here you go."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-47d85ef5fba94620": [
+      {
+        "player": "I'd like an iron sickle, please."
+      },
+      {
+        "type": "action",
+        "text": "Player pays 15 GP and receives an Iron Sickle",
+        "id": "r7VTts"
+      },
+      {
+        "npc": "Thank you! Here you go."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-bb62e96df5a5522c": [
+      {
+        "player": "No, thank you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -378,8 +378,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "iXPT2X"
+                    "id": "iXPT2X",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7dee1b974622948f"
+                      }
+                    ]
                   }
                 ]
               },
@@ -388,8 +393,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "kttkRj"
+                    "id": "kttkRj",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-bad1d0c9591dd781"
+                      }
+                    ]
                   }
                 ]
               },
@@ -398,8 +408,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "Bk3p8E"
+                    "id": "Bk3p8E",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-c571af4624fdcdbe"
+                      }
+                    ]
                   }
                 ]
               },
@@ -408,8 +423,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "IWS462"
+                    "id": "IWS462",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-2f27fc840fb07d6a"
+                      }
+                    ]
                   }
                 ]
               }
@@ -727,8 +747,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "limGG5"
+        "id": "limGG5",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-93eb874897dbb692"
+          }
+        ]
       }
     ],
     "interrogation-talking-to-the-prince-or-sergeant": [
@@ -1064,12 +1089,239 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "FLP404"
+        "id": "FLP404",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-45646d6bd7c3f59b"
+          }
+        ]
       },
       {
         "type": "unavailable",
         "id": "Uph5kG"
+      }
+    ]
+  },
+  "branches": {
+    "jump-7dee1b974622948f": [
+      {
+        "player": "What can you tell me about Varlamore?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "It's far across the western sea, over the mountains south of Great Kourend. Between the sea and the mountains, it's totally isolated! No one is allowed to come or go without good reason."
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "Sounds like a prison."
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "Quite the opposite! It's a beautiful and prosperous kingdom, ruled over by the Sun Queen!"
+      },
+      {
+        "player": "The Sun Queen?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "Yes! She rules from her palace in their capital, Civitas illa Fortis. The sun plays an important role in Varlamorian life. In fact, they worship it!"
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "What... the sun?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "That's right! They have their own religion over there dedicated to the sun and the moon. Isn't that fascinating?"
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "I don't know... It all sounds a bit odd to me."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "8BkikL"
+      }
+    ],
+    "jump-bad1d0c9591dd781": [
+      {
+        "player": "How come you know so much about Varlamore?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "A while back, a group of travellers came through here, on their way to the dark lands of Morytania. They said they were from the College of Bards!"
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "College of Bards?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "Yes! It's found in the floating city of Tempestus! Members of the College are some of the only people allowed to travel to and from Varlamore."
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "They stayed the night in the Blue Moon Inn and spent hours telling us all about their homeland. I've been dying to visit ever since!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "0eI_KW"
+      }
+    ],
+    "jump-c571af4624fdcdbe": [
+      {
+        "player": "When will this delegation arrive?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "Well it should be any time now!"
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "Hang on... what's going on over there?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "Wait! That's them! They're here!"
+      },
+      {
+        "type": "action",
+        "text": "The scene begins with King Roald, Aeonisig Raispher, and two Varrock guards standing beside the square fountain. On the far side, the delegation can be seen approaching the king, which consists of Prince Itzla Arkan, Servius, Teokan of Ralos, Furia Tullus, Ennius Tullus, and six Knights of Varlamore.",
+        "id": "wltzqo"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "There they are: The children of the sun! That's Itzla Arkan, heir to the throne of Varlamore! And there's Servius, the Teokan of Ralos!"
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "Teokan? What's a Teokan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "It means High Priest. He's the religious leader in Varlamore."
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "Huh..."
+      },
+      {
+        "type": "action",
+        "text": "A guard with a big bag walks out of Varrock Castle.",
+        "id": "-vBZ7r"
+      },
+      {
+        "type": "line",
+        "speaker": "Sergeant Tobyn",
+        "text": "What are you doing with that bag?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Oh... Er... Just delivering some supplies to the guards at the gates."
+      },
+      {
+        "type": "line",
+        "speaker": "Sergeant Tobyn",
+        "text": "Well hurry back. We need everyone at their posts."
+      },
+      {
+        "type": "action",
+        "text": "The guard walks past Alina, Noah, and the player.",
+        "id": "P8ojsR"
+      },
+      {
+        "type": "line",
+        "speaker": "Noah",
+        "text": "That's an unusually big bag he's carrying."
+      },
+      {
+        "player": "Hmm... Now where might you be going with that...?"
+      },
+      {
+        "type": "action",
+        "text": "(Player begins tailing the guard.)",
+        "id": "I40DOA"
+      }
+    ],
+    "jump-2f27fc840fb07d6a": [
+      {
+        "player": "Sorry, but I need to head off."
+      },
+      {
+        "type": "line",
+        "speaker": "Alina",
+        "text": "Fair enough."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-93eb874897dbb692": [
+      {
+        "player": "So what happens now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sergeant Tobyn",
+        "text": "The bandits will be interrogated. If all goes well, we'll get some useful information out of them."
+      },
+      {
+        "type": "line",
+        "speaker": "Sergeant Tobyn",
+        "text": "Speaking of which... given it was you who found them in the first place, you might be able to offer some support. Would you be willing to help?"
+      },
+      {
+        "player": "Of course! Where do you need me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sergeant Tobyn",
+        "text": "Come with me. We'll use the cell on the palace roof for the interrogations. It's nice and out of the way."
+      },
+      {
+        "type": "message",
+        "text": "Sergeant Tobyn escorts you to the palace roof.",
+        "id": "PiLgte"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-45646d6bd7c3f59b": [
+      {
+        "player": "Not every day the heir to a far-off land comes and interrogates one of your prisoners?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sergeant Tobyn",
+        "text": "Oddly enough, no. This will be an interesting report to write. And on that note, I'd best get to it. All the best, adventurer. Thank you for your help."
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "9QLQQG"
       }
     ]
   }

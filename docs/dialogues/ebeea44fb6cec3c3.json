@@ -143,8 +143,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "Ewtplg"
+                            "id": "Ewtplg",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-868ff860476dbcf2"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -153,8 +158,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "PDMGuA"
+                            "id": "PDMGuA",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-17acb2a5e42a7886"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -163,8 +173,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "kLQan1"
+                            "id": "kLQan1",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-bb2d284354f4be3e"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -225,8 +240,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "6r057I"
+                            "id": "6r057I",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-8427f1ab710f8bc6"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -235,8 +255,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "dZfNLl"
+                            "id": "dZfNLl",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-17acb2a5e42a7886"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -245,8 +270,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "oYrdf7"
+                            "id": "oYrdf7",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-bb2d284354f4be3e"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -289,8 +319,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1iBI7z"
+                "id": "1iBI7z",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8427f1ab710f8bc6"
+                  }
+                ]
               }
             ]
           },
@@ -299,8 +334,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lmIlU4"
+                "id": "lmIlU4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17acb2a5e42a7886"
+                  }
+                ]
               }
             ]
           },
@@ -309,8 +349,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1-ww_x"
+                "id": "1-ww_x",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-51d85c9994c80415"
+                  }
+                ]
               }
             ]
           },
@@ -319,8 +364,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "diPWJA"
+                "id": "diPWJA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c39f018990ddb942"
+                  }
+                ]
               }
             ]
           }
@@ -722,6 +772,466 @@
           }
         ],
         "id": "eNnR7I"
+      }
+    ]
+  },
+  "branches": {
+    "jump-868ff860476dbcf2": [
+      {
+        "npc": "When Tempoross submerges, get up close and clear the fish from its whirlpools; they're how it gets its energy."
+      },
+      {
+        "player": "Well, that sounds easy enough!"
+      },
+      {
+        "npc": "Aye, that be the easy part!"
+      },
+      {
+        "npc": "The storm of Tempoross will rage around you, so you better be ready to deal with lightning strikes and avoid getting zapped when Tempoross attacks the cannons."
+      },
+      {
+        "npc": "Also, watch out for those mighty waves! You'll want t' tether yourself t' something solid so you don't find yourself lost in the deep blue when they come crashing down!"
+      },
+      {
+        "player": "Oh... Well, I suppose I can do that."
+      },
+      {
+        "player": "Will I need any special equipment?"
+      },
+      {
+        "npc": "Everythin' you need can be found on-board. Though if you have a favourite harpoon, you can always bring that!"
+      },
+      {
+        "npc": "The complete Spirit Anglers outfit also has an 'andy harness built-in, so you won't need a rope if you're wearin' it. You can speak t' Gita about getting one."
+      },
+      {
+        "npc": "Ye can find Gita just east of 'ere, next t' some fishin' equipment."
+      },
+      {
+        "npc": "When you're ready, just board the ship and we'll set sail soon!"
+      },
+      {
+        "player": "Aye aye cap'n!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are there any benefits to helping the Spirit Anglers?",
+            "steps": [
+              {
+                "player": "Are there any benefits to helping the Spirit Anglers?"
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Pudi:",
+                "text": "Other than maintainin' safe passage and savin' lives?!"
+              },
+              {
+                "player": "Well..."
+              },
+              {
+                "type": "action",
+                "text": "The captain laughs.",
+                "action": "emote",
+                "action_source": "text",
+                "id": "HZVtRc"
+              },
+              {
+                "npc": "I'm just messin' with ye! Of course there are benefits!"
+              },
+              {
+                "npc": "We find all sorts washed up by the storms. Aside from the usual junk, we often find old chests from merchant supply ships, as well as the odd artefact here and there."
+              },
+              {
+                "npc": "If it's not needed for the Spirit Anglers' research, it's yours to keep!"
+              },
+              {
+                "npc": "Some of the more resourceful Spirit Anglers also discovered a fishing use for the spirit energised scales shed by the fish within Tempoross. You're free t' keep any you find."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you remind me what to do on the island?",
+                    "steps": [
+                      {
+                        "player": "Can you remind me what to do on the island?"
+                      },
+                      {
+                        "npc": "The ships on the dock regularly embark to Tempoross Cove. Once there, you'll need to keep the cannons loaded with Harpoonfish t' weaken the Spirit. You can fish 'em on the island."
+                      },
+                      {
+                        "type": "jump",
+                        "id": "Ewtplg",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-868ff860476dbcf2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Are there any benefits to helping the Spirit Anglers?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "PDMGuA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-17acb2a5e42a7886"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "kLQan1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb2d284354f4be3e"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me more about the Spirit Anglers?",
+            "steps": [
+              {
+                "player": "Can you tell me more about the Spirit Anglers?"
+              },
+              {
+                "npc": "Well, as I mentioned before, Taiman and his fishing crew from Al Kharid 'ad a tussle with Tempoross. They barely made it back."
+              },
+              {
+                "npc": "I was sitting down by the shore enjoying one of Karim's kebabs at the time, when suddenly the crew washed up amongst a pile of debris. Looked like they'd just seen a ghost!"
+              },
+              {
+                "npc": "As soon as they could talk sense they went to the Chancellor and within days more shockin' tales of the Sea Spirit's wrath came in."
+              },
+              {
+                "npc": "The Chancellor called a meeting for all us local seafarin' folk and we agreed action must be taken!"
+              },
+              {
+                "npc": "Ain't nothin' goin' t' take the seas from me, even if it is a powerful spirit!"
+              },
+              {
+                "npc": "Anyway, it was decided that we'd setup a base 'ere amongst these ruins, and so the Spirit Anglers was formed!"
+              },
+              {
+                "npc": "Don't ask me what the ruins used to be. And it's not like Menaphos can 'ave a say!"
+              },
+              {
+                "npc": "Whatever they are, they make a fine base for the Spirit Anglers!"
+              },
+              {
+                "npc": "Since moving in, we've been recruiting fisherfolk from all over, and some of the readin' types 'ave been studyin' Tempoross durin' our trips to subdue it."
+              },
+              {
+                "npc": "I like t' get stuck in, me-self; face off toe t' toe with the beastie. I'll be right by your side when you go out there!"
+              },
+              {
+                "player": "Well that's encouraging, I think..."
+              },
+              {
+                "npc": "I'm still 'ere, ain't I?"
+              },
+              {
+                "npc": "Anyway, there's plenty o' research going on, so maybe you can find some notes lyin' around if ye want to know more."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you remind me what to do on the island?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "6r057I",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8427f1ab710f8bc6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Are there any benefits to helping the Spirit Anglers?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "dZfNLl",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-17acb2a5e42a7886"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "oYrdf7",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb2d284354f4be3e"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-17acb2a5e42a7886": [
+      {
+        "player": "Are there any benefits to helping the Spirit Anglers?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Pudi:",
+        "text": "Other than maintainin' safe passage and savin' lives?!"
+      },
+      {
+        "player": "Well..."
+      },
+      {
+        "type": "action",
+        "text": "The captain laughs.",
+        "action": "emote",
+        "action_source": "text",
+        "id": "HZVtRc"
+      },
+      {
+        "npc": "I'm just messin' with ye! Of course there are benefits!"
+      },
+      {
+        "npc": "We find all sorts washed up by the storms. Aside from the usual junk, we often find old chests from merchant supply ships, as well as the odd artefact here and there."
+      },
+      {
+        "npc": "If it's not needed for the Spirit Anglers' research, it's yours to keep!"
+      },
+      {
+        "npc": "Some of the more resourceful Spirit Anglers also discovered a fishing use for the spirit energised scales shed by the fish within Tempoross. You're free t' keep any you find."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you remind me what to do on the island?",
+            "steps": [
+              {
+                "player": "Can you remind me what to do on the island?"
+              },
+              {
+                "npc": "The ships on the dock regularly embark to Tempoross Cove. Once there, you'll need to keep the cannons loaded with Harpoonfish t' weaken the Spirit. You can fish 'em on the island."
+              },
+              {
+                "type": "jump",
+                "id": "Ewtplg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-868ff860476dbcf2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Are there any benefits to helping the Spirit Anglers?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "PDMGuA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17acb2a5e42a7886"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "kLQan1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb2d284354f4be3e"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-bb2d284354f4be3e": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8427f1ab710f8bc6": [
+      {
+        "player": "Can you remind me what to do on the island?"
+      },
+      {
+        "npc": "The ships on the dock regularly embark to Tempoross Cove. Once there, you'll need to keep the cannons loaded with Harpoonfish t' weaken the Spirit. You can fish 'em on the island."
+      },
+      {
+        "type": "jump",
+        "id": "Ewtplg",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-868ff860476dbcf2"
+          }
+        ]
+      }
+    ],
+    "jump-51d85c9994c80415": [
+      {
+        "player": "Can you tell me more about the Spirit Anglers?"
+      },
+      {
+        "npc": "Well, as I mentioned before, Taiman and his fishing crew from Al Kharid 'ad a tussle with Tempoross. They barely made it back."
+      },
+      {
+        "npc": "I was sitting down by the shore enjoying one of Karim's kebabs at the time, when suddenly the crew washed up amongst a pile of debris. Looked like they'd just seen a ghost!"
+      },
+      {
+        "npc": "As soon as they could talk sense they went to the Chancellor and within days more shockin' tales of the Sea Spirit's wrath came in."
+      },
+      {
+        "npc": "The Chancellor called a meeting for all us local seafarin' folk and we agreed action must be taken!"
+      },
+      {
+        "npc": "Ain't nothin' goin' t' take the seas from me, even if it is a powerful spirit!"
+      },
+      {
+        "npc": "Anyway, it was decided that we'd setup a base 'ere amongst these ruins, and so the Spirit Anglers was formed!"
+      },
+      {
+        "npc": "Don't ask me what the ruins used to be. And it's not like Menaphos can 'ave a say!"
+      },
+      {
+        "npc": "Whatever they are, they make a fine base for the Spirit Anglers!"
+      },
+      {
+        "npc": "Since moving in, we've been recruiting fisherfolk from all over, and some of the readin' types 'ave been studyin' Tempoross durin' our trips to subdue it."
+      },
+      {
+        "npc": "I like t' get stuck in, me-self; face off toe t' toe with the beastie. I'll be right by your side when you go out there!"
+      },
+      {
+        "player": "Well that's encouraging, I think..."
+      },
+      {
+        "npc": "I'm still 'ere, ain't I?"
+      },
+      {
+        "npc": "Anyway, there's plenty o' research going on, so maybe you can find some notes lyin' around if ye want to know more."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you remind me what to do on the island?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "6r057I",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8427f1ab710f8bc6"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Are there any benefits to helping the Spirit Anglers?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "dZfNLl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17acb2a5e42a7886"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "oYrdf7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb2d284354f4be3e"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c39f018990ddb942": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
       }
     ]
   }

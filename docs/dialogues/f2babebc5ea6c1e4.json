@@ -155,8 +155,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rji_l5"
+                "id": "rji_l5",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0568a4e88ef748df"
+                  }
+                ]
               }
             ]
           },
@@ -165,8 +170,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QZBMk9"
+                "id": "QZBMk9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d301433cea7f9c98"
+                  }
+                ]
               }
             ]
           },
@@ -175,8 +185,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "e3bI8t"
+                "id": "e3bI8t",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f5ab910ab182b7ba"
+                  }
+                ]
               }
             ]
           },
@@ -185,12 +200,110 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uNylSh"
+                "id": "uNylSh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ed5f2019ab09ac3b"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-0568a4e88ef748df": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "npc": "Myself? Oh."
+      },
+      {
+        "npc": "Well I'm Vulcana Lovakengj, the head of Lovakengj House. I rule the city of Lovakengj."
+      },
+      {
+        "player": "Cool."
+      },
+      {
+        "player": "..."
+      },
+      {
+        "player": "Anything else?"
+      },
+      {
+        "npc": "Oh... No I don't think so."
+      },
+      {
+        "player": "Huh, fair enough."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "AaLyIX"
+      }
+    ],
+    "jump-d301433cea7f9c98": [
+      {
+        "player": "Tell me about Lovakengj."
+      },
+      {
+        "npc": "Lovakengj?"
+      },
+      {
+        "npc": "Yes! I know a lot about Lovakengj!"
+      },
+      {
+        "npc": "Lovakengj is a city of dwarves. It's the only non-human city in Kourend."
+      },
+      {
+        "npc": "Lovakengj is very important you know. The resources mined here are used throughout the kingdom. Weapons, armour, tools, buildings..."
+      },
+      {
+        "npc": "All sorts of things come out of Lovakengj."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "9ixTcc"
+      }
+    ],
+    "jump-f5ab910ab182b7ba": [
+      {
+        "player": "Tell me about your plans."
+      },
+      {
+        "npc": "My plans? Hmm let me see now..."
+      },
+      {
+        "npc": "Ah, I know. I'll have a sherry."
+      },
+      {
+        "npc": "Jorra! Bring me a sherry."
+      },
+      {
+        "type": "line",
+        "speaker": "Jorra",
+        "text": "Yes Lady Lovakengj."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "fDgJgK"
+      }
+    ],
+    "jump-ed5f2019ab09ac3b": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "Goodbye human."
+      },
+      {
+        "type": "end"
       }
     ]
   }

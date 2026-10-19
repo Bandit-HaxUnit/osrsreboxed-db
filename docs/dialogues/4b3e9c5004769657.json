@@ -518,8 +518,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "NG8GtN"
+                        "id": "NG8GtN",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e670759ee7b241c9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -528,8 +533,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "b8NySg"
+                        "id": "b8NySg",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a95fb85517d83b9b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -538,8 +548,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Vw1A2N"
+                        "id": "Vw1A2N",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fec8dcf507ada776"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -578,7 +593,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "Are you any relation to Sir Galahad?"
+            "text": "Are you any relation to Sir Galahad?",
+            "steps": [
+              {
+                "player": "Are you any relation to Sir Galahad?"
+              },
+              {
+                "type": "line",
+                "speaker": "Galahad",
+                "text": "I AM Sir Galahad."
+              },
+              {
+                "type": "line",
+                "speaker": "Galahad",
+                "text": "Although I've retired as a Knight, and now live as a solitary monk. Also, I prefer to be known as brother rather than sir now. Half a moment, your cup of tea is ready."
+              },
+              {
+                "type": "message",
+                "text": "Sir Galahad gives you a cup of tea.",
+                "id": "UM_Nt9"
+              },
+              {
+                "type": "end"
+              }
+            ]
           },
           {
             "text": "I'm on a quest to find the Holy Grail!",
@@ -725,7 +763,25 @@
             ]
           },
           {
-            "text": "Do you get lonely here on your own?"
+            "text": "Do you get lonely here on your own?",
+            "steps": [
+              {
+                "player": "Do you get lonely out here on your own?"
+              },
+              {
+                "type": "line",
+                "speaker": "Galahad",
+                "text": "Sometimes I do, yes. Still not many people to share my solidarity with, as most of the religious men around here are worshippers of Saradomin. Half a moment, your cup of tea is ready."
+              },
+              {
+                "type": "message",
+                "text": "Sir Galahad gives you a cup of tea.",
+                "id": "lIuD4R"
+              },
+              {
+                "type": "end"
+              }
+            ]
           }
         ]
       },
@@ -1116,8 +1172,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1bGg79"
+                "id": "1bGg79",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5ddf0f3bfcfdb626"
+                  }
+                ]
               }
             ]
           }
@@ -1647,6 +1708,159 @@
     ]
   },
   "branches": {
+    "jump-e670759ee7b241c9": [
+      {
+        "player": "What's a Fisher King?"
+      },
+      {
+        "type": "line",
+        "speaker": "Crone",
+        "text": "The Fisher King is the owner and slave of the Grail..."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "m6af3W"
+      }
+    ],
+    "jump-a95fb85517d83b9b": [
+      {
+        "player": "Ok, I will go searching."
+      },
+      {
+        "type": "line",
+        "speaker": "Crone",
+        "text": "Good luck with that."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-fec8dcf507ada776": [
+      {
+        "player": "What do you mean by the whistle?"
+      },
+      {
+        "type": "line",
+        "speaker": "Crone",
+        "text": "You don't know about the whistles yet? The whistles are easy."
+      },
+      {
+        "type": "line",
+        "speaker": "Crone",
+        "text": "You will need one to get to and from the Fisher King's realm. They reside in a haunted manor house in Misthalin, though you may not perceive them unless you carry something from the realm of the Fisher"
+      },
+      {
+        "type": "line",
+        "speaker": "Crone",
+        "text": "King..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's a Fisher King?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "NG8GtN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e670759ee7b241c9"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Ok, I will go searching.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "b8NySg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a95fb85517d83b9b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you mean by the whistle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Vw1A2N",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fec8dcf507ada776"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The point of realm crossing?",
+            "steps": [
+              {
+                "player": "The point of realm crossing?"
+              },
+              {
+                "type": "line",
+                "speaker": "Crone",
+                "text": "The realm of the Fisher King is not quite of this reality. It is of a reality very close to ours though... Where it is easiest to cross, THAT is a point of realm crossing."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5ddf0f3bfcfdb626": [
+      {
+        "player": "You don't look too well."
+      },
+      {
+        "type": "line",
+        "speaker": "The Fisher King",
+        "text": "Nope, I don't feel so good either."
+      },
+      {
+        "type": "line",
+        "speaker": "The Fisher King",
+        "text": "I fear my life is running short... Alas, my son and heir is not here. I am waiting for my son to return to this castle."
+      },
+      {
+        "type": "line",
+        "speaker": "The Fisher King",
+        "text": "If you could find my son, that would be a great weight off my shoulders."
+      },
+      {
+        "player": "Who is your son?"
+      },
+      {
+        "type": "line",
+        "speaker": "The Fisher King",
+        "text": "He is known as Percival."
+      },
+      {
+        "type": "line",
+        "speaker": "The Fisher King",
+        "text": "I believe he is a knight of the round table."
+      },
+      {
+        "player": "I shall go and see if I can find him."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "Ss216z": [
       {
         "player": "Well, I do have the means to get us there - wait, let me go get the magic whistle!"

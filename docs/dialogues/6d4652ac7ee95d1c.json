@@ -630,8 +630,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nGNFdG"
+                "id": "nGNFdG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d15b4a4856551e37"
+                  }
+                ]
               }
             ]
           },
@@ -660,12 +665,171 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "x5fxLj"
+                "id": "x5fxLj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a6c5dee1b5f71410"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-d15b4a4856551e37": [
+      {
+        "type": "condition",
+        "text": "If the patch is empty:",
+        "steps": [
+          {
+            "npc": "You don't have any seeds planted in that patch. Plant some and I might agree to look after it for you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "IPRSrk"
+      },
+      {
+        "type": "condition",
+        "text": "If the patch has a diseased plant:",
+        "steps": [
+          {
+            "npc": "That patch is diseased - you should cure it before asking me to be responsible for it!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "HU4q03"
+      },
+      {
+        "type": "condition",
+        "text": "If the patch has a dead plant:",
+        "steps": [
+          {
+            "npc": "That patch is dead - it's too late for me to do anything about it now."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "TU-7Vj"
+      },
+      {
+        "type": "condition",
+        "text": "If the patch has a fully grown plant:",
+        "steps": [
+          {
+            "npc": "That patch is already fully grown! I don't know what you want me to do with it!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "D16uVi"
+      },
+      {
+        "type": "condition",
+        "text": "If the patch is already being looked after:",
+        "steps": [
+          {
+            "npc": "I'm already looking after that patch for you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eH4jB2"
+      },
+      {
+        "npc": "If you like, but I want [payment] for that."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the payment:",
+        "steps": [
+          {
+            "player": "I'm afraid I don't have any of those at the moment."
+          },
+          {
+            "npc": "Well, I'm not wasting my time for free."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "dhvVSE"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, it's a deal.",
+            "steps": [
+              {
+                "player": "Okay, it's a deal."
+              },
+              {
+                "npc": "[That'll do nicely, sir/That'll do nicely, madam/That'll do nicely]. Leave it with me - I'll make sure that patch grows for you."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No, that's too much.",
+            "steps": [
+              {
+                "player": "No, that's too much."
+              },
+              {
+                "npc": "Well, I'm not wasting my time for free."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Okay, it's a deal and don't ask again.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "lOf9aX"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a6c5dee1b5f71410": [
+      {
+        "type": "condition",
+        "text": "If a poison ivy bush is planted:",
+        "steps": [
+          {
+            "npc": "Poison ivy bushes don't get diseased, so you needn't worry about having it protected."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EKnkJs"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "x9EXhc"
       }
     ]
   }

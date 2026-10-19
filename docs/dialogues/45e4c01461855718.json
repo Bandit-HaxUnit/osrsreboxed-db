@@ -396,8 +396,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "9HKxFe"
+                        "id": "9HKxFe",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-52bea5de7d1a9c9a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -424,8 +429,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Rd2mzx"
+                        "id": "Rd2mzx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-dfec37c5f5aa01f7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -457,8 +467,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "q8xds_"
+                        "id": "q8xds_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-40e60ad1668a2d7e"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -519,8 +534,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "obktUt"
+                        "id": "obktUt",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2d457f4d4b15e996"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -547,8 +567,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "_KNL23"
+                        "id": "_KNL23",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-77011e28190d175c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -597,8 +622,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "TSo12q"
+                                "id": "TSo12q",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3447af53459ff603"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -635,8 +665,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "mjOAcv"
+                                "id": "mjOAcv",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-253ab562a9ed5c20"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -674,8 +709,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XUXH-B"
+                "id": "XUXH-B",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d8c954513efd96a"
+                  }
+                ]
               }
             ]
           },
@@ -778,7 +818,337 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "From the Shantay Pass:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "From here you can travel to Uzer, to the Bedabin camp or to the North of Pollnivneach."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "The second major carpet hub station, to the south of Pollnivneach is in easy walking distance from there."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I want to travel to Uzer.",
+                        "condition": "If the player has completed The Golem:",
+                        "steps": [
+                          {
+                            "player": "I want to travel to Uzer."
+                          }
+                        ],
+                        "id": "6MiRsx"
+                      },
+                      {
+                        "text": "I want to travel to the Bedabin camp.",
+                        "steps": [
+                          {
+                            "player": "I want to travel to the Bedabin camp."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I want to travel to Pollnivneach.",
+                        "steps": [
+                          {
+                            "player": "I want to travel to Pollnivneach."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to travel to any of those places.",
+                        "steps": [
+                          {
+                            "player": "I don't want to travel to any of those places."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Fair enough, magic carpet travel isn't for everyone. Enjoy the walk."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "I-Sxou"
+              },
+              {
+                "type": "condition",
+                "text": "From Uzer:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "You can travel from here back to the Shantay Pass."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That sounds good, take me there.",
+                        "steps": [
+                          {
+                            "player": "That sounds good, take me there."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to travel there.",
+                        "steps": [
+                          {
+                            "player": "I don't want to travel there."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Fair enough, magic carpet travel isn't for everyone. Enjoy the walk."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ODRxtB"
+              },
+              {
+                "type": "condition",
+                "text": "From the Bedabin Camp:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "From here you can travel to the Shantay Pass."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Take me there.",
+                        "steps": [
+                          {
+                            "player": "Take me there."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to travel there.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "VFxIBO",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-23bc8e1fe9545e2e"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "vOFnqT"
+              },
+              {
+                "type": "condition",
+                "text": "From the north Pollnivneach station:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "From here you can travel to the Shantay Pass - the Southern gate of Al Kharid."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Take me to the Pass then.",
+                        "steps": [
+                          {
+                            "player": "Take me to the Pass then."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to travel there.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "1pea2T",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-23bc8e1fe9545e2e"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "M788ET"
+              },
+              {
+                "type": "condition",
+                "text": "From the south Pollnivneach station:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "From here you can travel to Nardah and the Menaphite cities of Sophanem and Menaphos."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I want to travel to Nardah.",
+                        "steps": [
+                          {
+                            "player": "I want to travel to Nardah."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I want to travel to Menaphos.",
+                        "condition": "If the player has completed Icthlarin's Little Helper:",
+                        "steps": [
+                          {
+                            "player": "I want to travel to Menaphos."
+                          }
+                        ],
+                        "id": "XXKfiu"
+                      },
+                      {
+                        "text": "I want to travel to Sophanem.",
+                        "condition": "If the player has completed Icthlarin's Little Helper:",
+                        "steps": [
+                          {
+                            "player": "I want to travel to Sophanem."
+                          }
+                        ],
+                        "id": "DEOlZP"
+                      },
+                      {
+                        "text": "I don't want to travel to any of those places.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "b-vf1U",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-84404882f23f209d"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "WoLET8"
+              },
+              {
+                "type": "condition",
+                "text": "From Nardah or Menaphos:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "The carpets here will take you to the south of Pollnivneach."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Let's go then.",
+                        "steps": [
+                          {
+                            "player": "Let's go then."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to travel there.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "CaSYBb",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-23bc8e1fe9545e2e"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "UbhGxQ"
+              },
+              {
+                "type": "condition",
+                "text": "From Sophanem:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Rug Merchant",
+                    "text": "The carpets here will take you to the south of Pollnivneach. Do you want to take a lift?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Pollnivneach will do.",
+                        "steps": [
+                          {
+                            "player": "Pollnivneach will do."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to travel there.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "NXwZo-",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-23bc8e1fe9545e2e"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "j-G9Cv"
+              }
+            ]
           },
           {
             "text": "Tell me about Ali Morrisane.",
@@ -815,13 +1185,521 @@
             ]
           },
           {
-            "text": "Tell me about this magic carpet fleet."
+            "text": "Tell me about this magic carpet fleet.",
+            "steps": [
+              {
+                "player": "Tell me about this Magic Carpet fleet."
+              },
+              {
+                "type": "line",
+                "speaker": "Rug Merchant",
+                "text": "The latest idea from the great Ali Morrisane. Desert travel will never be the same again."
+              },
+              {
+                "player": "So how does it work?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rug Merchant",
+                "text": "The carpet or the whole enterprise?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about how the carpet works.",
+                    "steps": [
+                      {
+                        "player": "Tell me about how the carpet works."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "I'm not really too sure, it's just an enchanted rug really, made out of special Ugthanki hair. It flies to whatever destination its owner commands."
+                      },
+                      {
+                        "player": "Are they for sale then?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "Do you think I'm mad? Do you think that Ali Morrisane would throw his magic carpet monopoly away?"
+                      },
+                      {
+                        "player": "Well perhaps if I offered the right price?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "Not a hope. Could you imagine the mess there'd be if people were constantly zooming through Al Kharid and Pollnivneach? It would be chaos. This way, we can keep the carpet traffic outside towns and other busy places."
+                      },
+                      {
+                        "player": "I suppose getting stuck in a carpet jam could get a bit tiresome."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "Just think of the friction burns you would get if you were in a carpet crash."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Follow-up options",
+                        "id": "g_QWL-"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about the enterprise then.",
+                    "steps": [
+                      {
+                        "player": "Tell me about the enterprise then."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "It's quite simple really, Ali Morrisane has hired myself and a few others to set up carpet stations at some of the desert's more populated places and run flights between the stations."
+                      },
+                      {
+                        "player": "So why has he limited the service to just the desert?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "I don't think Ali is prepared to take on Gnome Air just yet, their gliders are much faster than our carpets, besides that I think we are in the short haul business, something that would only work in harsh conditions like"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "the desert."
+                      },
+                      {
+                        "player": "Why is that?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "I suppose because people would just walk. Getting lost isn't too much of a problem generally, but it's a different matter when you're in the middle of the Kharidian desert with a dry waterskin and no idea"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "which direction to go in."
+                      },
+                      {
+                        "player": "You're right I guess. How's the business going then?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "Not too bad, the hubs are generally quite busy. But the stations in Uzer and the Bedabin camp could do with a bit more traffic."
+                      },
+                      {
+                        "player": "A growth market I guess."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Follow-up options",
+                        "id": "Xl3FlG"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "I have some questions."
+            "text": "I have some questions.",
+            "steps": [
+              {
+                "player": "I have some questions."
+              },
+              {
+                "type": "line",
+                "speaker": "Rug Merchant",
+                "text": "I'll try help you as much as I can."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What are you doing here?",
+                    "steps": [
+                      {
+                        "player": "What are you doing here?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At the Shantay Pass:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Well this is a good position for desert traffic. Shantay seems to have a nice little money spinner setup, but I reckon, this could turn out even better."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "Q3AFBG"
+                          }
+                        ],
+                        "id": "EIDuv9"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At Uzer:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "You mightn't realise it, but this is quite a busy station."
+                          },
+                          {
+                            "player": "Who would want to come here?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Well you for one, and besides that we get quite a few archaeologists from the dig site passing through to examine the golem."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "bownIV"
+                          }
+                        ],
+                        "id": "iL6OAr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At the Bedabin Camp:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Well besides the obvious - looking after this station, I'm trying to figure out how these Tentis manage to cultivate such delicious pineapples."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "0A95U7"
+                          }
+                        ],
+                        "id": "nI6sJk"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At the north Pollnivneach station:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Well Pollnivneach is the ideal location for setting up a carpet station."
+                          },
+                          {
+                            "player": "Why's that?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "You see it's located halfway between Al Kharid, and the Menaphite cities and close enough to Nardah too, so we get more than enough traffic to keep the business running."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "Ex-yI8"
+                          }
+                        ],
+                        "id": "A1CBWH"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At the south Pollnivneach station:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "I work here renting out magic carpets. I'm from Pollnivneach so it is a handy job, I don't have to commute too far to work every day."
+                          },
+                          {
+                            "player": "Why's that?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "You see it's located halfway between Al Kharid, and the Menaphite cities and close enough to Nardah too, so we get more than enough traffic to keep the business running."
+                          },
+                          {
+                            "player": "So I suppose you're called Ali then."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Not the most remarkable of names, not that it matters, you see everyone in town knows me as Flash."
+                          },
+                          {
+                            "player": "Really?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "No."
+                          },
+                          {
+                            "player": "........"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "........"
+                          },
+                          {
+                            "player": "Oh right."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "ujy7sD"
+                          }
+                        ],
+                        "id": "VKiN97"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At Nardah:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Well I'd preferred to have been running one of the carpet stations at a hub such as Pollnivneach. I was a bit slow off the mark to get that gig though. Still business in Nardah isn't bad for a terminal. At least"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "people come here for the bank and to see the herbalist."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "AHzFxl"
+                          }
+                        ],
+                        "id": "RuiEg9"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At Sophanem:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "I look after the carpet station here. The place is a bit dead though. Ha! I'm just too much."
+                          },
+                          {
+                            "player": "What?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "You know, Sophanem, city of the dead and all that?"
+                          },
+                          {
+                            "player": "..."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Aww come on, the joke wasn't that bad."
+                          },
+                          {
+                            "player": "..."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "bPW33d"
+                          }
+                        ],
+                        "id": "sBP0It"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "At Menaphos:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Until recently I was looking after one of the busiest carpet stations. But that all changed since Menaphos closed its gates."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Right now I have to fill my day trying to come up with reasons why Ali M should keep this place open."
+                          },
+                          {
+                            "player": "So have you come up with any good ideas then?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Not really. The only reason I have come up with to date is that by keeping the station open, people will become familiar with it."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Maybe once Menaphos opens her gates again, the station will make a fortune once more."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "E1Iodd"
+                          }
+                        ],
+                        "id": "NHgI6j"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Is that your pet monkey nearby?",
+                    "steps": [
+                      {
+                        "player": "Is that your pet monkey nearby?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "He's his own monkey, he does whatever suits him, a total nuisance."
+                      },
+                      {
+                        "player": "I detect a degree of hostility being directed towards the monkey."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "I shouldn't say this really, but sometimes I begin to question some of Ali Morrisane's ideas, he says that associating a monkey with any product will increase sales. I just don't know, what will be next?"
+                      },
+                      {
+                        "player": "Frogs?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "I doubt it, amphibians don't have the same cutesy factor as monkeys."
+                      },
+                      {
+                        "player": "I'm confused. I thought you didn't like monkeys."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "I don't dislike monkeys, it's just that monkey. I don't know, I might just be paranoid but I think he's... well... evil."
+                      },
+                      {
+                        "player": "Hmmm... Interesting."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a monkeyspeak amulet in their bank:",
+                        "steps": [
+                          {
+                            "player": "Hang on a minute, I think I have an amulet of monkeyspeak stored somewhere. Perhaps I could get it and see what it has to say for itself."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Would you? It sometimes gives me these stares... ~A visible shiver runs down his back."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "I would be really grateful if you could get that monkey off my back."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "sTmcAv"
+                          }
+                        ],
+                        "id": "lCrhgX"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a monkeyspeak amulet in their inventory:",
+                        "steps": [
+                          {
+                            "player": "Hang on a second, I have an amulet of monkeyspeak in my bag, perhaps I could have a word with him."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "Would you? It sometimes gives me these stares... ~A visible shiver runs down his back."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rug Merchant",
+                            "text": "I would be really grateful if you could get that monkey off my back."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Follow-up options",
+                            "id": "VInc7F"
+                          }
+                        ],
+                        "id": "umAzel"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Follow-up options",
+                        "id": "aj0Q0O"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where did you get that hat?",
+                    "steps": [
+                      {
+                        "player": "Where did you get that hat?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "My fez? I got it from Ali Morrisane, it's a uniform of sorts, apparently it makes us more visible, but I'm not too sure about it."
+                      },
+                      {
+                        "player": "Well it is quite distinctive."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "Do you like it? I haven't really made my mind up about it yet. You see it's not all that practical for desert conditions."
+                      },
+                      {
+                        "player": "How so?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rug Merchant",
+                        "text": "Well it doesn't keep the sun out of my eyes and after a while sitting out in the desert they really begin to burn."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Follow-up options",
+                        "id": "rw3i08"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Rug Merchant",
+                "text": "Come back anytime."
+              }
+            ]
           }
         ]
       }
@@ -883,8 +1761,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "9e4yWK"
+                        "id": "9e4yWK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-40f91699f199ece3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -906,8 +1789,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "MS4Qep"
+                        "id": "MS4Qep",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-beb025874f3884c7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -934,8 +1822,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "adcOVD"
+                        "id": "adcOVD",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-edf9ef455ae106a3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -970,8 +1863,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "lpI3LO"
+                        "id": "lpI3LO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-882966e88bc74f3a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -993,8 +1891,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "qbOkaq"
+                        "id": "qbOkaq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-317a422015b68603"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1131,8 +2034,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sPI8Xu"
+                "id": "sPI8Xu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ca667c3df7439710"
+                  }
+                ]
               }
             ]
           },
@@ -1162,8 +2070,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "b5munK"
+                "id": "b5munK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-08b14beb08b1ba9f"
+                  }
+                ]
               }
             ]
           }
@@ -1452,8 +2365,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1G3OTR"
+                "id": "1G3OTR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a87e23330bc4f4ad"
+                  }
+                ]
               }
             ]
           },
@@ -1462,8 +2380,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-GEf2F"
+                "id": "-GEf2F",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17f3b7d6db24b696"
+                  }
+                ]
               }
             ]
           },
@@ -1472,8 +2395,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KvN4Jj"
+                "id": "KvN4Jj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8ead8b841f0967eb"
+                  }
+                ]
               }
             ]
           },
@@ -1663,8 +2591,13 @@
                                   },
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "EuJO-T"
+                                    "id": "EuJO-T",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-518669911dcaa5e7"
+                                      }
+                                    ]
                                   }
                                 ],
                                 "id": "CqJAFW"
@@ -1725,8 +2658,13 @@
                                   },
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "BOZhQX"
+                                    "id": "BOZhQX",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-60a2ae3c563ac392"
+                                      }
+                                    ]
                                   }
                                 ],
                                 "id": "JRWDga"
@@ -1746,8 +2684,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4MYvgT"
+                "id": "4MYvgT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-550e24b6f6e1b232"
+                  }
+                ]
               }
             ]
           }
@@ -1823,8 +2766,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "VaZOjm"
+                "id": "VaZOjm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17f3b7d6db24b696"
+                  }
+                ]
               }
             ]
           },
@@ -1833,8 +2781,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NDmgJV"
+                "id": "NDmgJV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8ead8b841f0967eb"
+                  }
+                ]
               }
             ]
           },
@@ -1916,8 +2869,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "93Ls46"
+                        "id": "93Ls46",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9fcc95e863335e9f"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1930,8 +2888,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "AiGwVm"
+                "id": "AiGwVm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-550e24b6f6e1b232"
+                  }
+                ]
               }
             ]
           }
@@ -2058,8 +3021,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TZ_hcJ"
+                "id": "TZ_hcJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a87e23330bc4f4ad"
+                  }
+                ]
               }
             ]
           },
@@ -2068,8 +3036,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bRR_hi"
+                "id": "bRR_hi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17f3b7d6db24b696"
+                  }
+                ]
               }
             ]
           },
@@ -2078,8 +3051,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qHVf6Q"
+                "id": "qHVf6Q",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8ead8b841f0967eb"
+                  }
+                ]
               }
             ]
           },
@@ -2088,8 +3066,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NhAvhm"
+                "id": "NhAvhm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0599c1c9ea4c86c7"
+                  }
+                ]
               }
             ]
           },
@@ -2098,8 +3081,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yyf6nr"
+                "id": "yyf6nr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-550e24b6f6e1b232"
+                  }
+                ]
               }
             ]
           }
@@ -2247,8 +3235,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "RBJN2q"
+                                "id": "RBJN2q",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a8c02df5be3369c8"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -2270,8 +3263,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "p_FR9x"
+                                "id": "p_FR9x",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-efc7ce7944297746"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -2301,8 +3299,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "rt4RAy"
+                                "id": "rt4RAy",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a38ecefcc64ef6fb"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -2340,8 +3343,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qWSvgf"
+                "id": "qWSvgf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a5bcd7aa08662763"
+                  }
+                ]
               }
             ]
           }
@@ -2759,8 +3767,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-m_mJc"
+                "id": "-m_mJc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16fc316eb7080203"
+                  }
+                ]
               }
             ]
           },
@@ -2887,8 +3900,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_TNDnA"
+                "id": "_TNDnA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e947810eef60931a"
+                  }
+                ]
               }
             ]
           }
@@ -3084,8 +4102,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "VwzgOU"
+                    "id": "VwzgOU",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-430c61008b28cacb"
+                      }
+                    ]
                   }
                 ]
               }
@@ -3615,8 +4638,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LrVec6"
+                "id": "LrVec6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6acea8a657b6fca1"
+                  }
+                ]
               }
             ]
           },
@@ -3625,8 +4653,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LqHpEp"
+                "id": "LqHpEp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bd24c980327de556"
+                  }
+                ]
               }
             ]
           },
@@ -3681,8 +4714,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NDfg1J"
+                "id": "NDfg1J",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0fa99c2f4c161929"
+                  }
+                ]
               }
             ]
           },
@@ -3691,8 +4729,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Zfvuen"
+                "id": "Zfvuen",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1f74b7e44c26cd2e"
+                  }
+                ]
               }
             ]
           }
@@ -5147,6 +6190,1515 @@
     ]
   },
   "branches": {
+    "jump-52bea5de7d1a9c9a": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well yes, actually I would like to ask about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "DnFSjC"
+              }
+            ]
+          },
+          {
+            "text": "No, but thanks for your time.",
+            "steps": [
+              {
+                "player": "No, but thanks for your time."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-dfec37c5f5aa01f7": [
+      {
+        "type": "jump",
+        "id": "9HKxFe",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-52bea5de7d1a9c9a"
+          }
+        ]
+      }
+    ],
+    "jump-40e60ad1668a2d7e": [
+      {
+        "type": "jump",
+        "id": "Rd2mzx",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-dfec37c5f5aa01f7"
+          }
+        ]
+      }
+    ],
+    "jump-2d457f4d4b15e996": [
+      {
+        "type": "jump",
+        "id": "q8xds_",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-40e60ad1668a2d7e"
+          }
+        ]
+      }
+    ],
+    "jump-77011e28190d175c": [
+      {
+        "type": "jump",
+        "id": "obktUt",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-2d457f4d4b15e996"
+          }
+        ]
+      }
+    ],
+    "jump-3447af53459ff603": [
+      {
+        "type": "jump",
+        "id": "_KNL23",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-77011e28190d175c"
+          }
+        ]
+      }
+    ],
+    "jump-253ab562a9ed5c20": [
+      {
+        "type": "jump",
+        "id": "TSo12q",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-3447af53459ff603"
+          }
+        ]
+      }
+    ],
+    "jump-5d8c954513efd96a": [
+      {
+        "type": "jump",
+        "id": "mjOAcv",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-253ab562a9ed5c20"
+          }
+        ]
+      }
+    ],
+    "jump-23bc8e1fe9545e2e": [
+      {
+        "player": "I don't want to travel there."
+      },
+      {
+        "type": "line",
+        "speaker": "Rug Merchant",
+        "text": "Fair enough, magic carpet travel isn't for everyone. Enjoy the walk."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-84404882f23f209d": [
+      {
+        "player": "I don't want to travel to any of those places."
+      },
+      {
+        "type": "line",
+        "speaker": "Rug Merchant",
+        "text": "Fair enough, magic carpet travel isn't for everyone. Enjoy the walk."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-40f91699f199ece3": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes tell me about...",
+            "steps": [
+              {
+                "player": "Yes, tell me about..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The Menaphites",
+                    "steps": [
+                      {
+                        "player": "Tell me about the Menaphites."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "They're a bad bunch, always starting fights down in the Asp and Snake. Word on the street is that they're led by some deranged priest. Nobody's ever seen them though - they do all their deals through Ali 'the"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "Operator'. I reckon they're up to something, but they're such a close knit group that little ever slips out."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "Do you need any other information?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "9e4yWK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-40f91699f199ece3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The bandits",
+                    "steps": [
+                      {
+                        "player": "Tell me about the bandits."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "There's not much to say, really. They're just a group of local thugs led by the biggest and strongest amongst them. If they have any other plans, I don't know about it."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "Do you need any other information?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "MS4Qep",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-beb025874f3884c7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The Mayor",
+                    "steps": [
+                      {
+                        "player": "Tell me about the Mayor."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "The mayor is a spineless coward! He never stands up to anybody. That's why the Menaphites are so strong now! He let them stay, and then they started causing trouble. When he realised his mistake, he hired a band"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "of local thugs to drive them out, but they saw how weak he was and turned on us too. Now we've got bandits and Menaphites, and the mayor isn't doing anything!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "Do you need any other information?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "adcOVD",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-edf9ef455ae106a3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ali Morrisane's nephew",
+                    "steps": [
+                      {
+                        "player": "Tell me about Ali Morrisane's nephew."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "I know him! He used to kick us when he caught any of us stealing from his stall."
+                      },
+                      {
+                        "player": "Do you know where he is now then?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "He disappeared a little while ago. All I know is it had something to do with the gangs. Probably he scammed them. You'd have to gain their trust to find out more, m'afraid - if I get too close, they might disappear me"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "too!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "Do you need any other information?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "lpI3LO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-882966e88bc74f3a"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The town",
+                    "steps": [
+                      {
+                        "player": "Tell me about the town."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "It's boring! We're not as big as Menaphos or as powerful as Al Kharid, and we've got a really nasty crime problem. It's no wonder so many grown-ups have left."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Street urchin",
+                        "text": "Do you need any other information?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "qbOkaq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-317a422015b68603"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "Come back if you need any info about anything in the town."
+              },
+              {
+                "player": "I will do thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-beb025874f3884c7": [
+      {
+        "type": "jump",
+        "id": "9e4yWK",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-40f91699f199ece3"
+          }
+        ]
+      }
+    ],
+    "jump-edf9ef455ae106a3": [
+      {
+        "type": "jump",
+        "id": "MS4Qep",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-beb025874f3884c7"
+          }
+        ]
+      }
+    ],
+    "jump-882966e88bc74f3a": [
+      {
+        "type": "jump",
+        "id": "adcOVD",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-edf9ef455ae106a3"
+          }
+        ]
+      }
+    ],
+    "jump-317a422015b68603": [
+      {
+        "type": "jump",
+        "id": "lpI3LO",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-882966e88bc74f3a"
+          }
+        ]
+      }
+    ],
+    "jump-ca667c3df7439710": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks, I'm ok.",
+            "steps": [
+              {
+                "player": "No thanks, I'm ok. Thanks for your time."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Yes, I'd like to talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "Ce0KIS"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-08b14beb08b1ba9f": [
+      {
+        "type": "jump",
+        "id": "sPI8Xu",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-ca667c3df7439710"
+          }
+        ]
+      }
+    ],
+    "jump-a87e23330bc4f4ad": [
+      {
+        "player": "A discount camel store?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Yes - it's my great idea - selling camels at discounted prices so that the common man can experience the joys of owning a camel of their very own! They're not just a source of kebab meat you know!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So can I buy a camel then? I'm hungry!",
+            "steps": [
+              {
+                "player": "So can I buy a camel then? I'm hungry!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "I would never sell one to the likes of you! They are beautiful, majestic creatures, not food! Get out of my shop."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Yes, camels are beautiful creatures.",
+            "steps": [
+              {
+                "player": "Yes, camels are beautiful creatures."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Ah, wondrous camels! Best of all Saradomin's creations. Ships of the desert, far more useful than any horse or donkey. Truly, they are a man's best friend."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Perhaps you'd like a camel of your own? You're in the right place, if so..."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Well yes, actually I would like to ask about something else.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "DnFSjC"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, but thanks for your time.",
+                    "steps": [
+                      {
+                        "player": "No, but thanks for your time."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why would I want a camel? All they do is spit and...",
+            "steps": [
+              {
+                "player": "Why would I want a camel? All they do is spit and..."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Pah! I've seen mummies with more brains than you! If you treat camels badly then of course they're going to spit at you. May your robes never be clean again!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "id": "9HKxFe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-52bea5de7d1a9c9a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Actually, I think I was a camel in a previous life.",
+            "steps": [
+              {
+                "player": "Actually, I think I was a camel in a previous life."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "You're teasing me now! You rogue!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Everyone laughs at the poor Discount Camel Seller."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "id": "Rd2mzx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dfec37c5f5aa01f7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "So is the discount camel business good then?",
+            "steps": [
+              {
+                "player": "So is the discount camel business good then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Business is booming! Pollnivneach has never seen this number of visitors."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "In fact I'm thinking of expanding and trying to break into the camel hire market."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "If only I could figure out how to get people to return the camels..."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "id": "q8xds_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-40e60ad1668a2d7e"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-17f3b7d6db24b696": [
+      {
+        "player": "Tell me about this town."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Well, Pollnivneach is a funny little place. It's a small town and you'd think it'd be nice and quiet."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "But those Menaphites and bandits are making the place quite unbearable."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "In what way?",
+            "steps": [
+              {
+                "player": "In what way?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Well, one group is as bad as the other! They steal, they fight, they cause trouble with us locals. Just yesterday one of those bandits came looking for protection money!"
+              },
+              {
+                "player": "Why don't the authorities stop this?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "We're a small town. We don't have the resources to keep the gangs off our backs! Menaphos and Al Kharid are no help either."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "To tell the truth we live in hope that an outsider, someone with no ties to either group, could broker a deal to halt the hostilities between them."
+              },
+              {
+                "player": "Hmm..."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "id": "obktUt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2d457f4d4b15e996"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well the weak will always be trodden on. Why not stand up to them?",
+            "steps": [
+              {
+                "player": "Well the weak will always be trodden on. Why not stand up to them?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "That's a little unfair, my friend. We can't all be brave adventurers. If we were, where would you purchase quality camels at discounted prices?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "You might think about that. Anyway, isn't it the job of the brave adventurer to protect the weak and innocent from evil and harm?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "id": "_KNL23",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-77011e28190d175c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Perhaps I could help.",
+            "steps": [
+              {
+                "player": "Perhaps I could help."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Yes, perhaps you could."
+              },
+              {
+                "player": "You know the politics better than I do. What do you recommend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Me?! I am but a humble discount camel seller. You're the adventurer, don't you know what to do?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Of course I know what to do! I was just testing you!",
+                    "steps": [
+                      {
+                        "player": "Of course I know what to do! I was just testing you!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "That is reassuring to hear. Too often one meets brainless adventurers whose solution to every problem is to hack, maim and murder."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "I'm glad to know you're not of that ilk."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "Is there anything else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "TSo12q",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3447af53459ff603"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Perhaps I should know, but offered advice should never be shunned.",
+                    "steps": [
+                      {
+                        "player": "Perhaps I should know, but offered advice should never be shunned."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "The state of adventurers today. They need everything spelled out for them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "What, you want me to put a little note in your quest journal?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "But fine, I'll give you a hint. Try and see if you can get the gangs to agree to a truce by offering them each a token gift as an act of reconciliation."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "If that fails to work, you must consider trying to influence the gangs from within."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Camel Man",
+                        "text": "Is there anything else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "mjOAcv",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-253ab562a9ed5c20"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8ead8b841f0967eb": [
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "It's a beautiful day today, but word has it that it will rain tomorrow."
+      },
+      {
+        "player": "Really?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "No! When have you ever known it to rain here in Gielinor?"
+      },
+      {
+        "player": "Oh. Anyway..."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Is there anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "id": "XUXH-B",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-5d8c954513efd96a"
+          }
+        ]
+      }
+    ],
+    "jump-518669911dcaa5e7": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well yes, actually I would like to ask about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "gseBUS"
+              }
+            ]
+          },
+          {
+            "text": "No, but thanks for your time.",
+            "steps": [
+              {
+                "player": "No, but thanks for your time."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-60a2ae3c563ac392": [
+      {
+        "type": "jump",
+        "id": "EuJO-T",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-518669911dcaa5e7"
+          }
+        ]
+      }
+    ],
+    "jump-550e24b6f6e1b232": [
+      {
+        "player": "I'm looking for Ali from Pollnivneach."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Well, you've found your man."
+      },
+      {
+        "player": "Really? Do you have an uncle called Ali?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Why yes - all my uncles are called Ali!"
+      },
+      {
+        "player": "Oh dear! Do any of them own a stall in the Al Kharid Bazaar?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Well no, but one of them owns a moderately successful camel hire franchise."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Have you considered hiring a camel? Or perhaps purchasing one of your own? I can get you a discount."
+      },
+      {
+        "player": "Never mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9fcc95e863335e9f": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "xy8ULg"
+      }
+    ],
+    "jump-0599c1c9ea4c86c7": [
+      {
+        "type": "line",
+        "speaker": "Ali the Camel Man",
+        "text": "Why? did they not please you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, they didn't. I sold them as Kebab meat!",
+            "steps": [
+              {
+                "player": "No, they didn't. I sold them as Kebab meat!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Nooooo! Not Sandy and Lumps! You beast! Get out of my shop this instant!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I'm not really a camel person, so I gave them to a better owner.",
+            "steps": [
+              {
+                "player": "I'm not really a camel person, so I gave them to a better owner."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "That's very responsible of you. Too many people let their camels run feral through the desert, instead of sending them to happy homes."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "You want to watch out for those feral camels, you know."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "xy8ULg"
+              }
+            ]
+          },
+          {
+            "text": "I decided to try and use them to end the hostilities between the two gangs.",
+            "steps": [
+              {
+                "player": "I decided to try and use them to end the hostilities between the two gangs."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "A noble purpose for two noble beasts! Did you succeed?"
+              },
+              {
+                "player": "Still working on that, I'm afraid."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Well, I wish you the best of luck."
+              },
+              {
+                "type": "line",
+                "speaker": "Ali the Camel Man",
+                "text": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "id": "93Ls46",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9fcc95e863335e9f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a8c02df5be3369c8": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes I'd like to ask you about something else.",
+            "steps": [
+              {
+                "player": "Yes I'd like to ask you about something else."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about yourself.",
+                    "steps": [
+                      {
+                        "player": "Tell me about yourself."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Operator",
+                        "text": "That information is available on a need to know basis and right now, you don't need to know."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Operator",
+                        "text": "Can I help you with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "RBJN2q",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a8c02df5be3369c8"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about the other people in the town.",
+                    "steps": [
+                      {
+                        "player": "Tell me about the other people in the town."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Operator",
+                        "text": "Sheep, ready for the slau... hang on. I shouldn't be telling you that. Just forget I said anything."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Operator",
+                        "text": "Can I help you with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "p_FR9x",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-efc7ce7944297746"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm looking for Ali.",
+                    "steps": [
+                      {
+                        "player": "I'm looking for Ali."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Operator",
+                        "text": "Can you be a bit more specific? Everyone here is called Ali."
+                      },
+                      {
+                        "player": "So I noticed. Well, he has an uncle called Ali Morrisane, a market vendor in Al Kharid. That's all I really know about him."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Operator",
+                        "text": "Say no more. I know just the Ali you mean - that little snake robbed me too! If we work together perhaps we can catch him and teach him a lesson."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ali the Operator",
+                        "text": "Can I help you with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "id": "rt4RAy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a38ecefcc64ef6fb"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-efc7ce7944297746": [
+      {
+        "type": "jump",
+        "id": "RBJN2q",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-a8c02df5be3369c8"
+          }
+        ]
+      }
+    ],
+    "jump-a38ecefcc64ef6fb": [
+      {
+        "type": "jump",
+        "id": "p_FR9x",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-efc7ce7944297746"
+          }
+        ]
+      }
+    ],
+    "jump-a5bcd7aa08662763": [
+      {
+        "type": "jump",
+        "id": "rt4RAy",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-a38ecefcc64ef6fb"
+          }
+        ]
+      }
+    ],
+    "jump-16fc316eb7080203": [
+      {
+        "player": "Yes, tell me about..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "The Menaphites",
+            "steps": [
+              {
+                "player": "Tell me about the Menaphites."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "They're a bad bunch, always starting fights down in the Asp and Snake. Word on the street is that they're led by some deranged priest. Nobody's ever seen them though - they do all their deals through Ali 'the"
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "Operator'. I reckon they're up to something, but they're such a close knit group that little ever slips out."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "id": "9e4yWK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-40f91699f199ece3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The bandits",
+            "steps": [
+              {
+                "player": "Tell me about the bandits."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "There's not much to say, really. They're just a group of local thugs led by the biggest and strongest amongst them. If they have any other plans, I don't know about it."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "id": "MS4Qep",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-beb025874f3884c7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The Mayor",
+            "steps": [
+              {
+                "player": "Tell me about the Mayor."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "The mayor is a spineless coward! He never stands up to anybody. That's why the Menaphites are so strong now! He let them stay, and then they started causing trouble. When he realised his mistake, he hired a band"
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "of local thugs to drive them out, but they saw how weak he was and turned on us too. Now we've got bandits and Menaphites, and the mayor isn't doing anything!"
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "id": "adcOVD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-edf9ef455ae106a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Ali Morrisane's nephew",
+            "steps": [
+              {
+                "player": "Tell me about Ali Morrisane's nephew."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "I know him! He used to kick us when he caught any of us stealing from his stall."
+              },
+              {
+                "player": "Do you know where he is now then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "He disappeared a little while ago. All I know is it had something to do with the gangs. Probably he scammed them. You'd have to gain their trust to find out more, m'afraid - if I get too close, they might disappear me"
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "too!"
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "id": "lpI3LO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-882966e88bc74f3a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The town",
+            "steps": [
+              {
+                "player": "Tell me about the town."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "It's boring! We're not as big as Menaphos or as powerful as Al Kharid, and we've got a really nasty crime problem. It's no wonder so many grown-ups have left."
+              },
+              {
+                "type": "line",
+                "speaker": "Street urchin",
+                "text": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "id": "qbOkaq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-317a422015b68603"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e947810eef60931a": [
+      {
+        "player": "Nah no problems here. I actually wanted to ask you about something else."
+      },
+      {
+        "player": "Yes I'd like to ask you about something else."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "8fQpYP"
+      }
+    ],
+    "jump-430c61008b28cacb": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "xxA9xE"
+      }
+    ],
+    "jump-6acea8a657b6fca1": [
+      {
+        "player": "Yes, I'd like a drink please."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The Asp & Snake Bar.",
+        "id": "hACptU"
+      }
+    ],
+    "jump-bd24c980327de556": [
+      {
+        "player": "What's going on in town?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Nothing much really. About what you'd expect from a sleepy little town like ours."
+      },
+      {
+        "player": "What about those two gangs? That seems exciting."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "They're paying customers, so I won't rock the boat if you don't mind."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Is there anything else I can help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks, I'm ok.",
+            "steps": [
+              {
+                "player": "No thanks, I'm ok. Thanks for your time."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Yes, I'd like to talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "Ce0KIS"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0fa99c2f4c161929": [
+      {
+        "player": "I'm looking for Ali from Pollnivneach."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Well, I'm called Ali and I'm from here. Are you looking for me?"
+      },
+      {
+        "player": "Do you have an uncle called Ali?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Yes! All my uncles are called Ali!"
+      },
+      {
+        "player": "Oh dear. Well do any of your uncles have a stall in the Bazaar in Al Kharid?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Um... no."
+      },
+      {
+        "player": "Well do you know if anyone here does?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "That's a difficult question to answer. I don't know anyone else's uncles."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Is there anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "id": "sPI8Xu",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-ca667c3df7439710"
+          }
+        ]
+      }
+    ],
+    "jump-1f74b7e44c26cd2e": [
+      {
+        "player": "The 'Asp and Snake'? What a strange name for a bar."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Maybe around these parts. Were you expecting it to have 'Ali' in the name?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "I did think about calling it 'Ali's', but then it'd get confused with the Camel Shop, the Kebab House, the Mayor's residence..."
+      },
+      {
+        "player": "Yes, I get your point. It's a perfectly fine name."
+      },
+      {
+        "type": "line",
+        "speaker": "Ali the Barman",
+        "text": "Is there anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "id": "b5munK",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-08b14beb08b1ba9f"
+          }
+        ]
+      }
+    ],
     "nIVxya": [
       {
         "player": "No thanks."

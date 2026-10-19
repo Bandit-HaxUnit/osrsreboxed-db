@@ -274,8 +274,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "fNLxSw"
+                "id": "fNLxSw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8bea16719001fb80"
+                  }
+                ]
               }
             ]
           },
@@ -307,7 +312,53 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you tell me more about the library?"
+            "text": "Can you tell me more about the library?",
+            "steps": [
+              {
+                "player": "Can you tell me more about the library?"
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Why, certainly, it is one of my favourite subjects!"
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "I am Hugi, you see, I am the chief librarian here. Hugi, my parents named me that, it means 'personification of thought' in the ancient dwarvish tongue."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Quite like the name myself."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "The books in this library have been collected for many centuries now, through various generous donations."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "You'll find books dating from many different eras as well, such as the Era of Kings, the Rise of the Consortium and the Era of Prosperity, our current era."
+              },
+              {
+                "player": "How do these eras correspond with the Ages of the world?"
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Oh, they are quite different, and most of them take place in the Fourth Age."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Since we dwarves hid underground for a long time to sit out the wars that raged above the ground our history books differ slightly from those written by humans."
+              },
+              {
+                "player": "Thanks for the information!"
+              }
+            ]
           },
           {
             "text": "What do you know about impenetrable rocks?",
@@ -2795,7 +2846,7 @@
                                   {
                                     "type": "line",
                                     "speaker": "Dondakan the Dwarf",
-                                    "text": "What, are you trying to scam old Dondakan? You want me to sell these boots for a measly [number] coins?{{^|Note: says \"1 coins\"}}"
+                                    "text": "What, are you trying to scam old Dondakan? You want me to sell these boots for a measly [number] coins?"
                                   },
                                   {
                                     "type": "line",
@@ -3018,7 +3069,56 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you tell me more about the library?"
+            "text": "Can you tell me more about the library?",
+            "steps": [
+              {
+                "player": "Can you tell me more about the library?"
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Why, certainly, it is one of my favourite subjects!"
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "I am Hugi, you see, I am the chief librarian here. Hugi, my parents named me that, it means 'personification of thought' in the ancient dwarvish tongue."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Quite like the name myself."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "The books in this library have been collected for many centuries now, through various generous donations."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "You'll find books dating from many different eras as well, such as the Era of Kings, the Rise of the Consortium and the Era of Prosperity, our current era."
+              },
+              {
+                "player": "How do these eras correspond with the Ages of the world?"
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Oh, they are quite different, and most of them take place in the Fourth Age."
+              },
+              {
+                "type": "line",
+                "speaker": "Librarian",
+                "text": "Since we dwarves hid underground for a long time to sit out the wars that raged above the ground our history books differ slightly from those written by humans."
+              },
+              {
+                "player": "Thanks for the information!"
+              },
+              {
+                "type": "end"
+              }
+            ]
           },
           {
             "text": "What do you know about impenetrable rocks?",
@@ -3094,6 +3194,55 @@
     ]
   },
   "branches": {
+    "jump-8bea16719001fb80": [
+      {
+        "type": "line",
+        "speaker": "Dondakan the Dwarf",
+        "text": "I don't know! Wish I knew!"
+      },
+      {
+        "type": "line",
+        "speaker": "Dondakan the Dwarf",
+        "text": "But we have to get some better understanding of what this thing actually is. Maybe then we can find a way to break it open."
+      },
+      {
+        "player": "And what are you going to do while I go running across half of Gielinor, I'll wager?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dondakan the Dwarf",
+        "text": "I'll guard my cannon and fire more cannonballs at it, of course! Wish I had your job, mine's a tough one!"
+      },
+      {
+        "player": "Want to trade places?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dondakan the Dwarf",
+        "text": "My legs are too old and worn to do much running around anymore, I'm afraid."
+      },
+      {
+        "type": "line",
+        "speaker": "Dondakan the Dwarf",
+        "text": "Well, off you go now! Start running, start talking!"
+      },
+      {
+        "player": "But I still don't know where!"
+      },
+      {
+        "type": "line",
+        "speaker": "Dondakan the Dwarf",
+        "text": "Oh, why so difficult?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dondakan the Dwarf",
+        "text": "Look, try the city, further down the stream here. There's bound to be someone there who knows something. If you still can't find anyone, go to the librarian, he knows a lot."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "-a5r0Z": [
       {
         "player": "I have that golden helmet you said I'd need, what else did you need again?"

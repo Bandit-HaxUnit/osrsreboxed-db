@@ -292,8 +292,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "ihIyKc"
+                            "id": "ihIyKc",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-dfe0cd68cde1f904"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -303,8 +308,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "gD39ry"
+                            "id": "gD39ry",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-9e9ddd2869ab0db2"
+                              }
+                            ]
                           }
                         ],
                         "id": "6xrMp6"
@@ -346,8 +356,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "2WYaQN"
+                            "id": "2WYaQN",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-9654f56053faaee3"
+                              }
+                            ]
                           }
                         ],
                         "id": "mMDsDN"
@@ -364,8 +379,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3suLwx"
+                "id": "3suLwx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3038e6e78c4271e6"
+                  }
+                ]
               }
             ]
           }
@@ -429,6 +449,75 @@
           }
         ],
         "id": "8Iyms5"
+      }
+    ]
+  },
+  "branches": {
+    "jump-dfe0cd68cde1f904": [
+      {
+        "player": "Oh, I'll not bother then."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9e9ddd2869ab0db2": [
+      {
+        "player": "Or perhaps you could let me travel for free?"
+      },
+      {
+        "npc": "Yes, perhaps I could. Okay, jump aboard then."
+      },
+      {
+        "type": "message",
+        "text": "You board the ship.",
+        "id": "upG45P"
+      },
+      {
+        "type": "message",
+        "text": "The ship arrives at Port Sarim.",
+        "id": "9VGrva"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9654f56053faaee3": [
+      {
+        "player": "This is not the Karamja rum you are looking for."
+      },
+      {
+        "npc": "This is not the Karamja rum we are looking for."
+      },
+      {
+        "player": "Well that was easy!"
+      },
+      {
+        "type": "message",
+        "text": "You dance for joy...",
+        "id": "nTUU6k"
+      },
+      {
+        "type": "message",
+        "text": "...and accidentally drop the rum.",
+        "id": "CO6KKg"
+      },
+      {
+        "player": "Drat..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3038e6e78c4271e6": [
+      {
+        "player": "Does Karamja have any unusual customs then?"
+      },
+      {
+        "npc": "I'm not that sort of customs officer."
+      },
+      {
+        "type": "end"
       }
     ]
   }

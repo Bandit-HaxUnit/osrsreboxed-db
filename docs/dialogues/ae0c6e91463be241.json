@@ -123,8 +123,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "X-pvwj"
+                "id": "X-pvwj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a061baa430851898"
+                  }
+                ]
               }
             ]
           },
@@ -161,8 +166,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vSmmSV"
+                "id": "vSmmSV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5fd9f7c96936b386"
+                  }
+                ]
               }
             ]
           },
@@ -171,8 +181,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kphtlX"
+                "id": "kphtlX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1e77643d41ca2390"
+                  }
+                ]
               }
             ]
           }
@@ -182,6 +197,54 @@
     "if-the-player-lost-the-memoir-page-before-using-it-on-the-memoir": [
       {
         "npc": "Looking for your reward, idiot? Take it and get lost."
+      }
+    ]
+  },
+  "branches": {
+    "jump-a061baa430851898": [
+      {
+        "player": "Tell me about the Saviours of Kourend."
+      },
+      {
+        "npc": "For many years I used my position to fight against the crime and corruption in this city. No matter what I did it was never enough though. I realised that to defeat my enemies I needed to act as they do."
+      },
+      {
+        "npc": "That's why I formed the Saviours of Kourend. We take the laws into our own hands and fight against all who would damage this city, no matter who they are."
+      },
+      {
+        "npc": "What else do you want?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "IgR0P9"
+      }
+    ],
+    "jump-5fd9f7c96936b386": [
+      {
+        "player": "Tell me about your plans."
+      },
+      {
+        "npc": "No."
+      },
+      {
+        "npc": "What else do you want?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "FhWbh0"
+      }
+    ],
+    "jump-1e77643d41ca2390": [
+      {
+        "player": "Nothing."
+      },
+      {
+        "npc": "How about you go away then?"
+      },
+      {
+        "type": "end"
       }
     ]
   }

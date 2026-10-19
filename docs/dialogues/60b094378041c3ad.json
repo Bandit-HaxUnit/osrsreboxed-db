@@ -65,8 +65,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "4ny_9D"
+                            "id": "4ny_9D",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-d435c11ab581041a"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -215,6 +220,79 @@
       },
       {
         "npc": "We need more rift guardians!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d435c11ab581041a": [
+      {
+        "player": "Yes, that sounds fair."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a degraded essence pouch:",
+        "steps": [
+          {
+            "npc": "You don't seem to have any pouches in need of repair."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NhhTKU"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a degraded essence pouch:",
+        "steps": [
+          {
+            "npc": "Bear with me whilst I make the contact for repairing the pouches."
+          },
+          {
+            "type": "action",
+            "text": "Apprentice Cordelia casts the Astral Contact spell.",
+            "id": "yZnIPw"
+          },
+          {
+            "npc": "Hi, it's me again."
+          },
+          {
+            "type": "line",
+            "speaker": "Dark Mage",
+            "text": "..."
+          },
+          {
+            "npc": "Hello, I know you can hear me."
+          },
+          {
+            "type": "line",
+            "speaker": "Dark Mage",
+            "text": "..."
+          },
+          {
+            "npc": "Ding Dong, Ding Dong. You can't keep me waiting."
+          },
+          {
+            "type": "line",
+            "speaker": "Dark Mage",
+            "text": "Fine. What do you want?"
+          },
+          {
+            "npc": "I got someone here in need of a pouch repair."
+          },
+          {
+            "type": "line",
+            "speaker": "Dark Mage",
+            "text": "OK...It's done."
+          },
+          {
+            "npc": "Your pouches have been repaired."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bapb1V"
       }
     ]
   }

@@ -55,8 +55,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "YYoxyI"
+                        "id": "YYoxyI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2de3cba7d3da5db8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -123,6 +128,19 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-2de3cba7d3da5db8": [
+      {
+        "player": "No thanks, I'm not interested."
+      },
+      {
+        "npc": "Okay; you change your mind, you come see me. I'm your guy!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

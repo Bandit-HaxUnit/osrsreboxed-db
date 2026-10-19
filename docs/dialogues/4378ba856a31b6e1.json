@@ -1,4 +1,85 @@
 {
+  "branches": {
+    "jump-e44f739aba4df235": [
+      {
+        "player": "What's going on here?"
+      },
+      {
+        "npc": "With this strange tattooed man? He is on trial."
+      },
+      {
+        "player": "For what crime?"
+      },
+      {
+        "npc": "It is suspected he might have caused the return of the Sleeper Plague."
+      },
+      {
+        "player": "Sleeper Plague?"
+      },
+      {
+        "npc": "Yes. A long time ago, Slepe was beset by an illness called the Sleeper Plague. Those infected fell into a deep sleep, never to wake."
+      },
+      {
+        "player": "But now it's back?"
+      },
+      {
+        "npc": "It would appear so. This man showed up in town around the same time the first victim fell ill. We fear this is no coincidence."
+      },
+      {
+        "player": "That doesn't make him guilty though."
+      },
+      {
+        "npc": "No. That is for the trial to determine."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "S3NuCx"
+      }
+    ],
+    "jump-7f0ec5456c43ca79": [
+      {
+        "player": "What happened to the tattooed man?"
+      },
+      {
+        "npc": "His trial has concluded. The citizens have passed their judgement."
+      },
+      {
+        "player": "And?"
+      },
+      {
+        "npc": "The accused was found guilty of causing the return of the Sleeper Plague. He has now been executed."
+      },
+      {
+        "player": "Executed? That's pretty dark."
+      },
+      {
+        "npc": "Morytania is a dark place, traveller. If you wished for light, you should have picked a better holiday destination."
+      },
+      {
+        "player": "So that's it?"
+      },
+      {
+        "npc": "Since the execution, we have had no new occurrences of the Sleeper Plague. So yes, that's it."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "S-0Iu3"
+      }
+    ],
+    "jump-1528b18c08c41bb3": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Be safe, traveller."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello!"
@@ -91,8 +172,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "AxQcNO"
+                      "id": "AxQcNO",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-e44f739aba4df235"
+                        }
+                      ]
                     }
                   ],
                   "id": "SjTF2S"
@@ -103,8 +189,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "DYZ4Ie"
+                      "id": "DYZ4Ie",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7f0ec5456c43ca79"
+                        }
+                      ]
                     }
                   ],
                   "id": "DANYEz"
@@ -114,8 +205,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "MNK7J-"
+                      "id": "MNK7J-",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-1528b18c08c41bb3"
+                        }
+                      ]
                     }
                   ]
                 }

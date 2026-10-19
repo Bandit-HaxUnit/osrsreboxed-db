@@ -173,8 +173,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "38Arv3"
+                "id": "38Arv3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b4421a3da18a1b33"
+                  }
+                ]
               }
             ]
           },
@@ -183,8 +188,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NfxIeY"
+                "id": "NfxIeY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f36e0a03d5d6ce9f"
+                  }
+                ]
               }
             ]
           },
@@ -193,8 +203,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Yk1cYP"
+                "id": "Yk1cYP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-afcc42ef1644473c"
+                  }
+                ]
               }
             ]
           },
@@ -203,8 +218,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KpQp9N"
+                "id": "KpQp9N",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7d4db2c7374987e0"
+                  }
+                ]
               }
             ]
           }
@@ -288,10 +308,26 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "The Shrimp and Parrot",
+                "id": "8bjHDi"
+              }
+            ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
           },
           {
             "text": "Do you sell Gherkins?",
@@ -312,7 +348,54 @@
             ]
           },
           {
-            "text": "Where do you get your Karambwan from?"
+            "text": "Where do you get your Karambwan from?",
+            "steps": [
+              {
+                "player": "Where do you get your Karambwan from?"
+              },
+              {
+                "type": "line",
+                "speaker": "Alfonse the waiter",
+                "text": "We buy directly off Lubufu, a local fisherman. He seems to have a monopoly over Karambwan sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Where can I find Lubufu?",
+                    "steps": [
+                      {
+                        "player": "Where can I find Lubufu?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Alfonse the waiter",
+                        "text": "He is usually working just to the south of the town."
+                      },
+                      {
+                        "player": "Thanks."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How does he manage a monopoly?",
+                    "steps": [
+                      {
+                        "player": "How does he manage a monopoly?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Alfonse the waiter",
+                        "text": "Simple - nobody else knows how to catch Karambwan. It is a closely guarded secret."
+                      },
+                      {
+                        "player": "Thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -412,8 +495,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "0OF8jR"
+                        "id": "0OF8jR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-af43760580063229"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -422,8 +510,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Zi-5UR"
+                        "id": "Zi-5UR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-62cdaa97e0dc2a08"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1059,8 +1152,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "2oTd3M"
+                            "id": "2oTd3M",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-154a3132d0467197"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -1069,8 +1167,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "8j5wkg"
+                            "id": "8j5wkg",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-be4d42fc22cd8623"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -1314,7 +1417,46 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you heal me? I'm injured."
+            "text": "Can you heal me? I'm injured.",
+            "steps": [
+              {
+                "player": "Can you heal me? I'm injured."
+              },
+              {
+                "type": "condition",
+                "text": "On a non-PvP or non-Deadman world:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Monk",
+                    "text": "Ok."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player is healed.",
+                    "action": "heal",
+                    "action_source": "text",
+                    "id": "prJy2t"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "y3QnZy"
+              },
+              {
+                "type": "condition",
+                "text": "On a PvP or Deadman world:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Monk",
+                    "text": "Sorry, no."
+                  }
+                ],
+                "id": "yAgGi-"
+              }
+            ]
           },
           {
             "text": "Isn't this place built a bit out the way"
@@ -1390,10 +1532,21 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you've got then."
+            "text": "Let's see what you've got then.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "IQRCHR"
+              }
+            ]
           },
           {
-            "text": "Sorry, I'm not interested."
+            "text": "Sorry, I'm not interested.",
+            "steps": [
+              {
+                "player": "Sorry, I'm not interested."
+              }
+            ]
           },
           {
             "text": "I want to find out how to catch a lava eel.",
@@ -1442,10 +1595,21 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you've got then."
+            "text": "Let's see what you've got then.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "IQRCHR"
+              }
+            ]
           },
           {
-            "text": "Sorry, I'm not interested."
+            "text": "Sorry, I'm not interested.",
+            "steps": [
+              {
+                "player": "Sorry, I'm not interested."
+              }
+            ]
           },
           {
             "text": "I want to find out how to catch a lava eel.",
@@ -1549,11 +1713,156 @@
     ]
   },
   "branches": {
+    "jump-b4421a3da18a1b33": [
+      {
+        "player": "Any hints on getting the thieves armband?"
+      },
+      {
+        "type": "line",
+        "speaker": "Achietties",
+        "text": "I'm sure you have the relevant contacts to find out about that."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f36e0a03d5d6ce9f": [
+      {
+        "player": "Any hints on getting the feather?"
+      },
+      {
+        "type": "line",
+        "speaker": "Achietties",
+        "text": "Not really - other than Entranan firebirds tend to live on Entrana."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-afcc42ef1644473c": [
+      {
+        "player": "Any hints on getting the eel?"
+      },
+      {
+        "type": "line",
+        "speaker": "Achietties",
+        "text": "Maybe go and find someone who knows a lot about fishing?"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7d4db2c7374987e0": [
+      {
+        "player": "I'll start looking for all those things then."
+      },
+      {
+        "type": "line",
+        "speaker": "Achietties",
+        "text": "Good luck with that."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-af43760580063229": [
+      {
+        "player": "Sun, sand and the fresh sea air!"
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the cook",
+        "text": "Well, can't say I blame you compadre. I used to be a city boy myself, but have to admit it's a lot nicer living here nowadays. Brimhaven's certainly good for it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-62cdaa97e0dc2a08": [
+      {
+        "player": "I want to steal Scarface Pete's candlesticks."
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the cook",
+        "text": "Ah yes, of course. The candlesticks. Well, I have to be honest with you compadre, we haven't made much progress in that task ourselves so far. We can however offer"
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the cook",
+        "text": "a little assistance. The setting up of this restaurant was the start of things; we have a secret door out the back of here that leads through the back of Mr Olbors' garden."
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the cook",
+        "text": "Now, at the other side of Mr Olbors' garden, is an old side entrance to Scarface Pete's mansion. It seems to have been blocked off from the rest of the mansion some years ago"
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the cook",
+        "text": "and we can't seem to find a way through. We're positive this is the key to entering the house undetected however, and I promise to let you know if we find anything there."
+      },
+      {
+        "player": "Mind if I check it out for myself?"
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the cook",
+        "text": "Not at all! The more minds we have working on the problem, the quicker we get that loot!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-154a3132d0467197": [
+      {
+        "player": "So can I guard the treasure room please?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grip",
+        "text": "Well, I might post you outside it sometimes. I prefer to be the only one allowed inside however."
+      },
+      {
+        "type": "line",
+        "speaker": "Grip",
+        "text": "There's some pretty valuable artefacts in there! Those keys stay ONLY with the head guard and Scarface Pete."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "lK2m2o"
+      }
+    ],
+    "jump-be4d42fc22cd8623": [
+      {
+        "player": "Well, I'd better sort my new room out."
+      },
+      {
+        "type": "line",
+        "speaker": "Grip",
+        "text": "Yeah, I'll give you time to settle in. Better get a good nights sleep, I expect you to report for duty at oh five hundred hours tomorrow on the dot!"
+      },
+      {
+        "type": "end"
+      }
+    ],
     "6FQuQb": [
       {
         "type": "line",
         "speaker": "Grubor",
         "text": "Eh? What are you on about? Go away!"
+      }
+    ],
+    "IQRCHR": [
+      {
+        "player": "Let's see what you've got then."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Gerrant's Fishy Business.",
+        "id": "VGCGcu"
       }
     ]
   }

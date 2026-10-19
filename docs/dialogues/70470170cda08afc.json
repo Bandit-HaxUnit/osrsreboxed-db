@@ -37,8 +37,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "M7gKJ0"
+                "id": "M7gKJ0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bd525f70bb012bdd"
+                  }
+                ]
               }
             ]
           },
@@ -120,12 +125,8 @@
             "text": "Goodbye.",
             "steps": [
               {
-                "player": "Goodbye."
-              },
-              {
-                "type": "line",
-                "speaker": "Lord Kandur Hosidius",
-                "text": "Until next time."
+                "type": "call",
+                "branch": "hGzwlb"
               }
             ]
           }
@@ -858,16 +859,40 @@
             "type": "choice",
             "options": [
               {
-                "text": "Tell me about yourself."
+                "text": "Tell me about yourself.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "HTe88e"
+                  }
+                ]
               },
               {
-                "text": "Tell me about Hosidius."
+                "text": "Tell me about Hosidius.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "9veHEV"
+                  }
+                ]
               },
               {
-                "text": "Tell me about your plans."
+                "text": "Tell me about your plans.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "3dTO7f"
+                  }
+                ]
               },
               {
-                "text": "Goodbye."
+                "text": "Goodbye.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "hGzwlb"
+                  }
+                ]
               }
             ]
           }
@@ -893,22 +918,238 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me about yourself."
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "HTe88e"
+              }
+            ]
           },
           {
-            "text": "Tell me about Hosidius."
+            "text": "Tell me about Hosidius.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "9veHEV"
+              }
+            ]
           },
           {
-            "text": "Tell me about your plans."
+            "text": "Tell me about your plans.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "3dTO7f"
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "type": "line",
+                "speaker": "Lord Kandur Hosidius",
+                "text": "Until next time."
+              },
+              {
+                "type": "end"
+              }
+            ]
           }
         ]
       },
       {
         "type": "unavailable",
         "id": "yARffe"
+      }
+    ]
+  },
+  "branches": {
+    "jump-bd525f70bb012bdd": [
+      {
+        "type": "condition",
+        "text": "If the player does not have the requirements to start the quest:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Lord Kandur Hosidius",
+            "text": "Our family is in dire need of assistance. Alas, I do not feel I can trust you enough to involve you in this."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Kac5Aj"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the requirements to start the quest:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Lord Kandur Hosidius",
+            "text": "Our family is in dire need of assistance. My eldest son, Artur, has gone missing and we could desperately use some help in finding him."
+          },
+          {
+            "type": "line",
+            "speaker": "Lord Kandur Hosidius",
+            "text": "Would you be willing to assist us? You will be rewarded if you bring him home safe."
+          },
+          {
+            "type": "choice",
+            "prompt": "Start The Depths of Despair quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "I can help. What do you need me to do?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Lord Kandur Hosidius",
+                    "text": "Thank you friend. I suggest you begin your search by talking to my family and servants. One of them might know where Artur has gone."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "hook": "quest:the-depths-of-despair:start",
+                "quest": "The Depths of Despair"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "No. I'm afraid I have other things to be doing."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Lord Kandur Hosidius",
+                    "text": "I'm sorry to hear that. If you change your mind please return to me as soon as you can."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "TrbpPj"
+      }
+    ],
+    "hGzwlb": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Until next time."
+      }
+    ],
+    "HTe88e": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "I am Kandur Hosidius and I am the lord of Hosidius, the city of farmers and chefs. I live here with my wife, Elena, and my two sons, Artur and Pandur."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "My family and I have a peaceful existence here. That's mainly because I care not for the politics of the other houses. I instead devote my time to more meaningful pursuits."
+      },
+      {
+        "player": "Such as?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Ensuring that Kourend is well fed. We may live in gentle times now but who knows how long it will be that way. Sooner or later another war or long winter will hit us. History has proven that."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "wPRzWD"
+      }
+    ],
+    "9veHEV": [
+      {
+        "player": "Tell me about Hosidius."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Hosidius is home to the farmers and chefs of Kourend. We are the main food supplier to the kingdom and we ensure that her people are fed."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "We also own more land than the other Kourend houses. We need the extra space for all of our crops."
+      },
+      {
+        "player": "Do the other houses not get annoyed at how much land you have?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Sometimes. They know it is necessary though. There was once a time when the land was shared equally. But then the great famine came, and Kourend did not have the food to last through it."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "After that, more space was given to Hosidius. We've had the most land ever since."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "e79NUY"
+      }
+    ],
+    "3dTO7f": [
+      {
+        "player": "Tell me about your plans."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Plans? My only plan is to keep providing food to this kingdom."
+      },
+      {
+        "player": "But what of the Royal Accord of Twill? You must have kept it for a reason."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "I did. The Accord has the potential to be a powerful weapon, for words cut deeper than a blade ever can. However, I have no need to use this weapon, not unless the other houses give me reason to."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "DwVKta"
       }
     ]
   }

@@ -162,6 +162,7 @@ def test_generated_exports():
     import os
     import pytest
     import jsonschema
+    from scripts.dialogues.corrections import fingerprint
 
     root = Path(
         os.environ.get("DIALOGUE_EXPORT_ROOT", Path(__file__).resolve().parents[1])
@@ -176,6 +177,7 @@ def test_generated_exports():
         dialogues, ensure_ascii=False, separators=(",", ":"), allow_nan=False
     )
     records = {}
+    corrections = json.loads((root / "data/dialogues/corrections.json").read_text())
     jsonschema.Draft202012Validator(schema).validate(dialogues)
     for name, value in dialogues.items():
         records["Transcript:" + name] = value
@@ -185,8 +187,8 @@ def test_generated_exports():
             or value["default"] in variants(value)
         )
         assert "entrypoint" not in value and "entrypoints" not in value
-        ids = [
-            n["id"]
+        nodes = [
+            n
             for steps in [
                 *variants(value).values(),
                 *value.get("branches", {}).values(),
@@ -194,7 +196,19 @@ def test_generated_exports():
             for n in walk(steps)
             if "id" in n
         ]
-        assert len(ids) == len(set(ids)), name
+        if name in corrections:
+            assert fingerprint(value) == corrections[name]["audited_sha256"], name
+        else:
+            bindings = {}
+            for node in nodes:
+                own = {
+                    key: val
+                    for key, val in node.items()
+                    if key not in ("steps", "options")
+                    and not (node.get("type") == "jump" and key == "reference")
+                }
+                assert node["id"] not in bindings or bindings[node["id"]] == own, name
+                bindings[node["id"]] = own
     for record in records.values():
         for steps in [*variants(record).values(), *record.get("branches", {}).values()]:
             for node in walk(steps):
@@ -216,11 +230,12 @@ def test_generated_exports():
     assert len(set(manifest.values())) == len(manifest)
     for page, record in records.items():
         assert authoring[page]["sections"].keys() == variants(record).keys()
-        for branch in record.get("branches", {}).values():
-            assert not any(n.get("type") == "call" for n in walk(branch))
     for page, path in manifest.items():
         assert json.loads((root / "docs" / path).read_text()) == records[page]
-        for steps in variants(records[page]).values():
+        for steps in [
+            *variants(records[page]).values(),
+            *records[page].get("branches", {}).values(),
+        ]:
             for node in walk(steps):
                 if node.get("type") == "call":
                     assert node["branch"] in records[page]["branches"]

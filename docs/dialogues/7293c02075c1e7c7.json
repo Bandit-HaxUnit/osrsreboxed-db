@@ -460,8 +460,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "XNS7vY"
+                            "id": "XNS7vY",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-2bf1b5c8ea5b9e35"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -3495,6 +3500,26 @@
       {
         "type": "unavailable",
         "id": "ThywOK"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2bf1b5c8ea5b9e35": [
+      {
+        "player": "I won't bother, then."
+      },
+      {
+        "type": "line",
+        "speaker": "Watchtower Wizard",
+        "text": "Won't bother? Won't bother!"
+      },
+      {
+        "type": "line",
+        "speaker": "Watchtower Wizard",
+        "text": "Perhaps this quest is too hard for you?"
+      },
+      {
+        "type": "end"
       }
     ]
   }

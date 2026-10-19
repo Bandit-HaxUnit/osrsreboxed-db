@@ -226,8 +226,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "SbYjJH"
+                                "id": "SbYjJH",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-1eea5205a45aedfb"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -236,8 +241,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "G0mCYd"
+                                "id": "G0mCYd",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-ddd1f6beca92e672"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -344,8 +354,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PgVFBf"
+                "id": "PgVFBf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-62f49a0915ea184d"
+                  }
+                ]
               }
             ],
             "id": "ZAs-lR"
@@ -391,8 +406,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "iPbomI"
+                "id": "iPbomI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1037d2df9facfd15"
+                  }
+                ]
               }
             ]
           },
@@ -401,8 +421,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Xljqul"
+                "id": "Xljqul",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-656865822cbdcd2b"
+                  }
+                ]
               }
             ]
           }
@@ -424,6 +449,139 @@
     "using-other-items-on-the-dark-mage": [
       {
         "npc": "Your items interest me not, traveller."
+      }
+    ]
+  },
+  "branches": {
+    "jump-1eea5205a45aedfb": [
+      {
+        "player": "Here's 200,000 coins. Please repair the staff."
+      },
+      {
+        "type": "message",
+        "text": "You give the mage 200,000 coins and the staff...",
+        "id": "OFrnZb"
+      },
+      {
+        "type": "action",
+        "text": "Dark Mage performs a spell (emote).",
+        "id": "WbqjgT"
+      },
+      {
+        "type": "message",
+        "text": "You give the mage 200,000 coins and the staff... The mage fixes the staff and returns it to you.",
+        "id": "ci95Tl"
+      },
+      {
+        "type": "action",
+        "text": "Player loses 200,000 coins.",
+        "id": "xEl_o_"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Iban's staff",
+        "id": "EERSbB"
+      },
+      {
+        "player": "Thanks, I appreciate that."
+      },
+      {
+        "npc": "You be careful with that thing!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ddd1f6beca92e672": [
+      {
+        "player": "Thanks, I'll bear it in mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-62f49a0915ea184d": [
+      {
+        "npc": "Hah! Yes, I can upgrade it to hold 2500 charges, enough to cast Iban's magic 2500 times at monsters or 1250 times at people like you. That'll cost you 200,000 coins."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Here's 200,000 coins. Please upgrade the staff.",
+            "condition": "If the player has at least 200,000 coins:",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "ALBm9G"
+              }
+            ],
+            "id": "sndc6v"
+          },
+          {
+            "text": "Thanks, I'll bear it in mind.",
+            "steps": [
+              {
+                "player": "Thanks, I'll bear it in mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1037d2df9facfd15": [
+      {
+        "type": "condition",
+        "text": "If the Iban staff has full 120 charges left:",
+        "steps": [
+          {
+            "npc": "Your staff is already as fully charged as it can go."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "OEPkFi"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has less than 100,000 coins:",
+        "steps": [
+          {
+            "npc": "I'll want 100,000 coins to recharge the Staff of Iban."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "n92utA"
+      },
+      {
+        "player": "Can you recharge my Staff of Iban?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "yxmqFH"
+      }
+    ],
+    "jump-656865822cbdcd2b": [
+      {
+        "player": "Can you upgrade my Staff of Iban?"
+      },
+      {
+        "type": "jump",
+        "id": "PgVFBf",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-62f49a0915ea184d"
+          }
+        ]
       }
     ]
   }

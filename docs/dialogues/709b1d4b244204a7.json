@@ -49,7 +49,36 @@
               {
                 "type": "choice",
                 "prompt": "Start the Sins of the Father quest?",
-                "options": []
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "__4SEZ"
+                      }
+                    ],
+                    "hook": "quest:sins-of-the-father:start",
+                    "quest": "Sins of the Father"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Actually, I'm a bit busy right now. Maybe later."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Veliaf Hurtz",
+                        "text": "Very well, friend. Myreque prevail."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
               }
             ],
             "id": "SGj1He"
@@ -285,8 +314,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "u7OpzL"
+                "id": "u7OpzL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-911a2a738a1b29f8"
+                  }
+                ]
               }
             ]
           },
@@ -295,8 +329,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "OzCI_h"
+                "id": "OzCI_h",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fc65d9ac4625f604"
+                  }
+                ]
               }
             ]
           },
@@ -305,8 +344,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "m6dGry"
+                "id": "m6dGry",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb18692f9c529bba"
+                  }
+                ]
               }
             ]
           },
@@ -315,8 +359,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1NbzQT"
+                "id": "1NbzQT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-78c6c97fe1fadb74"
+                  }
+                ]
               }
             ]
           }
@@ -376,7 +425,17 @@
             "text": "You don't look like locals."
           },
           {
-            "text": "Bye!"
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "type": "line",
+                "speaker": "Hameln the Jester",
+                "text": "Timoiva, traveller."
+              }
+            ]
           }
         ]
       }
@@ -418,7 +477,17 @@
             "text": "You don't look like locals."
           },
           {
-            "text": "Bye!"
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "type": "line",
+                "speaker": "Hameln the Jester",
+                "text": "Timoiva, traveller."
+              }
+            ]
           }
         ]
       }
@@ -448,8 +517,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "O2l6bI"
+                "id": "O2l6bI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-911a2a738a1b29f8"
+                  }
+                ]
               }
             ]
           },
@@ -458,8 +532,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DwGrW7"
+                "id": "DwGrW7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fc65d9ac4625f604"
+                  }
+                ]
               }
             ]
           },
@@ -468,8 +547,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xR1Cso"
+                "id": "xR1Cso",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb18692f9c529bba"
+                  }
+                ]
               }
             ]
           },
@@ -478,8 +562,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Ehysfn"
+                "id": "Ehysfn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-78c6c97fe1fadb74"
+                  }
+                ]
               }
             ]
           }
@@ -507,7 +596,33 @@
         "type": "choice",
         "options": [
           {
-            "text": "Alright, one Bloody Bracer, if that's all you have."
+            "text": "Alright, one Bloody Bracer, if that's all you have.",
+            "steps": [
+              {
+                "player": "Alright, one Bloody Bracer, if that's all you have."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 99 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "SSgj1z"
+                  }
+                ],
+                "id": "IPJxpr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99 coins:",
+                "steps": [
+                  {
+                    "player": "Thanks, Carl."
+                  }
+                ],
+                "id": "J1jJ6j"
+              }
+            ]
           },
           {
             "text": "Where do you get your Bloody Bracers from?",
@@ -569,13 +684,31 @@
             ]
           },
           {
-            "text": "99 coins? That's ridiculous!"
+            "text": "99 coins? That's ridiculous!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "d3JQJI"
+              }
+            ]
           },
           {
-            "text": "What can you tell me about this town?"
+            "text": "What can you tell me about this town?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "CMwFok"
+              }
+            ]
           },
           {
-            "text": "Actually, I'm no longer thirsty."
+            "text": "Actually, I'm no longer thirsty.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "h5dBiE"
+              }
+            ]
           }
         ]
       }
@@ -601,7 +734,33 @@
         "type": "choice",
         "options": [
           {
-            "text": "Alright, one Bloody Bracer, if that's all you have."
+            "text": "Alright, one Bloody Bracer, if that's all you have.",
+            "steps": [
+              {
+                "player": "Alright, one Bloody Bracer, if that's all you have."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 99 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "SSgj1z"
+                  }
+                ],
+                "id": "IPJxpr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99 coins:",
+                "steps": [
+                  {
+                    "player": "Thanks, Carl."
+                  }
+                ],
+                "id": "J1jJ6j"
+              }
+            ]
           },
           {
             "text": "Where do you get your Bloody Bracers from?",
@@ -620,13 +779,31 @@
             ]
           },
           {
-            "text": "99 coins? That's ridiculous!"
+            "text": "99 coins? That's ridiculous!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "d3JQJI"
+              }
+            ]
           },
           {
-            "text": "What can you tell me about this town?"
+            "text": "What can you tell me about this town?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "CMwFok"
+              }
+            ]
           },
           {
-            "text": "Actually, I'm no longer thirsty."
+            "text": "Actually, I'm no longer thirsty.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "h5dBiE"
+              }
+            ]
           }
         ]
       }
@@ -1141,8 +1318,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "57jSIP"
+                        "id": "57jSIP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-911a2a738a1b29f8"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1151,8 +1333,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "SK2y6Z"
+                        "id": "SK2y6Z",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fc65d9ac4625f604"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1161,8 +1348,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "b12jDR"
+                        "id": "b12jDR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb18692f9c529bba"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1171,8 +1363,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "BmcQUn"
+                        "id": "BmcQUn",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-78c6c97fe1fadb74"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1207,8 +1404,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "zIKlY3"
+                        "id": "zIKlY3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-911a2a738a1b29f8"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1217,8 +1419,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "yHxL_e"
+                        "id": "yHxL_e",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fc65d9ac4625f604"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1227,8 +1434,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "uGfvFA"
+                        "id": "uGfvFA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bb18692f9c529bba"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1237,8 +1449,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "cxIMzD"
+                        "id": "cxIMzD",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-78c6c97fe1fadb74"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -2142,8 +2359,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IuifOk"
+                "id": "IuifOk",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7d84b8bc4b7e6276"
+                  }
+                ]
               }
             ]
           },
@@ -4174,8 +4396,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "jkMeFm"
+                        "id": "jkMeFm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4184,8 +4411,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "KFmSx6"
+                        "id": "KFmSx6",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4194,8 +4426,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "IbpBNO"
+                        "id": "IbpBNO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4261,8 +4498,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "t-n5V7"
+                        "id": "t-n5V7",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9590b93a346272a5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4271,8 +4513,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "6YrkuC"
+                        "id": "6YrkuC",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4281,8 +4528,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "EkLz_9"
+                        "id": "EkLz_9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4348,8 +4600,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "oW6uiE"
+                        "id": "oW6uiE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9590b93a346272a5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4358,8 +4615,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "A23xjp"
+                        "id": "A23xjp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4368,8 +4630,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "cX_wzN"
+                        "id": "cX_wzN",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4378,8 +4645,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "2bx6B6"
+                        "id": "2bx6B6",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7fd3aa0aaecc2df1"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -4453,8 +4725,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "qzJm0_"
+                        "id": "qzJm0_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9590b93a346272a5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4463,8 +4740,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "L1pNOH"
+                        "id": "L1pNOH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4473,8 +4755,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "N4VVbY"
+                        "id": "N4VVbY",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4483,8 +4770,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "JGTl0B"
+                        "id": "JGTl0B",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7fd3aa0aaecc2df1"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -4960,8 +5252,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "C2G9Vt"
+                        "id": "C2G9Vt",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "_6DnY5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5030,8 +5327,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "e92z0o"
+                        "id": "e92z0o",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "Q8Vpbd"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5050,8 +5352,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "-ptBRu"
+                        "id": "-ptBRu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-72ed38d72bb967ff"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -5088,8 +5395,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "HVg5AL"
+                        "id": "HVg5AL",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "Q8Vpbd"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5098,8 +5410,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "viq3qZ"
+                        "id": "viq3qZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "_6DnY5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5108,8 +5425,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Wi57DR"
+                        "id": "Wi57DR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-72ed38d72bb967ff"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -5153,8 +5475,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "CNYDpJ"
+                "id": "CNYDpJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Q8Vpbd"
+                  }
+                ]
               }
             ]
           },
@@ -5163,8 +5490,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ee4ptF"
+                "id": "ee4ptF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "_6DnY5"
+                  }
+                ]
               }
             ]
           },
@@ -5173,8 +5505,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KBBv85"
+                "id": "KBBv85",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5c752bf502e8c033"
+                  }
+                ]
               }
             ]
           },
@@ -5183,8 +5520,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "h7u4KH"
+                "id": "h7u4KH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e05900154ff8d669"
+                  }
+                ]
               }
             ]
           }
@@ -5239,8 +5581,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "aUHhlz"
+                        "id": "aUHhlz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "Q8Vpbd"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5249,8 +5596,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "YcprnE"
+                        "id": "YcprnE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "_6DnY5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5278,8 +5630,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "Yf85uq"
+                                "id": "Yf85uq",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "Q8Vpbd"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -5288,8 +5645,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "lpVndP"
+                                "id": "lpVndP",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "_6DnY5"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -5298,8 +5660,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "ff41ZX"
+                                "id": "ff41ZX",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-72ed38d72bb967ff"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -5349,8 +5716,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "gSAYyU"
+                "id": "gSAYyU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Q8Vpbd"
+                  }
+                ]
               }
             ]
           },
@@ -5359,8 +5731,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KpnjE-"
+                "id": "KpnjE-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "_6DnY5"
+                  }
+                ]
               }
             ]
           },
@@ -5369,8 +5746,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "atcun-"
+                "id": "atcun-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-027a01ff3e6a599a"
+                  }
+                ]
               }
             ]
           },
@@ -5711,8 +6093,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "6gi6Wt"
+                        "id": "6gi6Wt",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5721,8 +6108,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "H5tGVL"
+                        "id": "H5tGVL",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5731,8 +6123,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "2kn3bV"
+                        "id": "2kn3bV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -5741,8 +6138,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "p9gmXr"
+                        "id": "p9gmXr",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e377aea6c2d4633c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -5755,8 +6157,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "V_mSEA"
+                "id": "V_mSEA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1JE-SQ"
+                  }
+                ]
               }
             ]
           },
@@ -5765,8 +6172,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "9La-yM"
+                "id": "9La-yM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "HRYKB6"
+                  }
+                ]
               }
             ]
           },
@@ -5775,8 +6187,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "chRiQJ"
+                "id": "chRiQJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "BKz682"
+                  }
+                ]
               }
             ]
           },
@@ -5785,8 +6202,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "v1uc4E"
+                "id": "v1uc4E",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b703da7491df0d2c"
+                  }
+                ]
               }
             ]
           }
@@ -5951,8 +6373,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RS5v7L"
+                "id": "RS5v7L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc51154c38e07813"
+                  }
+                ]
               }
             ]
           }
@@ -6111,8 +6538,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "s4apoR"
+                        "id": "s4apoR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6121,8 +6553,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ZkbE_U"
+                        "id": "ZkbE_U",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6131,8 +6568,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "37QPJG"
+                        "id": "37QPJG",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6141,8 +6583,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "MD_Y7p"
+                        "id": "MD_Y7p",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e377aea6c2d4633c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -6155,8 +6602,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "B4LApT"
+                "id": "B4LApT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1JE-SQ"
+                  }
+                ]
               }
             ]
           },
@@ -6165,8 +6617,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BapoBR"
+                "id": "BapoBR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "HRYKB6"
+                  }
+                ]
               }
             ]
           },
@@ -6175,8 +6632,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WTD8Pq"
+                "id": "WTD8Pq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "BKz682"
+                  }
+                ]
               }
             ]
           },
@@ -6185,8 +6647,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vhVys-"
+                "id": "vhVys-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b703da7491df0d2c"
+                  }
+                ]
               }
             ]
           }
@@ -6400,8 +6867,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "dmsP0-"
+                "id": "dmsP0-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e323de963c3dbc58"
+                  }
+                ]
               }
             ]
           },
@@ -6410,8 +6882,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nxovnb"
+                "id": "nxovnb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17b80e89c5a840c9"
+                  }
+                ]
               }
             ]
           },
@@ -6420,8 +6897,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4eKcuu"
+                "id": "4eKcuu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6d0323b91a0ebc92"
+                  }
+                ]
               }
             ]
           }
@@ -6591,8 +7073,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "mEJF8o"
+                        "id": "mEJF8o",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5664f78c628b77cc"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6601,8 +7088,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "kKgSfq"
+                        "id": "kKgSfq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9f66d8494c333a11"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6674,8 +7166,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "EqqbRQ"
+                        "id": "EqqbRQ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-88b71ccbcc3e3156"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6684,8 +7181,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "SGZUN7"
+                        "id": "SGZUN7",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9f66d8494c333a11"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6694,8 +7196,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "qTHSNf"
+                        "id": "qTHSNf",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0d21a89489a0b703"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -6743,8 +7250,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "trgkOP"
+                        "id": "trgkOP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-88b71ccbcc3e3156"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6763,8 +7275,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "FjCPNZ"
+                        "id": "FjCPNZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0d21a89489a0b703"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -6797,8 +7314,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "AnpLbm"
+                "id": "AnpLbm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-88b71ccbcc3e3156"
+                  }
+                ]
               }
             ]
           },
@@ -6807,8 +7329,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RsaOOU"
+                "id": "RsaOOU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5664f78c628b77cc"
+                  }
+                ]
               }
             ]
           },
@@ -6817,8 +7344,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "M0ysPg"
+                "id": "M0ysPg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9f66d8494c333a11"
+                  }
+                ]
               }
             ]
           },
@@ -6827,8 +7359,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xCinoZ"
+                "id": "xCinoZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3b8702be9fc92af9"
+                  }
+                ]
               }
             ]
           }
@@ -7056,8 +7593,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "mgEp8P"
+                        "id": "mgEp8P",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -7066,8 +7608,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "rGT_bE"
+                        "id": "rGT_bE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -7076,8 +7623,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "b57RAG"
+                        "id": "b57RAG",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -7086,8 +7638,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "hr28DN"
+                        "id": "hr28DN",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e377aea6c2d4633c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -7100,8 +7657,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kLkjaQ"
+                "id": "kLkjaQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1JE-SQ"
+                  }
+                ]
               }
             ]
           },
@@ -7110,8 +7672,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "s2Tuf6"
+                "id": "s2Tuf6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "HRYKB6"
+                  }
+                ]
               }
             ]
           },
@@ -7120,8 +7687,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DbD49p"
+                "id": "DbD49p",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "BKz682"
+                  }
+                ]
               }
             ]
           },
@@ -7130,8 +7702,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TmcTGq"
+                "id": "TmcTGq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b703da7491df0d2c"
+                  }
+                ]
               }
             ]
           }
@@ -7288,8 +7865,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "S-MejZ"
+        "id": "S-MejZ",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-9b97548b7d03eb1d"
+          }
+        ]
       }
     ],
     "the-branches-of-darkmeyer-infiltrating-darkmeyer-attempting-to-enter-the-arboretum-talking-to-desmodus-again-before-finding-mordan": [
@@ -8011,8 +8593,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "saWaey"
+                        "id": "saWaey",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -8021,8 +8608,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "CgBXbB"
+                        "id": "CgBXbB",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -8031,8 +8623,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "tpVSDO"
+                        "id": "tpVSDO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -8041,8 +8638,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "FUQ0a2"
+                        "id": "FUQ0a2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e377aea6c2d4633c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -8055,8 +8657,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "K8dCb0"
+                "id": "K8dCb0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1JE-SQ"
+                  }
+                ]
               }
             ]
           },
@@ -8065,8 +8672,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NzS9UO"
+                "id": "NzS9UO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "HRYKB6"
+                  }
+                ]
               }
             ]
           },
@@ -8075,8 +8687,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ra_tRX"
+                "id": "ra_tRX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "BKz682"
+                  }
+                ]
               }
             ]
           },
@@ -8085,8 +8702,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RBFryp"
+                "id": "RBFryp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b703da7491df0d2c"
+                  }
+                ]
               }
             ]
           }
@@ -8428,8 +9050,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "8MQ5dN"
+                        "id": "8MQ5dN",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "1JE-SQ"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -8438,8 +9065,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "uBiXOb"
+                        "id": "uBiXOb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "HRYKB6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -8448,8 +9080,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "JSzyWD"
+                        "id": "JSzyWD",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "BKz682"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -8458,8 +9095,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "-zhP3o"
+                        "id": "-zhP3o",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e377aea6c2d4633c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -8472,8 +9114,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Ugq3Vk"
+                "id": "Ugq3Vk",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1JE-SQ"
+                  }
+                ]
               }
             ]
           },
@@ -8482,8 +9129,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "dvxG4N"
+                "id": "dvxG4N",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "HRYKB6"
+                  }
+                ]
               }
             ]
           },
@@ -8492,8 +9144,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "fVe9t5"
+                "id": "fVe9t5",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "BKz682"
+                  }
+                ]
               }
             ]
           },
@@ -8502,8 +9159,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pnofdg"
+                "id": "pnofdg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b703da7491df0d2c"
+                  }
+                ]
               }
             ]
           }
@@ -8803,8 +9465,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZkBu2T"
+                "id": "ZkBu2T",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-05db4af65f72fc19"
+                  }
+                ]
               }
             ]
           }
@@ -9331,8 +9998,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "jtGiyC"
+                                "id": "jtGiyC",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-d11702c7a2d7a080"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -9587,6 +10259,1535 @@
       {
         "type": "unavailable",
         "id": "y4agh9"
+      }
+    ]
+  },
+  "branches": {
+    "jump-911a2a738a1b29f8": [
+      {
+        "player": "How have things been for you recently?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "We haven't been doing too bad. Even out in Mort Myre, the impact of Ranis' death can be seen."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "People have a little bit more hope now, and it has become easier for us to gather support."
+      },
+      {
+        "player": "That's good to know."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Of course, there are downsides. The vampyres are hunting us with ever greater determination. But this is the life we chose."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "AMQg3G"
+      }
+    ],
+    "jump-fc65d9ac4625f604": [
+      {
+        "player": "What do you know about this place?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Slepe? It's wretched. The people of this town follow the teachings of Zamorak. Some are no better than the vampyres themselves."
+      },
+      {
+        "player": "Do they get on with the vampyres?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "As well as any humans can. All settlements in Morytania must pay the vampyres in blood tithes, but the people of Slepe do so willingly."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "They see the vampyres as fellow servants of Zamorak. Of course, the vampyres only really serve themselves."
+      },
+      {
+        "player": "So why do these people follow Zamorak?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Apparently this place was founded by a group called the Sisterhood, former healers of Saradomin that turned to Zamorak."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Their order still exists to this day. You'll probably see a few of them around the town."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "FU7qZA"
+      }
+    ],
+    "jump-bb18692f9c529bba": [
+      {
+        "player": "Can you tell me any more about the Sleeper Plague?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "What I told you is pretty much what I know. The illness causes people to fall to sleep, never to wake again."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "There's a rumour that the infected are also granted immortality, though I don't know if there's any truth in this."
+      },
+      {
+        "player": "To be honest, immortality doesn't seem very useful if you're unable to wake up."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Indeed. If history is to be believed, this is the second time the Sleeper Plague has hit Slepe. The first occurrence was many years ago and is supposedly what gave the town its name."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "That's all I know. That said, I suspect you might be able to learn more if you do some digging around town."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "2wtm-m"
+      }
+    ],
+    "jump-78c6c97fe1fadb74": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7d84b8bc4b7e6276": [
+      {
+        "player": "Could you tell me more about the Seven Priestly Warriors?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Well at this point you should be no stranger to their tale, though I understand the desire for a recap."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "During the Fourth Age, the vampyre forces of Lowerniel Drakan attempted to invade Misthalin. They would have succeeded, were it not for the Seven Priestly Warriors."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "The warriors were the ones to bless the River Salve and build this temple, ensuring that Misthalin would be forever safe from the evils of Morytania."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Sadly, all seven of them fell in the final battle against Drakan. They are now buried here, in this very mausoleum."
+      },
+      {
+        "player": "I don't know if that's completely true."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "You talk of the suggestion that Ivandis Seergaze isn't actually buried with the others, don't you? That isn't a conversation I wish to have."
+      },
+      {
+        "player": "Fair enough. Anything else you can tell me about the Warriors?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Not really. You might learn more in the library below, but I'd be cautious of believing every word in those books."
+      },
+      {
+        "player": "Okay. Thanks Drezel."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3d5306a47f14ad6c": [
+      {
+        "player": "Why do you hate your brother?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Why wouldn't I? He's an awful leader. My kind are slowly starving to death thanks to overpopulation, but he doesn't even seem to have noticed."
+      },
+      {
+        "player": "Is killing him not a bit much?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Not really. It is the vampyre way. There was once a time when things were far more savage. We once lived in a land far more hostile than this one."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "There, new clan leaders were selected during a festival known as the Night of the Blood Moon. It was a simple concept. A full night of killing. At dawn, the one with the most kills became the new leader."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Lowerniel loved it. He won every time of course. Personally, I prefer our new way of life."
+      },
+      {
+        "player": "And yet you're still happy to kill him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "We are not the beasts we were back then, but some things do not change. Like I say, it is the vampyre way."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Now, did you want something else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What should I be doing?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "t-n5V7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9590b93a346272a5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How did Ranis capture Ascertes Hallow?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "6YrkuC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-72300646ce959ada"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why did Lowerniel shut down the Haemalchemy Laboratory?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "EkLz_9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16c701d03e9d8173"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all, thanks.",
+            "steps": [
+              {
+                "player": "That's all, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-72300646ce959ada": [
+      {
+        "player": "How did Ranis capture Ascertes Hallow?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Do you know of Verzik Vitur?"
+      },
+      {
+        "player": "Owner of the Theatre of Blood? Who doesn't know of her?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "I'd give her the credit over Ranis. The two of them shared a love for playing with their food rather than eating it. They hatched all kinds of schemes together."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "During the war, they managed to capture a justiciar, one of Efaritay's most elite warriors. They tortured him for days, until he gave them what they needed."
+      },
+      {
+        "player": "Which was?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "A secret tunnel, leading directly into Efaritay's castle. The tunnel was here, in this very graveyard. Once they were inside, capturing Ascertes was easy."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "In some ways, I think Lowerniel was a bit disappointed the fighting was over. The pair were still greatly rewarded, however. Verzik ended up getting Efaritay's castle. It was quite the boon for her."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Now, did you want something else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What should I be doing?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "oW6uiE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9590b93a346272a5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why do you hate your brother?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "A23xjp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3d5306a47f14ad6c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why did Lowerniel shut down the Haemalchemy Laboratory?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "cX_wzN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16c701d03e9d8173"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "2bx6B6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7fd3aa0aaecc2df1"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-16c701d03e9d8173": [
+      {
+        "player": "Why did Lowerniel shut down the Haemalchemy Laboratory?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "I can only assume he didn't like what they were doing there."
+      },
+      {
+        "player": "Well obviously. Could you be more specific though?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Are you familiar with their areas of research?"
+      },
+      {
+        "player": "Ways to overcome blood shortages and ways to improve your immunity to our weapons."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Essentially. The first might seem to benefit Lowerniel, but when you look deeper you can see why he wasn't a fan."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "For our kind to be less reliant on humans would be a fundamental change to our society. History has told us that leaders generally don't survive such a transition."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "As for the second, I think it's obvious why Lowerniel wanted to put a stop to that. Just ask Ranis why that research maybe wasn't overly wise."
+      },
+      {
+        "player": "I see. I guess that makes sense."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Indeed. Of course, Lowerniel's long absences mean that a lot of research was already complete before the laboratory was shut down. Hence how you were able to use it against Ranis."
+      },
+      {
+        "player": "Which we were only able to do because of you. Why did you send Sarius to us?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "A test. Even back then I knew that Lowerniel needed to go. I wanted to see if a partnership with the Myreque was worth exploring."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Now, did you want something else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What should I be doing?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "qzJm0_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9590b93a346272a5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why do you hate your brother?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "L1pNOH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3d5306a47f14ad6c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How did Ranis capture Ascertes Hallow?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "N4VVbY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-72300646ce959ada"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "JGTl0B",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7fd3aa0aaecc2df1"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9590b93a346272a5": [
+      {
+        "player": "What should I be doing?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "You're meant to be searching the Haemalchemy Laboratory for more research. Run along now."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why do you hate your brother?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "jkMeFm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3d5306a47f14ad6c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How did Ranis capture Ascertes Hallow?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "KFmSx6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-72300646ce959ada"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why did Lowerniel shut down the Haemalchemy Laboratory?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "IbpBNO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16c701d03e9d8173"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Right, I'd better get going.",
+            "steps": [
+              {
+                "player": "Right, I'd better get going."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7fd3aa0aaecc2df1": [
+      {
+        "player": "That's all, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7b43a81a47cf9032": [
+      {
+        "player": "What do you think of Vanescula?"
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "I don't trust her. She feigned affection back at the graveyard. But I know she's just doing it for her own gain."
+      },
+      {
+        "player": "You still chose to work with her though."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "Yes. She is our only hope of defeating her brother. In truth, I'd pretty much made my choice even before she told me about my family."
+      },
+      {
+        "player": "That's good to know. I worried you were being too hasty after you discovered the truth."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "You are not wrong to worry, friend. I may well be leading us to certain death."
+      },
+      {
+        "player": "Well you have our support. For better or worse."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "Thank you. I appreciate it, especially from you. As an outsider, you could easily turn and run at any time. The fact that you're still here speaks volumes."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you think we can kill Drakan?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "e92z0o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a3e67ca1036dba73"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could we talk more about your family?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "GZUZS7"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "-ptBRu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-72ed38d72bb967ff"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a3e67ca1036dba73": [
+      {
+        "player": "Do you think we can kill Drakan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "To be honest, I don't know. They say he's the most powerful being in existence. The truth is though, we know pretty much nothing about him."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "I guess the point is that we're in the best position possible. If we can't kill him, I suspect no one can."
+      },
+      {
+        "player": "We seem to be dealing with a lot of uncertainties."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "Oh we are. But you play the hand you're dealt, my friend. This is our hand."
+      },
+      {
+        "player": "I guess. Losing a card game generally doesn't result in death though."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "You should try playing against a werewolf."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you think of Vanescula?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "C2G9Vt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7b43a81a47cf9032"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could we talk more about your family?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "zlfxV6"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-72ed38d72bb967ff": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5c752bf502e8c033": [
+      {
+        "player": "Could we talk more about your family?"
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "Not now."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "I'm sorry. I know you must have so many questions. I have plenty myself. But I need to focus right now and cannot be distracted by such thoughts."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "We will talk later. You have my word."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you think we can kill Drakan?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HVg5AL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a3e67ca1036dba73"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you think of Vanescula?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "viq3qZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7b43a81a47cf9032"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Wi57DR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-72ed38d72bb967ff"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e05900154ff8d669": [
+      {
+        "player": "I'll be back soon."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-027a01ff3e6a599a": [
+      {
+        "player": "Could we talk more about your family?"
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "Not now."
+      },
+      {
+        "type": "line",
+        "speaker": "Safalaan Hallow",
+        "text": "I'm sorry. I know you must have so many questions. I have plenty myself. But I need to focus right now and cannot be distracted by such thoughts."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you think we can kill Drakan?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Yf85uq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a3e67ca1036dba73"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you think of Vanescula?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "lpVndP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7b43a81a47cf9032"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ff41ZX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-72ed38d72bb967ff"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e377aea6c2d4633c": [
+      {
+        "player": "Right, I'd better get going."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b703da7491df0d2c": [
+      {
+        "player": "Actually, never mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-dc51154c38e07813": [
+      {
+        "player": "I'll keep it for now."
+      },
+      {
+        "type": "line",
+        "speaker": "Polmafi Ferdygris",
+        "text": "Well I can't make your new disguise until you give it to me."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e323de963c3dbc58": [
+      {
+        "player": "Do you think Safalaan is doing okay?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "You tell me. You've spent more time with him since his discovery."
+      },
+      {
+        "player": "He seems to be okay. At least, as okay as anyone could be in that situation. He seems to still be focused, and he's not lost his sense of humour."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Maintaining a good sense of humour is common coping mechanism when dealing with shock. I hope he's not just putting on a facade. If he's struggling, he should seek our support."
+      },
+      {
+        "player": "You're not wrong. But that's for him to decide. He knows we are there if he needs us."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "It's good that he has people like you. I may have known him a long time, but I can't pretend to be any good at comforting people in such situations. I never manage to say the right thing."
+      },
+      {
+        "player": "And you think I do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "You can't be any worse than me. I'd take that as a victory."
+      },
+      {
+        "player": "Do you think things will improve for him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "I don't know. He may well soon come face to face with Lowerniel Drakan, the cause of all his pain. I hope he is ready for that."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "And then there's Vanstrom, of course. Their paths are likely to cross again before all this is over. And when that happens, who knows what the outcome will be."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Anyway, are you ready to deal with Damien?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "p7bjmy"
+      }
+    ],
+    "jump-17b80e89c5a840c9": [
+      {
+        "player": "How are you feeling about working with Vanescula?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Well, she hasn't killed us yet, which I consider a win. It seems she spoke the truth about wanting her brother dead."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Of course, I still fully expect her to betray us once he's gone."
+      },
+      {
+        "player": "But you're still willing to go ahead with this?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "I wouldn't say I'm 'willing' as such, but what other choice do I have? The others want to do it and I'll be damned if I'm just going to leave them to their fates."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "That doesn't mean I haven't been considering contingencies, of course. I've asked Ivan to prepare us a teleport spell in case we need to make a hasty exit."
+      },
+      {
+        "player": "Seems sensible to me. Let's hope it doesn't come to that."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Indeed. But enough about Vanescula. Are you ready to deal with Damien?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "xXeYSQ"
+      }
+    ],
+    "jump-6d0323b91a0ebc92": [
+      {
+        "player": "I'll be back later."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5664f78c628b77cc": [
+      {
+        "player": "Do you think Safalaan is doing okay?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "You tell me. You've spent more time with him since his discovery."
+      },
+      {
+        "player": "He seems to be okay. At least, as okay as anyone could be in that situation. He seems to still be focused, and he's not lost his sense of humour."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Maintaining a good sense of humour is common coping mechanism when dealing with shock. I hope he's not just putting on a facade. If he's struggling, he should seek our support."
+      },
+      {
+        "player": "You're not wrong. But that's for him to decide. He knows we are there if he needs us."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "It's good that he has people like you. I may have known him a long time, but I can't pretend to be any good at comforting people in such situations. I never manage to say the right thing."
+      },
+      {
+        "player": "And you think I do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "You can't be any worse than me. I'd take that as a victory."
+      },
+      {
+        "player": "Do you think things will improve for him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "I don't know. He may well soon come face to face with Lowerniel Drakan, the cause of all his pain. I hope he is ready for that."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "And then there's Vanstrom, of course. Their paths are likely to cross again before all this is over. And when that happens, who knows what the outcome will be."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you think this means for Slepe?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "EqqbRQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-88b71ccbcc3e3156"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How are you feeling about working with Vanescula?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "SGZUN7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9f66d8494c333a11"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll see you at the graveyard.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "qTHSNf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0d21a89489a0b703"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9f66d8494c333a11": [
+      {
+        "player": "How are you feeling about working with Vanescula?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Well, she hasn't killed us yet, which I consider a win. It seems she spoke the truth about wanting her brother dead."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Of course, I still fully expect her to betray us once he's gone."
+      },
+      {
+        "player": "But you're still willing to go ahead with this?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "I wouldn't say I'm 'willing' as such, but what other choice do I have? The others want to do it and I'll be damned if I'm just going to leave them to their fates."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "That doesn't mean I haven't been considering contingencies, of course. I've asked Ivan to prepare us a teleport spell in case we need to make a hasty exit."
+      },
+      {
+        "player": "Seems sensible to me. Let's hope it doesn't come to that."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you think this means for Slepe?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "trgkOP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-88b71ccbcc3e3156"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you think Safalaan is doing okay?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "wZO7We"
+              }
+            ]
+          },
+          {
+            "text": "I'll see you at the graveyard.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "FjCPNZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0d21a89489a0b703"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-88b71ccbcc3e3156": [
+      {
+        "player": "What do you think this means for Slepe?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "The death of Damien can't do any harm. That said, don't expect this to suddenly fix everything around here. The Sleeper Plague isn't the only illness in this town."
+      },
+      {
+        "player": "You mean their religion?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "I do. The people here chose to follow Zamorak. A choice like that has consequences. Bad ones."
+      },
+      {
+        "player": "You think they are being punished?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Not exactly. I don't believe in fate myself. I'm sure someone like Drezel would say otherwise, though. I just think that if you play with fire, you're going to end up getting burnt."
+      },
+      {
+        "player": "So do you think the Sleeper Plague will go away now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Well there shouldn't be any new cases now that Damien and Kroy are gone. That won't help those already infected though."
+      },
+      {
+        "player": "Maybe there's a cure."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Maybe. I suspect this town holds a lot of secrets... but now is not the time to explore them. We have other business to attend to."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you think Safalaan is doing okay?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "mEJF8o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5664f78c628b77cc"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How are you feeling about working with Vanescula?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "kKgSfq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9f66d8494c333a11"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll see you at the graveyard.",
+            "steps": [
+              {
+                "player": "I'll see you at the graveyard."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0d21a89489a0b703": [
+      {
+        "player": "I'll see you at the graveyard."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3b8702be9fc92af9": [
+      {
+        "player": "I'll see you there."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9b97548b7d03eb1d": [
+      {
+        "player": "[vampyre name]. I'm new here."
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "Well, [vampyre name], you're wrong. No one can go in the Arboretum, by order of the Drakan family themselves."
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "Why do you want to go in, anyway?"
+      },
+      {
+        "player": "Do you actually care?"
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "No, but I have a job to do."
+      },
+      {
+        "player": "What will it take for you to let me in? There must be something you want. Do you want money?"
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "I have no need for your money."
+      },
+      {
+        "player": "What then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "Eugh, fine! There's something I need doing. Get it done for me and I'll grant you access."
+      },
+      {
+        "player": "Great! What do you need?"
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "There's a juvinate who was meant to deliver something to me. He hasn't shown up. Find him and tell him that Desmodus Lasiurus is getting impatient."
+      },
+      {
+        "player": "Sure thing! What's he meant to be delivering?"
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "Some slaves. You heard of Gadderanks? He was some human that Vanstrom used to help collect blood tithes."
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "Well, he went and got himself killed by the Myreque. Vanstrom owed me a favour so he agreed to let me have his wife and child."
+      },
+      {
+        "player": "Oh... I see."
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "You got a problem?"
+      },
+      {
+        "player": "No."
+      },
+      {
+        "type": "line",
+        "speaker": "Desmodus Lasiurus",
+        "text": "Good. Mordan Nikazsi is the juvinate you're looking for. He'll be somewhere in the lowest tier of the city. Now, get lost!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-05db4af65f72fc19": [
+      {
+        "player": "I need more time to prepare."
+      },
+      {
+        "type": "line",
+        "speaker": "Vanescula Drakan",
+        "text": "Well don't take too long. Return once you are ready."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d11702c7a2d7a080": [
+      {
+        "player": "I need more time to prepare."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Well be quick about it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "SSgj1z": [
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "I said 99 coins! You haven't got 99 coins!"
+      },
+      {
+        "player": "Sorry, I'll come back another day."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "d3JQJI": [
+      {
+        "player": "99 coins? That's ridiculous!"
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "What can I say? The ingredients are locally sourced so it's high quality, I promise."
+      },
+      {
+        "player": "Well, I guess I shouldn't shoot the messenger."
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "So..."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "z3rRto"
+      }
+    ],
+    "CMwFok": [
+      {
+        "player": "What can you tell me about this town?"
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "I've not been here long myself, so I'm afraid I may not be of much help."
+      },
+      {
+        "player": "What happened to the previous barkeep?"
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "Oh, he had to leave."
+      },
+      {
+        "player": "How come?"
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "Scared of turning."
+      },
+      {
+        "player": "Turning?"
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "Yes, into a sleeper."
+      },
+      {
+        "player": "Oh right! You see, for a second there I thought you were talking about vampyres."
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "Ha ha! We, err, don't see many of those types around here. No, no, not at all."
+      },
+      {
+        "player": "If you say so."
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "I do. So..."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "6r5Its"
+      }
+    ],
+    "h5dBiE": [
+      {
+        "player": "Actually, I'm no longer thirsty."
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "Oh, the red thirst will be upon you soon."
+      },
+      {
+        "player": "Excuse me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Carl",
+        "text": "Just a jest, traveller."
+      },
+      {
+        "player": "Oh."
+      }
+    ],
+    "1JE-SQ": [
+      {
+        "type": "call",
+        "branch": "jump-3d5306a47f14ad6c"
+      }
+    ],
+    "HRYKB6": [
+      {
+        "type": "call",
+        "branch": "jump-72300646ce959ada"
+      }
+    ],
+    "BKz682": [
+      {
+        "type": "call",
+        "branch": "jump-16c701d03e9d8173"
+      }
+    ],
+    "_6DnY5": [
+      {
+        "type": "call",
+        "branch": "jump-7b43a81a47cf9032"
+      }
+    ],
+    "Q8Vpbd": [
+      {
+        "type": "call",
+        "branch": "jump-a3e67ca1036dba73"
       }
     ]
   }

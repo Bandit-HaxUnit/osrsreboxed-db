@@ -106,8 +106,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "HwmqWu"
+                "id": "HwmqWu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2da243c58bd2f273"
+                  }
+                ]
               }
             ]
           },
@@ -116,8 +121,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "VT66ta"
+                "id": "VT66ta",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7beaaae7093ec8a9"
+                  }
+                ]
               }
             ]
           },
@@ -126,8 +136,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "cgTyEV"
+                "id": "cgTyEV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-55c161c6cc229575"
+                  }
+                ]
               }
             ]
           },
@@ -326,6 +341,111 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-2da243c58bd2f273": [
+      {
+        "player": "Who are you really?"
+      },
+      {
+        "npc": "I suppose since you already know my name, you are asking who I am in the context of history and society."
+      },
+      {
+        "player": "Yes, let's go with that."
+      },
+      {
+        "npc": "I am afraid other agreements bar me from telling you much of my past. Nowadays, I am a humble servant of Yama, existing only to do as he pleases."
+      },
+      {
+        "player": "And what is that?"
+      },
+      {
+        "npc": "Mostly fetching records, and dying. When I am not doing that, I rest here. The features of this isle remind me of those I once knew."
+      },
+      {
+        "player": "Who do you mean by 'those'?"
+      },
+      {
+        "npc": "I already skirt as closely as I can to what I am disallowed from sharing. I apologise, but I cannot answer further."
+      }
+    ],
+    "jump-7beaaae7093ec8a9": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This isle is a small wonder. The rock formations here bear a slight resemblance to those from my own realm."
+      },
+      {
+        "player": "The rock looks like it's crumbling."
+      },
+      {
+        "npc": "Yes, infernal shale is kept together largely by the pressure from above. Once a piece is broken off, it can easily be broken down with a hammer and chisel."
+      },
+      {
+        "player": "That's good to know. What about the smithy?"
+      },
+      {
+        "npc": "I can say nothing more than that it was not here when I arrived."
+      },
+      {
+        "player": "So you brought it here?"
+      },
+      {
+        "npc": "I cannot say."
+      }
+    ],
+    "jump-55c161c6cc229575": [
+      {
+        "player": "It's rather hot here."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has never received Jim's wet cloth:",
+        "steps": [
+          {
+            "npc": "Yes, the unique composition of this chasm does create a warm environment."
+          },
+          {
+            "player": "I can see my sweat turning to vapour as soon as it appears."
+          },
+          {
+            "npc": "Yes, water is an ineffective coolant at this temperature. Perhaps I could offer an alternative."
+          },
+          {
+            "player": "That would be handy."
+          },
+          {
+            "type": "message",
+            "text": "Jim hands you a cloth dripping with blackened liquid.",
+            "id": "P7nZ5X"
+          },
+          {
+            "npc": "The liquid will only offer a brief respite from the heat, but I find it can help to apply it frequently between bursts of exertion."
+          },
+          {
+            "player": "I see, thanks. I'll give that a try."
+          },
+          {
+            "npc": "I can see you eyeing the liquid. It is best you do not ask."
+          }
+        ],
+        "id": "luhlu3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has previously received Jim's wet cloth:",
+        "steps": [
+          {
+            "player": "It's rather hot here."
+          },
+          {
+            "npc": "Have another cloth. Remember, it only offers a brief respite from the heat. You'll want to time bursts of exertion right after using it."
+          }
+        ],
+        "id": "dqdBpb"
       }
     ]
   }

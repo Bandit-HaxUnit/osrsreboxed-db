@@ -228,8 +228,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "kLJ4He"
+        "id": "kLJ4He",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-3006fe4f491e6f80"
+          }
+        ]
       }
     ],
     "using-items-on-her-cockatrice-head": [
@@ -359,6 +364,60 @@
         "type": "jump",
         "reference": "above",
         "id": "8AUHzw"
+      }
+    ]
+  },
+  "branches": {
+    "jump-3006fe4f491e6f80": [
+      {
+        "type": "condition",
+        "text": "If the player does not have enough coins:",
+        "steps": [
+          {
+            "player": "Maybe another time."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "PtmeOI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough coins:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes please",
+                "steps": [
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "npc": "There you go!"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "npc": "All right, come back if you change your mind, eh?"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "qcFue6"
       }
     ]
   }

@@ -67,8 +67,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kjXmBG"
+                "id": "kjXmBG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f2df10bab65c7273"
+                  }
+                ]
               }
             ]
           },
@@ -77,8 +82,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "z3qlHU"
+                "id": "z3qlHU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16eefa7827e0af1f"
+                  }
+                ]
               }
             ]
           },
@@ -103,6 +113,29 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-f2df10bab65c7273": [
+      {
+        "player": "I'd like to look at what you have for sale."
+      },
+      {
+        "type": "action",
+        "text": "Miscellanian Clothes Shop opens.",
+        "action": "open_shop",
+        "action_source": "text",
+        "target": "Miscellanian Clothes Shop",
+        "id": "RkIdJQ"
+      }
+    ],
+    "jump-16eefa7827e0af1f": [
+      {
+        "player": "No thank you, I'm fine."
+      },
+      {
+        "type": "end"
       }
     ]
   }

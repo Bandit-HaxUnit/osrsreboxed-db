@@ -63,8 +63,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "IuLICT"
+                            "id": "IuLICT",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-842988ea484afdcf"
+                              }
+                            ]
                           }
                         ],
                         "id": "y7f1d7"
@@ -74,8 +79,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "m502VZ"
+                            "id": "m502VZ",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-8a0f27eba2954888"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -274,6 +284,29 @@
           }
         ],
         "id": "MUiW7u"
+      }
+    ]
+  },
+  "branches": {
+    "jump-842988ea484afdcf": [
+      {
+        "player": "Okay, here's 25 ectotokens. Let's go."
+      },
+      {
+        "type": "message",
+        "text": "After a long boat trip you arrive at Dragontooth Island.",
+        "id": "wWtJmk"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8a0f27eba2954888": [
+      {
+        "player": "Not now, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -115,10 +115,106 @@
             ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The curator hands you a medallion.",
+                            "id": "qrOUUk"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -153,10 +249,106 @@
             ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The curator hands you a medallion.",
+                            "id": "qrOUUk"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -234,7 +426,13 @@
             "text": "What kind of planks can you make?"
           },
           {
-            "text": "Can I buy some housing supplies?"
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WoUFif"
+              }
+            ]
           },
           {
             "text": "I'm here on behalf of the museum archaeological team.",
@@ -295,7 +493,13 @@
             "text": "What kind of planks can you make?"
           },
           {
-            "text": "Can I buy some housing supplies?"
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WoUFif"
+              }
+            ]
           },
           {
             "text": "I'm here on behalf of the museum archaeological team.",
@@ -332,7 +536,13 @@
             "text": "What kind of planks can you make?"
           },
           {
-            "text": "Can I buy some housing supplies?"
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WoUFif"
+              }
+            ]
           },
           {
             "text": "I'm here on behalf of the museum archaeological team.",
@@ -463,7 +673,13 @@
             "text": "What kind of planks can you make?"
           },
           {
-            "text": "Can I buy some housing supplies?"
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WoUFif"
+              }
+            ]
           },
           {
             "text": "I'm here on behalf of the museum archaeological team.",
@@ -578,7 +794,13 @@
             "text": "What kind of planks can you make?"
           },
           {
-            "text": "Can I buy some housing supplies?"
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WoUFif"
+              }
+            ]
           },
           {
             "text": "I'm here on behalf of the museum archaeological team.",
@@ -623,7 +845,13 @@
             "text": "What kind of planks can you make?"
           },
           {
-            "text": "Can I buy some housing supplies?"
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WoUFif"
+              }
+            ]
           },
           {
             "text": "I'm here on behalf of the museum archaeological team.",
@@ -665,7 +893,13 @@
             "text": "What kind of planks can you make?"
           },
           {
-            "text": "Can I buy some housing supplies?"
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WoUFif"
+              }
+            ]
           },
           {
             "text": "I'm here on behalf of the museum archaeological team.",
@@ -927,8 +1161,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "1bKiW_"
+                        "id": "1bKiW_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c0d46942cdc04404"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1015,7 +1254,20 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'm looking for Redbeard Frank."
+            "text": "I'm looking for Redbeard Frank.",
+            "steps": [
+              {
+                "player": "I'm looking for Redbeard Frank."
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Redbeard Frank ye say? He be outside. Says he likes the feel of the wind on his cheeks."
+              },
+              {
+                "player": "Thanks."
+              }
+            ]
           },
           {
             "text": "Can you help me get to Crandor Island?"
@@ -1034,10 +1286,121 @@
             ]
           },
           {
-            "text": "Are you going to sit there all day?"
+            "text": "Are you going to sit there all day?",
+            "steps": [
+              {
+                "player": "Are you going to sit there all day?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Aye, I am. I canna walk, ye see."
+              },
+              {
+                "player": "What's stopping you from walking?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Arrr, I 'ave only the one leg! I lost its twin when my last ship went down."
+              },
+              {
+                "player": "But I can see both your legs!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Nay, young [laddie/lassie], this be a false leg. For years I had me a sturdy wooden peg-leg, but now I wear this dainty little feller."
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Yon peg-leg kept getting stuck in the floorboards."
+              },
+              {
+                "player": "Right..."
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Perhaps a [bright young laddie/bonnie young lassie] like yerself would like to help me? I be needing another ship to go a-hunting my enemy."
+              },
+              {
+                "type": "condition",
+                "text": "If the player owns the ship used during Dragon Slayer:",
+                "steps": [
+                  {
+                    "player": "Well, I do have a ship that I'm not using. It's the Lady Lumbridge."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Ahab",
+                    "text": "Arrr! That ship be known to me, and a fine lass she is."
+                  },
+                  {
+                    "player": "I suppose she might be..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Ahab",
+                    "text": "So would ye be kind enough to let me take her out to sea?"
+                  },
+                  {
+                    "player": "I had to pay 2000 gp for that ship. Have you got that much?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "27Ek2l"
+                  }
+                ],
+                "id": "ooH_mR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not own the ship used during Dragon Slayer:",
+                "steps": [
+                  {
+                    "player": "Hmmm. And can you afford another ship?"
+                  }
+                ],
+                "id": "fdPdBT"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Nay, I have nary a penny to my name. All my worldly goods went down with me old ship."
+              },
+              {
+                "player": "So you're actually asking me to give you a free ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Arrr! Would ye be so kind?"
+              },
+              {
+                "player": "No I jolly well wouldn't!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Arrr."
+              }
+            ]
           },
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "player": "Do you have anything for trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Nothin' at the moment, but then again the Customs Agents are on the warpath right now."
+              }
+            ]
           }
         ]
       }
@@ -1052,10 +1415,54 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'm looking for Redbeard Frank."
+            "text": "I'm looking for Redbeard Frank.",
+            "steps": [
+              {
+                "player": "I'm looking for Redbeard Frank."
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "Redbeard Frank ye say? He be outside. Says he likes the feel of the wind on his cheeks."
+              },
+              {
+                "player": "Thanks."
+              }
+            ]
           },
           {
-            "text": "Why are you called Longbow Ben?"
+            "text": "Why are you called Longbow Ben?",
+            "steps": [
+              {
+                "player": "Why are you called Longbow Ben?"
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "Arrr, that's a strange yarn."
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "I was to be marooned, ye see. A scurvy troublemaker had taken my ship, and he put me ashore on a little island."
+              },
+              {
+                "player": "Gosh, how did you escape?"
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "Arrr, ye see, he made one mistake! Before he sailed away, he gave me a bow and one arrow so that I wouldn't have to die slowly."
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "So I shot him and took my ship back."
+              },
+              {
+                "player": "Right..."
+              }
+            ]
           },
           {
             "text": "Ever made any cursed voyages?",
@@ -1086,7 +1493,20 @@
         "type": "choice",
         "options": [
           {
-            "text": "What are you doing here?"
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jack Seagull",
+                "text": "Drinking."
+              },
+              {
+                "player": "Fair enough."
+              }
+            ]
           },
           {
             "text": "Ever made any cursed voyages?",
@@ -1201,7 +1621,81 @@
             ]
           },
           {
-            "text": "Have you got any quests I could do?"
+            "text": "Have you got any quests I could do?",
+            "steps": [
+              {
+                "player": "Have you got any quests I could do?"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Pirate's Treasure and Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, but the barkeep hears most of the news around here. Or Redbeard Frank, he's often spoken of buried treasure. Perhaps ye should be asking them for quests."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CnZzQ6"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Pirate's Treasure:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, but Redbeard Frank has often spoken of buried treasure. Perhaps ye should be asking him for a quest."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "HbRh8o"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, but the barkeep hears most of the news around here. Perhaps ye should be asking him for a quest."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JctxZS"
+              },
+              {
+                "type": "condition",
+                "text": "After completing Pirate's Treasure and Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, I've nothing for ye to do. But I hear there's an old landlubber in Draynor Village who's always a-looking for a lively [lad/lass] to do him a favour."
+                  },
+                  {
+                    "player": "Thanks."
+                  }
+                ],
+                "id": "PWoxvK"
+              }
+            ]
           }
         ]
       }
@@ -1323,7 +1817,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about something else.",
@@ -1332,7 +1832,34 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Have you got any decent gossip to share?"
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
                   },
                   {
                     "text": "Talk about Bone Voyage.",
@@ -1380,10 +1907,21 @@
                     ]
                   },
                   {
-                    "text": "Have you got any good potions to give away?"
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
                   },
                   {
-                    "text": "No thanks."
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
                   }
                 ]
               }
@@ -1402,7 +1940,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about something else.",
@@ -1411,7 +1955,34 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Have you got any decent gossip to share?"
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
                   },
                   {
                     "text": "Talk about Bone Voyage.",
@@ -1465,10 +2036,21 @@
                     ]
                   },
                   {
-                    "text": "Have you got any good potions to give away?"
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
                   },
                   {
-                    "text": "No thanks."
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
                   }
                 ]
               }
@@ -1487,10 +2069,101 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
-            "text": "Talk about something else."
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about the Ratcatchers Quest.",
+                    "condition": "After the Ratcatchers quest:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ovPBfc"
+                      }
+                    ],
+                    "id": "t1XORf"
+                  },
+                  {
+                    "text": "Talk about Romeo & Juliet.",
+                    "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "x7febq"
+                      }
+                    ],
+                    "id": "VLEiRD"
+                  },
+                  {
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Talk about Bone Voyage.",
@@ -1523,10 +2196,101 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
-            "text": "Talk about something else."
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about the Ratcatchers Quest.",
+                    "condition": "After the Ratcatchers quest:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ovPBfc"
+                      }
+                    ],
+                    "id": "t1XORf"
+                  },
+                  {
+                    "text": "Talk about Romeo & Juliet.",
+                    "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "x7febq"
+                      }
+                    ],
+                    "id": "VLEiRD"
+                  },
+                  {
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Talk about Bone Voyage.",
@@ -2022,8 +2786,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZJYNYZ"
+                "id": "ZJYNYZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-028f3892d6c3f1eb"
+                  }
+                ]
               }
             ]
           },
@@ -2070,6 +2839,212 @@
     ]
   },
   "branches": {
+    "jump-c0d46942cdc04404": [
+      {
+        "player": "Um... Not really."
+      },
+      {
+        "type": "line",
+        "speaker": "Lead Navigator",
+        "text": "The voyage is clearly cursed!"
+      },
+      {
+        "player": "Oh... right..."
+      },
+      {
+        "type": "line",
+        "speaker": "Lead Navigator",
+        "text": "Well, [player name], whether you believe it or not, know that none of my men will be going on this expedition unless you can ensure our safety from the curse."
+      },
+      {
+        "player": "How am I supposed to do that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lead Navigator",
+        "text": "We're not the first crew to face a cursed voyage, perhaps someone who has experienced one before can give you some advice."
+      },
+      {
+        "player": "Any idea where I'd be able to find someone like that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lead Navigator",
+        "text": "I've heard all kinds of stories at the Rusty Anchor Inn in Port Sarim. I'm sure you'll be able to find out something about cursed voyages if you ask around the folks there."
+      },
+      {
+        "player": "Okay, I'll see what I can learn."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-028f3892d6c3f1eb": [
+      {
+        "type": "message",
+        "text": "Each member of the crew, apart from the junior navigator, take a sip of the potion of sealegs.",
+        "id": "Bdvq4m"
+      },
+      {
+        "type": "message",
+        "text": "It doesn't take long for the potion to take effect, causing them to pass out.",
+        "id": "fnCM3G"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "What did your potion do to the crew?!"
+      },
+      {
+        "player": "Well, the apothecary figured they can't be afraid if they're unconcious..."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "But then who's going to get us to the island?"
+      },
+      {
+        "player": "Aren't you meant to be a navigator?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "Yes, a JUNIOR navigator! I've never navigated open waters like this!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't completed Pandemonium:",
+        "steps": [
+          {
+            "player": "What are we going to do?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "qHwsVs"
+          }
+        ],
+        "id": "5OiggG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Pandemonium:",
+        "steps": [
+          {
+            "player": "Well, I've got some sailing experience myself. Hopefully I can get us there without too much trouble."
+          },
+          {
+            "type": "line",
+            "speaker": "Junior Navigator",
+            "text": "But this barge is highly specialised! It's the only one of its kind and it took years for the lead navigator to learn how to sail it!"
+          },
+          {
+            "player": "Oh..."
+          },
+          {
+            "player": "Okay, this might not be as straightforward as I thought. What are we going to do?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "16bnvO"
+          }
+        ],
+        "id": "FkQAxU"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "Okay... Let me think..."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "You'll need to operate the barge controls, I'll let you know if we're headed in the right direction."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "You'll have to fight against the winds to keep the bearing North, you can do that by steering the barge."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "You can increase or decrease our speed by adjusting the sails. You might find keeping the bearing North easier at slower speeds, but it will take longer to reach the island."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Navigator",
+        "text": "If we're headed in the wrong direction for too long I'll take us back to the digsite. Let me know if you want me to go back over these instructions at any point."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "pkFLbX": [
+      {
+        "player": "Do you know where I could find any treasure?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Look around you! This museum is full of treasures!"
+      },
+      {
+        "player": "No, I meant treasures for ME."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Any treasures this museum knows about it goes to great lengths to acquire."
+      }
+    ],
+    "1wehEl": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Well, firstly you'll need to do a bit of work around the museum, then maybe we can talk."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "YRgjB_": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Oh dear. You'll need 250 rubies, a Digsite pendant, 100 cosmic runes and 500 fire runes with you I'm afraid."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "08vMNp": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Thank you. You have [X] to go before you have enough for a medallion."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "WoUFif": [
+      {
+        "player": "Can I buy some housing supplies?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sawmill operator",
+        "text": "Of course!"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Construction supplies",
+        "id": "HEPebK"
+      }
+    ],
     "Y0j9xi": [
       {
         "player": "Hello."
@@ -2078,6 +3053,112 @@
         "type": "line",
         "speaker": "Junior Navigator",
         "text": "You should talk to the lead navigator when you're ready to set sail."
+      }
+    ],
+    "DVEzC8": [
+      {
+        "player": "Can you make potions for me?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Apothecary's Potions",
+        "id": "bc12Bc"
+      }
+    ],
+    "L86AE0": [
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Well I hear young Romeo's having a little woman trouble but other than that all's quiet on the eastern front. Can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "OaTWAr"
+      }
+    ],
+    "2XOSIB": [
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Sad about that affair with young Romeo and Juliet..."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I hear every time Romeo sees Juliet now he runs away screaming something about ghosts and Juliet's cousin?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Always did think he was a bit of a strange one..."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Anyway! Life goes on and so does business! Can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "x76V5W"
+      }
+    ],
+    "E1Xr88": [
+      {
+        "player": "Have you got any good potions to give away?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Sorry, charity is not my strong point. Do you need anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "D-uQYF"
+      }
+    ],
+    "ovPBfc": [
+      {
+        "player": "You wouldn't be able to make any other cat potions, would you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I have no plans to branch out into cat potions at the moment, but if there was sufficient demand for them I might change my mind."
+      }
+    ],
+    "x7febq": [
+      {
+        "type": "reference",
+        "target": "Transcript:Apothecary",
+        "section": "Romeo & Juliet",
+        "text": "(Quest dialogue shows)",
+        "id": "pmniE2",
+        "resolved": false,
+        "page_available": true
+      }
+    ],
+    "hOhPnp": [
+      {
+        "player": "Do you know a potion to make hair fall out?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I do indeed. I gave it to my mother. That's why I now live alone."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "But can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "_FM3_a"
       }
     ],
     "9e0ruU": [

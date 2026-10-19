@@ -1,4 +1,29 @@
 {
+  "branches": {
+    "jump-da6b459b8fc98705": [
+      {
+        "player": "Yes please!"
+      },
+      {
+        "type": "action",
+        "text": "Archeio teleports the player to the Library Historical Archive",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "CggcE8"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7291aaf60326a421": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Hello. Would you like to visit the Library Historical Archive? We've recently opened the archive to visitors."
@@ -49,8 +74,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "VCIBUH"
+                      "id": "VCIBUH",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-da6b459b8fc98705"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -59,8 +89,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "E0hNm7"
+                      "id": "E0hNm7",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7291aaf60326a421"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -88,8 +123,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "LC6hdb"
+                      "id": "LC6hdb",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-da6b459b8fc98705"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -98,8 +138,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "vIRI7J"
+                      "id": "vIRI7J",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7291aaf60326a421"
+                        }
+                      ]
                     }
                   ]
                 }

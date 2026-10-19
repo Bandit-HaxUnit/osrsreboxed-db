@@ -507,7 +507,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "YSv-rY"
+                        "id": "YSv-rY",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-59e8fbd1bdd9fd72"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -523,7 +529,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "l-rNQx"
+                        "id": "l-rNQx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-59e8fbd1bdd9fd72"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -539,7 +551,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "qc3yD4"
+                        "id": "qc3yD4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-59e8fbd1bdd9fd72"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -555,7 +573,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "_t8VTP"
+                        "id": "_t8VTP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-59e8fbd1bdd9fd72"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -840,6 +864,84 @@
           }
         ],
         "id": "QHLZ-h"
+      }
+    ]
+  },
+  "branches": {
+    "jump-59e8fbd1bdd9fd72": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "A watering can.",
+            "steps": [
+              {
+                "player": "A watering can."
+              },
+              {
+                "npc": "A watering can, eh? I might have one spare... tell you what, I'll sell it to you for 25 coins if you like."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "cjBSoo"
+              }
+            ]
+          },
+          {
+            "text": "A gardening trowel.",
+            "steps": [
+              {
+                "player": "A gardening trowel."
+              },
+              {
+                "npc": "A gardening trowel, eh? I might have one spare... tell you what, I'll sell it to you for 15 coins if you like."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "tA_iQZ"
+              }
+            ]
+          },
+          {
+            "text": "A seed dibber.",
+            "steps": [
+              {
+                "player": "A seed dibber."
+              },
+              {
+                "npc": "A seed dibber, eh? I might have one spare... tell you what, I'll sell it to you for 15 coins if you like."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "niqIqJ"
+              }
+            ]
+          },
+          {
+            "text": "(See previous items)",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "qIVZL8"
+              }
+            ]
+          },
+          {
+            "text": "Forget it.",
+            "steps": [
+              {
+                "player": "Forget it, you don't have anything I need."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

@@ -178,8 +178,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "_EbUWw"
+                                "id": "_EbUWw",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-12b8a98b4d7fc673"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -410,8 +415,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ReOJOW"
+                "id": "ReOJOW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7dccb10d57d6e448"
+                  }
+                ]
               }
             ]
           },
@@ -420,8 +430,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UFr6ji"
+                "id": "UFr6ji",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0c5dfc4587d418bb"
+                  }
+                ]
               }
             ]
           }
@@ -704,6 +719,152 @@
       {
         "type": "unavailable",
         "id": "kTdseX"
+      }
+    ]
+  },
+  "branches": {
+    "jump-12b8a98b4d7fc673": [
+      {
+        "type": "line",
+        "speaker": "Sir Amik Varze",
+        "text": "Subtlety isn't exactly our strong point."
+      },
+      {
+        "player": "Can't you just take your White Knights' armour off? They wouldn't recognise you then!"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Amik Varze",
+        "text": "I am afraid our charter prevents us using espionage in any form, that is the domain of the Temple Knights."
+      },
+      {
+        "player": "Temple Knights? Who are they?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Amik Varze",
+        "text": "That information is classified. I am forbidden to share it with outsiders."
+      },
+      {
+        "player": "So... what do you need doing?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Amik Varze",
+        "text": "Well, the Black Knights have started making strange threats to us; demanding large amounts of money and land, and threatening to invade Falador if we don't pay them."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Amik Varze",
+        "text": "Now, NORMALLY this wouldn't be a problem..."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Amik Varze",
+        "text": "But they claim to have a powerful new secret weapon."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Amik Varze",
+        "text": "Your mission, should you decide to accept it, is to infiltrate their fortress, find out what their secret weapon is, and then sabotage it."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Black Knights' Fortress quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Ok, I'll do my best."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Amik Varze",
+                "text": "Good luck! Let me know how you get on. Here's the dossier for the case, I've already given you the details."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sir Amik Varze",
+                    "text": "Oh. You don't appear to have any room for the dossier in your inventory. Come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "DEdpB4"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "dossier",
+                "id": "RQQGDa"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:black-knights-fortress:start",
+            "quest": "Black Knights' Fortress"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, I'm not ready to do that."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Amik Varze",
+                "text": "Come see me again if you change your mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7dccb10d57d6e448": [
+      {
+        "player": "Oh pleeeaaase let me in!"
+      },
+      {
+        "type": "line",
+        "speaker": "Fortress Guard",
+        "text": "Go away. You're getting annoying."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0c5dfc4587d418bb": [
+      {
+        "player": "So what is this uniform?"
+      },
+      {
+        "type": "line",
+        "speaker": "Fortress Guard",
+        "text": "Well you can see me wearing it. It's an iron chainbody and a medium bronze helm."
+      },
+      {
+        "player": "Hmmm... I wonder if I can make that or get some in the local towns...."
+      },
+      {
+        "type": "line",
+        "speaker": "Fortress Guard",
+        "text": "What was that you muttered?"
+      },
+      {
+        "player": "Oh, nothing important!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

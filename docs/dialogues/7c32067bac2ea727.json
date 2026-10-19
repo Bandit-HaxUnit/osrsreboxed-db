@@ -71,7 +71,69 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Do you have any more kittens?"
+                    "text": "Do you have any more kittens?",
+                    "steps": [
+                      {
+                        "player": "Do you have any more kittens?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gertrude",
+                        "text": "Indeed I have. They are 100 coins each, do you want one?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 100 coins:",
+                        "steps": [
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "-KXtkQ"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "nNpf4W"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "[Charm] I'm quite fussy over cats - can I pick my own?",
+                                "condition": "With the Ring of Charos(a) equipped:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "MGKYT2"
+                                  }
+                                ],
+                                "id": "I1YJHK"
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "trS3eD"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 100 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "J5DBLF"
+                          }
+                        ],
+                        "id": "QTZX8R"
+                      }
+                    ]
                   },
                   {
                     "text": "I'll be off. See you another time.",
@@ -102,10 +164,77 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Do you have any more kittens?"
+                    "text": "Do you have any more kittens?",
+                    "steps": [
+                      {
+                        "player": "Do you have any more kittens?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gertrude",
+                        "text": "Indeed I have. They are 100 coins each, do you want one?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 100 coins:",
+                        "steps": [
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "-KXtkQ"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "nNpf4W"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "[Charm] I'm quite fussy over cats - can I pick my own?",
+                                "condition": "With the Ring of Charos(a) equipped:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "MGKYT2"
+                                  }
+                                ],
+                                "id": "I1YJHK"
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "trS3eD"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 100 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "J5DBLF"
+                          }
+                        ],
+                        "id": "QTZX8R"
+                      }
+                    ]
                   },
                   {
-                    "text": "I'll be off. See you another time."
+                    "text": "I'll be off. See you another time.",
+                    "steps": [
+                      {
+                        "player": "I'll be off. See you another time."
+                      }
+                    ]
                   }
                 ]
               }
@@ -135,10 +264,77 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you have any more kittens?"
+            "text": "Do you have any more kittens?",
+            "steps": [
+              {
+                "player": "Do you have any more kittens?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gertrude",
+                "text": "Indeed I have. They are 100 coins each, do you want one?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "-KXtkQ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "nNpf4W"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "[Charm] I'm quite fussy over cats - can I pick my own?",
+                        "condition": "With the Ring of Charos(a) equipped:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MGKYT2"
+                          }
+                        ],
+                        "id": "I1YJHK"
+                      }
+                    ]
+                  }
+                ],
+                "id": "trS3eD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J5DBLF"
+                  }
+                ],
+                "id": "QTZX8R"
+              }
+            ]
           },
           {
-            "text": "I'll be off. See you another time."
+            "text": "I'll be off. See you another time.",
+            "steps": [
+              {
+                "player": "I'll be off. See you another time."
+              }
+            ]
           }
         ]
       }
@@ -3863,6 +4059,56 @@
     ]
   },
   "branches": {
+    "-KXtkQ": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "line",
+        "speaker": "Gertrude",
+        "text": "Okay then, here you go."
+      },
+      {
+        "player": "Thanks."
+      },
+      {
+        "type": "message",
+        "text": "Gertrude gives you another kitten.",
+        "id": "Q44J0B"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "nNpf4W": [
+      {
+        "player": "No thanks, I've paid that boy enough already."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "MGKYT2": [
+      {
+        "player": "I'm quite fussy over cats - can I pick my own?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gertrude",
+        "text": "Well okay, but they're all just as cuddly as each other."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Pick a kitten interface",
+        "id": "ft92fH"
+      }
+    ],
+    "J5DBLF": [
+      {
+        "player": "Oops, looks like I'm a bit short. I'll have to come back later."
+      }
+    ],
     "Ip8ceI": [
       {
         "player": "No, I'm done here."

@@ -48,8 +48,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ofM6R-"
+                "id": "ofM6R-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-37e3917e706e3212"
+                  }
+                ]
               }
             ]
           },
@@ -58,8 +63,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wVQoHz"
+                "id": "wVQoHz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ac163180d975b934"
+                  }
+                ]
               }
             ]
           },
@@ -242,6 +252,30 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-37e3917e706e3212": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Zaff's Superior Staffs!",
+        "id": "kKU2uc"
+      }
+    ],
+    "jump-ac163180d975b934": [
+      {
+        "player": "No, thank you."
+      },
+      {
+        "npc": "Well, 'stick' your head in again if you change your mind."
+      },
+      {
+        "player": "Huh, terrible pun! You just can't get the 'staff' these days!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

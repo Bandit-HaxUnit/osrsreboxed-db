@@ -113,14 +113,205 @@
                           },
                           {
                             "npc": "You'll have to stay in there until you pay the fine of five gold pieces. Do you want to pay now?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes, okay.",
+                                "steps": [
+                                  {
+                                    "player": "Yes, okay."
+                                  },
+                                  {
+                                    "npc": "Good, I see that you have come to your senses."
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has 5 coins:",
+                                    "steps": [
+                                      {
+                                        "type": "message",
+                                        "text": "You hand over five gold pieces to Shantay.",
+                                        "id": "A1lF8E"
+                                      },
+                                      {
+                                        "npc": "Great Effendi, now please try to keep the peace."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "Shantay unlocks the door to the cell.",
+                                        "id": "WtRwmq"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "zFh2Ff"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have 5 coins in their inventory:",
+                                    "steps": [
+                                      {
+                                        "npc": "You don't have that kind of cash on you I see."
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player does not have 5 coins in their bank, or they are an Ultimate Ironman:",
+                                        "steps": [
+                                          {
+                                            "npc": "You are to be transported to a maximum security prison in Port Sarim."
+                                          },
+                                          {
+                                            "npc": "I hope you've learnt an important lesson from this."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "l_xNzl"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "In Leagues without access to the Asgarnia region:",
+                                        "steps": [
+                                          {
+                                            "npc": "I would transport you to a maximum security prison in Port Sarim. However since you haven't unlocked access to Asgarnia consider yourself lucky."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "fk0OWP"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player has 5 coins in their bank:",
+                                        "steps": [
+                                          {
+                                            "npc": "But perhaps you have some in your bank? Or would you prefer the maximum security prison in Port Sarim."
+                                          },
+                                          {
+                                            "npc": "Which is it going to be?"
+                                          },
+                                          {
+                                            "type": "choice",
+                                            "options": [
+                                              {
+                                                "text": "I'll pay the fine.",
+                                                "steps": [
+                                                  {
+                                                    "player": "I'll pay the fine."
+                                                  },
+                                                  {
+                                                    "npc": "Okay then..., you'll need access to your bank."
+                                                  },
+                                                  {
+                                                    "type": "action",
+                                                    "action": "open_interface",
+                                                    "target": "Bank",
+                                                    "id": "Jhp508"
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "text": "No thanks, you're not having my money.",
+                                                "steps": [
+                                                  {
+                                                    "player": "No thanks, you're not having my money."
+                                                  },
+                                                  {
+                                                    "npc": "Very well, I grow tired of you, you'll be taken to a new jail in Port Sarim."
+                                                  },
+                                                  {
+                                                    "type": "action",
+                                                    "text": "The player is transported to the \"Maximum security prison\" in Port Sarim.",
+                                                    "action": "teleport",
+                                                    "action_source": "text",
+                                                    "id": "CrRbq8",
+                                                    "target": "Port Sarim jail"
+                                                  },
+                                                  {
+                                                    "type": "end"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "id": "DT2a2M"
+                                      }
+                                    ],
+                                    "id": "Ah8U8u"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks, you're not having my money.",
+                                "steps": [
+                                  {
+                                    "player": "No thanks, you're not having my money."
+                                  },
+                                  {
+                                    "npc": "You have a choice. You can either pay five gold pieces or... You can be transported to a maximum security prison in Port Sarim."
+                                  },
+                                  {
+                                    "npc": "Will you pay the five gold pieces?"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes, okay.",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "id": "VH8m-m",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-d0c156b5ffcf1243"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "No, do your worst!",
+                                        "steps": [
+                                          {
+                                            "npc": "You are to be transported to a maximum security prison in Port Sarim."
+                                          },
+                                          {
+                                            "npc": "I hope you've learnt an important lesson from this."
+                                          },
+                                          {
+                                            "type": "action",
+                                            "text": "The player is transported to the \"Maximum security prison\" in Port Sarim.",
+                                            "action": "teleport",
+                                            "action_source": "text",
+                                            "id": "HbG603",
+                                            "target": "Port Sarim jail"
+                                          },
+                                          {
+                                            "type": "message",
+                                            "text": "You find yourself in a prison.",
+                                            "id": "JSJwhi"
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
                           }
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "choice",
-                    "options": [
+                      },
                       {
                         "text": "I am a little inexperienced.",
                         "steps": [
@@ -144,8 +335,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "H-rZeN"
+                                    "id": "8AbsDJ",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-fbe8c501d7232495"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -154,8 +350,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "HNLnZM"
+                                    "id": "0zShNJ",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-99eb579ad2e706e2"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -166,15 +367,50 @@
                                     "player": "Why do I have to pay to go into the desert?"
                                   },
                                   {
+                                    "type": "message",
+                                    "text": "Shantay opens his arms wide as if to embrace you.",
+                                    "id": "cS1vuJ"
+                                  },
+                                  {
                                     "npc": "Effendi, you insult me! I am not interested in making a profit from you! I merely seek to cover my expenses in keeping this pass open."
                                   },
                                   {
                                     "npc": "There is repair work to carry out and also the men's wages to consider. For the paltry sum of 5 Gold pieces, I think we offer a great service."
                                   },
                                   {
-                                    "type": "jump",
-                                    "reference": "initial",
-                                    "id": "VlY0wn"
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Can I see what you have to sell please?",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "id": "0Mt7Uq",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-fbe8c501d7232495"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "I must be going.",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "id": "XAS5q6",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-99eb579ad2e706e2"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -205,8 +441,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "D35F1F"
+                                    "id": "ojsYJn",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-fbe8c501d7232495"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -215,8 +456,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "SwEI0L"
+                                    "id": "lvFvkN",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-99eb579ad2e706e2"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -225,8 +471,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "Zl-07H"
+                                    "id": "upnLTd",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-3e85e49c1e0b725f"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -341,8 +592,8 @@
     "interacting-with-the-prison-door-while-locked-in-the-shantay-pass-jail": [
       {
         "type": "message",
-        "text": "The door is locked.",
-        "id": "2ogbJX"
+        "text": "This door is locked.",
+        "id": "wKL-tU"
       },
       {
         "type": "message",
@@ -360,8 +611,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vEKZyr"
+                "id": "vEKZyr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d0c156b5ffcf1243"
+                  }
+                ]
               }
             ]
           },
@@ -370,8 +626,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Dv9KIM"
+                "id": "Dv9KIM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a9af6c1e5ea42806"
+                  }
+                ]
               }
             ]
           }
@@ -448,9 +709,471 @@
         "text": "You've [found a new clue/obtained a casket]!",
         "id": "32cLf0"
       }
+    ],
+    "arrested": [
+      {
+        "npc": "You'll have to stay in there until you pay the fine of five gold pieces. Do you want to pay now?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, okay.",
+            "steps": [
+              {
+                "player": "Yes, okay."
+              },
+              {
+                "npc": "Good, I see that you have come to your senses."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 5 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand over five gold pieces to Shantay.",
+                    "id": "A1lF8E"
+                  },
+                  {
+                    "npc": "Great Effendi, now please try to keep the peace."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Shantay unlocks the door to the cell.",
+                    "id": "WtRwmq"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "zFh2Ff"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 5 coins in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You don't have that kind of cash on you I see."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have 5 coins in their bank, or they are an Ultimate Ironman:",
+                    "steps": [
+                      {
+                        "npc": "You are to be transported to a maximum security prison in Port Sarim."
+                      },
+                      {
+                        "npc": "I hope you've learnt an important lesson from this."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "l_xNzl"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "In Leagues without access to the Asgarnia region:",
+                    "steps": [
+                      {
+                        "npc": "I would transport you to a maximum security prison in Port Sarim. However since you haven't unlocked access to Asgarnia consider yourself lucky."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "fk0OWP"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 5 coins in their bank:",
+                    "steps": [
+                      {
+                        "npc": "But perhaps you have some in your bank? Or would you prefer the maximum security prison in Port Sarim."
+                      },
+                      {
+                        "npc": "Which is it going to be?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I'll pay the fine.",
+                            "steps": [
+                              {
+                                "player": "I'll pay the fine."
+                              },
+                              {
+                                "npc": "Okay then..., you'll need access to your bank."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "Bank",
+                                "id": "Jhp508"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks, you're not having my money.",
+                            "steps": [
+                              {
+                                "player": "No thanks, you're not having my money."
+                              },
+                              {
+                                "npc": "Very well, I grow tired of you, you'll be taken to a new jail in Port Sarim."
+                              },
+                              {
+                                "type": "action",
+                                "text": "The player is transported to the \"Maximum security prison\" in Port Sarim.",
+                                "action": "teleport",
+                                "action_source": "text",
+                                "id": "CrRbq8",
+                                "target": "Port Sarim jail"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DT2a2M"
+                  }
+                ],
+                "id": "Ah8U8u"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, you're not having my money.",
+            "steps": [
+              {
+                "player": "No thanks, you're not having my money."
+              },
+              {
+                "npc": "You have a choice. You can either pay five gold pieces or... You can be transported to a maximum security prison in Port Sarim."
+              },
+              {
+                "npc": "Will you pay the five gold pieces?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, okay.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "VH8m-m",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d0c156b5ffcf1243"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, do your worst!",
+                    "steps": [
+                      {
+                        "npc": "You are to be transported to a maximum security prison in Port Sarim."
+                      },
+                      {
+                        "npc": "I hope you've learnt an important lesson from this."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player is transported to the \"Maximum security prison\" in Port Sarim.",
+                        "action": "teleport",
+                        "action_source": "text",
+                        "id": "HbG603",
+                        "target": "Port Sarim jail"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You find yourself in a prison.",
+                        "id": "JSJwhi"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "branches": {
+    "jump-d0c156b5ffcf1243": [
+      {
+        "player": "Yes, okay."
+      },
+      {
+        "npc": "Good, I see that you have come to your senses."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 5 coins:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over five gold pieces to Shantay.",
+            "id": "A1lF8E"
+          },
+          {
+            "npc": "Great Effendi, now please try to keep the peace."
+          },
+          {
+            "type": "message",
+            "text": "Shantay unlocks the door to the cell.",
+            "id": "WtRwmq"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zFh2Ff"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 5 coins in their inventory:",
+        "steps": [
+          {
+            "npc": "You don't have that kind of cash on you I see."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have 5 coins in their bank, or they are an Ultimate Ironman:",
+            "steps": [
+              {
+                "npc": "You are to be transported to a maximum security prison in Port Sarim."
+              },
+              {
+                "npc": "I hope you've learnt an important lesson from this."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "l_xNzl"
+          },
+          {
+            "type": "condition",
+            "text": "In Leagues without access to the Asgarnia region:",
+            "steps": [
+              {
+                "npc": "I would transport you to a maximum security prison in Port Sarim. However since you haven't unlocked access to Asgarnia consider yourself lucky."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "fk0OWP"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has 5 coins in their bank:",
+            "steps": [
+              {
+                "npc": "But perhaps you have some in your bank? Or would you prefer the maximum security prison in Port Sarim."
+              },
+              {
+                "npc": "Which is it going to be?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'll pay the fine.",
+                    "steps": [
+                      {
+                        "player": "I'll pay the fine."
+                      },
+                      {
+                        "npc": "Okay then..., you'll need access to your bank."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Bank",
+                        "id": "Jhp508"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, you're not having my money.",
+                    "steps": [
+                      {
+                        "player": "No thanks, you're not having my money."
+                      },
+                      {
+                        "npc": "Very well, I grow tired of you, you'll be taken to a new jail in Port Sarim."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player is transported to the \"Maximum security prison\" in Port Sarim.",
+                        "action": "teleport",
+                        "action_source": "text",
+                        "id": "CrRbq8",
+                        "target": "Port Sarim jail"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "DT2a2M"
+          }
+        ],
+        "id": "Ah8U8u"
+      }
+    ],
+    "jump-fbe8c501d7232495": [
+      {
+        "player": "Can I see what you have to sell please?"
+      },
+      {
+        "npc": "Absolutely Effendi!"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Shantay Pass Shop",
+        "id": "cEILVv"
+      }
+    ],
+    "jump-99eb579ad2e706e2": [
+      {
+        "player": "I must be going."
+      },
+      {
+        "npc": "So long..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3e85e49c1e0b725f": [
+      {
+        "player": "Why do I have to pay to go into the desert?"
+      },
+      {
+        "type": "message",
+        "text": "Shantay opens his arms wide as if to embrace you.",
+        "id": "cS1vuJ"
+      },
+      {
+        "npc": "Effendi, you insult me! I am not interested in making a profit from you! I merely seek to cover my expenses in keeping this pass open."
+      },
+      {
+        "npc": "There is repair work to carry out and also the men's wages to consider. For the paltry sum of 5 Gold pieces, I think we offer a great service."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see what you have to sell please?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "0Mt7Uq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fbe8c501d7232495"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I must be going.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "XAS5q6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-99eb579ad2e706e2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a9af6c1e5ea42806": [
+      {
+        "player": "No thanks, you're not having my money."
+      },
+      {
+        "npc": "You have a choice. You can either pay five gold pieces or... You can be transported to a maximum security prison in Port Sarim."
+      },
+      {
+        "npc": "Will you pay the five gold pieces?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, okay.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "VH8m-m",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d0c156b5ffcf1243"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, do your worst!",
+            "steps": [
+              {
+                "npc": "You are to be transported to a maximum security prison in Port Sarim."
+              },
+              {
+                "npc": "I hope you've learnt an important lesson from this."
+              },
+              {
+                "type": "action",
+                "text": "The player is transported to the \"Maximum security prison\" in Port Sarim.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "HbG603",
+                "target": "Port Sarim jail"
+              },
+              {
+                "type": "message",
+                "text": "You find yourself in a prison.",
+                "id": "JSJwhi"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "yZyv0a": [
       {
         "npc": "There is a heartbroken mother just past the gates and in the desert. Her name is Irena and she mourns her lost daughter. Such a shame."

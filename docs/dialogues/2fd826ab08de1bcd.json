@@ -373,8 +373,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MpWKog"
+                "id": "MpWKog",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-29df3371258193c1"
+                  }
+                ]
               }
             ]
           },
@@ -409,8 +414,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ka2y5v"
+                "id": "ka2y5v",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1c7674856410568c"
+                  }
+                ]
               }
             ]
           },
@@ -860,6 +870,138 @@
       {
         "type": "unavailable",
         "id": "A1jMSa"
+      }
+    ]
+  },
+  "branches": {
+    "jump-29df3371258193c1": [
+      {
+        "player": "I'm trying to free Skrach, can you help?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rantz",
+        "text": "Skrach...he big boss? Skrach like da Jubbly chompy...is bestest yums like chompy."
+      },
+      {
+        "player": "Ok, so can you help me get some Jubbly Chompy?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rantz",
+        "text": "Rantz tell creature hows to stick da Jubbly...just like da Chompy..."
+      },
+      {
+        "type": "line",
+        "speaker": "Rantz",
+        "text": "Soon, creature be da ogre too like Rantz! Harr, har, har!"
+      },
+      {
+        "player": "A nice thought, but unlikely..."
+      },
+      {
+        "type": "line",
+        "speaker": "Rantz",
+        "text": "But creature do Rantz stuffsies first...yous creature gets Rantz to other lands over 'der so Rantz gets da stuffsies for da glugs-glugs."
+      },
+      {
+        "type": "message",
+        "text": "Rantz points to the North East, in the direction of Karamja.",
+        "id": "CPNrNp"
+      },
+      {
+        "type": "line",
+        "speaker": "Rantz",
+        "text": "Yous do dis creature for da Jubbly?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's involved?",
+            "steps": [
+              {
+                "player": "What's involved?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rantz",
+                "text": "You's creature gets Rantz to other lands over 'der so Rantz gets da stuffsies for da glug-glugs."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "oaxmB_"
+              }
+            ]
+          },
+          {
+            "text": "What do I get in return?",
+            "steps": [
+              {
+                "player": "What do I get in return?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rantz",
+                "text": "Me's shows da creatures how to sneaky, sneaky stick da Jubbly!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "WVz46_"
+              }
+            ]
+          },
+          {
+            "text": "Ok, I'll do it.",
+            "steps": [
+              {
+                "player": "Ok, I'll do it."
+              },
+              {
+                "type": "line",
+                "speaker": "Rantz",
+                "text": "Dat's da good fing, you's creature goes down by da watery place, over near da cabbage! Me's says more der'."
+              },
+              {
+                "type": "message",
+                "text": "Rantz points to the south east near a largish tree.",
+                "id": "faZwri"
+              },
+              {
+                "player": "Ok, will do!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No way am I doing that!",
+            "steps": [
+              {
+                "player": "No way am I doing that!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1c7674856410568c": [
+      {
+        "type": "message",
+        "text": "Rantz points to the south east near a largish tree.",
+        "id": "faZwri"
+      },
+      {
+        "player": "Ok, will do!"
+      },
+      {
+        "type": "end"
       }
     ]
   }
