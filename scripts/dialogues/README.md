@@ -222,7 +222,7 @@ nesting and destination prerequisites now come from those cached revisions.
 | Prospector Percy, While Guthix Sleeps | Retain the remaining mixed content/gameplay fixes; Silif's repeated armour and follow-up conversation now comes from source navigation. |
 
 This removes conversation-text patches for **11 records**, and reduces other
-patches. The remaining correction file contains 12 records; its fingerprints
+patches. The remaining correction file also preserves capture-only records; its fingerprints
 check the actual new parser output, rather than a snapshot of the former parser.
 
 `runtime-bindings.json` keeps TSPS entrypoint names (`arrested` and the Ides of
@@ -238,6 +238,34 @@ record or edited path that no longer matches stops publication with
 `Stale dialogue correction`. Review source changes before rebasing a correction;
 do not just accept a new fingerprint. The original correction commits remain linked
 in the correction file. Parser diagnostics describe the source before corrections.
+
+General Montoya and Record Keeper are capture-only inputs preserved from TSPS
+commit `7a3e4ea0a` (release-day RSProx 241.1; provenance links are in the correction
+file). Their `base_sha256: null` requires that the Wiki parser has no record yet.
+If a later fetch supplies one, the dump stops for review instead of overwriting
+the Wiki record. Their named runtime hooks, cache NPC identities, authoring
+metadata and shards are exported together. Capture metadata uses `source.capture`
+rather than inventing a Wiki revision.
+
+Never hand-edit any generated JSON, including during merge conflict resolution.
+Fix source collection, parsing or reviewed source inputs here, regenerate the
+exports, and verify that a second build from unchanged inputs is identical.
+
+PR 715 also preserves five reviewed quest-flow repairs as fingerprint-checked
+authoring corrections: Contact!'s post-answer guards, Doric's anvil acceptance,
+Persten's two acceptance continuations, Colin's shared reply and the Restless
+Ghost's two abbreviated acceptance paths. These change only their audited
+subtrees, retain existing hook IDs, and stop on changed source input. In particular,
+TSPS currently evaluates top-level conditions while flattening the conversation;
+Contact!'s guards therefore belong in each answer's continuation in this export.
+The saved Wiki puts the guards after the menu, which is semantically equivalent
+only with a runner that evaluates those conditions after the answer. A future
+source-parser/runtime improvement must retain the real quiz regression before
+removing this correction. No global nearest-Yes/No navigation guess is added.
+
+The same refresh preserves the cache-bound Uzer Evil Dave ids 913/1987 and world
+Sarius id 15839 in `runtime-bindings.json`. These name their precise transcript
+variants; they do not globally merge NPCs sharing a name.
 
 To regenerate and validate:
 

@@ -11,8 +11,11 @@
       "source": {
         "type": "object",
         "required": [
-          "page",
-          "revision"
+          "page"
+        ],
+        "anyOf": [
+          {"required": ["revision"]},
+          {"required": ["capture"]}
         ],
         "properties": {
           "page": {
@@ -20,6 +23,10 @@
           },
           "revision": {
             "type": "integer"
+          },
+          "capture": {
+            "type": "string",
+            "minLength": 1
           }
         },
         "additionalProperties": false

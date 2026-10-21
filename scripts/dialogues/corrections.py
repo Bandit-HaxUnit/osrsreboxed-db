@@ -16,10 +16,10 @@ def fingerprint(value):
 def apply_corrections(data, corrections):
     # Check every source before mutating anything or publishing an export.
     for name, correction in corrections.items():
-        if (
-            name not in data["records"]
-            or fingerprint(data["records"][name]) != correction["base_sha256"]
-        ):
+        current = (
+            fingerprint(data["records"][name]) if name in data["records"] else None
+        )
+        if current != correction["base_sha256"]:
             raise ValueError(
                 f"Stale dialogue correction: {name}; review the source changes"
             )

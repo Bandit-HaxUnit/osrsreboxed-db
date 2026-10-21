@@ -822,13 +822,14 @@ def main():
         data,
         json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text()),
     )
+    dialogues = dict(sorted(data["records"].items()))
     report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
     report.write_text(report_text)
     save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
     save(args.out.with_name("npc-dialogue-index.json"), index)
-    write_split(args.out.parent, (npcs, quests))
+    write_split(args.out.parent, (dialogues,))
     save(config.DATA_PATH / "dialogues" / "review-issues.json", issues)
     print(
         f"Wrote {len(npcs)} NPCs and {len(quests)} quest/reference pages, {sum(len(n.get('variants', {'standard-dialogue': n.get('steps', [])})) for n in npcs.values())} variants, "

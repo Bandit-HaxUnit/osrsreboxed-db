@@ -1,0 +1,171 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Good day!"
+      },
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "I organise people according to the Alliance's defence plans. That means bringing newcomers quickly up to speed, and communicating any changes to the plan across the troops."
+      },
+      {
+        "type": "choice",
+        "prompt": "Select an option",
+        "options": [
+          {
+            "text": "Tell me more about the Archive.",
+            "steps": [
+              {
+                "player": "Tell me more about the Archive."
+              },
+              {
+                "npc": "You can see the Archive's layout on the board beside me. The central chamber, which we're calling the Nexus, is currently occupied by a hostile automaton. We plan to take that chamber and establish our defences there."
+              },
+              {
+                "player": "And by 'we' you mean me?"
+              },
+              {
+                "npc": "Indeed. Before he left, Armacus informed me you would clear the way whilst he and the others mobilised the rest of the troops."
+              },
+              {
+                "player": "He did, did he?"
+              },
+              {
+                "npc": "Yes! He seemed confident you would help. 'I can see it in [his/her] eyes. The flame of justice!'"
+              },
+              {
+                "npc": "He is a bit eccentric, but he is a fine leader, and a good judge of character."
+              },
+              {
+                "player": "At least one of those is true. What comes after the Nexus?"
+              },
+              {
+                "npc": "There are six peripheral chambers we expect to come under attack, all of which can be reached from the Nexus. As soon as the Nexus is secured, we will begin deploying troops to the furthest chambers."
+              },
+              {
+                "npc": "They will hold the line whilst we work on clearing the foremost ones. We are relying on you to take one side whilst we take the other."
+              },
+              {
+                "player": "So that makes... the Nexus plus three chambers you want taking care of?"
+              },
+              {
+                "npc": "Yes. It is no small ask, but we do not think we can manage any more ourselves. I would suggest you seek allies of your own to help you."
+              },
+              {
+                "player": "I'll see what I can do."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "tfa-montoya-archive-back"
+              }
+            ]
+          },
+          {
+            "text": "Who are our enemies?",
+            "steps": [
+              {
+                "player": "Who are our enemies?"
+              },
+              {
+                "npc": "We have followers of Lucien, Zamorak and Bandos to deal with. Evidence also suggests there are other foes yet to fully reveal themselves. For example, there have been reports of a lone knight."
+              },
+              {
+                "player": "A lone knight?"
+              },
+              {
+                "npc": "Yes. The scouting report is spotty. Only one of our people made it back alive, but they were heavily wounded. Apparently this knight took out a whole squadron by himself."
+              },
+              {
+                "player": "That's concerning... What about the others?"
+              },
+              {
+                "npc": "The Bandosian forces are mostly goblins. You wouldn't think they'd pose much of a threat, but they've managed to build some sort of siege engine. If that weren't enough, they're being lead by a huge ork."
+              },
+              {
+                "npc": "As for the forces of Lucien and Zamorak, we spotted a clash between the two factions in some of the deeper tunnels. An army of skeletons facing off against a group of Zamorakian mages."
+              },
+              {
+                "player": "The Dagon'hai?"
+              },
+              {
+                "npc": "Interestingly, no, but we'll get to them. We managed to capture one of the mages and interrogate them. They refused to say much, but we gather they're trying to summon some sort of powerful demon."
+              },
+              {
+                "player": "And the skeletons?"
+              },
+              {
+                "npc": "There seems to be an endless tide of them. A necromancer must be present. It's possible this is the work of Moia, the leader of Lucien's forces."
+              },
+              {
+                "player": "And let me guess, there's more?"
+              },
+              {
+                "npc": "Quite... You mentioned the Dagon'hai. A group of them were spotted near the Stone of Jas' old location. They seemed to be fending off an unusually capable tormented demon."
+              },
+              {
+                "player": "In what way?"
+              },
+              {
+                "npc": "Most tormented demons seem to struggle with the strength of their own flames. This one seemed to fully control them, lending it both greater power and durability."
+              },
+              {
+                "player": "Did it manage to get rid of the Dagon'hai?"
+              },
+              {
+                "npc": "No, they disengaged and made for a tunnel we think leads to the Archive. The demon followed, but went down a different path."
+              },
+              {
+                "player": "That's quite the list we're up against."
+              },
+              {
+                "npc": "Yes... but we are not without allies either. The Alliance is rallying as we speak. Together we can do this."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "tfa-montoya-enemies-back"
+              }
+            ]
+          },
+          {
+            "text": "Where is everybody else?",
+            "steps": [
+              {
+                "player": "Where is everybody else?"
+              },
+              {
+                "npc": "Armacus, Eva and Ivy have gone to rally the rest of the forces. We are only a small vanguard sent to assess the situation and prepare if necessary."
+              },
+              {
+                "player": "Let's hope they don't take too long."
+              },
+              {
+                "npc": "Fear not, they will soon return with help. Once they are here, we estimate we can defeat three sets of intruders. As for the rest... we will be relying on you and any allies you can gather yourself."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "tfa-montoya-everybody-back"
+              }
+            ]
+          },
+          {
+            "text": "Thank you.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
