@@ -68,8 +68,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "Tu6wrc"
+                                "id": "Tu6wrc",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3ed328bc127cad4a"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -501,6 +506,22 @@
     ]
   },
   "branches": {
+    "jump-3ed328bc127cad4a": [
+      {
+        "npc": "After defeating your Target, you may come across a tier one Emblem. Defeating another Target will level up the Emblem; the higher its tier, the greater its value."
+      },
+      {
+        "npc": "If you die while carrying an Emblem, its tier will be reduced by one. If you die with a Tier 1 emblem, you will lose the emblem."
+      },
+      {
+        "npc": "You may use Bounty Hunter Points to purchase a tier one Emblem from the Trader, or sell your own Emblem to him for Bounty Hunter Points. You can only have one Emblem at a time."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "qfOQNN"
+      }
+    ],
     "jump-3d65b0c3ace68d94": [
       {
         "player": "Can you explain Bounty Hunter Points to me?"
@@ -582,8 +603,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "Tu6wrc"
+                "id": "Tu6wrc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3ed328bc127cad4a"
+                  }
+                ]
               }
             ]
           },

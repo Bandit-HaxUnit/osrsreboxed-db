@@ -18,6 +18,38 @@ def own(node):
     }
 
 
+ARTICLES = re.compile(r"\b(?:the|a|an)\b", re.I)
+
+
+def utterance_key(text):
+    """Fold case, punctuation and articles; never match partial utterances."""
+    return text_key(ARTICLES.sub(" ", text or ""))
+
+
+def player_text(node):
+    if "player" in node:
+        return node["player"]
+    if node.get("type") == "line" and node.get("speaker") == "Player":
+        return node.get("text", "")
+    return None
+
+
+def short_label(text):
+    return 0 < len(text_key(text)) <= 4
+
+
+def complementary(left, right):
+    """True for the same predicate with opposite negation, e.g. has/has not."""
+
+    def polarity(text):
+        text = re.sub(r"^(?:if|when)\s+", "", text or "", flags=re.I)
+        negated = bool(re.search(r"\b(?:not|never|n't)\b", text, re.I))
+        return negated, text_key(re.sub(r"\b(?:not|never)\b", " ", text, re.I))
+
+    left, right = polarity(left), polarity(right)
+    return left[0] != right[0] and bool(left[1]) and left[1] == right[1]
+
+
 def locations(steps, speaker=None, menu=None, option=None):
     for index, node in enumerate(steps):
         if node.get("speaker") and node["speaker"] != "Player":
@@ -114,7 +146,7 @@ def strip_ids(value):
     return value
 
 
-def resolve_navigation(record):
+def resolve_navigation(record, anchors=None):
     omit_selected = record.pop("_omit_selected", [])
     option_paths = {}
 
@@ -134,6 +166,41 @@ def resolve_navigation(record):
     ]
     positions = {id(entry[1]): i for i, entry in enumerate(entries)}
     parents = {id(node["steps"]): node for _, node, *_ in entries if "steps" in node}
+    containers = {id(node): steps for _, node, steps, *_ in entries}
+
+    def begins_option(entry):
+        _, _, siblings, at, _, _, option = entry
+        if option is None or at != 0:
+            return False
+        body = option.get("steps", [])
+        if siblings is body:
+            return True
+        # A leading run of guards can introduce alternative Player prefixes.
+        parent = parents.get(id(siblings))
+        for child in body:
+            if child.get("type") != "condition":
+                break
+            if child is parent:
+                return True
+        return False
+
+    anchored = {}
+    for source, anchor in (anchors or {}).items():
+        jumps = [entry for entry in entries if entry[1].get("id") == source]
+        destinations = [
+            entry for entry in entries if entry[1].get("id") == anchor["after"]
+        ]
+        if (
+            len(jumps) != 1
+            or jumps[0][1].get("type") != "jump"
+            or jumps[0][1].get("reference") != anchor["expected"]
+            or len(destinations) != 1
+        ):
+            raise ValueError(f"Stale dialogue navigation anchor: {source}")
+        _, _, siblings, at, *_ = destinations[0]
+        if not siblings[at + 1 :]:
+            raise ValueError(f"Empty dialogue navigation anchor: {source}")
+        anchored[id(jumps[0][1])] = siblings[at + 1 :]
 
     def condition_template(variant, condition):
         label = re.sub(r"\s*\([^)]*\)", "", record["sections"][variant][-1])
@@ -156,7 +223,7 @@ def resolve_navigation(record):
             for key, path in record["sections"].items()
             if text_key(reference) in (text_key(key), text_key(path[-1]))
         ]
-        if len(headings) == 1:
+        if len(headings) == 1 and id(node) not in anchored:
             key = headings[0]
             choices = {
                 text_key(option.get("text", ""))
@@ -182,10 +249,10 @@ def resolve_navigation(record):
             reference,
             re.I,
         )
-        target = None
+        target = anchored.get(id(node))
         direction = "above" if reference == "above" else "below"
         here = positions[id(node)]
-        if quoted:
+        if target is None and quoted:
             direction = (quoted[1] or quoted[4] or "above").casefold()
             key = text_key(quoted[3].rstrip("."))
             if quoted[2].casefold() == "as":
@@ -214,7 +281,7 @@ def resolve_navigation(record):
             if target is None and len(matches) == 1:
                 _, _, siblings, at, *_ = matches[0]
                 target = siblings[at + (quoted[2].casefold() == "after") :]
-        elif reference in ("above", "below"):
+        elif target is None and reference in ("above", "below"):
             # A repeated preceding line identifies the shared tail precisely.
             previous = own(steps[index - 1]) if index else None
             matches = [
@@ -332,6 +399,124 @@ def resolve_navigation(record):
                 }
                 if len(distinct) == 1:
                     target = next(iter(distinct.values()))
+            # A long option label repeated verbatim as Player speech names the
+            # option body it introduces. Repeating the option itself must not
+            # replay that spoken prefix. The whole label is compared, not a stem.
+            if (
+                target is None
+                and menu
+                and option
+                and len(text_key(option.get("text", ""))) >= 12
+            ):
+                key = utterance_key(option.get("text", ""))
+                bodies = {}
+                for candidate in entries:
+                    other, spoken = candidate[6], player_text(candidate[1])
+                    if (
+                        other is None
+                        or other is option
+                        or spoken is None
+                        or not begins_option(candidate)
+                        or utterance_key(spoken) != key
+                        or candidate[4] != speaker
+                        or (positions[id(candidate[1])] < here)
+                        != (direction == "above")
+                    ):
+                        continue
+                    body = other.get("steps", [])
+                    repeated = (
+                        body
+                        and player_text(body[0]) is not None
+                        and utterance_key(player_text(body[0]))
+                        == utterance_key(other.get("text", ""))
+                    )
+                    body = body[1:] if repeated else body
+                    if any(child.get("type") not in ("jump", "end") for child in body):
+                        bodies[id(other)] = body
+                if len(bodies) == 1:
+                    target = next(iter(bodies.values()))
+
+            # Short labels need the whole menu and the adjacent section to
+            # identify their acceptance; a nearby opposite answer is not one.
+            if (
+                target is None
+                and menu
+                and option
+                and short_label(option.get("text", ""))
+                and len(menu.get("options", [])) > 1
+            ):
+                labels = {text_key(child.get("text", "")) for child in menu["options"]}
+                keys = list(record["variants"])
+                adjacent = keys.index(variant) + (-1 if direction == "above" else 1)
+                bodies = {}
+                source_path = record["sections"][variant]
+                adjacent_path = record["sections"].get(
+                    keys[adjacent] if 0 <= adjacent < len(keys) else "", []
+                )
+                related_section = (
+                    adjacent_path
+                    and source_path[:-1] == adjacent_path[:-1]
+                    and text_key(adjacent_path[-1]).startswith(
+                        text_key(source_path[-1])
+                    )
+                )
+                if related_section:
+                    for candidate in entries:
+                        if (
+                            candidate[0] != keys[adjacent]
+                            or candidate[6] is None
+                            or candidate[4] != speaker
+                        ):
+                            continue
+                        other_menu, other = candidate[5], candidate[6]
+                        if (
+                            other_menu is menu
+                            or {
+                                text_key(child.get("text", ""))
+                                for child in other_menu.get("options", [])
+                            }
+                            != labels
+                            or text_key(other.get("text", ""))
+                            != text_key(option.get("text", ""))
+                        ):
+                            continue
+                        body = other.get("steps", [])
+                        if any(
+                            child.get("type") not in ("jump", "end") for child in body
+                        ):
+                            bodies[id(other)] = body
+                if len(bodies) == 1:
+                    target = next(iter(bodies.values()))
+
+            # A "below" inside one of two complementary conditional siblings
+            # resumes the other branch's shared tail, not its player reply.
+            if (
+                target is None
+                and reference == "below"
+                and previous
+                and player_text(previous) is not None
+                and index == len(steps) - 1
+            ):
+                parent = parents.get(id(steps))
+                outer = containers.get(id(parent)) if parent else None
+                if parent and parent.get("type") == "condition" and outer:
+                    at = outer.index(parent)
+                    if at + 1 < len(outer):
+                        sibling = outer[at + 1]
+                        if sibling.get("type") == "condition" and complementary(
+                            parent.get("text", ""), sibling.get("text", "")
+                        ):
+                            body = sibling.get("steps", [])
+                            if (
+                                body
+                                and player_text(body[0]) is not None
+                                and any(
+                                    child.get("type") not in ("jump", "end")
+                                    for child in body[1:]
+                                )
+                            ):
+                                target = body[1:]
+
             if target is None and menu and option:
                 alternatives = menu["options"]
                 at = alternatives.index(option)
@@ -342,9 +527,8 @@ def resolve_navigation(record):
                 )
                 for candidate in candidates:
                     body = candidate.get("steps", [])
-                    if (
-                        candidate.get("text") != option.get("text")
-                        and reference == "above"
+                    if candidate.get("text") != option.get("text") and (
+                        reference == "above" or short_label(option.get("text", ""))
                     ):
                         continue
                     start = (
@@ -359,7 +543,12 @@ def resolve_navigation(record):
                     ):
                         target = body[start:]
                         break
-        elif reference in ("continue", "continues") and menu and option:
+        elif (
+            target is None
+            and reference in ("continue", "continues")
+            and menu
+            and option
+        ):
             # The final alternative often spells out the continuation shared by
             # earlier replies. Only borrow its explicit follow-up menu.
             alternatives = menu["options"]

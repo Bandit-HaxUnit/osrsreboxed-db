@@ -470,8 +470,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "pLnuCS"
+                        "id": "pLnuCS",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-10b4df790ebddca9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -499,8 +504,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lyIXSE"
+                "id": "lyIXSE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-10b4df790ebddca9"
+                  }
+                ]
               }
             ]
           },
@@ -836,6 +846,55 @@
         "type": "jump",
         "reference": "other",
         "id": "-IfISm"
+      }
+    ],
+    "jump-10b4df790ebddca9": [
+      {
+        "npc": "Yes! Of course."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 75,000 coins:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Buy an escape crystal for 75000 coins?",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Player is prompted to select how many to purchase.",
+                    "id": "2-6fPe"
+                  }
+                ]
+              },
+              {
+                "text": "No",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "z2Tf9e"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 75,000 coins:",
+        "steps": [
+          {
+            "npc": "It looks like you can't afford any crystals. They cost 75000 coins each."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bI1gNt"
       }
     ],
     "jump-ad3c8a2fd25c3f2c": [

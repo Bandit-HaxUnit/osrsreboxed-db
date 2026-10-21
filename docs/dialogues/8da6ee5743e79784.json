@@ -1264,8 +1264,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "VbZXsr"
+                "id": "VbZXsr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-96bd86df7424e92a"
+                  }
+                ]
               }
             ]
           },
@@ -3182,6 +3187,29 @@
         "type": "line",
         "speaker": "Harold",
         "text": "Now THAT hit the spot!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-96bd86df7424e92a": [
+      {
+        "type": "line",
+        "speaker": "Harold",
+        "text": "I honestly don't know! I've looked everywhere. I've searched the castle and my room!"
+      },
+      {
+        "player": "Have you tried looking between here and the castle?"
+      },
+      {
+        "type": "line",
+        "speaker": "Harold",
+        "text": "Yeah, I tried that."
+      },
+      {
+        "type": "line",
+        "speaker": "Harold",
+        "text": "I need another beer."
       },
       {
         "type": "end"

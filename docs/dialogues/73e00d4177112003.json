@@ -332,8 +332,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "AJM0bY"
+                    "id": "AJM0bY",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-e0c8ede1de79cc3c"
+                      }
+                    ]
                   }
                 ]
               }
@@ -2525,6 +2530,19 @@
         "type": "jump",
         "reference": "below",
         "id": "ZkS_lE"
+      }
+    ],
+    "jump-e0c8ede1de79cc3c": [
+      {
+        "player": "I don't care about some dusty building."
+      },
+      {
+        "type": "line",
+        "speaker": "Jorral",
+        "text": "It's doomed. DOOMED!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -155,8 +155,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "c42VU9"
+                        "id": "c42VU9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-80a3248f63fb1b07"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -551,8 +556,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "3zp8z6"
+                        "id": "3zp8z6",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-80a3248f63fb1b07"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -649,6 +659,22 @@
         "type": "jump",
         "reference": "other",
         "id": "K8G-Bi"
+      }
+    ],
+    "jump-80a3248f63fb1b07": [
+      {
+        "npc": "Of course. Skillcapes are a symbol of achievement. Only people who have mastered a skill and reached level 99 can get their hands on them and gain the benefits they carry."
+      },
+      {
+        "npc": "The Cape of Defence will act as ring of life, saving you from combat if your hitpoints become low."
+      },
+      {
+        "npc": "Is there anything else you would like to know?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "AIGSTb"
       }
     ],
     "jump-b0f7324293cfc38f": [
@@ -896,8 +922,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "c42VU9"
+                "id": "c42VU9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-80a3248f63fb1b07"
+                  }
+                ]
               }
             ]
           },

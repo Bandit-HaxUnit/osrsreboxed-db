@@ -233,8 +233,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "hsTXXF"
+                    "id": "hsTXXF",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7ab7e05fc11b84ab"
+                      }
+                    ]
                   }
                 ]
               },
@@ -615,6 +620,65 @@
     ]
   },
   "branches": {
+    "jump-7ab7e05fc11b84ab": [
+      {
+        "npc": "The sort of stuff you use in brewing."
+      },
+      {
+        "npc": "The sort of stuff the Cooking Guild banned last year."
+      },
+      {
+        "npc": "The sort of stuff that (if added to a vat of brewing ingredients just before the hops) has a higher chance of producin' a mature batch of whatever ale you wanted to make."
+      },
+      {
+        "npc": "That sort of stuff."
+      },
+      {
+        "player": "What was that bit about adding it to something?"
+      },
+      {
+        "npc": "I said, it's the sort of Stuff you add to a brewing vat after you have put the water and barley malt in."
+      },
+      {
+        "npc": "THEN you add the sort of stuff I'm talking about, followed by the hops and the yeast."
+      },
+      {
+        "npc": "Then, when whatever you are making brews it will have a higher chance of being a mature batch of ale."
+      },
+      {
+        "npc": "That clear enough for you or am I going to have to start drawin' pictures on the wall of the hut?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I am here for the stuff.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Honest Jimmy's House of Stuff",
+                "id": "RNAQ1t"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No."
+              },
+              {
+                "npc": "Then sling yer 'ook!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "jump-b6d9bcd47fab2c76": [
       {
         "player": "I hear you are the man to talk to about maps."

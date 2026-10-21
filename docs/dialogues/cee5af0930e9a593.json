@@ -11069,8 +11069,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "CczdDN"
+                "id": "CczdDN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-68f9caf23596d3d6"
+                  }
+                ]
               }
             ]
           }
@@ -11367,6 +11372,14 @@
     "jump-cce0701f78b4444f": [
       {
         "player": "Of course. I'm ready."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-68f9caf23596d3d6": [
+      {
+        "player": "I'm not ready yet, give me a little more time."
       },
       {
         "type": "end"

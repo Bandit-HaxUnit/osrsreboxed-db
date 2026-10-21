@@ -475,8 +475,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "7OoRcl"
+                        "id": "7OoRcl",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2cea7fafa35dddc4"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -548,6 +553,17 @@
     ]
   },
   "branches": {
+    "jump-2cea7fafa35dddc4": [
+      {
+        "npc": "I don't carry rewards out here, it is far too dangerous."
+      },
+      {
+        "npc": "Meet me in Daimon's Crater if you would like to buy rewards."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "jump-d12d1ef1d3450b07": [
       {
         "player": "I'll leave you alone."

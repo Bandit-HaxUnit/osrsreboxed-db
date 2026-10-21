@@ -779,7 +779,10 @@ def main():
                 issues[title] = parsed["review_issues"]
     if npcs.keys() & quests.keys():
         raise ValueError("NPC and quest transcript names overlap")
-    index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean)
+    bindings = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
+    )
+    index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean, bindings)
     resolved = resolve_shops(npcs, shop_index())
     # Shared quest replies retain their NPC source IDs, including inferred shops.
     source_shops = {
@@ -812,12 +815,7 @@ def main():
             authoring["Transcript:" + name] = compact_record(record)
     dialogues = dict(sorted({**npcs, **quests}.items()))
     data = {"records": dialogues, "authoring": authoring, "index": index}
-    apply_bindings(
-        data,
-        json.loads(
-            (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
-        ),
-    )
+    apply_bindings(data, bindings)
     apply_corrections(
         data,
         json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text()),

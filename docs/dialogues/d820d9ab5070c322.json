@@ -3452,8 +3452,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "sOHX75"
+                    "id": "sOHX75",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b983e5d8e7a81454"
+                      }
+                    ]
                   }
                 ]
               },
@@ -5062,6 +5067,114 @@
       },
       {
         "type": "end"
+      }
+    ],
+    "jump-b983e5d8e7a81454": [
+      {
+        "player": "At ease, soldier!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "You shouldn't mock your commanding officer, private! Don't forget, I can still have you arrested for conspiracy with Surok!"
+      },
+      {
+        "player": "Uh, yes, sorry! I forgot about that!",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "So, what next?"
+              }
+            ]
+          },
+          {
+            "player": "What are my orders again?"
+          },
+          {
+            "type": "jump",
+            "id": "jgmjay",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-8b67c8591ae1055d"
+              }
+            ]
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can you tell me of the Dagon'hai?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "Ielph1",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f2f986d8db7861e8"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "I've lost that ring I had!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "3JdvHX",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-18e2fc0f4b14c2e7"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "What benefits do I get in the VPSG?",
+                "steps": [
+                  {
+                    "player": "What benefits do I get in the VPSG?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Rat Burgiss",
+                    "text": "Unfortunately, as an honorary member of the VPSG, you only get to act under our authority. You aren't entitled to the full Secret Guard package."
+                  },
+                  {
+                    "player": "So I don't get the secret spy-pack then?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Rat Burgiss",
+                    "text": "I'm afraid not. No."
+                  }
+                ]
+              },
+              {
+                "text": "Okay, I need to go!",
+                "steps": [
+                  {
+                    "player": "Okay, I need to go!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Rat Burgiss",
+                    "text": "Yes, you have an important job! Good luck, [player name]!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "jump-3a3d9ab240c1d238": [

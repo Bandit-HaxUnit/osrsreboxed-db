@@ -1899,7 +1899,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-489c93eae8dacb92"
+                            "branch": "jump-0dd2c1de9b48a7c7"
                           }
                         ]
                       }
@@ -2654,14 +2654,84 @@
         "text": "I have accepted it as a gift as they clearly respect my terrible powers. They seek to keep me at bay by giving me valuables."
       }
     ],
-    "jump-489c93eae8dacb92": [
+    "jump-0dd2c1de9b48a7c7": [
       {
         "type": "line",
         "speaker": "Genie",
-        "text": "Yes, run. Ruuuun in fear of.. The crevice genie of Nardah! Muhahaha!"
+        "text": "Two reasons really. Firstly, I can see in the dark, so light or dark makes little difference to me."
       },
       {
-        "type": "end"
+        "type": "line",
+        "speaker": "Genie",
+        "text": "Lastly, I gather it's normal for powerful terrifying creatures to lurk around in dark caves, so I found this one to lurk in myself, nice isn't it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Very pleasant, the snakes are a nice touch.",
+            "steps": [
+              {
+                "player": "Very pleasant, the snakes are a nice touch."
+              },
+              {
+                "type": "line",
+                "speaker": "Genie",
+                "text": "Why do I get the sense that I'm not being taken seriously here? Please try to remember I am very dangerous and not to be trifled with."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "ZUuKZr"
+              }
+            ]
+          },
+          {
+            "text": "I'm after a statue that was thrown down here.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "zCuZvt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-62142b5fc65ecd29"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You're a genie, grant me a wish.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "MXRHaZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-43a7ac4ff521fc6d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I must be off now.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "xPRk62",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ac2b21d1afcad3a0"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "jump-43a7ac4ff521fc6d": [
@@ -2731,7 +2801,7 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-489c93eae8dacb92"
+                    "branch": "jump-0dd2c1de9b48a7c7"
                   }
                 ]
               }

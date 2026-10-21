@@ -255,8 +255,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "3Y6tL1"
+                                "id": "3Y6tL1",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-110f36ca5df6b605"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -685,8 +690,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3Y6tL1"
+                "id": "3Y6tL1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-110f36ca5df6b605"
+                  }
+                ]
               }
             ]
           }
@@ -775,6 +785,61 @@
                         "type": "end"
                       }
                     ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-110f36ca5df6b605": [
+      {
+        "npc": "When we've found Zanaris you'll... GAH! I mean, we're not here for any particular reason at all."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who's Zanaris?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "eTHlU7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6cef8e66bd0bdd23"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What's Zanaris?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HJx7oz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-58e40d69c51e897f"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What makes you think it's out here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Xs61cn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f9ce92d4cb0a9667"
                   }
                 ]
               }

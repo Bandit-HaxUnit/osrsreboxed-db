@@ -76,8 +76,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "fgY0Zu"
+                        "id": "fgY0Zu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bc4a5a630f94eb78"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -488,6 +493,71 @@
     ]
   },
   "branches": {
+    "jump-bc4a5a630f94eb78": [
+      {
+        "type": "condition",
+        "text": "If the player has never paid Odovacar 100 coins:",
+        "steps": [
+          {
+            "npc": "My services will cost you 100 coins."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Here's 100 coins. Let me access my account now.",
+                "steps": [
+                  {
+                    "player": "Here's 100 coins. Let me access my account now."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "Mp0qXq"
+                  }
+                ]
+              },
+              {
+                "text": "That's preposterous! I'm not paying to withdraw my own money!",
+                "steps": [
+                  {
+                    "player": "That's preposterous! I'm not paying to withdraw my own money!"
+                  },
+                  {
+                    "npc": "I'm sorry to hear that, [sir/madam]. If you should reconsider, because I believe this service offers excellent value for money, do not hesitate to contact me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "rT20QY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is an ultimate iron man/iron woman:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "As an Ultimate Iron [Man/Woman] you cannot use the bank.",
+            "id": "GTMH9M"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "mIVOxp"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Bank",
+        "id": "ZSSv2x"
+      }
+    ],
     "jump-3b49a1c44b11eae3": [
       {
         "player": "I'd like to check my PIN settings."

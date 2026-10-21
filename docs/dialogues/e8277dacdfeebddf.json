@@ -668,8 +668,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_-qM6y"
+                "id": "_-qM6y",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fcc6e43844f5ccf2"
+                  }
+                ]
               }
             ]
           },
@@ -3624,6 +3629,16 @@
         "type": "line",
         "speaker": "Oziach",
         "text": "Aye, I ken tell!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-fcc6e43844f5ccf2": [
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "This is the Champions' Guild. Only adventurers who have proved themselves worthy by gaining influence from quests are allowed in here."
       },
       {
         "type": "end"

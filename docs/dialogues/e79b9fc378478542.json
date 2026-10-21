@@ -255,8 +255,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "oeZumO"
+                        "id": "oeZumO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e3bd356f3acfb2b5"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -473,8 +478,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "oeZumO"
+                "id": "oeZumO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e3bd356f3acfb2b5"
+                  }
+                ]
               }
             ]
           },
@@ -499,6 +509,134 @@
       {
         "player": "How do I get into the Kharazi Jungle?"
       },
+      {
+        "npc": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+      },
+      {
+        "npc": "Apparently he was on a mission to map the area. How foolish is that?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Actually, I plan to map the jungle myself.",
+            "steps": [
+              {
+                "player": "Actually, I plan to map the jungle myself."
+              },
+              {
+                "npc": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+              },
+              {
+                "npc": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+              },
+              {
+                "npc": "Best of luck though... Guthix knows, you'll need it."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have any other tips about the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "player": "Do you have any other tips about the Kharazi Jungle?"
+                      },
+                      {
+                        "npc": "Not really. Just be careful - there's a lot of weird stuff going on in there lately."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Bsw4pl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "KEwsmu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-77f7f648b3957f9a"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Are you calling me foolish?",
+            "steps": [
+              {
+                "player": "Are you calling me foolish?"
+              },
+              {
+                "npc": "Er... maybe? I'll just be on my way..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HWlRzp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0efcd504c225506"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you seen any Kharazi tribespeople in the jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "s5xw7n",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc3d5520eb92eff0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "HFNoRd"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-e3bd356f3acfb2b5": [
       {
         "npc": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
       },

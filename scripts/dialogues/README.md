@@ -232,7 +232,15 @@ the build finds and copies its suffix, updates authoring sections and indexes,
 and fails when an anchor is missing or ambiguous. No dialogue wording is stored
 in this file. Ordinary dialogue/effect IDs continue to come from source annotation.
 
-The normal command applies bindings and the remaining corrections after compaction
+Reviewed `navigation` annotations identify a source jump, its expected reference
+and the source node to continue after, before navigation resolution/compaction.
+They contain no replacement dialogue and fail on missing, duplicate or changed
+anchors. The Restless Ghost has one: its bare `above` after "Nope. I just know..."
+resumes after "Well, to be honest... I'm not sure." in the same transcript.
+The source does not uniquely identify that target, so this remains an explicit,
+reviewed interpretation rather than an automatic parser inference.
+
+The normal command applies runtime bindings and the remaining corrections after compaction
 and before publishing aggregates, shards, indexes or diagnostics. A corrected
 record or edited path that no longer matches stops publication with
 `Stale dialogue correction`. Review source changes before rebasing a correction;
@@ -251,17 +259,17 @@ Never hand-edit any generated JSON, including during merge conflict resolution.
 Fix source collection, parsing or reviewed source inputs here, regenerate the
 exports, and verify that a second build from unchanged inputs is identical.
 
-PR 715 also preserves five reviewed quest-flow repairs as fingerprint-checked
-authoring corrections: Contact!'s post-answer guards, Doric's anvil acceptance,
-Persten's two acceptance continuations, Colin's shared reply and the Restless
-Ghost's two abbreviated acceptance paths. These change only their audited
-subtrees, retain existing hook IDs, and stop on changed source input. In particular,
-TSPS currently evaluates top-level conditions while flattening the conversation;
-Contact!'s guards therefore belong in each answer's continuation in this export.
-The saved Wiki puts the guards after the menu, which is semantically equivalent
-only with a runner that evaluates those conditions after the answer. A future
-source-parser/runtime improvement must retain the real quiz regression before
-removing this correction. No global nearest-Yes/No navigation guess is added.
+PR 715's five quest-flow repairs no longer use output-subtree corrections.
+Contact!'s guards remain after both quiz menus as in the Wiki; TSPS evaluates
+them when reached, after choices/actions have run. Doric's long acceptance label
+matches a unique complete Player utterance (allowing article/punctuation/case
+differences). Persten's nested continuation resolves to its enclosing option
+body; her short Yes uses the complete menu in the immediately following section.
+Colin's `below` links the shared tail of complementary sibling conditions,
+excluding the alternate Player reply. The Ghost's repeated long option is matched
+without case differences; its other ambiguous marker uses the annotation above.
+Existing exact navigation matches take precedence, preserving their source IDs
+and dialogue. No global nearest-Yes/No or partial-utterance guess is added.
 
 The same refresh preserves the cache-bound Uzer Evil Dave ids 913/1987 and world
 Sarius id 15839 in `runtime-bindings.json`. These name their precise transcript
