@@ -278,8 +278,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "QaeHq2"
+                                "id": "QaeHq2",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-bb0d32ad5d48c6be"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1019,8 +1024,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QaeHq2"
+                "id": "QaeHq2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb0d32ad5d48c6be"
+                  }
+                ]
               }
             ]
           }
@@ -1125,6 +1135,58 @@
                         "type": "end"
                       }
                     ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-bb0d32ad5d48c6be": [
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "When we've found Zanaris you'll... GAH! I mean, we're not here for any particular reason at all."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who's Zanaris?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "pkofds"
+              }
+            ]
+          },
+          {
+            "text": "What's Zanaris?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ebzH9d",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b04eabd9a16a9953"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What makes you think it's out here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "XeSEaN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9c8b7835b0361309"
                   }
                 ]
               }

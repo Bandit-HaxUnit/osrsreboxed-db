@@ -1763,8 +1763,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "O-Q3Ds"
+                        "id": "O-Q3Ds",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b7876fab1147d7ee"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1838,8 +1843,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "POn4DW"
+                        "id": "POn4DW",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b7876fab1147d7ee"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2408,6 +2418,43 @@
                 "type": "jump",
                 "reference": "below",
                 "id": "Ahzob8"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-b7876fab1147d7ee": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So what exactly is it your client now wants me to do?",
+            "steps": [
+              {
+                "player": "So what exactly is it your client now wants me to do?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost the mysterious orb:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Veos hands you an enchanted orb.",
+                    "id": "jTrDuG"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Veos",
+                    "text": "Take this orb."
+                  }
+                ],
+                "id": "LXZxal"
+              },
+              {
+                "type": "action",
+                "text": "(Same as above from \"My client requires...\")",
+                "id": "R1UtTW"
               }
             ]
           }

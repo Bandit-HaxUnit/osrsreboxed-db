@@ -222,7 +222,7 @@ nesting and destination prerequisites now come from those cached revisions.
 | Prospector Percy, While Guthix Sleeps | Retain the remaining mixed content/gameplay fixes; Silif's repeated armour and follow-up conversation now comes from source navigation. |
 
 This removes conversation-text patches for **11 records**, and reduces other
-patches. The remaining correction file contains 12 records; its fingerprints
+patches. The remaining correction file also preserves capture-only records; its fingerprints
 check the actual new parser output, rather than a snapshot of the former parser.
 
 `runtime-bindings.json` keeps TSPS entrypoint names (`arrested` and the Ides of
@@ -232,12 +232,48 @@ the build finds and copies its suffix, updates authoring sections and indexes,
 and fails when an anchor is missing or ambiguous. No dialogue wording is stored
 in this file. Ordinary dialogue/effect IDs continue to come from source annotation.
 
-The normal command applies bindings and the remaining corrections after compaction
+Reviewed `navigation` annotations identify a source jump, its expected reference
+and the source node to continue after, before navigation resolution/compaction.
+They contain no replacement dialogue and fail on missing, duplicate or changed
+anchors. The Restless Ghost has one: its bare `above` after "Nope. I just know..."
+resumes after "Well, to be honest... I'm not sure." in the same transcript.
+The source does not uniquely identify that target, so this remains an explicit,
+reviewed interpretation rather than an automatic parser inference.
+
+The normal command applies runtime bindings and the remaining corrections after compaction
 and before publishing aggregates, shards, indexes or diagnostics. A corrected
 record or edited path that no longer matches stops publication with
 `Stale dialogue correction`. Review source changes before rebasing a correction;
 do not just accept a new fingerprint. The original correction commits remain linked
 in the correction file. Parser diagnostics describe the source before corrections.
+
+General Montoya and Record Keeper are capture-only inputs preserved from TSPS
+commit `7a3e4ea0a` (release-day RSProx 241.1; provenance links are in the correction
+file). Their `base_sha256: null` requires that the Wiki parser has no record yet.
+If a later fetch supplies one, the dump stops for review instead of overwriting
+the Wiki record. Their named runtime hooks, cache NPC identities, authoring
+metadata and shards are exported together. Capture metadata uses `source.capture`
+rather than inventing a Wiki revision.
+
+Never hand-edit any generated JSON, including during merge conflict resolution.
+Fix source collection, parsing or reviewed source inputs here, regenerate the
+exports, and verify that a second build from unchanged inputs is identical.
+
+PR 715's five quest-flow repairs no longer use output-subtree corrections.
+Contact!'s guards remain after both quiz menus as in the Wiki; TSPS evaluates
+them when reached, after choices/actions have run. Doric's long acceptance label
+matches a unique complete Player utterance (allowing article/punctuation/case
+differences). Persten's nested continuation resolves to its enclosing option
+body; her short Yes uses the complete menu in the immediately following section.
+Colin's `below` links the shared tail of complementary sibling conditions,
+excluding the alternate Player reply. The Ghost's repeated long option is matched
+without case differences; its other ambiguous marker uses the annotation above.
+Existing exact navigation matches take precedence, preserving their source IDs
+and dialogue. No global nearest-Yes/No or partial-utterance guess is added.
+
+The same refresh preserves the cache-bound Uzer Evil Dave ids 913/1987 and world
+Sarius id 15839 in `runtime-bindings.json`. These name their precise transcript
+variants; they do not globally merge NPCs sharing a name.
 
 To regenerate and validate:
 

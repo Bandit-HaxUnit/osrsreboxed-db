@@ -54,7 +54,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-ac8a6175cf7ebf51"
+                            "branch": "jump-2891ef883a7587ea"
                           }
                         ]
                       }
@@ -529,12 +529,63 @@
     ]
   },
   "branches": {
-    "jump-ac8a6175cf7ebf51": [
+    "jump-2891ef883a7587ea": [
       {
-        "npc": "Yes, run. Ruuuun in fear of.. The crevice genie of Nardah! Muhahaha!"
+        "npc": "Two reasons really. Firstly, I can see in the dark, so light or dark makes little difference to me."
       },
       {
-        "type": "end"
+        "npc": "Lastly, I gather it's normal for powerful terrifying creatures to lurk around in dark caves, so I found this one to lurk in myself, nice isn't it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Very pleasant, the snakes are a nice touch.",
+            "steps": [
+              {
+                "player": "Very pleasant, the snakes are a nice touch."
+              },
+              {
+                "npc": "Why do I get the sense that I'm not being taken seriously here? Please try to remember I am very dangerous and not to be trifled with."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "LQFCYo"
+              }
+            ]
+          },
+          {
+            "text": "You're a genie, grant me a wish.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "h3Wwsd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-77d57022293174ce"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I must be off now.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "w5N9lx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c0d2bb072abf566f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "jump-77d57022293174ce": [
@@ -581,7 +632,7 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-ac8a6175cf7ebf51"
+                    "branch": "jump-2891ef883a7587ea"
                   }
                 ]
               }

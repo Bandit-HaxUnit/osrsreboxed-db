@@ -1046,8 +1046,8 @@
     "sources": [
       "https://github.com/RSPSApp/tsps/commit/062768d56aac9c98e726f582bf8e90411644b1d3"
     ],
-    "base_sha256": "079ff413c2090bae3e135c573fc72185de1e95edf91e23040b237ab8c95e7336",
-    "audited_sha256": "acfe346fe0dae0545cd96ef7f79b0f9223add72ee1e84a677770f929451fb129",
+    "base_sha256": "6823211367854b39f7e2fd884052a8db903368e7ee5c4676b6fbf304957c037c",
+    "audited_sha256": "ebe68f0238c4961d2f9a44c8dd62e17407a0b3c4757e24189888e232cf08d22a",
     "changes": [
       {
         "path": [
@@ -2618,6 +2618,383 @@
                   }
                 ]
               }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "General Montoya": {
+    "reason": "Release-day RSProx 241.1 dialogue preserved from the Fractured Archive implementation while no cached Wiki transcript exists. A newly collected Wiki record must stop the dump for review, not be overwritten.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f",
+      "https://github.com/RSPSApp/tsps/blob/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f/docs/fractured-archive.md"
+    ],
+    "base_sha256": null,
+    "audited_sha256": "884687af6f575c873c05dc7bd06826435d79d9f0ae78d684d06d5ba15d5e01f8",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "General Montoya"
+        ],
+        "expected": null,
+        "value": {
+          "default": "standard-dialogue",
+          "variants": {
+            "standard-dialogue": [
+              {
+                "player": "Hello!"
+              },
+              {
+                "npc": "Good day!"
+              },
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "I organise people according to the Alliance's defence plans. That means bringing newcomers quickly up to speed, and communicating any changes to the plan across the troops."
+              },
+              {
+                "type": "choice",
+                "prompt": "Select an option",
+                "options": [
+                  {
+                    "text": "Tell me more about the Archive.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Archive."
+                      },
+                      {
+                        "npc": "You can see the Archive's layout on the board beside me. The central chamber, which we're calling the Nexus, is currently occupied by a hostile automaton. We plan to take that chamber and establish our defences there."
+                      },
+                      {
+                        "player": "And by 'we' you mean me?"
+                      },
+                      {
+                        "npc": "Indeed. Before he left, Armacus informed me you would clear the way whilst he and the others mobilised the rest of the troops."
+                      },
+                      {
+                        "player": "He did, did he?"
+                      },
+                      {
+                        "npc": "Yes! He seemed confident you would help. 'I can see it in [his/her] eyes. The flame of justice!'"
+                      },
+                      {
+                        "npc": "He is a bit eccentric, but he is a fine leader, and a good judge of character."
+                      },
+                      {
+                        "player": "At least one of those is true. What comes after the Nexus?"
+                      },
+                      {
+                        "npc": "There are six peripheral chambers we expect to come under attack, all of which can be reached from the Nexus. As soon as the Nexus is secured, we will begin deploying troops to the furthest chambers."
+                      },
+                      {
+                        "npc": "They will hold the line whilst we work on clearing the foremost ones. We are relying on you to take one side whilst we take the other."
+                      },
+                      {
+                        "player": "So that makes... the Nexus plus three chambers you want taking care of?"
+                      },
+                      {
+                        "npc": "Yes. It is no small ask, but we do not think we can manage any more ourselves. I would suggest you seek allies of your own to help you."
+                      },
+                      {
+                        "player": "I'll see what I can do."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "tfa-montoya-archive-back"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are our enemies?",
+                    "steps": [
+                      {
+                        "player": "Who are our enemies?"
+                      },
+                      {
+                        "npc": "We have followers of Lucien, Zamorak and Bandos to deal with. Evidence also suggests there are other foes yet to fully reveal themselves. For example, there have been reports of a lone knight."
+                      },
+                      {
+                        "player": "A lone knight?"
+                      },
+                      {
+                        "npc": "Yes. The scouting report is spotty. Only one of our people made it back alive, but they were heavily wounded. Apparently this knight took out a whole squadron by himself."
+                      },
+                      {
+                        "player": "That's concerning... What about the others?"
+                      },
+                      {
+                        "npc": "The Bandosian forces are mostly goblins. You wouldn't think they'd pose much of a threat, but they've managed to build some sort of siege engine. If that weren't enough, they're being lead by a huge ork."
+                      },
+                      {
+                        "npc": "As for the forces of Lucien and Zamorak, we spotted a clash between the two factions in some of the deeper tunnels. An army of skeletons facing off against a group of Zamorakian mages."
+                      },
+                      {
+                        "player": "The Dagon'hai?"
+                      },
+                      {
+                        "npc": "Interestingly, no, but we'll get to them. We managed to capture one of the mages and interrogate them. They refused to say much, but we gather they're trying to summon some sort of powerful demon."
+                      },
+                      {
+                        "player": "And the skeletons?"
+                      },
+                      {
+                        "npc": "There seems to be an endless tide of them. A necromancer must be present. It's possible this is the work of Moia, the leader of Lucien's forces."
+                      },
+                      {
+                        "player": "And let me guess, there's more?"
+                      },
+                      {
+                        "npc": "Quite... You mentioned the Dagon'hai. A group of them were spotted near the Stone of Jas' old location. They seemed to be fending off an unusually capable tormented demon."
+                      },
+                      {
+                        "player": "In what way?"
+                      },
+                      {
+                        "npc": "Most tormented demons seem to struggle with the strength of their own flames. This one seemed to fully control them, lending it both greater power and durability."
+                      },
+                      {
+                        "player": "Did it manage to get rid of the Dagon'hai?"
+                      },
+                      {
+                        "npc": "No, they disengaged and made for a tunnel we think leads to the Archive. The demon followed, but went down a different path."
+                      },
+                      {
+                        "player": "That's quite the list we're up against."
+                      },
+                      {
+                        "npc": "Yes... but we are not without allies either. The Alliance is rallying as we speak. Together we can do this."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "tfa-montoya-enemies-back"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where is everybody else?",
+                    "steps": [
+                      {
+                        "player": "Where is everybody else?"
+                      },
+                      {
+                        "npc": "Armacus, Eva and Ivy have gone to rally the rest of the forces. We are only a small vanguard sent to assess the situation and prepare if necessary."
+                      },
+                      {
+                        "player": "Let's hope they don't take too long."
+                      },
+                      {
+                        "npc": "Fear not, they will soon return with help. Once they are here, we estimate we can defeat three sets of intruders. As for the rest... we will be relying on you and any allies you can gather yourself."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "tfa-montoya-everybody-back"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thank you.",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "path": [
+          "authoring",
+          "Transcript:General Montoya"
+        ],
+        "expected": null,
+        "value": {
+          "source": {
+            "page": "Transcript:General Montoya",
+            "capture": "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f"
+          },
+          "sections": {
+            "standard-dialogue": [
+              "Standard dialogue"
+            ]
+          },
+          "participants": [
+            "General Montoya"
+          ],
+          "npc_ids": [
+            16705
+          ]
+        }
+      },
+      {
+        "path": [
+          "index",
+          "16705"
+        ],
+        "expected": null,
+        "value": [
+          {
+            "page": "Transcript:General Montoya",
+            "variants": [
+              "standard-dialogue"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Record Keeper": {
+    "reason": "Release-day RSProx 241.1 dialogue preserved from the Fractured Archive implementation while no cached Wiki transcript exists. A newly collected Wiki record must stop the dump for review, not be overwritten.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f",
+      "https://github.com/RSPSApp/tsps/blob/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f/docs/fractured-archive.md"
+    ],
+    "base_sha256": null,
+    "audited_sha256": "72b1daf8d69d8e399ecfeabf895b3809efd178ee7d6edc410f6cc14b1c07f3ce",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Record Keeper"
+        ],
+        "expected": null,
+        "value": {
+          "default": "standard-dialogue",
+          "variants": {
+            "standard-dialogue": [
+              {
+                "player": "Hello."
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "Hello?"
+              },
+              {
+                "npc": "Hmm? What what?"
+              },
+              {
+                "player": "I hope I'm not interrupting."
+              },
+              {
+                "npc": "Interrupting who?"
+              },
+              {
+                "player": "You?"
+              },
+              {
+                "npc": "What about me?"
+              },
+              {
+                "player": "Am I interrupting you?"
+              },
+              {
+                "npc": "I'm not sure... What is it you're interrupting me for?"
+              },
+              {
+                "player": "Well, I was just going to ask what you're doing, but I'm starting to regret it."
+              },
+              {
+                "npc": "Why didn't you say so, my dear!"
+              },
+              {
+                "npc": "I... am... the Keeper of the Records!"
+              },
+              {
+                "player": "..."
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "You're a record keeper?"
+              },
+              {
+                "npc": "THE Record Keeper!"
+              },
+              {
+                "npc": "These sensitive records are under my precise curation!"
+              },
+              {
+                "npc": "The secrets of the Archive, the progress of the Alliance, the very steps you took towards me today, all recorded in these... very... pages!"
+              },
+              {
+                "player": "Can I have a loo-"
+              },
+              {
+                "npc": "No!"
+              },
+              {
+                "player": "Sorry, I was just interested."
+              },
+              {
+                "npc": "Hmm... I suppose you may view some of the records, should your curiosity need satisfying."
+              },
+              {
+                "type": "choice",
+                "prompt": "View Stats?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [],
+                    "id": "tfa-record-keeper-view-stats"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [],
+                    "id": "tfa-record-keeper-no"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "path": [
+          "authoring",
+          "Transcript:Record Keeper"
+        ],
+        "expected": null,
+        "value": {
+          "source": {
+            "page": "Transcript:Record Keeper",
+            "capture": "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f"
+          },
+          "sections": {
+            "standard-dialogue": [
+              "Standard dialogue"
+            ]
+          },
+          "participants": [
+            "Record Keeper"
+          ],
+          "npc_ids": [
+            16692
+          ]
+        }
+      },
+      {
+        "path": [
+          "index",
+          "16692"
+        ],
+        "expected": null,
+        "value": [
+          {
+            "page": "Transcript:Record Keeper",
+            "variants": [
+              "standard-dialogue"
             ]
           }
         ]

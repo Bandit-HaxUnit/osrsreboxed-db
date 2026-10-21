@@ -1489,8 +1489,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "iXRnXE"
+                        "id": "iXRnXE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3ae98ecb179f419f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1532,8 +1537,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "fXlQWa"
+                                        "id": "fXlQWa",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-c521ac470a13dc0b"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1593,8 +1603,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "m_9r8j"
+                                        "id": "m_9r8j",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-c200948c4521727a"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -3307,6 +3322,82 @@
         ]
       }
     ],
+    "jump-3ae98ecb179f419f": [
+      {
+        "player": "I think Katrine is still tougher."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "Well you can think that all you like. I know those blackarm cowards dare not leave the city. Out here, I am toughest. You can tell them that! Now get out of my sight, before I call my guards."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c521ac470a13dc0b": [
+      {
+        "player": "Are you sure they will pay?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "They will pay, or we will cut his hair off and send it to them."
+      },
+      {
+        "player": "How about trying something tougher? Maybe cut his finger off?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "That's a good idea, I could use talented people like you. I may call on you if I need work doing."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You must have been very skillful.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "m_9r8j",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c200948c4521727a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you be sure they will not try to get him out?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "0I4r_J",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2573b33c6e1572f7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I should not disturb someone as tough as you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "gyExJZ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "jump-2573b33c6e1572f7": [
       {
         "type": "line",
@@ -3400,6 +3491,66 @@
                 "type": "jump",
                 "reference": "below",
                 "id": "5gSERF"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c200948c4521727a": [
+      {
+        "player": "You must have been very skillful."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "Yes, I did most of the work. We had to grab the Pr..."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Keli",
+        "text": "Er, we had to grab him without his ten bodyguards noticing. It was a stroke of genius."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you sure they will pay?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "fXlQWa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c521ac470a13dc0b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you be sure they will not try to get him out?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "lJP-vJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2573b33c6e1572f7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I should not disturb someone as tough as you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "iFSq3_"
               }
             ]
           }

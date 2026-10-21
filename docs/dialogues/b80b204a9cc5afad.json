@@ -225,8 +225,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "gtaJSk"
+                        "id": "gtaJSk",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-523f0add06d19ea3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -397,8 +402,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "Wfx4Pd"
+                            "id": "Wfx4Pd",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-aa61897514297342"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -617,6 +627,71 @@
         ]
       }
     ],
+    "jump-523f0add06d19ea3": [
+      {
+        "type": "line",
+        "speaker": "Kaqemeex",
+        "text": "Hmm. I think I may have a worthwhile quest for you actually. I don't know if you are familiar with the stone circle south of Varrock or not, but..."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaqemeex",
+        "text": "That used to be OUR stone circle. Unfortunately, many many years ago, dark wizards cast a wicked spell upon it so that they could corrupt its power for their own evil ends."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaqemeex",
+        "text": "When they cursed the rocks for their rituals they made them useless to us and our magics. We require a brave adventurer to go on a quest for us to help purify the circle of Varrock."
+      },
+      {
+        "type": "message",
+        "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 10.",
+        "id": "qjnirf"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Druidic Ritual quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Okay, I will try and help."
+              },
+              {
+                "type": "line",
+                "speaker": "Kaqemeex",
+                "text": "Excellent. Go to the village south of this place and speak to my fellow druid, Sanfew, who is working on the purification ritual. He knows what is required to complete it."
+              },
+              {
+                "player": "Will do."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:druidic-ritual:start",
+            "quest": "Druidic Ritual"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, that doesn't sound very interesting."
+              },
+              {
+                "type": "line",
+                "speaker": "Kaqemeex",
+                "text": "I will not try and change your mind adventurer. Some day when you have matured you may reconsider your position. We will wait until then."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "jump-dd54b8af0f680614": [
       {
         "player": "Well, I'll be on my way now."
@@ -638,6 +713,19 @@
         "type": "line",
         "speaker": "Sanfew",
         "text": "It is located somewhere in the mysterious underground halls which are located somewhere in the woods just South of here. They are too dangerous for me to go myself however."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-aa61897514297342": [
+      {
+        "player": "Ok, I'll do that then."
+      },
+      {
+        "type": "line",
+        "speaker": "Sanfew",
+        "text": "Well thank you very much!"
       },
       {
         "type": "end"

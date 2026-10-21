@@ -46,8 +46,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "FBSBVV"
+                                "id": "FBSBVV",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5eaa18b4035c1013"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1086,31 +1091,6 @@
         "type": "end"
       }
     ],
-    "jump-ba80530d9195b75a": [
-      {
-        "player": "Your shoe lace is untied."
-      },
-      {
-        "npc": "No it's not!"
-      },
-      {
-        "player": "No you're right. I have nothing to back that up."
-      },
-      {
-        "npc": "Fool! Leave me alone!"
-      },
-      {
-        "type": "end"
-      }
-    ],
-    "jump-1c02db573cbc8c55": [
-      {
-        "player": "Maybe another time."
-      },
-      {
-        "type": "end"
-      }
-    ],
     "jump-5eaa18b4035c1013": [
       {
         "player": "Do you know of any quests I can do?"
@@ -1801,6 +1781,31 @@
         ]
       }
     ],
+    "jump-ba80530d9195b75a": [
+      {
+        "player": "Your shoe lace is untied."
+      },
+      {
+        "npc": "No it's not!"
+      },
+      {
+        "player": "No you're right. I have nothing to back that up."
+      },
+      {
+        "npc": "Fool! Leave me alone!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-1c02db573cbc8c55": [
+      {
+        "player": "Maybe another time."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "jump-5c4445d2d862db79": [
       {
         "player": "Can I buy your stick?"
@@ -1857,8 +1862,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "FBSBVV"
+                "id": "FBSBVV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5eaa18b4035c1013"
+                  }
+                ]
               }
             ]
           },

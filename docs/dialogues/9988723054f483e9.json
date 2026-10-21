@@ -68,8 +68,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Hxer8F"
+                        "id": "Hxer8F",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-174d333fa0e29e8b"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -91,6 +96,18 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-174d333fa0e29e8b": [
+      {
+        "type": "line",
+        "speaker": "Chief Farmer",
+        "text": "If you change your mind just find a plough and use it."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -238,8 +238,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "yStbYj"
+                    "id": "yStbYj",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-a2f72c65e5e036ba"
+                      }
+                    ]
                   }
                 ]
               }
@@ -289,6 +294,17 @@
             ]
           }
         ]
+      }
+    ],
+    "jump-a2f72c65e5e036ba": [
+      {
+        "player": "No thanks, I can't afford one of those."
+      },
+      {
+        "npc": "I am sorry to hear that. If you should find yourself in wealthier times come back and see me."
+      },
+      {
+        "type": "end"
       }
     ]
   },
@@ -533,8 +549,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "yStbYj"
+                          "id": "yStbYj",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-a2f72c65e5e036ba"
+                            }
+                          ]
                         }
                       ]
                     }

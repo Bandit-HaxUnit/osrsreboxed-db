@@ -1251,8 +1251,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "4yjZbt"
+                        "id": "4yjZbt",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-490911894998cf4f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2840,8 +2845,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "tbr-KU"
+                        "id": "tbr-KU",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1302e4280f85a810"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -4515,7 +4525,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-751db39322b399a1"
+                            "branch": "wgqq69"
                           }
                         ]
                       }
@@ -4559,7 +4569,7 @@
                                 "steps": [
                                   {
                                     "type": "call",
-                                    "branch": "jump-77d45a85760f7bb3"
+                                    "branch": "wgqq69"
                                   }
                                 ]
                               }
@@ -4618,7 +4628,7 @@
                                         "steps": [
                                           {
                                             "type": "call",
-                                            "branch": "jump-e7a75cdd49daa0bd"
+                                            "branch": "wgqq69"
                                           }
                                         ]
                                       }
@@ -4697,7 +4707,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-fc5e5d988123694d"
+                            "branch": "wgqq69"
                           }
                         ]
                       }
@@ -4747,8 +4757,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "wF_jLz"
+                                "id": "wF_jLz",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "wgqq69"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -4805,8 +4820,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "tFqo5W"
+                                "id": "tFqo5W",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "wgqq69"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -9557,8 +9577,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "1Ooai_"
+                                "id": "1Ooai_",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-185699f02411532b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -11599,8 +11624,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4yjZbt"
+                "id": "4yjZbt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-490911894998cf4f"
+                  }
+                ]
               }
             ]
           },
@@ -11627,6 +11657,143 @@
       {
         "player": "How do I get into the Kharazi Jungle?"
       },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Apparently he was on a mission to map the area. How foolish is that?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Actually, I plan to map the jungle myself.",
+            "steps": [
+              {
+                "player": "Actually, I plan to map the jungle myself."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Best of luck though... Guthix knows, you'll need it."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have any other tips about the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "player": "Do you have any other tips about the Kharazi Jungle?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Not really. Just be careful - there's a lot of weird stuff going on in there lately."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "pIuo79"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "GZq6uL"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Are you calling me foolish?",
+            "steps": [
+              {
+                "player": "Are you calling me foolish?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Er... maybe? I'll just be on my way..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "jb4Het",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7554ab8e751ec79e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you seen any Kharazi tribespeople in the jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Pl_u5k",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fbc0ed81f822cc8d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "-pLgtz"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-490911894998cf4f": [
       {
         "type": "line",
         "speaker": "Jungle forester",
@@ -12714,8 +12881,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "tbr-KU"
+                "id": "tbr-KU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1302e4280f85a810"
+                  }
+                ]
               }
             ]
           }
@@ -12769,6 +12941,89 @@
                   {
                     "type": "call",
                     "branch": "jump-7f5b65884b9147d4"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1302e4280f85a810": [
+      {
+        "player": "Ungadulu called me 'Vacu'. What does that mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gujuo",
+        "text": "It seems that Ungadulu has started to lose his senses. In the days of our forefathers, the 'Vacu' were shamans who could summon powerful, wise spirits."
+      },
+      {
+        "type": "line",
+        "speaker": "Gujuo",
+        "text": "But they asked too much, and were enslaved by the spirits they sought to command."
+      },
+      {
+        "player": "How terrible..."
+      },
+      {
+        "type": "line",
+        "speaker": "Gujuo",
+        "text": "Indeed. Every Kharazi child knows not to mess with evil spirits. What has our shaman gotten himself into?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "tzCi7q"
+              }
+            ]
+          },
+          {
+            "text": "Sorry for bothering you.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "BfRTTf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fe185522797f4e2d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Ungadulu looks a little strange.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "mFkPua",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7f5b65884b9147d4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'm not sure what to do.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "_xwa4T",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f8bbb1cf6aa9b271"
                   }
                 ]
               }
@@ -13219,7 +13474,7 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-77d45a85760f7bb3"
+                    "branch": "jump-ff92ca1618761592"
                   }
                 ]
               }
@@ -13278,7 +13533,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-e7a75cdd49daa0bd"
+                            "branch": "jump-ff92ca1618761592"
                           }
                         ]
                       }
@@ -13307,58 +13562,37 @@
         ]
       }
     ],
-    "jump-77d45a85760f7bb3": [
+    "jump-ff92ca1618761592": [
       {
         "type": "line",
         "speaker": "Gujuo",
-        "text": "We do have a sacred pool which contains pure water. I don't know why Ungadulu would need it, though. Maybe you should talk to him again and get more information."
+        "text": "Don't you need to take some pure water down to the caves? If you haven't got the water yet, try getting some from the pool."
       },
       {
         "type": "choice",
         "options": [
           {
-            "text": "Sorry for bothering you.",
+            "text": "Can you help me?",
             "steps": [
               {
                 "type": "jump",
-                "id": "gJ2H1X",
+                "id": "io-7K3",
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-fe185522797f4e2d"
+                    "branch": "jump-96a1777a1ae68fbf"
                   }
                 ]
               }
             ]
           },
           {
-            "text": "I'm not sure what to do.",
+            "text": "Okay, thanks for your help.",
             "steps": [
               {
                 "type": "jump",
-                "id": "QfKnhR",
-                "steps": [
-                  {
-                    "type": "call",
-                    "branch": "jump-e7a75cdd49daa0bd"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "text": "I'll do that. Goodbye!",
-            "steps": [
-              {
-                "player": "I'll do that. Goodbye!"
-              },
-              {
-                "type": "line",
-                "speaker": "Gujuo",
-                "text": "Farewell, Bwana, and good luck on your quest."
-              },
-              {
-                "type": "end"
+                "reference": "below",
+                "id": "dYPpby"
               }
             ]
           }
@@ -13407,75 +13641,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "wF_jLz"
-              }
-            ]
-          },
-          {
-            "text": "Goodbye.",
-            "steps": [
-              {
-                "type": "jump",
-                "reference": "above",
-                "id": "vFFMN-"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "jump-e7a75cdd49daa0bd": [
-      {
-        "type": "line",
-        "speaker": "Gujuo",
-        "text": "Farewell, Bwana, and good luck on your quest."
-      },
-      {
-        "type": "end"
-      }
-    ],
-    "jump-fc5e5d988123694d": [
-      {
-        "type": "line",
-        "speaker": "Gujuo",
-        "text": "I am sorry, Bwana. Without the totem pole, it isn't safe to gather together. The evil spirits could strike at any time..."
-      },
-      {
-        "type": "choice",
-        "options": [
-          {
-            "text": "Ungadulu looks a little strange.",
-            "steps": [
-              {
-                "type": "jump",
-                "reference": "above",
-                "id": "_ycyz8"
-              }
-            ]
-          },
-          {
-            "text": "Sorry for bothering you.",
-            "steps": [
-              {
-                "type": "jump",
-                "id": "Hs4LuX",
+                "id": "wF_jLz",
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-fe185522797f4e2d"
+                    "branch": "jump-ff92ca1618761592"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "text": "I'm not sure what to do.",
-            "steps": [
-              {
-                "type": "jump",
-                "reference": "below",
-                "id": "wF_jLz"
               }
             ]
           },
@@ -16700,8 +16872,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "1Ooai_"
+                        "id": "1Ooai_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-185699f02411532b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -16769,8 +16946,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1Ooai_"
+                "id": "1Ooai_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-185699f02411532b"
+                  }
+                ]
               }
             ]
           },
@@ -16781,6 +16963,66 @@
                 "type": "jump",
                 "reference": "above",
                 "id": "TQhoB4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-185699f02411532b": [
+      {
+        "player": "Well, actually, it wasn't a spirit at all - it was Nezikchened!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ungadulu",
+        "text": "Nezikchened returned? And you defeated him a second time? You truly are a legend, Bwana."
+      },
+      {
+        "type": "line",
+        "speaker": "Ungadulu",
+        "text": "Did you find the source of the sacred water, too?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I've got the water.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "zIdtVL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-016b5c7bfc2670b4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do I do now?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "7Bxne1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7dbb5c1184ec88dd"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "2Uyn9a"
               }
             ]
           }
@@ -16827,6 +17069,12 @@
       {
         "type": "call",
         "branch": "jump-fe185522797f4e2d"
+      }
+    ],
+    "wgqq69": [
+      {
+        "type": "call",
+        "branch": "jump-ff92ca1618761592"
       }
     ],
     "JWZsPA": [

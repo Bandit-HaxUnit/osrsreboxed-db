@@ -210,8 +210,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ijPSdP"
+                        "id": "ijPSdP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a548ce800a79eeff"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -2064,6 +2069,19 @@
             "branch": "jump-b87d10178840142c"
           }
         ]
+      }
+    ],
+    "jump-a548ce800a79eeff": [
+      {
+        "player": "I'm not interested in that adventure right now."
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "I realise it was a lot to ask of a stranger."
+      },
+      {
+        "type": "end"
       }
     ]
   }

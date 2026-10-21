@@ -528,7 +528,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-aeb9d2fa0feb447a"
+                            "branch": "jump-e7d3d01d21df4a83"
                           }
                         ]
                       }
@@ -559,8 +559,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "uGxiSY"
+                "id": "uGxiSY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e7d3d01d21df4a83"
+                  }
+                ]
               }
             ]
           }
@@ -1472,14 +1477,67 @@
         "type": "end"
       }
     ],
-    "jump-aeb9d2fa0feb447a": [
+    "jump-e7d3d01d21df4a83": [
       {
         "type": "line",
         "speaker": "Sinister Stranger",
-        "text": "Luck haz notsing to do vith it it is all in ze technique."
+        "text": "My doctor told me to take up ein velaxing hobby. Vhen I am stressed I tend to get ein little.."
       },
       {
-        "type": "end"
+        "type": "line",
+        "speaker": "Sinister Stranger",
+        "text": "..thirsty."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You're a vampyre aren't you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ROBtrE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3fb8cc2945416b01"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "If you get thirsty you should drink something.",
+            "steps": [
+              {
+                "player": "If you get thirsty you should drink something."
+              },
+              {
+                "type": "line",
+                "speaker": "Sinister Stranger",
+                "text": "I tsink I may do zat soon..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Well, good luck with the fishing.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "mMcPeV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8090a471e8441c9f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "jump-8090a471e8441c9f": [

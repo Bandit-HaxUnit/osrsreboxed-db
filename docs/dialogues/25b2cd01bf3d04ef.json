@@ -279,8 +279,13 @@
                                                             "steps": [
                                                               {
                                                                 "type": "jump",
-                                                                "reference": "above",
-                                                                "id": "qH3SgJ"
+                                                                "id": "qH3SgJ",
+                                                                "steps": [
+                                                                  {
+                                                                    "type": "call",
+                                                                    "branch": "jump-b47d770d611dcdc7"
+                                                                  }
+                                                                ]
                                                               }
                                                             ]
                                                           },
@@ -1572,8 +1577,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "sI4fir"
+                        "id": "sI4fir",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a8e69b537f4f00b8"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4863,6 +4873,16 @@
         "type": "end"
       }
     ],
+    "jump-b47d770d611dcdc7": [
+      {
+        "type": "line",
+        "speaker": "Mosol Rei",
+        "text": "Ok, perhaps you'd like to be on your way now?"
+      },
+      {
+        "type": "end"
+      }
+    ],
     "jump-a7f96fcf24a92030": [
       {
         "player": "Maybe you know someone who does know something?"
@@ -5218,8 +5238,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "qH3SgJ"
+                                "id": "qH3SgJ",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-b47d770d611dcdc7"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -5601,8 +5626,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qH3SgJ"
+                "id": "qH3SgJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b47d770d611dcdc7"
+                  }
+                ]
               }
             ]
           },
@@ -6769,6 +6799,616 @@
                   {
                     "type": "call",
                     "branch": "jump-1df553624bbdf207"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a8e69b537f4f00b8": [
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "Yes, that may be a good idea. Many people could die! If only there was a way to defeat her!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Mosol Rei said something about a legend?",
+            "steps": [
+              {
+                "player": "Mosol Rei said something about a legend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "Ah, yes, there is a legend, but it is lost in the midst of antiquity..."
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "The last place to hold any details regarding this mystery was in the temple of Ah Za Rhoon....and that has long since vanished... it crumbled into dust..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Why was it called Ah Za Rhoon?",
+                    "steps": [
+                      {
+                        "player": "Why was it called Ah Za Rhoon?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trufitus",
+                        "text": "It is from an ancient language. The direct translation is... 'Magnificence floating on water'. But my research makes me believe that the temple was built on land."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trufitus",
+                        "text": "And most likely between large bodies of water, for example large lakes. However, many people have searched for the temple, and have failed. I would hate to see you waste your time on a pointless search like that."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Thanks for the information!",
+                            "steps": [
+                              {
+                                "player": "Thanks for the information!"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Trufitus",
+                                "text": "What information?"
+                              },
+                              {
+                                "player": "About Ah Za Rhoon and where it is."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Trufitus looks at you blankly...",
+                                "id": "D9RjOb"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Trufitus",
+                                "text": "Hmmm, well, you are welcome bwana."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Do you know anything more about the temple?",
+                                    "steps": [
+                                      {
+                                        "player": "Do you know anything more about the temple?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Trufitus",
+                                        "text": "Not much... I would say that is about it..."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Trufitus",
+                                        "text": "Even the great priest Zadimus who built the temple did not survive. Some say that Rashiliyia caused the temple to collapse."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Trufitus",
+                                        "text": "She was angry at Zadimus for not returning her affections. She was a great sorceress even before they met."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Tell me more.",
+                                            "steps": [
+                                              {
+                                                "player": "Tell me more."
+                                              },
+                                              {
+                                                "type": "line",
+                                                "speaker": "Trufitus",
+                                                "text": "I don't know anymore. You're very demanding aren't you!"
+                                              },
+                                              {
+                                                "type": "choice",
+                                                "options": [
+                                                  {
+                                                    "text": "Thanks for the information!",
+                                                    "steps": [
+                                                      {
+                                                        "type": "jump",
+                                                        "id": "C4OV3P",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-12d9261300d5d2a9"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Do you know anything more about the temple?",
+                                                    "steps": [
+                                                      {
+                                                        "type": "jump",
+                                                        "id": "jBl34V",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-fe4477d4659c5aec"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "I am going to search for Ah Za Rhoon!",
+                                                    "steps": [
+                                                      {
+                                                        "player": "I am going to search for Ah Za Rhoon!"
+                                                      },
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Trufitus",
+                                                        "text": "What?! You must be crazy! That place has passed into myth and legend, it has been buried under rubble for years. It's most likely buried 20 men deep, and that's if you can actually find it."
+                                                      },
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Trufitus",
+                                                        "text": "Are you sure you're going to go and look for it? I may be able to do some research into this if you agree. Only I don't want to waste my time if you're not serious about this!"
+                                                      },
+                                                      {
+                                                        "type": "condition",
+                                                        "text": "If the player does not have all the requirements and has a combat level below 45:",
+                                                        "steps": [
+                                                          {
+                                                            "type": "message",
+                                                            "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it. Your combat level is also lower than the recommended level of 45.",
+                                                            "id": "gCzqi2"
+                                                          }
+                                                        ],
+                                                        "id": "P7DztW"
+                                                      },
+                                                      {
+                                                        "type": "choice",
+                                                        "prompt": "Start the Shilo Village quest?",
+                                                        "options": [
+                                                          {
+                                                            "text": "Yes.",
+                                                            "steps": [
+                                                              {
+                                                                "player": "Yes, I will seriously look for Ah Za Rhoon and I'd appreciate your help."
+                                                              },
+                                                              {
+                                                                "type": "line",
+                                                                "speaker": "Trufitus",
+                                                                "text": "Ok then Bwana, good luck with your quest, and remember to stock up well with adventuring supplies before setting off. You never know how useful some fairly ordinary things might be when you're"
+                                                              },
+                                                              {
+                                                                "type": "line",
+                                                                "speaker": "Trufitus",
+                                                                "text": "adventuring."
+                                                              },
+                                                              {
+                                                                "type": "line",
+                                                                "speaker": "Trufitus",
+                                                                "text": "I'll hold on to this Wampum belt for you for the time being. I'll give it back to you when we have completed this quest."
+                                                              },
+                                                              {
+                                                                "type": "end"
+                                                              }
+                                                            ],
+                                                            "hook": "quest:shilo-village:start",
+                                                            "quest": "Shilo Village"
+                                                          },
+                                                          {
+                                                            "text": "No.",
+                                                            "steps": [
+                                                              {
+                                                                "player": "Actually, now it comes to it, I'm having second thoughts."
+                                                              },
+                                                              {
+                                                                "type": "line",
+                                                                "speaker": "Trufitus",
+                                                                "text": "Well, I understand. Perhaps you can search for it another time? Come back when you think you're ready. Excuse me now won't you while I return to my studies."
+                                                              },
+                                                              {
+                                                                "type": "end"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "It's a pity that I can't search for Ah Za Rhoon now.",
+                                                    "steps": [
+                                                      {
+                                                        "player": "It's a pity that I can't search for Ah Za Rhoon now."
+                                                      },
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Trufitus",
+                                                        "text": "Well, I understand. Perhaps you can search for it another time? Come back when you think you're ready. Excuse me now won't you while I return to my studies."
+                                                      },
+                                                      {
+                                                        "type": "end"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Are there any traps there?",
+                                            "steps": [
+                                              {
+                                                "player": "Are there any traps there?"
+                                              },
+                                              {
+                                                "type": "line",
+                                                "speaker": "Trufitus",
+                                                "text": "How am I supposed to know? A lot of what I know is most probably wrong but some of it seems right to me. Excuse me but I must get back to my studies."
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Thanks for the information!",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "6Tjd-L",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-12d9261300d5d2a9"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I am going to search for Ah Za Rhoon!",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "_KIkdf",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-995bb01d449968f9"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "It's a pity that I can't search for Ah Za Rhoon now.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "-oDfDz",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-6281f84a22c11b9f"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Do you know anything more about the temple?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "axCRFR",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-fe4477d4659c5aec"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I am going to search for Ah Za Rhoon!",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "0WI7Ke",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-995bb01d449968f9"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "It's a pity that I can't search for Ah Za Rhoon now.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "ATz5B2",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6281f84a22c11b9f"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know anything more about the temple?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "murWWI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fe4477d4659c5aec"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Will you pack your things now?",
+            "steps": [
+              {
+                "player": "Will you pack your things now?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "I will wait and see what will happen. Maybe Rashiliyia does not have the power to strike too far from her resting place? But there are many things that I need to do now."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Is her resting place important?",
+                    "steps": [
+                      {
+                        "player": "Is her resting place important?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trufitus",
+                        "text": "I believe it is! It might be that her physical remains are the focal point of her supernatural powers. It is said that many years ago, a group of adventurers once infiltrated her tomb to try to rid the world of Rashiliyia."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trufitus",
+                        "text": "These adventurers reported seeing a wraith- like creature."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trufitus",
+                        "text": "Although the adventurers disturbed Rashiliyia's bones, they were not able to properly sanctify them. And this is the most likely reason why she still plagues us today."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trufitus",
+                        "text": "Of course, she only has to order one of her minions to move her bones and she can quite quickly and easily set up a new headquarters anywhere and continue to launch her plague of undead."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "What are minions?",
+                            "steps": [
+                              {
+                                "player": "What are minions?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Trufitus",
+                                "text": "Minions are the fiendish undead creatures that she controls. She has very few living worshippers, but they need to be dealt with at some point."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Thanks for the information!",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "fjREq1",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-12d9261300d5d2a9"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Does she have any weaknesses?",
+                                    "steps": [
+                                      {
+                                        "player": "Does she have any weaknesses?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Trufitus",
+                                        "text": "I am not sure, but the legend about her certainly is long. It's a pity that the temple of Ah Za Rhoon has crumbled as there may be some clues that could help us to defeat her."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Trufitus",
+                                        "text": "I think the largest problem will be in locating her resting place."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Why was it called Ah Za Rhoon?",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "lFfgJC",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-de2471568982c905"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Is her resting place important?",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "0QURqS",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-1df553624bbdf207"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What are onions?",
+                            "steps": [
+                              {
+                                "player": "What are onions?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Trufitus",
+                                "text": "Surely you mean Minions?"
+                              },
+                              {
+                                "player": "Yes of course, I mean Minions, what made you think I said Onions?"
+                              },
+                              {
+                                "type": "message",
+                                "text": "Trufitus frowns at you but continues about...minions...",
+                                "id": "jjdN90"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Trufitus",
+                                "text": "Minions are the fiendish undead creatures that Rashiliyia controls. She has very few living worshippers, but they need to be dealt with at some point."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Trufitus",
+                                "text": "Usually a strong creature of some sort will be guarding the bones and it is not to be tackled lightly."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Thanks for the information!",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "cF15rm",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-12d9261300d5d2a9"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Does she have any weaknesses?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "cyT0nr",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-819d67fce3e45ba5"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Does she have any weaknesses?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "IhnLBN",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-819d67fce3e45ba5"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Oh, ok!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ZJl2rS"
+                      }
+                    ]
                   }
                 ]
               }

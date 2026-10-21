@@ -48,8 +48,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "jWFA_N"
+                        "id": "jWFA_N",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-324ce46ae832ba07"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -317,7 +322,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-f8a43be52b87efe6"
+                            "branch": "jump-17c311909c3aff2e"
                           }
                         ]
                       }
@@ -7124,6 +7129,274 @@
     ]
   },
   "branches": {
+    "jump-324ce46ae832ba07": [
+      {
+        "type": "condition",
+        "text": "If the player already asked \"Who are you?\":",
+        "steps": [
+          {
+            "player": "So what are you doing in Al Kharid?"
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "Should I not be in Al Kharid?"
+          },
+          {
+            "player": "Er... good question. I guess I just haven't seen a wizard around here before."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "Well, maybe you should start expecting the unexpected! That way you can spend less time worrying about why I'm here, and more time asking life's real questions."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "yCi4yu"
+          }
+        ],
+        "id": "5x2EJz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player did not ask \"Who are you?\":",
+        "steps": [
+          {
+            "player": "What's a wizard doing in Al Kharid?"
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "Why shouldn't a wizard be in Al Kharid?"
+          },
+          {
+            "player": "Er... good question. I guess I just haven't seen a wizard around here before."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "Well for a start, I'm not just any wizard. The name's Mia Persten. I'm the leading researcher in teleportation magic for the Order of Wizards."
+          },
+          {
+            "player": "Pleased to meet you. I'm [player name]."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "Now as for your question, maybe you should start expecting the unexpected! That way you can spend less time worrying about why I'm here, and more time asking life's real questions."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "GNWKM6"
+          }
+        ],
+        "id": "xjLZgp"
+      },
+      {
+        "player": "Right... and what kind of questions are you referring to?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Well, that's the thing. It's different for everyone! Why do trees grow from stumps substantially faster than from seeds? Where do meteorites come from? Why do we have to hold our arms out to teleport successfully?"
+      },
+      {
+        "player": "I don't know. What are the answers?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "I don't know either!"
+      },
+      {
+        "player": "So you're in Al Kharid to work out how trees grow?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "No, silly! I came here to buy something."
+      },
+      {
+        "player": "Something?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 10 Runecraft:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "That's right! Something! Tell me, what do you know of runecrafting?"
+          },
+          {
+            "player": "Not a lot really."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "A shame. Unfortunately, this something requires some understanding in that area."
+          },
+          {
+            "type": "message",
+            "text": "You do not meet all of the requirements to start the Temple of the Eye quest.",
+            "id": "XIbC0j"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ueNF9b"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "That's right! Something! Tell me, what do you know of the Abyss?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Enter the Abyss:",
+        "steps": [
+          {
+            "player": "Not a lot really."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "A shame. Unfortunately, this something requires somewhat of an abyssal understanding."
+          },
+          {
+            "type": "message",
+            "text": "You do not meet all of the requirements to start the Temple of the Eye quest.",
+            "id": "hnNd9H"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "4LUYlb"
+      },
+      {
+        "player": "The Abyss? I know all about the Abyss."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Really? It's quite unusual for an adventurer like yourself to have knowledge in that area."
+      },
+      {
+        "player": "Well I recently helped a group of Zamorakian wizards gain access to the Rune Essence Mine. In return, they gave me access to the Abyss."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Zamorakian wizards? You do realise that the Z.M.I. are enemies to the Order of Wizards, right?"
+      },
+      {
+        "player": "Maybe I shouldn't have mentioned that..."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Oh, don't worry about it. The Order of Wizards may be a Saradominist group, but I've never personally had much time for gods. I prefer knowledge to religion."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Still, it's maybe best you don't tell anyone else. I can't imagine my fellow wizards will be happy to know that you gave away details on their secret mine."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Enough about them though. You've just shared quite the revelation with me! Is it really true that the Z.M.I. have found a way to access the Abyss?"
+      },
+      {
+        "player": "That's right."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Well in that case, I think you might be the perfect person to aid me in a little task."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed One Small Favour:",
+        "steps": [
+          {
+            "player": "A little task? This sounds like the time someone asked me for one small favour. I'm not sure if I'm ready for that again."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Persten",
+            "text": "Oh, don't be silly! This will be fun!"
+          },
+          {
+            "player": "Alright, what kind of task is it?"
+          }
+        ],
+        "id": "UvvJeQ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed One Small Favour:",
+        "steps": [
+          {
+            "player": "What kind of task?"
+          }
+        ],
+        "id": "6mjtMT"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Well I can't go telling you that until you agree, can I? Wouldn't want you sharing my secrets."
+      },
+      {
+        "player": "You're not giving me much to go on here."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "There'll be quite the reward for you at the end!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "t7mGq0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-17c311909c3aff2e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'd rather not get involved."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Persten",
+                "text": "That's a shame. Well, you just let me know if you reconsider."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "jump-bffb8e82b853aef8": [
       {
         "player": "See you around."
@@ -7132,14 +7405,183 @@
         "type": "end"
       }
     ],
-    "jump-f8a43be52b87efe6": [
+    "jump-17c311909c3aff2e": [
+      {
+        "player": "Alright, what do you need from me?"
+      },
       {
         "type": "line",
         "speaker": "Wizard Persten",
-        "text": "That's a shame. Well, you just let me know if you reconsider."
+        "text": "You'll help? Great! Well first, a question for you: you say the Z.M.I. have gained access to the Abyss? By any chance, are they using it to gain quick access to the runic altars for runecrafting purposes?"
       },
       {
-        "type": "end"
+        "player": "Yes, but how did you..."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "I knew it! I've been wondering for some time how they've been creating so many runes. I'd never considered that they'd somehow gained access to the Abyss, but I now realise it was the obvious explanation."
+      },
+      {
+        "player": "So is that what you're after? You want access to the Abyss as well?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Well, yes, but actually, no. It seems we've jumped ahead a bit. Let's go back to why I'm here."
+      },
+      {
+        "player": "The 'something' you bought?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "The 'something' I bought! Here, take a look."
+      },
+      {
+        "type": "message",
+        "text": "Persten shows you an amulet.",
+        "id": "vQW58O"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "A foolish archaeologist by the name of Asgarnia Smith recently found this washed up near the Ruins of Uzer. Despite his apparent archaeological credentials, he dismissed it as junk."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Luckily, I was able to buy it from him before he disposed of it. Can you believe he thought the 100 coins I paid was too much? If only he knew the true value of something like this..."
+      },
+      {
+        "player": "Why is it so valuable?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "You see that eye on it? That is the symbol of both the Order of Wizards and our home, the Wizards' Tower. Thing is, that's only the start."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "From what I can tell, this amulet is thousands of years old, but our order was only formed at the dawn of the Fifth Age. That wasn't even two hundred years ago!"
+      },
+      {
+        "player": "But how..."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Hang on! I'm not done yet. I also inspected the amulet for magical energies and found something fascinating! I recognised two distinct magical signatures."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "The first is the same magic found in rune essence. That's already pretty exciting, but it's the second that will blow your mind!"
+      },
+      {
+        "player": "What was it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "I'm getting to that! My, you do like interrupting, don't you? Don't worry, I understand. I get quite excited about these things as well!"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Anyway, here's the big reveal for you: the second signature was energy from the Abyss!"
+      },
+      {
+        "player": "So you have an amulet with the symbol of your order on it, but it predates your order by thousands of years?"
+      },
+      {
+        "player": "It also turned up miles from where your order is based, and is filled with energy from a dimension that until recently, no one had even been to?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Now you see why this is so exciting!"
+      },
+      {
+        "player": "So what do you need from me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "I need to find out where this amulet came from. It should be possible to trace it using the abyssal energy it still contains."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "This is where you ask 'What's the catch?'"
+      },
+      {
+        "player": "sigh* What's the catch?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "I'm glad you asked, [player name]! Unfortunately, the spell needed to trace the amulet will only work properly from inside the Abyss."
+      },
+      {
+        "player": "Oh I see where this is going. You don't have access to the Abyss, but I do."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Precisely! While I don't care about the religious squabbling between the Z.M.I. and my order, I still can't see them wanting to work with me any time soon."
+      },
+      {
+        "player": "So I need to take this amulet to the Abyss and work out where it came from?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Correct! I imagine you'll need the help of your Z.M.I. friends."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Just maybe don't tell them who gave it to you."
+      },
+      {
+        "player": "I'll visit the Mage of Zamorak in Varrock. He should be able to help me."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Persten",
+        "text": "Return to me once you are done. Oh, and don't forget the amulet!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Persten hands you the amulet.",
+            "id": "MMRv1P"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "CD4sRJ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Persten tries to hand you the amulet, but you don't have enough room to take it.",
+            "id": "xFGQTz"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "m_fZw2"
       }
     ],
     "jump-ea5dfc0f5167856d": [

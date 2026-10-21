@@ -104,7 +104,7 @@ def annotate(nodes, parent, quest_names):
                         option["quest"] = quest_names[key]
 
 
-def enrich_records(npcs, quests, npc_pages, clean):
+def enrich_records(npcs, quests, npc_pages, clean, bindings=None):
     identities = {name: identity(name, page, clean) for name, page in npc_pages.items()}
     all_records = {
         "Transcript:" + name: record
@@ -131,8 +131,9 @@ def enrich_records(npcs, quests, npc_pages, clean):
                 if node.get("type") == "reference" and not node.get("target"):
                     node["target"] = page
     resolve_shared(npcs, quests, identities)
-    for record in all_records.values():
-        resolve_navigation(record)
+    for page, record in all_records.items():
+        binding = (bindings or {}).get(page.removeprefix("Transcript:"), {})
+        resolve_navigation(record, binding.get("navigation"))
     for page, record in all_records.items():
         name = page.removeprefix("Transcript:")
         is_npc = name in npcs

@@ -27,7 +27,6 @@ def test_source_derived_dialogues_keep_the_audited_content():
         "Murder Mystery",
         "Tai Bwo Wannai Trio",
         "The Ides of Milk",
-        "The Restless Ghost",
         "Vampyre Slayer",
         "Rug Merchant",
         "Shantay",

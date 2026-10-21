@@ -185,8 +185,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ja4asm"
+                        "id": "ja4asm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-00a6adb072c0b371"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -472,6 +477,56 @@
                 "type": "jump",
                 "reference": "below",
                 "id": "qtU2fo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-00a6adb072c0b371": [
+      {
+        "npc": "Hmm. I think I may have a worthwhile quest for you actually. I don't know if you are familiar with the stone circle south of Varrock or not, but..."
+      },
+      {
+        "npc": "That used to be OUR stone circle. Unfortunately, many many years ago, dark wizards cast a wicked spell upon it so that they could corrupt its power for their own evil ends."
+      },
+      {
+        "npc": "When they cursed the rocks for their rituals they made them useless to us and our magics. We require a brave adventurer to go on a quest for us to help purify the circle of Varrock."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Druidic Ritual quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Okay, I will try and help."
+              },
+              {
+                "npc": "Excellent. Go to the village south of this place and speak to my fellow druid, Sanfew, who is working on the purification ritual. He knows what is required to complete it."
+              },
+              {
+                "player": "Will do."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:druidic-ritual:start",
+            "quest": "Druidic Ritual"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, that doesn't sound very interesting."
+              },
+              {
+                "npc": "I will not try and change your mind adventurer. Some day when you have matured you may reconsider your position. We will wait until then."
+              },
+              {
+                "type": "end"
               }
             ]
           }

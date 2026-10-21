@@ -991,8 +991,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "6AVit4"
+                                "id": "6AVit4",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2c0c1366d79f5fec"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1046,8 +1051,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "P_473A"
+                        "id": "P_473A",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fa50c5b5cde44ec7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1128,8 +1138,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sd5tZ8"
+                "id": "sd5tZ8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e58c957480201d7f"
+                  }
+                ]
               }
             ]
           },
@@ -1447,6 +1462,57 @@
         "type": "end"
       }
     ],
+    "jump-2c0c1366d79f5fec": [
+      {
+        "player": "I've been told a certain task may need to be completed so you can rest in peace."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "I should think it is probably because a warlock has come along and stolen my skull. If you look inside my coffin there, you'll find my corpse without a head on it."
+      },
+      {
+        "player": "Do you know where this warlock might be now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "I think it was one of the warlocks who lives in the big tower by the sea south-west from here."
+      },
+      {
+        "player": "Ok. I will try and get the skull back for you, then you can rest in peace."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Ooh, thank you. That would be such a great relief!"
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "It is so dull being a ghost..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-fa50c5b5cde44ec7": [
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Nope. I just know I can't do much of anything like this!"
+      },
+      {
+        "type": "jump",
+        "id": "6AVit4",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-2c0c1366d79f5fec"
+          }
+        ]
+      }
+    ],
     "jump-9b0e69f56cecff85": [
       {
         "player": "No, you're scary!"
@@ -1492,6 +1558,226 @@
       },
       {
         "type": "end"
+      }
+    ],
+    "jump-e58c957480201d7f": [
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Woo wooo. Woooooooooooooooooo!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Did he really?",
+            "steps": [
+              {
+                "player": "Did he really?"
+              },
+              {
+                "type": "line",
+                "speaker": "Restless ghost",
+                "text": "Woo."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "My brother had EXACTLY the same problem.",
+                    "steps": [
+                      {
+                        "player": "My brother had EXACTLY the same problem."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Woo Wooooo!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooooo Woo woo woo!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Goodbye. Thanks for the chat.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "DlsSyO",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-482d9c3db8583478"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "You'll have to give me the recipe some time...",
+                            "steps": [
+                              {
+                                "player": "You'll have to give me the recipe some time..."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Restless ghost",
+                                "text": "Wooooooo woo woooooooo."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Goodbye. Thanks for the chat.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "ght7aW",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-482d9c3db8583478"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Hmm... I'm not so sure about that.",
+                                    "steps": [
+                                      {
+                                        "player": "Hmm... I'm not so sure about that."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Restless ghost",
+                                        "text": "Wooo woo?"
+                                      },
+                                      {
+                                        "player": "Well, if you INSIST."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Restless ghost",
+                                        "text": "Wooooooooo!"
+                                      },
+                                      {
+                                        "player": "Ah well, better be off now..."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Restless ghost",
+                                        "text": "Woo."
+                                      },
+                                      {
+                                        "player": "Bye."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye. Thanks for the chat.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "gvuWVK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-482d9c3db8583478"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yeah, that's what I thought.",
+            "steps": [
+              {
+                "player": "Yeah, that's what I thought."
+              },
+              {
+                "type": "line",
+                "speaker": "Restless ghost",
+                "text": "Wooo woooooooooooooo..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Goodbye. Thanks for the chat.",
+                    "steps": [
+                      {
+                        "player": "Goodbye. Thanks for the chat."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooo wooo?"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hmm I'm not sure about that.",
+                    "steps": [
+                      {
+                        "player": "Hmm... I'm not so sure about that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooo woo?"
+                      },
+                      {
+                        "player": "Well, if you INSIST."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooooooooo!"
+                      },
+                      {
+                        "player": "Ah well, better be off now..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Woo."
+                      },
+                      {
+                        "player": "Bye."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "jump-6430eba1bb0e8ebb": [

@@ -92,8 +92,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "QNriGs"
+                                        "id": "QNriGs",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-416f7f67a70a122a"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -395,8 +400,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "RkfdJ6"
+                                "id": "RkfdJ6",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-416f7f67a70a122a"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -1451,6 +1461,16 @@
         ]
       }
     ],
+    "jump-416f7f67a70a122a": [
+      {
+        "type": "line",
+        "speaker": "Squire",
+        "text": "Yes, me too. I'm not looking forward to telling Vyvin I've lost it. He's going to want it for the parade next week as well."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "jump-e6c7b71cd0637733": [
       {
         "player": "So would these dwarves make another one?"
@@ -1621,8 +1641,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "QNriGs"
+                "id": "QNriGs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-416f7f67a70a122a"
+                  }
+                ]
               }
             ]
           }

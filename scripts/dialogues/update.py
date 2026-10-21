@@ -779,7 +779,10 @@ def main():
                 issues[title] = parsed["review_issues"]
     if npcs.keys() & quests.keys():
         raise ValueError("NPC and quest transcript names overlap")
-    index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean)
+    bindings = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
+    )
+    index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean, bindings)
     resolved = resolve_shops(npcs, shop_index())
     # Shared quest replies retain their NPC source IDs, including inferred shops.
     source_shops = {
@@ -812,23 +815,19 @@ def main():
             authoring["Transcript:" + name] = compact_record(record)
     dialogues = dict(sorted({**npcs, **quests}.items()))
     data = {"records": dialogues, "authoring": authoring, "index": index}
-    apply_bindings(
-        data,
-        json.loads(
-            (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
-        ),
-    )
+    apply_bindings(data, bindings)
     apply_corrections(
         data,
         json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text()),
     )
+    dialogues = dict(sorted(data["records"].items()))
     report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
     report.write_text(report_text)
     save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
     save(args.out.with_name("npc-dialogue-index.json"), index)
-    write_split(args.out.parent, (npcs, quests))
+    write_split(args.out.parent, (dialogues,))
     save(config.DATA_PATH / "dialogues" / "review-issues.json", issues)
     print(
         f"Wrote {len(npcs)} NPCs and {len(quests)} quest/reference pages, {sum(len(n.get('variants', {'standard-dialogue': n.get('steps', [])})) for n in npcs.values())} variants, "

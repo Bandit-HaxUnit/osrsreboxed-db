@@ -364,8 +364,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "HGMnf2"
+                                "id": "HGMnf2",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-31bce57272de04d1"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -747,8 +752,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HGMnf2"
+                "id": "HGMnf2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-31bce57272de04d1"
+                  }
+                ]
               }
             ]
           },
@@ -773,6 +783,79 @@
               {
                 "type": "jump",
                 "id": "95F9DV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-434db683a24533fd"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-31bce57272de04d1": [
+      {
+        "npc": "Zulrah is the all-powerful snake god of the southern wastes. He rises from the swamp to show his divine majesty and to accept our homage."
+      },
+      {
+        "npc": "Long ago, our forebears came to this place, not realising that they were trespassing in Zulrah's domain. He arose from the swamp in wrath, and many were slain."
+      },
+      {
+        "npc": "But Zulrah, in his mercy, allowed some of those transgressors to live, sparing them the punishment they deserved, and allowing them the chance to repent."
+      },
+      {
+        "npc": "Then my mother, oldest and wisest of the tribe, dared to intercede with the mighty Zulrah on behalf of her people, and thus a sacred contract was declared."
+      },
+      {
+        "npc": "Zulrah granted us the right to dwell in his lands, and to eat of their bounty. None shall ever drive us out, for Zulrah protects us."
+      },
+      {
+        "npc": "All he asks in return is a periodic sacrifice at his sacred shrine. As long as the sacrifices continue, Zulrah will let us live peacefully in his lands."
+      },
+      {
+        "npc": "Willing volunteers are never hard to find, for their sacrifice buys peace for the tribe, and I grant their families extra rations of food."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Have you any advice for surviving against Zulrah?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "X5VSfw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c4f61745be539d6c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Who are you all?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "AF4Odt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-eaba02a5505aa802"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'm off.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "OWqX7n",
                 "steps": [
                   {
                     "type": "call",

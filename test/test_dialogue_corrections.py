@@ -57,6 +57,27 @@ def test_corrections_preserve_ids_additions_deletions_and_indexes():
     assert data["records"]["X"]["variants"]["resume"][0]["text"] == "Done."
 
 
+def test_captured_record_requires_absent_source_and_rejects_a_new_wiki_record():
+    record = {"steps": [{"npc": "Captured speech."}]}
+    correction = {
+        "base_sha256": None,
+        "changes": [
+            {"path": ["records", "Captured"], "expected": None, "value": record}
+        ],
+    }
+    data = {"records": {}}
+    apply_corrections(data, {"Captured": correction})
+    assert data["records"]["Captured"] == record
+    with pytest.raises(ValueError, match="Stale dialogue correction: Captured"):
+        apply_corrections(data, {"Captured": correction})
+
+    wiki = {"records": {"Captured": {"steps": [{"npc": "New wiki speech."}]}}}
+    before = copy.deepcopy(wiki)
+    with pytest.raises(ValueError, match="Stale dialogue correction: Captured"):
+        apply_corrections(wiki, {"Captured": correction})
+    assert wiki == before
+
+
 @pytest.mark.parametrize("conflict", ["record", "path", "expected"])
 def test_stale_corrections_do_not_partially_apply(conflict):
     data = {"records": {"X": {"steps": [1, 2]}}}
@@ -133,3 +154,19 @@ def test_audited_variants_are_indexed():
             for entries in index.values()
             for entry in entries
         )
+
+
+def test_cache_bound_shared_npc_variants_are_indexed():
+    index = json.loads((config.DOCS_PATH / "npc-dialogue-index.json").read_text())
+    for npc_id in ("913", "1987"):
+        assert len(index[npc_id]) == 1
+        entry = index[npc_id][0]
+        assert entry["page"] == "Transcript:Shadow of the Storm"
+        assert "to-uzer-talking-to-evil-dave" in entry["variants"]
+        assert "after-killing-agrith-naar-evil-dave" in entry["variants"]
+    assert index["15839"] == [
+        {
+            "page": "Transcript:The Blood Moon Rises",
+            "variants": ["pre-release-dialogue", "starting-out"],
+        }
+    ]
