@@ -29281,9 +29281,6 @@
                           "steps": [
                             {
                               "npc": "Ok, I see you are someone suitable for our order. You may join."
-                            },
-                            {
-                              "type": "end"
                             }
                           ],
                           "id": "WLZxnf"
@@ -29291,13 +29288,15 @@
                       ]
                     },
                     {
-                      "text": "Oh, sorry."
+                      "text": "Oh, sorry.",
+                      "steps": [
+                        {
+                          "player": "Oh, sorry.",
+                          "steps": []
+                        }
+                      ]
                     }
                   ]
-                },
-                {
-                  "player": "Oh, sorry.",
-                  "steps": []
                 }
               ],
               "id": "cA_4Dl"
@@ -41375,18 +41374,20 @@
                               ]
                             },
                             {
-                              "text": "No thanks, I'm good."
-                            }
-                          ]
-                        },
-                        {
-                          "player": "No thanks, I'm good.",
-                          "steps": [
-                            {
-                              "npc": "Come back soon, I could do with a few more customers."
-                            },
-                            {
-                              "type": "end"
+                              "text": "No thanks, I'm good.",
+                              "steps": [
+                                {
+                                  "player": "No thanks, I'm good.",
+                                  "steps": [
+                                    {
+                                      "npc": "Come back soon, I could do with a few more customers."
+                                    },
+                                    {
+                                      "type": "end"
+                                    }
+                                  ]
+                                }
+                              ]
                             }
                           ]
                         }
@@ -41423,8 +41424,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "wMd7vD"
+                              "id": "wMd7vD",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-8c7d776dd8cd979d"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -41478,8 +41484,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "3Izr38"
+                              "id": "3Izr38",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-8c7d776dd8cd979d"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -41516,8 +41527,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "kmHYVQ"
+                              "id": "kmHYVQ",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-8c7d776dd8cd979d"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -41601,8 +41617,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "UYlV25"
+                          "id": "UYlV25",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-8c7d776dd8cd979d"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -41716,8 +41737,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "Ohftfi"
+                          "id": "Ohftfi",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-8c7d776dd8cd979d"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -41794,6 +41820,19 @@
       ]
     },
     "branches": {
+      "jump-8c7d776dd8cd979d": [
+        {
+          "player": "No thanks, I'm good.",
+          "steps": [
+            {
+              "npc": "Come back soon, I could do with a few more customers."
+            },
+            {
+              "type": "end"
+            }
+          ]
+        }
+      ],
       "jump-9308a91846e2c1ad": [
         {
           "player": "Could I have one of those crazy hot kebabs of yours?"
@@ -41835,8 +41874,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "3Izr38"
+                      "id": "3Izr38",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-8c7d776dd8cd979d"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -41873,8 +41917,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "kmHYVQ"
+                      "id": "kmHYVQ",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-8c7d776dd8cd979d"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -41955,8 +42004,13 @@
               "steps": [
                 {
                   "type": "jump",
-                  "reference": "above",
-                  "id": "UYlV25"
+                  "id": "UYlV25",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-8c7d776dd8cd979d"
+                    }
+                  ]
                 }
               ]
             }
@@ -76550,13 +76604,15 @@
           "type": "choice",
           "options": [
             {
-              "text": "I'd best be off."
+              "text": "I'd best be off.",
+              "steps": [
+                {
+                  "player": "I'd best be off.",
+                  "steps": []
+                }
+              ]
             }
           ]
-        },
-        {
-          "player": "I'd best be off.",
-          "steps": []
         }
       ],
       "if-the-player-has-lost-the-gadderhammer": [
@@ -79673,9 +79729,6 @@
                                       "type": "message",
                                       "text": "You pay 5,000 trading sticks. Banisoch adds a climbing rope to the hole for you.",
                                       "id": "RC6Onk"
-                                    },
-                                    {
-                                      "type": "end"
                                     }
                                   ]
                                 },
@@ -79684,9 +79737,6 @@
                                   "steps": [
                                     {
                                       "player": "Um, no thanks."
-                                    },
-                                    {
-                                      "type": "end"
                                     }
                                   ]
                                 }
@@ -79698,12 +79748,14 @@
                       ]
                     },
                     {
-                      "text": "Never mind."
+                      "text": "Never mind.",
+                      "steps": [
+                        {
+                          "player": "Never mind."
+                        }
+                      ]
                     }
                   ]
-                },
-                {
-                  "player": "Never mind."
                 }
               ]
             },
@@ -194135,14 +194187,8 @@
                       "text": "Stunning.",
                       "steps": [
                         {
-                          "type": "line",
-                          "speaker": "Dr Fenkenstrain",
-                          "text": "Mmmm, I see."
-                        },
-                        {
-                          "type": "line",
-                          "speaker": "Dr Fenkenstrain",
-                          "text": "I'm sorry, but I don't think you have the aptitude for this position."
+                          "type": "call",
+                          "branch": "Nbjx0k"
                         }
                       ]
                     },
@@ -194183,38 +194229,26 @@
                           "type": "choice",
                           "options": [
                             {
-                              "text": "Combat."
-                            }
-                          ]
-                        },
-                        {
-                          "player": "Combat.",
-                          "steps": [
-                            {
-                              "type": "line",
-                              "speaker": "Dr Fenkenstrain",
-                              "text": "Mmmm, I see."
+                              "text": "Combat.",
+                              "steps": [
+                                {
+                                  "player": "Combat.",
+                                  "steps": [
+                                    {
+                                      "type": "call",
+                                      "branch": "Nbjx0k"
+                                    }
+                                  ]
+                                }
+                              ]
                             },
-                            {
-                              "type": "line",
-                              "speaker": "Dr Fenkenstrain",
-                              "text": "I'm sorry, but I don't think you have the aptitude for this position."
-                            },
-                            {
-                              "type": "end"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "choice",
-                          "options": [
                             {
                               "text": "Magic.",
                               "steps": [
                                 {
                                   "type": "jump",
                                   "reference": "above",
-                                  "id": "fxTTHU"
+                                  "id": "fste-9"
                                 }
                               ]
                             },
@@ -194224,7 +194258,7 @@
                                 {
                                   "type": "jump",
                                   "reference": "above",
-                                  "id": "y7Dtpa"
+                                  "id": "_XYjS7"
                                 }
                               ]
                             },
@@ -196968,6 +197002,18 @@
             }
           ],
           "id": "xE2DR-"
+        }
+      ],
+      "Nbjx0k": [
+        {
+          "type": "line",
+          "speaker": "Dr Fenkenstrain",
+          "text": "Mmmm, I see."
+        },
+        {
+          "type": "line",
+          "speaker": "Dr Fenkenstrain",
+          "text": "I'm sorry, but I don't think you have the aptitude for this position."
         }
       ]
     }
@@ -225864,26 +225910,19 @@
           "type": "choice",
           "options": [
             {
-              "text": "Yes."
-            }
-          ]
-        },
-        {
-          "player": "Yes."
-        },
-        {
-          "type": "line",
-          "speaker": "Zanik",
-          "text": "Well then, let's go!",
-          "steps": [
-            {
-              "type": "end"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
+              "text": "Yes.",
+              "steps": [
+                {
+                  "player": "Yes."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Zanik",
+                  "text": "Well then, let's go!",
+                  "steps": []
+                }
+              ]
+            },
             {
               "text": "Not now.",
               "steps": [
@@ -232717,17 +232756,19 @@
                     {
                       "text": "Follow me!",
                       "condition": "If Zanik has been told to wait",
+                      "steps": [
+                        {
+                          "player": "Follow me!"
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Zanik",
+                          "text": "Okay, let's go!"
+                        }
+                      ],
                       "id": "AIksM4"
                     }
                   ]
-                },
-                {
-                  "player": "Follow me!"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Zanik",
-                  "text": "Okay, let's go!"
                 }
               ]
             },
@@ -233604,29 +233645,24 @@
           "type": "choice",
           "options": [
             {
-              "text": "Okay."
-            }
-          ]
-        },
-        {
-          "player": "Okay.",
-          "steps": [
+              "text": "Okay.",
+              "steps": [
+                {
+                  "player": "Okay.",
+                  "steps": []
+                }
+              ]
+            },
             {
-              "type": "end"
+              "text": "I want to get out now!",
+              "steps": [
+                {
+                  "player": "I want to get out now!",
+                  "steps": []
+                }
+              ]
             }
           ]
-        },
-        {
-          "type": "choice",
-          "options": [
-            {
-              "text": "I want to get out now!"
-            }
-          ]
-        },
-        {
-          "player": "I want to get out now!",
-          "steps": []
         }
       ],
       "the-power-of-the-tears-upon-collecting-twenty-tears": [
@@ -277869,82 +277905,7 @@
           "type": "choice",
           "options": [
             {
-              "text": "Yes, who are you?",
-              "steps": [
-                {
-                  "player": "Yes, who are you?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Trader Stan",
-                  "text": "Why, I'm Trader Stan, owner and operator of the largest fleet of trading ships and chartered vessels to ever sail the seas!"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Trader Stan",
-                  "text": "If you want to get to a port in a hurry, then you can charter one of my ships to take you there, if the price is right..."
-                },
-                {
-                  "player": "So, where exactly can I go with your ships?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Trader Stan",
-                  "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
-                },
-                {
-                  "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Trader Stan",
-                  "text": "We certainly do! My crew and I have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
-                },
-                {
-                  "type": "choice",
-                  "options": [
-                    {
-                      "text": "Yes, let's see what you're trading.",
-                      "steps": [
-                        {
-                          "player": "Yes, let's see what you're trading."
-                        },
-                        {
-                          "type": "action",
-                          "action": "open_shop",
-                          "target": "Trader Stan's Trading Post",
-                          "id": "6CvgvV"
-                        }
-                      ]
-                    },
-                    {
-                      "text": "Yes, I would like to charter a ship.",
-                      "steps": [
-                        {
-                          "type": "jump",
-                          "id": "abTMT2",
-                          "steps": [
-                            {
-                              "type": "call",
-                              "branch": "jump-c84ee89ebbf19cf4"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "text": "No thanks.",
-                      "steps": [
-                        {
-                          "type": "jump",
-                          "reference": "below",
-                          "id": "PWQwgC"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+              "text": "Yes, who are you?"
             },
             {
               "text": "Yes, I would like to charter a ship.",
@@ -279304,29 +279265,6 @@
       "jump-1eb535746eb22aef": [
         {
           "player": "Okay, I'll get going!"
-        },
-        {
-          "type": "end"
-        }
-      ],
-      "jump-c84ee89ebbf19cf4": [
-        {
-          "player": "Yes, I would like to charter a ship."
-        },
-        {
-          "type": "line",
-          "speaker": "Trader Stan",
-          "text": "[Certainly sir/Certainly madam/Certainly]. Where would you like to go?"
-        },
-        {
-          "type": "action",
-          "text": "The player chooses from the map interface.",
-          "id": "NAxaHN"
-        },
-        {
-          "type": "line",
-          "speaker": "Trader Stan",
-          "text": "Crandor? Are you crazy? No charter ship would take you to that island. You'd need to use your own ship, but even then, you'd need a miracle to find a safe route there!"
         },
         {
           "type": "end"
@@ -288758,17 +288696,19 @@
                       ]
                     },
                     {
-                      "text": "The suqah will never fit through that tunnel."
+                      "text": "The suqah will never fit through that tunnel.",
+                      "steps": [
+                        {
+                          "player": "The suqah will never fit through that tunnel."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Fallen Man",
+                          "text": "Very true. I think I picked a good spot."
+                        }
+                      ]
                     }
                   ]
-                },
-                {
-                  "player": "The suqah will never fit through that tunnel."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Fallen Man",
-                  "text": "Very true. I think I picked a good spot."
                 }
               ]
             }
@@ -292669,60 +292609,54 @@
                   "type": "choice",
                   "options": [
                     {
-                      "text": "Well, what is it, I may be able to help?"
-                    }
-                  ]
-                },
-                {
-                  "player": "Well, what is it, I may be able to help?"
-                },
-                {
-                  "npc": "There's a man called Filliman who lives in Mort Myre. He comes by the temple from time to time but I haven't seen him recently. I was wondering if you could check in on him?"
-                },
-                {
-                  "npc": "I must warn you, it could be dangerous. Mort Myre is filled with ghasts!",
-                  "steps": [
-                    {
-                      "type": "choice",
-                      "prompt": "Start Nature Spirit quest?",
-                      "options": [
+                      "text": "Well, what is it, I may be able to help?",
+                      "steps": [
                         {
-                          "text": "Yes.",
-                          "steps": [
-                            {
-                              "type": "reference",
-                              "target": "Transcript:Nature Spirit",
-                              "section": "",
-                              "text": "Continues in Transcript:Nature Spirit",
-                              "id": "4RlfMg",
-                              "resolved": false,
-                              "page_available": true
-                            }
-                          ],
-                          "hook": "quest:nature-spirit:start",
-                          "quest": "Nature Spirit"
+                          "player": "Well, what is it, I may be able to help?"
                         },
                         {
-                          "text": "No.",
+                          "npc": "There's a man called Filliman who lives in Mort Myre. He comes by the temple from time to time but I haven't seen him recently. I was wondering if you could check in on him?"
+                        },
+                        {
+                          "npc": "I must warn you, it could be dangerous. Mort Myre is filled with ghasts!",
                           "steps": [
                             {
-                              "player": "Sorry, I don't think I can help."
-                            },
-                            {
-                              "npc": "That's fine, I'm sure someone else will be along shortly who can. Now, if you will excuse me, I do have some things to be getting on with."
-                            },
-                            {
-                              "type": "end"
+                              "type": "choice",
+                              "prompt": "Start Nature Spirit quest?",
+                              "options": [
+                                {
+                                  "text": "Yes.",
+                                  "steps": [
+                                    {
+                                      "type": "reference",
+                                      "target": "Transcript:Nature Spirit",
+                                      "section": "",
+                                      "text": "Continues in Transcript:Nature Spirit",
+                                      "id": "Cc2fFg",
+                                      "resolved": false,
+                                      "page_available": true
+                                    }
+                                  ],
+                                  "hook": "quest:nature-spirit:start",
+                                  "quest": "Nature Spirit"
+                                },
+                                {
+                                  "text": "No.",
+                                  "steps": [
+                                    {
+                                      "player": "Sorry, I don't think I can help."
+                                    },
+                                    {
+                                      "npc": "That's fine, I'm sure someone else will be along shortly who can. Now, if you will excuse me, I do have some things to be getting on with."
+                                    }
+                                  ]
+                                }
+                              ]
                             }
                           ]
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "type": "choice",
-                  "options": [
+                    },
                     {
                       "text": "Sorry, not interested.",
                       "steps": [
@@ -325914,88 +325848,82 @@
           "type": "choice",
           "options": [
             {
-              "text": "Yes, I have them here."
-            }
-          ]
-        },
-        {
-          "player": "Yes, I have them here.",
-          "steps": [
-            {
-              "type": "condition",
-              "text": "If the player has them:",
+              "text": "Yes, I have them here.",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "Auguste",
-                  "text": "Commendable. If I may have those, I will construct this experiment."
-                },
-                {
-                  "type": "action",
-                  "text": "Cutscene where the player launches the balloon, a flash mob with pitchforks attack and the balloon burns down.",
-                  "id": "MqDt3v"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Moe",
-                  "text": "Destroy the floating thing!",
-                  "presentation": "overhead"
-                },
-                {
-                  "player": "Well, that went down like a lead balloon."
-                },
-                {
-                  "type": "end"
+                  "player": "Yes, I have them here.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player has them:",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Auguste",
+                          "text": "Commendable. If I may have those, I will construct this experiment."
+                        },
+                        {
+                          "type": "action",
+                          "text": "Cutscene where the player launches the balloon, a flash mob with pitchforks attack and the balloon burns down.",
+                          "id": "1JQEmc"
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Moe",
+                          "text": "Destroy the floating thing!",
+                          "presentation": "overhead"
+                        },
+                        {
+                          "player": "Well, that went down like a lead balloon."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "bhVUCf"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have potatoes or enough papyrus:",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Auguste",
+                          "text": "You need a full sack of potatoes and more papyrus."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "_OGIzV"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have potatoes:",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "sNnyeN"
+                        }
+                      ],
+                      "id": "e-wFDO"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have enough papyrus:",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Auguste",
+                          "text": "You need more papyrus."
+                        }
+                      ],
+                      "id": "iBZETA"
+                    }
+                  ]
                 }
-              ],
-              "id": "HqA8Gq"
+              ]
             },
-            {
-              "type": "condition",
-              "text": "If the player does not have potatoes or enough papyrus:",
-              "steps": [
-                {
-                  "type": "line",
-                  "speaker": "Auguste",
-                  "text": "You need a full sack of potatoes and more papyrus."
-                },
-                {
-                  "type": "end"
-                }
-              ],
-              "id": "y8uuFQ"
-            },
-            {
-              "type": "condition",
-              "text": "If the player does not have potatoes:",
-              "steps": [
-                {
-                  "type": "call",
-                  "branch": "sNnyeN"
-                }
-              ],
-              "id": "NbTsCS"
-            },
-            {
-              "type": "condition",
-              "text": "If the player does not have enough papyrus:",
-              "steps": [
-                {
-                  "type": "line",
-                  "speaker": "Auguste",
-                  "text": "You need more papyrus."
-                },
-                {
-                  "type": "end"
-                }
-              ],
-              "id": "YB6Lup"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
             {
               "text": "Oh, I've misplaced them.",
               "steps": [
@@ -342958,249 +342886,233 @@
           "type": "choice",
           "options": [
             {
-              "text": "Yes, please. I need healing."
-            }
-          ]
-        },
-        {
-          "player": "Yes, please. I need healing."
-        },
-        {
-          "npc": "Sure, how many hitpoints would you like me to heal?",
-          "steps": [
-            {
-              "type": "choice",
-              "options": [
+              "text": "Yes, please. I need healing.",
+              "steps": [
                 {
-                  "text": "4 Hitpoints.",
-                  "steps": [
-                    {
-                      "player": "4 Hitpoints."
-                    },
-                    {
-                      "npc": "That will cost you 1 opal."
-                    },
-                    {
-                      "type": "choice",
-                      "options": [
-                        {
-                          "text": "All right.",
-                          "steps": [
-                            {
-                              "player": "All right."
-                            },
-                            {
-                              "npc": "You don't have a opal to pay me!"
-                            },
-                            {
-                              "player": "Whoops, sorry."
-                            },
-                            {
-                              "type": "end"
-                            }
-                          ]
-                        },
-                        {
-                          "text": "On second thoughts, no thanks.",
-                          "steps": [
-                            {
-                              "player": "On second thoughts, no thanks."
-                            },
-                            {
-                              "npc": "Ok, suit yourself."
-                            },
-                            {
-                              "type": "end"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                  "player": "Yes, please. I need healing."
                 },
                 {
-                  "text": "5 Hitpoints.",
+                  "npc": "Sure, how many hitpoints would you like me to heal?",
                   "steps": [
-                    {
-                      "player": "5 Hitpoints."
-                    },
-                    {
-                      "npc": "That will cost you 1 sapphire or 1 piece of jade."
-                    },
                     {
                       "type": "choice",
                       "options": [
                         {
-                          "text": "All right.",
+                          "text": "4 Hitpoints.",
                           "steps": [
                             {
-                              "player": "All right."
+                              "player": "4 Hitpoints."
                             },
                             {
-                              "npc": "You don't have a sapphire or a piece of jade with you!"
+                              "npc": "That will cost you 1 opal."
                             },
                             {
-                              "player": "Whoops, sorry."
-                            },
-                            {
-                              "type": "end"
-                            }
-                          ]
-                        },
-                        {
-                          "text": "On second thoughts, no thanks.",
-                          "steps": [
-                            {
-                              "type": "jump",
-                              "id": "VUnTQF",
-                              "steps": [
+                              "type": "choice",
+                              "options": [
                                 {
-                                  "type": "call",
-                                  "branch": "jump-522a5e4f447a7e5c"
+                                  "text": "All right.",
+                                  "steps": [
+                                    {
+                                      "player": "All right."
+                                    },
+                                    {
+                                      "npc": "You don't have a opal to pay me!"
+                                    },
+                                    {
+                                      "player": "Whoops, sorry."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "On second thoughts, no thanks.",
+                                  "steps": [
+                                    {
+                                      "player": "On second thoughts, no thanks."
+                                    },
+                                    {
+                                      "npc": "Ok, suit yourself."
+                                    }
+                                  ]
                                 }
                               ]
                             }
                           ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "text": "7 Hitpoints.",
-                  "steps": [
-                    {
-                      "player": "7 Hitpoints."
-                    },
-                    {
-                      "npc": "That will cost you 1 emerald or 1 red topaz."
-                    },
-                    {
-                      "type": "choice",
-                      "options": [
-                        {
-                          "text": "All right.",
-                          "steps": [
-                            {
-                              "player": "All right."
-                            },
-                            {
-                              "npc": "You don't have an emerald or a red topaz to pay me with!"
-                            },
-                            {
-                              "player": "Whoops, sorry."
-                            },
-                            {
-                              "type": "end"
-                            }
-                          ]
                         },
                         {
-                          "text": "On second thoughts, no thanks.",
+                          "text": "5 Hitpoints.",
                           "steps": [
                             {
-                              "type": "jump",
-                              "id": "bfO5xm",
-                              "steps": [
+                              "player": "5 Hitpoints."
+                            },
+                            {
+                              "npc": "That will cost you 1 sapphire or 1 piece of jade."
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
                                 {
-                                  "type": "call",
-                                  "branch": "jump-522a5e4f447a7e5c"
+                                  "text": "All right.",
+                                  "steps": [
+                                    {
+                                      "player": "All right."
+                                    },
+                                    {
+                                      "npc": "You don't have a sapphire or a piece of jade with you!"
+                                    },
+                                    {
+                                      "player": "Whoops, sorry."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "On second thoughts, no thanks.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "id": "kKCQkj",
+                                      "steps": [
+                                        {
+                                          "type": "call",
+                                          "branch": "jump-1c14939d3e26ed1c"
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
                               ]
                             }
                           ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "text": "9 Hitpoints.",
-                  "steps": [
-                    {
-                      "player": "9 Hitpoints."
-                    },
-                    {
-                      "npc": "That will cost you 1 diamond."
-                    },
-                    {
-                      "type": "choice",
-                      "options": [
-                        {
-                          "text": "All right.",
-                          "steps": [
-                            {
-                              "player": "All right."
-                            },
-                            {
-                              "npc": "You don't have a diamond to pay me!"
-                            },
-                            {
-                              "player": "Whoops, sorry."
-                            },
-                            {
-                              "type": "end"
-                            }
-                          ]
                         },
                         {
-                          "text": "On second thoughts, no thanks.",
+                          "text": "7 Hitpoints.",
                           "steps": [
                             {
-                              "type": "jump",
-                              "id": "lQgHn7",
-                              "steps": [
+                              "player": "7 Hitpoints."
+                            },
+                            {
+                              "npc": "That will cost you 1 emerald or 1 red topaz."
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
                                 {
-                                  "type": "call",
-                                  "branch": "jump-522a5e4f447a7e5c"
+                                  "text": "All right.",
+                                  "steps": [
+                                    {
+                                      "player": "All right."
+                                    },
+                                    {
+                                      "npc": "You don't have an emerald or a red topaz to pay me with!"
+                                    },
+                                    {
+                                      "player": "Whoops, sorry."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "On second thoughts, no thanks.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "id": "o5S7Ca",
+                                      "steps": [
+                                        {
+                                          "type": "call",
+                                          "branch": "jump-1c14939d3e26ed1c"
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
                               ]
                             }
                           ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "text": "11 Hitpoints.",
-                  "steps": [
-                    {
-                      "player": "11 Hitpoints."
-                    },
-                    {
-                      "npc": "That will cost you 1 ruby."
-                    },
-                    {
-                      "type": "choice",
-                      "options": [
+                        },
                         {
-                          "text": "All right.",
+                          "text": "9 Hitpoints.",
                           "steps": [
                             {
-                              "player": "All right."
+                              "player": "9 Hitpoints."
                             },
                             {
-                              "npc": "You don't have a ruby to pay me!"
+                              "npc": "That will cost you 1 diamond."
                             },
                             {
-                              "player": "Whoops, sorry."
-                            },
-                            {
-                              "type": "end"
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "All right.",
+                                  "steps": [
+                                    {
+                                      "player": "All right."
+                                    },
+                                    {
+                                      "npc": "You don't have a diamond to pay me!"
+                                    },
+                                    {
+                                      "player": "Whoops, sorry."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "On second thoughts, no thanks.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "id": "lJ8zCM",
+                                      "steps": [
+                                        {
+                                          "type": "call",
+                                          "branch": "jump-1c14939d3e26ed1c"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
                             }
                           ]
                         },
                         {
-                          "text": "On second thoughts, no thanks.",
+                          "text": "11 Hitpoints.",
                           "steps": [
                             {
-                              "type": "jump",
-                              "id": "lPCQWR",
-                              "steps": [
+                              "player": "11 Hitpoints."
+                            },
+                            {
+                              "npc": "That will cost you 1 ruby."
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
                                 {
-                                  "type": "call",
-                                  "branch": "jump-522a5e4f447a7e5c"
+                                  "text": "All right.",
+                                  "steps": [
+                                    {
+                                      "player": "All right."
+                                    },
+                                    {
+                                      "npc": "You don't have a ruby to pay me!"
+                                    },
+                                    {
+                                      "player": "Whoops, sorry."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "On second thoughts, no thanks.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "id": "9VNRhI",
+                                      "steps": [
+                                        {
+                                          "type": "call",
+                                          "branch": "jump-1c14939d3e26ed1c"
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -343211,12 +343123,7 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
+            },
             {
               "text": "No thanks. Just looking around.",
               "steps": [
@@ -343249,7 +343156,7 @@
       ]
     },
     "branches": {
-      "jump-522a5e4f447a7e5c": [
+      "jump-1c14939d3e26ed1c": [
         {
           "player": "On second thoughts, no thanks."
         },
@@ -358665,12 +358572,14 @@
                                   "type": "choice",
                                   "options": [
                                     {
-                                      "text": "Here's 200 Coins - chop my tree down please."
+                                      "text": "Here's 200 Coins - chop my tree down please.",
+                                      "steps": [
+                                        {
+                                          "player": "Here's 200 Coins - chop my tree down please."
+                                        }
+                                      ]
                                     }
                                   ]
-                                },
-                                {
-                                  "player": "Here's 200 Coins - chop my tree down please."
                                 }
                               ],
                               "id": "9e-xuS"
@@ -358682,12 +358591,14 @@
                                   "type": "choice",
                                   "options": [
                                     {
-                                      "text": "I don't want to pay that much, sorry."
+                                      "text": "I don't want to pay that much, sorry.",
+                                      "steps": [
+                                        {
+                                          "player": "I don't want to pay that much, sorry."
+                                        }
+                                      ]
                                     }
                                   ]
-                                },
-                                {
-                                  "player": "I don't want to pay that much, sorry."
                                 }
                               ]
                             },
@@ -358727,12 +358638,14 @@
                           "type": "choice",
                           "options": [
                             {
-                              "text": "Here's 200 Coins - chop my tree down please."
+                              "text": "Here's 200 Coins - chop my tree down please.",
+                              "steps": [
+                                {
+                                  "player": "Here's 200 Coins - chop my tree down please."
+                                }
+                              ]
                             }
                           ]
-                        },
-                        {
-                          "player": "Here's 200 Coins - chop my tree down please."
                         }
                       ],
                       "id": "3u0bkl"
@@ -358744,12 +358657,14 @@
                           "type": "choice",
                           "options": [
                             {
-                              "text": "I don't want to pay that much, sorry."
+                              "text": "I don't want to pay that much, sorry.",
+                              "steps": [
+                                {
+                                  "player": "I don't want to pay that much, sorry."
+                                }
+                              ]
                             }
                           ]
-                        },
-                        {
-                          "player": "I don't want to pay that much, sorry."
                         }
                       ]
                     }
@@ -427348,9 +427263,6 @@
                       },
                       {
                         "npc": "Your additional bank slots have been added."
-                      },
-                      {
-                        "type": "end"
                       }
                     ]
                   },
@@ -427359,9 +427271,6 @@
                     "steps": [
                       {
                         "player": "Actually, I've changed my mind."
-                      },
-                      {
-                        "type": "end"
                       }
                     ]
                   }
@@ -427370,21 +427279,23 @@
             ]
           },
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is a branch of the Bank of Gielinor. We have branches in many towns."
+              },
+              {
+                "player": "And what do you do?"
+              },
+              {
+                "npc": "We will look after your items and money for you. Leave your valuables with us if you want to keep them safe."
+              }
+            ]
           }
         ]
-      },
-      {
-        "player": "What is this place?"
-      },
-      {
-        "npc": "This is a branch of the Bank of Gielinor. We have branches in many towns."
-      },
-      {
-        "player": "And what do you do?"
-      },
-      {
-        "npc": "We will look after your items and money for you. Leave your valuables with us if you want to keep them safe."
       }
     ]
   },
@@ -491252,12 +491163,14 @@
               ]
             },
             {
-              "text": "I'd better get going."
+              "text": "I'd better get going.",
+              "steps": [
+                {
+                  "player": "I'd better get going."
+                }
+              ]
             }
           ]
-        },
-        {
-          "player": "I'd better get going."
         }
       ],
       "ceremony-preparations-talking-to-the-high-priest-after-being-asked-to-help-with-the-ceremony": [
@@ -502777,19 +502690,18 @@
                                                       "type": "line",
                                                       "speaker": "Cyreg Paddlehorn",
                                                       "text": "Go as far north as you can and you'll arrive at the Hollows. Keep heading north on foot, over the rotten bridge, and you'll eventually reach an odd looking tree. That is where you'll find the Myreque."
-                                                    },
-                                                    {
-                                                      "type": "end"
                                                     }
                                                   ]
                                                 },
                                                 {
-                                                  "text": "I'll be back later."
+                                                  "text": "I'll be back later.",
+                                                  "steps": [
+                                                    {
+                                                      "player": "I'll be back later."
+                                                    }
+                                                  ]
                                                 }
                                               ]
-                                            },
-                                            {
-                                              "player": "I'll be back later."
                                             }
                                           ],
                                           "id": "39TjyD"
@@ -502872,8 +502784,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "below",
-                          "id": "4FXFYz"
+                          "id": "4FXFYz",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-77b38e6dd86b0531"
+                            }
+                          ]
                         },
                         {
                           "type": "jump",
@@ -502907,36 +502824,43 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "below",
-                          "id": "ibjrka"
+                          "id": "ibjrka",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-201419094fd7c7bd"
+                            }
+                          ]
                         }
                       ]
                     },
                     {
-                      "text": "I'll give you some cash if you tell me."
+                      "text": "I'll give you some cash if you tell me.",
+                      "steps": [
+                        {
+                          "player": "I'll give you some cash if you tell me."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Cyreg Paddlehorn",
+                          "text": "You think you can buy me?"
+                        },
+                        {
+                          "player": "Err, no. I just want to compensate you for your trouble."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Cyreg Paddlehorn",
+                          "text": "You keep your money and I'll keep my secrets."
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "other",
+                          "id": "Q-K1Os"
+                        }
+                      ]
                     }
                   ]
-                },
-                {
-                  "player": "I'll give you some cash if you tell me."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Cyreg Paddlehorn",
-                  "text": "You think you can buy me?"
-                },
-                {
-                  "player": "Err, no. I just want to compensate you for your trouble."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Cyreg Paddlehorn",
-                  "text": "You keep your money and I'll keep my secrets."
-                },
-                {
-                  "type": "jump",
-                  "reference": "other",
-                  "id": "rQBT_W"
                 }
               ]
             },
@@ -503770,152 +503694,149 @@
                               ]
                             }
                           ]
+                        },
+                        {
+                          "type": "action",
+                          "text": "After the first question is answered:",
+                          "steps": [
+                            {
+                              "type": "line",
+                              "speaker": "Curpile Fyod",
+                              "text": "Okay, interesting answer. That's the first question done."
+                            },
+                            {
+                              "type": "action",
+                              "text": "(Continues above)",
+                              "id": "pjALaU"
+                            }
+                          ],
+                          "id": "-fFCNy"
+                        },
+                        {
+                          "type": "action",
+                          "text": "After the second question is answered:",
+                          "steps": [
+                            {
+                              "type": "line",
+                              "speaker": "Curpile Fyod",
+                              "text": "An interesting response. That's the second question answered."
+                            },
+                            {
+                              "type": "action",
+                              "text": "(Continues above)",
+                              "id": "lRd-yS"
+                            }
+                          ],
+                          "id": "z2FaeF"
+                        },
+                        {
+                          "type": "action",
+                          "text": "After the third question is answered:",
+                          "steps": [
+                            {
+                              "type": "line",
+                              "speaker": "Curpile Fyod",
+                              "text": "Hmm. Very interesting. That's the third question answered."
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player answered zero out of three questions correctly:",
+                              "steps": [
+                                {
+                                  "type": "line",
+                                  "speaker": "Curpile Fyod",
+                                  "text": "I'm sorry but you got no questions correct! Go on get outta here..."
+                                },
+                                {
+                                  "type": "message",
+                                  "text": "Curpile knocks you out and takes you back to Mort'ton.",
+                                  "id": "OGn3Rx"
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "GAjXDO"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player answered one out of three questions correctly:",
+                              "steps": [
+                                {
+                                  "type": "line",
+                                  "speaker": "Curpile Fyod",
+                                  "text": "I'm sorry but you only got one question correct! Go on get outta here..."
+                                },
+                                {
+                                  "type": "message",
+                                  "text": "Curpile knocks you out and takes you back to Mort'ton.",
+                                  "id": "Dssih6"
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "e_t2CV"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player answered two out of three questions correctly:",
+                              "steps": [
+                                {
+                                  "type": "line",
+                                  "speaker": "Curpile Fyod",
+                                  "text": "I'm sorry but you only got two questions correct! Go on get outta here..."
+                                },
+                                {
+                                  "type": "message",
+                                  "text": "Curpile knocks you out and takes you back to Mort'ton.",
+                                  "id": "SGfUg5"
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "wdw1WV"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player answered three out of three questions correctly:",
+                              "steps": [
+                                {
+                                  "type": "line",
+                                  "speaker": "Curpile Fyod",
+                                  "text": "Okay, I believes ya... You can go on in. Head through the doors behind the tree. Once you's in, take the first cave on the right."
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "P7_hRO"
+                            }
+                          ],
+                          "id": "bD3ND4"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "I don't have to answer to you!",
+                      "steps": [
+                        {
+                          "player": "I don't have to answer to you!"
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Curpile Fyod",
+                          "text": "You do if you know what's good for you!"
+                        },
+                        {
+                          "type": "action",
+                          "text": "Curpile hits the player for 3 damage.",
+                          "id": "3VXZoN"
                         }
                       ]
                     }
                   ]
-                },
-                {
-                  "type": "action",
-                  "text": "After the first question is answered:",
-                  "steps": [
-                    {
-                      "type": "line",
-                      "speaker": "Curpile Fyod",
-                      "text": "Okay, interesting answer. That's the first question done."
-                    },
-                    {
-                      "type": "action",
-                      "text": "(Continues above)",
-                      "id": "jIpNoT"
-                    }
-                  ],
-                  "id": "kR4PgQ"
-                },
-                {
-                  "type": "action",
-                  "text": "After the second question is answered:",
-                  "steps": [
-                    {
-                      "type": "line",
-                      "speaker": "Curpile Fyod",
-                      "text": "An interesting response. That's the second question answered."
-                    },
-                    {
-                      "type": "action",
-                      "text": "(Continues above)",
-                      "id": "IIq5Ax"
-                    }
-                  ],
-                  "id": "FLtgQe"
-                },
-                {
-                  "type": "action",
-                  "text": "After the third question is answered:",
-                  "steps": [
-                    {
-                      "type": "line",
-                      "speaker": "Curpile Fyod",
-                      "text": "Hmm. Very interesting. That's the third question answered."
-                    },
-                    {
-                      "type": "condition",
-                      "text": "If the player answered zero out of three questions correctly:",
-                      "steps": [
-                        {
-                          "type": "line",
-                          "speaker": "Curpile Fyod",
-                          "text": "I'm sorry but you got no questions correct! Go on get outta here..."
-                        },
-                        {
-                          "type": "message",
-                          "text": "Curpile knocks you out and takes you back to Mort'ton.",
-                          "id": "kDZQpN"
-                        },
-                        {
-                          "type": "end"
-                        }
-                      ],
-                      "id": "8hs1CH"
-                    },
-                    {
-                      "type": "condition",
-                      "text": "If the player answered one out of three questions correctly:",
-                      "steps": [
-                        {
-                          "type": "line",
-                          "speaker": "Curpile Fyod",
-                          "text": "I'm sorry but you only got one question correct! Go on get outta here..."
-                        },
-                        {
-                          "type": "message",
-                          "text": "Curpile knocks you out and takes you back to Mort'ton.",
-                          "id": "4t7Rpj"
-                        },
-                        {
-                          "type": "end"
-                        }
-                      ],
-                      "id": "4-GJhg"
-                    },
-                    {
-                      "type": "condition",
-                      "text": "If the player answered two out of three questions correctly:",
-                      "steps": [
-                        {
-                          "type": "line",
-                          "speaker": "Curpile Fyod",
-                          "text": "I'm sorry but you only got two questions correct! Go on get outta here..."
-                        },
-                        {
-                          "type": "message",
-                          "text": "Curpile knocks you out and takes you back to Mort'ton.",
-                          "id": "iVqbuD"
-                        },
-                        {
-                          "type": "end"
-                        }
-                      ],
-                      "id": "V3mUmH"
-                    },
-                    {
-                      "type": "condition",
-                      "text": "If the player answered three out of three questions correctly:",
-                      "steps": [
-                        {
-                          "type": "line",
-                          "speaker": "Curpile Fyod",
-                          "text": "Okay, I believes ya... You can go on in. Head through the doors behind the tree. Once you's in, take the first cave on the right."
-                        },
-                        {
-                          "type": "end"
-                        }
-                      ],
-                      "id": "3l6Jxc"
-                    }
-                  ],
-                  "id": "q55E_q"
-                },
-                {
-                  "type": "choice",
-                  "options": [
-                    {
-                      "text": "I don't have to answer to you!"
-                    }
-                  ]
-                },
-                {
-                  "player": "I don't have to answer to you!"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Curpile Fyod",
-                  "text": "You do if you know what's good for you!"
-                },
-                {
-                  "type": "action",
-                  "text": "Curpile hits the player for 3 damage.",
-                  "id": "7F_BXh"
                 }
               ]
             },
@@ -504491,33 +504412,30 @@
               ]
             },
             {
-              "text": "What do you know about Morytania?"
-            }
-          ]
-        },
-        {
-          "player": "What do you know about Morytania?"
-        },
-        {
-          "type": "line",
-          "speaker": "Polmafi Ferdygris",
-          "text": "All the land on this side of the Salve is known as Morytania. Humans and vampyres are the main occupants of the region, though other races also live out here."
-        },
-        {
-          "type": "line",
-          "speaker": "Polmafi Ferdygris",
-          "text": "The humans here live like cattle with the vampyres taking regular blood tithes to keep themselves fed. All in all, it's a dire place. Though we hope to change that.",
-          "steps": [
-            {
-              "type": "jump",
-              "reference": "other",
-              "id": "IHkD5x"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
+              "text": "What do you know about Morytania?",
+              "steps": [
+                {
+                  "player": "What do you know about Morytania?"
+                },
+                {
+                  "type": "line",
+                  "speaker": "Polmafi Ferdygris",
+                  "text": "All the land on this side of the Salve is known as Morytania. Humans and vampyres are the main occupants of the region, though other races also live out here."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Polmafi Ferdygris",
+                  "text": "The humans here live like cattle with the vampyres taking regular blood tithes to keep themselves fed. All in all, it's a dire place. Though we hope to change that.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "other",
+                      "id": "3qRS8j"
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "text": "Have you heard any rumours?",
               "steps": [
@@ -504532,7 +504450,7 @@
                 {
                   "type": "jump",
                   "reference": "other",
-                  "id": "s6MhEe"
+                  "id": "pVA7uv"
                 }
               ]
             },
@@ -504552,7 +504470,7 @@
                   "player": "Okay, thanks."
                 }
               ],
-              "id": "0Ehc-D"
+              "id": "ylgDHl"
             }
           ]
         }
@@ -505487,6 +505405,49 @@
           "id": "wFOW4N"
         }
       ],
+      "jump-77b38e6dd86b0531": [
+        {
+          "player": "I'll give you some cash if you tell me."
+        },
+        {
+          "type": "line",
+          "speaker": "Cyreg Paddlehorn",
+          "text": "You think you can buy me?"
+        },
+        {
+          "player": "Err, no. I just want to compensate you for your trouble."
+        },
+        {
+          "type": "line",
+          "speaker": "Cyreg Paddlehorn",
+          "text": "You keep your money and I'll keep my secrets."
+        },
+        {
+          "type": "jump",
+          "reference": "other",
+          "id": "Q-K1Os"
+        }
+      ],
+      "jump-201419094fd7c7bd": [
+        {
+          "type": "line",
+          "speaker": "Cyreg Paddlehorn",
+          "text": "You think you can buy me?"
+        },
+        {
+          "player": "Err, no. I just want to compensate you for your trouble."
+        },
+        {
+          "type": "line",
+          "speaker": "Cyreg Paddlehorn",
+          "text": "You keep your money and I'll keep my secrets."
+        },
+        {
+          "type": "jump",
+          "reference": "other",
+          "id": "Q-K1Os"
+        }
+      ],
       "jump-37c3689eac3c1261": [
         {
           "type": "line",
@@ -505571,12 +505532,14 @@
                   ]
                 },
                 {
-                  "text": "I'll be back later."
+                  "text": "I'll be back later.",
+                  "steps": [
+                    {
+                      "player": "I'll be back later."
+                    }
+                  ]
                 }
               ]
-            },
-            {
-              "player": "I'll be back later."
             }
           ],
           "id": "39TjyD"
@@ -600923,10 +600886,8 @@
                           "text": "No thank you.",
                           "steps": [
                             {
-                              "player": "No thank you."
-                            },
-                            {
-                              "type": "end"
+                              "type": "call",
+                              "branch": "yR0MTa"
                             }
                           ]
                         }
@@ -601093,10 +601054,8 @@
                           "text": "No thank you.",
                           "steps": [
                             {
-                              "player": "No thank you."
-                            },
-                            {
-                              "type": "end"
+                              "type": "call",
+                              "branch": "yR0MTa"
                             }
                           ]
                         }
@@ -601377,10 +601336,8 @@
                                   "text": "No thank you.",
                                   "steps": [
                                     {
-                                      "player": "No thank you."
-                                    },
-                                    {
-                                      "type": "end"
+                                      "type": "call",
+                                      "branch": "yR0MTa"
                                     }
                                   ]
                                 }
@@ -601420,19 +601377,18 @@
                           "steps": [
                             {
                               "player": "No thank you."
-                            },
-                            {
-                              "type": "end"
                             }
                           ]
                         },
                         {
-                          "text": "Actually, I'm fine."
+                          "text": "Actually, I'm fine.",
+                          "steps": [
+                            {
+                              "player": "Actually, I'm fine."
+                            }
+                          ]
                         }
                       ]
-                    },
-                    {
-                      "player": "Actually, I'm fine."
                     }
                   ],
                   "id": "7tAAAb"
@@ -601496,10 +601452,8 @@
                                               "text": "No thank you.",
                                               "steps": [
                                                 {
-                                                  "player": "No thank you."
-                                                },
-                                                {
-                                                  "type": "end"
+                                                  "type": "call",
+                                                  "branch": "yR0MTa"
                                                 }
                                               ]
                                             },
@@ -601597,10 +601551,8 @@
                                               "text": "No thank you.",
                                               "steps": [
                                                 {
-                                                  "player": "No thank you."
-                                                },
-                                                {
-                                                  "type": "end"
+                                                  "type": "call",
+                                                  "branch": "yR0MTa"
                                                 }
                                               ]
                                             }
@@ -601633,10 +601585,8 @@
                                               "text": "No thank you.",
                                               "steps": [
                                                 {
-                                                  "player": "No thank you."
-                                                },
-                                                {
-                                                  "type": "end"
+                                                  "type": "call",
+                                                  "branch": "yR0MTa"
                                                 }
                                               ]
                                             },
@@ -601719,10 +601669,8 @@
                                       "text": "No thank you.",
                                       "steps": [
                                         {
-                                          "player": "No thank you."
-                                        },
-                                        {
-                                          "type": "end"
+                                          "type": "call",
+                                          "branch": "yR0MTa"
                                         }
                                       ]
                                     }
@@ -601824,15 +601772,15 @@
                                               ]
                                             },
                                             {
-                                              "text": "No thank you."
+                                              "text": "No thank you.",
+                                              "steps": [
+                                                {
+                                                  "type": "call",
+                                                  "branch": "yR0MTa"
+                                                }
+                                              ]
                                             }
                                           ]
-                                        },
-                                        {
-                                          "player": "No thank you."
-                                        },
-                                        {
-                                          "type": "end"
                                         }
                                       ]
                                     },
@@ -601913,15 +601861,15 @@
                                               ]
                                             },
                                             {
-                                              "text": "No thank you."
+                                              "text": "No thank you.",
+                                              "steps": [
+                                                {
+                                                  "type": "call",
+                                                  "branch": "yR0MTa"
+                                                }
+                                              ]
                                             }
                                           ]
-                                        },
-                                        {
-                                          "player": "No thank you."
-                                        },
-                                        {
-                                          "type": "end"
                                         }
                                       ]
                                     },
@@ -601975,15 +601923,15 @@
                                               ]
                                             },
                                             {
-                                              "text": "No thank you."
+                                              "text": "No thank you.",
+                                              "steps": [
+                                                {
+                                                  "type": "call",
+                                                  "branch": "yR0MTa"
+                                                }
+                                              ]
                                             }
                                           ]
-                                        },
-                                        {
-                                          "player": "No thank you."
-                                        },
-                                        {
-                                          "type": "end"
                                         }
                                       ]
                                     }
@@ -602082,10 +602030,8 @@
                                       "text": "No thank you.",
                                       "steps": [
                                         {
-                                          "player": "No thank you."
-                                        },
-                                        {
-                                          "type": "end"
+                                          "type": "call",
+                                          "branch": "yR0MTa"
                                         }
                                       ]
                                     },
@@ -602194,7 +602140,7 @@
                           "steps": [
                             {
                               "type": "call",
-                              "branch": "jump-ffd40f580111fe44"
+                              "branch": "jump-5a549a4d34372bf2"
                             }
                           ]
                         }
@@ -603101,7 +603047,7 @@
                   "steps": [
                     {
                       "type": "call",
-                      "branch": "jump-ffd40f580111fe44"
+                      "branch": "jump-5a549a4d34372bf2"
                     }
                   ]
                 },
@@ -603362,7 +603308,7 @@
           ]
         }
       ],
-      "jump-ffd40f580111fe44": [
+      "jump-5a549a4d34372bf2": [
         {
           "type": "condition",
           "text": "If the player has above X Fishing:",
@@ -603434,15 +603380,17 @@
               ]
             },
             {
-              "text": "No thank you."
+              "text": "No thank you.",
+              "steps": [
+                {
+                  "player": "No thank you."
+                },
+                {
+                  "type": "end"
+                }
+              ]
             }
           ]
-        },
-        {
-          "player": "No thank you."
-        },
-        {
-          "type": "end"
         }
       ],
       "jump-c139ce50fedf90e9": [
@@ -603828,15 +603776,17 @@
                                       ]
                                     },
                                     {
-                                      "text": "No thank you."
+                                      "text": "No thank you.",
+                                      "steps": [
+                                        {
+                                          "player": "No thank you."
+                                        },
+                                        {
+                                          "type": "end"
+                                        }
+                                      ]
                                     }
                                   ]
-                                },
-                                {
-                                  "player": "No thank you."
-                                },
-                                {
-                                  "type": "end"
                                 }
                               ]
                             },
@@ -603917,15 +603867,17 @@
                                       ]
                                     },
                                     {
-                                      "text": "No thank you."
+                                      "text": "No thank you.",
+                                      "steps": [
+                                        {
+                                          "player": "No thank you."
+                                        },
+                                        {
+                                          "type": "end"
+                                        }
+                                      ]
                                     }
                                   ]
-                                },
-                                {
-                                  "player": "No thank you."
-                                },
-                                {
-                                  "type": "end"
                                 }
                               ]
                             },
@@ -603979,15 +603931,17 @@
                                       ]
                                     },
                                     {
-                                      "text": "No thank you."
+                                      "text": "No thank you.",
+                                      "steps": [
+                                        {
+                                          "player": "No thank you."
+                                        },
+                                        {
+                                          "type": "end"
+                                        }
+                                      ]
                                     }
                                   ]
-                                },
-                                {
-                                  "player": "No thank you."
-                                },
-                                {
-                                  "type": "end"
                                 }
                               ]
                             }
@@ -604514,6 +604468,14 @@
       "jump-ddc087d0dfd62184": [
         {
           "npc": "Oh, I see. I guess I can't really force you to hand it over. The offer still stands if you ever change your mind."
+        },
+        {
+          "type": "end"
+        }
+      ],
+      "yR0MTa": [
+        {
+          "player": "No thank you."
         },
         {
           "type": "end"
@@ -628369,33 +628331,32 @@
                                           "type": "choice",
                                           "options": [
                                             {
-                                              "text": "Tea"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "action",
-                                          "text": "A random incorrect dialogue from below is shown.",
-                                          "id": "PgE_Go"
-                                        },
-                                        {
-                                          "type": "end"
-                                        },
-                                        {
-                                          "type": "choice",
-                                          "options": [
+                                              "text": "Tea",
+                                              "steps": [
+                                                {
+                                                  "type": "action",
+                                                  "text": "A random incorrect dialogue from below is shown.",
+                                                  "id": "YYdPuz"
+                                                },
+                                                {
+                                                  "type": "end"
+                                                }
+                                              ]
+                                            },
                                             {
-                                              "text": "Lunch"
+                                              "text": "Lunch",
+                                              "steps": [
+                                                {
+                                                  "player": "Lunch."
+                                                },
+                                                {
+                                                  "type": "line",
+                                                  "speaker": "Dron",
+                                                  "text": "What do I usually eat for tea?"
+                                                }
+                                              ]
                                             }
                                           ]
-                                        },
-                                        {
-                                          "player": "Lunch."
-                                        },
-                                        {
-                                          "type": "line",
-                                          "speaker": "Dron",
-                                          "text": "What do I usually eat for tea?"
                                         },
                                         {
                                           "type": "choice",
@@ -628420,7 +628381,7 @@
                                                         {
                                                           "type": "action",
                                                           "text": "A random incorrect dialogue from below is shown.",
-                                                          "id": "TiHNWS"
+                                                          "id": "CHhMLH"
                                                         }
                                                       ]
                                                     },
@@ -628444,7 +628405,7 @@
                                                                 {
                                                                   "type": "action",
                                                                   "text": "A random incorrect dialogue from below is shown.",
-                                                                  "id": "greVKf"
+                                                                  "id": "91qTKK"
                                                                 }
                                                               ]
                                                             },
@@ -628482,7 +628443,7 @@
                                                                                 {
                                                                                   "type": "action",
                                                                                   "text": "A random incorrect dialogue from below is shown.",
-                                                                                  "id": "ws2VOl"
+                                                                                  "id": "xtI1KH"
                                                                                 }
                                                                               ]
                                                                             },
@@ -628492,7 +628453,7 @@
                                                                                 {
                                                                                   "type": "action",
                                                                                   "text": "A random incorrect dialogue from below is shown.",
-                                                                                  "id": "uqH7Jw"
+                                                                                  "id": "y0an97"
                                                                                 }
                                                                               ]
                                                                             },
@@ -628516,7 +628477,7 @@
                                                                                         {
                                                                                           "type": "action",
                                                                                           "text": "A random incorrect dialogue from below is shown.",
-                                                                                          "id": "oYzxwv"
+                                                                                          "id": "4gV141"
                                                                                         }
                                                                                       ]
                                                                                     },
@@ -628525,7 +628486,7 @@
                                                                                       "steps": [
                                                                                         {
                                                                                           "type": "unavailable",
-                                                                                          "id": "-v-Qxh"
+                                                                                          "id": "ptEiOS"
                                                                                         }
                                                                                       ]
                                                                                     },
@@ -628666,7 +628627,7 @@
                                                                                                                 {
                                                                                                                   "type": "action",
                                                                                                                   "text": "A random incorrect dialogue from below is shown.",
-                                                                                                                  "id": "5HcaLu"
+                                                                                                                  "id": "ngmyqv"
                                                                                                                 }
                                                                                                               ]
                                                                                                             }
@@ -628680,7 +628641,7 @@
                                                                                                         {
                                                                                                           "type": "action",
                                                                                                           "text": "A random incorrect dialogue from below is shown.",
-                                                                                                          "id": "8Tv5r2"
+                                                                                                          "id": "rGSYzg"
                                                                                                         }
                                                                                                       ]
                                                                                                     }
@@ -628715,7 +628676,7 @@
                                                                                                 {
                                                                                                   "type": "action",
                                                                                                   "text": "A random incorrect dialogue from below is shown.",
-                                                                                                  "id": "6vr4KG"
+                                                                                                  "id": "vuLXYx"
                                                                                                 }
                                                                                               ]
                                                                                             }
@@ -628737,7 +628698,7 @@
                                                                         {
                                                                           "type": "action",
                                                                           "text": "A random incorrect dialogue from below is shown.",
-                                                                          "id": "Swu3NW"
+                                                                          "id": "wOkPwO"
                                                                         }
                                                                       ]
                                                                     },
@@ -628747,7 +628708,7 @@
                                                                         {
                                                                           "type": "action",
                                                                           "text": "A random incorrect dialogue from below is shown.",
-                                                                          "id": "HDQk6C"
+                                                                          "id": "VAT5oQ"
                                                                         }
                                                                       ]
                                                                     }
@@ -628765,7 +628726,7 @@
                                                         {
                                                           "type": "action",
                                                           "text": "A random incorrect dialogue from below is shown.",
-                                                          "id": "gQs5C7"
+                                                          "id": "UwGEVj"
                                                         }
                                                       ]
                                                     }
@@ -628795,7 +628756,7 @@
                                                 {
                                                   "type": "action",
                                                   "text": "A random incorrect dialogue from below is shown.",
-                                                  "id": "cFtl46"
+                                                  "id": "SlEl4Q"
                                                 }
                                               ]
                                             }
@@ -632373,199 +632334,196 @@
               ]
             },
             {
-              "text": "Tell me about the islands' history."
-            }
-          ]
-        },
-        {
-          "player": "Tell me about the islands' history.",
-          "steps": [
-            {
-              "player": "Tell me more about Jatizso."
+              "text": "Tell me about the islands' history.",
+              "steps": [
+                {
+                  "player": "Tell me about the islands' history.",
+                  "steps": [
+                    {
+                      "player": "Tell me more about Jatizso."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Well now, the history of the isles is a bloody tale. When told in its intended form it takes 9 days and 9 nights. However, I will give you the abridged version."
+                    },
+                    {
+                      "player": "Phew!"
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Four generations ago there was a mighty king who ruled wisely and was loved by all."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "He had many sons, most of whom proved themselves in the usual Fremennik ways of fighting, sailing, drinking and so on."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "His youngest two sons, however, were a problem. Ever since they were old enough to hit one another they had bickered and fought."
+                    },
+                    {
+                      "npc": "Their names were Jatizso and Neitiznot."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Hey! Who's telling this story?"
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Ahem. At the time it was customary for the Kings' sons to claim a prize from his treasury when they came of age."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Each brother rallied support and strode out to confront the other on the field of battle to claim the same prize."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "The brothers met on the field, limbs were bruised, bones were crushed and heads clashed."
+                    },
+                    {
+                      "npc": "They probably didn't notice the head-clashing bit. Too thick skulled!"
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Can I finish the story without interruptions?"
+                    },
+                    {
+                      "npc": "Carry on dear."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Anyway, long into the night they fought, until they stood alone, facing each other."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "On the second day the old king, whose patience was exhausted, strode out onto the field and demanded to know who had claimed his prize."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Jatizso looked at his father and told him yes, it was his, to which the other called out 'No! It's not'."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "And so, the argument continued through to the third day, with the sounds of 'Jah! 'tis so!', 'Ne! It's not!' echoing over the field, becoming more hoarse as the darkness enveloped the brothers."
+                    },
+                    {
+                      "npc": "Bah! What they needed was a good clip round the ear."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "At the end of the third day, when the brothers lay unable to move, let alone stand, the King stood between them in shame."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "As punishment for their squabbling he banished his sons from his realm, ordering that neither should return until they had conquered lands of their own."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Jatizso set sail with a band of loyal followers, sailing into the east, while Neitiznot went west."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Jatizso ventured far into uncharted oceans, his crew dwindling as the trials of sailing and sea monsters took them."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Jatizso's ship limped through the frozen wastes, in need of repairs, fighting off pirates who thought them easy pickings."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "At last a promising land was sighted, a land rich in minerals, deep fjords and sweeping mountains."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Jatizso claimed the land and named it after himself."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "A mighty citadel was constructed to protect his land; then Jatizso set forth to explore his new kingdom."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Crossing a few fjords, Jatizso spied an island which remained green and fertile, even at such latitude."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "With a mighty cheer Jatizso and his men marched on the island. Upon reaching the island, however, they discovered a wooden stockade."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Determined to be master of all the land, Jatizso stood in front of the gates. He looked up and demanded that those within the stockade surrendered."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Jatizso was horrified when his brother appeared on the battlements and cried 'This is my land! Go find yer own'. To which his brother replied 'No it's not!', throwing some rocks for good measure."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "And so the blood feud continued."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "The fighting between the towns has continued for generations with little sign of improvement."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Quite recently a massive troll army seized one of the islands to the north, while our townships' militias were busy fighting one another."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "They marched down and razed Neitiznot to the ground while Neitiznot's troops laid siege to Jatizso."
+                    },
+                    {
+                      "npc": "The smoke damage was atrocious, I had to replace my entire wardrobe."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Yes, dear."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "Anyway, a hasty sort of peace has been agreed until the trolls are dealt with."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Mord Gunnars",
+                      "text": "But you can still see the bitter rivalry as guards hurl insults between the towns."
+                    }
+                  ]
+                }
+              ]
             },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Well now, the history of the isles is a bloody tale. When told in its intended form it takes 9 days and 9 nights. However, I will give you the abridged version."
-            },
-            {
-              "player": "Phew!"
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Four generations ago there was a mighty king who ruled wisely and was loved by all."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "He had many sons, most of whom proved themselves in the usual Fremennik ways of fighting, sailing, drinking and so on."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "His youngest two sons, however, were a problem. Ever since they were old enough to hit one another they had bickered and fought."
-            },
-            {
-              "npc": "Their names were Jatizso and Neitiznot."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Hey! Who's telling this story?"
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Ahem. At the time it was customary for the Kings' sons to claim a prize from his treasury when they came of age."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Each brother rallied support and strode out to confront the other on the field of battle to claim the same prize."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "The brothers met on the field, limbs were bruised, bones were crushed and heads clashed."
-            },
-            {
-              "npc": "They probably didn't notice the head-clashing bit. Too thick skulled!"
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Can I finish the story without interruptions?"
-            },
-            {
-              "npc": "Carry on dear."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Anyway, long into the night they fought, until they stood alone, facing each other."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "On the second day the old king, whose patience was exhausted, strode out onto the field and demanded to know who had claimed his prize."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Jatizso looked at his father and told him yes, it was his, to which the other called out 'No! It's not'."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "And so, the argument continued through to the third day, with the sounds of 'Jah! 'tis so!', 'Ne! It's not!' echoing over the field, becoming more hoarse as the darkness enveloped the brothers."
-            },
-            {
-              "npc": "Bah! What they needed was a good clip round the ear."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "At the end of the third day, when the brothers lay unable to move, let alone stand, the King stood between them in shame."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "As punishment for their squabbling he banished his sons from his realm, ordering that neither should return until they had conquered lands of their own."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Jatizso set sail with a band of loyal followers, sailing into the east, while Neitiznot went west."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Jatizso ventured far into uncharted oceans, his crew dwindling as the trials of sailing and sea monsters took them."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Jatizso's ship limped through the frozen wastes, in need of repairs, fighting off pirates who thought them easy pickings."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "At last a promising land was sighted, a land rich in minerals, deep fjords and sweeping mountains."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Jatizso claimed the land and named it after himself."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "A mighty citadel was constructed to protect his land; then Jatizso set forth to explore his new kingdom."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Crossing a few fjords, Jatizso spied an island which remained green and fertile, even at such latitude."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "With a mighty cheer Jatizso and his men marched on the island. Upon reaching the island, however, they discovered a wooden stockade."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Determined to be master of all the land, Jatizso stood in front of the gates. He looked up and demanded that those within the stockade surrendered."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Jatizso was horrified when his brother appeared on the battlements and cried 'This is my land! Go find yer own'. To which his brother replied 'No it's not!', throwing some rocks for good measure."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "And so the blood feud continued."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "The fighting between the towns has continued for generations with little sign of improvement."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Quite recently a massive troll army seized one of the islands to the north, while our townships' militias were busy fighting one another."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "They marched down and razed Neitiznot to the ground while Neitiznot's troops laid siege to Jatizso."
-            },
-            {
-              "npc": "The smoke damage was atrocious, I had to replace my entire wardrobe."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Yes, dear."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "Anyway, a hasty sort of peace has been agreed until the trolls are dealt with."
-            },
-            {
-              "type": "line",
-              "speaker": "Mord Gunnars",
-              "text": "But you can still see the bitter rivalry as guards hurl insults between the towns."
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
             {
               "text": "Tell me about Burger Mawnis Burowgar.",
               "steps": [
@@ -632614,7 +632572,7 @@
                 {
                   "type": "jump",
                   "reference": "previous",
-                  "id": "N9NUP4"
+                  "id": "059-TX"
                 }
               ]
             },
@@ -632630,7 +632588,7 @@
                 {
                   "type": "message",
                   "text": "Leaving Rellekka for Neitiznot.",
-                  "id": "wfwKsg"
+                  "id": "lU3-YR"
                 }
               ]
             },
@@ -641110,15 +641068,7 @@
                       "player": "Oh boy..."
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "type": "end"
-            },
-            {
-              "type": "choice",
-              "options": [
+                },
                 {
                   "text": "I need to prepare first.",
                   "steps": [
@@ -641204,7 +641154,7 @@
                       "steps": [
                         {
                           "type": "call",
-                          "branch": "jump-c532fbcccb78e887"
+                          "branch": "jump-1095254755769868"
                         }
                       ]
                     }
@@ -641289,7 +641239,7 @@
                   "steps": [
                     {
                       "type": "call",
-                      "branch": "jump-c532fbcccb78e887"
+                      "branch": "jump-1095254755769868"
                     }
                   ]
                 }
@@ -641326,7 +641276,7 @@
                       "steps": [
                         {
                           "type": "call",
-                          "branch": "jump-c532fbcccb78e887"
+                          "branch": "jump-1095254755769868"
                         }
                       ]
                     }
@@ -641544,7 +641494,7 @@
           "id": "r0O40y"
         }
       ],
-      "jump-c532fbcccb78e887": [
+      "jump-1095254755769868": [
         {
           "player": "I need to prepare first."
         },
@@ -651339,23 +651289,20 @@
           "prompt": "Are you sure you wish to leave early?",
           "options": [
             {
-              "text": "Yes."
-            }
-          ]
-        },
-        {
-          "type": "action",
-          "text": "Minimus teleports to the Rewards chest",
-          "steps": [
-            {
-              "npc": "It was a valiant effort, [rank]. I've popped all your earned rewards into that chest over there. You can retrieve them from it when ready."
-            }
-          ],
-          "id": "-wq40U"
-        },
-        {
-          "type": "choice",
-          "options": [
+              "text": "Yes.",
+              "steps": [
+                {
+                  "type": "action",
+                  "text": "Minimus teleports to the Rewards chest",
+                  "steps": [
+                    {
+                      "npc": "It was a valiant effort, [rank]. I've popped all your earned rewards into that chest over there. You can retrieve them from it when ready."
+                    }
+                  ],
+                  "id": "42QBq8"
+                }
+              ]
+            },
             {
               "text": "No.",
               "steps": [
@@ -728074,17 +728021,19 @@
               "text": "Chat about Gliders"
             },
             {
-              "text": "Sanfew asked me to come and talk to you."
+              "text": "Sanfew asked me to come and talk to you.",
+              "steps": [
+                {
+                  "player": "Sanfew asked me to come and talk to you."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Captain Bleemadge",
+                  "text": "Brrr, blimey it's cold up here! Wish I had something nice to drink to chase away these chills!"
+                }
+              ]
             }
           ]
-        },
-        {
-          "player": "Sanfew asked me to come and talk to you."
-        },
-        {
-          "type": "line",
-          "speaker": "Captain Bleemadge",
-          "text": "Brrr, blimey it's cold up here! Wish I had something nice to drink to chase away these chills!"
         }
       ],
       "the-various-favours-are-asked-giving-bleemadge-the-tea-and-talking-about-sanfew-s-favour": [
@@ -731775,26 +731724,23 @@
               "text": "Do you have any quests?"
             },
             {
-              "text": "Ok, show me where this weather vane is...I want to look at it."
-            }
-          ]
-        },
-        {
-          "player": "Ok, show me where this weather vane is...I want to look at it."
-        },
-        {
-          "type": "jump",
-          "id": "HeUHAx",
-          "steps": [
-            {
-              "type": "call",
-              "branch": "jump-35d28c428363fe66"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
+              "text": "Ok, show me where this weather vane is...I want to look at it.",
+              "steps": [
+                {
+                  "player": "Ok, show me where this weather vane is...I want to look at it."
+                },
+                {
+                  "type": "jump",
+                  "id": "R7btcd",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-35d28c428363fe66"
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "text": "Ok, thanks."
             }
@@ -739351,15 +739297,17 @@
                           ]
                         },
                         {
-                          "text": "Actually, forget it."
+                          "text": "Actually, forget it.",
+                          "steps": [
+                            {
+                              "player": "Actually, forget it."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
                         }
                       ]
-                    },
-                    {
-                      "player": "Actually, forget it."
-                    },
-                    {
-                      "type": "end"
                     }
                   ],
                   "id": "d5SovR"
@@ -739466,15 +739414,17 @@
                           ]
                         },
                         {
-                          "text": "Not right now."
+                          "text": "Not right now.",
+                          "steps": [
+                            {
+                              "player": "Not right now."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
                         }
                       ]
-                    },
-                    {
-                      "player": "Not right now."
-                    },
-                    {
-                      "type": "end"
                     }
                   ],
                   "id": "nfKkXL"
@@ -759572,21 +759522,23 @@
                       "type": "choice",
                       "options": [
                         {
-                          "text": "Great, I'll take the cash in used coins please."
+                          "text": "Great, I'll take the cash in used coins please.",
+                          "steps": [
+                            {
+                              "player": "Great, I'll take the cash in used coins please."
+                            },
+                            {
+                              "npc": "Er..."
+                            },
+                            {
+                              "npc": "Look, I think I'll wait here for someone a little more... you know..."
+                            },
+                            {
+                              "npc": "...heroic."
+                            }
+                          ]
                         }
                       ]
-                    },
-                    {
-                      "player": "Great, I'll take the cash in used coins please."
-                    },
-                    {
-                      "npc": "Er..."
-                    },
-                    {
-                      "npc": "Look, I think I'll wait here for someone a little more... you know..."
-                    },
-                    {
-                      "npc": "...heroic."
                     }
                   ]
                 }
@@ -767581,9 +767533,6 @@
                                       "steps": [
                                         {
                                           "player": "I'll get going."
-                                        },
-                                        {
-                                          "type": "end"
                                         }
                                       ]
                                     }
@@ -767603,9 +767552,6 @@
                                   "type": "line",
                                   "speaker": "King Roald",
                                   "text": "Yes, I dare say it does. I wouldn't even have mentioned it had you not seemed to be looking for something to do anyway."
-                                },
-                                {
-                                  "type": "end"
                                 }
                               ]
                             }
@@ -767618,17 +767564,19 @@
               ]
             },
             {
-              "text": "Not really."
-            }
-          ]
-        },
-        {
-          "player": "Not really.",
-          "steps": [
-            {
-              "type": "line",
-              "speaker": "King Roald",
-              "text": "You will have to excuse me then. I am very busy as I have a kingdom to run!"
+              "text": "Not really.",
+              "steps": [
+                {
+                  "player": "Not really.",
+                  "steps": [
+                    {
+                      "type": "line",
+                      "speaker": "King Roald",
+                      "text": "You will have to excuse me then. I am very busy as I have a kingdom to run!"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -802459,44 +802407,41 @@
                       ]
                     },
                     {
-                      "text": "From YOUR point of view I've saved you, but from MINE I haven't."
-                    }
-                  ]
-                },
-                {
-                  "player": "From YOUR point of view I've saved you, but from MINE I haven't.",
-                  "steps": [
-                    {
-                      "type": "line",
-                      "speaker": "Evil Dave",
-                      "text": "Well that's all right, as long as I'm saved from my point of view!"
+                      "text": "From YOUR point of view I've saved you, but from MINE I haven't.",
+                      "steps": [
+                        {
+                          "player": "From YOUR point of view I've saved you, but from MINE I haven't.",
+                          "steps": [
+                            {
+                              "type": "line",
+                              "speaker": "Evil Dave",
+                              "text": "Well that's all right, as long as I'm saved from my point of view!"
+                            },
+                            {
+                              "player": "But I have to save you, otherwise you won't be saved!"
+                            },
+                            {
+                              "type": "line",
+                              "speaker": "Evil Dave",
+                              "text": "But I'm here so you must already have saved me!"
+                            },
+                            {
+                              "player": "That's what I meant, from your point of view I've saved you but from mine I haven't!"
+                            },
+                            {
+                              "type": "line",
+                              "speaker": "Evil Dave",
+                              "text": "What?"
+                            },
+                            {
+                              "type": "jump",
+                              "reference": "other",
+                              "id": "pmd66J"
+                            }
+                          ]
+                        }
+                      ]
                     },
-                    {
-                      "player": "But I have to save you, otherwise you won't be saved!"
-                    },
-                    {
-                      "type": "line",
-                      "speaker": "Evil Dave",
-                      "text": "But I'm here so you must already have saved me!"
-                    },
-                    {
-                      "player": "That's what I meant, from your point of view I've saved you but from mine I haven't!"
-                    },
-                    {
-                      "type": "line",
-                      "speaker": "Evil Dave",
-                      "text": "What?"
-                    },
-                    {
-                      "type": "jump",
-                      "reference": "other",
-                      "id": "zobJUV"
-                    }
-                  ]
-                },
-                {
-                  "type": "choice",
-                  "options": [
                     {
                       "text": "I've got to take the food back in time to give it to you.",
                       "steps": [
@@ -802549,7 +802494,7 @@
                                 {
                                   "type": "jump",
                                   "reference": "other",
-                                  "id": "gmG4Wf"
+                                  "id": "PLsvvs"
                                 }
                               ]
                             },
@@ -802575,7 +802520,7 @@
                                 {
                                   "type": "jump",
                                   "reference": "other",
-                                  "id": "MjLFwC"
+                                  "id": "fAPbc_"
                                 }
                               ]
                             },
@@ -802593,7 +802538,7 @@
                                 {
                                   "type": "jump",
                                   "reference": "other",
-                                  "id": "SqnsY4"
+                                  "id": "ADAQtw"
                                 }
                               ]
                             }
@@ -802784,8 +802729,13 @@
                       "steps": [
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "Sevn24"
+                          "id": "Sevn24",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-a652f7fc9c0f305c"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -802798,7 +802748,7 @@
                           "steps": [
                             {
                               "type": "call",
-                              "branch": "jump-4783c65fbb65d9b6"
+                              "branch": "jump-d35de82bab97111c"
                             }
                           ]
                         }
@@ -803280,7 +803230,40 @@
           "id": "FwEJOn"
         }
       ],
-      "jump-4783c65fbb65d9b6": [
+      "jump-a652f7fc9c0f305c": [
+        {
+          "player": "From YOUR point of view I've saved you, but from MINE I haven't.",
+          "steps": [
+            {
+              "type": "line",
+              "speaker": "Evil Dave",
+              "text": "Well that's all right, as long as I'm saved from my point of view!"
+            },
+            {
+              "player": "But I have to save you, otherwise you won't be saved!"
+            },
+            {
+              "type": "line",
+              "speaker": "Evil Dave",
+              "text": "But I'm here so you must already have saved me!"
+            },
+            {
+              "player": "That's what I meant, from your point of view I've saved you but from mine I haven't!"
+            },
+            {
+              "type": "line",
+              "speaker": "Evil Dave",
+              "text": "What?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "pmd66J"
+            }
+          ]
+        }
+      ],
+      "jump-d35de82bab97111c": [
         {
           "player": "I've to take the food back in time to give it to you."
         },
@@ -803330,7 +803313,7 @@
                 {
                   "type": "jump",
                   "reference": "other",
-                  "id": "gmG4Wf"
+                  "id": "PLsvvs"
                 }
               ]
             },
@@ -803356,7 +803339,7 @@
                 {
                   "type": "jump",
                   "reference": "other",
-                  "id": "MjLFwC"
+                  "id": "fAPbc_"
                 }
               ]
             },
@@ -803374,7 +803357,7 @@
                 {
                   "type": "jump",
                   "reference": "other",
-                  "id": "SqnsY4"
+                  "id": "ADAQtw"
                 }
               ]
             }
@@ -886515,7 +886498,7 @@
                                   "steps": [
                                     {
                                       "type": "call",
-                                      "branch": "jump-0d7a851e5cbfd73f"
+                                      "branch": "jump-c11a93ba95d40a5c"
                                     }
                                   ]
                                 }
@@ -886552,31 +886535,28 @@
                                   "type": "choice",
                                   "options": [
                                     {
-                                      "text": "Well, you can give me a try can't you?"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "player": "Well, you can give me a try can't you?"
-                                },
-                                {
-                                  "type": "line",
-                                  "speaker": "Katrine",
-                                  "text": "I'm not so sure..."
-                                },
-                                {
-                                  "type": "jump",
-                                  "id": "UyKOWb",
-                                  "steps": [
-                                    {
-                                      "type": "call",
-                                      "branch": "jump-251c825bcc539b39"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "choice",
-                                  "options": [
+                                      "text": "Well, you can give me a try can't you?",
+                                      "steps": [
+                                        {
+                                          "player": "Well, you can give me a try can't you?"
+                                        },
+                                        {
+                                          "type": "line",
+                                          "speaker": "Katrine",
+                                          "text": "I'm not so sure..."
+                                        },
+                                        {
+                                          "type": "jump",
+                                          "id": "EtZN6a",
+                                          "steps": [
+                                            {
+                                              "type": "call",
+                                              "branch": "jump-4c4f33465d8c5b21"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
                                     {
                                       "text": "Well, people tell me I have an honest face.",
                                       "steps": [
@@ -888417,53 +888397,50 @@
           "type": "choice",
           "options": [
             {
-              "text": "I've heard you've got some cool treasures in this place."
-            }
-          ]
-        },
-        {
-          "player": "I've heard you've got some cool treasures in this place."
-        },
-        {
-          "type": "line",
-          "speaker": "Straven",
-          "text": "Oh yeah, we've all stolen some stuff in our time. Our candlesticks down here, for example, were quite a challenge to get out of the palace."
-        },
-        {
-          "player": "And the Shield of Arrav?"
-        },
-        {
-          "type": "line",
-          "speaker": "Straven",
-          "text": "Once one of our most prized possessions."
-        },
-        {
-          "player": "Once?"
-        },
-        {
-          "type": "line",
-          "speaker": "Straven",
-          "text": "It seems the Black Arm Gang weren't content with having one half. They recently stole the other half of the shield from us as well!"
-        },
-        {
-          "player": "Oh no! I'll be sure to keep an eye out for any of their members sneaking around.",
-          "steps": [
-            {
-              "type": "jump",
-              "reference": "other",
-              "id": "mZH3sG"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
+              "text": "I've heard you've got some cool treasures in this place.",
+              "steps": [
+                {
+                  "player": "I've heard you've got some cool treasures in this place."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Straven",
+                  "text": "Oh yeah, we've all stolen some stuff in our time. Our candlesticks down here, for example, were quite a challenge to get out of the palace."
+                },
+                {
+                  "player": "And the Shield of Arrav?"
+                },
+                {
+                  "type": "line",
+                  "speaker": "Straven",
+                  "text": "Once one of our most prized possessions."
+                },
+                {
+                  "player": "Once?"
+                },
+                {
+                  "type": "line",
+                  "speaker": "Straven",
+                  "text": "It seems the Black Arm Gang weren't content with having one half. They recently stole the other half of the shield from us as well!"
+                },
+                {
+                  "player": "Oh no! I'll be sure to keep an eye out for any of their members sneaking around.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "other",
+                      "id": "k3Grrt"
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "text": "Any suggestions for where I can go thieving?",
               "steps": [
                 {
                   "type": "jump",
-                  "id": "DH6nwe",
+                  "id": "8V-vYo",
                   "steps": [
                     {
                       "type": "call",
@@ -888478,7 +888455,7 @@
               "steps": [
                 {
                   "type": "jump",
-                  "id": "v4VGp9",
+                  "id": "Q8biBg",
                   "steps": [
                     {
                       "type": "call",
@@ -888561,7 +888538,7 @@
       ]
     },
     "branches": {
-      "jump-0d7a851e5cbfd73f": [
+      "jump-c11a93ba95d40a5c": [
         {
           "player": "I don't know. What would be the alternative?"
         },
@@ -888574,31 +888551,28 @@
           "type": "choice",
           "options": [
             {
-              "text": "Well, you can give me a try can't you?"
-            }
-          ]
-        },
-        {
-          "player": "Well, you can give me a try can't you?"
-        },
-        {
-          "type": "line",
-          "speaker": "Katrine",
-          "text": "I'm not so sure..."
-        },
-        {
-          "type": "jump",
-          "id": "UyKOWb",
-          "steps": [
-            {
-              "type": "call",
-              "branch": "jump-251c825bcc539b39"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
+              "text": "Well, you can give me a try can't you?",
+              "steps": [
+                {
+                  "player": "Well, you can give me a try can't you?"
+                },
+                {
+                  "type": "line",
+                  "speaker": "Katrine",
+                  "text": "I'm not so sure..."
+                },
+                {
+                  "type": "jump",
+                  "id": "EtZN6a",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-4c4f33465d8c5b21"
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "text": "Well, people tell me I have an honest face.",
               "steps": [
@@ -888722,7 +888696,7 @@
           ]
         }
       ],
-      "jump-251c825bcc539b39": [
+      "jump-4c4f33465d8c5b21": [
         {
           "type": "line",
           "speaker": "Katrine",
@@ -969566,12 +969540,14 @@
             ]
           },
           {
-            "text": "I'm fine thanks."
+            "text": "I'm fine thanks.",
+            "steps": [
+              {
+                "player": "I'm fine thanks"
+              }
+            ]
           }
         ]
-      },
-      {
-        "player": "I'm fine thanks"
       }
     ]
   },
@@ -973352,51 +973328,53 @@
                   ]
                 },
                 {
-                  "text": "Here you go, thanks."
-                }
-              ]
-            },
-            {
-              "player": "Here you go, thanks."
-            },
-            {
-              "npc": "Thanks [sir/ma'am], I didn't think you would hold up your side of the deal. There's not much honour amongst thieves, you know."
-            },
-            {
-              "npc": "Well do you need any other information then?",
-              "steps": [
-                {
-                  "type": "choice",
-                  "options": [
+                  "text": "Here you go, thanks.",
+                  "steps": [
                     {
-                      "text": "Yes tell me about...",
-                      "steps": [
-                        {
-                          "type": "jump",
-                          "id": "fhHgHr",
-                          "steps": [
-                            {
-                              "type": "call",
-                              "branch": "jump-52eee965ed6009f9"
-                            }
-                          ]
-                        }
-                      ]
+                      "player": "Here you go, thanks."
                     },
                     {
-                      "text": "No thanks.",
+                      "npc": "Thanks [sir/ma'am], I didn't think you would hold up your side of the deal. There's not much honour amongst thieves, you know."
+                    },
+                    {
+                      "npc": "Well do you need any other information then?",
                       "steps": [
                         {
-                          "player": "No thanks."
-                        },
-                        {
-                          "npc": "Come back if you need any info about anything in the town."
-                        },
-                        {
-                          "player": "I will do thanks."
-                        },
-                        {
-                          "type": "end"
+                          "type": "choice",
+                          "options": [
+                            {
+                              "text": "Yes tell me about...",
+                              "steps": [
+                                {
+                                  "type": "jump",
+                                  "id": "Hbqerm",
+                                  "steps": [
+                                    {
+                                      "type": "call",
+                                      "branch": "jump-52eee965ed6009f9"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "text": "No thanks.",
+                              "steps": [
+                                {
+                                  "player": "No thanks."
+                                },
+                                {
+                                  "npc": "Come back if you need any info about anything in the town."
+                                },
+                                {
+                                  "player": "I will do thanks."
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ]
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1027672,26 +1027650,23 @@
           "type": "choice",
           "options": [
             {
-              "text": "I've spoken to some of your crew."
-            }
-          ]
-        },
-        {
-          "player": "I've spoken to some of your crew."
-        },
-        {
-          "type": "line",
-          "speaker": "Captain Tock",
-          "text": "Arrr! Make sure ye speaks to 'em all. They'll be in their huts, over to the west. Four of them, there are - Gnocci, Ithoi, Arsen and young Colin."
-        },
-        {
-          "type": "line",
-          "speaker": "Captain Tock",
-          "text": "Have ye any idea about how to lift the curse?"
-        },
-        {
-          "type": "choice",
-          "options": [
+              "text": "I've spoken to some of your crew.",
+              "steps": [
+                {
+                  "player": "I've spoken to some of your crew."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Captain Tock",
+                  "text": "Arrr! Make sure ye speaks to 'em all. They'll be in their huts, over to the west. Four of them, there are - Gnocci, Ithoi, Arsen and young Colin."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Captain Tock",
+                  "text": "Have ye any idea about how to lift the curse?"
+                }
+              ]
+            },
             {
               "text": "Please take me back to Rimmington."
             },
@@ -1065770,17 +1065745,19 @@
               ]
             },
             {
-              "text": "No, I need to make a fool of myself again."
+              "text": "No, I need to make a fool of myself again.",
+              "steps": [
+                {
+                  "player": "No, I need to make a fool of myself again."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Slug Hemligssen",
+                  "text": "Please pay more attention to what the Burgher's advisors say this time. Are you ready?"
+                }
+              ]
             }
           ]
-        },
-        {
-          "player": "No, I need to make a fool of myself again."
-        },
-        {
-          "type": "line",
-          "speaker": "Slug Hemligssen",
-          "text": "Please pay more attention to what the Burgher's advisors say this time. Are you ready?"
         },
         {
           "type": "condition",
@@ -1079934,18 +1079911,15 @@
                               "type": "choice",
                               "options": [
                                 {
-                                  "text": "Return to Keldagrim immediately."
-                                }
-                              ]
-                            },
-                            {
-                              "type": "action",
-                              "text": "The screen fades to black briefly, and the player arrives at Keldagrim, where Blasidar is.",
-                              "id": "z3YxxS"
-                            },
-                            {
-                              "type": "choice",
-                              "options": [
+                                  "text": "Return to Keldagrim immediately.",
+                                  "steps": [
+                                    {
+                                      "type": "action",
+                                      "text": "The screen fades to black briefly, and the player arrives at Keldagrim, where Blasidar is.",
+                                      "id": "e1zjyh"
+                                    }
+                                  ]
+                                },
                                 {
                                   "text": "Explore the area before returning.",
                                   "steps": []
@@ -1157871,7 +1157845,7 @@
                           "steps": [
                             {
                               "type": "call",
-                              "branch": "jump-f2653d0ce4b7c15b"
+                              "branch": "jump-03b8815789168969"
                             }
                           ]
                         }
@@ -1158119,81 +1158093,83 @@
           "type": "choice",
           "options": [
             {
-              "text": "Yes, who are you?"
-            }
-          ]
-        },
-        {
-          "player": "Yes, who are you?",
-          "steps": [
-            {
-              "npc": "Why, I'm Trader Stan, owner and operator of the largest fleet of trading ships and chartered vessels to ever sail the seas!"
-            },
-            {
-              "npc": "If you want to get to a port in a hurry then you can charter one of my ships to take you there - if the price is right..."
-            },
-            {
-              "player": "So, where exactly can I go with your ships?"
-            },
-            {
-              "npc": "We run ships from Port Phasmatys over to Port Tyras, stopping at Port Sarim, Catherby, Brimhaven, Musa Point, Port Khazard and more besides!"
-            },
-            {
-              "npc": "We might dock at Mos Le'Harmless once in a while, as well, if you catch my meaning..."
-            },
-            {
-              "player": "Wow, that's a lot of ports. I take it you have some exotic stuff to trade?"
-            },
-            {
-              "npc": "We certainly do! I and my crewmen have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
-            },
-            {
-              "type": "choice",
-              "options": [
+              "text": "Yes, who are you?",
+              "steps": [
                 {
-                  "text": "Yes, let's see what you're trading.",
+                  "player": "Yes, who are you?",
                   "steps": [
                     {
-                      "player": "Yes, let's see what you're trading."
+                      "npc": "Why, I'm Trader Stan, owner and operator of the largest fleet of trading ships and chartered vessels to ever sail the seas!"
                     },
                     {
-                      "type": "action",
-                      "action": "open_shop",
-                      "target": "Trader Stan's Trading Post",
-                      "id": "zGml4K"
-                    }
-                  ]
-                },
-                {
-                  "text": "Yes, I would like to charter a ship.",
-                  "steps": [
+                      "npc": "If you want to get to a port in a hurry then you can charter one of my ships to take you there - if the price is right..."
+                    },
+                    {
+                      "player": "So, where exactly can I go with your ships?"
+                    },
+                    {
+                      "npc": "We run ships from Port Phasmatys over to Port Tyras, stopping at Port Sarim, Catherby, Brimhaven, Musa Point, Port Khazard and more besides!"
+                    },
+                    {
+                      "npc": "We might dock at Mos Le'Harmless once in a while, as well, if you catch my meaning..."
+                    },
+                    {
+                      "player": "Wow, that's a lot of ports. I take it you have some exotic stuff to trade?"
+                    },
+                    {
+                      "npc": "We certainly do! I and my crewmen have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "Yes, let's see what you're trading.",
+                          "steps": [
+                            {
+                              "player": "Yes, let's see what you're trading."
+                            },
+                            {
+                              "type": "action",
+                              "action": "open_shop",
+                              "target": "Trader Stan's Trading Post",
+                              "id": "dVL62R"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Yes, I would like to charter a ship.",
+                          "steps": [
+                            {
+                              "type": "jump",
+                              "id": "dHKQdO",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-129aba7c059233cd"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "text": "No thanks."
+                        }
+                      ]
+                    },
                     {
                       "type": "jump",
-                      "id": "nnkYZU",
+                      "id": "5SutVl",
                       "steps": [
                         {
                           "type": "call",
-                          "branch": "jump-a86530c816fbd78b"
+                          "branch": "jump-19de4263b843cfc1"
                         }
                       ]
                     }
                   ]
-                },
-                {
-                  "text": "No thanks."
                 }
               ]
             },
-            {
-              "type": "jump",
-              "reference": "below",
-              "id": "X38A34"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
             {
               "text": "Yes, I would like to charter a ship.",
               "steps": [
@@ -1158234,7 +1158210,7 @@
       ]
     },
     "branches": {
-      "jump-f2653d0ce4b7c15b": [
+      "jump-03b8815789168969": [
         {
           "player": "No thanks."
         },
@@ -1158242,10 +1158218,21 @@
           "type": "end"
         }
       ],
-      "jump-a86530c816fbd78b": [
+      "jump-129aba7c059233cd": [
         {
           "player": "Yes, I would like to charter a ship."
         },
+        {
+          "npc": "Certainly [sir/madam]. Where would you like to go?"
+        },
+        {
+          "npc": "This is a Sailing Alpha, find out how to get there yourself!"
+        },
+        {
+          "type": "end"
+        }
+      ],
+      "jump-19de4263b843cfc1": [
         {
           "npc": "Certainly [sir/madam]. Where would you like to go?"
         },
@@ -1164023,12 +1164010,14 @@
                       ]
                     },
                     {
-                      "text": "Nothing, thanks."
+                      "text": "Nothing, thanks.",
+                      "steps": [
+                        {
+                          "player": "Nothing, thanks."
+                        }
+                      ]
                     }
                   ]
-                },
-                {
-                  "player": "Nothing, thanks."
                 }
               ]
             },
@@ -1177289,15 +1177278,17 @@
                         "type": "choice",
                         "options": [
                           {
-                            "text": "No I'm not!"
+                            "text": "No I'm not!",
+                            "steps": [
+                              {
+                                "player": "No I'm not!"
+                              },
+                              {
+                                "npc": "What ever you say, crazy JalYt!"
+                              }
+                            ]
                           }
                         ]
-                      },
-                      {
-                        "player": "No I'm not!"
-                      },
-                      {
-                        "npc": "What ever you say, crazy JalYt!"
                       }
                     ]
                   }
@@ -1177616,15 +1177607,17 @@
                         "type": "choice",
                         "options": [
                           {
-                            "text": "No I'm not!"
+                            "text": "No I'm not!",
+                            "steps": [
+                              {
+                                "player": "No I'm not!"
+                              },
+                              {
+                                "npc": "What ever you say, crazy JalYt!"
+                              }
+                            ]
                           }
                         ]
-                      },
-                      {
-                        "player": "No I'm not!"
-                      },
-                      {
-                        "npc": "What ever you say, crazy JalYt!"
                       }
                     ]
                   }
@@ -1207972,20 +1207965,22 @@
           "type": "choice",
           "options": [
             {
-              "text": "Do you have any more quests for me?"
-            }
-          ]
-        },
-        {
-          "player": "Do you have any more quests for me?",
-          "steps": [
-            {
-              "type": "line",
-              "speaker": "Watchtower wizard",
-              "text": "More quests? No, indeed, adventurer. You have done us a great service, already."
-            },
-            {
-              "type": "end"
+              "text": "Do you have any more quests for me?",
+              "steps": [
+                {
+                  "player": "Do you have any more quests for me?",
+                  "steps": [
+                    {
+                      "type": "line",
+                      "speaker": "Watchtower wizard",
+                      "text": "More quests? No, indeed, adventurer. You have done us a great service, already."
+                    },
+                    {
+                      "type": "end"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -1213019,12 +1213014,8 @@
                       "text": "Never mind, I forgot the question.",
                       "steps": [
                         {
-                          "player": "Never mind, I forgot the question."
-                        },
-                        {
-                          "type": "line",
-                          "speaker": "Surok Magis",
-                          "text": "Fair enough. Go then. I expect you have a lot of work to do!"
+                          "type": "call",
+                          "branch": "eNmB3Q"
                         }
                       ]
                     }
@@ -1213767,17 +1213758,15 @@
                       ]
                     },
                     {
-                      "text": "Never mind, I forgot the question."
+                      "text": "Never mind, I forgot the question.",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "eNmB3Q"
+                        }
+                      ]
                     }
                   ]
-                },
-                {
-                  "player": "Never mind, I forgot the question."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Surok Magis",
-                  "text": "Fair enough. Go then. I expect you have a lot of work to do!"
                 }
               ]
             },
@@ -1213790,7 +1213779,7 @@
                   "steps": [
                     {
                       "type": "call",
-                      "branch": "jump-43e28fff136fe18f"
+                      "branch": "jump-1d9332ad7146c87d"
                     }
                   ]
                 }
@@ -1213947,7 +1213936,7 @@
                       "steps": [
                         {
                           "type": "call",
-                          "branch": "jump-43e28fff136fe18f"
+                          "branch": "jump-1d9332ad7146c87d"
                         }
                       ]
                     }
@@ -1216213,7 +1216202,7 @@
           "id": "f8S0Sx"
         }
       ],
-      "jump-43e28fff136fe18f": [
+      "jump-1d9332ad7146c87d": [
         {
           "player": "Never mind, I forgot the question."
         },
@@ -1217109,6 +1217098,16 @@
             }
           ],
           "id": "sX3iUH"
+        }
+      ],
+      "eNmB3Q": [
+        {
+          "player": "Never mind, I forgot the question."
+        },
+        {
+          "type": "line",
+          "speaker": "Surok Magis",
+          "text": "Fair enough. Go then. I expect you have a lot of work to do!"
         }
       ],
       "onhy1g": [
@@ -1263946,78 +1263945,75 @@
               ]
             },
             {
-              "text": "How do I get rid of the undead ogres?"
-            }
-          ]
-        },
-        {
-          "player": "How do I get rid of the undead ogres?",
-          "steps": [
-            {
-              "type": "condition",
-              "text": "Asking for the first time:",
+              "text": "How do I get rid of the undead ogres?",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "Sithik Ints",
-                  "text": "Ok, similar spells have been cast before and the only way to deal with the resulting creatures is to cordon off the area and not go in there again."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sithik Ints",
-                  "text": "The undead creatures usually manifest some sort of disease so it's best to attack them from a distance with a ranged weapon."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sithik Ints",
-                  "text": "Normal missiles like arrows and darts do very little damage to them because they're designed to destroy internal organs. This is a waste of time with undead creatures like undead ogres."
-                },
-                {
-                  "player": "Yeah, clearly so what should we use?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sithik Ints",
-                  "text": "From my research it looks like a flat ended arrow was designed called a 'Brutal arrow'. This does large amounts of crushing damage to the creature. You can make them by using larger arrows."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sithik Ints",
-                  "text": "I think some Ogre hunters make them. But instead of adding an arrow tip, you hammer a large nail into the end of the shaft."
-                },
-                {
-                  "type": "jump",
-                  "reference": "previous",
-                  "id": "yz4q3o"
+                  "player": "How do I get rid of the undead ogres?",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "Asking for the first time:",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Sithik Ints",
+                          "text": "Ok, similar spells have been cast before and the only way to deal with the resulting creatures is to cordon off the area and not go in there again."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Sithik Ints",
+                          "text": "The undead creatures usually manifest some sort of disease so it's best to attack them from a distance with a ranged weapon."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Sithik Ints",
+                          "text": "Normal missiles like arrows and darts do very little damage to them because they're designed to destroy internal organs. This is a waste of time with undead creatures like undead ogres."
+                        },
+                        {
+                          "player": "Yeah, clearly so what should we use?"
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Sithik Ints",
+                          "text": "From my research it looks like a flat ended arrow was designed called a 'Brutal arrow'. This does large amounts of crushing damage to the creature. You can make them by using larger arrows."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Sithik Ints",
+                          "text": "I think some Ogre hunters make them. But instead of adding an arrow tip, you hammer a large nail into the end of the shaft."
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "previous",
+                          "id": "NGQtIb"
+                        }
+                      ],
+                      "id": "uKFksI"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "Asking him again:",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Sithik Ints",
+                          "text": "Haven't I already explained this to you once before?"
+                        },
+                        {
+                          "player": "Humour me!"
+                        },
+                        {
+                          "type": "action",
+                          "text": "(Continues with \"Ok, similar spells...\")",
+                          "id": "xZZRF9"
+                        }
+                      ],
+                      "id": "7KzANk"
+                    }
+                  ]
                 }
-              ],
-              "id": "eBjGsE"
+              ]
             },
-            {
-              "type": "condition",
-              "text": "Asking him again:",
-              "steps": [
-                {
-                  "type": "line",
-                  "speaker": "Sithik Ints",
-                  "text": "Haven't I already explained this to you once before?"
-                },
-                {
-                  "player": "Humour me!"
-                },
-                {
-                  "type": "action",
-                  "text": "(Continues with \"Ok, similar spells...\")",
-                  "id": "RAU2Lc"
-                }
-              ],
-              "id": "eKMr46"
-            }
-          ]
-        },
-        {
-          "type": "choice",
-          "options": [
             {
               "text": "How do I get rid of the disease?",
               "steps": [
@@ -1264044,10 +1264040,10 @@
                     {
                       "type": "jump",
                       "reference": "previous",
-                      "id": "Quzgrb"
+                      "id": "t_Q5Ms"
                     }
                   ],
-                  "id": "kNxjeI"
+                  "id": "ZT09es"
                 },
                 {
                   "type": "condition",
@@ -1264069,10 +1264065,10 @@
                     {
                       "type": "action",
                       "text": "(Continues with \"My research shows...\")",
-                      "id": "sk9hMf"
+                      "id": "6oi9SV"
                     }
                   ],
-                  "id": "jmK4Z0"
+                  "id": "at84Cb"
                 },
                 {
                   "type": "condition",
@@ -1264094,10 +1264090,10 @@
                     {
                       "type": "action",
                       "text": "(Continues with \"My research shows...\")",
-                      "id": "xhkOuP"
+                      "id": "U7U3Aj"
                     }
                   ],
-                  "id": "LBwCwE"
+                  "id": "9HAA4w"
                 }
               ]
             },
@@ -1264154,8 +1264150,13 @@
               "steps": [
                 {
                   "type": "jump",
-                  "reference": "above",
-                  "id": "TlSUJB"
+                  "id": "TlSUJB",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-7e18d8e9ac199305"
+                    }
+                  ]
                 }
               ]
             },
@@ -1264168,7 +1264169,7 @@
                   "steps": [
                     {
                       "type": "call",
-                      "branch": "jump-a2649fe8eee3f1c6"
+                      "branch": "jump-5d35001198dc26cb"
                     }
                   ]
                 }
@@ -1264183,7 +1264184,7 @@
                   "steps": [
                     {
                       "type": "call",
-                      "branch": "jump-2fcda21ce2e41c63"
+                      "branch": "jump-24c2c84390c18f6f"
                     }
                   ]
                 }
@@ -1265755,7 +1265756,74 @@
           "id": "dpeelD"
         }
       ],
-      "jump-a2649fe8eee3f1c6": [
+      "jump-7e18d8e9ac199305": [
+        {
+          "player": "How do I get rid of the undead ogres?",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "Asking for the first time:",
+              "steps": [
+                {
+                  "type": "line",
+                  "speaker": "Sithik Ints",
+                  "text": "Ok, similar spells have been cast before and the only way to deal with the resulting creatures is to cordon off the area and not go in there again."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Sithik Ints",
+                  "text": "The undead creatures usually manifest some sort of disease so it's best to attack them from a distance with a ranged weapon."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Sithik Ints",
+                  "text": "Normal missiles like arrows and darts do very little damage to them because they're designed to destroy internal organs. This is a waste of time with undead creatures like undead ogres."
+                },
+                {
+                  "player": "Yeah, clearly so what should we use?"
+                },
+                {
+                  "type": "line",
+                  "speaker": "Sithik Ints",
+                  "text": "From my research it looks like a flat ended arrow was designed called a 'Brutal arrow'. This does large amounts of crushing damage to the creature. You can make them by using larger arrows."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Sithik Ints",
+                  "text": "I think some Ogre hunters make them. But instead of adding an arrow tip, you hammer a large nail into the end of the shaft."
+                },
+                {
+                  "type": "jump",
+                  "reference": "previous",
+                  "id": "NGQtIb"
+                }
+              ],
+              "id": "uKFksI"
+            },
+            {
+              "type": "condition",
+              "text": "Asking him again:",
+              "steps": [
+                {
+                  "type": "line",
+                  "speaker": "Sithik Ints",
+                  "text": "Haven't I already explained this to you once before?"
+                },
+                {
+                  "player": "Humour me!"
+                },
+                {
+                  "type": "action",
+                  "text": "(Continues with \"Ok, similar spells...\")",
+                  "id": "xZZRF9"
+                }
+              ],
+              "id": "7KzANk"
+            }
+          ]
+        }
+      ],
+      "jump-5d35001198dc26cb": [
         {
           "player": "How do I get rid of the disease?"
         },
@@ -1265779,10 +1265847,10 @@
             {
               "type": "jump",
               "reference": "previous",
-              "id": "Quzgrb"
+              "id": "t_Q5Ms"
             }
           ],
-          "id": "kNxjeI"
+          "id": "ZT09es"
         },
         {
           "type": "condition",
@@ -1265804,10 +1265872,10 @@
             {
               "type": "action",
               "text": "(Continues with \"My research shows...\")",
-              "id": "sk9hMf"
+              "id": "6oi9SV"
             }
           ],
-          "id": "jmK4Z0"
+          "id": "at84Cb"
         },
         {
           "type": "condition",
@@ -1265829,13 +1265897,13 @@
             {
               "type": "action",
               "text": "(Continues with \"My research shows...\")",
-              "id": "xhkOuP"
+              "id": "U7U3Aj"
             }
           ],
-          "id": "LBwCwE"
+          "id": "9HAA4w"
         }
       ],
-      "jump-2fcda21ce2e41c63": [
+      "jump-24c2c84390c18f6f": [
         {
           "player": "Sorry, I have to go."
         },

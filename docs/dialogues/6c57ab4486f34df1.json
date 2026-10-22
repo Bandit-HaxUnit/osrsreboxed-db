@@ -257,51 +257,53 @@
                 ]
               },
               {
-                "text": "Here you go, thanks."
-              }
-            ]
-          },
-          {
-            "player": "Here you go, thanks."
-          },
-          {
-            "npc": "Thanks [sir/ma'am], I didn't think you would hold up your side of the deal. There's not much honour amongst thieves, you know."
-          },
-          {
-            "npc": "Well do you need any other information then?",
-            "steps": [
-              {
-                "type": "choice",
-                "options": [
+                "text": "Here you go, thanks.",
+                "steps": [
                   {
-                    "text": "Yes tell me about...",
-                    "steps": [
-                      {
-                        "type": "jump",
-                        "id": "fhHgHr",
-                        "steps": [
-                          {
-                            "type": "call",
-                            "branch": "jump-52eee965ed6009f9"
-                          }
-                        ]
-                      }
-                    ]
+                    "player": "Here you go, thanks."
                   },
                   {
-                    "text": "No thanks.",
+                    "npc": "Thanks [sir/ma'am], I didn't think you would hold up your side of the deal. There's not much honour amongst thieves, you know."
+                  },
+                  {
+                    "npc": "Well do you need any other information then?",
                     "steps": [
                       {
-                        "player": "No thanks."
-                      },
-                      {
-                        "npc": "Come back if you need any info about anything in the town."
-                      },
-                      {
-                        "player": "I will do thanks."
-                      },
-                      {
-                        "type": "end"
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes tell me about...",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "Hbqerm",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-52eee965ed6009f9"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "player": "No thanks."
+                              },
+                              {
+                                "npc": "Come back if you need any info about anything in the town."
+                              },
+                              {
+                                "player": "I will do thanks."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
                       }
                     ]
                   }

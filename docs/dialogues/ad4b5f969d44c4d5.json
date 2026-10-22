@@ -559,26 +559,19 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes."
-          }
-        ]
-      },
-      {
-        "player": "Yes."
-      },
-      {
-        "type": "line",
-        "speaker": "Zanik",
-        "text": "Well then, let's go!",
-        "steps": [
-          {
-            "type": "end"
-          }
-        ]
-      },
-      {
-        "type": "choice",
-        "options": [
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Yes."
+              },
+              {
+                "type": "line",
+                "speaker": "Zanik",
+                "text": "Well then, let's go!",
+                "steps": []
+              }
+            ]
+          },
           {
             "text": "Not now.",
             "steps": [
@@ -7412,17 +7405,19 @@
                   {
                     "text": "Follow me!",
                     "condition": "If Zanik has been told to wait",
+                    "steps": [
+                      {
+                        "player": "Follow me!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Zanik",
+                        "text": "Okay, let's go!"
+                      }
+                    ],
                     "id": "AIksM4"
                   }
                 ]
-              },
-              {
-                "player": "Follow me!"
-              },
-              {
-                "type": "line",
-                "speaker": "Zanik",
-                "text": "Okay, let's go!"
               }
             ]
           },
@@ -8299,29 +8294,24 @@
         "type": "choice",
         "options": [
           {
-            "text": "Okay."
-          }
-        ]
-      },
-      {
-        "player": "Okay.",
-        "steps": [
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay.",
+                "steps": []
+              }
+            ]
+          },
           {
-            "type": "end"
+            "text": "I want to get out now!",
+            "steps": [
+              {
+                "player": "I want to get out now!",
+                "steps": []
+              }
+            ]
           }
         ]
-      },
-      {
-        "type": "choice",
-        "options": [
-          {
-            "text": "I want to get out now!"
-          }
-        ]
-      },
-      {
-        "player": "I want to get out now!",
-        "steps": []
       }
     ],
     "the-power-of-the-tears-upon-collecting-twenty-tears": [

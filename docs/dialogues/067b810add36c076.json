@@ -3169,17 +3169,19 @@
             "text": "Chat about Gliders"
           },
           {
-            "text": "Sanfew asked me to come and talk to you."
+            "text": "Sanfew asked me to come and talk to you.",
+            "steps": [
+              {
+                "player": "Sanfew asked me to come and talk to you."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Bleemadge",
+                "text": "Brrr, blimey it's cold up here! Wish I had something nice to drink to chase away these chills!"
+              }
+            ]
           }
         ]
-      },
-      {
-        "player": "Sanfew asked me to come and talk to you."
-      },
-      {
-        "type": "line",
-        "speaker": "Captain Bleemadge",
-        "text": "Brrr, blimey it's cold up here! Wish I had something nice to drink to chase away these chills!"
       }
     ],
     "the-various-favours-are-asked-giving-bleemadge-the-tea-and-talking-about-sanfew-s-favour": [
@@ -6870,26 +6872,23 @@
             "text": "Do you have any quests?"
           },
           {
-            "text": "Ok, show me where this weather vane is...I want to look at it."
-          }
-        ]
-      },
-      {
-        "player": "Ok, show me where this weather vane is...I want to look at it."
-      },
-      {
-        "type": "jump",
-        "id": "HeUHAx",
-        "steps": [
-          {
-            "type": "call",
-            "branch": "jump-35d28c428363fe66"
-          }
-        ]
-      },
-      {
-        "type": "choice",
-        "options": [
+            "text": "Ok, show me where this weather vane is...I want to look at it.",
+            "steps": [
+              {
+                "player": "Ok, show me where this weather vane is...I want to look at it."
+              },
+              {
+                "type": "jump",
+                "id": "R7btcd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-35d28c428363fe66"
+                  }
+                ]
+              }
+            ]
+          },
           {
             "text": "Ok, thanks."
           }
