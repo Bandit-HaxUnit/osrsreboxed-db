@@ -5,6 +5,7 @@ Run with --offline to rebuild from data/dialogues/wiki-pages.json without fetchi
 
 import argparse
 import collections
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -410,6 +411,49 @@ def normalize_terminal_completion(steps):
     ):
         steps[-2], steps[-1] = steps[-1], steps[-2]
     return steps
+
+
+def apply_structure_annotations(name, raw, structure=None, revision=None):
+    """Apply reviewed bullet-depth fixes to cached wiki text.
+
+    Each fix names an exact source line and its hash, so a refreshed revision
+    stops the dump for review instead of silently moving content. Only the
+    bullet prefix changes; dialogue, templates, order and line endings stay in
+    the source.
+    """
+    if not structure:
+        return raw
+    if revision is not None and structure.get("revision") != revision:
+        raise ValueError(f"Stale dialogue structure annotation: {name}")
+    lines = raw.splitlines(keepends=True)
+    for fix in structure.get("lines", []):
+        number = fix["line"]
+        if not isinstance(number, int) or not 0 < number <= len(lines):
+            raise ValueError(
+                f"Stale dialogue structure annotation: {name} line {number}"
+            )
+        line = lines[number - 1]
+        body, ending = line, ""
+        for terminator in ("\r\n", "\r", "\n"):
+            if line.endswith(terminator):
+                body, ending = line[: -len(terminator)], terminator
+                break
+        if hashlib.sha256(body.encode()).hexdigest() != fix["sha256"]:
+            raise ValueError(
+                f"Stale dialogue structure annotation: {name} line {number}"
+            )
+        bullet = re.match(r"\*+", body)
+        if not bullet:
+            raise ValueError(
+                f"Unbulleted dialogue structure annotation: {name} line {number}"
+            )
+        depth = fix["depth"]
+        if not isinstance(depth, int) or isinstance(depth, bool) or depth < 1:
+            raise ValueError(
+                f"Invalid dialogue structure annotation depth: {name} line {number}"
+            )
+        lines[number - 1] = "*" * depth + body[bullet.end() :] + ending
+    return "".join(lines)
 
 
 def parse_npc(name, raw, nav_templates=None):
@@ -844,6 +888,9 @@ def main():
             )
     pages = read_cache(CACHE) if args.offline else fetch(refresh=args.refresh)
     nav_templates = load_navigation_templates()
+    bindings = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
+    )
     npcs, quests, issues = {}, {}, {}
     for sources, output in ((pages, npcs), (read_cache(QUEST_CACHE), quests)):
         for title, page in sorted(sources.items()):
@@ -851,16 +898,17 @@ def main():
                 issues[title] = [{"reason": "Missing referenced page"}]
                 continue
             name = title.removeprefix("Transcript:")
-            parsed = parse_npc(name, page["wikitext"], nav_templates)
+            structure = bindings.get(name, {}).get("structure")
+            raw = apply_structure_annotations(
+                name, page["wikitext"], structure, page["revision"]
+            )
+            parsed = parse_npc(name, raw, nav_templates)
             output[name] = gameplay_npc(name, parsed)
             output[name]["source"] = {"page": title, "revision": page["revision"]}
             if parsed["review_issues"]:
                 issues[title] = parsed["review_issues"]
     if npcs.keys() & quests.keys():
         raise ValueError("NPC and quest transcript names overlap")
-    bindings = json.loads(
-        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
-    )
     index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean, bindings)
     resolved = resolve_shops(npcs, shop_index())
     # Shared quest replies retain their NPC source IDs, including inferred shops.
