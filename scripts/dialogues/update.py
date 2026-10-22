@@ -127,6 +127,15 @@ def infer_action(text):
     return {}
 
 
+def speaker_label(raw):
+    label = clean(raw).strip()
+    if label.endswith(":"):
+        return label[:-1].strip()
+    if len(label) >= 3 and label[-1] in "'\"" and label[-2] == ":":
+        return (label[:-2] + label[-1]).strip()
+    return None
+
+
 def parse_step(raw, issues, line):
     code = mw.parse(str(raw))
     anchors = []
@@ -142,10 +151,11 @@ def parse_step(raw, issues, line):
         node = parse_step(str(code).strip(), issues, line)
         node["_anchors"] = anchors
         return node
-    speech = re.fullmatch(r"'''(.+?):'''\s*(.*)", raw)
-    if speech:
+    speech = re.fullmatch(r"'''(.*?)'''\s*(.*)", raw, re.S)
+    speaker = speaker_label(speech[1]) if speech else None
+    if speaker is not None:
         text = clean(speech[2])
-        node = dict(type="line", speaker=clean(speech[1]), text=text)
+        node = dict(type="line", speaker=speaker, text=text)
         if "{{overhead" in raw.lower():
             node["display"] = "overhead"
         if "{{" in text:
