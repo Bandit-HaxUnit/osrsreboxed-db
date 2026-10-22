@@ -147,8 +147,10 @@ def parse_step(raw, issues, line):
                 node = parse_step(option, issues, line)
                 node["condition"] = f"If the player has completed {after[1]}:"
                 return node
-    if len(templates) == 1 and str(templates[0]) == raw:
-        t = templates[0]
+    cleaned = clean(raw)
+    cleaned_templates = mw.parse(cleaned).filter_templates(recursive=False)
+    if len(cleaned_templates) == 1 and str(cleaned_templates[0]) == cleaned:
+        t = cleaned_templates[0]
         name = str(t.name).strip().lower()
         # Resolve links before clean() discards their page/section identity.
         if name in ("tact", "qact"):
@@ -479,6 +481,8 @@ def gameplay_step(node, name):
             )
             and value is not None
         }
+    if node.get("display") == "overhead":
+        result["presentation"] = "overhead"
     if node.get("steps"):
         result["steps"] = [gameplay_step(child, name) for child in node["steps"]]
     if "options" in node:

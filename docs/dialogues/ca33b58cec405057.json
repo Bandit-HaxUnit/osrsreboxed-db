@@ -595,8 +595,9 @@
     ],
     "getting-started-investigating-the-smashed-window": [
       {
-        "type": "unavailable",
-        "id": "dgu5_L"
+        "type": "message",
+        "text": "Some thread seems to have been caught on a loose nail on the window.",
+        "id": "f7SRh7"
       },
       {
         "type": "message",
@@ -1136,9 +1137,6 @@
                 "type": "line",
                 "speaker": "Frank",
                 "text": "You don't know how long it takes an inheritance to come through do you? I could really use that money pretty soon..."
-              },
-              {
-                "type": "end"
               }
             ]
           },
@@ -1157,35 +1155,28 @@
                 "type": "line",
                 "speaker": "Frank",
                 "text": "Could you spare me a few coins? I'll be able to pay you double tomorrow it's just there's this poker night tonight in town..."
+              }
+            ]
+          },
+          {
+            "text": "Do you recognise this thread?",
+            "steps": [
+              {
+                "player": "Do you recognise this thread?"
               },
               {
-                "type": "end"
+                "type": "message",
+                "text": "Frank examines the thread from the crime scene.",
+                "id": "DpR-aY"
+              },
+              {
+                "type": "line",
+                "speaker": "Frank",
+                "text": "It looks like thread to me, but I'm not exactly an expert. Is it worth something? Can I have it? Actually, can you spare me a few gold?"
               }
             ]
           }
         ]
-      },
-      {
-        "type": "unavailable",
-        "steps": [
-          {
-            "player": "Do you recognise this thread?"
-          },
-          {
-            "type": "message",
-            "text": "Frank examines the thread from the crime scene.",
-            "id": "09lMqu"
-          },
-          {
-            "type": "line",
-            "speaker": "Frank",
-            "text": "It looks like thread to me, but I'm not exactly an expert. Is it worth something? Can I have it? Actually, can you spare me a few gold?"
-          },
-          {
-            "type": "end"
-          }
-        ],
-        "id": "VSj4Ao"
       }
     ],
     "questioning-the-inhabitants-talking-to-donovan": [
@@ -3157,8 +3148,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ntj7vn"
+                "id": "ntj7vn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e75a46f8434d6116"
+                  }
+                ]
               }
             ]
           },
@@ -5130,6 +5126,24 @@
         "type": "line",
         "speaker": "Frank",
         "text": "Could you spare me a few coins? I'll be able to pay you double tomorrow it's just there's this poker night tonight in town..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e75a46f8434d6116": [
+      {
+        "player": "Do you recognise this thread?"
+      },
+      {
+        "type": "message",
+        "text": "Frank examines the thread from the crime scene.",
+        "id": "DpR-aY"
+      },
+      {
+        "type": "line",
+        "speaker": "Frank",
+        "text": "It looks like thread to me, but I'm not exactly an expert. Is it worth something? Can I have it? Actually, can you spare me a few gold?"
       },
       {
         "type": "end"
