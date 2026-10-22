@@ -312,9 +312,60 @@ def group_options(nodes, random_options=False):
                         option_nodes[-1].setdefault("steps", []).append(child)
                 i += 1
             if not option_nodes or node["type"] == "option":
-                while i < len(nodes) and nodes[i]["type"] == "option":
-                    option_nodes.append(nodes[i])
-                    i += 1
+                while i < len(nodes):
+                    sibling = nodes[i]
+                    if sibling["type"] == "option":
+                        option_nodes.append(sibling)
+                        i += 1
+                        continue
+                    if not option_nodes:
+                        break
+                    next_option = next(
+                        (
+                            index
+                            for index in range(i + 1, len(nodes))
+                            if nodes[index]["type"] == "option"
+                            or nodes[index]["type"] in ("menu", "random_marker")
+                        ),
+                        len(nodes),
+                    )
+                    between = nodes[i:next_option]
+                    if (
+                        next_option < len(nodes)
+                        and nodes[next_option]["type"] == "option"
+                        and between
+                        and all(step["type"] in ("action", "end") for step in between)
+                    ):
+                        # Some source pages put an option's action/end body at
+                        # the same bullet depth, before the next alternative.
+                        option_nodes[-1].setdefault("steps", []).extend(between)
+                        i = next_option
+                        continue
+                    option_text = str(option_nodes[-1].get("text", "")).rstrip(".!?")
+                    if (
+                        sibling.get("type") == "line"
+                        and sibling.get("speaker", "").casefold() == "player"
+                        and sibling.get("text", "").rstrip(".!?").casefold() == option_text.casefold()
+                    ):
+                        # A same-depth player echo is the option's response;
+                        # keep the continuation only until the next alternative.
+                        # Do not absorb another parent-level choice into this branch.
+                        next_control = next(
+                            (
+                                index
+                                for index in range(i + 1, len(nodes))
+                                if nodes[index]["type"]
+                                in ("option", "menu", "random_marker", "condition")
+                            ),
+                            len(nodes),
+                        )
+                        option_nodes[-1].setdefault("steps", []).extend(
+                            nodes[i:next_control]
+                        )
+                        i = next_control
+                        if i < len(nodes) and nodes[i]["type"] == "option":
+                            continue
+                    break
             for option in option_nodes:
                 group["options"].append(
                     {k: v for k, v in option.items() if k != "type"}
