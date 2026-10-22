@@ -10,6 +10,12 @@ from scripts.wiki.wiki_page_text import WikiPageText
 from scripts.wiki.wiki_page_titles import WikiPageTitles
 
 API = "https://oldschool.runescape.wiki/api.php"
+DIALOGUE_CATEGORIES = (
+    "NPC dialogue",
+    "Quest transcript",
+    "Miniquest transcript",
+)
+TRANSCRIPT_CATEGORIES = ("Quest transcript", "Miniquest transcript")
 CACHE = config.DATA_PATH / "dialogues" / "wiki-pages.json"
 QUEST_CACHE = CACHE.with_name("quest-pages.json")
 NPC_CACHE = CACHE.with_name("npc-pages.json")
@@ -121,7 +127,7 @@ def download(names, path, session, refresh=False):
 
 def fetch(refresh=False):
     categories = {}
-    for category in ("NPC dialogue", "Quest transcript"):
+    for category in DIALOGUE_CATEGORIES:
         titles = WikiPageTitles(API, [category])
         titles.extract_page_titles()
         categories[category] = {
@@ -131,14 +137,13 @@ def fetch(refresh=False):
             raise ValueError(f"{category} returned no transcripts")
     session = WikiPageText(API, "").session
     npc_names = categories["NPC dialogue"]
-    pages = download(npc_names, CACHE, session, refresh)
-    quests = download(
-        categories["Quest transcript"] - npc_names, QUEST_CACHE, session, refresh
+    transcript_names = set().union(
+        *(categories[category] for category in TRANSCRIPT_CATEGORIES)
     )
+    pages = download(npc_names, CACHE, session, refresh)
+    quests = download(transcript_names - npc_names, QUEST_CACHE, session, refresh)
     if refresh:
-        quests = download(
-            set(quests) - categories["Quest transcript"], QUEST_CACHE, session, True
-        )
+        quests = download(set(quests) - transcript_names, QUEST_CACHE, session, True)
     # Follow explicit dependencies to a fixed point. Cache missing pages too, so a
     # broken wiki link is reported once rather than retried forever.
     while True:
