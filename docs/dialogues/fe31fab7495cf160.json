@@ -1089,9 +1089,8 @@
             "text": "Dialogue 1",
             "steps": [
               {
-                "type": "line",
-                "speaker": "General Bentnoze",
-                "text": "Shut up Grubfoot!"
+                "type": "call",
+                "branch": "--XfNo"
               }
             ]
           },
@@ -1099,9 +1098,8 @@
             "text": "Dialogue 2",
             "steps": [
               {
-                "type": "line",
-                "speaker": "General Wartface",
-                "text": "Shut up Grubfoot!"
+                "type": "call",
+                "branch": "aI_sVt"
               }
             ]
           }
@@ -6891,9 +6889,8 @@
             "text": "Dialogue 1",
             "steps": [
               {
-                "type": "line",
-                "speaker": "General Bentnoze",
-                "text": "Shut up Grubfoot!"
+                "type": "call",
+                "branch": "--XfNo"
               }
             ]
           },
@@ -6901,9 +6898,8 @@
             "text": "Dialogue 2",
             "steps": [
               {
-                "type": "line",
-                "speaker": "General Wartface",
-                "text": "Shut up Grubfoot!"
+                "type": "call",
+                "branch": "aI_sVt"
               }
             ]
           }
@@ -7137,12 +7133,8 @@
             "text": "Dialogue 1",
             "steps": [
               {
-                "type": "line",
-                "speaker": "General Bentnoze",
-                "text": "Shut up Grubfoot!"
-              },
-              {
-                "type": "end"
+                "type": "call",
+                "branch": "--XfNo"
               }
             ]
           },
@@ -7150,20 +7142,12 @@
             "text": "Dialogue 2",
             "steps": [
               {
-                "type": "line",
-                "speaker": "General Wartface",
-                "text": "Shut up Grubfoot!"
-              },
-              {
-                "type": "end"
+                "type": "call",
+                "branch": "aI_sVt"
               }
             ]
           }
         ]
-      },
-      {
-        "type": "unavailable",
-        "id": "ae_Zny"
       }
     ]
   },
@@ -8225,6 +8209,20 @@
       },
       {
         "type": "end"
+      }
+    ],
+    "--XfNo": [
+      {
+        "type": "line",
+        "speaker": "General Bentnoze",
+        "text": "Shut up Grubfoot!"
+      }
+    ],
+    "aI_sVt": [
+      {
+        "type": "line",
+        "speaker": "General Wartface",
+        "text": "Shut up Grubfoot!"
       }
     ],
     "m4tico": [

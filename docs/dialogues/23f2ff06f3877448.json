@@ -244,8 +244,9 @@
         "id": "UbCs8y"
       },
       {
-        "type": "unavailable",
-        "id": "aUqdH1"
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "You did it! Now for me."
       },
       {
         "type": "message",
@@ -261,8 +262,9 @@
         "player": "What? But why? I thought you needed it!"
       },
       {
-        "type": "unavailable",
-        "id": "Qr3ajY"
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Yes! Needed it for him, but not to keep! His friend asked him to protect it, but he made a new plan, a better plan!"
       },
       {
         "player": "What are you on about?"
@@ -299,8 +301,13 @@
     "giving-the-strange-icon-if-the-player-gives-the-strange-old-man-the-icon": [
       {
         "type": "jump",
-        "reference": "above",
-        "id": "pAH6zn"
+        "id": "pAH6zn",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-888b838ee0b8a697"
+          }
+        ]
       }
     ],
     "giving-the-strange-icon-if-the-strange-old-man-destroyed-the-icon": [
@@ -309,8 +316,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "uxqlZH"
+        "id": "uxqlZH",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-000ceaa5a828dd8c"
+          }
+        ]
       }
     ],
     "giving-the-strange-icon-if-the-player-claims-the-lamp-or-map-later": [
@@ -411,17 +423,10 @@
             "steps": [
               {
                 "player": "I'll leave you to it then..."
-              },
-              {
-                "type": "end"
               }
             ]
           }
         ]
-      },
-      {
-        "type": "unavailable",
-        "id": "fNIiFe"
       }
     ]
   },
@@ -518,6 +523,106 @@
       },
       {
         "player": "I'm guessing that was a yes? In that case, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-888b838ee0b8a697": [
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "You did it! Now for me."
+      },
+      {
+        "type": "message",
+        "text": "Before you can react, the Strange Old Man casts a spell. The icon disintegrates in his hands.",
+        "id": "F5Q98i"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "It's all little bits now."
+      },
+      {
+        "player": "What? But why? I thought you needed it!"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Yes! Needed it for him, but not to keep! His friend asked him to protect it, but he made a new plan, a better plan!"
+      },
+      {
+        "player": "What are you on about?"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "The old plan is gone. We're not doing it that way. His friend won't be happy, but it was for the best!"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Now we're doing it his way..."
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Anyway, job well done! Still more digging though. Always dig. Dig, dig, dig!"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Oh, and don't forget your prize! He made it very clear you had to have a prize!"
+      },
+      {
+        "type": "message",
+        "text": "The Strange Old Man gives you a lamp and a map.",
+        "id": "ShNyAX"
+      },
+      {
+        "player": "Thanks... I guess."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-000ceaa5a828dd8c": [
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Yes! Needed it for him, but not to keep! His friend asked him to protect it, but he made a new plan, a better plan!"
+      },
+      {
+        "player": "What are you on about?"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "The old plan is gone. We're not doing it that way. His friend won't be happy, but it was for the best!"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Now we're doing it his way..."
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Anyway, job well done! Still more digging though. Always dig. Dig, dig, dig!"
+      },
+      {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "Oh, and don't forget your prize! He made it very clear you had to have a prize!"
+      },
+      {
+        "type": "message",
+        "text": "The Strange Old Man gives you a lamp and a map.",
+        "id": "ShNyAX"
+      },
+      {
+        "player": "Thanks... I guess."
       },
       {
         "type": "end"

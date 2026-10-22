@@ -12435,10 +12435,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "ba1Q60"
-        },
-        {
-          "type": "unavailable",
-          "id": "Z5b9xl"
         }
       ]
     },
@@ -16612,13 +16608,6 @@
           "action": "receive",
           "text": "4 Antique lamp (A Night at the Theatre)",
           "id": "p-P_eS"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "7IQ6Ii"
         }
       ]
     },
@@ -19331,10 +19320,6 @@
             }
           ],
           "id": "B49An4"
-        },
-        {
-          "type": "unavailable",
-          "id": "05VrVW"
         }
       ]
     },
@@ -22021,9 +22006,6 @@
           "text": "Business is business."
         },
         {
-          "type": "end"
-        },
-        {
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "sCG0ie"
@@ -22063,13 +22045,6 @@
           "type": "line",
           "speaker": "Talia",
           "text": "Well, you'll be able to adopt any puppies you bring back."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "iPy5aT"
         }
       ]
     }
@@ -23178,10 +23153,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "xHblVY"
-        },
-        {
-          "type": "unavailable",
-          "id": "J0Ps7t"
         }
       ]
     },
@@ -26128,10 +26099,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "-5euge"
-        },
-        {
-          "type": "unavailable",
-          "id": "gUCS2j"
         }
       ]
     },
@@ -28362,95 +28329,91 @@
           "text": "Hello, [player name]. You'd better get moving. Ranis will be starting his speech soon."
         },
         {
-          "type": "unavailable",
-          "steps": [
+          "type": "choice",
+          "options": [
             {
-              "type": "line",
-              "speaker": "Vertida Sefalatis",
-              "text": "Well I have made a few more. I suppose I could let you have one. I'll have to charge you though, some of this stuff isn't easy to get hold of."
-            },
-            {
-              "player": "How much?"
-            },
-            {
-              "type": "line",
-              "speaker": "Vertida Sefalatis",
-              "text": "20,000 coins should do it."
-            },
-            {
-              "type": "choice",
-              "prompt": "Buy an Ivandis Flail for 20,000 coins?",
-              "options": [
-                {
-                  "text": "Yes.",
-                  "steps": [
-                    {
-                      "player": "Sounds good to me. I'll take it."
-                    },
-                    {
-                      "type": "line",
-                      "speaker": "Vertida Sefalatis",
-                      "text": "Here you go. Put it to good use"
-                    },
-                    {
-                      "type": "condition",
-                      "text": "If the player's inventory is full:",
-                      "steps": [
-                        {
-                          "type": "line",
-                          "speaker": "Vertida Sefalatis",
-                          "text": "I'm afraid you don't have enough room for it. Come back when you do."
-                        }
-                      ],
-                      "id": "Atteou"
-                    },
-                    {
-                      "type": "end"
-                    }
-                  ]
-                },
-                {
-                  "text": "No."
-                }
-              ]
-            },
-            {
-              "type": "condition",
-              "text": "If the player has enough coins:",
+              "text": "I need another flail.",
               "steps": [
                 {
-                  "player": "That's a bit too much for me. I guess I'll make myself another one instead."
+                  "type": "line",
+                  "speaker": "Vertida Sefalatis",
+                  "text": "Well I have made a few more. I suppose I could let you have one. I'll have to charge you though, some of this stuff isn't easy to get hold of."
                 },
                 {
-                  "type": "end"
-                }
-              ],
-              "id": "Daicok"
-            },
-            {
-              "type": "condition",
-              "text": "If the player doesn't have enough coins:",
-              "steps": [
-                {
-                  "player": "I don't have that much on me."
+                  "player": "How much?"
                 },
                 {
                   "type": "line",
                   "speaker": "Vertida Sefalatis",
-                  "text": "I'll be here when you do."
+                  "text": "20,000 coins should do it."
                 },
                 {
-                  "type": "end"
+                  "type": "choice",
+                  "prompt": "Buy an Ivandis Flail for 20,000 coins?",
+                  "options": [
+                    {
+                      "text": "Yes.",
+                      "steps": [
+                        {
+                          "player": "Sounds good to me. I'll take it."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Vertida Sefalatis",
+                          "text": "Here you go. Put it to good use"
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player's inventory is full:",
+                          "steps": [
+                            {
+                              "type": "line",
+                              "speaker": "Vertida Sefalatis",
+                              "text": "I'm afraid you don't have enough room for it. Come back when you do."
+                            }
+                          ],
+                          "id": "dW0APH"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No."
+                    }
+                  ]
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player has enough coins:",
+                  "steps": [
+                    {
+                      "player": "That's a bit too much for me. I guess I'll make myself another one instead."
+                    },
+                    {
+                      "type": "end"
+                    }
+                  ],
+                  "id": "TDOJYA"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player doesn't have enough coins:",
+                  "steps": [
+                    {
+                      "player": "I don't have that much on me."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Vertida Sefalatis",
+                      "text": "I'll be here when you do."
+                    }
+                  ],
+                  "id": "oZcD9-"
                 }
-              ],
-              "id": "YRtwWI"
-            }
-          ],
-          "id": "w9HqDt"
-        },
-        {
-          "type": "choice",
-          "options": [
+              ]
+            },
             {
               "text": "Goodbye.",
               "steps": [
@@ -28780,8 +28743,13 @@
               "steps": [
                 {
                   "type": "jump",
-                  "reference": "above",
-                  "id": "CCXm5G"
+                  "id": "CCXm5G",
+                  "steps": [
+                    {
+                      "type": "call",
+                      "branch": "jump-376d0e0a3ca4ab64"
+                    }
+                  ]
                 }
               ]
             },
@@ -28812,10 +28780,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "4unz2S"
-        },
-        {
-          "type": "unavailable",
-          "id": "bQ7MeV"
         }
       ]
     },
@@ -29046,6 +29010,89 @@
         },
         {
           "type": "end"
+        }
+      ],
+      "jump-376d0e0a3ca4ab64": [
+        {
+          "type": "line",
+          "speaker": "Vertida Sefalatis",
+          "text": "Well I have made a few more. I suppose I could let you have one. I'll have to charge you though, some of this stuff isn't easy to get hold of."
+        },
+        {
+          "player": "How much?"
+        },
+        {
+          "type": "line",
+          "speaker": "Vertida Sefalatis",
+          "text": "20,000 coins should do it."
+        },
+        {
+          "type": "choice",
+          "prompt": "Buy an Ivandis Flail for 20,000 coins?",
+          "options": [
+            {
+              "text": "Yes.",
+              "steps": [
+                {
+                  "player": "Sounds good to me. I'll take it."
+                },
+                {
+                  "type": "line",
+                  "speaker": "Vertida Sefalatis",
+                  "text": "Here you go. Put it to good use"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player's inventory is full:",
+                  "steps": [
+                    {
+                      "type": "line",
+                      "speaker": "Vertida Sefalatis",
+                      "text": "I'm afraid you don't have enough room for it. Come back when you do."
+                    }
+                  ],
+                  "id": "dW0APH"
+                },
+                {
+                  "type": "end"
+                }
+              ]
+            },
+            {
+              "text": "No."
+            }
+          ]
+        },
+        {
+          "type": "condition",
+          "text": "If the player has enough coins:",
+          "steps": [
+            {
+              "player": "That's a bit too much for me. I guess I'll make myself another one instead."
+            },
+            {
+              "type": "end"
+            }
+          ],
+          "id": "TDOJYA"
+        },
+        {
+          "type": "condition",
+          "text": "If the player doesn't have enough coins:",
+          "steps": [
+            {
+              "player": "I don't have that much on me."
+            },
+            {
+              "type": "line",
+              "speaker": "Vertida Sefalatis",
+              "text": "I'll be here when you do."
+            },
+            {
+              "type": "end"
+            }
+          ],
+          "id": "oZcD9-"
         }
       ]
     }
@@ -53495,13 +53542,6 @@
             }
           ],
           "id": "uU4Wlj"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "C9xfHO"
         }
       ]
     },
@@ -57701,10 +57741,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "jiiizC"
-        },
-        {
-          "type": "unavailable",
-          "id": "ovRwNO"
         }
       ]
     },
@@ -74424,13 +74460,6 @@
           "type": "line",
           "speaker": "Guildmaster Apatura",
           "text": "Actually... I think I'll just read the report."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "f9Vgf2"
         }
       ]
     },
@@ -78062,7 +78091,7 @@
                                                       "type": "end"
                                                     }
                                                   ],
-                                                  "id": "Z3Q-uY"
+                                                  "id": "Mq6nku"
                                                 },
                                                 {
                                                   "type": "condition",
@@ -78072,7 +78101,7 @@
                                                       "npc": "Her house is south east of here."
                                                     }
                                                   ],
-                                                  "id": "cH-MBo"
+                                                  "id": "r5n0QE"
                                                 }
                                               ]
                                             }
@@ -78089,7 +78118,7 @@
                                       ]
                                     }
                                   ],
-                                  "npc": "Do you want me to point you in the right direction? {{Anchor|below}}"
+                                  "npc": "Do you want me to point you in the right direction?"
                                 }
                               ],
                               "id": "h247BQ"
@@ -91369,10 +91398,6 @@
               "text": "I'd better get going."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "3LMe8f"
         }
       ]
     },
@@ -101940,13 +101965,6 @@
         },
         {
           "player": "Oh what a shame! Poor Marley's going to starve as he doesn't have anyone to make his sandwiches... So sad."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "ry5OXx"
         }
       ]
     },
@@ -106936,10 +106954,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "am2Oh5"
-        },
-        {
-          "type": "unavailable",
-          "id": "-FpJdi"
         }
       ]
     },
@@ -109642,48 +109656,8 @@
               "text": "Can you tell me more about the library?",
               "steps": [
                 {
-                  "player": "Can you tell me more about the library?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Why, certainly, it is one of my favourite subjects!"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "I am Hugi, you see, I am the chief librarian here. Hugi, my parents named me that, it means 'personification of thought' in the ancient dwarvish tongue."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Quite like the name myself."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "The books in this library have been collected for many centuries now, through various generous donations."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "You'll find books dating from many different eras as well, such as the Era of Kings, the Rise of the Consortium and the Era of Prosperity, our current era."
-                },
-                {
-                  "player": "How do these eras correspond with the Ages of the world?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Oh, they are quite different, and most of them take place in the Fourth Age."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Since we dwarves hid underground for a long time to sit out the wars that raged above the ground our history books differ slightly from those written by humans."
-                },
-                {
-                  "player": "Thanks for the information!"
+                  "type": "call",
+                  "branch": "w2Syui"
                 }
               ]
             },
@@ -112399,51 +112373,8 @@
               "text": "Can you tell me more about the library?",
               "steps": [
                 {
-                  "player": "Can you tell me more about the library?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Why, certainly, it is one of my favourite subjects!"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "I am Hugi, you see, I am the chief librarian here. Hugi, my parents named me that, it means 'personification of thought' in the ancient dwarvish tongue."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Quite like the name myself."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "The books in this library have been collected for many centuries now, through various generous donations."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "You'll find books dating from many different eras as well, such as the Era of Kings, the Rise of the Consortium and the Era of Prosperity, our current era."
-                },
-                {
-                  "player": "How do these eras correspond with the Ages of the world?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Oh, they are quite different, and most of them take place in the Fourth Age."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Librarian",
-                  "text": "Since we dwarves hid underground for a long time to sit out the wars that raged above the ground our history books differ slightly from those written by humans."
-                },
-                {
-                  "player": "Thanks for the information!"
-                },
-                {
-                  "type": "end"
+                  "type": "call",
+                  "branch": "w2Syui"
                 }
               ]
             },
@@ -112506,17 +112437,10 @@
                   "type": "line",
                   "speaker": "Librarian",
                   "text": "No, we won't see him again and the mines are safe to dig for gold now. Of course, that might lead to other problems eventually..."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "C6gP_u"
         }
       ]
     },
@@ -112568,6 +112492,52 @@
         },
         {
           "type": "end"
+        }
+      ],
+      "w2Syui": [
+        {
+          "player": "Can you tell me more about the library?"
+        },
+        {
+          "type": "line",
+          "speaker": "Librarian",
+          "text": "Why, certainly, it is one of my favourite subjects!"
+        },
+        {
+          "type": "line",
+          "speaker": "Librarian",
+          "text": "I am Hugi, you see, I am the chief librarian here. Hugi, my parents named me that, it means 'personification of thought' in the ancient dwarvish tongue."
+        },
+        {
+          "type": "line",
+          "speaker": "Librarian",
+          "text": "Quite like the name myself."
+        },
+        {
+          "type": "line",
+          "speaker": "Librarian",
+          "text": "The books in this library have been collected for many centuries now, through various generous donations."
+        },
+        {
+          "type": "line",
+          "speaker": "Librarian",
+          "text": "You'll find books dating from many different eras as well, such as the Era of Kings, the Rise of the Consortium and the Era of Prosperity, our current era."
+        },
+        {
+          "player": "How do these eras correspond with the Ages of the world?"
+        },
+        {
+          "type": "line",
+          "speaker": "Librarian",
+          "text": "Oh, they are quite different, and most of them take place in the Fourth Age."
+        },
+        {
+          "type": "line",
+          "speaker": "Librarian",
+          "text": "Since we dwarves hid underground for a long time to sit out the wars that raged above the ground our history books differ slightly from those written by humans."
+        },
+        {
+          "player": "Thanks for the information!"
         }
       ],
       "-a5r0Z": [
@@ -114350,10 +114320,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "cmDp4e"
-        },
-        {
-          "type": "unavailable",
-          "id": "Di5Utg"
         }
       ]
     },
@@ -118345,13 +118311,6 @@
         },
         {
           "player": "Good for you."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "5YLcuY"
         }
       ]
     },
@@ -119254,10 +119213,6 @@
         {
           "type": "unavailable",
           "id": "rl89Tj"
-        },
-        {
-          "type": "unavailable",
-          "id": "kTdseX"
         }
       ]
     },
@@ -128384,13 +128339,6 @@
           "type": "line",
           "speaker": "Junior Navigator",
           "text": "Here, take this journal so you can keep track of your discoveries. Base camp is being set up on shore, let me know if you'd like to head there."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "zfbZg1"
         }
       ]
     },
@@ -141166,13 +141114,6 @@
           "type": "action",
           "text": "(The player is awarded 10,000 coins.)",
           "id": "RMIMnr"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "vU0QkY"
         }
       ]
     },
@@ -166738,10 +166679,6 @@
               "branch": "jump-45646d6bd7c3f59b"
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "Uph5kG"
         }
       ]
     },
@@ -172724,9 +172661,6 @@
                       "steps": [
                         {
                           "player": "Goodbye."
-                        },
-                        {
-                          "type": "end"
                         }
                       ]
                     }
@@ -172808,10 +172742,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "rd2IZ9"
         }
       ]
     },
@@ -175345,10 +175275,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "ihG17v"
-        },
-        {
-          "type": "unavailable",
-          "id": "jYEVd9"
         }
       ]
     }
@@ -178971,10 +178897,6 @@
           "type": "message",
           "text": "The Ice Lords prevent your escape.",
           "id": "ksMz-J"
-        },
-        {
-          "type": "unavailable",
-          "id": "iOYuKW"
         }
       ]
     },
@@ -182676,10 +182598,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "5AdqF8"
-        },
-        {
-          "type": "unavailable",
-          "id": "oaJA1x"
         }
       ]
     },
@@ -184619,19 +184537,12 @@
                   "type": "line",
                   "speaker": "Cook",
                   "text": "Maybe, but I won't be holding my breath."
-                },
-                {
-                  "type": "end"
                 }
               ],
               "id": "_FB4HO"
             }
           ],
           "id": "ZJGbmd"
-        },
-        {
-          "type": "unavailable",
-          "id": "pqY-5o"
         }
       ]
     },
@@ -192950,13 +192861,6 @@
           "type": "message",
           "text": "As you look at the bottle, you notice familiar shells nearby. You collect them.",
           "id": "Uf9RIo"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "OuNyCc"
         }
       ]
     },
@@ -196850,13 +196754,6 @@
           "type": "line",
           "speaker": "Dr Fenkenstrain",
           "text": "theyrecomingtogetme theyrecomingtogetme..."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "2gZ-P8"
         }
       ]
     },
@@ -202748,9 +202645,6 @@
                   "type": "message",
                   "text": "The Sailing skill will release on the 19th November.",
                   "id": "vxSB15"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -202769,18 +202663,8 @@
                       "text": "I don't suppose I could get a lift anywhere?",
                       "steps": [
                         {
-                          "player": "I don't suppose I could get a lift anywhere?"
-                        },
-                        {
-                          "type": "line",
-                          "speaker": "Arhein",
-                          "text": "Sorry, but that's not the kind of service I offer. Why not try the charter ship?"
-                        },
-                        {
-                          "player": "I might do that. Thanks."
-                        },
-                        {
-                          "type": "end"
+                          "type": "call",
+                          "branch": "RLjlSW"
                         }
                       ]
                     },
@@ -202788,15 +202672,8 @@
                       "text": "I see. Well, I'd best be off.",
                       "steps": [
                         {
-                          "player": "I see. Well, I'd best be off."
-                        },
-                        {
-                          "type": "line",
-                          "speaker": "Arhein",
-                          "text": "Until next time!"
-                        },
-                        {
-                          "type": "end"
+                          "type": "call",
+                          "branch": "CoIBiI"
                         }
                       ]
                     }
@@ -202809,17 +202686,10 @@
               "steps": [
                 {
                   "player": "I'd best be off."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "HgNgLz"
         }
       ]
     },
@@ -213273,13 +213143,6 @@
           "type": "line",
           "speaker": "Veliaf Hurtz",
           "text": "Don't worry, we will. Myreque prevail."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "lEE1xt"
         }
       ]
     },
@@ -219974,10 +219837,6 @@
             }
           ],
           "id": "4jsH6P"
-        },
-        {
-          "type": "unavailable",
-          "id": "T15qQt"
         }
       ]
     },
@@ -225309,25 +225168,14 @@
                 },
                 {
                   "player": "Gulp*"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
             {
               "text": "No.",
-              "steps": [
-                {
-                  "type": "end"
-                }
-              ]
+              "steps": []
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "z_Roq6"
         }
       ]
     },
@@ -234761,16 +234609,9 @@
               "type": "message",
               "text": "Zanik gives you a torch so you can see.",
               "id": "TrYWPj"
-            },
-            {
-              "type": "end"
             }
           ],
           "id": "tDGde4"
-        },
-        {
-          "type": "unavailable",
-          "id": "HwCvAS"
         }
       ]
     },
@@ -240803,13 +240644,6 @@
           "type": "line",
           "speaker": "Elias White",
           "text": "Until next time."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "FWKN8S"
         }
       ]
     },
@@ -244562,10 +244396,6 @@
             }
           ],
           "id": "wZlZDa"
-        },
-        {
-          "type": "unavailable",
-          "id": "linz3c"
         }
       ]
     },
@@ -252857,13 +252687,6 @@
           "type": "line",
           "speaker": "Eblis",
           "text": "Greetings. I await the return of my Lord Azzanadra and of our god. I do not know why, but I feel this spot has some significance..."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "XZk7eh"
         }
       ]
     },
@@ -261872,9 +261695,6 @@
           "text": "And on that note, I must leave you, my friend. May you walk in the shadow of the Empty Lord."
         },
         {
-          "type": "end"
-        },
-        {
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "xGIiPZ"
@@ -262847,10 +262667,6 @@
               "text": "More options..."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "Xcnapw"
         }
       ]
     },
@@ -264911,10 +264727,6 @@
               "text": "Something else."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "7ncsJT"
         }
       ]
     }
@@ -274255,10 +274067,6 @@
           "type": "action",
           "text": "Quest complete!",
           "id": "M4gVPX"
-        },
-        {
-          "type": "unavailable",
-          "id": "JbK3wS"
         }
       ]
     },
@@ -279275,10 +279083,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "0KEI_n"
-        },
-        {
-          "type": "unavailable",
-          "id": "nyktLE"
         }
       ]
     },
@@ -286631,10 +286435,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "b5j1wa"
-        },
-        {
-          "type": "unavailable",
-          "id": "3HE9rr"
         }
       ]
     },
@@ -292394,17 +292194,9 @@
             },
             {
               "text": "Nothing.",
-              "steps": [
-                {
-                  "type": "end"
-                }
-              ]
+              "steps": []
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "OHRBxK"
         }
       ]
     },
@@ -294057,10 +293849,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "0QWHJ-"
-        },
-        {
-          "type": "unavailable",
-          "id": "P-cBRK"
         }
       ]
     },
@@ -300181,10 +299969,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "c8LrCL"
-        },
-        {
-          "type": "unavailable",
-          "id": "4KLP9H"
         }
       ]
     }
@@ -303397,65 +303181,8 @@
               "text": "Ask about Sanfew Serum.",
               "steps": [
                 {
-                  "player": "Hey there, can you tell me something about this Sanfew Serum, like how do I make it, and what does it do?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "Certainly. It was after all, my creation, and mine alone. If anyone should know how to make it, it should be me!"
-                },
-                {
-                  "player": "Can't fault that logic!"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "Ok, essentially this potion is a mixture of a cure poison, cure disease and restore stats all rolled into one! Very handy for the adventurers with an eye on conserving inventory space."
-                },
-                {
-                  "player": "Ok, I'm sold... How do you make it?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "Well, it's very easy really. You take a standard super stat restore potion. Add some ground unicorn horn. Then, add some snake weed from the island of Karamja. Finally, add some nail beast nails. You can"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "only get these from the area of Morytania, specifically, if you go deep in the Mort Myre swamp."
-                },
-                {
-                  "player": "How do you mean, deep into the Mort Myre swamp?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "Well, most adventurers avoid the deep Mort Myre swamp, whereas the Paterdomus trek and the Burgh de Rott trek take you through the most interesting areas. These area's often allow the quickest, but potentially"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "more dangerous routes through Mort Myre. This is where you're likely to encounter a Nail beast."
-                },
-                {
-                  "player": "Are they very dangerous?"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "They can be pretty dangerous. They'll defend for a long time, then attack suddenly and seemingly without warning, landing three viscious attacks at once. This can be pretty lethal. However, the nail beasts themselves"
-                },
-                {
-                  "type": "line",
-                  "speaker": "Sanfew",
-                  "text": "are curiously wounded from the Sanfew Serum itself...very bizzare, that a potion made from their claws should have such a pronounced effect on them."
-                },
-                {
-                  "player": "Ok, that's very helpful. Many thanks for your assistance."
-                },
-                {
-                  "type": "end"
+                  "type": "call",
+                  "branch": "DuJqJM"
                 }
               ]
             },
@@ -303475,9 +303202,6 @@
                           "type": "line",
                           "speaker": "Sanfew",
                           "text": "Ah, good. Here are some herbs in exchange."
-                        },
-                        {
-                          "type": "end"
                         }
                       ]
                     },
@@ -303491,9 +303215,6 @@
                           "type": "line",
                           "speaker": "Sanfew",
                           "text": "Well, not right now I don't think young 'un. In fact, I need to make some more preparations myself for the ritual. Rest assured, if I need any more help I will ask you again."
-                        },
-                        {
-                          "type": "end"
                         }
                       ]
                     },
@@ -303517,10 +303238,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "qCYdzK"
         }
       ]
     },
@@ -305358,10 +305075,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "YUPVwJ"
-        },
-        {
-          "type": "unavailable",
-          "id": "IgCDLr"
         }
       ]
     },
@@ -312412,10 +312125,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "f0-q02"
-        },
-        {
-          "type": "unavailable",
-          "id": "hsD8y_"
         }
       ]
     }
@@ -312882,10 +312591,6 @@
           "type": "action",
           "text": "Quest completion scroll appears",
           "id": "lIjXJa"
-        },
-        {
-          "type": "unavailable",
-          "id": "INdbke"
         }
       ]
     }
@@ -324361,9 +324066,6 @@
                           "steps": [
                             {
                               "player": "Okay, here's one million coins."
-                            },
-                            {
-                              "type": "end"
                             }
                           ]
                         },
@@ -324377,9 +324079,6 @@
                               "type": "line",
                               "speaker": "Lazim",
                               "text": "Your loss."
-                            },
-                            {
-                              "type": "end"
                             }
                           ]
                         }
@@ -324392,9 +324091,6 @@
                   "steps": [
                     {
                       "player": "Maybe another time."
-                    },
-                    {
-                      "type": "end"
                     }
                   ]
                 }
@@ -324402,10 +324098,6 @@
             }
           ],
           "id": "DSFW44"
-        },
-        {
-          "type": "unavailable",
-          "id": "tK8mW6"
         }
       ]
     },
@@ -327873,9 +327565,6 @@
               "steps": [
                 {
                   "player": "No."
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -327909,17 +327598,10 @@
                   "type": "line",
                   "speaker": "Auguste",
                   "text": "You can release the balloon and watch it float in the air, just use a tinderbox on it."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "f4w0LP"
         }
       ]
     },
@@ -330812,10 +330494,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "2wle32"
-        },
-        {
-          "type": "unavailable",
-          "id": "ENYUDq"
         }
       ]
     }
@@ -338031,9 +337709,6 @@
                       "steps": [
                         {
                           "player": "I'd better get going. Thanks again."
-                        },
-                        {
-                          "type": "end"
                         }
                       ]
                     }
@@ -338116,17 +337791,10 @@
               "steps": [
                 {
                   "player": "Thanks. If I have any questions, I'll be sure to ask."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "FdCw-Z"
         }
       ]
     },
@@ -345550,10 +345218,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "Z_ZWiI"
-        },
-        {
-          "type": "unavailable",
-          "id": "iJQUl9"
         }
       ]
     },
@@ -347185,10 +346849,6 @@
             }
           ],
           "id": "e2I60y"
-        },
-        {
-          "type": "unavailable",
-          "id": "9SX0L1"
         }
       ]
     },
@@ -349200,10 +348860,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "gYcOjH"
-        },
-        {
-          "type": "unavailable",
-          "id": "RgQL4c"
         }
       ]
     },
@@ -351404,9 +351060,6 @@
                   "type": "message",
                   "text": "Johnathon takes your gauntlets from you, and begins a low chant over them. You see them begin to glow and sparkle, before he returns them to you.",
                   "id": "oicU8Z"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -351420,17 +351073,10 @@
                   "type": "line",
                   "speaker": "Johnathon",
                   "text": "I doubt they will offer anything as useful as my magical boost, but as you wish."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "8W_Fb5"
         }
       ]
     },
@@ -364178,10 +363824,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "aAxtbU"
-        },
-        {
-          "type": "unavailable",
-          "id": "1W9xOx"
         }
       ]
     }
@@ -370500,13 +370142,6 @@
         },
         {
           "player": "Excellent. That will come in most handy."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "8UzcAu"
         }
       ]
     },
@@ -376254,13 +375889,6 @@
           "type": "line",
           "speaker": "Commander Veldaban",
           "text": "I suppose we'll just have to wait and see what happens."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "g6drr9"
         }
       ]
     },
@@ -398953,9 +398581,6 @@
                   "type": "line",
                   "speaker": "Queen Ellamaria",
                   "text": "You wish to know how to use it? Pour it on some normal compost and it will transform into supercompost. You can do this with a bucket of compost, although it is possibly wiser to use it on a full compost bin."
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -398977,17 +398602,10 @@
                   "type": "line",
                   "speaker": "Queen Ellamaria",
                   "text": "Impertinent peasant! Oh, if you promise to leave one alone then feel free to pick fruit from the White Tree. One is told that they are a great natural energy restorative."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "nlpZOV"
         }
       ]
     },
@@ -411637,10 +411255,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "Rf4BAK"
-        },
-        {
-          "type": "unavailable",
-          "id": "tBDGIA"
         }
       ]
     }
@@ -412981,10 +412595,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "FcajVO"
-        },
-        {
-          "type": "unavailable",
-          "id": "xr2Llv"
         }
       ]
     },
@@ -420601,13 +420211,6 @@
           "type": "line",
           "speaker": "Old crone",
           "text": "So Necrovarus has let the ghosts go free.... You have achieved many wonderful things, my young friend."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "gnE8TF"
         }
       ]
     },
@@ -431515,16 +431118,9 @@
               "type": "message",
               "text": "Congratulations, you've completed a quest: Goblin Diplomacy",
               "id": "QqWnqy"
-            },
-            {
-              "type": "end"
             }
           ],
           "id": "IEyrMp"
-        },
-        {
-          "type": "unavailable",
-          "id": "nknda9"
         }
       ]
     },
@@ -440330,9 +439926,6 @@
           "id": "6Cn2LG"
         },
         {
-          "type": "end"
-        },
-        {
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "kDhVWf"
@@ -440351,13 +439944,6 @@
           "type": "line",
           "speaker": "Sylas",
           "text": "Great work, [player name]. Now, I have something for you, but you're going to need a space in your inventory. Speak to me again when you have made some room."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "b4q8E4"
         }
       ]
     },
@@ -464736,10 +464322,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "mFurEC"
-        },
-        {
-          "type": "unavailable",
-          "id": "Wa-pGF"
         }
       ]
     },
@@ -467580,16 +467162,9 @@
               "type": "line",
               "speaker": "Alomone",
               "text": "You must find it and bring it to me! Hazeel has already waited far too long for his return."
-            },
-            {
-              "type": "end"
             }
           ],
           "id": "MEEBFM"
-        },
-        {
-          "type": "unavailable",
-          "id": "ZhqHcd"
         }
       ]
     },
@@ -474075,10 +473650,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "AVQOM4"
-        },
-        {
-          "type": "unavailable",
-          "id": "BR6QB5"
         }
       ]
     },
@@ -477033,8 +476604,9 @@
           "id": "UbCs8y"
         },
         {
-          "type": "unavailable",
-          "id": "aUqdH1"
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "You did it! Now for me."
         },
         {
           "type": "message",
@@ -477050,8 +476622,9 @@
           "player": "What? But why? I thought you needed it!"
         },
         {
-          "type": "unavailable",
-          "id": "Qr3ajY"
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Yes! Needed it for him, but not to keep! His friend asked him to protect it, but he made a new plan, a better plan!"
         },
         {
           "player": "What are you on about?"
@@ -477088,8 +476661,13 @@
       "giving-the-strange-icon-if-the-player-gives-the-strange-old-man-the-icon": [
         {
           "type": "jump",
-          "reference": "above",
-          "id": "pAH6zn"
+          "id": "pAH6zn",
+          "steps": [
+            {
+              "type": "call",
+              "branch": "jump-888b838ee0b8a697"
+            }
+          ]
         }
       ],
       "giving-the-strange-icon-if-the-strange-old-man-destroyed-the-icon": [
@@ -477098,8 +476676,13 @@
         },
         {
           "type": "jump",
-          "reference": "above",
-          "id": "uxqlZH"
+          "id": "uxqlZH",
+          "steps": [
+            {
+              "type": "call",
+              "branch": "jump-000ceaa5a828dd8c"
+            }
+          ]
         }
       ],
       "giving-the-strange-icon-if-the-player-claims-the-lamp-or-map-later": [
@@ -477200,17 +476783,10 @@
               "steps": [
                 {
                   "player": "I'll leave you to it then..."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "fNIiFe"
         }
       ]
     },
@@ -477307,6 +476883,106 @@
         },
         {
           "player": "I'm guessing that was a yes? In that case, thanks."
+        },
+        {
+          "type": "end"
+        }
+      ],
+      "jump-888b838ee0b8a697": [
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "You did it! Now for me."
+        },
+        {
+          "type": "message",
+          "text": "Before you can react, the Strange Old Man casts a spell. The icon disintegrates in his hands.",
+          "id": "F5Q98i"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "It's all little bits now."
+        },
+        {
+          "player": "What? But why? I thought you needed it!"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Yes! Needed it for him, but not to keep! His friend asked him to protect it, but he made a new plan, a better plan!"
+        },
+        {
+          "player": "What are you on about?"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "The old plan is gone. We're not doing it that way. His friend won't be happy, but it was for the best!"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Now we're doing it his way..."
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Anyway, job well done! Still more digging though. Always dig. Dig, dig, dig!"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Oh, and don't forget your prize! He made it very clear you had to have a prize!"
+        },
+        {
+          "type": "message",
+          "text": "The Strange Old Man gives you a lamp and a map.",
+          "id": "ShNyAX"
+        },
+        {
+          "player": "Thanks... I guess."
+        },
+        {
+          "type": "end"
+        }
+      ],
+      "jump-000ceaa5a828dd8c": [
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Yes! Needed it for him, but not to keep! His friend asked him to protect it, but he made a new plan, a better plan!"
+        },
+        {
+          "player": "What are you on about?"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "The old plan is gone. We're not doing it that way. His friend won't be happy, but it was for the best!"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Now we're doing it his way..."
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Anyway, job well done! Still more digging though. Always dig. Dig, dig, dig!"
+        },
+        {
+          "type": "line",
+          "speaker": "Strange Old Man",
+          "text": "Oh, and don't forget your prize! He made it very clear you had to have a prize!"
+        },
+        {
+          "type": "message",
+          "text": "The Strange Old Man gives you a lamp and a map.",
+          "id": "ShNyAX"
+        },
+        {
+          "player": "Thanks... I guess."
         },
         {
           "type": "end"
@@ -481493,10 +481169,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "MtgzHp"
-        },
-        {
-          "type": "unavailable",
-          "id": "BlxTcg"
         }
       ]
     },
@@ -485027,13 +484699,6 @@
           "type": "line",
           "speaker": "Jossik",
           "text": "Bring it to my library, it looks familiar somehow..."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "Tn0jWx"
         }
       ]
     },
@@ -492705,13 +492370,6 @@
       "finishing-up-trying-to-enter-the-pyramid-after-the-quest": [
         {
           "player": "I think it would be best if I stayed out of this tomb after what happened last time."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "UWoqBY"
         }
       ]
     },
@@ -496850,10 +496508,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "2TvFXa"
-        },
-        {
-          "type": "unavailable",
-          "id": "MZ6w5-"
         }
       ]
     }
@@ -501952,10 +501606,6 @@
             }
           ],
           "id": "io8V2U"
-        },
-        {
-          "type": "unavailable",
-          "id": "JDyyMt"
         }
       ]
     },
@@ -505783,13 +505433,6 @@
         },
         {
           "player": "I definitely have!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "9sQzxV"
         }
       ]
     },
@@ -522971,17 +522614,10 @@
                   "type": "line",
                   "speaker": "Trufitus",
                   "text": "I really need that Rogues Purse if I am to make this potion."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "JUuYkS"
         }
       ]
     },
@@ -538020,13 +537656,6 @@
           "type": "action",
           "text": "Merlin disappears.",
           "id": "m-G6rt"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "-tbsfY"
         }
       ]
     },
@@ -549673,9 +549302,8 @@
               "text": "Dialogue 1",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "General Bentnoze",
-                  "text": "Shut up Grubfoot!"
+                  "type": "call",
+                  "branch": "--XfNo"
                 }
               ]
             },
@@ -549683,9 +549311,8 @@
               "text": "Dialogue 2",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "General Wartface",
-                  "text": "Shut up Grubfoot!"
+                  "type": "call",
+                  "branch": "aI_sVt"
                 }
               ]
             }
@@ -555475,9 +555102,8 @@
               "text": "Dialogue 1",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "General Bentnoze",
-                  "text": "Shut up Grubfoot!"
+                  "type": "call",
+                  "branch": "--XfNo"
                 }
               ]
             },
@@ -555485,9 +555111,8 @@
               "text": "Dialogue 2",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "General Wartface",
-                  "text": "Shut up Grubfoot!"
+                  "type": "call",
+                  "branch": "aI_sVt"
                 }
               ]
             }
@@ -555721,12 +555346,8 @@
               "text": "Dialogue 1",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "General Bentnoze",
-                  "text": "Shut up Grubfoot!"
-                },
-                {
-                  "type": "end"
+                  "type": "call",
+                  "branch": "--XfNo"
                 }
               ]
             },
@@ -555734,20 +555355,12 @@
               "text": "Dialogue 2",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "General Wartface",
-                  "text": "Shut up Grubfoot!"
-                },
-                {
-                  "type": "end"
+                  "type": "call",
+                  "branch": "aI_sVt"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "ae_Zny"
         }
       ]
     },
@@ -556809,6 +556422,20 @@
         },
         {
           "type": "end"
+        }
+      ],
+      "--XfNo": [
+        {
+          "type": "line",
+          "speaker": "General Bentnoze",
+          "text": "Shut up Grubfoot!"
+        }
+      ],
+      "aI_sVt": [
+        {
+          "type": "line",
+          "speaker": "General Wartface",
+          "text": "Shut up Grubfoot!"
         }
       ],
       "m4tico": [
@@ -581308,17 +580935,10 @@
                   "type": "line",
                   "speaker": "Radimus Erkle",
                   "text": "Now, please excuse me for a while. I have other matters to attend to. Do feel free to explore the rest of the building."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "9czPfN"
         }
       ]
     },
@@ -599498,13 +599118,6 @@
           "type": "message",
           "text": "With the Tree Spirit defeated you can now chop the tree.",
           "id": "beh6bP"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "q7vZqx"
         }
       ]
     },
@@ -600637,7 +600250,7 @@
                                   "id": "mOoDmN"
                                 },
                                 {
-                                  "npc": "Do you want me to point you in the right direction? {{Anchor|below}}",
+                                  "npc": "Do you want me to point you in the right direction?",
                                   "steps": [
                                     {
                                       "type": "choice",
@@ -600659,7 +600272,7 @@
                                                       "type": "end"
                                                     }
                                                   ],
-                                                  "id": "h0cKF0"
+                                                  "id": "_NaTo9"
                                                 },
                                                 {
                                                   "type": "condition",
@@ -600672,7 +600285,7 @@
                                                       "type": "end"
                                                     }
                                                   ],
-                                                  "id": "_JOGEQ"
+                                                  "id": "uKmGHz"
                                                 },
                                                 {
                                                   "type": "condition",
@@ -600682,7 +600295,7 @@
                                                       "npc": "Her house is east of here."
                                                     }
                                                   ],
-                                                  "id": "behsaq"
+                                                  "id": "lCAr4e"
                                                 }
                                               ]
                                             }
@@ -616645,9 +616258,6 @@
                     }
                   ],
                   "id": "dzXdii"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -616658,10 +616268,6 @@
               "text": "Ask about anything else."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "knZcic"
         }
       ]
     },
@@ -621230,13 +620836,6 @@
           "type": "line",
           "speaker": "Kolodion",
           "text": "You may currently have a Saradomin cape, a Guthix cape and a Zamorak cape imbued, just hand over the cape when you're ready."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "kMmyeA"
         }
       ]
     },
@@ -626905,10 +626504,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "d0d9eU"
-        },
-        {
-          "type": "unavailable",
-          "id": "raNwAi"
         }
       ]
     },
@@ -629698,13 +629293,6 @@
           "type": "action",
           "text": "Drolak disappears.",
           "id": "tsNvdU"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "izap_T"
         }
       ]
     },
@@ -641863,13 +641451,6 @@
         },
         {
           "player": "Right..."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "ZntBH2"
         }
       ]
     },
@@ -649271,10 +648852,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "pVUc-a"
-        },
-        {
-          "type": "unavailable",
-          "id": "Jep8LN"
         }
       ]
     },
@@ -657746,13 +657323,6 @@
         },
         {
           "player": "You too, Mandy."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "QmGBZH"
         }
       ]
     },
@@ -660449,13 +660019,6 @@
           "type": "line",
           "speaker": "Monk",
           "text": "hic* What a party! Wow!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "TCuJEN"
         }
       ]
     },
@@ -667344,13 +666907,6 @@
           "type": "line",
           "speaker": "Waymottin",
           "text": "But if you ever lose your sigil, let me know."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "Mm_OKC"
         }
       ]
     },
@@ -670296,13 +669852,6 @@
         },
         {
           "player": "Thank you, King Narnode!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "slY1n-"
         }
       ]
     },
@@ -676050,9 +675599,6 @@
                   "type": "message",
                   "text": "You take back your helmet of the bearman.",
                   "id": "n7WQai"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -676066,9 +675612,6 @@
                   "type": "line",
                   "speaker": "Hamal the Chieftain",
                   "text": "Safe journey, outerlander."
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -676191,10 +675734,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "wh4kht"
         }
       ]
     },
@@ -679591,9 +679130,6 @@
                   "type": "line",
                   "speaker": "Arianwyn",
                   "text": "Thank you friend. Don't forget your disguise."
-                },
-                {
-                  "type": "end"
                 }
               ],
               "hook": "quest:mourning-s-end-part-ii:start",
@@ -679609,10 +679145,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "UCYUYh"
         }
       ]
     },
@@ -680775,10 +680307,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "uE8R1r"
-        },
-        {
-          "type": "unavailable",
-          "id": "JvhS0P"
         }
       ]
     },
@@ -687371,9 +686899,8 @@
       ],
       "post-quest-talking-to-the-poison-salesman-after-the-quest": [
         {
-          "type": "line",
-          "speaker": "Poison Salesman",
-          "text": "I hear you're pretty smart to have solved the Sinclair Murder!"
+          "type": "call",
+          "branch": "8fmmtT"
         }
       ],
       "post-quest-talking-to-the-poison-salesman-after-the-quest-if-the-player-has-progress-in-fremennik-trials": [
@@ -687384,12 +686911,8 @@
               "text": "Talk about the Murder Mystery Quest",
               "steps": [
                 {
-                  "type": "line",
-                  "speaker": "Poison Salesman",
-                  "text": "I hear you're pretty smart to have solved the Sinclair Murder!"
-                },
-                {
-                  "type": "end"
+                  "type": "call",
+                  "branch": "8fmmtT"
                 }
               ]
             },
@@ -687397,10 +686920,6 @@
               "text": "Talk about the Fremennik Trials"
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "Rbb44U"
         }
       ]
     },
@@ -688326,6 +687845,13 @@
         },
         {
           "type": "end"
+        }
+      ],
+      "8fmmtT": [
+        {
+          "type": "line",
+          "speaker": "Poison Salesman",
+          "text": "I hear you're pretty smart to have solved the Sinclair Murder!"
         }
       ]
     }
@@ -693744,13 +693270,6 @@
           "type": "message",
           "text": "Congratulations, you've completed a quest: My Arm's Big Adventure",
           "id": "Q3LdZt"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "2F4as_"
         }
       ]
     },
@@ -701894,10 +701413,6 @@
           "type": "message",
           "text": "This spirit seems to be busy.",
           "id": "iue0Gw"
-        },
-        {
-          "type": "unavailable",
-          "id": "5exxjD"
         }
       ]
     },
@@ -717111,9 +716626,6 @@
                       ]
                     }
                   ]
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -717121,10 +716633,6 @@
               "text": "Talk about Treasure Trails."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "lcKlr0"
         }
       ]
     },
@@ -722907,10 +722415,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "QKeIBs"
-        },
-        {
-          "type": "unavailable",
-          "id": "uo04Qr"
         }
       ]
     },
@@ -724978,7 +724482,7 @@
                                   "id": "fvJSMV"
                                 },
                                 {
-                                  "npc": "Do you want me to point you in the right direction? {{Anchor|below}}",
+                                  "npc": "Do you want me to point you in the right direction?",
                                   "steps": [
                                     {
                                       "type": "choice",
@@ -725000,7 +724504,7 @@
                                                       "type": "end"
                                                     }
                                                   ],
-                                                  "id": "YIhinb"
+                                                  "id": "1ur2_C"
                                                 },
                                                 {
                                                   "type": "condition",
@@ -725013,7 +724517,7 @@
                                                       "type": "end"
                                                     }
                                                   ],
-                                                  "id": "zwv4LC"
+                                                  "id": "Jm1nfB"
                                                 },
                                                 {
                                                   "type": "condition",
@@ -725023,7 +724527,7 @@
                                                       "npc": "Her house is south east of here."
                                                     }
                                                   ],
-                                                  "id": "khr6FH"
+                                                  "id": "-nTThl"
                                                 }
                                               ]
                                             }
@@ -734847,10 +734351,6 @@
               "text": "Hmm, sorry, not interested."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "KXoGxT"
         }
       ]
     },
@@ -745430,13 +744930,6 @@
           "type": "message",
           "text": "Sailing quests are currently unavailable on this world.",
           "id": "QG2TcP"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "MpmcxM"
         }
       ]
     },
@@ -753545,13 +753038,6 @@
           "type": "line",
           "speaker": "Zuma",
           "text": "Indeed. And on that note, I have some research to do! Until next time."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "5xJ1jb"
         }
       ]
     },
@@ -761932,13 +761418,6 @@
           "type": "message",
           "text": "You open the casket, and find One-Eyed Hector's treasure.",
           "id": "wXVn2d"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "EOUN2C"
         }
       ]
     },
@@ -764970,13 +764449,6 @@
           "type": "message",
           "text": "You memorise what is written on the scroll. You can now use the Ardougne Teleport Spell.",
           "id": "GAoH6-"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "R7pPOQ"
         }
       ]
     },
@@ -769854,9 +769326,6 @@
                 },
                 {
                   "player": "Right..."
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -769870,17 +769339,10 @@
                   "type": "line",
                   "speaker": "King Roald",
                   "text": "You will have to excuse me then. I am very busy as I have a kingdom to run!"
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "VLQURQ"
         }
       ]
     },
@@ -775947,10 +775409,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "ctDkjC"
-        },
-        {
-          "type": "unavailable",
-          "id": "pwisZk"
         }
       ]
     },
@@ -785801,13 +785259,6 @@
           "type": "line",
           "speaker": "'Squawking' Steve Beanie",
           "text": "Well, I think it's about time you sort yourself out with an upgrade! You should check in with Jim. I'm sure he'll have something fitting. Now, avast!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "mDyloU"
         }
       ]
     },
@@ -789322,9 +788773,6 @@
                   "type": "action",
                   "text": "Congratulations! Quest complete!",
                   "id": "xoRC1-"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -789348,9 +788796,6 @@
                   "type": "action",
                   "text": "Congratulations! Quest complete!",
                   "id": "apFl7S"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -789394,17 +788839,10 @@
                   "type": "action",
                   "text": "Congratulations! Quest complete!",
                   "id": "RB5AF3"
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "FJIkMe"
         }
       ]
     }
@@ -798814,10 +798252,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "LHwBkP"
-        },
-        {
-          "type": "unavailable",
-          "id": "NKdlel"
         }
       ]
     },
@@ -799559,10 +798993,6 @@
         {
           "type": "unavailable",
           "id": "3qxqlx"
-        },
-        {
-          "type": "unavailable",
-          "id": "WUIf5C"
         }
       ]
     }
@@ -821021,10 +820451,6 @@
           "type": "message",
           "text": "Your respawn point has been left alone, but you can now speak to Sir Tiffy to change it to Falador.",
           "id": "rMlr3k"
-        },
-        {
-          "type": "unavailable",
-          "id": "rpGhae"
         }
       ]
     },
@@ -823073,16 +822499,9 @@
               "type": "line",
               "speaker": "King Lathas",
               "text": "Anyway, I'll send word when I next require your services. Oh, and I guess you'll be wanting your reward."
-            },
-            {
-              "type": "end"
             }
           ],
           "id": "7iVduK"
-        },
-        {
-          "type": "unavailable",
-          "id": "0h167k"
         }
       ]
     },
@@ -832216,10 +831635,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "PO2Wli"
-        },
-        {
-          "type": "unavailable",
-          "id": "yShqMu"
         }
       ]
     },
@@ -834219,10 +833634,6 @@
           "id": "TUezAf",
           "resolved": false,
           "page_available": true
-        },
-        {
-          "type": "unavailable",
-          "id": "W5Wuuh"
         }
       ]
     },
@@ -838508,13 +837919,6 @@
         },
         {
           "player": "You're welcome, your Majesty."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "QUD_Vd"
         }
       ]
     },
@@ -839336,7 +838740,7 @@
                                                       "type": "end"
                                                     }
                                                   ],
-                                                  "id": "eNFDf8"
+                                                  "id": "YYMoVi"
                                                 },
                                                 {
                                                   "type": "condition",
@@ -839346,7 +838750,7 @@
                                                       "npc": "Her house is east of here."
                                                     }
                                                   ],
-                                                  "id": "kLLyj-"
+                                                  "id": "ANlz4K"
                                                 }
                                               ]
                                             }
@@ -839363,7 +838767,7 @@
                                       ]
                                     }
                                   ],
-                                  "npc": "Do you want me to point you in the right direction? {{Anchor|below}}"
+                                  "npc": "Do you want me to point you in the right direction?"
                                 }
                               ],
                               "id": "277kq1"
@@ -844787,13 +844191,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "8lDSvO"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "VdguAW"
         }
       ]
     },
@@ -847497,16 +846894,9 @@
               "type": "line",
               "speaker": "Archmage Sedridor",
               "text": "Right... You're rather careless aren't you. I suggest you go and speak to Aubury once more. With luck he will have made copies."
-            },
-            {
-              "type": "end"
             }
           ],
           "id": "pQBs4b"
-        },
-        {
-          "type": "unavailable",
-          "id": "naQryi"
         }
       ]
     },
@@ -858024,10 +857414,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "QeBozC"
-        },
-        {
-          "type": "unavailable",
-          "id": "-axBRu"
         }
       ]
     },
@@ -860570,13 +859956,6 @@
           "type": "line",
           "speaker": "Kauayotl",
           "text": "It was my pleasure, iknami. We of course wouldn't have been able to do it without you either."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "dXOOGi"
         }
       ]
     },
@@ -862180,10 +861559,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "U0muMo"
-        },
-        {
-          "type": "unavailable",
-          "id": "rWEWub"
         }
       ]
     }
@@ -867778,13 +867153,6 @@
           "type": "line",
           "speaker": "Claus the Chef",
           "text": "Things aren't the same here now that Sir Ceril is gone."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "oJ-za0"
         }
       ]
     },
@@ -875591,10 +874959,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "LyXCwi"
-        },
-        {
-          "type": "unavailable",
-          "id": "TM3POL"
         }
       ]
     },
@@ -879778,13 +879142,6 @@
           "type": "line",
           "speaker": "Evil Dave",
           "text": "I'm not going to try to be evil any more. From now on I'm going to be good!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "WeEOIO"
         }
       ]
     },
@@ -881965,13 +881322,6 @@
         },
         {
           "player": "Well, congratulations I guess..."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "qE4Wds"
         }
       ]
     },
@@ -885394,10 +884744,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "CTPMIp"
-        },
-        {
-          "type": "unavailable",
-          "id": "rABAVH"
         }
       ]
     },
@@ -886212,10 +885558,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "Vv242P"
         }
       ]
     },
@@ -889084,9 +888426,6 @@
                   "text": "Well, in that case, it's only right that you both be rewarded. I will grant half of the reward to you and half to your companion. That means 600 coins for you. Enjoy it! You've very much earned it!"
                 },
                 {
-                  "type": "end"
-                },
-                {
                   "type": "action",
                   "text": "Congratulations! Quest complete!",
                   "id": "25_j1f"
@@ -889215,9 +888554,6 @@
                 },
                 {
                   "player": "Imagine doing something like that!"
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -889252,10 +888588,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "QyWPph"
         }
       ]
     },
@@ -891696,9 +891028,6 @@
           "type": "message",
           "text": "You hand over a certificate. The king gives you 600gp.",
           "id": "MQMrBm"
-        },
-        {
-          "type": "end"
         },
         {
           "type": "action",
@@ -897056,9 +896385,6 @@
           "text": "My hatred and bitterness corrupted me. I tried to destroy all life... now I am released. And am grateful to contemplate eternal rest..."
         },
         {
-          "type": "end"
-        },
-        {
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "l7zrz_"
@@ -897123,13 +896449,6 @@
           "type": "message",
           "text": "Rashiliyia's remains have been put to rest.",
           "id": "_xiIOK"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "rDJXJ8"
         }
       ]
     },
@@ -927549,10 +926868,6 @@
           "type": "action",
           "text": "See post quest dialogue",
           "id": "UPl9kU"
-        },
-        {
-          "type": "unavailable",
-          "id": "y4agh9"
         }
       ]
     },
@@ -939235,10 +938550,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "Y7bMs-"
-        },
-        {
-          "type": "unavailable",
-          "id": "UYns5K"
         }
       ]
     },
@@ -962046,10 +961357,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "W-ainS"
-        },
-        {
-          "type": "unavailable",
-          "id": "SILoB2"
         }
       ]
     },
@@ -966920,10 +966227,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "G39MGw"
-        },
-        {
-          "type": "unavailable",
-          "id": "cNdfv2"
         }
       ]
     },
@@ -986513,10 +985816,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "RV_XI6"
-        },
-        {
-          "type": "unavailable",
-          "id": "pciPf6"
         }
       ]
     },
@@ -994615,17 +993914,10 @@
                   "type": "line",
                   "speaker": "Tamayu",
                   "text": "As you wish, stranger."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "XyTV5U"
         }
       ]
     },
@@ -996683,10 +995975,6 @@
           "type": "action",
           "text": "(Non-quest dialogue.)",
           "id": "RsTZ-H"
-        },
-        {
-          "type": "unavailable",
-          "id": "EQxP3f"
         }
       ]
     },
@@ -1003726,10 +1003014,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "BitWHU"
-        },
-        {
-          "type": "unavailable",
-          "id": "vWArVU"
         }
       ]
     },
@@ -1005442,10 +1004726,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "rgR_39"
-        },
-        {
-          "type": "unavailable",
-          "id": "Hypo2L"
         }
       ]
     },
@@ -1012701,10 +1011981,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "rvirt1"
         }
       ]
     },
@@ -1016835,10 +1016111,6 @@
           "type": "action",
           "text": "(Non-quest dialogue.)",
           "id": "3FLk-6"
-        },
-        {
-          "type": "unavailable",
-          "id": "GewklE"
         }
       ]
     },
@@ -1026474,9 +1025746,6 @@
                   "type": "line",
                   "speaker": "Ivan Strom",
                   "text": "Until next time, [player name]."
-                },
-                {
-                  "type": "end"
                 }
               ]
             },
@@ -1026520,9 +1025789,6 @@
                       "type": "message",
                       "text": "Ivan gives you [number] medallions.",
                       "id": "y79xjU"
-                    },
-                    {
-                      "type": "end"
                     }
                   ],
                   "id": "w_NFFw"
@@ -1026539,17 +1025805,10 @@
                   "type": "line",
                   "speaker": "Ivan",
                   "text": "See you later, [player name]."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "DKSjaR"
         }
       ]
     },
@@ -1030627,10 +1029886,6 @@
               "text": "I'll talk to you later."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "ijxfPd"
         }
       ]
     },
@@ -1031986,10 +1031241,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "zKzGTb"
-        },
-        {
-          "type": "unavailable",
-          "id": "UqWKJu"
         }
       ]
     }
@@ -1032946,23 +1032197,12 @@
               "text": "Goodbye.",
               "steps": [
                 {
-                  "player": "Goodbye."
-                },
-                {
-                  "type": "line",
-                  "speaker": "Lord Kandur Hosidius",
-                  "text": "Until next time."
-                },
-                {
-                  "type": "end"
+                  "type": "call",
+                  "branch": "hGzwlb"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "yARffe"
         }
       ]
     },
@@ -1036616,10 +1035856,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "NwSdYK"
-        },
-        {
-          "type": "unavailable",
-          "id": "KraaSM"
         }
       ]
     },
@@ -1039296,13 +1038532,6 @@
           "type": "message",
           "text": "Congratulations, you've completed a quest: The Eyes of Glouphrie",
           "id": "eSgfmS"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "ggcPD6"
         }
       ]
     },
@@ -1045794,10 +1045023,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "lx--99"
         }
       ]
     },
@@ -1053490,13 +1052715,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "eoiNE6"
         }
       ]
     },
@@ -1054971,10 +1054189,6 @@
           "type": "action",
           "text": "(Non-quest dialogue.)",
           "id": "wqFb1o"
-        },
-        {
-          "type": "unavailable",
-          "id": "a8yqWW"
         }
       ]
     },
@@ -1059479,9 +1058693,6 @@
           "player": "Uh oh..."
         },
         {
-          "type": "end"
-        },
-        {
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "2pgrdA"
@@ -1059553,10 +1058764,6 @@
           "speaker": "Olaf the Bard",
           "text": "Yet onward he pressed.",
           "presentation": "overhead"
-        },
-        {
-          "type": "unavailable",
-          "id": "OOHSkj"
         }
       ]
     },
@@ -1068316,13 +1067523,6 @@
           "type": "line",
           "speaker": "Fridleif Shieldson",
           "text": "Congratulations, Champion [Fremennik name]. Thank you for defeating the Troll King."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "7JNJfa"
         }
       ]
     },
@@ -1077586,13 +1076786,6 @@
           "type": "line",
           "speaker": "Brundt the Chieftain",
           "text": "From this day onward, you are outerlander no more! In honour of your acceptance into the Fremennik You gain a new name to be known as. You will now be called [Fremennik name]."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "PskD6q"
         }
       ]
     },
@@ -1078253,13 +1077446,6 @@
           "type": "message",
           "text": "You feel that you've translated enough words to fully understand all of the stone tablets!",
           "id": "L1cVhR"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "xtWsEQ"
         }
       ]
     }
@@ -1083990,10 +1083176,6 @@
           "type": "jump",
           "reference": "above",
           "id": "ccqZEg"
-        },
-        {
-          "type": "unavailable",
-          "id": "bxRjAG"
         }
       ]
     },
@@ -1086024,13 +1085206,6 @@
           "type": "line",
           "speaker": "Clay golem",
           "text": "I was never programmed to appreciate the city. My only purpose was the destruction of the demon, and that is achieved!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "ZGGIwk"
         }
       ]
     },
@@ -1092957,13 +1092132,6 @@
           "type": "line",
           "speaker": "Dr Fenkenstrain",
           "text": "Thank you for helping me see the error of my ways, [player name]."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "cdeHkp"
         }
       ]
     },
@@ -1095079,10 +1094247,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "q_UjQ0"
-        },
-        {
-          "type": "unavailable",
-          "id": "oHvQEM"
         }
       ]
     },
@@ -1099702,10 +1098866,6 @@
               "text": "No."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "9lo8go"
         }
       ]
     },
@@ -1101502,13 +1100662,6 @@
           "type": "line",
           "speaker": "Gillie Groats",
           "text": "No problem."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "5KmlDA"
         }
       ],
       "returning-to-cassius-after-sampling-the-milk-resume": [
@@ -1102828,10 +1101981,6 @@
             }
           ],
           "id": "PFZviC"
-        },
-        {
-          "type": "unavailable",
-          "id": "Usi_0l"
         }
       ]
     },
@@ -1106868,10 +1106017,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "_c-03w"
-        },
-        {
-          "type": "unavailable",
-          "id": "QUJ2Sw"
         }
       ]
     },
@@ -1109867,13 +1109012,6 @@
           "type": "line",
           "speaker": "Longramble",
           "text": "That's a shame. Still, you've made a big discovery. It will be quite the tale to tell... assuming anyone believes a story about talking terrorbirds, that is."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "3ZrkVR"
         }
       ]
     },
@@ -1111257,10 +1110395,6 @@
           "type": "action",
           "text": "(Non-quest dialogue.)",
           "id": "YoJGbr"
-        },
-        {
-          "type": "unavailable",
-          "id": "F3kyoE"
         }
       ]
     },
@@ -1113231,16 +1112365,9 @@
           "id": "HJgzIM"
         },
         {
-          "type": "end"
-        },
-        {
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "vNjARR"
-        },
-        {
-          "type": "unavailable",
-          "id": "-MsU5m"
         }
       ]
     },
@@ -1114609,13 +1113736,6 @@
           "type": "message",
           "text": "Surprisingly, this altar is empty. Probably because you took the skull off it earlier.",
           "id": "X2ITr3"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "q1mIeB"
         }
       ]
     },
@@ -1116561,13 +1115681,6 @@
           "type": "line",
           "speaker": "Jane",
           "text": "It sure is. Now that we have peace, life is at an all time high!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "bAKjmT"
         }
       ]
     }
@@ -1122946,10 +1122059,6 @@
               "text": "Something else."
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "mmX8iA"
         }
       ]
     },
@@ -1131967,13 +1131076,6 @@
           "type": "line",
           "speaker": "Irena",
           "text": "Thanks so much for returning my daughter to me. I expect that she will go on another trip soon though. She is the adventurous type... a bit like yourself really! Okay, see you around then!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "ly4m-e"
         }
       ]
     },
@@ -1145099,13 +1144201,6 @@
         },
         {
           "player": "Very well, your Majesty."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "ZB-UMz"
         }
       ]
     },
@@ -1155347,10 +1154442,6 @@
           "type": "action",
           "text": "Congratulations! Quest Complete!",
           "id": "mwkqoc"
-        },
-        {
-          "type": "unavailable",
-          "id": "cL-nGr"
         }
       ]
     }
@@ -1162818,10 +1161909,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "51Oq7J"
-        },
-        {
-          "type": "unavailable",
-          "id": "LNfnsC"
         }
       ]
     },
@@ -1163818,10 +1162905,6 @@
             }
           ],
           "id": "p6b1zG"
-        },
-        {
-          "type": "unavailable",
-          "id": "BZ2yKY"
         }
       ]
     },
@@ -1165541,10 +1164624,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "ri6lci"
-        },
-        {
-          "type": "unavailable",
-          "id": "j6XRmY"
         }
       ]
     },
@@ -1166618,13 +1165697,6 @@
           "action": "receive",
           "text": "a Law talisman",
           "id": "GT_EpY"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "UqqAHb"
         }
       ]
     },
@@ -1168320,13 +1167392,6 @@
           "type": "line",
           "speaker": "Elder Raley",
           "text": "No, no, no! Thank you, [player name]! We will talk again soon."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "fKG-yx"
         }
       ]
     },
@@ -1174541,10 +1173606,6 @@
           "type": "line",
           "speaker": "Prince Itzla Arkan",
           "text": "Don't worry, I'll be in touch soon enough. Until then, timoiva, and may the sun light your way."
-        },
-        {
-          "type": "unavailable",
-          "id": "H9w7H2"
         }
       ]
     },
@@ -1184577,10 +1183638,6 @@
           "speaker": "Sir Carl/Harry/Jerro",
           "text": "You again... die Zamorakian scum!",
           "presentation": "overhead"
-        },
-        {
-          "type": "unavailable",
-          "id": "vemwFx"
         }
       ]
     },
@@ -1189498,10 +1188555,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "iMe5Cd"
-        },
-        {
-          "type": "unavailable",
-          "id": "nXdy7g"
         }
       ]
     },
@@ -1204257,16 +1203310,9 @@
             },
             {
               "player": "Okay Amik, thanks for explaining!"
-            },
-            {
-              "type": "end"
             }
           ],
           "id": "OUdNKz"
-        },
-        {
-          "type": "unavailable",
-          "id": "iF7MUz"
         }
       ]
     },
@@ -1209024,10 +1208070,6 @@
           "type": "message",
           "text": "The scroll crumbles to dust.",
           "id": "VSYvDt"
-        },
-        {
-          "type": "unavailable",
-          "id": "ThywOK"
         }
       ]
     },
@@ -1210439,13 +1209481,6 @@
           "type": "message",
           "text": "The chalice only contains some old ashes.",
           "id": "HYh5uY"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "ABiZRD"
         }
       ]
     }
@@ -1216985,13 +1216020,6 @@
         },
         {
           "player": "Any time, Rat!"
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "Z0HjrM"
         }
       ]
     },
@@ -1234769,10 +1233797,6 @@
           "type": "message",
           "text": "You take a moment of silence in honour of your fallen friend, Cyrisus.",
           "id": "jTyP5i"
-        },
-        {
-          "type": "unavailable",
-          "id": "ZeKlul"
         }
       ]
     },
@@ -1245460,10 +1244484,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "uyv8q6"
-        },
-        {
-          "type": "unavailable",
-          "id": "i8whTV"
         }
       ]
     }
@@ -1245826,10 +1244846,6 @@
           "type": "action",
           "text": "Congratulations! Quest complete!",
           "id": "OpbvIv"
-        },
-        {
-          "type": "unavailable",
-          "id": "IE8MPR"
         }
       ]
     },
@@ -1253780,13 +1252796,6 @@
         },
         {
           "player": "Sounds great, thanks Veos."
-        },
-        {
-          "type": "end"
-        },
-        {
-          "type": "unavailable",
-          "id": "H6HrSr"
         }
       ]
     },
@@ -1265858,17 +1264867,10 @@
               "steps": [
                 {
                   "player": "Sorry, I have to go."
-                },
-                {
-                  "type": "end"
                 }
               ]
             }
           ]
-        },
-        {
-          "type": "unavailable",
-          "id": "zr0swr"
         }
       ]
     },

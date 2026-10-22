@@ -16,10 +16,13 @@ from scripts.dialogues.fetch import (
     CACHE,
     QUEST_CACHE,
     NPC_CACHE,
+    TEMPLATE_CACHE,
     fetch,
-    read_cache,
+    load_navigation_templates,
     participant_pages,
+    read_cache,
     save,
+    trailing_template_name,
 )
 from scripts.dialogues.hooks import enrich_records, walk as dialogue_nodes
 from scripts.dialogues.compact import compact_record, write_split
@@ -125,6 +128,20 @@ def infer_action(text):
 
 
 def parse_step(raw, issues, line):
+    code = mw.parse(str(raw))
+    anchors = []
+    for template in code.filter_templates(recursive=False):
+        if str(template.name).strip().casefold() != "anchor":
+            continue
+        if template.has(1):
+            anchor = clean(template.get(1).value).strip()
+            if anchor:
+                anchors.append(anchor)
+        code.replace(template, "")
+    if anchors:
+        node = parse_step(str(code).strip(), issues, line)
+        node["_anchors"] = anchors
+        return node
     speech = re.fullmatch(r"'''(.+?):'''\s*(.*)", raw)
     if speech:
         text = clean(speech[2])
@@ -216,6 +233,14 @@ def parse_step(raw, issues, line):
             if text == "members":
                 return dict(type="end", reason="members")
             if re.fullmatch(r"above|below|previous\d*|initial|other|continues?", text):
+                anchor = args.get("2", "").strip()
+                if anchor and text in ("above", "below"):
+                    return dict(
+                        type="jump",
+                        target=None,
+                        reference=text,
+                        _anchor=anchor,
+                    )
                 issues.append(
                     dict(line=line, reason="Unresolved dialogue reference", raw=raw)
                 )
@@ -358,7 +383,29 @@ def select_default(variants):
     )
 
 
-def parse_npc(name, raw):
+COMPLETION_ACTION = "Congratulations! Quest complete!"
+
+
+def normalize_terminal_completion(steps):
+    for node in steps:
+        if node.get("steps"):
+            normalize_terminal_completion(node["steps"])
+        for option in node.get("options", []):
+            normalize_terminal_completion([option])
+    if (
+        len(steps) >= 2
+        and steps[-2] == {"type": "end"}
+        and steps[-1].get("type") == "action"
+        and steps[-1].get("text") == COMPLETION_ACTION
+    ):
+        steps[-2], steps[-1] = steps[-1], steps[-2]
+    return steps
+
+
+def parse_npc(name, raw, nav_templates=None):
+    if nav_templates is None:
+        nav_templates = load_navigation_templates()
+    nav_template_names = {template.casefold() for template in nav_templates}
     variants, issues, headings = {}, [], []
     participants = participant_pages(raw)
     stack = []
@@ -367,7 +414,12 @@ def parse_npc(name, raw):
         r"<!--.*?-->", lambda match: "\n" * match[0].count("\n"), raw, flags=re.S
     )
     poem = None
-    for number, original in enumerate(raw.splitlines(), 1):
+    source_lines = raw.splitlines()
+    last_content_line = max(
+        (number for number, text in enumerate(source_lines, 1) if text.strip()),
+        default=0,
+    )
+    for number, original in enumerate(source_lines, 1):
         node_override = None
         line = original.strip()
         if not line:
@@ -426,6 +478,13 @@ def parse_npc(name, raw):
             continue
         bullet = re.fullmatch(r"(\*+)\s*(.*)", line)
         depth, body = (len(bullet[1]), bullet[2]) if bullet else (1, line)
+        footer = trailing_template_name(original, name)
+        if (
+            number == last_content_line
+            and footer
+            and footer.casefold() in nav_template_names
+        ):
+            continue
         node = node_override or parse_step(body, issues, number)
         while stack and stack[-1][0] >= depth:
             stack.pop()
@@ -441,6 +500,7 @@ def parse_npc(name, raw):
             "Standard dialogue"
         ]
         variant["steps"] = group_options(variant["steps"], random_options=is_oracle)
+        normalize_terminal_completion(variant["steps"])
         if is_oracle:
             variant["notes"] = [
                 "Curated: numbered alternatives are random dialogue, not player choices; probabilities unknown."
@@ -478,6 +538,8 @@ def gameplay_step(node, name):
                 "prompt",
                 "_shared",
                 "_identity",
+                "_anchors",
+                "_anchor",
             )
             and value is not None
         }
@@ -762,13 +824,16 @@ def main():
         parser.error("--refresh cannot be combined with --offline")
     if args.offline:
         missing = [
-            str(path) for path in (CACHE, QUEST_CACHE, NPC_CACHE) if not path.exists()
+            str(path)
+            for path in (CACHE, QUEST_CACHE, NPC_CACHE, TEMPLATE_CACHE)
+            if not path.exists()
         ]
         if missing:
             parser.error(
                 "Missing source caches; run online first: " + ", ".join(missing)
             )
     pages = read_cache(CACHE) if args.offline else fetch(refresh=args.refresh)
+    nav_templates = load_navigation_templates()
     npcs, quests, issues = {}, {}, {}
     for sources, output in ((pages, npcs), (read_cache(QUEST_CACHE), quests)):
         for title, page in sorted(sources.items()):
@@ -776,7 +841,7 @@ def main():
                 issues[title] = [{"reason": "Missing referenced page"}]
                 continue
             name = title.removeprefix("Transcript:")
-            parsed = parse_npc(name, page["wikitext"])
+            parsed = parse_npc(name, page["wikitext"], nav_templates)
             output[name] = gameplay_npc(name, parsed)
             output[name]["source"] = {"page": title, "revision": page["revision"]}
             if parsed["review_issues"]:

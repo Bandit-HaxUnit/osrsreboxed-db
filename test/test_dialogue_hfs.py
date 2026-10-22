@@ -3,6 +3,7 @@ import json
 import config
 from scripts.dialogues import fetch as fetch_module
 from scripts.dialogues import update
+from scripts.dialogues.hooks import enrich_records
 
 
 def test_fetch_discovers_miniquest_transcript_category(monkeypatch):
@@ -29,7 +30,7 @@ def test_fetch_discovers_miniquest_transcript_category(monkeypatch):
         def __init__(self, api, prefix):
             self.session = object()
 
-    def fake_download(names, path, session, refresh=False):
+    def fake_download(names, path, session, refresh=False, with_categories=False):
         downloaded.append((set(names), path))
         return {name: {"wikitext": ""} for name in names}
 
@@ -48,6 +49,78 @@ def test_fetch_discovers_miniquest_transcript_category(monkeypatch):
 
 
 CLAIM_LATER = "giving-the-strange-icon-if-the-player-claims-the-lamp-or-map-later"
+
+
+def test_inline_anchor_prefixes_real_npc_speech():
+    node = update.parse_step(
+        "{{anchor|given-the-icon}}'''Strange Old Man:''' You did it!", [], 1
+    )
+    assert node == {
+        "type": "line",
+        "speaker": "Strange Old Man",
+        "text": "You did it!",
+        "_anchors": ["given-the-icon"],
+    }
+
+
+def test_trailing_verified_navbox_is_ignored():
+    nav = update.parse_npc(
+        "His Faithful Servants",
+        "==Standard dialogue==\n* '''Strange Old Man:''' Hi.\n"
+        "{{His Faithful Servants}}",
+    )
+    assert not any(
+        node.get("type") == "unparsed"
+        for node in nav["variants"]["standard-dialogue"]["steps"]
+    )
+
+
+def test_page_named_nonnavigation_template_stays_unavailable():
+    nonnav = update.parse_npc(
+        "Bob", "==Standard dialogue==\n* '''Bob:''' Hi.\n{{Bob}}"
+    )
+    assert nonnav["variants"]["standard-dialogue"]["steps"][-1] == {
+        "type": "unparsed",
+        "raw": "{{Bob}}",
+    }
+
+
+def test_bulleted_or_parameterized_nav_lookalike_is_not_discarded():
+    for footer in ("* {{His Faithful Servants}}", "{{His Faithful Servants|x}}"):
+        parsed = update.parse_npc(
+            "His Faithful Servants",
+            "==Standard dialogue==\n* '''Strange Old Man:''' Hi.\n" + footer,
+        )
+        assert parsed["variants"]["standard-dialogue"]["steps"][-1]["type"] == (
+            "unparsed"
+        ), footer
+
+
+def test_unknown_template_stays_unavailable():
+    unknown = update.parse_npc(
+        "Bob", "==Standard dialogue==\n* '''Bob:''' Hi.\n{{Mystery}}"
+    )
+    assert unknown["variants"]["standard-dialogue"]["steps"][-1] == {
+        "type": "unparsed",
+        "raw": "{{Mystery}}",
+    }
+
+
+def test_duplicate_anchor_target_leaves_the_jump_unresolved():
+    raw = (
+        "==First==\n"
+        "* {{anchor|duplicate}}'''Bob:''' One.\n"
+        "* {{anchor|duplicate}}'''Bob:''' Two.\n"
+        "==Second==\n"
+        "* {{tact|above|duplicate}}\n"
+    )
+    record = update.gameplay_npc("Bob", update.parse_npc("Bob", raw))
+    enrich_records({"Bob": record}, {}, {}, update.clean)
+    jump = record["variants"]["second"][0]
+    assert jump["type"] == "jump"
+    assert jump["reference"] == "above"
+    assert "steps" not in jump
+
 
 
 def test_cached_full_hfs_page_parses_claim_later_reclaim_nodes():
@@ -128,6 +201,68 @@ def test_cached_full_hfs_page_parses_claim_later_reclaim_nodes():
             ],
         },
     ]
+
+
+def hfs_source_record():
+    pages = json.loads(
+        (config.DATA_PATH / "dialogues" / "quest-pages.json").read_text()
+    )
+    record = update.gameplay_npc(
+        "His Faithful Servants",
+        update.parse_npc(
+            "His Faithful Servants", pages["Transcript:His Faithful Servants"]["wikitext"]
+        ),
+    )
+    enrich_records({}, {"His Faithful Servants": record}, {}, update.clean)
+    return record
+
+
+def test_hfs_above_anchor_branches_resume_the_anchored_line_and_reward():
+    record = hfs_source_record()
+    reward = "The Strange Old Man gives you a lamp and a map."
+    for variant, expected in [
+        (
+            "giving-the-strange-icon-if-the-player-gives-the-strange-old-man-the-icon",
+            "You did it! Now for me.",
+        ),
+        (
+            "giving-the-strange-icon-if-the-strange-old-man-destroyed-the-icon",
+            "Yes! Needed it for him, but not to keep! His friend asked him to protect it, "
+            "but he made a new plan, a better plan!",
+        ),
+    ]:
+        jump = next(
+            node
+            for node in record["variants"][variant]
+            if node.get("type") == "jump"
+        )
+        branch = record["branches"][jump["steps"][0]["branch"]]
+        assert branch[0].get("text") == expected, variant
+        messages = [
+            node.get("text") for node in branch if node.get("type") == "message"
+        ]
+        assert messages.count(reward) == 1, variant
+
+
+def test_generated_hfs_record_has_no_unavailable_placeholders():
+    record = hfs_source_record()
+
+    def walk(nodes):
+        for node in nodes:
+            yield node
+            yield from walk(node.get("steps", []))
+            yield from walk(node.get("options", []))
+            if node.get("type") == "call":
+                yield from walk(record["branches"][node["branch"]])
+
+    assert not any(
+        node.get("type") == "unavailable"
+        for steps in [
+            *record["variants"].values(),
+            *record.get("branches", {}).values(),
+        ]
+        for node in walk(steps)
+    )
 
 
 def test_generated_hfs_record_selects_one_claim_later_variant():

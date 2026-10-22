@@ -4470,9 +4470,8 @@
     ],
     "post-quest-talking-to-the-poison-salesman-after-the-quest": [
       {
-        "type": "line",
-        "speaker": "Poison Salesman",
-        "text": "I hear you're pretty smart to have solved the Sinclair Murder!"
+        "type": "call",
+        "branch": "8fmmtT"
       }
     ],
     "post-quest-talking-to-the-poison-salesman-after-the-quest-if-the-player-has-progress-in-fremennik-trials": [
@@ -4483,12 +4482,8 @@
             "text": "Talk about the Murder Mystery Quest",
             "steps": [
               {
-                "type": "line",
-                "speaker": "Poison Salesman",
-                "text": "I hear you're pretty smart to have solved the Sinclair Murder!"
-              },
-              {
-                "type": "end"
+                "type": "call",
+                "branch": "8fmmtT"
               }
             ]
           },
@@ -4496,10 +4491,6 @@
             "text": "Talk about the Fremennik Trials"
           }
         ]
-      },
-      {
-        "type": "unavailable",
-        "id": "Rbb44U"
       }
     ]
   },
@@ -5425,6 +5416,13 @@
       },
       {
         "type": "end"
+      }
+    ],
+    "8fmmtT": [
+      {
+        "type": "line",
+        "speaker": "Poison Salesman",
+        "text": "I hear you're pretty smart to have solved the Sinclair Murder!"
       }
     ]
   }
