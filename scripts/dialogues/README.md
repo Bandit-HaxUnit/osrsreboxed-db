@@ -167,8 +167,11 @@ self-speech is still `{"npc":"..."}`, player speech `{"player":"..."}`.
 Choices/random alternatives have nested `options` and `steps`. Message, missing,
 unavailable, condition and reference nodes must not silently disappear.
 
-`open_shop.target` is an exact key in `shops-items-by-shop.json`; `open_interface`
-is not a shop ID. `receive`, `give`, teleport and other effects may still carry
+`open_shop.target` is an exact key in `shops-items-by-shop.json`, unless the step
+also has `shops`: then the target is a shop page the dump splits by infobox version
+(`Ned's Handmade Rope (100% Wool)`), and `shops` lists every version's exact key
+(`... (Default)`, `... (Fremennik Isles)`) for the consumer to pick by game state.
+`open_interface` is not a shop ID. `receive`, `give`, teleport and other effects may still carry
 prose instead of structured game IDs/amounts. Bind effects by node ID in the quest
 plugin; don't execute prose. `action_source: "text"` identifies inferred actions.
 
