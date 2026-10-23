@@ -634,6 +634,7 @@ def gameplay_step(node, name):
                 "speaker",
                 "text",
                 "condition",
+                "condition_id",
                 "action",
                 "target",
                 "reference",

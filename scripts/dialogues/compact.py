@@ -28,6 +28,8 @@ def compact_record(record):
         elif isinstance(node, dict):
             for value in list(node.values()):
                 visit(value)
+            if "condition_id" in node:
+                node["condition_id"] = runtime_id(node["condition_id"])
             if "id" in node:
                 if (
                     "npc" in node

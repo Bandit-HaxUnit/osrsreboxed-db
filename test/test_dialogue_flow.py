@@ -1,10 +1,11 @@
 import json
+import copy
 
 import pytest
 
 import config
 from scripts.dialogues import update
-from scripts.dialogues.hooks import enrich_records, walk
+from scripts.dialogues.hooks import annotate, enrich_records, walk
 from scripts.dialogues.bindings import apply_bindings
 
 
@@ -201,6 +202,78 @@ def test_annotated_option_becomes_a_condition():
         "condition": "With a ring equipped:",
     }
     assert issues[0]["reason"] == "Recovered positional option condition"
+
+
+def test_guarded_one_option_menus_lift_with_original_ids_and_shared_continuation():
+    pages = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())
+    page = pages["Transcript:Ethically Acquired Antiquities"]
+    name = "Ethically Acquired Antiquities"
+    variants = [
+        "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember",
+        "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember-after-declining-doing-the-favour",
+    ]
+    parsed = update.parse_npc(name, page["wikitext"], set())
+    expected_ids = {}
+    for variant in variants:
+        steps = copy.deepcopy(update.gameplay_npc(name, parsed)["variants"][variant])
+        annotate(steps, f"Transcript:{name}#{variant}", {})
+        expected_ids[variant] = {
+            node["text"]: node["id"]
+            for node in walk(steps)
+            if node.get("type") == "condition"
+            and node.get("text") in (
+                "If the player hasn't completed One Small Favour:",
+                "If the player has completed One Small Favour:",
+            )
+        }
+
+    value = record(name, page["wikitext"])
+    value["source"] = {"page": "Transcript:" + name, "revision": page["revision"]}
+    enrich_records({}, {name: value}, {}, update.clean)
+    for variant in variants:
+        option = next(
+            node for node in walk(value["variants"][variant])
+            if node.get("type") == "choice"
+            and any(child.get("text") == "Have you seen a man with a case?" for child in node.get("options", []))
+        ).get("options")
+        case_option = next(child for child in option if child.get("text") == "Have you seen a man with a case?")
+        menu = next(child for child in case_option["steps"] if child.get("type") == "choice")
+        assert [child["text"] for child in menu["options"]] == [
+            "Sure. What do you need?",
+            "As long as it is just the one favour...",
+            "No thanks." if "after-declining" in variant else "Not right now.",
+        ]
+        accepted = menu["options"][:2]
+        conditions = [
+            "If the player hasn't completed One Small Favour:",
+            "If the player has completed One Small Favour:",
+        ]
+        for choice, condition in zip(accepted, conditions):
+            assert choice["condition"] == condition
+            assert choice["condition_id"] == expected_ids[variant][condition]
+            assert choice["id"]
+        completed = follow(value, accepted[0]["steps"])
+        assert any(
+            node.get("text", "").startswith("We've been meaning to get our old sails stitched up")
+            for node in completed
+        )
+        assert sum(
+            node.get("text", "").startswith("We've been meaning to get our old sails stitched up")
+            for node in completed
+        ) == 1
+
+
+def test_other_guarded_single_option_menus_are_not_mistaken_for_a_decline_menu():
+    pages = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())
+    page = pages["Transcript:Garden of Tranquillity"]
+    name = "Garden of Tranquillity"
+    value = record(name, page["wikitext"])
+    enrich_records({}, {name: value}, {}, update.clean)
+    steps = value["variants"]["talking-to-kragen-talking-to-kragen-again"]
+    menu = steps[0]
+    assert menu["type"] == "choice" and not menu["options"]
+    assert [step["type"] for step in steps[1:4]] == ["condition", "condition", "choice"]
+    assert not any(node.get("condition_id") for node in walk(steps))
 
 
 def test_shared_reply_is_scoped_to_the_speaking_participant_and_keeps_effect_id():

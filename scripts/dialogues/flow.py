@@ -148,6 +148,65 @@ def strip_ids(value):
 
 def resolve_navigation(record, anchors=None):
     omit_selected = record.pop("_omit_selected", [])
+
+    def normalize_guarded_options(nodes):
+        """Lift sibling one-option condition menus into their preceding empty menu."""
+        index = 0
+        while index < len(nodes):
+            node = nodes[index]
+            normalize_guarded_options(node.get("steps", []))
+            for option in node.get("options", []):
+                normalize_guarded_options(option.get("steps", []))
+
+            if node.get("type") != "choice" or node.get("options"):
+                index += 1
+                continue
+
+            conditions = []
+            end = index + 1
+            while end < len(nodes) and nodes[end].get("type") == "condition":
+                condition = nodes[end]
+                branch = condition.get("steps", [])
+                if (
+                    condition.get("_anchors")
+                    or len(branch) < 1
+                    or branch[0].get("type") != "choice"
+                    or branch[0].get("_anchors")
+                    or len(branch[0].get("options", [])) != 1
+                ):
+                    break
+                option = branch[0]["options"][0]
+                if option.get("condition") or option.get("_anchors"):
+                    break
+                conditions.append((condition, branch[0], option))
+                end += 1
+
+            if (
+                len(conditions) < 2
+                or end >= len(nodes)
+                or nodes[end].get("type") != "choice"
+                or len(nodes[end].get("options", [])) != 1
+                or nodes[end].get("_anchors")
+            ):
+                index += 1
+                continue
+
+            options = []
+            for condition, _, option in conditions:
+                option["condition"] = condition["text"]
+                option["condition_id"] = condition["id"]
+                option.setdefault("steps", []).extend(
+                    condition.get("steps", [])[1:]
+                )
+                options.append(option)
+            options.extend(nodes[end]["options"])
+            node["options"] = options
+            del nodes[index + 1 : end + 1]
+            index += 1
+
+    for steps in record["variants"].values():
+        normalize_guarded_options(steps)
+
     option_paths = {}
 
     def contexts(nodes, ancestors):
@@ -216,6 +275,20 @@ def resolve_navigation(record, anchors=None):
 
     pending = {}
     named = {}
+    local_continues = set()
+
+    def guarded_continue_tail(option):
+        for _, candidate, siblings, at, _, _, owner in entries:
+            if (
+                owner is option
+                and candidate.get("type") == "jump"
+                and candidate.get("reference") in ("continue", "continues")
+            ):
+                tail = siblings[at + 1 :]
+                if tail:
+                    return tail
+        return None
+
     for variant, node, steps, index, speaker, menu, option in entries:
         reference = node.get("reference", "")
         if node.get("type") == "action" and not node.get("action"):
@@ -566,23 +639,38 @@ def resolve_navigation(record, anchors=None):
             and menu
             and option
         ):
+            if option.get("condition_id"):
+                if steps[index + 1 :]:
+                    local_continues.add(id(node))
+                    continue
+                target = guarded_continue_tail(option)
+                alternatives = menu["options"]
+                at = alternatives.index(option)
+                if target is None:
+                    for candidate in alternatives[at + 1 :]:
+                        if not candidate.get("condition_id"):
+                            continue
+                        target = guarded_continue_tail(candidate)
+                        if target:
+                            break
             # The final alternative often spells out the continuation shared by
             # earlier replies. Only borrow its explicit follow-up menu.
-            alternatives = menu["options"]
-            at = alternatives.index(option)
-            for candidate in alternatives[at + 1 :]:
-                body = candidate.get("steps", [])
-                next_menu = next(
-                    (
-                        i
-                        for i, child in enumerate(body)
-                        if child.get("type") == "choice"
-                    ),
-                    None,
-                )
-                if next_menu is not None:
-                    target = body[next_menu:]
-                    break
+            if target is None:
+                alternatives = menu["options"]
+                at = alternatives.index(option)
+                for candidate in alternatives[at + 1 :]:
+                    body = candidate.get("steps", [])
+                    next_menu = next(
+                        (
+                            i
+                            for i, child in enumerate(body)
+                            if child.get("type") == "choice"
+                        ),
+                        None,
+                    )
+                    if next_menu is not None:
+                        target = body[next_menu:]
+                        break
         if target:
             pending[id(node)] = target
 
@@ -610,6 +698,8 @@ def resolve_navigation(record, anchors=None):
                     "type": "call",
                     "branch": variant + ("-without-" + skip if skip else ""),
                 }
+            elif key in local_continues:
+                continue
             elif key in pending:
                 node = {k: v for k, v in node.items() if k not in ("text", "action")}
                 node.update(
