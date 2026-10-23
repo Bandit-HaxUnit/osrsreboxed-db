@@ -54,6 +54,26 @@ def test_item_database():
             )
 
 
+def test_item_alch_export():
+    """Ensure the purpose-specific alchemy export matches the item database."""
+    with open(config.DOCS_PATH / "items-complete.json", encoding="utf-8") as f:
+        items = json.load(f)
+    with open(config.DOCS_PATH / "item-alch.json", encoding="utf-8") as f:
+        item_alch = json.load(f)
+
+    expected = {
+        item_id: {
+            "id": item["id"],
+            "highalch": item["highalch"],
+            "lowalch": item["lowalch"],
+        }
+        for item_id, item in items.items()
+        if isinstance(item["highalch"], int) and isinstance(item["lowalch"], int)
+    }
+
+    assert item_alch == expected
+
+
 def test_items_cache_data_noteable_key():
     """Ensure item cache data includes noteable for every item."""
     path_to_cache = Path(config.DATA_ITEMS_PATH / "items-cache-data.json")
