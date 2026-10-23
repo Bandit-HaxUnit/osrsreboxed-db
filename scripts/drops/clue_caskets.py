@@ -1,8 +1,12 @@
-"""Export original elite/master rewards from captured Wiki source (GPL-3.0-or-later).
+"""Export original easy-master rewards from captured Wiki source (GPL-3.0-or-later).
 
 Unlike displayed denominators, the branch factors inside #expr are exact. The
 trailing `round 1` formats a reciprocal denominator for the Wiki table; it must
 not turn a game probability into its rounded display approximation.
+
+Only elite and master caskets can be a Mimic. Easy, medium and hard pages carry a
+separate Entrana pool (no uniques, weapons or armour) under its own level-2
+heading; it is not part of the normal pool exported here.
 """
 
 import argparse
@@ -21,7 +25,21 @@ from scripts.drops.drops_wikitext import parse_inline_note_fields
 from scripts.drops.reward_caskets import ROOT, load_item_ids
 
 SOURCES = Path(__file__).with_name("sources")
-TIERS = ("elite", "master")
+TIERS = ("easy", "medium", "hard", "elite", "master")
+MIMIC_TIERS = ("elite", "master")
+# Wiki revisions of the captured sources; update together with a recapture.
+SOURCE_REVISIONS = {
+    "easy": 15358923,
+    "medium": 15358924,
+    "hard": 15360008,
+    "elite": 15360009,
+    "master": 15370773,
+}
+# Tertiary rewards that are unlocks rather than items (reviewed, by source name).
+TERTIARY_UNLOCKS = {"uri transform": "emote"}
+# A named footnote saying one item comes "together with" others marks a joint
+# outcome: the Wiki lists each member at the outcome's own rate.
+JOINT_REF = re.compile(r'<ref\s+name="?([^"\s>/]+)"?[^>]*>(.*?)</ref>', re.I | re.S)
 
 
 def _arithmetic(node):
@@ -77,10 +95,18 @@ def _field(template, key, default=None):
     return str(template.get(key).value).strip() if template.has(key) else default
 
 
-def _entry(template, section, item_ids):
+def _joint_ref(template):
+    for name, note in JOINT_REF.findall(_field(template, "raritynotes", "")):
+        if "together with" in note:
+            return name, frozenset(re.findall(r"\[\[([^\]|]+)", note))
+    return None
+
+
+def _entry(template, section, item_ids, unlocks=None):
     name = _field(template, "name", "")
     item_id = item_ids.get(name.casefold())
-    if item_id is None:
+    unlock = (unlocks or {}).get(name.casefold())
+    if item_id is None and unlock is None:
         raise ValueError("Unresolved reward item: " + name)
     quantity_raw = _field(template, "quantity", "")
     match = re.fullmatch(r"(\d+)(?:-(\d+))?(\s+\(noted\))?", quantity_raw)
@@ -89,14 +115,16 @@ def _entry(template, section, item_ids):
     minimum, maximum = int(match[1]), int(match[2] or match[1])
     if not 0 < minimum <= maximum:
         raise ValueError("Invalid reward quantity: " + quantity_raw)
-    entry = {
-        "item_id": item_id,
-        "name": name,
-        "quantity": [minimum, maximum],
-        "noted": bool(match[3]),
-        "section": section,
-        "rarity_raw": _field(template, "rarity", ""),
-    }
+    entry = {"unlock": unlock} if item_id is None else {"item_id": item_id}
+    entry.update(
+        {
+            "name": name,
+            "quantity": [minimum, maximum],
+            "noted": bool(match[3]),
+            "section": section,
+            "rarity_raw": _field(template, "rarity", ""),
+        }
+    )
     notes = parse_inline_note_fields(
         *[
             _field(template, key, "")
@@ -106,6 +134,46 @@ def _entry(template, section, item_ids):
     if notes:
         entry["notes"] = notes
     return entry
+
+
+def _fold_joint_outcomes(pool):
+    """Fold each joint outcome's rows, listed at one shared rate, into one entry."""
+    entries, seen = [], set()
+    for entry, joint in pool:
+        if joint is None:
+            entries.append(entry)
+            continue
+        key = (entry["section"], joint[0])
+        if key in seen:
+            continue
+        seen.add(key)
+        members = [
+            member
+            for member, other in pool
+            if other is not None and (member["section"], other[0]) == key
+        ]
+        names = [member["name"] for member in members]
+        if any(
+            other[1] != joint[1] for _, other in pool if other and other[0] == joint[0]
+        ):
+            raise ValueError("Joint reward notes disagree: " + joint[0])
+        if set(names) != joint[1] or len(names) != len(joint[1]):
+            raise ValueError("Joint reward members differ from their note: " + joint[0])
+        if any(member["rarity_raw"] != entry["rarity_raw"] for member in members):
+            raise ValueError("Joint reward members differ in rate: " + joint[0])
+        notes = [note for member in members for note in member.get("notes", [])]
+        folded = {
+            "items": [
+                {key: member[key] for key in ("item_id", "name", "quantity", "noted")}
+                for member in members
+            ],
+            "section": entry["section"],
+            "rarity_raw": entry["rarity_raw"],
+        }
+        if notes:
+            folded["notes"] = list(dict.fromkeys(notes))
+        entries.append(folded)
+    return entries
 
 
 def build_casket(source, tier, item_ids):
@@ -130,12 +198,14 @@ def build_casket(source, tier, item_ids):
         source,
         re.I,
     )
-    if infobox is None or not rolls or not mimic:
+    if mimic and tier not in MIMIC_TIERS:
+        raise ValueError("Unexpected Mimic chance for the {} tier".format(tier))
+    if infobox is None or not rolls or (tier in MIMIC_TIERS and not mimic):
         raise ValueError("Missing clue reward source configuration")
     item_id = _field(infobox, "id", "")
     if not item_id.isdigit() or not 0 < int(rolls[1]) <= int(rolls[2]):
         raise ValueError("Invalid clue reward source configuration")
-    entries, rates, tertiary = [], [], []
+    pool, tertiary = [], []
     active, section, excluded_level, tertiary_level = False, "", None, None
     for node in code.nodes:
         if isinstance(node, mw.nodes.Heading):
@@ -160,7 +230,9 @@ def build_casket(source, tier, item_ids):
             continue
         if str(node.name).strip().casefold() != "dropslinereward":
             continue
-        entry = _entry(node, section, item_ids)
+        entry = _entry(
+            node, section, item_ids, TERTIARY_UNLOCKS if tertiary_level else None
+        )
         if tertiary_level is not None:
             if entry["rarity_raw"].casefold() != "always":
                 entry["probability"] = str(exact_probability(entry["rarity_raw"]))
@@ -170,8 +242,9 @@ def build_casket(source, tier, item_ids):
                 )
             tertiary.append(entry)
         else:
-            rates.append(exact_probability(entry["rarity_raw"]))
-            entries.append(entry)
+            pool.append((entry, _joint_ref(node)))
+    entries = _fold_joint_outcomes(pool)
+    rates = [exact_probability(entry["rarity_raw"]) for entry in entries]
     if not entries or sum(rates) != 1:
         raise ValueError("Clue reward probabilities must sum exactly to one")
     denominator = 1
@@ -181,14 +254,11 @@ def build_casket(source, tier, item_ids):
         )
     for entry, rate in zip(entries, rates):
         entry["weight"] = int(rate * denominator)
-    return {
-        "casket_item_id": int(item_id),
-        "rolls": [int(rolls[1]), int(rolls[2])],
-        "mimic_chance": str(exact_probability(mimic[1])),
-        "out_of": denominator,
-        "entries": entries,
-        "tertiary": tertiary,
-    }
+    table = {"casket_item_id": int(item_id), "rolls": [int(rolls[1]), int(rolls[2])]}
+    if mimic:
+        table["mimic_chance"] = str(exact_probability(mimic[1]))
+    table.update({"out_of": denominator, "entries": entries, "tertiary": tertiary})
+    return table
 
 
 def generate(sources, items_path, output):
@@ -204,6 +274,8 @@ def generate(sources, items_path, output):
             "hash_encoding": "UTF-8 with LF newlines",
             "probabilities": "Exact source branch factors before Wiki display rounding",
             "tertiary": "Separate from per-roll pools; notes require explicit eligibility handling",
+            "joint_outcomes": "An entry with `items` grants every listed item on one roll",
+            "mimic": "Only elite and master tables have mimic_chance",
         },
         "tables": {},
     }
@@ -213,6 +285,7 @@ def generate(sources, items_path, output):
         payload["tables"][tier] = build_casket(source_text, tier, item_ids)
         payload["meta"]["sources"][tier] = {
             "url": "https://oldschool.runescape.wiki/w/Reward_casket_(" + tier + ")",
+            "revision": SOURCE_REVISIONS[tier],
             "sha256": hashlib.sha256(source_text.encode("utf-8")).hexdigest(),
         }
     output.parent.mkdir(parents=True, exist_ok=True)
