@@ -1,0 +1,378 @@
+"""Export original easy-master rewards from captured Wiki source (GPL-3.0-or-later).
+
+Unlike displayed denominators, the branch factors inside #expr are exact. The
+trailing `round 1` formats a reciprocal denominator for the Wiki table; it must
+not turn a game probability into its rounded display approximation.
+
+Only elite and master caskets can be a Mimic. Easy, medium and hard pages carry a
+separate Entrana pool (no uniques, weapons or armour) under its own level-2
+heading; it is not part of the normal pool exported here.
+
+Milestones are the unconditional tertiaries, at the completion count their note
+states. Each tier's Clue scroll page names one of them; the two pages must agree.
+"""
+
+import argparse
+import ast
+import hashlib
+import json
+import re
+import sys
+from fractions import Fraction
+from math import gcd
+from pathlib import Path
+
+import mwparserfromhell as mw
+
+from scripts.drops.drops_wikitext import parse_inline_note_fields
+from scripts.drops.reward_caskets import ROOT, load_item_ids
+
+SOURCES = Path(__file__).with_name("sources")
+TIERS = ("easy", "medium", "hard", "elite", "master")
+MIMIC_TIERS = ("elite", "master")
+# Wiki revisions of the captured sources; update together with a recapture.
+SOURCE_REVISIONS = {
+    "easy": 15358923,
+    "medium": 15358924,
+    "hard": 15360008,
+    "elite": 15360009,
+    "master": 15370773,
+}
+CLUE_PAGE_REVISIONS = {
+    "easy": 15368110,
+    "medium": 15379968,
+    "hard": 15368483,
+    "elite": 15371911,
+    "master": 15368114,
+}
+MILESTONE_NOTE = re.compile(r"on their (\d+)(?:st|nd|rd|th) completed", re.I)
+CLUE_PAGE_MILESTONE = (
+    r"(?:After completing|Completing) (\d+) {} clues,? (?:the player will be awarded|"
+    r"rewards the player with) (?:an? |the )?\[\[([^\]|]+)"
+)
+# Tertiary rewards that are unlocks rather than items (reviewed, by source name).
+TERTIARY_UNLOCKS = {"uri transform": "emote"}
+# A named footnote saying one item comes "together with" others marks a joint
+# outcome: the Wiki lists each member at the outcome's own rate.
+JOINT_REF = re.compile(r'<ref\s+name="?([^"\s>/]+)"?[^>]*>(.*?)</ref>', re.I | re.S)
+
+
+def _arithmetic(node):
+    if isinstance(node, ast.Constant) and type(node.value) in (int, float):
+        return Fraction(str(node.value))
+    # Python3.7 parses numeric literals as Num rather than Constant.
+    if (
+        sys.version_info < (3, 8)
+        and isinstance(node, ast.Num)
+        and type(node.n) in (int, float)
+    ):
+        return Fraction(str(node.n))
+    if isinstance(node, ast.BinOp):
+        left, right = _arithmetic(node.left), _arithmetic(node.right)
+        if isinstance(node.op, ast.Add):
+            return left + right
+        if isinstance(node.op, ast.Sub):
+            return left - right
+        if isinstance(node.op, ast.Mult):
+            return left * right
+        if isinstance(node.op, ast.Div):
+            return left / right
+    raise ValueError("Unsupported reward probability expression")
+
+
+def exact_probability(raw):
+    """Evaluate only arithmetic, retaining the unrounded source branch factors."""
+    code = mw.parse(raw)
+    try:
+        for template in reversed(code.filter_templates()):
+            name = str(template.name).strip()
+            if not name.lower().startswith("#expr:") or template.params:
+                raise ValueError("Unsupported reward probability template")
+            expression = name.split(":", 1)[1]
+            expression = re.sub(r"\s+round\s+1\s*$", "", expression, flags=re.I)
+            value = _arithmetic(ast.parse(expression.strip(), mode="eval").body)
+            code.replace(template, "({}/{})".format(value.numerator, value.denominator))
+        result = _arithmetic(ast.parse(str(code).strip(), mode="eval").body)
+        if not 0 < result <= 1:
+            raise ValueError("Reward probability outside (0, 1]")
+        return result
+    except (
+        ValueError,
+        SyntaxError,
+        TypeError,
+        ZeroDivisionError,
+        OverflowError,
+    ) as exc:
+        raise ValueError("Invalid reward probability: " + raw) from exc
+
+
+def _field(template, key, default=None):
+    return str(template.get(key).value).strip() if template.has(key) else default
+
+
+def _joint_ref(template):
+    for name, note in JOINT_REF.findall(_field(template, "raritynotes", "")):
+        if "together with" in note:
+            return name, frozenset(re.findall(r"\[\[([^\]|]+)", note))
+    return None
+
+
+def _entry(template, section, item_ids, unlocks=None):
+    name = _field(template, "name", "")
+    item_id = item_ids.get(name.casefold())
+    unlock = (unlocks or {}).get(name.casefold())
+    if item_id is None and unlock is None:
+        raise ValueError("Unresolved reward item: " + name)
+    quantity_raw = _field(template, "quantity", "")
+    match = re.fullmatch(r"(\d+)(?:-(\d+))?(\s+\(noted\))?", quantity_raw)
+    if not match:
+        raise ValueError("Unsupported reward quantity: " + quantity_raw)
+    minimum, maximum = int(match[1]), int(match[2] or match[1])
+    if not 0 < minimum <= maximum:
+        raise ValueError("Invalid reward quantity: " + quantity_raw)
+    entry = {"unlock": unlock} if item_id is None else {"item_id": item_id}
+    entry.update(
+        {
+            "name": name,
+            "quantity": [minimum, maximum],
+            "noted": bool(match[3]),
+            "section": section,
+            "rarity_raw": _field(template, "rarity", ""),
+        }
+    )
+    notes = parse_inline_note_fields(
+        *[
+            _field(template, key, "")
+            for key in ("namenotes", "quantitynotes", "raritynotes")
+        ]
+    )
+    if notes:
+        entry["notes"] = notes
+    return entry
+
+
+def _fold_joint_outcomes(pool):
+    """Fold each joint outcome's rows, listed at one shared rate, into one entry."""
+    entries, seen = [], set()
+    for entry, joint in pool:
+        if joint is None:
+            entries.append(entry)
+            continue
+        key = (entry["section"], joint[0])
+        if key in seen:
+            continue
+        seen.add(key)
+        members = [
+            member
+            for member, other in pool
+            if other is not None and (member["section"], other[0]) == key
+        ]
+        names = [member["name"] for member in members]
+        if any(
+            other[1] != joint[1] for _, other in pool if other and other[0] == joint[0]
+        ):
+            raise ValueError("Joint reward notes disagree: " + joint[0])
+        if set(names) != joint[1] or len(names) != len(joint[1]):
+            raise ValueError("Joint reward members differ from their note: " + joint[0])
+        if any(member["rarity_raw"] != entry["rarity_raw"] for member in members):
+            raise ValueError("Joint reward members differ in rate: " + joint[0])
+        notes = [note for member in members for note in member.get("notes", [])]
+        folded = {
+            "items": [
+                {key: member[key] for key in ("item_id", "name", "quantity", "noted")}
+                for member in members
+            ],
+            "section": entry["section"],
+            "rarity_raw": entry["rarity_raw"],
+        }
+        if notes:
+            folded["notes"] = list(dict.fromkeys(notes))
+        entries.append(folded)
+    return entries
+
+
+def _milestones(tertiary):
+    """Unconditional tertiaries in `reward-caskets.json` milestone shape."""
+    milestones = []
+    for row in tertiary:
+        if row["rarity_raw"].casefold() != "always":
+            continue
+        counts = {
+            int(count)
+            for note in row.get("notes", [])
+            for count in MILESTONE_NOTE.findall(note)
+        }
+        if len(counts) != 1:
+            raise ValueError("Milestone completion count unclear: " + row["name"])
+        milestone = {"completed": counts.pop()}
+        if "unlock" in row:
+            milestone[row["unlock"]] = row["name"]
+        else:
+            milestone.update(item_id=row["item_id"], name=row["name"])
+        milestones.append(milestone)
+    return sorted(milestones, key=lambda milestone: milestone["completed"])
+
+
+def _check_clue_page(source, tier, milestones):
+    found = re.findall(CLUE_PAGE_MILESTONE.format(tier), source, re.I)
+    if len(found) != 1:
+        raise ValueError("Milestone sentence not found once on Clue scroll " + tier)
+    completed, name = int(found[0][0]), found[0][1].strip().casefold()
+    if not any(
+        row["completed"] == completed
+        and row.get("name", row.get("emote")).casefold() == name
+        for row in milestones
+    ):
+        raise ValueError("Milestone on Clue scroll {} disagrees: {}".format(tier, name))
+
+
+def build_casket(source, tier, item_ids, clue_source=None):
+    if tier not in TIERS:
+        raise ValueError("Unsupported clue tier: " + tier)
+    code = mw.parse(source)
+    infobox = next(
+        (
+            node
+            for node in code.filter_templates(recursive=False)
+            if str(node.name).strip().casefold() == "infobox item"
+        ),
+        None,
+    )
+    rolls = re.search(
+        tier + r" clues generate a minimum of (\d+) rewards and a maximum of (\d+)",
+        source,
+        re.I,
+    )
+    mimic = re.search(
+        r"There is also a (\d+/\d+) chance of the reward casket being a \[\[mimic\]\]",
+        source,
+        re.I,
+    )
+    if mimic and tier not in MIMIC_TIERS:
+        raise ValueError("Unexpected Mimic chance for the {} tier".format(tier))
+    if infobox is None or not rolls or (tier in MIMIC_TIERS and not mimic):
+        raise ValueError("Missing clue reward source configuration")
+    item_id = _field(infobox, "id", "")
+    if not item_id.isdigit() or not 0 < int(rolls[1]) <= int(rolls[2]):
+        raise ValueError("Invalid clue reward source configuration")
+    pool, tertiary = [], []
+    active, section, excluded_level, tertiary_level = False, "", None, None
+    for node in code.nodes:
+        if isinstance(node, mw.nodes.Heading):
+            title = str(node.title).strip()
+            if node.level == 2:
+                active = title.casefold() == "rewards"
+            if excluded_level is not None and node.level <= excluded_level:
+                excluded_level = None
+            if tertiary_level is not None and node.level <= tertiary_level:
+                tertiary_level = None
+            if active:
+                section = title
+                if "mimic" in title.casefold():
+                    excluded_level = node.level
+                if title.casefold() == "tertiary":
+                    tertiary_level = node.level
+        if (
+            not active
+            or excluded_level is not None
+            or not isinstance(node, mw.nodes.Template)
+        ):
+            continue
+        if str(node.name).strip().casefold() != "dropslinereward":
+            continue
+        entry = _entry(
+            node, section, item_ids, TERTIARY_UNLOCKS if tertiary_level else None
+        )
+        if tertiary_level is not None:
+            if entry["rarity_raw"].casefold() != "always":
+                entry["probability"] = str(exact_probability(entry["rarity_raw"]))
+            elif not entry.get("notes"):
+                raise ValueError(
+                    "Unconditional tertiary reward lacks eligibility evidence"
+                )
+            tertiary.append(entry)
+        else:
+            pool.append((entry, _joint_ref(node)))
+    entries = _fold_joint_outcomes(pool)
+    rates = [exact_probability(entry["rarity_raw"]) for entry in entries]
+    if not entries or sum(rates) != 1:
+        raise ValueError("Clue reward probabilities must sum exactly to one")
+    denominator = 1
+    for rate in rates:
+        denominator = (
+            denominator // gcd(denominator, rate.denominator) * rate.denominator
+        )
+    for entry, rate in zip(entries, rates):
+        entry["weight"] = int(rate * denominator)
+    table = {"casket_item_id": int(item_id), "rolls": [int(rolls[1]), int(rolls[2])]}
+    if mimic:
+        table["mimic_chance"] = str(exact_probability(mimic[1]))
+    milestones = _milestones(tertiary)
+    if clue_source is not None:
+        _check_clue_page(clue_source, tier, milestones)
+    table.update(
+        {
+            "out_of": denominator,
+            "entries": entries,
+            "tertiary": tertiary,
+            "milestones": milestones,
+        }
+    )
+    return table
+
+
+def generate(sources, items_path, output):
+    # Universal-newline reads make provenance stable across Git checkout modes.
+    item_text = items_path.read_text(encoding="utf-8")
+    item_ids = load_item_ids(json.loads(item_text))
+    payload = {
+        "schema_version": 1,
+        "meta": {
+            "sources": {},
+            "license": "CC BY-NC-SA 3.0 — Old School RuneScape Wiki contributors",
+            "items_sha256": hashlib.sha256(item_text.encode("utf-8")).hexdigest(),
+            "hash_encoding": "UTF-8 with LF newlines",
+            "probabilities": "Exact source branch factors before Wiki display rounding",
+            "tertiary": "Separate from per-roll pools; notes require explicit eligibility handling",
+            "joint_outcomes": "An entry with `items` grants every listed item on one roll",
+            "mimic": "Only elite and master tables have mimic_chance",
+            "milestones": "Unconditional tertiaries by completion count, cross-checked with each Clue scroll page",
+        },
+        "tables": {},
+    }
+    for tier in TIERS:
+        path = sources / (tier + "-rewards.wikitext")
+        source_text = path.read_text(encoding="utf-8")
+        clue_text = (sources / ("clue-scroll-" + tier + ".wikitext")).read_text(
+            encoding="utf-8"
+        )
+        payload["tables"][tier] = build_casket(source_text, tier, item_ids, clue_text)
+        payload["meta"]["sources"][tier] = {
+            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(" + tier + ")",
+            "revision": SOURCE_REVISIONS[tier],
+            "sha256": hashlib.sha256(source_text.encode("utf-8")).hexdigest(),
+            "clue_page": {
+                "url": "https://oldschool.runescape.wiki/w/Clue_scroll_(" + tier + ")",
+                "revision": CLUE_PAGE_REVISIONS[tier],
+                "sha256": hashlib.sha256(clue_text.encode("utf-8")).hexdigest(),
+            },
+        }
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_bytes(
+        (json.dumps(payload, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+    )
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--sources", type=Path, default=SOURCES)
+    parser.add_argument("--items", type=Path, default=ROOT / "docs/items-complete.json")
+    parser.add_argument(
+        "--out", type=Path, default=ROOT / "docs/drops-json/clue-caskets.json"
+    )
+    args = parser.parse_args()
+    generate(args.sources, args.items, args.out)
+
+
+if __name__ == "__main__":
+    main()
