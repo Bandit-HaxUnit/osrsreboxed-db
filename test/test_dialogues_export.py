@@ -445,11 +445,13 @@ def test_slayer_task_tips_are_slugged_in_the_export():
     assert found >= 8
 
 
-def test_shop_index_drops_names_two_shops_share():
-    # Quest-state variants fold onto the base name and cannot be told apart.
+def test_shop_index_keeps_ambiguous_base_names_as_sorted_versions():
     index = dialogues_update.shop_index()
     assert index
-    assert "gabooty's tai bwo wannai cooperative" not in index
+    assert index["gabooty's tai bwo wannai cooperative"] == (
+        "Gabooty's Tai Bwo Wannai Cooperative. (Default)",
+        "Gabooty's Tai Bwo Wannai Cooperative. (Karamja gloves)",
+    )
 
 
 def test_every_shop_keeps_its_literal_key():
@@ -466,7 +468,11 @@ def test_open_shop_targets_are_keys_of_the_shops_dump():
     def walk(node):
         if isinstance(node, dict):
             if node.get("action") == "open_shop":
-                targets.add(node["target"])
+                if node.get("shops"):
+                    assert set(node["shops"]) <= set(shops)
+                    targets.update(node["shops"])
+                else:
+                    targets.add(node["target"])
             for value in node.values():
                 walk(value)
         elif isinstance(node, list):
@@ -476,3 +482,37 @@ def test_open_shop_targets_are_keys_of_the_shops_dump():
     walk(dialogues)
     assert targets
     assert targets <= set(shops)
+
+
+def test_resolve_shops_retains_all_exact_versioned_shop_names():
+    shops = (
+        "Baba Yaga's Magic Shop. (After Lunar Diplomacy)",
+        "Baba Yaga's Magic Shop. (During Lunar Diplomacy)",
+    )
+    node = dict(
+        type="action",
+        action="open_interface",
+        target="Baba Yaga's Magic Shop.",
+        id="shop-action",
+    )
+    assert dialogues_update.resolve_shops(
+        {"Baba Yaga": [node]},
+        {"baba yaga's magic shop": shops},
+    ) == 1
+    assert node == {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Baba Yaga's Magic Shop.",
+        "shops": list(shops),
+        "id": "shop-action",
+    }
+
+
+def test_shop_index_preserves_an_exact_unsplit_shop_beside_versioned_names(tmp_path, monkeypatch):
+    monkeypatch.setattr(dialogues_update.config, "DOCS_PATH", tmp_path)
+    shops = {"Supply Shop": {}, "Supply Shop (Default)": {}, "Supply Shop (Quest)": {}}
+    (tmp_path / dialogues_update.SHOPS).write_text(json.dumps(shops))
+    index = dialogues_update.shop_index()
+    assert index["Supply Shop"] == "Supply Shop"
+    assert index["supply shop"] == "Supply Shop"
+    assert index["Supply Shop (Quest)"] == "Supply Shop (Quest)"

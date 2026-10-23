@@ -170,10 +170,13 @@ change the speaker, text or control flow.
 Choices/random alternatives have nested `options` and `steps`. Message, missing,
 unavailable, condition and reference nodes must not silently disappear.
 
-`open_shop.target` is an exact key in `shops-items-by-shop.json`; `open_interface`
-is not a shop ID. `receive`, `give`, teleport and other effects may still carry
-prose instead of structured game IDs/amounts. Bind effects by node ID in the quest
-plugin; don't execute prose. `action_source: "text"` identifies inferred actions.
+`open_shop.target` is an exact key in `shops-items-by-shop.json` for an unsplit shop.
+When the Wiki shop page has versioned exports, `target` is their shared title and
+`shops` lists the exact exported keys. Consumers choose a version from player state
+and fall back to the `(Default)` key. `open_interface` is not a shop ID.
+`receive`, `give`, teleport and other effects may still carry prose instead of
+structured game IDs/amounts. Bind effects by node ID in the quest plugin; don't
+execute prose. `action_source: "text"` identifies inferred actions.
 
 Schemas: `data/schemas/schema-dialogues.json`, `schema-npc-dialogue-index.json`,
 `schema-dialogue-manifest.json` and `schema-dialogue-authoring.json`.

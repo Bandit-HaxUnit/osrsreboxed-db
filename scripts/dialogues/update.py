@@ -705,17 +705,29 @@ def shop_keys(name):
 
 
 def shop_index():
-    """Every shop spelling to its canonical key. Empty when the shops dump is unbuilt."""
+    """Return exact names and base names for versioned shops."""
     path = config.DOCS_PATH / SHOPS
     if not path.exists():
         print(f"{path} not built; every interface stays open_interface", flush=True)
         return {}
     names = collections.defaultdict(set)
-    for shop in json.loads(path.read_text()):
+    shops = json.loads(path.read_text())
+    for shop in shops:
         for key in shop_keys(shop):
             names[key].add(shop)
-    # Two shops folding onto one key (quest-state variants) cannot be told apart.
-    return {key: value.pop() for key, value in names.items() if len(value) == 1}
+    # A terminal parenthesized label is the shop export's version, such as
+    # "(Default)", "(Karamja gloves)" or "(Post-miniquest)".
+    versions = collections.defaultdict(set)
+    for shop in shops:
+        base = re.sub(r"\s+\([^()]*\)$", "", shop).strip()
+        if base != shop:
+            for key in shop_keys(base):
+                versions[key].add(shop)
+    result = {key: next(iter(value)) for key, value in names.items() if len(value) == 1}
+    for key, variants in versions.items():
+        if len(variants) > 1 and not names.get(key):
+            result[key] = tuple(sorted(variants))
+    return result
 
 
 def resolve_shops(npcs, index):
@@ -733,7 +745,11 @@ def resolve_shops(npcs, index):
             )
             if shop:
                 node["action"] = "open_shop"
-                node["target"] = shop
+                if isinstance(shop, tuple):
+                    node["target"] = re.sub(r"\s+\([^()]*\)$", "", shop[0]).strip()
+                    node["shops"] = list(shop)
+                else:
+                    node["target"] = shop
                 resolved += 1
             for value in node.values():
                 walk(value)
