@@ -194,6 +194,7 @@ repository. This folder contains the publicly available database. Every file ins
     `unresolved-items.json` lists drop names that matched no item in the database.
 -   `items-complete.json`: A single JSON file that combines all single JSON files from `items-json` folder. This file contains the entire osrsbox-db
     items database in one file. This is useful if you want to get the data for every single item.
+-   `item-alch.json`: A single JSON file keyed by item ID with only `id`, `highalch`, and `lowalch`. This is useful when you need alchemy values without the rest of the item metadata.
 -   `items-icons`: Collection of PNG files (20K+) for every item inventory icon in OSRS. Each inventory icon is named using the unique item ID number.
 -   `items-json`: Collection of JSON files (20K+) of extensive item metadata for every item in OSRS. This folder contains the entire osrsbox-db item
     database where each item has an individual JSON file, named using the unique item ID number. This is useful when you want to fetch data for a

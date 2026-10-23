@@ -62,6 +62,27 @@ def generate_items_complete():
         json.dump(items, f, indent=4)
 
 
+def generate_item_alch_file():
+    """Generate the `docs/item-alch.json` file."""
+    path_to_items_json = Path(config.DOCS_PATH / "items-json")
+    all_db_items = items_api.all_items.AllItems(path_to_items_json)
+
+    item_alch = {}
+
+    for item in all_db_items:
+        if not isinstance(item.highalch, int) or not isinstance(item.lowalch, int):
+            continue
+        item_alch[item.id] = {
+            "id": item.id,
+            "highalch": item.highalch,
+            "lowalch": item.lowalch,
+        }
+
+    out_fi = Path(config.DOCS_PATH / "item-alch.json")
+    with open(out_fi, "w") as f:
+        json.dump(item_alch, f)
+
+
 def generate_item_slot_files():
     """Generate the `docs/items-slot/` JSON files."""
     # Read in the item database content
@@ -168,6 +189,8 @@ def main():
     """The main function for generating the static JSON files."""
     logger.info("Generating items-complete.json file...")
     generate_items_complete()
+    logger.info("Generating item-alch.json file...")
+    generate_item_alch_file()
     logger.info("Generating items-json-slot JSON files...")
     generate_item_slot_files()
     logger.info("Generating monsters-complete.json file...")
