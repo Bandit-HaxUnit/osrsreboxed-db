@@ -6525,9 +6525,13 @@
             "steps": [
               {
                 "type": "action",
-                "action": "open_interface",
+                "action": "open_shop",
                 "target": "Baba Yaga's Magic Shop.",
-                "id": "hssCT1"
+                "id": "hssCT1",
+                "shops": [
+                  "Baba Yaga's Magic Shop. (After Lunar Diplomacy)",
+                  "Baba Yaga's Magic Shop. (During Lunar Diplomacy)"
+                ]
               }
             ]
           },
@@ -6766,10 +6770,8 @@
             "text": "Have you got anything to trade?",
             "steps": [
               {
-                "type": "action",
-                "action": "open_interface",
-                "target": "Baba Yaga's Magic Shop.",
-                "id": "5oe-rV"
+                "type": "call",
+                "branch": "i9z-wR"
               }
             ]
           },
@@ -6880,10 +6882,8 @@
             "text": "Have you got anything to trade?",
             "steps": [
               {
-                "type": "action",
-                "action": "open_interface",
-                "target": "Baba Yaga's Magic Shop.",
-                "id": "5oe-rV"
+                "type": "call",
+                "branch": "i9z-wR"
               }
             ]
           },
@@ -11488,6 +11488,18 @@
         "type": "line",
         "speaker": "Baba Yaga",
         "text": "Insane? Very."
+      }
+    ],
+    "i9z-wR": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Baba Yaga's Magic Shop.",
+        "id": "5oe-rV",
+        "shops": [
+          "Baba Yaga's Magic Shop. (After Lunar Diplomacy)",
+          "Baba Yaga's Magic Shop. (During Lunar Diplomacy)"
+        ]
       }
     ],
     "JWZmDM": [
