@@ -7,6 +7,9 @@ not turn a game probability into its rounded display approximation.
 Only elite and master caskets can be a Mimic. Easy, medium and hard pages carry a
 separate Entrana pool (no uniques, weapons or armour) under its own level-2
 heading; it is not part of the normal pool exported here.
+
+Milestones are the unconditional tertiaries, at the completion count their note
+states. Each tier's Clue scroll page names one of them; the two pages must agree.
 """
 
 import argparse
@@ -35,6 +38,18 @@ SOURCE_REVISIONS = {
     "elite": 15360009,
     "master": 15370773,
 }
+CLUE_PAGE_REVISIONS = {
+    "easy": 15368110,
+    "medium": 15379968,
+    "hard": 15368483,
+    "elite": 15371911,
+    "master": 15368114,
+}
+MILESTONE_NOTE = re.compile(r"on their (\d+)(?:st|nd|rd|th) completed", re.I)
+CLUE_PAGE_MILESTONE = (
+    r"(?:After completing|Completing) (\d+) {} clues,? (?:the player will be awarded|"
+    r"rewards the player with) (?:an? |the )?\[\[([^\]|]+)"
+)
 # Tertiary rewards that are unlocks rather than items (reviewed, by source name).
 TERTIARY_UNLOCKS = {"uri transform": "emote"}
 # A named footnote saying one item comes "together with" others marks a joint
@@ -176,7 +191,42 @@ def _fold_joint_outcomes(pool):
     return entries
 
 
-def build_casket(source, tier, item_ids):
+def _milestones(tertiary):
+    """Unconditional tertiaries in `reward-caskets.json` milestone shape."""
+    milestones = []
+    for row in tertiary:
+        if row["rarity_raw"].casefold() != "always":
+            continue
+        counts = {
+            int(count)
+            for note in row.get("notes", [])
+            for count in MILESTONE_NOTE.findall(note)
+        }
+        if len(counts) != 1:
+            raise ValueError("Milestone completion count unclear: " + row["name"])
+        milestone = {"completed": counts.pop()}
+        if "unlock" in row:
+            milestone[row["unlock"]] = row["name"]
+        else:
+            milestone.update(item_id=row["item_id"], name=row["name"])
+        milestones.append(milestone)
+    return sorted(milestones, key=lambda milestone: milestone["completed"])
+
+
+def _check_clue_page(source, tier, milestones):
+    found = re.findall(CLUE_PAGE_MILESTONE.format(tier), source, re.I)
+    if len(found) != 1:
+        raise ValueError("Milestone sentence not found once on Clue scroll " + tier)
+    completed, name = int(found[0][0]), found[0][1].strip().casefold()
+    if not any(
+        row["completed"] == completed
+        and row.get("name", row.get("emote")).casefold() == name
+        for row in milestones
+    ):
+        raise ValueError("Milestone on Clue scroll {} disagrees: {}".format(tier, name))
+
+
+def build_casket(source, tier, item_ids, clue_source=None):
     if tier not in TIERS:
         raise ValueError("Unsupported clue tier: " + tier)
     code = mw.parse(source)
@@ -257,7 +307,17 @@ def build_casket(source, tier, item_ids):
     table = {"casket_item_id": int(item_id), "rolls": [int(rolls[1]), int(rolls[2])]}
     if mimic:
         table["mimic_chance"] = str(exact_probability(mimic[1]))
-    table.update({"out_of": denominator, "entries": entries, "tertiary": tertiary})
+    milestones = _milestones(tertiary)
+    if clue_source is not None:
+        _check_clue_page(clue_source, tier, milestones)
+    table.update(
+        {
+            "out_of": denominator,
+            "entries": entries,
+            "tertiary": tertiary,
+            "milestones": milestones,
+        }
+    )
     return table
 
 
@@ -276,17 +336,26 @@ def generate(sources, items_path, output):
             "tertiary": "Separate from per-roll pools; notes require explicit eligibility handling",
             "joint_outcomes": "An entry with `items` grants every listed item on one roll",
             "mimic": "Only elite and master tables have mimic_chance",
+            "milestones": "Unconditional tertiaries by completion count, cross-checked with each Clue scroll page",
         },
         "tables": {},
     }
     for tier in TIERS:
         path = sources / (tier + "-rewards.wikitext")
         source_text = path.read_text(encoding="utf-8")
-        payload["tables"][tier] = build_casket(source_text, tier, item_ids)
+        clue_text = (sources / ("clue-scroll-" + tier + ".wikitext")).read_text(
+            encoding="utf-8"
+        )
+        payload["tables"][tier] = build_casket(source_text, tier, item_ids, clue_text)
         payload["meta"]["sources"][tier] = {
             "url": "https://oldschool.runescape.wiki/w/Reward_casket_(" + tier + ")",
             "revision": SOURCE_REVISIONS[tier],
             "sha256": hashlib.sha256(source_text.encode("utf-8")).hexdigest(),
+            "clue_page": {
+                "url": "https://oldschool.runescape.wiki/w/Clue_scroll_(" + tier + ")",
+                "revision": CLUE_PAGE_REVISIONS[tier],
+                "sha256": hashlib.sha256(clue_text.encode("utf-8")).hexdigest(),
+            },
         }
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes(

@@ -20,9 +20,47 @@ REVISIONS = {
     "elite": 15360009,
     "master": 15370773,
 }
+CLUE_PAGE_REVISIONS = {
+    "easy": 15368110,
+    "medium": 15379968,
+    "hard": 15368483,
+    "elite": 15371911,
+    "master": 15368114,
+}
+MILESTONES = {
+    "easy": [
+        (100, "Minor easy scroll case"),
+        (200, "Major easy scroll case"),
+        (500, "Large spade"),
+    ],
+    "medium": [
+        (100, "Minor medium scroll case"),
+        (250, "Major medium scroll case"),
+        (400, "Clueless scroll"),
+    ],
+    "hard": [
+        (50, "Minor hard scroll case"),
+        (150, "Major hard scroll case"),
+        (300, "Uri transform"),
+    ],
+    "elite": [
+        (50, "Minor elite scroll case"),
+        (150, "Major elite scroll case"),
+        (200, "Heavy casket"),
+    ],
+    "master": [
+        (25, "Minor master scroll case"),
+        (75, "Major master scroll case"),
+        (100, "Scroll sack"),
+    ],
+}
 
 
-def build(tier, text=None, ids=None):
+def clue_page(tier):
+    return (SOURCES / ("clue-scroll-" + tier + ".wikitext")).read_text(encoding="utf-8")
+
+
+def build(tier, text=None, ids=None, clue=None):
     from scripts.drops.clue_caskets import build_casket
 
     if ids is None:
@@ -37,6 +75,7 @@ def build(tier, text=None, ids=None):
         ),
         tier,
         ids,
+        clue,
     )
 
 
@@ -231,6 +270,85 @@ def test_tertiary_conditions_stay_outside_the_normal_pool(tier, expected):
         )
 
 
+@pytest.mark.parametrize("tier", TIERS)
+def test_milestones_come_from_unconditional_tertiaries(tier):
+    table = build(tier, clue=clue_page(tier))
+    assert table == {**build(tier), "milestones": table["milestones"]}
+    milestones = table["milestones"]
+    names = [row.get("name", row.get("emote")) for row in milestones]
+    assert [
+        (row["completed"], name) for row, name in zip(milestones, names)
+    ] == MILESTONES[tier]
+    tertiary = {row["name"]: row for row in table["tertiary"]}
+    for row in milestones:
+        if "emote" in row:
+            assert row == {"completed": 300, "emote": "Uri transform"}
+        else:
+            assert list(row) == ["completed", "item_id", "name"]
+            assert row["item_id"] == tertiary[row["name"]]["item_id"]
+    chance = [
+        row for row in table["tertiary"] if row["rarity_raw"].casefold() != "always"
+    ]
+    assert chance and all("probability" in row for row in chance)
+    assert not {row["name"] for row in chance} & set(names)
+
+
+@pytest.mark.parametrize(
+    "tier,change",
+    [
+        (
+            "easy",
+            lambda page: page.replace(
+                "After completing 500 easy", "After completing 400 easy", 1
+            ),
+        ),
+        (
+            "medium",
+            lambda page: page.replace(
+                "awarded a [[clueless scroll]]", "awarded a [[large spade]]", 1
+            ),
+        ),
+        (
+            "hard",
+            lambda page: page.replace(
+                "Completing 300 hard clues rewards", "Completing hard clues rewards", 1
+            ),
+        ),
+        (
+            "master",
+            lambda page: page
+            + "\nAfter completing 100 master clues, the player will be awarded the [[bloodhound]].",
+        ),
+    ],
+)
+def test_clue_page_milestone_must_agree_with_the_casket_page(tier, change):
+    page = clue_page(tier)
+    changed = change(page)
+    assert changed != page
+    with pytest.raises(ValueError, match="Milestone"):
+        build(tier, clue=changed)
+
+
+def test_unconditional_tertiary_without_a_completion_count_fails_closed():
+    source = (SOURCES / "easy-rewards.wikitext").read_text(encoding="utf-8")
+    changed = source.replace("on their 500th completed easy clue", "eventually", 1)
+    assert changed != source
+    with pytest.raises(ValueError, match="Milestone"):
+        build("easy", changed)
+
+
+def test_entries_keep_source_sections_for_entrana_filtering():
+    table = build("easy")
+    assert all(row["section"] for row in table["entries"])
+    assert list(dict.fromkeys(row["section"] for row in table["entries"])) == [
+        "Easy clue uniques",
+        "Weapons and armour",
+        "Runes",
+        "Food",
+        "Shared treasure trail items",
+    ]
+
+
 def test_uri_transform_is_an_emote_unlock_not_an_item():
     table = build("hard")
     uri = next(row for row in table["tertiary"] if row["name"] == "Uri transform")
@@ -286,6 +404,13 @@ def test_generation_is_deterministic_and_records_source_hashes(tmp_path):
         text = (SOURCES / (tier + "-rewards.wikitext")).read_text(encoding="utf-8")
         assert source["sha256"] == hashlib.sha256(text.encode("utf-8")).hexdigest()
         assert source["revision"] == REVISIONS[tier]
+        page = source["clue_page"]
+        assert page["revision"] == CLUE_PAGE_REVISIONS[tier]
+        assert (
+            page["sha256"]
+            == hashlib.sha256(clue_page(tier).encode("utf-8")).hexdigest()
+        )
+    assert all(table["milestones"] for table in payload["tables"].values())
     assert "CC BY-NC-SA" in payload["meta"]["license"]
 
 
@@ -299,6 +424,8 @@ def test_invalid_input_preserves_previous_export(tmp_path):
         if tier == "master":
             text = text.replace("|name=Bloodhound|", "|name=Unresolved pet|", 1)
         (source_root / (tier + "-rewards.wikitext")).write_text(text, encoding="utf-8")
+        name = "clue-scroll-" + tier + ".wikitext"
+        (source_root / name).write_bytes((SOURCES / name).read_bytes())
     output = tmp_path / "retained.json"
     output.write_bytes(b"previous valid artifact")
     with pytest.raises(ValueError, match="Unresolved reward item"):
@@ -317,6 +444,9 @@ def test_lf_and_crlf_inputs_produce_identical_lf_export(tmp_path):
             text = (SOURCES / (tier + "-rewards.wikitext")).read_text(encoding="utf-8")
             (source_root / (tier + "-rewards.wikitext")).write_bytes(
                 text.replace("\n", newline).encode("utf-8")
+            )
+            (source_root / ("clue-scroll-" + tier + ".wikitext")).write_bytes(
+                clue_page(tier).replace("\n", newline).encode("utf-8")
             )
         items = source_root / "items.json"
         item_text = (ROOT / "docs/items-complete.json").read_text(encoding="utf-8")

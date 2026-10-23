@@ -100,6 +100,30 @@ fails if the members, the names in the footnote or their rates disagree. This en
 has no top-level `item_id`, so a roller that does not support `items` rejects the
 hard table instead of silently granting one potion.
 
+## Milestones
+
+Every tier table has `milestones` in the `reward-caskets.json` beginner shape: an
+item is `{completed, item_id, name}` and an unlock is `{completed, emote}`. Each
+milestone is an unconditional (`Always`) tertiary, at the completion count its note
+gives ("on their 500th completed"). A note without exactly one count fails. Each
+tier's `Clue scroll (<tier>)` page names one non-case milestone, and the two pages
+must agree:
+
+| Tier | Clue scroll page milestone | Revision | Timestamp (UTC) |
+|---|---|---|---|
+| easy | Large spade, 500 | 15368110 | 2026-10-07 20:41:11 |
+| medium | Clueless scroll, 400 | 15379968 | 2026-10-23 07:44:00 |
+| hard | Uri transform (emote), 300 | 15368483 | 2026-10-08 11:27:15 |
+| elite | Heavy casket, 200 | 15371911 | 2026-10-13 14:54:48 |
+| master | Scroll sack, 100 | 15368114 | 2026-10-07 20:47:07 |
+
+These pages (`clue-scroll-<tier>.wikitext`) are raw `?action=raw` source fetched
+twice on 23 October 2026 with byte-identical results. Their SHA-256s are recorded
+under `meta.sources.<tier>.clue_page`. The scroll-case counts appear only in the
+casket notes. Chance-based tertiaries (master clues, Bloodhound) are not milestones
+and keep their exact `probability`. Every normal-pool entry keeps its source
+`section`, for the Entrana rule.
+
 # Challenge-scroll answers
 
 `challenge-scrolls.wikitext` is the raw source of
