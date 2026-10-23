@@ -169,6 +169,43 @@ def test_resolve_shops_retags_known_shops(target, shop):
 
 
 @pytest.mark.parametrize(
+    "target,shop,shops",
+    [
+        # One shop page, one dumped shop per infobox version (#831).
+        (
+            "Ned's Handmade Rope (100% Wool)",
+            "Ned's Handmade Rope (100% Wool)",
+            [
+                "Ned's Handmade Rope (100% Wool) (Default)",
+                "Ned's Handmade Rope (100% Wool) (Fremennik Isles)",
+            ],
+        ),
+        (
+            "Baba Yaga's Magic Shop.",
+            "Baba Yaga's Magic Shop.",
+            [
+                "Baba Yaga's Magic Shop. (After Lunar Diplomacy)",
+                "Baba Yaga's Magic Shop. (During Lunar Diplomacy)",
+            ],
+        ),
+    ],
+)
+def test_resolve_shops_lists_every_version_of_a_shop(target, shop, shops):
+    npcs = {"X": [dict(type="action", action="open_interface", target=target)]}
+    assert dialogues_update.resolve_shops(npcs, dialogues_update.shop_index()) == 1
+    assert npcs["X"][0] == dict(
+        type="action", action="open_shop", target=shop, shops=shops
+    )
+
+
+def test_a_single_parenthesised_shop_is_not_a_version():
+    # The Pandemonium (pub) is a shop of its own, not a version of The Pandemonium.
+    index = dialogues_update.shop_index()
+    key = dialogues_update.normalise_shop("The Pandemonium (pub)")
+    assert index[key] == {"target": "The Pandemonium (pub)"}
+
+
+@pytest.mark.parametrize(
     "target", ["Bank", "Bank PIN", "Grand Exchange collection box"]
 )
 def test_resolve_shops_leaves_non_shops_alone(target):
@@ -283,20 +320,28 @@ def test_slayer_task_tips_are_slugged_in_the_export():
     assert found >= 8
 
 
-def test_shop_index_drops_names_two_shops_share():
-    # Quest-state variants fold onto the base name and cannot be told apart.
+def test_shop_index_lists_the_versions_two_shops_share():
+    # Versions of one shop page fold onto the page name; the consumer picks one.
     index = dialogues_update.shop_index()
-    assert index
-    assert "gabooty's tai bwo wannai cooperative" not in index
+    assert index["gabooty's tai bwo wannai cooperative"] == {
+        "target": "Gabooty's Tai Bwo Wannai Cooperative.",
+        "shops": [
+            "Gabooty's Tai Bwo Wannai Cooperative. (Default)",
+            "Gabooty's Tai Bwo Wannai Cooperative. (Karamja gloves)",
+        ],
+    }
 
 
 def test_every_shop_keeps_its_literal_key():
     shops = json.loads((config.DOCS_PATH / dialogues_update.SHOPS).read_text())
     index = dialogues_update.shop_index()
-    assert {shop: index.get(shop) for shop in shops} == {shop: shop for shop in shops}
+    assert {shop: index.get(shop) for shop in shops} == {
+        shop: {"target": shop} for shop in shops
+    }
 
 
 def test_open_shop_targets_are_keys_of_the_shops_dump():
+    # A step naming a shop page with versions lists them in "shops" instead.
     shops = json.loads((config.DOCS_PATH / dialogues_update.SHOPS).read_text())
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     targets = set()
@@ -304,7 +349,7 @@ def test_open_shop_targets_are_keys_of_the_shops_dump():
     def walk(node):
         if isinstance(node, dict):
             if node.get("action") == "open_shop":
-                targets.add(node["target"])
+                targets.update(node.get("shops") or [node["target"]])
             for value in node.values():
                 walk(value)
         elif isinstance(node, list):
