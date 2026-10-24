@@ -34,8 +34,8 @@
 - [x] Port GWD regression tests first, observe missing-template/subtable/remainder failures, then adapt only required parser/export/schema/cache-input code.
 - [x] Regenerate full output twice and classify all semantic changes against canonical prerequisite and TSPS prerequisite.
 - [x] Extend the existing TSPS import preservation tests; prove runtime variant slots/wealth behavior and exact coin pools.
-- [ ] Run full canonical and TSPS suites/build, obtain independent review, resolve findings with failing regressions.
-- [ ] Commit/push and publish separately reviewed canonical and TSPS PRs, attach both.
+- [x] Run full canonical and TSPS suites/build, obtain independent review, resolve findings with failing regressions.
+- [x] Commit/push and publish separately reviewed canonical and TSPS PRs, attach both.
 
 ## Audit and execution ledger
 
@@ -49,3 +49,5 @@
 - Final canonical verification:358 passed, one unchanged While Guthix Sleeps fingerprint failure. Reward-casket baseline TEMP permission failures disappear with a workspace temp directory; no clue source changes. Independent re-review of exact normalization and runtime probes is clear.
 - Full export pair `gwd-exact-a`/`gwd-exact-b`: NPC SHA-256 `cecdb21e757007a75893b721ae9a81d283ba62c6cc409cfe808dd9af8120068f`; subtables `70cfdff188712ed9321f6bfaed89de16e352b81ac7ffb2cb0dffbc13fa8203f3`. Machine comparison in the parent workspace `.runtime/upstream-review/gwd-exact-comparison.json` proves only four tables/new variant subtables/direct refs change, with quantities/notes/pairs/mappings/other data preserved.
 - TSPS runtime red-to-green probe:old model produced7 main drops under the deterministic kill; exact model produces one unique. All128slots of every variant table match with/without wealth. Twenty-six focused integration tests pass. Full server suite runs with isolated temporary fixtures and concurrency4 before its companion PR publishes.
+- Publication complete: [canonical #15](https://github.com/RSPSApp/osrsreboxed-db/pull/15) and [TSPS #888](https://github.com/RSPSApp/tsps/pull/888) are open, non-draft, and attached. Original pending prerequisites #14/#882 remain explicit ancestors and links; old local branches are preserved.
+- Final TSPS result: 4,945 passed, two disclosed environment failures (`browser-host-bridge.test.cjs:105` timing and `core-disconnect-guards.test.cjs:238` sandbox localhost EACCES). Both complete files pass 44/44 when re-run serial outside the sandbox against the same code/data. Player-save fixtures pass 28/28 with workspace TEMP. No God Wars/loot failure, and no false claim of a green full-suite run.
