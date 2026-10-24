@@ -242,7 +242,7 @@ def immune_poison(value: str) -> bool:
     if not value:
         return False
 
-    if value.lower() in ["true", "yes"]:
+    if value.strip().lower() in ["true", "yes", "100"]:
         return True
     else:
         return False
@@ -257,7 +257,9 @@ def immune_venom(value: str) -> bool:
     if not value:
         return False
 
-    if value.lower() in ["true", "yes"]:
+    # The current Wiki uses "Poison" when venom becomes ordinary poison.
+    # This is venom immunity, independently of poison susceptibility.
+    if value.strip().lower() in ["true", "yes", "100", "poison"]:
         return True
     else:
         return False
