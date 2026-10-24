@@ -32,7 +32,8 @@ def build_status_immunities(builder=None):
 
 def export_status_immunities(output):
     data = build_status_immunities()
-    Path(output).write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    with Path(output).open("w", encoding="utf-8", newline="\n") as stream:
+        stream.write(json.dumps(data, indent=2) + "\n")
     return len(data["npcs"])
 
 

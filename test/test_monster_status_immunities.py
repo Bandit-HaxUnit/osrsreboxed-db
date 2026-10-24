@@ -84,3 +84,16 @@ def test_dedicated_export_uses_canonical_builder_and_excludes_unresolved_source(
             "10": {"name": "Fixture", "immune_poison": False, "immune_venom": True},
         },
     }
+
+
+def test_status_export_writes_platform_independent_lf(tmp_path, monkeypatch):
+    from scripts.monsters import status_immunities
+
+    monkeypatch.setattr(
+        status_immunities,
+        "build_status_immunities",
+        lambda: {"schema_version": 1, "npcs": {}},
+    )
+    output = tmp_path / "status.json"
+    assert status_immunities.export_status_immunities(output) == 0
+    assert output.read_bytes() == b'{\n  "schema_version": 1,\n  "npcs": {}\n}\n'
