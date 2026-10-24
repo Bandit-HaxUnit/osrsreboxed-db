@@ -22,6 +22,7 @@ def parse_status(properties, version=None):
     [
         ("poisonresistance=0|venomresistance=Poison", (False, True)),
         ("poisonresistance=100|venomresistance=100", (True, True)),
+        ("poisonresistance=200|venomresistance=200", (True, True)),
         ("poisonresistance=0|venomresistance=0", (False, False)),
         ("immunepoison=Yes|immunevenom=Yes", (True, True)),
         (
