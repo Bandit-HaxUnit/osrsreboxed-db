@@ -788,7 +788,7 @@ def _entry_json(
     )
 
 
-def _pre_roll_json(entry: ResolvedEntry) -> Optional[Dict]:
+def _pre_roll_json(entry: ResolvedEntry, separate: bool = False) -> Optional[Dict]:
     """Keep a pre-roll's source probability exact, including decimal fractions.
 
     Scale decimal components together without reducing integer source slots:
@@ -807,7 +807,7 @@ def _pre_roll_json(entry: ResolvedEntry) -> Optional[Dict]:
             scale = 10**places
             entry = replace(entry, weight=int(numerator * scale))
             out_of = int(denominator * scale)
-    return _entry_json(entry, out_of=out_of, pre_roll=True)
+    return _entry_json(entry, out_of=out_of, pre_roll=True, separate=separate)
 
 
 def build_table_json(spec: DropTableSpec) -> Dict:
@@ -844,11 +844,14 @@ def build_table_json(spec: DropTableSpec) -> Dict:
     ):
         for roll in rolls:
             for entry in roll.entries:
-                row = _entry_json(
-                    entry,
-                    out_of=entry.out_of or roll.access_denominator,
-                    separate=True,
-                    pre_roll=is_pre_roll,
+                row = (
+                    _pre_roll_json(entry, separate=True)
+                    if is_pre_roll
+                    else _entry_json(
+                        entry,
+                        out_of=entry.out_of or roll.access_denominator,
+                        separate=True,
+                    )
                 )
                 if row:
                     entries.append(row)
