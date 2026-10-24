@@ -60,6 +60,9 @@ SUBTABLE_LABELS = {
     "rareSeed": "rare seed drop table",
     "rareDrop": "rare drop table",
     "megaRare": "mega-rare drop table",
+    "gwdRareDrop": "God Wars Dungeon-variant rare drop table",
+    "gwdGem": "God Wars Dungeon-variant gem drop table",
+    "gwdMegaRare": "God Wars Dungeon-variant mega-rare drop table",
 }
 
 
@@ -1581,6 +1584,12 @@ PROSE_ACCESS_PATTERNS = [
     ("megaRare", r"chance of rolling the mega-?rare drop table"),
 ]
 
+# {{GWDRDT}} takes no arguments, so its rates live in the template, not the page:
+# "2/127 to go to gems OR 8/127 to go to RDT" (Mod Ash, cited on Template:GWDRDT
+# and on the God Wars Dungeon-variant rare drop table page, which states both).
+# These are the God Wars variant tables, not the regular rare drop and gem tables.
+GWDRDT_ACCESSES = [("gwdRareDrop", 8, 127), ("gwdGem", 2, 127)]
+
 HERB_TABLE_ACCESS = re.compile(
     r"(\d+)\s*/\s*(\d+)\s+chance of rolling (?:the\s+)?(?:\[\[)?(?:[^|\]]+\|)?herb drop table",
     re.I,
@@ -1635,6 +1644,12 @@ def _parse_subtable_accesses(body: str) -> List[ParsedSubtableAccess]:
                     ParsedSubtableAccess(key, fraction[0], fraction[1], "Herbs")
                 )
             break
+
+    if extract_templates(body, "GWDRDT"):
+        for key, numerator, denominator in GWDRDT_ACCESSES:
+            accesses.append(
+                ParsedSubtableAccess(key, numerator, denominator, "Rare drop table")
+            )
 
     for raw, params in extract_templates(body, "RareDropTable"):
         rdt_chance = _first_fraction(params.get("_0", "")) or _first_fraction(raw)

@@ -134,6 +134,21 @@
           "required": false,
           "nullable": false
         },
+        "weight_basis": {
+          "description": "'remainder' when the weight is the slots the pool's other rows and shared table accesses leave, because the published rate also counts those tables' coins.",
+          "type": "string",
+          "allowed": [
+            "remainder"
+          ],
+          "required": false,
+          "nullable": false
+        },
+        "published_rarity": {
+          "description": "The wiki's published rate before exact pool normalization or inclusive coin-rate resolution.",
+          "type": "string",
+          "required": false,
+          "nullable": false
+        },
         "noted": {
           "description": "If the drop is noted (the wiki quantity ends in \"(noted)\").",
           "type": "boolean",
