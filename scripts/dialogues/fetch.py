@@ -52,6 +52,55 @@ def transcript_type(raw):
     return next(iter(kinds)) if len(kinds) == 1 and "" not in kinds else "unclassified"
 
 
+def _identity_title(value):
+    code = mw.parse(str(value).strip())
+    links = code.filter_wikilinks(recursive=False)
+    if links:
+        if len(links) != 1 or str(code).strip() != str(links[0]):
+            raise ValueError("Ambiguous transcript identity link")
+        value = str(links[0].title)
+    title = " ".join(str(value).replace("_", " ").split("#", 1)[0].split())
+    if not title or any(mark in title for mark in ("{{", "}}", "[[", "]]", "|")):
+        raise ValueError("Invalid transcript identity link")
+    return title[:1].upper() + title[1:]
+
+
+def transcript_identity(raw, name, npc_pages=None):
+    """Use original article links, never a display-name similarity guess."""
+    declarations = [
+        template
+        for template in mw.parse(raw).filter_templates(recursive=False)
+        if str(template.name).strip().casefold() == "transcript"
+    ]
+    targets = {
+        _identity_title(template.get("link").value)
+        for template in declarations
+        if template.has("link")
+    }
+    if len(targets) > 1:
+        raise ValueError(f"Ambiguous transcript identity: {name}")
+    target = next(iter(targets), name)
+    if any(template.has("link") for template in declarations):
+        return target
+    if transcript_type(raw) != "pet" or not npc_pages:
+        return target
+    # Some Pet transcripts omit link= while their title article describes the
+    # monster. Follow only its explicit disambiguation labelled "the pet".
+    alternatives = set()
+    article = npc_pages.get(target, {}).get("wikitext", "")
+    for template in mw.parse(article).filter_templates(recursive=False):
+        if (
+            str(template.name).strip().casefold() == "otheruses"
+            and template.has(2)
+            and template.has(3)
+            and " ".join(str(template.get(2).value).split()).casefold() == "the pet"
+        ):
+            alternatives.add(_identity_title(template.get(3).value))
+    if len(alternatives) > 1:
+        raise ValueError(f"Ambiguous transcript identity: {name}")
+    return next(iter(alternatives), target)
+
+
 def trailing_template_name(raw, name):
     """Return a standalone, non-bulleted final template named after the page."""
     lines = [line.strip() for line in str(raw).splitlines() if line.strip()]
@@ -79,8 +128,7 @@ def navigation_template(page):
         recursive=False
     )
     return bool(
-        templates
-        and str(templates[0].name).strip().casefold().startswith("navbox")
+        templates and str(templates[0].name).strip().casefold().startswith("navbox")
     )
 
 
@@ -237,10 +285,26 @@ def fetch(refresh=False):
         refresh,
         with_categories=True,
     )
-    identity_names = {title.removeprefix("Transcript:") for title in npc_names}
+    identity_names = {
+        transcript_identity(
+            pages[title].get("wikitext", ""), title.removeprefix("Transcript:")
+        )
+        for title in npc_names
+    }
     for page in quests.values():
         identity_names.update(participant_pages(page.get("wikitext", "")))
-    download(identity_names, NPC_CACHE, session, refresh)
+    identities = download(identity_names, NPC_CACHE, session, refresh)
+    linked_names = {
+        transcript_identity(
+            pages[title].get("wikitext", ""),
+            title.removeprefix("Transcript:"),
+            identities,
+        )
+        for title in npc_names
+    }
+    additional_names = linked_names - identity_names
+    if additional_names and (refresh or additional_names - identities.keys()):
+        download(additional_names, NPC_CACHE, session, refresh)
     save(CACHE, {name: pages[name] for name in sorted(npc_names)})
     return {name: pages[name] for name in sorted(npc_names)}
 

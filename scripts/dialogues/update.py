@@ -346,7 +346,8 @@ def group_options(nodes, random_options=False):
                     if (
                         sibling.get("type") == "line"
                         and sibling.get("speaker", "").casefold() == "player"
-                        and sibling.get("text", "").rstrip(".!?").casefold() == option_text.casefold()
+                        and sibling.get("text", "").rstrip(".!?").casefold()
+                        == option_text.casefold()
                     ):
                         # A same-depth player echo is the option's response;
                         # keep the continuation only until the next alternative.
@@ -992,7 +993,9 @@ def main():
                 issues[title] = parsed["review_issues"]
     if npcs.keys() & quests.keys():
         raise ValueError("NPC and quest transcript names overlap")
-    index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean, bindings)
+    index = enrich_records(
+        npcs, quests, read_cache(NPC_CACHE), clean, bindings, transcript_pages=pages
+    )
     resolved = resolve_shops(npcs, shop_index())
     # Shared quest replies retain their NPC source IDs, including inferred shops.
     source_shops = {
@@ -1043,9 +1046,10 @@ def main():
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
     save(args.out.with_name("npc-dialogue-index.json"), index)
-    save(args.out.with_name("dialogue-types.json"), {
-        kind: sorted(titles) for kind, titles in sorted(types.items())
-    })
+    save(
+        args.out.with_name("dialogue-types.json"),
+        {kind: sorted(titles) for kind, titles in sorted(types.items())},
+    )
     write_split(args.out.parent, (dialogues,))
     save(config.DATA_PATH / "dialogues" / "review-issues.json", issues)
     print(
