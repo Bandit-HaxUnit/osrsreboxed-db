@@ -307,6 +307,7 @@ def test_compaction_expands_losslessly_and_keeps_hook_identity():
                     "text": "B",
                     "id": "b",
                     "condition": "If ready",
+                    "condition_id": "condition-source-id",
                     "condition_key": "old",
                     "steps": copy.deepcopy(speech),
                 },
@@ -322,6 +323,7 @@ def test_compaction_expands_losslessly_and_keeps_hook_identity():
     assert "id" not in choice and "id" not in choice["options"][0]
     assert choice["options"][0]["hook"] == "quest:x:start"
     assert choice["options"][1]["id"] == runtime_id("b")
+    assert choice["options"][1]["condition_id"] == runtime_id("condition-source-id")
     assert "condition_key" not in choice["options"][1]
     assert len(result["branches"]) == 1
     for option in choice["options"]:

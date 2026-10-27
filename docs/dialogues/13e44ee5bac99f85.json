@@ -1,0 +1,547 @@
+{
+  "default": "standard-dialogue-without-catspeak",
+  "variants": {
+    "standard-dialogue-without-catspeak": [
+      {
+        "player": "Hey puss! Any news?"
+      },
+      {
+        "npc": "Purr!"
+      }
+    ],
+    "standard-dialogue-with-catspeak": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "type": "condition",
+                "text": "Before earning the cat training medal:",
+                "steps": [
+                  {
+                    "npc": "Good but could we go hunting again soon? One of my friends got a medal from Gertrude for catching lots of mice."
+                  }
+                ],
+                "id": "HXmpGc"
+              },
+              {
+                "type": "condition",
+                "text": "After earning the cat training medal:",
+                "steps": [
+                  {
+                    "npc": "I'm good. But could we go adventuring soon, I'm tired of talking, meeoow?"
+                  }
+                ],
+                "id": "dNYiPJ"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "gDO1IX"
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "type": "condition",
+                "text": "Standard dialogue:",
+                "steps": [
+                  {
+                    "npc": "I'm not too old, and not too young. In fact I think I'm just right."
+                  }
+                ],
+                "id": "xp-PJh"
+              },
+              {
+                "type": "condition",
+                "text": "When getting close to being overgrown:",
+                "steps": [
+                  {
+                    "npc": "I'm not as young as I used be, I think I'm beginning to get a bit fat too. Perhaps I should chase more mice to stay fit."
+                  }
+                ],
+                "id": "Cpzmxq"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "mojNsb"
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "type": "condition",
+                "text": "When not in the Varrock Sewers:",
+                "steps": [
+                  {
+                    "npc": "Can we go to Varrock sewers and chase some rats?"
+                  }
+                ],
+                "id": "F0NIKf"
+              },
+              {
+                "type": "condition",
+                "text": "When in the Varrock Sewers:",
+                "steps": [
+                  {
+                    "npc": "Here's as good a spot as any for some hunting."
+                  }
+                ],
+                "id": "v8wgYc"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "xIIknn"
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "I want to go chase things kill them and then eat them, purrr."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "tK115_"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-interacting": [
+      {
+        "type": "choice",
+        "prompt": "Interact with cat",
+        "options": [
+          {
+            "text": "Stroke",
+            "steps": [
+              {
+                "npc": "Purr...purr...",
+                "presentation": "overhead"
+              },
+              {
+                "player": "Who's a good cat then?"
+              },
+              {
+                "npc": "Me! Me! Scratch me behind the ears."
+              }
+            ]
+          },
+          {
+            "text": "Chase Vermin"
+          },
+          {
+            "text": "Shoo away",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you sure you want to shoo away the cat?",
+                "options": [
+                  {
+                    "text": "Yes I am.",
+                    "steps": [
+                      {
+                        "player": "Go on, get lost."
+                      },
+                      {
+                        "npc": "I was going anyway, hiss. You're probably the worst adventurer ever, I bet you'll be killed by a chicken before too long, hisss!"
+                      },
+                      {
+                        "player": "Shoo cat!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "npc": "Meeeooow!",
+                        "presentation": "overhead"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No I'm not.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You choose not to shoo away the cat.",
+                        "id": "7VUXZk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-a-catspeak-amulet-and-cat-ears": [
+      {
+        "npc": "Sorry human, but what are you wearing?"
+      },
+      {
+        "player": "I got some cat ears made for me, don't they look meeeeeeeooooowvalous."
+      },
+      {
+        "type": "message",
+        "text": "The cat looks you dead in the eye, unblinking.",
+        "id": "tS5zxy"
+      },
+      {
+        "npc": "Am I a joke to you?"
+      },
+      {
+        "player": "UwU?"
+      },
+      {
+        "npc": "Why are you doing this?"
+      },
+      {
+        "player": "I thought it'd be cute and funny."
+      },
+      {
+        "npc": "It's not, take them off now human, before I get myself a pair of human ears to wear."
+      }
+    ],
+    "chasing-a-barrows-crypt-rat-without-catspeak": [
+      {
+        "player": "Go on puss...kill that rat!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Meeeeeoooowww!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "message",
+        "text": "Your cat doesn't seem to like the look of these rats.",
+        "id": "f0Bjsq"
+      }
+    ],
+    "chasing-a-barrows-crypt-rat-with-catspeak": [
+      {
+        "player": "Go on get that nasty rodent."
+      },
+      {
+        "npc": "What? You're having a laugh I'm not going to get myself killed for you. Why don't you attack it?"
+      },
+      {
+        "player": "Chicken!"
+      },
+      {
+        "npc": "No stupid, I'm a cat."
+      }
+    ],
+    "rat-milestones-after-catching-10-rats": [
+      {
+        "player": "Well done puss! 10 horrible rodents caught!"
+      }
+    ],
+    "rat-milestones-after-catching-50-rats": [
+      {
+        "player": "Great puss, that's 50 rodents caught!"
+      }
+    ],
+    "rat-milestones-after-catching-100-rats": [
+      {
+        "player": "Wow, incredible puss! That's 100 rodents caught!"
+      }
+    ],
+    "using-fish-on-the-cat": [
+      {
+        "player": "I don't need to feed the cat anymore."
+      }
+    ],
+    "placing-into-the-pet-basket": [
+      {
+        "npc": "Miaooow!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "message",
+        "text": "The cat goes to sleep on the blanket.",
+        "id": "tgXNUF"
+      }
+    ],
+    "growing-into-an-overgrown-cat": [
+      {
+        "type": "message",
+        "text": "Your cat has grown into a mighty feline, but it will no longer be able to chase vermin.",
+        "id": "8QZMS0"
+      }
+    ],
+    "overhead-dialogue-when-dropped-from-a-player-s-inventory": [
+      {
+        "npc": "Miaooow!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-when-following-a-player": [
+      {
+        "npc": "Purr",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Purr..purr...",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Meow",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Meow!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Miaow.",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Hiss!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-when-being-growled-at-by-a-dog": [
+      {
+        "npc": "Sss!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-using-a-scratching-post": [
+      {
+        "npc": "Rrowl!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Ssss!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Hiss!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-menagerie-arena": [
+      {
+        "npc": "Grrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grrrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grarrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "slap*",
+        "presentation": "overhead"
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?"
+          },
+          {
+            "text": "How old are you now?"
+          },
+          {
+            "text": "Where do you want to go?"
+          },
+          {
+            "text": "What do you want to do now?"
+          },
+          {
+            "text": "Did you understand what went on with the devourer?",
+            "condition": "Before asking about the Devourer:",
+            "steps": [
+              {
+                "player": "Did you understand what went on in that quest with the devourer and Icthlarin?"
+              },
+              {
+                "npc": "It wasn't all that difficult to understand."
+              },
+              {
+                "player": "Really? I was, no actually am, still confused."
+              },
+              {
+                "npc": "Ok, I'll tell you what I think happened."
+              },
+              {
+                "player": "Great! Story time."
+              },
+              {
+                "npc": "There once was a high priest of some crazy religion called Klenter."
+              },
+              {
+                "player": "What, a religion called Klenter? What kind of name is that?"
+              },
+              {
+                "npc": "No no. The high priest was called Klenter and he was the high priest of Icthlarin, god of the dead."
+              },
+              {
+                "player": "Ok, I'm with you that far."
+              },
+              {
+                "npc": "He dies, and a struggle starts for his soul."
+              },
+              {
+                "npc": "Another god - the Devourer - wants to destroy his soul because she has some dispute with Icthlarin. So she takes on the guise of a human."
+              },
+              {
+                "player": "Ah - the wanderer."
+              },
+              {
+                "npc": "Very good. Now she needs help in getting Klenter's soul so she tricks some gullible fool into helping her."
+              },
+              {
+                "player": "So who was that?"
+              },
+              {
+                "npc": "You!"
+              },
+              {
+                "player": "Oh."
+              },
+              {
+                "npc": "Well she's the god of destruction. If she had a priest or a temple or anything she would just destroy it."
+              },
+              {
+                "player": "So if she's so powerful why does she need this gullible fool's help?"
+              },
+              {
+                "npc": "Because of my kind."
+              },
+              {
+                "player": "Your kind?"
+              },
+              {
+                "npc": "Cats!"
+              },
+              {
+                "player": "What? Why would she care about you? All you ever want is a bit of attention and the odd fish or two."
+              },
+              {
+                "npc": "We have other powers, not clear to you. Anyway I'm moving away from the story."
+              },
+              {
+                "npc": "The wanderer recruits your help by hypnotising you. Do you remember that?"
+              },
+              {
+                "player": "Vaguely, I think. Why did she choose me to help her then."
+              },
+              {
+                "npc": "Because of me."
+              },
+              {
+                "player": "I don't understand."
+              },
+              {
+                "npc": "Cats are the only things that can open the pyramid's door, so she needed an adventurer with one."
+              },
+              {
+                "npc": "So you entered the pyramid with me - under her mind control - and stole a canopic jar containing an organ belonging to Klenter."
+              },
+              {
+                "player": "Ahh I think I'm beginning to get a better understanding."
+              },
+              {
+                "npc": "You then started to return with the jar to the Devourer, but as a sting on the tail she made you plant one of her symbols in the ceremonial room of the pyramid. You then tried to flee the pyramid but"
+              },
+              {
+                "npc": "Icthlarin appeared just as you reached the exit."
+              },
+              {
+                "player": "The guy with the head of a dog?"
+              },
+              {
+                "npc": "Yes [player name]. Well he either broke the devourer's hold on you or else Klenter did."
+              },
+              {
+                "player": "Klenter? I thought he was dead."
+              },
+              {
+                "npc": "He was, and still is. Ok, Icthlarin summoned Klenter's soul to torment you into returning the jar, the end result was that you were freed from the devourer's grasp."
+              },
+              {
+                "player": "So that's when I woke up with that jar in my inventory and had that intolerable ghost harassing me."
+              },
+              {
+                "npc": "You then bumbled around for a bit and returned the jar, discovered that the high priest still hadn't completed the final ceremony so you got him all the bits and pieces."
+              },
+              {
+                "player": "So then I remembered about the devourer's symbol which I placed in the ceremonial room and had to rush back and warn the priests about the devourer."
+              },
+              {
+                "npc": "And the rest is simple enough to piece together."
+              },
+              {
+                "player": "Thanks cat, you know you're quite smart for a fish- eating animated ball of fluff."
+              },
+              {
+                "npc": "You say the sweetest things. Hiss."
+              }
+            ],
+            "id": "ABf4Wz"
+          },
+          {
+            "text": "Can you explain to me about Icthlarin and the devourer again?",
+            "condition": "After asking about the Devourer:",
+            "steps": [
+              {
+                "player": "Can you explain to me about Icthlarin and the devourer again?"
+              },
+              {
+                "npc": "I'm getting a little bit sick of talking about Icthlarin and all that stuff. If you didn't understand it the first time around, nor when I filled you in on a few details and then when I spelt it out to you what happened I don't"
+              },
+              {
+                "npc": "think you'll ever get it."
+              },
+              {
+                "player": "Aw come on. Just tell me one more time."
+              },
+              {
+                "npc": "Look, can we just leave it. Ask one of your adventuring friends."
+              },
+              {
+                "player": "Alright puss."
+              }
+            ],
+            "id": "Jt5xBj"
+          }
+        ]
+      }
+    ]
+  }
+}

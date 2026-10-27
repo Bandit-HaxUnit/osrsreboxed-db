@@ -1,0 +1,1039 @@
+{
+  "default": "standard-dialogue-without-a-catspeak-amulet",
+  "variants": {
+    "standard-dialogue-without-a-catspeak-amulet": [
+      {
+        "player": "Hey kitty. What's new?"
+      },
+      {
+        "npc": "Meow!"
+      }
+    ],
+    "standard-dialogue-with-a-catspeak-amulet": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "type": "condition",
+                "text": "If not very hungry and doesn't need attention:",
+                "steps": [
+                  {
+                    "npc": "Meeow I'm happy."
+                  }
+                ],
+                "id": "lhe_qY"
+              },
+              {
+                "type": "condition",
+                "text": "If very hungry:",
+                "steps": [
+                  {
+                    "npc": "I'm really hungry, do you have any fish, meeaow?"
+                  }
+                ],
+                "id": "KRbN-j"
+              },
+              {
+                "type": "condition",
+                "text": "If it really needs attention:",
+                "steps": [
+                  {
+                    "npc": "You don't think I'm cute and cuddly any more, do you? Is there another cat you like?"
+                  }
+                ],
+                "id": "GJe5Po"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "V1DVg6"
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the kitten is less than 15 minutes old:",
+                    "steps": [
+                      {
+                        "npc": "I'm less than a month old."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "YL5tnI"
+                      }
+                    ],
+                    "id": "fA0xsl"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the kitten is 15-29 minute sold:",
+                    "steps": [
+                      {
+                        "npc": "I'm just a month old."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "7rOs_V"
+                      }
+                    ],
+                    "id": "QbOujh"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "When the kitten is more than 30 minutes until fully adult:",
+                    "steps": [
+                      {
+                        "npc": "I'm [x] months old. (Month count differs based on kitten's current growth.)"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "f5Zcu3"
+                      }
+                    ],
+                    "id": "LRg7If"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "When the kitten is less than 15 minutes until fully adult or more than 3 hours until adult:",
+                    "steps": [
+                      {
+                        "npc": "I'm almost fully grown!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "7x55Jn"
+                      }
+                    ],
+                    "id": "pN0JUU"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Age of your kitten: [x] hour(s) [y] minutes. Approximate time until fully adult: [z] hour(s) [a] minutes, assuming you look after it. (Hours and minutes differ based on kitten's current growth.)",
+                    "id": "U2pPu1"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "aUq9Gq"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Can we go visit Gertrude, I'd like to see her again, she's very nice."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Let's go to the ratpits in Ardougne. I think I fancy a fight!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "condition": "When in the Ardougne ratpits:",
+                    "steps": [
+                      {
+                        "npc": "Let's stay here. I think I fancy a fight."
+                      },
+                      {
+                        "player": "I'll think about it, cat."
+                      }
+                    ],
+                    "id": "66Fu4w"
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "Lets go to the sewers of Varrock."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "condition": "When in Varrock Sewers:",
+                    "steps": [
+                      {
+                        "npc": "Can we stay here in the sewers and hunt rats? That would be fun."
+                      }
+                    ],
+                    "id": "_pEck-"
+                  }
+                ]
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "dI6v2D"
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "I want to chase things."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "I'm tired, I'd like to have a nap."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "rC9rJQ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-a-catspeak-amulet-and-cat-ears": [
+      {
+        "npc": "Sorry human, but what are you wearing?"
+      },
+      {
+        "player": "I got some cat ears made for me, don't they look meeeeeeeooooowvalous."
+      },
+      {
+        "type": "message",
+        "text": "The cat looks you dead in the eye, unblinking.",
+        "id": "v3OhW_"
+      },
+      {
+        "npc": "Am I a joke to you?"
+      },
+      {
+        "player": "UwU?"
+      },
+      {
+        "npc": "Why are you doing this?"
+      },
+      {
+        "player": "I thought it'd be cute and funny."
+      },
+      {
+        "npc": "It's not, take them off now human, before I get myself a pair of human ears to wear."
+      }
+    ],
+    "interacting-with-kitten-without-a-catspeak-amulet": [
+      {
+        "type": "choice",
+        "prompt": "Interact with kitten",
+        "options": [
+          {
+            "text": "Stroke",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You softly stroke your cat.",
+                "id": "XZBppD"
+              },
+              {
+                "npc": "Purr...purr...",
+                "presentation": "overhead"
+              },
+              {
+                "player": "That cat sure loves to be stroked."
+              }
+            ]
+          },
+          {
+            "text": "Chase Vermin",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If there are no vermin around:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "There aren't any vermin around.",
+                    "id": "Xbq-7c"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ivZVcf"
+              },
+              {
+                "type": "condition",
+                "text": "If there are rats or hell-rats  nearby:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "R0gAhG",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-97da4f59c9f1db0b"
+                      }
+                    ]
+                  }
+                ],
+                "id": "W5T7TJ"
+              },
+              {
+                "type": "condition",
+                "text": "If there are crypt rats nearby:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "0jewIk",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-97da4f59c9f1db0b"
+                      }
+                    ]
+                  }
+                ],
+                "id": "nKlHsr"
+              }
+            ]
+          },
+          {
+            "text": "Guess age",
+            "steps": [
+              {
+                "player": "I wonder how old you are..."
+              },
+              {
+                "type": "message",
+                "text": "After taking a good look at your kitten you guess that its age is: [x] hours [y] minutes. And approximate time until fully adult: [z] hour(s) [a] minutes, assuming you look after it. (Hours and minutes differ based on kitten's current growth.)",
+                "id": "_qS57i"
+              }
+            ]
+          },
+          {
+            "text": "Shoo away",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you sure you want to shoo away the cat?",
+                "options": [
+                  {
+                    "text": "Yes I am.",
+                    "steps": [
+                      {
+                        "player": "Shoo cat!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "npc": "Meeeooow!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The cat has run away.",
+                        "id": "ecPJo5"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No I'm not.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You choose not to shoo away the cat.",
+                        "id": "rO2NyN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "interacting-with-kitten-with-a-catspeak-amulet": [
+      {
+        "type": "choice",
+        "prompt": "Interact with kitten",
+        "options": [
+          {
+            "text": "Stroke",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You softly stroke your cat.",
+                "id": "LVYI6D"
+              },
+              {
+                "npc": "Purr...purr...",
+                "presentation": "overhead"
+              },
+              {
+                "player": "Who's Gielinor's most ferocious kitten?"
+              },
+              {
+                "npc": "Me! Me! ~ Roar!"
+              },
+              {
+                "player": "Aww! So squeaky!"
+              }
+            ]
+          },
+          {
+            "text": "Chase Vermin",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If there are no vermin around:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "There aren't any vermin around.",
+                    "id": "KutKjO"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "0ZvkV7"
+              },
+              {
+                "type": "condition",
+                "text": "If there are rats or hell-rats  nearby:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "ZIcqBl",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-523be726eaa3ce4a"
+                      }
+                    ]
+                  }
+                ],
+                "id": "wiY0o7"
+              },
+              {
+                "type": "condition",
+                "text": "If there are crypt rats nearby:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "kYCVJp",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-523be726eaa3ce4a"
+                      }
+                    ]
+                  }
+                ],
+                "id": "XuyRJD"
+              }
+            ]
+          },
+          {
+            "text": "Guess age",
+            "steps": [
+              {
+                "player": "I wonder how old you are..."
+              },
+              {
+                "type": "jump",
+                "id": "Ptpd1g",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1e333ea3afb7f0ce"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Shoo away",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you sure you want to shoo away the cat?",
+                "options": [
+                  {
+                    "text": "Yes I am.",
+                    "steps": [
+                      {
+                        "player": "I'm just fed up with you, you're so needy! Can't you just look after yourself for a bit?"
+                      },
+                      {
+                        "npc": "Meeeeow, don't leave me master, I'm sorry, I'll be a good kitty from now on meoooww."
+                      },
+                      {
+                        "player": "No I've really had it with you, now scat!"
+                      },
+                      {
+                        "player": "Shoo cat!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "npc": "Meeeooow!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The cat has run away.",
+                        "id": "lTvoIr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No I'm not.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You choose not to shoo away the cat.",
+                        "id": "fzt5LU"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "interacting-with-kitten-chasing-rats-or-hellrats": [
+      {
+        "player": "Go on puss...kill that rat!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "condition",
+        "text": "If the path to the rat is obstructed:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your cat cannot get to its prey.",
+            "id": "3MIgXI"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3sYpll"
+      },
+      {
+        "npc": "Meeeeeoooowww!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat",
+        "text": "Eek!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "condition",
+        "text": "If the rat gets away:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The rat manages to get away!",
+            "id": "mKiFUj"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "exmvqg"
+      },
+      {
+        "type": "condition",
+        "text": "If the rat is caught:",
+        "steps": [
+          {
+            "player": "Hey well done puss, you got it!",
+            "presentation": "overhead"
+          },
+          {
+            "type": "condition",
+            "text": "If the rat was a hellrat:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your cat suddenly transforms!",
+                "id": "-TVU9o"
+              },
+              {
+                "npc": "MeeeoooooW!",
+                "presentation": "overhead"
+              }
+            ],
+            "id": "mDc_i8"
+          }
+        ],
+        "id": "xJgpNA"
+      }
+    ],
+    "interacting-with-kitten-chasing-crypt-rats": [
+      {
+        "player": "Do you fancy a bit of hunting?"
+      },
+      {
+        "npc": "Meoowww? The nasty rat is too big for me, I might be able to take it when I grow up a little more."
+      }
+    ],
+    "life-events-kitten-is-bought-from-gertrude": [
+      {
+        "npc": "Meeooow!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      }
+    ],
+    "life-events-kitten-becomes-hungry": [
+      {
+        "player": "I think it's hungry!"
+      },
+      {
+        "type": "message",
+        "text": "Your kitten is hungry.",
+        "id": "fZ2tXx"
+      }
+    ],
+    "life-events-kitten-becomes-very-hungry": [
+      {
+        "npc": "Meeeooowww!",
+        "presentation": "overhead"
+      },
+      {
+        "player": "I think it's very hungry!"
+      },
+      {
+        "type": "message",
+        "text": "Your kitten is very hungry.",
+        "id": "srnqP-"
+      }
+    ],
+    "life-events-kitten-needs-attention": [
+      {
+        "player": "I think it wants some attention."
+      },
+      {
+        "type": "message",
+        "text": "Your kitten wants attention.",
+        "id": "O0QTPl"
+      }
+    ],
+    "life-events-kitten-really-needs-attention": [
+      {
+        "npc": "Meeeooowww...",
+        "presentation": "overhead"
+      },
+      {
+        "player": "I think it's feeling lonely."
+      },
+      {
+        "type": "message",
+        "text": "Your kitten really wants attention.",
+        "id": "25EDYm"
+      }
+    ],
+    "life-events-kitten-grows-up": [
+      {
+        "type": "line",
+        "speaker": "Cat",
+        "text": "Meeeooow!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "message",
+        "text": "Your kitten has grown into a healthy cat that can hunt for itself.",
+        "id": "VAoZ07"
+      }
+    ],
+    "using-items-on-kitten-food": [
+      {
+        "type": "message",
+        "text": "The kitten gobbles up the fish.",
+        "id": "6pDRLt"
+      },
+      {
+        "npc": "Purr!",
+        "presentation": "overhead"
+      }
+    ],
+    "using-items-on-kitten-bucket-of-milk": [
+      {
+        "type": "message",
+        "text": "The kitten laps up the milk.",
+        "id": "2FS2IU"
+      },
+      {
+        "npc": "Purpurr",
+        "presentation": "overhead"
+      },
+      {
+        "type": "condition",
+        "text": "If the cat is a hellcat:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your hell-cat transforms into an ordinary cat.",
+            "id": "7oZgAp"
+          }
+        ],
+        "id": "rWhA80"
+      }
+    ],
+    "using-items-on-kitten-ball-of-wool": [
+      {
+        "npc": "Purr!",
+        "presentation": "overhead"
+      },
+      {
+        "player": "That kitten loves to play with that ball of wool. I think it is its favourite."
+      }
+    ],
+    "rat-pits": [
+      {
+        "player": "Hey cat, are you up for some competitive rat hunting?"
+      },
+      {
+        "npc": "Got any last minute advice?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Just take care of yourself cat.",
+            "steps": [
+              {
+                "player": "Just take care of yourself cat."
+              }
+            ]
+          },
+          {
+            "text": "Stay in for as long as you can.",
+            "steps": [
+              {
+                "player": "Stay in for as long as you can."
+              }
+            ]
+          },
+          {
+            "text": "No guts, no glory!",
+            "steps": [
+              {
+                "player": "No guts, no glory!"
+              }
+            ]
+          },
+          {
+            "text": "Go berserk!",
+            "steps": [
+              {
+                "player": "Go berserk!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rat-pits-victory": [
+      {
+        "player": "Come here kitty.",
+        "presentation": "overhead"
+      },
+      {
+        "player": "Well done cat, you won! Those [X] coins should come in handy."
+      },
+      {
+        "npc": "Meow!"
+      }
+    ],
+    "rat-pits-loss": [
+      {
+        "player": "Agh! I can't believe I lost! Stupid cat cost me [X] coins!"
+      },
+      {
+        "type": "condition",
+        "text": "If the cat is still alive:",
+        "steps": [
+          {
+            "npc": "Meow!"
+          }
+        ],
+        "id": "WAeSDa"
+      }
+    ],
+    "rat-milestones-after-catching-10-rats": [
+      {
+        "player": "Well done puss! 10 horrible rodents caught!"
+      }
+    ],
+    "rat-milestones-after-catching-50-rats": [
+      {
+        "player": "Great puss, that's 50 rodents caught!"
+      }
+    ],
+    "rat-milestones-after-catching-100-rats": [
+      {
+        "player": "Wow, incredible puss! That's 100 rodents caught!"
+      }
+    ],
+    "placing-into-the-pet-basket": [
+      {
+        "npc": "zzz",
+        "presentation": "overhead"
+      },
+      {
+        "type": "message",
+        "text": "The cat goes to sleep on the blanket.",
+        "id": "CSZE8H"
+      }
+    ],
+    "attempting-to-place-it-into-a-pet-house": [
+      {
+        "type": "message",
+        "text": "Kittens need more personal care and attention than the pet house can provide.",
+        "id": "-8N96T"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "npc": "Purrrrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Purr",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Purr..purr...",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Meow",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Meow!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Miaow.",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Hiss!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-when-dropped-from-a-player-s-inventory": [
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-when-being-growled-at-by-a-dog": [
+      {
+        "npc": "Sss!",
+        "presentation": "overhead"
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Stroke",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You softly stroke your cat.",
+                "id": "oh3uwu"
+              },
+              {
+                "npc": "Purr...purr...",
+                "presentation": "overhead"
+              },
+              {
+                "player": "Who's Gielinor's most ferocious kitten?"
+              },
+              {
+                "npc": "Me me ~ Roar. (It sounds like more of a squeak)"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-97da4f59c9f1db0b": [
+      {
+        "type": "condition",
+        "text": "If there are no vermin around:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "There aren't any vermin around.",
+            "id": "KutKjO"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "0ZvkV7"
+      },
+      {
+        "type": "condition",
+        "text": "If there are rats or hell-rats  nearby:",
+        "steps": [
+          {
+            "type": "jump",
+            "id": "ZIcqBl",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-523be726eaa3ce4a"
+              }
+            ]
+          }
+        ],
+        "id": "wiY0o7"
+      },
+      {
+        "type": "condition",
+        "text": "If there are crypt rats nearby:",
+        "steps": [
+          {
+            "type": "jump",
+            "id": "kYCVJp",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-523be726eaa3ce4a"
+              }
+            ]
+          }
+        ],
+        "id": "XuyRJD"
+      }
+    ],
+    "jump-523be726eaa3ce4a": [
+      {
+        "type": "choice",
+        "prompt": "Are you sure you want to shoo away the cat?",
+        "options": [
+          {
+            "text": "Yes I am.",
+            "steps": [
+              {
+                "player": "I'm just fed up with you, you're so needy! Can't you just look after yourself for a bit?"
+              },
+              {
+                "npc": "Meeeeow, don't leave me master, I'm sorry, I'll be a good kitty from now on meoooww."
+              },
+              {
+                "player": "No I've really had it with you, now scat!"
+              },
+              {
+                "player": "Shoo cat!",
+                "presentation": "overhead"
+              },
+              {
+                "npc": "Meeeooow!",
+                "presentation": "overhead"
+              },
+              {
+                "type": "message",
+                "text": "The cat has run away.",
+                "id": "lTvoIr"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No I'm not.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You choose not to shoo away the cat.",
+                "id": "fzt5LU"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1e333ea3afb7f0ce": [
+      {
+        "type": "message",
+        "text": "After taking a good look at your kitten you guess that its age is: [x] hours [y] minutes. And approximate time until fully adult: [z] hour(s) [a] minutes, assuming you look after it. (Hours and minutes differ based on kitten's current growth.)",
+        "id": "_qS57i"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

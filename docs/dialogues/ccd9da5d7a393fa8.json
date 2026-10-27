@@ -1,0 +1,329 @@
+{
+  "default": null,
+  "variants": {
+    "rift-guardian": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you see your own rift?",
+            "steps": [
+              {
+                "player": "Can you see your own rift?"
+              },
+              {
+                "npc": "No. From time to time I feel it shift and change inside me though. It is an odd feeling."
+              }
+            ]
+          },
+          {
+            "text": "Where would you like to go today, Rifty?",
+            "steps": [
+              {
+                "player": "Where would you like me to take you today Rifty?"
+              },
+              {
+                "npc": "Please do not call me that... we are a species of honour, [player name]."
+              },
+              {
+                "player": "Sorry."
+              }
+            ]
+          },
+          {
+            "text": "Hey! What's that?",
+            "steps": [
+              {
+                "player": "Hey! What's that!"
+              },
+              {
+                "type": "unavailable",
+                "id": "1JJpSi"
+              },
+              {
+                "npc": "Huh, what?! Where?"
+              },
+              {
+                "player": "Not the best guardian it seems."
+              }
+            ]
+          },
+          {
+            "text": "About your colour-changing...",
+            "steps": [
+              {
+                "player": "About your colour-changing..."
+              },
+              {
+                "type": "condition",
+                "text": "If the Rift guardian is set to changing colours upon binding essence at an altar:",
+                "steps": [
+                  {
+                    "npc": "If you take me to a Runecrafting Altar, I will adopt the altar's colour as you bind essence there."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I want you to stay this colour instead.",
+                        "steps": [
+                          {
+                            "player": "I want you to stay this colour instead."
+                          },
+                          {
+                            "npc": "Very well, I will remain locked to this colour, even if you bind essence at a Runecrafting Altar."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, carry on adopting the colour of altars.",
+                        "steps": [
+                          {
+                            "player": "Okay, carry on adopting the colour of altars."
+                          },
+                          {
+                            "npc": "Very well, I will adopt the altar's colour next time you bind essence at a Runecrafting Altar."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pNlULa"
+              },
+              {
+                "type": "condition",
+                "text": "If the Rift guardian is set to keeping its colour upon binding essence at an altar:",
+                "steps": [
+                  {
+                    "npc": "Even if you bind essence at a Runecrafting Altar, I will remain locked to this colour."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I'd like you to adopt the altar's colour next time.",
+                        "steps": [
+                          {
+                            "player": "I'd like you to adopt the altar's colour next time."
+                          },
+                          {
+                            "npc": "Very well, I will adopt the altar's colour next time you bind essence at a Runecrafting Altar."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, please stay locked to this colour.",
+                        "steps": [
+                          {
+                            "player": "Okay, please stay locked to this colour."
+                          },
+                          {
+                            "npc": "Very well, I will remain locked to this colour, even if you bind essence at a Runecrafting Altar."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "hatAO8"
+              }
+            ]
+          },
+          {
+            "text": "Actually, never mind.",
+            "steps": [
+              {
+                "player": "Actually, never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "greatish-guardian": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing today?",
+            "steps": [
+              {
+                "player": "How are you doing today?"
+              },
+              {
+                "npc": "The power of the Abyss grows. I fear for what will happen if our defence against it fails."
+              },
+              {
+                "player": "The Guardians of the Rift have things under control. You don't need to worry."
+              },
+              {
+                "npc": "Let us hope you are correct."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "GZ7TYG"
+              }
+            ]
+          },
+          {
+            "text": "About your colour-changing...",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "v2-6C3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1a1eb0fec9fd7427"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Actually, never mind.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Lyvnh4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b5595c6e7936bdbc"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-battling-another-pet-or-interacting-with-a-scratching-post-in-the-menagerie": [
+      {
+        "npc": "Feel my wrath!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Get out of my altar!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Feel the power of my rift!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "I'll convert your very essence into runes.",
+        "presentation": "overhead"
+      }
+    ]
+  },
+  "branches": {
+    "jump-1a1eb0fec9fd7427": [
+      {
+        "player": "About your colour-changing..."
+      },
+      {
+        "type": "condition",
+        "text": "If the Rift guardian is set to changing colours upon binding essence at an altar:",
+        "steps": [
+          {
+            "npc": "If you take me to a Runecrafting Altar, I will adopt the altar's colour as you bind essence there."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I want you to stay this colour instead.",
+                "steps": [
+                  {
+                    "player": "I want you to stay this colour instead."
+                  },
+                  {
+                    "npc": "Very well, I will remain locked to this colour, even if you bind essence at a Runecrafting Altar."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Okay, carry on adopting the colour of altars.",
+                "steps": [
+                  {
+                    "player": "Okay, carry on adopting the colour of altars."
+                  },
+                  {
+                    "npc": "Very well, I will adopt the altar's colour next time you bind essence at a Runecrafting Altar."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "pNlULa"
+      },
+      {
+        "type": "condition",
+        "text": "If the Rift guardian is set to keeping its colour upon binding essence at an altar:",
+        "steps": [
+          {
+            "npc": "Even if you bind essence at a Runecrafting Altar, I will remain locked to this colour."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I'd like you to adopt the altar's colour next time.",
+                "steps": [
+                  {
+                    "player": "I'd like you to adopt the altar's colour next time."
+                  },
+                  {
+                    "npc": "Very well, I will adopt the altar's colour next time you bind essence at a Runecrafting Altar."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Okay, please stay locked to this colour.",
+                "steps": [
+                  {
+                    "player": "Okay, please stay locked to this colour."
+                  },
+                  {
+                    "npc": "Very well, I will remain locked to this colour, even if you bind essence at a Runecrafting Altar."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "hatAO8"
+      }
+    ],
+    "jump-b5595c6e7936bdbc": [
+      {
+        "player": "Actually, never mind."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

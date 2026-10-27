@@ -1,0 +1,608 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-without-catspeak": [
+      {
+        "type": "missing",
+        "id": "nwCh6J"
+      }
+    ],
+    "standard-dialogue-with-catspeak-happy": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "I'm happy."
+              },
+              {
+                "player": "Really?"
+              },
+              {
+                "npc": "Really."
+              },
+              {
+                "player": "Really, really?"
+              },
+              {
+                "npc": "Really, really."
+              },
+              {
+                "player": "Really, really rea..."
+              },
+              {
+                "npc": "Stop right there."
+              },
+              {
+                "player": "Where?"
+              },
+              {
+                "npc": "There."
+              },
+              {
+                "player": "Here?"
+              },
+              {
+                "npc": "No, there."
+              },
+              {
+                "player": "Argh! Now you're at it."
+              },
+              {
+                "npc": "At what?"
+              },
+              {
+                "player": "It."
+              },
+              {
+                "npc": "What's it?"
+              },
+              {
+                "player": "You know... it..."
+              },
+              {
+                "npc": "Stop, stop, stop! Right, we're going to play a little game now."
+              },
+              {
+                "player": "Is it going to be fun? Is it? Is it? Is it?"
+              },
+              {
+                "npc": "It's called give the cat some peace."
+              },
+              {
+                "player": "How do you play?"
+              },
+              {
+                "npc": "You gently stroke your cat, then pick it up, and finally, you leave it for an extended snooze in your backpack."
+              },
+              {
+                "player": "That doesn't sound like much fun. I'd rather spend quality time annoying you."
+              },
+              {
+                "npc": "I'd never have guessed. Well in that case, I would be really annoyed if you took me hunting rats."
+              },
+              {
+                "player": "Really?"
+              },
+              {
+                "npc": "Really."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player": "Really, really?",
+        "steps": [
+          {
+            "npc": "HISS!"
+          },
+          {
+            "type": "end"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "npc": "I'm happy."
+              },
+              {
+                "player": "I thought I asked you your age, not how you were?"
+              },
+              {
+                "npc": "Oh! My fault. To answer your question, I'd like to go to the Varrock Sewers."
+              },
+              {
+                "player": "What? Are you listening to me?"
+              },
+              {
+                "npc": "It's a quarter past Caistleday."
+              },
+              {
+                "player": "Are you trying to dodge the question?"
+              },
+              {
+                "npc": "I think your amulet might be on the blink. Meoow, Miiiaaoow!"
+              },
+              {
+                "type": "message",
+                "text": "You examine the Amulet of Catspeak carefully.",
+                "id": "SYz8-Y"
+              },
+              {
+                "player": "Strange, it looks okay to me."
+              },
+              {
+                "npc": "Hiss's'sss's. ~Your cat tries to hold in a snicker, but fails miserably."
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "npc": "Well one place I don't want to go is the rat pits."
+              },
+              {
+                "player": "Why's that?"
+              },
+              {
+                "npc": "All the other cats will make fun of me, I'm so badly out of shape. Take me hunting."
+              },
+              {
+                "player": "Don't worry cat, I'll get you back in shape."
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "I'm happy just pottering around."
+              },
+              {
+                "player": "Do you fancy a bit of hunting?"
+              },
+              {
+                "npc": "To be perfectly honest, I'd rather just lay about and groom myself. Looking at the state of your gear, you would do well to follow suit."
+              },
+              {
+                "player": "There's nothing wrong with how I'm dressed."
+              },
+              {
+                "type": "condition",
+                "text": "If wearing a dragon chainbody:",
+                "steps": [
+                  {
+                    "npc": "That dragon armour you're wearing is so, like, last year."
+                  }
+                ],
+                "id": "H9K17o"
+              },
+              {
+                "type": "condition",
+                "text": "If wearing anything else:",
+                "steps": [
+                  {
+                    "npc": "That thing you're wearing is so, like, last year."
+                  }
+                ],
+                "id": "aQ470r"
+              },
+              {
+                "player": "I refuse to take fashion advice from a cat - a fat lazy one to boot!"
+              },
+              {
+                "npc": "Meeoow! Someone's feeling touchy!"
+              },
+              {
+                "player": "That's the last time I ask you what you want to do."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-content": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "I'm content. A little more action might be good, but then again you might ruffle up my fur and then I'd have to groom all over again."
+              },
+              {
+                "player": "Pah! You're the laziest old bag of fluff I've ever met."
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "npc": "A little older than I was before, but not as old as I will be in a moment."
+              },
+              {
+                "player": "What kind of answer is that?"
+              },
+              {
+                "npc": "Well, your idea of time and mine are too different for either of us to understand the other."
+              },
+              {
+                "player": "Um... I don't really get it."
+              },
+              {
+                "npc": "Well for one, I don't count the time I spend in your Bank - which is horribly boring - nor in your bag."
+              },
+              {
+                "player": "Well that's not too complicated."
+              },
+              {
+                "npc": "I'm just getting started. Now there is also a difference in cat years and human years. To approximate time in cat years you take a value in years, subtract 1, multiply it by 4, and then add 16."
+              },
+              {
+                "player": "So... if a cat is newly born it's already 12 cat years old?"
+              },
+              {
+                "npc": "I said approximate not calculate. Anyway it only works once the cat is 1 year old."
+              },
+              {
+                "npc": "The last complication is that time doesn't actually seem to move, outside of cats ageing."
+              },
+              {
+                "player": "Anyway, back to the question. How old are you in cat years?"
+              },
+              {
+                "npc": "I don't know. I'm a cat, I can't do maths!"
+              },
+              {
+                "player": "Hmph!"
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "npc": "Somewhere nice and quiet. I'm a bit behind in my snoozing schedule."
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "Sleep."
+              },
+              {
+                "player": "How am I going to get you back in shape if all you want to do is sleep?"
+              },
+              {
+                "npc": "Surgery. That's the answer to all our problems."
+              },
+              {
+                "player": "Well smarty pants, where am I going to find a cosmetic surgeon who's willing to perform liposuction on a cat around here?"
+              },
+              {
+                "npc": "I don't know. To be honest I don't even know what those things are."
+              },
+              {
+                "player": "Me neither, actually..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-unhappy": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "Hiss! What do you care?"
+              },
+              {
+                "player": "Oh come on, you're not going to have a hissy fit with me now are you?"
+              },
+              {
+                "npc": "Hiss!"
+              },
+              {
+                "player": "Oh dear."
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "npc": "I'd rather not say."
+              },
+              {
+                "player": "Oh come on, tell me."
+              },
+              {
+                "npc": "Okay, I'm very old and fat! Are you happy now? Do you feel good, having a laugh at my expense?"
+              },
+              {
+                "player": "Oh cat, I'm sorry. I didn't mean it like that. How can I make it up to you?"
+              },
+              {
+                "npc": "Well, maybe if you stroked me the odd time, or played with me..."
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "npc": "Back to the pits. I want to tell the ratcatchers what a rotten master you've been."
+              },
+              {
+                "player": "What? You wouldn't do that would you?"
+              },
+              {
+                "npc": "If you paid me a little more attention I wouldn't, but I must admit I have been tempted for some time."
+              },
+              {
+                "player": "Look cat, I promise I'll try to be a better friend to you from now on."
+              },
+              {
+                "npc": "I'll believe it when I see it."
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "I'd like to go hunting, but since you've been neglecting me I'm too fat to do that properly anymore."
+              },
+              {
+                "player": "Oh come on! I'm sure you're not that bad at hunting."
+              },
+              {
+                "npc": "You're having a laugh! I couldn't even catch a cold."
+              },
+              {
+                "player": "Hmm.. I think we may have to work on your self esteem. With an attitude like yours it's no wonder you can't catch rats."
+              },
+              {
+                "npc": "Hiss! The reason I can't catch any is because you neglect me."
+              },
+              {
+                "npc": "leaving me in the Bank or in your bags for extended periods is not conducive to proper exercise!"
+              },
+              {
+                "player": "Um... sorry?"
+              },
+              {
+                "npc": "Hmph!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-with-a-catspeak-amulet-and-cat-ears": [
+      {
+        "npc": "Sorry human, but what are you wearing?"
+      },
+      {
+        "player": "I got some cat ears made for me, don't they look meeeeeeeooooowvalous."
+      },
+      {
+        "type": "message",
+        "text": "The cat looks you dead in the eye, unblinking.",
+        "id": "RO5Llw"
+      },
+      {
+        "npc": "Am I a joke to you?"
+      },
+      {
+        "player": "UwU?"
+      },
+      {
+        "npc": "Why are you doing this?"
+      },
+      {
+        "player": "I thought it'd be cute and funny."
+      },
+      {
+        "npc": "It's not, take them off now human, before I get myself a pair of human ears to wear."
+      }
+    ],
+    "interacting": [
+      {
+        "type": "choice",
+        "prompt": "Interact with cat",
+        "options": [
+          {
+            "text": "Stroke",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You softly stroke your cat.",
+                "id": "yu53cs"
+              },
+              {
+                "npc": "Purr...purr...",
+                "presentation": "overhead"
+              }
+            ]
+          },
+          {
+            "text": "Chase Vermin"
+          },
+          {
+            "text": "Shoo away",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you sure you want to shoo away the cat?",
+                "options": [
+                  {
+                    "text": "Yes I am.",
+                    "steps": [
+                      {
+                        "player": "That's it, scram, go away and don't come back, you big sack of laziness."
+                      },
+                      {
+                        "npc": "Hiss! I can't believe I wasted so much of my time with you. Pah! Next time I'll find a proper adventurer as a companion."
+                      },
+                      {
+                        "player": "Shoo cat!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "npc": "Meeeooow!",
+                        "presentation": "overhead"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No I'm not.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You choose not to shoo away the cat.",
+                        "id": "CK4qSz"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "chasing-crypt-rats": [
+      {
+        "player": "Are you up for some rodent catching?"
+      },
+      {
+        "npc": "Nah, what's the point?"
+      },
+      {
+        "player": "Come on lazy boots, crack on!"
+      },
+      {
+        "npc": "No way! It's not that I'm lazy, no no I'll rephrase that, laziness aside I'm still not going to do that."
+      },
+      {
+        "player": "Why not?"
+      },
+      {
+        "npc": "I'm not some crazy kamikazee cat, I want get old and live a quiet peacful life, close to a nice warm fire."
+      },
+      {
+        "player": "Pah you're just a big scardy cat."
+      }
+    ],
+    "training-into-a-wily-cat": [
+      {
+        "type": "message",
+        "text": "Your cat, through exercise has shrunk, into a wily cat.",
+        "id": "ztSIxd"
+      }
+    ],
+    "placing-into-the-pet-basket": [
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "message",
+        "text": "The cat goes to sleep on the blanket.",
+        "id": "CRT6Mz"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-using-a-scratching-post": [
+      {
+        "npc": "Rrowl!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Ssss!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Hiss!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-menagerie-arena": [
+      {
+        "npc": "Grrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grrrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grarrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "slap*",
+        "presentation": "overhead"
+      }
+    ]
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "default": null,
+  "variants": {
+    "heron-standard-dialogue": [
+      {
+        "npc": "Hop inside my mouth if you want to live!"
+      },
+      {
+        "player": "I'm not falling for that... I'm not a fish! I've got more foresight than that."
+      }
+    ],
+    "heron-standard-dialogue-with-great-blue-heron-unlocked": [
+      {
+        "type": "line",
+        "speaker": "Note",
+        "text": "If the player has unlocked the great blue heron metamorphosis, there is a 10% chance to receive this dialogue instead of the one above."
+      },
+      {
+        "npc": "Got any Spirit flakes?"
+      },
+      {
+        "player": "I think you may have a problem."
+      },
+      {
+        "npc": "I agree, you don't give me anywhere enough of those. So get to it."
+      },
+      {
+        "player": "Right."
+      }
+    ],
+    "heron-using-items-on-it-less-than-3-000-spirit-flakes": [
+      {
+        "npc": "Those look tasty. But I'm looking for a proper feast. Come back to me with 3000 of them."
+      },
+      {
+        "player": "3000!? Are you insane?!"
+      },
+      {
+        "npc": "Not really, I'm just a little bit peckish."
+      },
+      {
+        "player": "Good thing you have a beak then!"
+      },
+      {
+        "npc": "Touché."
+      }
+    ],
+    "heron-using-items-on-it-raw-fish-with-great-blue-heron-unlocked": [
+      {
+        "npc": "No thanks. I'm craving a Spirit flake right now."
+      },
+      {
+        "player": "You really love those things."
+      },
+      {
+        "npc": "Yup. So get to it."
+      },
+      {
+        "player": "Righto."
+      }
+    ],
+    "heron-right-click-metamorphosis": [
+      {
+        "type": "unavailable",
+        "id": "FtM3i5"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Great blue heron - 1 x Spirit flakes",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has spirit flakes in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your pet Heron gobbles up a Spirit flake and turns royal blue.",
+                    "id": "Fkkbj1"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5NCUZx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no spirit flakes in their inventory:",
+                "steps": [
+                  {
+                    "npc": "What's the big idea? If you're going to offer me a Spirit flake, at least have one to hand!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "8885wV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not unlocked the great blue heron:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You can unlock the pet Heron transmogrification for 3000 x Spirit flakes.",
+                    "id": "H52aAD"
+                  }
+                ],
+                "id": "3UH3zd"
+              }
+            ]
+          },
+          {
+            "text": "Heron - 1 x Raw fish",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has raw fish in their inventory:",
+                "steps": [
+                  {
+                    "npc": "No thanks. I'm craving a Spirit flake right now."
+                  },
+                  {
+                    "player": "You really love those things."
+                  },
+                  {
+                    "npc": "Yup. So get to it."
+                  },
+                  {
+                    "player": "Righto."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MZpJO5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no raw fish in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Where's the fish? You don't have any!"
+                  }
+                ],
+                "id": "wwkNCl"
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "heron-overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "npc": "slap*",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grrrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grarrr!",
+        "presentation": "overhead"
+      }
+    ],
+    "great-blue-heron-standard-dialogue": [
+      {
+        "npc": "Got any raw fish?"
+      },
+      {
+        "player": "Haven't you already eaten enough Spirit flakes?"
+      },
+      {
+        "npc": "Yes, I have. That's why I'm asking you for raw fish."
+      },
+      {
+        "player": "Sometimes I wonder whether getting stuck with you was my good luck or yours."
+      }
+    ],
+    "great-blue-heron-initial-metamorphisation": [
+      {
+        "type": "choice",
+        "prompt": "Give your pet Heron 3000 x Spirit flakes to unlock its blue form?",
+        "options": [
+          {
+            "text": "Yes, it could use a nice snack.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "In a remarkable display of gluttony, your pet Heron consumes 3000 Spirit flakes. It turns blue in front of your very eyes.",
+                "id": "QEbBsr"
+              },
+              {
+                "npc": "That really hit the spot! Though I feel a little blue now that there are none left."
+              }
+            ]
+          },
+          {
+            "text": "No, I'm not shelling that out for a snack.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "great-blue-heron-right-click-metamorphosis": [
+      {
+        "type": "choice",
+        "prompt": "Transmogrify your Heron?",
+        "options": [
+          {
+            "text": "Great blue heron - 1 x Spirit flakes",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has spirit flakes in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You offer your pet Heron a Spirit flake, which it quickly gobbles up.",
+                    "id": "MLknSK"
+                  },
+                  {
+                    "player": "Oops! That was a mistake, you're already blue. If you give it back, I'll give you a raw fish?"
+                  },
+                  {
+                    "npc": "Sorry, no can do. They're just too tasty. You should try one sometime!"
+                  },
+                  {
+                    "player": "I'll pass."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OEkQ-w"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no spirit flakes in their inventory:",
+                "steps": [
+                  {
+                    "npc": "What's the big idea? If you're going to offer me a Spirit flake, at least have one to hand!"
+                  }
+                ],
+                "id": "h15zKS"
+              }
+            ]
+          },
+          {
+            "text": "Heron - 1 x Raw fish",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has raw fish in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your pet Heron gobbles up your [fish name] and turns a magnificent white.",
+                    "id": "h7gxCk"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZBmyJj"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no raw fish in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Where's the fish? You don't have any!"
+                  }
+                ],
+                "id": "CozzIM"
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "great-blue-heron-using-items-on-it-raw-fish": [
+      {
+        "type": "message",
+        "text": "Your pet Heron gobbles up your [fish name] and turns a magnificent white.",
+        "id": "69W7gQ"
+      },
+      {
+        "type": "action",
+        "text": "The Great blue heron turns back into a white Heron.",
+        "id": "lSa5Pp"
+      }
+    ],
+    "great-blue-heron-using-items-on-it-cooked-fish": [
+      {
+        "npc": "Are you trying to annoy me?"
+      },
+      {
+        "player": "I put in a lot of effort cooking this for you."
+      },
+      {
+        "npc": "Exactly, you've cooked it! You've ruined a fine delicacy, now go and uncook it!"
+      },
+      {
+        "player": "Uncook? That's not even possible!"
+      },
+      {
+        "npc": "I once knew a cat who mastered uncooking. Nice guy, actually. Enough talk, go and get me some more raw fish!"
+      }
+    ],
+    "great-blue-heron-using-items-on-it-burnt-fish": [
+      {
+        "npc": "What is wrong with you?"
+      },
+      {
+        "player": "I'm giving you some fish.."
+      },
+      {
+        "npc": "And you think that I can do anything with something charred to the bone?"
+      },
+      {
+        "player": "In my culture, these well-cooked fish are considered pretty valuable."
+      },
+      {
+        "npc": "It's burnt, you dancing donkey!"
+      },
+      {
+        "player": "Dancing donkey...?"
+      }
+    ],
+    "great-blue-heron-using-items-on-it-eel-sushi": [
+      {
+        "npc": "Sushi? Do I look like a commoner to you?"
+      },
+      {
+        "player": "In Dorgeshuun culture, this is considered a delicacy."
+      },
+      {
+        "npc": "In bird culture, this is considered an insult. Get it out of my face at once!"
+      },
+      {
+        "player": "How could a member of my own house say something so horrible?"
+      }
+    ],
+    "great-blue-heron-using-items-on-it-spirit-flakes": [
+      {
+        "type": "message",
+        "text": "You offer your pet Heron a Spirit flake, which it quickly gobbles up.",
+        "id": "JvZIj3"
+      },
+      {
+        "player": "Oops! That was a mistake, you're already blue. If you give it back, I'll give you a raw fish?"
+      },
+      {
+        "npc": "Sorry, no can do. They're just too tasty. You should try one sometime!"
+      },
+      {
+        "player": "I'll pass."
+      }
+    ]
+  }
+}
