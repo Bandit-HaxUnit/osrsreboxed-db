@@ -129,3 +129,17 @@ def test_generated_types_match_cached_sources_and_cover_runtime_records():
     assert "Transcript:Olmlet" in types["pet"]
     assert "Transcript:Cook" not in types["pet"]
     assert set(types.get("item", [])).isdisjoint(types["pet"])
+
+
+@pytest.mark.parametrize("npc_id", [*range(1619, 1626), *range(5591, 5605)])
+def test_cat_followers_keep_existing_tail_of_two_cats_chore_entrypoints(npc_id):
+    import config
+
+    # Cache241 adult cats, kittens, overgrown cats and their hellcat forms.
+    index = collector.read_cache(config.DOCS_PATH / "npc-dialogue-index.json")
+    expected = {
+        "unferth-s-chores-talking-to-your-cat-about-chores",
+        "unferth-s-chores-talking-to-your-cat-after-finishing-the-chores",
+    }
+    candidates = [row for row in index[str(npc_id)] if row["page"] == "Transcript:A Tail of Two Cats"]
+    assert any(expected <= set(row["variants"]) for row in candidates), npc_id

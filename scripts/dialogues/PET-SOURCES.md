@@ -9,6 +9,7 @@ This change includes the Wiki's Pet dialogue category in the existing NPC transc
 - Add only the80 Pet transcripts and their78 missing identity pages to that pinned raw baseline. No new transcript dependencies or footer templates were needed.
 - Run the normal offline exporter. It produces3,365 runtime records; all3,285 old records remain deeply equal, and exactly80 Pet records are added.
 - Existing NPC-index candidates are preserved. Twelve cat IDs gain an additional Cat candidate; consumers must select a Pet page deliberately rather than treating candidate order as a routing policy.
+- Integration additionally links the15 previously unindexed kitten/overgrown/hellcat follower IDs to the two existing A Tail of Two Cats chore variants. Cache241 and the existing quest participant/selector establish these identities. This adds index availability only; it does not bypass ownership, catspeak, stage or native Interact routing in the consumer.
 - Repeating the exporter with unchanged inputs produces byte-identical aggregate, minified data, index, type index, manifest,3,365 shards and three authoring/report outputs:3,373 files.
 
 ## Source types
