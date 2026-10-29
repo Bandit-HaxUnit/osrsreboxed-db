@@ -13,6 +13,7 @@ import mwparserfromhell as mw
 
 from scripts.shops.shop_owners import npc_ids_from_wikitext
 from scripts.dialogues.flow import resolve_navigation, resolve_shared
+from scripts.dialogues.fetch import transcript_identity
 
 
 def slug(text):
@@ -61,8 +62,7 @@ def annotate(nodes, parent, quest_names):
         own = {
             k: v
             for k, v in node.items()
-            if k not in ("steps", "options", "presentation")
-            and not k.startswith("_")
+            if k not in ("steps", "options", "presentation") and not k.startswith("_")
         }
         own = node.pop("_identity", own)
         key = token([parent, own])
@@ -105,7 +105,9 @@ def annotate(nodes, parent, quest_names):
                         option["quest"] = quest_names[key]
 
 
-def enrich_records(npcs, quests, npc_pages, clean, bindings=None):
+def enrich_records(
+    npcs, quests, npc_pages, clean, bindings=None, transcript_pages=None
+):
     identities = {name: identity(name, page, clean) for name, page in npc_pages.items()}
     all_records = {
         "Transcript:" + name: record
@@ -118,6 +120,16 @@ def enrich_records(npcs, quests, npc_pages, clean, bindings=None):
         name = page.removeprefix("Transcript:")
         is_npc = name in npcs
         ids, names = identities.get(name, ([], {name})) if is_npc else ([], set())
+        if is_npc and transcript_pages is not None:
+            raw = transcript_pages.get(page, {}).get("wikitext", "")
+            target = transcript_identity(raw, name, npc_pages)
+            if target != name:
+                source = npc_pages.get(target)
+                if not source or source.get("missing"):
+                    raise ValueError(
+                        f"Missing transcript identity page: {name} -> {target}"
+                    )
+                ids, names = identity(name, source, clean)
         if is_npc:
             record["npc_ids"] = ids
         for variant, steps in record["variants"].items():

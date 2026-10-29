@@ -37,7 +37,9 @@ def collect(monkeypatch, pet_titles):
     monkeypatch.setattr(collector, "WikiPageTitles", Titles)
     monkeypatch.setattr(collector, "WikiPageText", Text)
     monkeypatch.setattr(collector, "download", download)
-    monkeypatch.setattr(collector, "save", lambda path, value: saved.append((path, value)))
+    monkeypatch.setattr(
+        collector, "save", lambda path, value: saved.append((path, value))
+    )
     return queried, downloads, saved
 
 
@@ -50,17 +52,25 @@ def test_pet_transcripts_and_identity_pages_use_the_canonical_npc_cache(monkeypa
         path == collector.NPC_CACHE and "Olmlet" in names
         for names, path, _ in downloads
     )
-    assert all("Transcript:Olmlet" not in names for names, path, _ in downloads if path == collector.QUEST_CACHE)
+    assert all(
+        "Transcript:Olmlet" not in names
+        for names, path, _ in downloads
+        if path == collector.QUEST_CACHE
+    )
     assert set(saved[-1][1]) == set(result)
 
 
-def test_empty_pet_category_fails_instead_of_publishing_a_silent_partial_export(monkeypatch):
+def test_empty_pet_category_fails_instead_of_publishing_a_silent_partial_export(
+    monkeypatch,
+):
     collect(monkeypatch, [])
     with pytest.raises(ValueError, match="Pet dialogue returned no transcripts"):
         collector.fetch()
 
 
-def test_cross_listed_pet_pages_are_deduplicated_and_refresh_identity_sources(monkeypatch):
+def test_cross_listed_pet_pages_are_deduplicated_and_refresh_identity_sources(
+    monkeypatch,
+):
     _, downloads, _ = collect(monkeypatch, ["Transcript:Olmlet", "Transcript:Shared"])
     result = collector.fetch(refresh=True)
     assert len(result) == 3
@@ -70,7 +80,10 @@ def test_cross_listed_pet_pages_are_deduplicated_and_refresh_identity_sources(mo
         and refresh
         for names, path, refresh in downloads
     )
-    assert any(path == collector.NPC_CACHE and "Olmlet" in names and refresh for names, path, refresh in downloads)
+    assert any(
+        path == collector.NPC_CACHE and "Olmlet" in names and refresh
+        for names, path, refresh in downloads
+    )
 
 
 def test_promoted_pet_page_is_removed_from_old_reference_cache(monkeypatch):
@@ -86,7 +99,9 @@ def test_promoted_pet_page_is_removed_from_old_reference_cache(monkeypatch):
     monkeypatch.setattr(collector, "download", cached_download)
     collector.fetch()
     references = [data for path, data in saved if path == collector.QUEST_CACHE]
-    assert references, "promoted NPC transcripts must persist the reference-cache migration"
+    assert (
+        references
+    ), "promoted NPC transcripts must persist the reference-cache migration"
     assert "Transcript:Olmlet" not in references[-1]
     assert {"Transcript:Quest", "Transcript:Miniquest"} <= set(references[-1])
 
@@ -125,7 +140,9 @@ def test_generated_types_match_cached_sources_and_cover_runtime_records():
             if title in sources:
                 assert collector.transcript_type(sources[title]["wikitext"]) == kind
             else:
-                assert kind == "unclassified", "authored-only records cannot be inferred as pets"
+                assert (
+                    kind == "unclassified"
+                ), "authored-only records cannot be inferred as pets"
     assert seen == {"Transcript:" + name for name in records}
     assert "Transcript:Olmlet" in types["pet"]
     assert "Transcript:Cook" not in types["pet"]
@@ -142,5 +159,188 @@ def test_cat_followers_keep_existing_tail_of_two_cats_chore_entrypoints(npc_id):
         "unferth-s-chores-talking-to-your-cat-about-chores",
         "unferth-s-chores-talking-to-your-cat-after-finishing-the-chores",
     }
-    candidates = [row for row in index[str(npc_id)] if row["page"] == "Transcript:A Tail of Two Cats"]
+    candidates = [
+        row
+        for row in index[str(npc_id)]
+        if row["page"] == "Transcript:A Tail of Two Cats"
+    ]
     assert any(expected <= set(row["variants"]) for row in candidates), npc_id
+
+
+@pytest.mark.parametrize(
+    "raw,name,expected",
+    [
+        ("{{Transcript|pet|link=Pet Kraken}}", "Kraken", "Pet Kraken"),
+        (
+            "{{Transcript|pet|link=[[Pet_Smoke_Devil#Follower|pet]]}}",
+            "Smoke Devil",
+            "Pet Smoke Devil",
+        ),
+        (
+            "{{Switch|one={{Transcript|pet|link=Wrong}}}}{{Transcript|npc|link=Right}}",
+            "NPC",
+            "Right",
+        ),
+        ("{{Transcript|pet}}", "Olmlet", "Olmlet"),
+        ("{{Transcript|npc|link=Vyre}}", "Vyre", "Vyre"),
+        (
+            "{{Transcript|item}}{{Transcript|npc|link=Caged monkey (Aereck)}}",
+            "Aereck's caged monkey",
+            "Caged monkey (Aereck)",
+        ),
+    ],
+)
+def test_original_transcript_identity_link(raw, name, expected):
+    assert collector.transcript_identity(raw, name) == expected
+
+
+def test_conflicting_original_identity_links_fail_instead_of_guessing():
+    with pytest.raises(ValueError, match="Ambiguous transcript identity"):
+        collector.transcript_identity(
+            "{{Transcript|pet|link=First}}{{Transcript|pet|link=Second}}", "Pet"
+        )
+
+
+def test_pet_disambiguation_uses_the_original_article_not_name_guesswork():
+    pages = {
+        "Snakeling": {
+            "wikitext": "{{otheruses|the summoned monster|the pet|pet snakeling}}{{Infobox Monster|id=2045}}"
+        }
+    }
+    assert (
+        collector.transcript_identity("{{Transcript|pet}}", "Snakeling", pages)
+        == "Pet snakeling"
+    )
+    assert (
+        collector.transcript_identity("{{Transcript|npc}}", "Snakeling", pages)
+        == "Snakeling"
+    )
+
+
+def test_explicit_transcript_link_has_priority_over_title_article_disambiguation():
+    pages = {"Kraken": {"wikitext": "{{otheruses|monster|the pet|Other pet}}"}}
+    assert (
+        collector.transcript_identity(
+            "{{Transcript|pet|link=Pet Kraken}}", "Kraken", pages
+        )
+        == "Pet Kraken"
+    )
+
+
+def test_real_enrichment_binds_pet_link_to_follower_ids_and_never_the_combat_monster():
+    from scripts.dialogues import update
+    from scripts.dialogues.hooks import enrich_records
+
+    raw = "{{Transcript|pet|link=Pet Kraken}}\n==Standard dialogue==\n* '''Kraken:''' Hello."
+    record = update.gameplay_npc("Kraken", update.parse_npc("Kraken", raw))
+    pages = {
+        "Kraken": {"wikitext": "{{Infobox Monster|name=Kraken|id=494}}"},
+        "Pet Kraken": {"wikitext": "{{Infobox NPC|name=Kraken|id=6640,6656}}"},
+    }
+    index = enrich_records(
+        {"Kraken": record},
+        {},
+        pages,
+        update.clean,
+        transcript_pages={"Transcript:Kraken": {"wikitext": raw}},
+    )
+    assert "494" not in index
+    assert {"6640", "6656"} <= index.keys()
+    assert record["npc_ids"] == [6640, 6656]
+    assert record["variants"]["standard-dialogue"][0]["npc"] == "Hello."
+
+
+def test_collector_fetches_explicit_and_original_pet_disambiguation_articles(
+    monkeypatch,
+):
+    _, downloads, _ = collect(
+        monkeypatch, ["Transcript:Kraken", "Transcript:Snakeling"]
+    )
+    original = collector.download
+
+    def source_download(names, path, session, refresh=False, with_categories=False):
+        pages = original(names, path, session, refresh, with_categories)
+        if path == collector.CACHE:
+            pages["Transcript:Kraken"][
+                "wikitext"
+            ] = "{{Transcript|pet|link=Pet Kraken}}"
+            pages["Transcript:Snakeling"]["wikitext"] = "{{Transcript|pet}}"
+        if path == collector.NPC_CACHE and "Snakeling" in pages:
+            pages["Snakeling"][
+                "wikitext"
+            ] = "{{otheruses|the summoned monster|the pet|pet snakeling}}"
+        return pages
+
+    monkeypatch.setattr(collector, "download", source_download)
+    collector.fetch()
+    identities = [names for names, path, _ in downloads if path == collector.NPC_CACHE]
+    assert any("Pet Kraken" in names for names in identities)
+    assert any("Pet snakeling" in names for names in identities)
+    assert all("Kraken" not in names for names in identities)
+
+
+def test_explicit_missing_identity_is_an_error_not_an_empty_export():
+    from scripts.dialogues import update
+    from scripts.dialogues.hooks import enrich_records
+
+    raw = "{{Transcript|pet|link=Pet Kraken}}\n* '''Kraken:''' Hello."
+    record = update.gameplay_npc("Kraken", update.parse_npc("Kraken", raw))
+    with pytest.raises(ValueError, match="Missing transcript identity page"):
+        enrich_records(
+            {"Kraken": record},
+            {},
+            {},
+            update.clean,
+            transcript_pages={"Transcript:Kraken": {"wikitext": raw}},
+        )
+
+
+def test_transcript_identity_does_not_rebind_a_quests_explicit_monster_participant():
+    from scripts.dialogues import update
+    from scripts.dialogues.hooks import enrich_records
+
+    raw = "{{Transcript|pet|link=Pet Kraken}}\n==Standard dialogue==\n* '''Kraken:''' Pet reply."
+    quest_raw = "{{Transcript|quest}}\n{{Transcript list|Kraken}}\n==Standard dialogue==\n* '''Kraken:''' Monster reply."
+    pet = update.gameplay_npc("Kraken", update.parse_npc("Kraken", raw))
+    quest = update.gameplay_npc("Quest", update.parse_npc("Quest", quest_raw))
+    pages = {
+        "Kraken": {"wikitext": "{{Infobox Monster|name=Kraken|id=494}}"},
+        "Pet Kraken": {"wikitext": "{{Infobox NPC|name=Kraken|id=6640}}"},
+    }
+    index = enrich_records(
+        {"Kraken": pet},
+        {"Quest": quest},
+        pages,
+        update.clean,
+        transcript_pages={"Transcript:Kraken": {"wikitext": raw}},
+    )
+    assert {row["page"] for row in index["494"]} == {"Transcript:Quest"}
+    assert {row["page"] for row in index["6640"]} == {"Transcript:Kraken"}
+
+
+def test_refresh_also_refreshes_an_already_cached_disambiguated_pet_article(
+    monkeypatch,
+):
+    _, downloads, _ = collect(monkeypatch, ["Transcript:Snakeling"])
+    original = collector.download
+
+    def cached_download(names, path, session, refresh=False, with_categories=False):
+        pages = original(names, path, session, refresh, with_categories)
+        if path == collector.CACHE:
+            pages["Transcript:Snakeling"]["wikitext"] = "{{Transcript|pet}}"
+        if path == collector.NPC_CACHE:
+            if "Snakeling" in pages:
+                pages["Snakeling"][
+                    "wikitext"
+                ] = "{{otheruses|monster|the pet|pet snakeling}}"
+            pages.setdefault(
+                "Pet snakeling", {"revision": 1, "wikitext": "old cached pet article"}
+            )
+        return pages
+
+    monkeypatch.setattr(collector, "download", cached_download)
+    collector.fetch(refresh=True)
+    assert any(
+        path == collector.NPC_CACHE and "Pet snakeling" in names and refresh
+        for names, path, refresh in downloads
+    )
