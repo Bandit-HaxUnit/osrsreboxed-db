@@ -29,7 +29,7 @@ def save(path, data, *, minified=False):
 
 
 def read_cache(path):
-    return json.loads(path.read_text()) if path.exists() else {}
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
 def transcript_targets(raw):
