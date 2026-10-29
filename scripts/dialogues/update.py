@@ -684,6 +684,8 @@ def gameplay_npc(name, parsed):
 SHOPS = "shops-items-by-shop.json"
 # A wiki link and a shop page title disagree on decoration, not on identity.
 SHOP_DECORATION = re.compile(r"\[\[|\]\]|\s*\(shop\)\s*$", re.I)
+# A shop's infobox version, appended to its page title by the shops dump.
+SHOP_VERSION = re.compile(r"^(?P<page>.*\S)\s+\((?P<version>[^()]+)\)$")
 
 
 def normalise_shop(name):
@@ -710,24 +712,32 @@ def shop_index():
     if not path.exists():
         print(f"{path} not built; every interface stays open_interface", flush=True)
         return {}
+    shops = json.loads(path.read_text(encoding="utf-8"))
     names = collections.defaultdict(set)
-    shops = json.loads(path.read_text())
     for shop in shops:
         for key in shop_keys(shop):
             names[key].add(shop)
-    # A terminal parenthesized label is the shop export's version, such as
-    # "(Default)", "(Karamja gloves)" or "(Post-miniquest)".
+    # Two shops folding onto one key cannot be told apart.
+    index = {
+        key: {"target": value.pop()} for key, value in names.items() if len(value) == 1
+    }
+    # The shops dump splits one shop page into a shop per infobox version
+    # ("Ned's Handmade Rope (100% Wool) (Default)" and "(Fremennik Isles)"), but
+    # a dialogue names the page. Hand the consumer every version to choose from.
     versions = collections.defaultdict(set)
     for shop in shops:
-        base = re.sub(r"\s+\([^()]*\)$", "", shop).strip()
-        if base != shop:
-            for key in shop_keys(base):
-                versions[key].add(shop)
-    result = {key: next(iter(value)) for key, value in names.items() if len(value) == 1}
-    for key, variants in versions.items():
-        if len(variants) > 1 and not names.get(key):
-            result[key] = tuple(sorted(variants))
-    return result
+        match = SHOP_VERSION.match(shop)
+        if match:
+            for key in shop_keys(match["page"]):
+                versions[key].add((match["page"], shop))
+    for key, value in versions.items():
+        pages = {page for page, _ in value}
+        if key not in names and len(value) > 1 and len(pages) == 1:
+            index[key] = {
+                "target": pages.pop(),
+                "shops": sorted(shop for _, shop in value),
+            }
+    return index
 
 
 def resolve_shops(npcs, index):
@@ -745,11 +755,7 @@ def resolve_shops(npcs, index):
             )
             if shop:
                 node["action"] = "open_shop"
-                if isinstance(shop, tuple):
-                    node["target"] = re.sub(r"\s+\([^()]*\)$", "", shop[0]).strip()
-                    node["shops"] = list(shop)
-                else:
-                    node["target"] = shop
+                node.update(shop)
                 resolved += 1
             for value in node.values():
                 walk(value)
@@ -771,8 +777,14 @@ def resolve_shops(npcs, index):
             ]
         )
         steps = [node for variant in variants for node in nodes(variant)]
-        shops = {node["target"] for node in steps if node.get("action") == "open_shop"}
+        shops = {
+            (node["target"], tuple(node.get("shops", ())))
+            for node in steps
+            if node.get("action") == "open_shop"
+        }
         if len(shops) == 1:
+            target, versions = next(iter(shops))
+            shop = {"target": target, **({"shops": list(versions)} if versions else {})}
             for node in steps:
                 if (
                     node.get("action") == "open_interface"
@@ -781,7 +793,7 @@ def resolve_shops(npcs, index):
                         r"\(?Shop interface opens\.?\)?", node.get("text", ""), re.I
                     )
                 ):
-                    node.update(action="open_shop", target=next(iter(shops)))
+                    node.update(action="open_shop", **shop)
                     resolved += 1
     return resolved
 
@@ -806,7 +818,7 @@ def slayer_masters():
         return set()
     return {
         master["dialogue"]
-        for master in json.loads(path.read_text()).values()
+        for master in json.loads(path.read_text(encoding="utf-8")).values()
         if master.get("dialogue")
     }
 
@@ -957,7 +969,7 @@ def main():
     pages = read_cache(CACHE) if args.offline else fetch(refresh=args.refresh)
     nav_templates = load_navigation_templates()
     bindings = json.loads(
-        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
     )
     npcs, quests, issues = {}, {}, {}
     for sources, output in ((pages, npcs), (read_cache(QUEST_CACHE), quests)):
@@ -981,7 +993,7 @@ def main():
     resolved = resolve_shops(npcs, shop_index())
     # Shared quest replies retain their NPC source IDs, including inferred shops.
     source_shops = {
-        node["id"]: node["target"]
+        node["id"]: {key: node[key] for key in ("target", "shops") if key in node}
         for record in npcs.values()
         for steps in [
             *record["variants"].values(),
@@ -1000,7 +1012,7 @@ def main():
                     node.get("action") == "open_interface"
                     and node.get("id") in source_shops
                 ):
-                    node["target"] = source_shops[node["id"]]
+                    node.update(source_shops[node["id"]])
     resolved += resolve_shops(quests, shop_index())
     slayer = resolve_slayer(npcs, slayer_masters())
     report_text = action_report({**npcs, **quests})
@@ -1013,11 +1025,11 @@ def main():
     apply_bindings(data, bindings)
     apply_corrections(
         data,
-        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text()),
+        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")),
     )
     dialogues = dict(sorted(data["records"].items()))
     report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
-    report.write_text(report_text)
+    report.write_text(report_text, encoding="utf-8")
     save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)

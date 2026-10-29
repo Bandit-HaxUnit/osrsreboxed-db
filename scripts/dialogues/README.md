@@ -1,11 +1,18 @@
 # NPC and quest dialogue exports
 
 Build with `python -m scripts.dialogues.update`. The collector fetches the wiki's
-**NPC dialogue** and **Quest transcript** categories, follows explicit transcript
+**NPC dialogue**, **Quest transcript** and **Event transcript** categories, follows explicit transcript
 links, and fetches NPC identity pages named by transcripts. Cached revisions are
 reused; `--refresh` fetches them again. `--offline` rebuilds only from cached sources.
 A failed download does not publish a partial gameplay export. Explicitly missing
 wiki pages remain cached and unresolved; use `--refresh` to retry them.
+
+Holiday/event transcripts use `quest-pages.json` as reference conversations, so they pass
+through the existing dependency, participant identity, revision and export paths. The
+participant index includes them as candidates; runtime consumers must explicitly gate
+event conversations by activity state instead of choosing the first playable candidate.
+Collecting sources does not install them into a game or implement those activity gates.
+An empty event category fails collection rather than silently dropping seasonal content.
 
 ## Files
 
@@ -170,13 +177,13 @@ change the speaker, text or control flow.
 Choices/random alternatives have nested `options` and `steps`. Message, missing,
 unavailable, condition and reference nodes must not silently disappear.
 
-`open_shop.target` is an exact key in `shops-items-by-shop.json` for an unsplit shop.
-When the Wiki shop page has versioned exports, `target` is their shared title and
-`shops` lists the exact exported keys. Consumers choose a version from player state
-and fall back to the `(Default)` key. `open_interface` is not a shop ID.
-`receive`, `give`, teleport and other effects may still carry prose instead of
-structured game IDs/amounts. Bind effects by node ID in the quest plugin; don't
-execute prose. `action_source: "text"` identifies inferred actions.
+`open_shop.target` is an exact key in `shops-items-by-shop.json`, unless the step
+also has `shops`: then the target is a shop page the dump splits by infobox version
+(`Ned's Handmade Rope (100% Wool)`), and `shops` lists every version's exact key
+(`... (Default)`, `... (Fremennik Isles)`) for the consumer to pick by game state.
+`open_interface` is not a shop ID. `receive`, `give`, teleport and other effects may still carry
+prose instead of structured game IDs/amounts. Bind effects by node ID in the quest
+plugin; don't execute prose. `action_source: "text"` identifies inferred actions.
 
 Schemas: `data/schemas/schema-dialogues.json`, `schema-npc-dialogue-index.json`,
 `schema-dialogue-manifest.json` and `schema-dialogue-authoring.json`.

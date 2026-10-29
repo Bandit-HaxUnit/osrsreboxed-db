@@ -1,4 +1,4 @@
-"""Cache NPC and quest transcripts, their references, and NPC identity pages."""
+"""Cache NPC, quest and event transcripts, their references, and NPC identity pages."""
 
 import json
 import time
@@ -14,8 +14,9 @@ DIALOGUE_CATEGORIES = (
     "NPC dialogue",
     "Quest transcript",
     "Miniquest transcript",
+    "Event transcript",
 )
-TRANSCRIPT_CATEGORIES = ("Quest transcript", "Miniquest transcript")
+TRANSCRIPT_CATEGORIES = ("Quest transcript", "Miniquest transcript", "Event transcript")
 CACHE = config.DATA_PATH / "dialogues" / "wiki-pages.json"
 QUEST_CACHE = CACHE.with_name("quest-pages.json")
 NPC_CACHE = CACHE.with_name("npc-pages.json")
@@ -36,7 +37,7 @@ def save(path, data, *, minified=False):
 
 
 def read_cache(path):
-    return json.loads(path.read_text()) if path.exists() else {}
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
 def trailing_template_name(raw, name):
