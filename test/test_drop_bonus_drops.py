@@ -357,12 +357,14 @@ def used_slots(exported):
             "Commander Zilyana",
             "commander_zilyana",
             [(163, 3042), (6687, 3024)],
-            127,
-            119,
+            1524,
+            1524,
         ),
-        ("K'ril Tsutsaroth", "kril_tsutsaroth", [(145, 157), (3026, 189)], 127, 120),
-        ("Kree'arra", "kreearra", [(169, 163)], 127, 119),
-        ("General Graardor", "general_graardor", [], 127, 119),
+        # Exact normalization keeps uniques and source coin fractions in one
+        # exclusive pool: 1524 integer subslots represent the 127-slot source.
+        ("K'ril Tsutsaroth", "kril_tsutsaroth", [(145, 157), (3026, 189)], 1524, 1524),
+        ("Kree'arra", "kreearra", [(169, 163)], 1524, 1524),
+        ("General Graardor", "general_graardor", [], 1524, 1524),
         ("Ammonite Crab", "ammonite_crab", [(21543, 21545)], 128, 128),
         ("Chaos Fanatic", "chaos_fanatic", [(1035, 1033)], 133, 133),
         # The footnoted pair is in the take-eggs variant, whose rows the parser

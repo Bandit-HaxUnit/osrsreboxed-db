@@ -38,7 +38,9 @@ import re
 from dataclasses import dataclass, field, replace
 from datetime import date
 from decimal import Decimal
+from fractions import Fraction
 from itertools import groupby
+from math import gcd
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -53,8 +55,11 @@ from scripts.drops.drops_wikitext import (
 
 logger = logging.getLogger(__name__)
 
-# The wiki page holding every shared drop table.
+# The wiki page holding the shared drop tables, and the page holding the God
+# Wars bosses' variant rare drop, gem and mega-rare tables.
 SHARED_TABLE_PAGE = "Drop table"
+GWD_SHARED_TABLE_PAGE = "God Wars Dungeon-variant rare drop table"
+SHARED_TABLE_PAGES = [SHARED_TABLE_PAGE, GWD_SHARED_TABLE_PAGE]
 
 # Shared tables, keyed by the name monster tables reference them with, mapped to
 # the level-2 heading their drop lines live under on SHARED_TABLE_PAGE.
@@ -69,7 +74,29 @@ SHARED_TABLE_SECTIONS = [
     ("rareSeed", "Rare seed drop table", "rare seed drop table"),
     # Referenced from the gem table; monsters never roll it directly.
     ("talisman", "Talisman drop table", "talisman drop table"),
+    (
+        "gwdRareDrop",
+        "God Wars Dungeon-variant Rare Drop Table",
+        "God Wars Dungeon-variant rare drop table",
+    ),
+    (
+        "gwdGem",
+        "God Wars Dungeon-variant Gem Drop Table",
+        "God Wars Dungeon-variant gem drop table",
+    ),
+    (
+        "gwdMegaRare",
+        "God Wars Dungeon-variant Mega-rare Drop Table",
+        "God Wars Dungeon-variant mega-rare drop table",
+    ),
 ]
+
+# Shared tables that live on a page other than SHARED_TABLE_PAGE.
+SHARED_TABLE_SOURCE_PAGES = {
+    "gwdRareDrop": GWD_SHARED_TABLE_PAGE,
+    "gwdGem": GWD_SHARED_TABLE_PAGE,
+    "gwdMegaRare": GWD_SHARED_TABLE_PAGE,
+}
 
 # Shared tables reference each other by display name (the rare drop table rolls
 # the gem table on 20/128). Those rows are refs, not items.
@@ -84,9 +111,18 @@ NESTED_TABLE_REFS = {
     "rare seed drop table": "rareSeed",
     "talisman": "talisman",
     "talisman drop table": "talisman",
+    "god wars dungeon-variant gem drop table": "gwdGem",
+    "god wars dungeon-variant mega-rare drop table": "gwdMegaRare",
 }
 
 PRE_ROLL_SUBSECTION = "Pre-roll"
+
+# A coin footnote saying the published rate also counts coins rolled from the
+# shared gem and rare drop tables (the God Wars bosses). Those tables roll their
+# own coins here, so the main table's coins are the slots left over.
+COIN_REMAINDER_NOTE = re.compile(
+    r"Coins come from rolls on [^.<]*\bGDT and RDT\b", re.I
+)
 
 
 @dataclass
@@ -102,6 +138,10 @@ class ResolvedEntry:
     subsection: str = ""
     rarity_raw: str = ""
     assumed_rarity: bool = False
+    # "remainder" when the weight is what the pool leaves, with the source's own
+    # rate kept in published_rarity.
+    weight_basis: str = ""
+    published_rarity: str = ""
     is_nothing: bool = False
     is_noted: bool = False
     clue_scroll_box: bool = False
@@ -460,6 +500,82 @@ def _finalize_main_rolls(
     return by_denominator[primary], primary, separate_rolls
 
 
+def _exclusive_source_pool(
+    pool: List[ResolvedEntry],
+    subtable_accesses: List[wikitext.ParsedSubtableAccess],
+    source: str,
+    unresolved: List[str],
+) -> Tuple[List[ResolvedEntry], int, List[wikitext.ParsedSubtableAccess]]:
+    """Flatten one source-stated exclusive loot pool without rounding its rates.
+
+    GWDRDT replaces normal loot; uniques with different denominators still
+    occupy that same pool. Its inclusive coin row is the residual after all
+    other exact outcomes, not after discarding uniques into independent rolls.
+    """
+    if unresolved:
+        raise ValueError(
+            f"{source}: unresolved exclusive-pool rows: {', '.join(unresolved)}"
+        )
+    footnoted = [
+        entry
+        for entry in pool
+        if entry.name == "Coins"
+        and any(COIN_REMAINDER_NOTE.search(note) for note in entry.notes)
+    ]
+    if len(footnoted) != 1:
+        raise ValueError(f"{source}: expected one source-stated inclusive coin row")
+    coins = footnoted[0]
+
+    def exact_rate(entry: ResolvedEntry) -> Fraction:
+        match = re.fullmatch(r"(\d+(?:\.\d+)?)/(\d+(?:\.\d+)?)", entry.rarity_raw)
+        if not match or entry.assumed_rarity or Fraction(match.group(2)) == 0:
+            raise ValueError(
+                f"{source}: unsupported source rate for {entry.name}: {entry.rarity_raw}"
+            )
+        rate = Fraction(match.group(1)) / Fraction(match.group(2))
+        if not 0 <= rate <= 1:
+            raise ValueError(
+                f"{source}: invalid source rate for {entry.name}: {entry.rarity_raw}"
+            )
+        return rate
+
+    rates = [exact_rate(entry) if entry is not coins else None for entry in pool]
+    access_rates = [Fraction(a.numerator, a.denominator) for a in subtable_accesses]
+    remainder = (
+        1
+        - sum((rate for rate in rates if rate is not None), Fraction(0))
+        - sum(access_rates, Fraction(0))
+    )
+    if not 0 < remainder <= exact_rate(coins):
+        raise ValueError(
+            f"{source}: coin remainder {remainder} conflicts with inclusive source rate {coins.rarity_raw}"
+        )
+    rates[pool.index(coins)] = remainder
+    pool_size = 1
+    for rate in rates + access_rates:
+        pool_size = pool_size * rate.denominator // gcd(pool_size, rate.denominator)
+    entries = [
+        replace(
+            entry,
+            weight=rate.numerator * (pool_size // rate.denominator),
+            out_of=pool_size,
+            roll_denominator=pool_size,
+            published_rarity=entry.rarity_raw,
+            weight_basis="remainder" if entry is coins else "",
+        )
+        for entry, rate in zip(pool, rates)
+    ]
+    accesses = [
+        replace(
+            access,
+            numerator=rate.numerator * (pool_size // rate.denominator),
+            denominator=pool_size,
+        )
+        for access, rate in zip(subtable_accesses, access_rates)
+    ]
+    return entries, pool_size, accesses
+
+
 def build_table_spec(
     wiki_page: str, table: ParsedDropTable, items: ItemIdLookup
 ) -> DropTableSpec:
@@ -474,6 +590,7 @@ def build_table_spec(
     main: List[ResolvedEntry] = []
     tertiary: List[ResolvedEntry] = []
     unresolved: List[str] = []
+    unresolved_pool: List[str] = []
 
     # Seed drops are listed individually and as a shared table access on some
     # pages; the access wins so the seeds are not counted twice.
@@ -497,6 +614,8 @@ def build_table_spec(
             continue
         entry = _resolve_entry(drop, items)
         if entry is None:
+            if drop.section == SECTION_MAIN:
+                unresolved_pool.append(f"{drop.name} ({drop.rarity})")
             if not drop.is_nothing and wikitext.has_known_drop_rate(drop.rarity):
                 unresolved.append(drop.name)
             continue
@@ -519,12 +638,19 @@ def build_table_spec(
             standard_main.append(entry)
 
     pre_roll, _, pre_roll_separate = _finalize_main_rolls(pre_roll_drops, [])
-    main_entries, main_max_roll, separate_rolls = _finalize_main_rolls(
-        standard_main, table.subtable_accesses
-    )
+    accesses = table.subtable_accesses
+    if {"gwdRareDrop", "gwdGem"}.issubset(a.table_key for a in accesses):
+        main_entries, main_max_roll, accesses = _exclusive_source_pool(
+            standard_main, accesses, wiki_page, unresolved_pool
+        )
+        separate_rolls = []
+    else:
+        main_entries, main_max_roll, separate_rolls = _finalize_main_rolls(
+            standard_main, accesses
+        )
     if main_max_roll is not None:
         used = sum(entry.weight or 0 for entry in main_entries) + sum(
-            access.numerator for access in table.subtable_accesses
+            access.numerator for access in accesses
         )
         main_max_roll = max(main_max_roll, used)
 
@@ -541,7 +667,7 @@ def build_table_spec(
         main=main_entries,
         main_max_roll=main_max_roll,
         separate_rolls=separate_rolls,
-        subtable_accesses=table.subtable_accesses,
+        subtable_accesses=accesses,
         tertiary=tertiary,
         unresolved_items=list(dict.fromkeys(unresolved)),
     )
@@ -652,6 +778,8 @@ def _entry_json(
             "noted": True if entry.is_noted else None,
             "clue_scroll_box": True if entry.clue_scroll_box else None,
             "assumed_rarity": True if entry.assumed_rarity else None,
+            "weight_basis": entry.weight_basis or None,
+            "published_rarity": entry.published_rarity or None,
             "notes": entry.notes or None,
             "bonus_drops": [_bonus_drop_json(bonus) for bonus in entry.bonus_drops]
             or None,
@@ -884,19 +1012,23 @@ def _section_body(page_wikitext: str, heading: str) -> Optional[str]:
     return rest
 
 
-def export_shared_subtables(page_wikitext: Optional[str], items: ItemIdLookup) -> Dict:
-    """Extract the shared drop tables from the wiki's ``Drop table`` page.
+def export_shared_subtables(
+    pages: Dict[str, Optional[str]], items: ItemIdLookup
+) -> Dict:
+    """Extract the shared drop tables from their source wiki pages.
 
     Shared tables are referenced by name from monster entries and emitted once
     here, rather than inlined into every monster that rolls them.
 
-    :param page_wikitext: Wikitext of the ``Drop table`` page, or None.
+    :param pages: Source page titles mapped to cached wikitext, or None when unavailable.
     :param items: Item ID lookup.
     :return: Dictionary of shared table name to its entries.
     """
     subtables = {}
     for key, heading, wiki_label in SHARED_TABLE_SECTIONS:
         entries = []
+        source_page = SHARED_TABLE_SOURCE_PAGES.get(key, SHARED_TABLE_PAGE)
+        page_wikitext = pages.get(source_page)
         body = _section_body(page_wikitext, heading) if page_wikitext else None
         for _, params in wikitext.extract_templates(body or "", "DropsLine"):
             name = params.get("name")
@@ -924,12 +1056,12 @@ def export_shared_subtables(page_wikitext: Optional[str], items: ItemIdLookup) -
             logger.debug(
                 "shared table '%s' — no entries extracted from '%s'",
                 key,
-                SHARED_TABLE_PAGE,
+                source_page,
             )
         subtables[key] = {
             "name": key,
             "wiki_label": wiki_label,
-            "wiki_page": SHARED_TABLE_PAGE,
+            "wiki_page": source_page,
             "entries": entries,
         }
     return subtables

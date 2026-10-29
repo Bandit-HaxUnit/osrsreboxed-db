@@ -157,3 +157,33 @@ def test_generated_nex_keeps_two_paired_supply_slots():
         for row in nex["entries"]
         for bonus in row.get("bonus_drops", [])
     ) == [(385, 2434), (6685, 3024)]
+
+
+def test_generated_god_wars_variant_accesses_and_coin_remainders():
+    dump = _load("npc-drops.json")
+    expected = {
+        "commander_zilyana": (330, "31.2/127"),
+        "general_graardor": (336, "31.7/127"),
+        "kril_tsutsaroth": (396, "36.7/127"),
+        "kreearra": (480, "43.7/127"),
+    }
+    for table_id, (weight, published) in expected.items():
+        table = dump["tables"][table_id]
+        assert table["main_max_roll"] == 1524
+        assert [
+            (e["shared_table"], e["weight"], e["out_of"])
+            for e in table["entries"]
+            if e.get("shared_table")
+        ] == [("gwdRareDrop", 96, 1524), ("gwdGem", 24, 1524)]
+        assert [
+            (e["item_id"], e["weight"], e["published_rarity"])
+            for e in table["entries"]
+            if e.get("weight_basis") == "remainder"
+        ] == [(995, weight, published)]
+    shared = _load("subtables.json")
+    for key in ["gwdRareDrop", "gwdGem", "gwdMegaRare"]:
+        assert shared[key]["wiki_page"] == "God Wars Dungeon-variant rare drop table"
+        assert (
+            sum(int(e["rarity_raw"].split("/")[0]) for e in shared[key]["entries"])
+            == 128
+        )
