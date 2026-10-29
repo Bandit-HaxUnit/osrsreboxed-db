@@ -1,7 +1,11 @@
+import json
+import copy
+
 import pytest
 
+import config
 from scripts.dialogues import update
-from scripts.dialogues.hooks import enrich_records, walk
+from scripts.dialogues.hooks import annotate, enrich_records, walk
 from scripts.dialogues.bindings import apply_bindings
 
 
@@ -49,6 +53,105 @@ def test_nested_menu_does_not_swallow_outer_options_or_drop_same_depth_speech():
     inner = menu["options"][0]["steps"][0]
     assert [option["text"] for option in inner["options"]] == ["Inner", "Another inner"]
     assert inner["options"][0]["steps"] == [{"npc": "Inner reply."}]
+
+
+def test_same_depth_option_bodies_stay_with_their_choice_until_the_next_option():
+    value = record(
+        "X",
+        """==Standard dialogue==
+* {{tselect|Select an option}}
+* {{topt|Wrong}}
+* {{tact|A random incorrect dialogue from below is shown.}}
+* {{tact|end}}
+* {{topt|Right}}
+* '''Player:''' Right.
+* '''X:''' Continue the conversation.
+* {{tselect}}
+* {{topt|Continue}}
+** '''X:''' Nested answer.
+""",
+    )
+    menu = value["variants"]["standard-dialogue"][0]
+    assert [option["text"] for option in menu["options"]] == ["Wrong", "Right"]
+    assert [step["type"] for step in menu["options"][0]["steps"]] == ["action", "end"]
+    right_steps = menu["options"][1]["steps"]
+    assert right_steps[0] == {"player": "Right."}
+    assert right_steps[1] == {"npc": "Continue the conversation."}
+    assert value["variants"]["standard-dialogue"][1]["type"] == "choice"
+    assert value["variants"]["standard-dialogue"][1]["options"][0]["steps"][0] == {"npc": "Nested answer."}
+
+
+def test_matching_player_echo_does_not_swallow_the_next_parent_option():
+    value = record(
+        "X",
+        """==Standard dialogue==
+* {{tselect|Select an option}}
+* {{topt|Yes}}
+* '''Player:''' Yes.
+* '''X:''' The answer is yes.
+* {{topt|No}}
+* '''Player:''' No.
+* '''X:''' The answer is no.
+* {{tact|end}}
+""",
+    )
+    menu = value["variants"]["standard-dialogue"][0]
+    assert [option["text"] for option in menu["options"]] == ["Yes", "No"]
+    assert menu["options"][0]["steps"] == [{"player": "Yes."}, {"npc": "The answer is yes."}]
+    assert menu["options"][1]["steps"] == [{"player": "No."}, {"npc": "The answer is no."}, {"type": "end"}]
+
+
+def test_unrelated_outer_menu_after_completed_menu_stays_a_sibling():
+    value = record(
+        "X",
+        """==Standard dialogue==
+* {{tselect|First question}}
+* {{topt|Yes}}
+** '''Player:''' Yes.
+** '''X:''' First answer.
+* {{topt|No}}
+** '''Player:''' No.
+** '''X:''' Second answer.
+* {{tselect|A separate question}}
+* {{topt|Continue}}
+** '''X:''' New conversation.
+""",
+    )
+    steps = value["variants"]["standard-dialogue"]
+    assert steps[0]["type"] == "choice"
+    assert [option["text"] for option in steps[0]["options"]] == ["Yes", "No"]
+    assert steps[1]["type"] == "choice"
+    assert steps[1]["prompt"] == "A separate question"
+
+
+def test_making_history_dron_quiz_options_are_grouped_from_canonical_wiki_source():
+    pages = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())
+    raw = pages["Transcript:Making History"]["wikitext"]
+    parsed = update.parse_npc("Making History", raw)
+    steps = parsed["variants"]["talking-to-dron-talking-to-dron-again"]["steps"]
+
+    def find_prompt(nodes):
+        for node in nodes:
+            if node.get("type") == "line" and node.get("text") == "When are kittens best devoured?":
+                return nodes, node
+            found = find_prompt(node.get("steps", []))
+            if found:
+                return found
+            for option in node.get("options", []):
+                found = find_prompt(option.get("steps", []))
+                if found:
+                    return found
+        return None
+
+    siblings, _ = find_prompt(steps)
+    menu_index = next(i for i, node in enumerate(siblings) if node.get("type") == "choice" and node.get("options", [{}])[0].get("text") == "Tea")
+    menu = siblings[menu_index]
+    assert [option["text"] for option in menu["options"]] == ["Tea", "Lunch"]
+    assert [step["type"] for step in menu["options"][0]["steps"]] == ["action", "end"]
+    lunch_steps = menu["options"][1]["steps"]
+    assert lunch_steps[0] == {"type": "line", "speaker": "Player", "text": "Lunch."}
+    assert lunch_steps[1]["text"] == "What do I usually eat for tea?"
+    assert siblings[menu_index + 1]["type"] == "choice"
 
 
 def test_poem_warning_and_editorial_notes_preserve_game_text():
@@ -99,6 +202,78 @@ def test_annotated_option_becomes_a_condition():
         "condition": "With a ring equipped:",
     }
     assert issues[0]["reason"] == "Recovered positional option condition"
+
+
+def test_guarded_one_option_menus_lift_with_original_ids_and_shared_continuation():
+    pages = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())
+    page = pages["Transcript:Ethically Acquired Antiquities"]
+    name = "Ethically Acquired Antiquities"
+    variants = [
+        "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember",
+        "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember-after-declining-doing-the-favour",
+    ]
+    parsed = update.parse_npc(name, page["wikitext"], set())
+    expected_ids = {}
+    for variant in variants:
+        steps = copy.deepcopy(update.gameplay_npc(name, parsed)["variants"][variant])
+        annotate(steps, f"Transcript:{name}#{variant}", {})
+        expected_ids[variant] = {
+            node["text"]: node["id"]
+            for node in walk(steps)
+            if node.get("type") == "condition"
+            and node.get("text") in (
+                "If the player hasn't completed One Small Favour:",
+                "If the player has completed One Small Favour:",
+            )
+        }
+
+    value = record(name, page["wikitext"])
+    value["source"] = {"page": "Transcript:" + name, "revision": page["revision"]}
+    enrich_records({}, {name: value}, {}, update.clean)
+    for variant in variants:
+        option = next(
+            node for node in walk(value["variants"][variant])
+            if node.get("type") == "choice"
+            and any(child.get("text") == "Have you seen a man with a case?" for child in node.get("options", []))
+        ).get("options")
+        case_option = next(child for child in option if child.get("text") == "Have you seen a man with a case?")
+        menu = next(child for child in case_option["steps"] if child.get("type") == "choice")
+        assert [child["text"] for child in menu["options"]] == [
+            "Sure. What do you need?",
+            "As long as it is just the one favour...",
+            "No thanks." if "after-declining" in variant else "Not right now.",
+        ]
+        accepted = menu["options"][:2]
+        conditions = [
+            "If the player hasn't completed One Small Favour:",
+            "If the player has completed One Small Favour:",
+        ]
+        for choice, condition in zip(accepted, conditions):
+            assert choice["condition"] == condition
+            assert choice["condition_id"] == expected_ids[variant][condition]
+            assert choice["id"]
+        completed = follow(value, accepted[0]["steps"])
+        assert any(
+            node.get("text", "").startswith("We've been meaning to get our old sails stitched up")
+            for node in completed
+        )
+        assert sum(
+            node.get("text", "").startswith("We've been meaning to get our old sails stitched up")
+            for node in completed
+        ) == 1
+
+
+def test_other_guarded_single_option_menus_are_not_mistaken_for_a_decline_menu():
+    pages = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())
+    page = pages["Transcript:Garden of Tranquillity"]
+    name = "Garden of Tranquillity"
+    value = record(name, page["wikitext"])
+    enrich_records({}, {name: value}, {}, update.clean)
+    steps = value["variants"]["talking-to-kragen-talking-to-kragen-again"]
+    menu = steps[0]
+    assert menu["type"] == "choice" and not menu["options"]
+    assert [step["type"] for step in steps[1:4]] == ["condition", "condition", "choice"]
+    assert not any(node.get("condition_id") for node in walk(steps))
 
 
 def test_shared_reply_is_scoped_to_the_speaking_participant_and_keeps_effect_id():

@@ -1008,107 +1008,83 @@
               },
               {
                 "type": "choice",
-                "options": []
-              },
-              {
-                "type": "condition",
-                "text": "If the player hasn't completed One Small Favour:",
-                "steps": [
-                  {
-                    "type": "choice",
-                    "options": [
-                      {
-                        "text": "Sure. What do you need?",
-                        "steps": [
-                          {
-                            "player": "Sure. What do you need?"
-                          },
-                          {
-                            "type": "jump",
-                            "reference": "continues",
-                            "id": "duCd6b"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "id": "LgTVfY"
-              },
-              {
-                "type": "condition",
-                "text": "If the player has completed One Small Favour:",
-                "steps": [
-                  {
-                    "type": "choice",
-                    "options": [
-                      {
-                        "text": "As long as it is just the one favour...",
-                        "steps": [
-                          {
-                            "player": "As long as it is just the one favour..."
-                          },
-                          {
-                            "type": "jump",
-                            "reference": "continues",
-                            "id": "uNFa9J"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "line",
-                    "speaker": "Trader Crewmember",
-                    "text": "We've been meaning to get our old sails stitched up, but haven't had a chance to get away and have it done..."
-                  },
-                  {
-                    "type": "line",
-                    "speaker": "Trader Crewmember",
-                    "text": "Hard to believe that Trader Stan had these clothes enchanted to re-stitch themselves so we can't ruin them, but the sails were too much to ask for! Some people's priorities, huh?"
-                  },
-                  {
-                    "player": "I suppose I can help with that."
-                  },
-                  {
-                    "type": "line",
-                    "speaker": "Trader Crewmember",
-                    "text": "Perfect! There's a crafting store just down the road. They should be able to fix them up."
-                  },
-                  {
-                    "type": "condition",
-                    "text": "If the player's inventory is full:",
-                    "steps": [
-                      {
-                        "player": "Actually, I might need to make some space before I can take them."
-                      },
-                      {
-                        "type": "end"
-                      }
-                    ],
-                    "id": "1yeeSP"
-                  },
-                  {
-                    "type": "condition",
-                    "text": "If the player has room in their inventory:",
-                    "steps": [
-                      {
-                        "type": "message",
-                        "text": "The trader hands you some old tattered sails.",
-                        "id": "1wx5TB"
-                      },
-                      {
-                        "type": "end"
-                      }
-                    ],
-                    "id": "bnZg2R"
-                  }
-                ],
-                "id": "Vr0XnM"
-              },
-              {
-                "type": "choice",
                 "options": [
+                  {
+                    "text": "Sure. What do you need?",
+                    "steps": [
+                      {
+                        "player": "Sure. What do you need?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "duCd6b",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d44b7b76e0dba94e"
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "qLbc45",
+                    "condition": "If the player hasn't completed One Small Favour:",
+                    "condition_id": "LgTVfY"
+                  },
+                  {
+                    "text": "As long as it is just the one favour...",
+                    "steps": [
+                      {
+                        "player": "As long as it is just the one favour..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trader Crewmember",
+                        "text": "We've been meaning to get our old sails stitched up, but haven't had a chance to get away and have it done..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trader Crewmember",
+                        "text": "Hard to believe that Trader Stan had these clothes enchanted to re-stitch themselves so we can't ruin them, but the sails were too much to ask for! Some people's priorities, huh?"
+                      },
+                      {
+                        "player": "I suppose I can help with that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trader Crewmember",
+                        "text": "Perfect! There's a crafting store just down the road. They should be able to fix them up."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player's inventory is full:",
+                        "steps": [
+                          {
+                            "player": "Actually, I might need to make some space before I can take them."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "1yeeSP"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has room in their inventory:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The trader hands you some old tattered sails.",
+                            "id": "1wx5TB"
+                          }
+                        ],
+                        "id": "bnZg2R"
+                      }
+                    ],
+                    "id": "BV5HyK",
+                    "condition": "If the player has completed One Small Favour:",
+                    "condition_id": "Vr0XnM"
+                  },
                   {
                     "text": "Not right now.",
                     "steps": [
@@ -1351,65 +1327,43 @@
               },
               {
                 "type": "choice",
-                "options": []
-              },
-              {
-                "type": "condition",
-                "text": "If the player hasn't completed One Small Favour:",
-                "steps": [
-                  {
-                    "type": "choice",
-                    "options": [
-                      {
-                        "text": "Sure. What do you need?",
-                        "steps": [
-                          {
-                            "type": "jump",
-                            "id": "6qr6Mw",
-                            "steps": [
-                              {
-                                "type": "call",
-                                "branch": "jump-b9a2ce46c6963855"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "id": "jVFeXW"
-              },
-              {
-                "type": "condition",
-                "text": "If the player has completed One Small Favour:",
-                "steps": [
-                  {
-                    "type": "choice",
-                    "options": [
-                      {
-                        "text": "As long as it is just the one favour...",
-                        "steps": [
-                          {
-                            "type": "jump",
-                            "id": "oGeunj",
-                            "steps": [
-                              {
-                                "type": "call",
-                                "branch": "jump-b27f78b7223cffd6"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "id": "wQ6LNT"
-              },
-              {
-                "type": "choice",
                 "options": [
+                  {
+                    "text": "Sure. What do you need?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "6qr6Mw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b9a2ce46c6963855"
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "IkwMGp",
+                    "condition": "If the player hasn't completed One Small Favour:",
+                    "condition_id": "jVFeXW"
+                  },
+                  {
+                    "text": "As long as it is just the one favour...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "oGeunj",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-29aa0949642af7e6"
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "bpCOQl",
+                    "condition": "If the player has completed One Small Favour:",
+                    "condition_id": "wQ6LNT"
+                  },
                   {
                     "text": "No thanks.",
                     "steps": [
@@ -5187,9 +5141,6 @@
                     "steps": [
                       {
                         "player": "I'd better get going. Thanks again."
-                      },
-                      {
-                        "type": "end"
                       }
                     ]
                   }
@@ -5272,17 +5223,10 @@
             "steps": [
               {
                 "player": "Thanks. If I have any questions, I'll be sure to ask."
-              },
-              {
-                "type": "end"
               }
             ]
           }
         ]
-      },
-      {
-        "type": "unavailable",
-        "id": "FdCw-Z"
       }
     ]
   },
@@ -5437,6 +5381,54 @@
         "id": "1R0gqM"
       }
     ],
+    "jump-d44b7b76e0dba94e": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "We've been meaning to get our old sails stitched up, but haven't had a chance to get away and have it done..."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Hard to believe that Trader Stan had these clothes enchanted to re-stitch themselves so we can't ruin them, but the sails were too much to ask for! Some people's priorities, huh?"
+      },
+      {
+        "player": "I suppose I can help with that."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Perfect! There's a crafting store just down the road. They should be able to fix them up."
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "player": "Actually, I might need to make some space before I can take them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1yeeSP"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has room in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The trader hands you some old tattered sails.",
+            "id": "1wx5TB"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bnZg2R"
+      }
+    ],
     "jump-b9a2ce46c6963855": [
       {
         "player": "Sure. What do you need?"
@@ -5444,17 +5436,64 @@
       {
         "type": "jump",
         "reference": "continues",
-        "id": "duCd6b"
+        "id": "duCd6b",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-d44b7b76e0dba94e"
+          }
+        ]
       }
     ],
-    "jump-b27f78b7223cffd6": [
+    "jump-29aa0949642af7e6": [
       {
         "player": "As long as it is just the one favour..."
       },
       {
-        "type": "jump",
-        "reference": "continues",
-        "id": "uNFa9J"
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "We've been meaning to get our old sails stitched up, but haven't had a chance to get away and have it done..."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Hard to believe that Trader Stan had these clothes enchanted to re-stitch themselves so we can't ruin them, but the sails were too much to ask for! Some people's priorities, huh?"
+      },
+      {
+        "player": "I suppose I can help with that."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Perfect! There's a crafting store just down the road. They should be able to fix them up."
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "player": "Actually, I might need to make some space before I can take them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1yeeSP"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has room in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The trader hands you some old tattered sails.",
+            "id": "1wx5TB"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bnZg2R"
       }
     ],
     "jump-125c024e51aae5eb": [
