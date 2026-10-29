@@ -540,7 +540,7 @@ def shop_index():
     if not path.exists():
         print(f"{path} not built; every interface stays open_interface", flush=True)
         return {}
-    shops = json.loads(path.read_text())
+    shops = json.loads(path.read_text(encoding="utf-8"))
     names = collections.defaultdict(set)
     for shop in shops:
         for key in shop_keys(shop):
@@ -646,7 +646,7 @@ def slayer_masters():
         return set()
     return {
         master["dialogue"]
-        for master in json.loads(path.read_text()).values()
+        for master in json.loads(path.read_text(encoding="utf-8")).values()
         if master.get("dialogue")
     }
 
@@ -808,7 +808,7 @@ def main():
     if npcs.keys() & quests.keys():
         raise ValueError("NPC and quest transcript names overlap")
     bindings = json.loads(
-        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
     )
     index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean, bindings)
     resolved = resolve_shops(npcs, shop_index())
@@ -846,11 +846,11 @@ def main():
     apply_bindings(data, bindings)
     apply_corrections(
         data,
-        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text()),
+        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")),
     )
     dialogues = dict(sorted(data["records"].items()))
     report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
-    report.write_text(report_text)
+    report.write_text(report_text, encoding="utf-8")
     save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)

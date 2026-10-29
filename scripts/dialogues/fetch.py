@@ -1,4 +1,4 @@
-"""Cache NPC and quest transcripts, their references, and NPC identity pages."""
+"""Cache NPC, quest and event transcripts, their references, and NPC identity pages."""
 
 import json
 import time
@@ -29,7 +29,7 @@ def save(path, data, *, minified=False):
 
 
 def read_cache(path):
-    return json.loads(path.read_text()) if path.exists() else {}
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
 def transcript_targets(raw):
@@ -121,7 +121,7 @@ def download(names, path, session, refresh=False):
 
 def fetch(refresh=False):
     categories = {}
-    for category in ("NPC dialogue", "Quest transcript"):
+    for category in ("NPC dialogue", "Quest transcript", "Event transcript"):
         titles = WikiPageTitles(API, [category])
         titles.extract_page_titles()
         categories[category] = {
@@ -131,13 +131,14 @@ def fetch(refresh=False):
             raise ValueError(f"{category} returned no transcripts")
     session = WikiPageText(API, "").session
     npc_names = categories["NPC dialogue"]
+    reference_names = categories["Quest transcript"] | categories["Event transcript"]
     pages = download(npc_names, CACHE, session, refresh)
     quests = download(
-        categories["Quest transcript"] - npc_names, QUEST_CACHE, session, refresh
+        reference_names - npc_names, QUEST_CACHE, session, refresh
     )
     if refresh:
         quests = download(
-            set(quests) - categories["Quest transcript"], QUEST_CACHE, session, True
+            set(quests) - reference_names, QUEST_CACHE, session, True
         )
     # Follow explicit dependencies to a fixed point. Cache missing pages too, so a
     # broken wiki link is reported once rather than retried forever.
