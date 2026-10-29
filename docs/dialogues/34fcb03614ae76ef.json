@@ -1,0 +1,1760 @@
+{
+  "default": "starting-off-talking-to-fred-the-farmer",
+  "variants": {
+    "starting-off-talking-to-fred-the-farmer": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Hello, Fred. Is everything alright?"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Oh, hello there! Actually, no, everything's not alright. I've made a terrible mistake..."
+              },
+              {
+                "player": "What kind of mistake?"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "The Spook-a-thon Decoration Contest! Hosted by Death himself! I signed up weeks ago, thinking I had all the time in the world..."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "But now I've realised, I've got no idea how to make my house spooky enough to compete! I could really use some help pulling this together!"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Halloween event?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "I suppose I could lend a hand. Any ideas where to start?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Well... there's Seth Groats, just across the river to the east. His place is decorated with a lot of spooky charm. Maybe we could get some inspiration from his decorations."
+                      },
+                      {
+                        "player": "Sounds easy enough, I'll go and see him."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Thank you! You might just save my haunted house dreams, and help me win the contest."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "I'd love to help, but I'm a bit busy at the moment. I'll return when I can."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-fred-after-starting-the-event": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Well... there's Seth Groats, just across the river to the east. His place is decorated with a lot of spooky charm. Maybe we could get some inspiration from his decorations."
+              },
+              {
+                "type": "jump",
+                "id": "DJ-DXa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8b1a81ac167e5b40"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-fred-after-being-suggested-to-visit-seth-groats": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Have you managed to gather all the decorations yet?"
+              },
+              {
+                "player": "Not yet."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "No worries. If you're unsure where to start, have a word with Seth across the river to the east. He should hopefully point you in the right direction."
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-seth-groats": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Morning! Your place looks incredible! The cobwebs, the pumpkin... and is that a moving chair?"
+              },
+              {
+                "type": "line",
+                "speaker": "Seth Groats",
+                "text": "Ha! Took some effort, that's for sure. Not many folks are brave enough to venture out and obtain those spooky decorations. This type of adventure isn't for the faint hearted!"
+              },
+              {
+                "player": "It's honestly impressive. I've never seen decorations like these before. Where do you even find this stuff?"
+              },
+              {
+                "type": "line",
+                "speaker": "Seth Groats",
+                "text": "Hmph... trying to pry my secrets out, are you? Most folk wouldn't have the nerve to track 'em down."
+              },
+              {
+                "player": "I'm just curious! This place is inspiring."
+              },
+              {
+                "type": "line",
+                "speaker": "Seth Groats",
+                "text": "Well, I suppose I can give you a few hints. First up, Death himself has plenty of creepy decorations. Next, the moving chair can be found in Draynor Manor, if you've got the spine to search it."
+              },
+              {
+                "type": "line",
+                "speaker": "Seth Groats",
+                "text": "Finally, Sarah at the farm near Falador has been making some Halloween decorations. If you're lucky, you might be able to get her to part with something."
+              },
+              {
+                "type": "line",
+                "speaker": "Seth Groats",
+                "text": "Oh, and I guess you can take this spooky picture. I had it up last year, but it gave my cows nightmares."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Seth Groats",
+                    "text": "Oh, looks like you've got no space for it. I'll hold onto it until you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KObH52"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a Spooky picture",
+                "id": "hNcnnY"
+              },
+              {
+                "player": "Cows can have nightmares? That's news to me. Thanks for the information, Seth. I'll go have a look for those items now."
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player lost the spooky picture:",
+                "steps": [
+                  {
+                    "player": "I lost the spooky picture."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Seth Groats",
+                    "text": "Lost it already? Lucky for you, I've got a spare tucked away. You can have this one."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "mxaG3S"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has all the other decorations:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+                        "id": "tdDfyd"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a Spooky picture",
+                        "id": "Nkt5y6"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "csYv-m"
+                      }
+                    ],
+                    "id": "pMyO2X"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has no inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Seth Groats",
+                        "text": "Oh, looks like you've got no space for it. I'll hold onto it until you do."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "I60naq"
+                      }
+                    ],
+                    "id": "UBDVQJ"
+                  }
+                ],
+                "id": "1Glkal"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not acquired the other decorations yet:",
+                "steps": [
+                  {
+                    "player": "Can you remind me where I'm supposed to find those decorations?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Seth Groats",
+                    "text": "Hmph, forgetful are we? Well, first up, Death himself has plenty of creepy decorations. Next, the moving chair can be found in Draynor Manor."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Seth Groats",
+                    "text": "Finally, Sarah at the farm near Falador has been crafting some Halloween decorations."
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Y1Ad4J"
+              },
+              {
+                "type": "condition",
+                "text": "If the player acquired all of the other decorations:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "PvMRZ6"
+                  }
+                ],
+                "id": "OzXUnh"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-wall-lamp-talking-to-death": [
+      {
+        "type": "choice",
+        "prompt": "Speak about the Halloween event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Do you have any Halloween decorations?"
+              },
+              {
+                "type": "line",
+                "speaker": "Death",
+                "text": "I am death itself. My domain is a year round Halloween theme. If you can answer some questions correctly, I'll grant you some of my prized decorations..."
+              },
+              {
+                "type": "line",
+                "speaker": "Death",
+                "text": "A spooky wall lamp! They are to die for."
+              },
+              {
+                "player": "I'm not ready to die for them, but a quiz? Sure, I'm ready."
+              },
+              {
+                "type": "choice",
+                "prompt": "What date do I like the most?",
+                "options": [
+                  {
+                    "text": "1st of April.",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Death",
+                        "text": "Wrong. Not everyone gets frightened on this day."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "JTdoyW"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "25th of December.",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Death",
+                        "text": "Wrong. Coal is not received well as a present, but most mortals seem to avoid this fate."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "VIg9Ol"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "31st of October.",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Death",
+                        "text": "Correct! My least disliked time of the year."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "What vegetable do mortals use to create spooky faces?",
+                        "options": [
+                          {
+                            "text": "Pumpkins.",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Death",
+                                "text": "Correct! You don't seem so daft after all, mortal."
+                              },
+                              {
+                                "type": "choice",
+                                "prompt": "What is a group of witches called?",
+                                "options": [
+                                  {
+                                    "text": "A murder.",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Death",
+                                        "text": "Wrong. A group of crows has taken this delightful name."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "HiLAdp"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "A coven.",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Death",
+                                        "text": "Correct! I wouldn't get too close to them if I were you."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "prompt": "Where do I recommend newer adventurers visit?",
+                                        "options": [
+                                          {
+                                            "text": "Cows, north west of Lumbridge.",
+                                            "steps": [
+                                              {
+                                                "type": "line",
+                                                "speaker": "Death",
+                                                "text": "Wrong. Not nearly enough death there."
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "BJYPEf"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Goblins, east of Lumbridge.",
+                                            "steps": [
+                                              {
+                                                "type": "line",
+                                                "speaker": "Death",
+                                                "text": "Wrong. Not nearly enough death there."
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "s930cD"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Dark wizards, south of Varrock.",
+                                            "steps": [
+                                              {
+                                                "type": "line",
+                                                "speaker": "Death",
+                                                "text": "Correct! An excellent location that I frequent."
+                                              },
+                                              {
+                                                "type": "choice",
+                                                "prompt": "What do mortals like to do on Halloween night?",
+                                                "options": [
+                                                  {
+                                                    "text": "Trick or treat.",
+                                                    "steps": [
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Death",
+                                                        "text": "Correct! I myself prefer a trick."
+                                                      },
+                                                      {
+                                                        "type": "condition",
+                                                        "text": "If the player has no inventory space:",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "iDcz_M"
+                                                          }
+                                                        ],
+                                                        "id": "OPsJ6E"
+                                                      },
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Death",
+                                                        "text": "Now, your prize! The spooky wall lamp, or wall lamp as I call it, is yours. Use it wisely, mortal."
+                                                      },
+                                                      {
+                                                        "type": "condition",
+                                                        "text": "If the player has all the other decorations:",
+                                                        "steps": [
+                                                          {
+                                                            "type": "message",
+                                                            "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+                                                            "id": "H4eMeJ"
+                                                          }
+                                                        ],
+                                                        "id": "5ilQgA"
+                                                      },
+                                                      {
+                                                        "type": "action",
+                                                        "action": "receive",
+                                                        "text": "a Spooky wall lamp",
+                                                        "id": "iOb9RN"
+                                                      },
+                                                      {
+                                                        "player": "Thank you, Death. That's a sentence I never thought I'd say."
+                                                      },
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Death",
+                                                        "text": "See you around."
+                                                      },
+                                                      {
+                                                        "player": "I hope not."
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Tag and run.",
+                                                    "steps": [
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Death",
+                                                        "text": "Wrong. Also for future reference, you can't run from me."
+                                                      },
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "previous",
+                                                        "id": "O_lktr"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Hide and seek.",
+                                                    "steps": [
+                                                      {
+                                                        "type": "line",
+                                                        "speaker": "Death",
+                                                        "text": "Wrong, but I am very good at seeking."
+                                                      },
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "previous",
+                                                        "id": "JlqVO6"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "A plague.",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Death",
+                                        "text": "Wrong. Still, a plague does bring good business, as do a group of locusts."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "lpYO0B"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Tomatos.",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Death",
+                                "text": "Wrong. Too small and squishy, although excellent for throwing."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "yAksvG"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Turnips.",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Death",
+                                "text": "Wrong. Only generations I have visited in the past would use a turnip. Turnips don't see the light of day anymore."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "uWKgrU"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-wall-lamp-talking-to-death-after-finishing-the-quiz": [
+      {
+        "type": "choice",
+        "prompt": "Speak about the Halloween event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "iDcz_M"
+                  }
+                ],
+                "id": "I25KX6"
+              },
+              {
+                "type": "line",
+                "speaker": "Death",
+                "text": "Now, your prize! The spooky wall lamp, or wall lamp as I call it, is yours. Use it wisely, mortal."
+              },
+              {
+                "type": "jump",
+                "id": "0ni40b",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8fe3d71973a8aa5b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-wall-lamp-talking-to-death-again-after-receiving-the-lamp-for-the-first-time": [
+      {
+        "type": "choice",
+        "prompt": "Speak about the Halloween event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player still has the spooky wall lamp:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Death",
+                    "text": "I sense you already have my wall lamp stored away somewhere. Come back to me if you lose it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QvIFs_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the spooky wall lamp and has no inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Death",
+                    "text": "Pathetic mortal, you've lost the lamp already? Come back to me when you have free space for another."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Bf5brT"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the spooky wall lamp and has inventory space:",
+                "steps": [
+                  {
+                    "player": "I may have accidentally lost the spooky wall lamp."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Death",
+                    "text": "Don't make me make more accidents happen. You're lucky I have extras. Don't lose this one."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has all the other decorations:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+                        "id": "0Pp52V"
+                      }
+                    ],
+                    "id": "Dj6-1i"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Spooky wall lamp",
+                    "id": "W4jzNZ"
+                  },
+                  {
+                    "player": "Thank you, Death. That's a sentence I never thought I'd say."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Death",
+                    "text": "See you around."
+                  },
+                  {
+                    "player": "I hope not."
+                  }
+                ],
+                "id": "i-2ikf"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-chair-picking-up-the-chair": [
+      {
+        "type": "condition",
+        "text": "If the player has all the other decorations:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+            "id": "F3cqXu"
+          }
+        ],
+        "id": "js_54u"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a Spooky chair",
+        "id": "v0OXXN"
+      },
+      {
+        "type": "message",
+        "text": "This chair is... moving? Perfect! Exactly the kind of spookiness Fred needs.",
+        "id": "hbku16"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a normal account and already has a spooky chair:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Given that you can't sell this at the Grand Exchange, you probably don't need more than one.",
+            "id": "s8niQE"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3eNyv2"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is an ironman and already has a spooky chair:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You stand alone and should probably sit alone too. You don't need more than one chair.",
+            "id": "9h2mgV"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "CBsCma"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need a free inventory space to pick up this chair.",
+            "id": "KqGSGn"
+          }
+        ],
+        "id": "sCMXy9"
+      }
+    ],
+    "spooky-chair-dropping-or-spinning-the-chair": [
+      {
+        "type": "message",
+        "text": "You shouldn't play with the chair yet. Fred needs it!",
+        "id": "Xi5-AB"
+      }
+    ],
+    "spooky-scarecrow-talking-to-sarah": [
+      {
+        "type": "choice",
+        "prompt": "Speak about the Halloween event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Hi, Sarah! Fred sent me. He's entering the Spook-a- thon and needs some decorations."
+              },
+              {
+                "type": "line",
+                "speaker": "Sarah",
+                "text": "Well, I might have something for you, but I need to see you've got the right enthusiasm!"
+              },
+              {
+                "player": "How can I show that?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sarah",
+                "text": "My cows outside my house need entertaining, maybe with an emote? If they approve, I'll give you a Halloween Scarecrow."
+              },
+              {
+                "player": "Time to get my groove on."
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-scarecrow-talking-to-sarah-again": [
+      {
+        "type": "choice",
+        "prompt": "Speak about the Halloween event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Sarah",
+                "text": "Have you entertained my cows with an emote yet?"
+              },
+              {
+                "player": "Not yet..."
+              },
+              {
+                "type": "line",
+                "speaker": "Sarah",
+                "text": "Well, get a mooooooooooove on."
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-scarecrow-dancing-in-the-cow-pen": [
+      {
+        "type": "line",
+        "speaker": "Note",
+        "text": "each cow independently says one of Mooo, Moooo, Mooooo, or Moooooo."
+      },
+      {
+        "type": "line",
+        "speaker": "Cow, Cow calf, and Dairy cow",
+        "text": "Mooo"
+      },
+      {
+        "type": "condition",
+        "text": "Before starting the event:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "That seemed to get a reaction out of the cows. How spooky.",
+            "id": "5LkGzx"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "8gJr10"
+      },
+      {
+        "type": "condition",
+        "text": "First time after starting the event:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The cows seemed to enjoy that. You should return to Sarah.",
+            "id": "uYcNOR"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gisEhE"
+      },
+      {
+        "type": "condition",
+        "text": "Subsequent times:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The cows seemed to enjoy that.",
+            "id": "8M1Knx"
+          }
+        ],
+        "id": "N4apyS"
+      }
+    ],
+    "spooky-scarecrow-returning-to-sarah": [
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Sarah",
+            "text": "That was udder chaos. I've never heard those cows be so loud. Now, come back to me when you have free space for the Halloween Scarecrow."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "IPMBNR"
+      },
+      {
+        "type": "line",
+        "speaker": "Sarah",
+        "text": "That was udder chaos. I've never heard those cows be so loud."
+      },
+      {
+        "player": "They really liked my moves, I think."
+      },
+      {
+        "type": "line",
+        "speaker": "Sarah",
+        "text": "Well, I'd best give you what you came for then."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a Spooky scarecrow",
+        "id": "iZ7VCc"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has all the other decorations:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+            "id": "YaZTKo"
+          }
+        ],
+        "id": "nklY0V"
+      },
+      {
+        "player": "Thank you, Sarah!"
+      },
+      {
+        "type": "line",
+        "speaker": "Sarah",
+        "text": "Hopefully that will make Fred's house truly spooky."
+      }
+    ],
+    "spooky-scarecrow-talking-to-sarah-after-receiving-the-scarecrow-for-the-first-time": [
+      {
+        "type": "choice",
+        "prompt": "Speak about the Halloween event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player still has the spooky scarecrow:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sarah",
+                    "text": "I think you already have my scarecrow stored away somewhere. Come back to me if you lose it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "lfmJa_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the spooky scarecrow and has no inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sarah",
+                    "text": "Lost the scarecrow already? Come back to me when you have free space for another."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "C2zoGl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the spooky scarecrow and has inventory space:",
+                "steps": [
+                  {
+                    "player": "I may have lost the scarecrow."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sarah",
+                    "text": "Well, luckily I have a few more. Don't misplace this one!"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has all the other decorations:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+                        "id": "k_Qw3Q"
+                      }
+                    ],
+                    "id": "2zhZMj"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Spooky scarecrow",
+                    "id": "io1jlJ"
+                  },
+                  {
+                    "player": "Thank you, Sarah!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sarah",
+                    "text": "Hopefully that will make Fred's house truly spooky."
+                  }
+                ],
+                "id": "UB3nLO"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "returning-to-fred-with-the-decorations-talking-to-seth-groats-after-collecting-each-item": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "So who do you think stands a chance in the Spook-a-thon Decoration Contest?"
+              },
+              {
+                "type": "line",
+                "speaker": "Seth Groats",
+                "text": "Who knows? To be honest, I sometimes find that contests like this are as much about luck as skill. If you're hoping to win yourself, I'd be careful of getting your hopes up."
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "returning-to-fred-with-the-decorations-talking-to-fred": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has acquired all the items but does not currently have them all in the player's inventory:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Have you managed to gather all the decorations yet?"
+                  },
+                  {
+                    "player": "Yes, but I don't have them all on me."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Can you bring them to me please so I can prepare my house for the Spook-a-thon?"
+                  },
+                  {
+                    "player": "Okay, I'll go and fetch them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KoXrfh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has acquired all the items and they're in the player's inventory:",
+                "steps": [
+                  {
+                    "player": "I've got all the decorations here."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Wow! A spooky wall lamp, a moving chair, a spooky picture and even a scarecrow! Thank you!"
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "the Spooky wall lamp, the Spooky chair, the Spooky picture and the Spooky scarecrow to Fred the Farmer",
+                    "id": "taze9d"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "But wait... something's not quite right. It's missing a centrepiece. Something bold... Something... pumpkiny!"
+                  },
+                  {
+                    "player": "Er... how about a spooky pumpkin lantern? That would tie everything together perfectly."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Yes, a spooky pumpkin lantern! Perfect! You should try Diango over in Draynor Village. If anyone has a pumpkin lantern up their sleeve, it'll be him."
+                  },
+                  {
+                    "player": "Okay, I'll visit Diango now."
+                  }
+                ],
+                "id": "P2asCD"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "returning-to-fred-with-the-decorations-talking-to-fred-again": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Hello again, could you remind me where to find the pumpkin lantern?"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Try Diango over in Draynor Village. He has all the festival things."
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-pumpkin-lantern-talking-to-diango": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Hi Diango, Fred the Farmer sent me. He's been decorating for the Spook-a-thon contest and said you might have a spooky pumpkin lantern?"
+              },
+              {
+                "type": "line",
+                "speaker": "Diango",
+                "text": "Yes, I do have a spooky pumpkin lantern lying around... but I can't just give it away to anyone."
+              },
+              {
+                "type": "line",
+                "speaker": "Diango",
+                "text": "If you want it, you'll need to prove you've got the Halloween spirit! That means wearing at least three pieces of Halloween-themed clothing!"
+              },
+              {
+                "type": "line",
+                "speaker": "Diango",
+                "text": "I can give you any past spooky things you don't already have."
+              },
+              {
+                "type": "action",
+                "text": "(All previous Halloween event rewards are unlocked if not already unlocked.)",
+                "id": "fj07Tj"
+              },
+              {
+                "type": "condition",
+                "text": "If not wearing at least 3 Halloween items:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Diango's Holiday Item Retrieval",
+                    "id": "L9reaW"
+                  }
+                ],
+                "id": "9NWeHn"
+              },
+              {
+                "type": "condition",
+                "text": "If not wearing at least 3 Halloween items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Diango",
+                    "text": "Well now, someone's clearly in the Halloween spirit! A deal's a deal! Here's your spooky pumpkin lantern."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has no inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Diango",
+                        "text": "Ah, but I see you don't have space for it right now. Come back when you do."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "5nwfqm"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Spooky pumpkin lantern",
+                    "id": "BSrsl1"
+                  },
+                  {
+                    "player": "Thank you, Diango. I'll make sure it gets put to good use."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Diango",
+                    "text": "Just keep the costumes. You might need them for the contest!"
+                  }
+                ],
+                "id": "_MxZad"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-pumpkin-lantern-talking-to-diango-again": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If not wearing at least 3 Halloween items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Diango",
+                    "text": "If you want that spooky pumpkin lantern, you'll need to prove you've got the Halloween spirit! That means wearing at least three pieces of Halloween-themed clothing!"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Diango's Holiday Item Retrieval",
+                    "id": "1_q8rU"
+                  }
+                ],
+                "id": "gEabbC"
+              },
+              {
+                "type": "condition",
+                "text": "If wearing at least 3 Halloween items:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "Kg0hmG"
+                  }
+                ],
+                "id": "uDxjdh"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "spooky-pumpkin-lantern-talking-to-diango-after-getting-the-lantern": [
+      {
+        "type": "choice",
+        "prompt": "Speak about the Halloween event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player still has the pumpkin lantern:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Diango",
+                    "text": "Anything else you need for Halloween, partner?"
+                  },
+                  {
+                    "player": "I think I'm good. Thanks, Diango!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "zjUzkT"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the pumpkin lantern:",
+                "steps": [
+                  {
+                    "player": "I lost the spooky pumpkin lantern."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Spooky pumpkin lantern",
+                    "id": "Yvadoz"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Diango",
+                    "text": "No problem, amigo! I've got another one right here. Try not to misplace it this time."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has no inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Diango",
+                        "text": "Ah, but I see you don't have space for it right now. Come back when you do."
+                      }
+                    ],
+                    "id": "QzGoNG"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Diango",
+                    "text": "Anything else you need for Halloween, partner?"
+                  },
+                  {
+                    "player": "I think I'm good. Thanks, Diango!"
+                  }
+                ],
+                "id": "Qs3fH3"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "the-spook-a-thon-contest": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "I've got the spooky pumpkin lantern from Diango."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "You've done it! This lantern really ties the whole haunted look together! Now then, before Death arrives, let's put everything in place."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "And you'd best put on at least three pieces of Halloween-themed clothing and hold the spooky pumpkin lantern. We need to show we've got the Halloween spirit before his final judgement!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing at least 3 Halloween items and/or does not have the Spooky pumpkin lantern equipped:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4Sjcyo"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing at least 3 Halloween items and has the Spooky pumpkin lantern equipped:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "A cutscene begins. Death shows up to judge Fred's farm decorations.",
+                    "id": "5shIok"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Seth Groats",
+                    "text": "Hmm... This looks familiar."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Seth Groats",
+                    "text": "You've been busy, haven't you?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Death",
+                    "text": "Hmm... Spooky indeed. Not spine-chilling, but... effort was made."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Death",
+                    "text": "Those wall lamps are to die for."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Death",
+                    "text": "I hereby grant this house an... honourable mention!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "An honourable mention!"
+                  },
+                  {
+                    "player": "What?!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Seth Groats",
+                    "text": "Huh... interesting."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The cutscene ends.",
+                    "id": "LRWlwH"
+                  },
+                  {
+                    "player": "Just an honourable mention? After all that work?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "An honourable mention! Thank you, my friend! You've made this old farmer's haunted dreams come true. I've never won anything in a Spook-a-thon contest before!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Here, take this as my appreciation for your help!"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has insufficient inventory space:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You need [1-9] free inventory [slot/slots] to receive your Halloween event rewards.",
+                        "id": "sIAJwR"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "n77zq-"
+                  },
+                  {
+                    "type": "action",
+                    "text": "(Event complete interface opens.)",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Event complete",
+                    "id": "eC17__"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You've completed the Halloween event: Spook-a-thon Decoration Contest",
+                    "id": "LqbtJm"
+                  }
+                ],
+                "id": "H4FTU9"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "the-spook-a-thon-contest-talking-to-fred-again-before-finishing-the-cutscene": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is not wearing at least 3 Halloween items and/or does not have the Spooky pumpkin lantern equipped:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Looks like you're not ready yet. Make sure you're wearing at least three pieces of Halloween-themed clothing and holding the spooky pumpkin lantern. We've got to make a proper impression!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JO8VAw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing at least 3 Halloween items and has the Spooky pumpkin lantern equipped:",
+                "steps": [
+                  {
+                    "player": "I'm ready for the judgement!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "kzB_xv"
+                  }
+                ],
+                "id": "Xu40ur"
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "the-spook-a-thon-contest-talking-to-fred-after-the-cutscene": [
+      {
+        "type": "choice",
+        "prompt": "Ask about Halloween Event?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Just an honourable mention? After all that work?"
+              },
+              {
+                "type": "jump",
+                "id": "OqFm8L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0f373180712afbc7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No."
+          }
+        ]
+      }
+    ],
+    "the-spook-a-thon-contest-trying-to-take-a-spooky-chair-before-or-after-the-event": [
+      {
+        "type": "message",
+        "text": "You're not sure why you'd want to take a spooky chair.",
+        "id": "2hz1NR"
+      }
+    ]
+  },
+  "activation": "explicit",
+  "branches": {
+    "jump-8b1a81ac167e5b40": [
+      {
+        "player": "Sounds easy enough, I'll go and see him."
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Thank you! You might just save my haunted house dreams, and help me win the contest."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8fe3d71973a8aa5b": [
+      {
+        "type": "condition",
+        "text": "If the player has all the other decorations:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+            "id": "H4eMeJ"
+          }
+        ],
+        "id": "5ilQgA"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a Spooky wall lamp",
+        "id": "iOb9RN"
+      },
+      {
+        "player": "Thank you, Death. That's a sentence I never thought I'd say."
+      },
+      {
+        "type": "line",
+        "speaker": "Death",
+        "text": "See you around."
+      },
+      {
+        "player": "I hope not."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0f373180712afbc7": [
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "An honourable mention! Thank you, my friend! You've made this old farmer's haunted dreams come true. I've never won anything in a Spook-a-thon contest before!"
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Here, take this as my appreciation for your help!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has insufficient inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need [1-9] free inventory [slot/slots] to receive your Halloween event rewards.",
+            "id": "sIAJwR"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "n77zq-"
+      },
+      {
+        "type": "action",
+        "text": "(Event complete interface opens.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Event complete",
+        "id": "eC17__"
+      },
+      {
+        "type": "message",
+        "text": "You've completed the Halloween event: Spook-a-thon Decoration Contest",
+        "id": "LqbtJm"
+      }
+    ],
+    "iDcz_M": [
+      {
+        "type": "line",
+        "speaker": "Death",
+        "text": "Now, come back to me when you have some free space and I'll give you your prize."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

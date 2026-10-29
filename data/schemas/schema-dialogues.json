@@ -119,6 +119,10 @@
     "record": {
       "type": "object",
       "properties": {
+        "activation": {
+          "enum": ["explicit"],
+          "description": "Only an owning activity may select this transcript; never use it as an NPC default."
+        },
         "default": {
           "type": [
             "string",

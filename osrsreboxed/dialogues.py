@@ -9,6 +9,7 @@ class DialogueRecord:
     default: Optional[str]
     variants: Dict[str, List[Dict[str, Any]]]
     branches: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
+    activation: Optional[str] = None
 
 
 @dataclass
@@ -17,3 +18,4 @@ class FlatDialogueRecord:
 
     steps: List[Dict[str, Any]]
     branches: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
+    activation: Optional[str] = None

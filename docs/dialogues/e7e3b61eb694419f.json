@@ -1,0 +1,2174 @@
+{
+  "default": null,
+  "variants": {
+    "starting-the-event-talking-to-the-bartender-blue-moon-inn-before-starting-the-event": [
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "If you're here to offer us a hand during the festive rush, please talk to the cook in the kitchen!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "A glass of your finest ale please."
+          },
+          {
+            "text": "Can you recommend where an adventurer might make his fortune?"
+          },
+          {
+            "text": "Do you know where I can get some good equipment?"
+          }
+        ]
+      }
+    ],
+    "starting-the-event-talking-to-the-cook": [
+      {
+        "type": "choice",
+        "prompt": "Ask about the Christmas Event?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Can't you see the huge queue of people? I really don't have time to chat."
+              },
+              {
+                "player": "Oh, sorry, I thought I could lend you a hand?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Really?! Oh thank the Gods!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a serving platter and has no free inventory space:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "-mpg_9"
+                  }
+                ],
+                "id": "a4Cd_9"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a serving platter and has 1 free inventory space:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The Cook hands you a serving platter.",
+                    "id": "HH56XK"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Serving platter",
+                    "id": "dymMku"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "wz9y0V"
+                  }
+                ],
+                "id": "tDOH9m"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Now, head in to the bar, greet whoever's at the front of the queue, and show them to an empty table."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "I'll be back here cooking up whatever needs cooking if you get a little lost or need some guidance."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Got it?"
+              },
+              {
+                "player": "Got it..."
+              },
+              {
+                "player": "Will I be getting paid for this?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Wow, really...?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Look, legally I can't pay you because you technically don't work here, but how about I cook you a Christmas dinner at the end of your shift?"
+              },
+              {
+                "player": "Free food? Count me in!"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Fantastic! Now go deal with that queue!"
+              }
+            ]
+          },
+          {
+            "text": "No"
+          }
+        ]
+      }
+    ],
+    "starting-the-event-talking-to-the-cook-after-losing-the-serving-tray": [
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "-mpg_9"
+          }
+        ],
+        "id": "UBCMDT"
+      },
+      {
+        "player": "I seem to have lost that serving platter you gave me."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Not a problem, here's a new one."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a food order that needs to be cooked:",
+        "steps": [
+          {
+            "player": "Sorry to bother you, but what was I meant to be doing again?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "ud81HQ"
+          }
+        ],
+        "id": "jSVtqj"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a food order that needs to be cooked:",
+        "steps": [
+          {
+            "player": "I have a food order!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "BverV5"
+          }
+        ],
+        "id": "QLFnhF"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed all the food orders:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "Good job, kid. That's your shift done!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "--e3cE"
+          }
+        ],
+        "id": "PKCyjm"
+      }
+    ],
+    "starting-the-event-talking-to-the-cook-before-greeting-a-customer": [
+      {
+        "player": "Sorry to bother you, but what was I meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Go greet whoever is at the front of the queue."
+      },
+      {
+        "player": "Yes boss!"
+      }
+    ],
+    "starting-the-event-talking-to-the-bartender-after-starting-the-event": [
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "Thanks for all your help!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "A glass of your finest ale please."
+          },
+          {
+            "text": "Can you recommend where an adventurer might make his fortune?"
+          },
+          {
+            "text": "Do you know where I can get some good equipment?"
+          }
+        ]
+      }
+    ],
+    "starting-the-event-inspecting-the-serving-platter": [
+      {
+        "type": "message",
+        "text": "The serving platter is empty.",
+        "id": "CguwIG"
+      }
+    ],
+    "starting-the-event-searching-food-crates-in-the-kitchen": [
+      {
+        "player": "I should wait until I've gotten a food order before I start taking things."
+      }
+    ],
+    "serving-the-customers": [
+      {
+        "type": "unavailable",
+        "id": "JVhiss"
+      }
+    ],
+    "serving-the-customers-talking-to-the-customer": [
+      {
+        "player": "Hello and welcome to the Blue Moon Inn!"
+      },
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "Hello! Merry Christmas!"
+      },
+      {
+        "player": "Let me show you to your table."
+      }
+    ],
+    "serving-the-customers-talking-to-the-customer-before-picking-a-table": [
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "Can you show me to my table please?"
+      },
+      {
+        "player": "Certainly, right this way!"
+      }
+    ],
+    "serving-the-customers-serving-a-table-when-no-customer-is-waiting": [
+      {
+        "player": "I don't need to serve this table right now."
+      }
+    ],
+    "serving-the-customers-talking-to-the-customer-after-picking-a-table": [
+      {
+        "player": "Hello and welcome to the Blue Moon Inn. Can I get you something to drink?"
+      },
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "Yes please! Can I have some [beverage]?"
+      },
+      {
+        "player": "Certainly! Coming right up!"
+      },
+      {
+        "type": "message",
+        "text": "You can find various drinks at the bar.",
+        "id": "8yov1o"
+      }
+    ],
+    "serving-the-customers-getting-a-drink-from-the-bar": [
+      {
+        "type": "message",
+        "text": "You grab some [beverage] from the bar and put it on your serving platter.",
+        "id": "gzzWvV"
+      }
+    ],
+    "serving-the-customers-serving-the-table-after-getting-the-drink": [
+      {
+        "player": "Here is your drink. Enjoy!"
+      },
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "Cheers!"
+      },
+      {
+        "player": "Are you ready to order your Christmas dinner?"
+      },
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "Why, yes I am!"
+      },
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "For my main, I would like [main], and for my sides I would like [side 1], [side 2] and [side 3]."
+      }
+    ],
+    "serving-the-customers-talking-to-the-customer-again-before-getting-the-order": [
+      {
+        "player": "Are you ready to order your Christmas dinner?"
+      },
+      {
+        "type": "jump",
+        "id": "FtId5b",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-b4451021e27fc24d"
+          }
+        ]
+      }
+    ],
+    "serving-the-customers-serving-the-table-after-getting-the-order": [
+      {
+        "player": "I should go get all the ingredients for their Christmas dinner."
+      },
+      {
+        "player": "I believe they wanted [main], with [side 1], [side 2] and [side 3]."
+      },
+      {
+        "player": "I should ask the Cook where to find them."
+      }
+    ],
+    "serving-the-customers-searching-the-basement-crates-for-the-ingredients": [
+      {
+        "type": "message",
+        "text": "You place the [ingredient name] on your serving platter.",
+        "id": "HVKY9c"
+      }
+    ],
+    "serving-the-customers-serving-the-table-with-cooked-food": [
+      {
+        "player": "Here is your meal. Enjoy!"
+      },
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "Thank you!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more customers to serve.",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "I should go seat another guest!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Utvt5v"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has served all 3 customers.",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "Right, I think that's my job done! Time to grab a seat and have my own Christmas dinner!"
+          }
+        ],
+        "id": "Ev729v"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-after-greeting-a-customer": [
+      {
+        "player": "Sorry to bother you, but what was I meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Have you greeted the guest yet?"
+      },
+      {
+        "player": "Yeah!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well show them to an empty table then."
+      },
+      {
+        "player": "Oh, yeah, right, thanks boss!"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-after-seating-a-customer": [
+      {
+        "player": "Sorry to bother you, but what was I meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well, have you offered to take a drink order yet?"
+      },
+      {
+        "player": "No..."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "You should probably do that then. Go ask what drink our first{{Note|The cook always says first even if they are not the first guest to be seated}} guest would like."
+      },
+      {
+        "player": "Can do!"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-after-taking-a-drink-order": [
+      {
+        "player": "Sorry to bother you, but what was I meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Have you offered our guest a drink yet?"
+      },
+      {
+        "player": "Yes! They wanted some [beverage]."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well, all the drinks are behind the bar, not back here in the kitchen."
+      },
+      {
+        "player": "That would make sense. Thanks boss!"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-before-taking-a-food-order": [
+      {
+        "player": "Sorry to bother you, but what was I meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Have you taken their food order yet?"
+      },
+      {
+        "player": "I dont think so... No. No I haven't."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Well go and do that then!"
+      },
+      {
+        "player": "Yes boss!"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-after-taking-a-food-order": [
+      {
+        "player": "I have a food order!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Great! Just go grab all the ingredients from the basement and I'll cook it right up!"
+      },
+      {
+        "player": "Isn't there any kitchen staff to do that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "If I could afford kitchen staff, I wouldn't be paying you with a free meal, would I?"
+      },
+      {
+        "player": "Good point. I'll go get those ingredients now."
+      },
+      {
+        "player": "I believe they ordered..."
+      },
+      {
+        "player": "[main course], with [sides]."
+      }
+    ],
+    "serving-the-customers-inspecting-the-serving-platter": [
+      {
+        "type": "condition",
+        "text": "If the platter is empty, and the player needs to serve a beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "I need to get some [beverage] from the bar.",
+            "id": "3JuTOc"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "hHfv3V"
+      },
+      {
+        "type": "condition",
+        "text": "If the platter has a drink on it:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Currently carrying [item].",
+            "id": "3K9Wrv"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "z1J2ZK"
+      },
+      {
+        "type": "condition",
+        "text": "If the platter is empty, and the player needs to serve dinner:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "I still need to get some [item 1], [item 2], [item 3], [item 4].",
+            "id": "p-aW0B"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "a6ElNN"
+      },
+      {
+        "type": "condition",
+        "text": "If the platter has all required ingredients:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The serving platter is full of uncooked ingredients. Take them to the Cook!",
+            "id": "5afp02"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JpGMyh"
+      },
+      {
+        "type": "condition",
+        "text": "If the platter has dinner on it:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The serving platter has a fresh, hot, Christmas dinner on it.",
+            "id": "stEqg5"
+          }
+        ],
+        "id": "1xU3U5"
+      }
+    ],
+    "serving-the-customers-attempting-to-serve-a-table-without-a-serving-platter-in-the-inventory": [
+      {
+        "player": "I should really go get a new serving platter from the Cook before I try to serve a table."
+      }
+    ],
+    "serving-the-customers-searching-the-bar-cider": [
+      {
+        "type": "condition",
+        "text": "If the player needs to find another beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This part of the bar only has cider. You're trying to find [beverage].",
+            "id": "3d0FSk"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "GXBP0z"
+      },
+      {
+        "type": "condition",
+        "text": "If the player needs to find cider:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You grab some cider from the bar and put it on your serving platter.",
+            "id": "OMNfKz"
+          }
+        ],
+        "id": "zjz6Sg"
+      }
+    ],
+    "serving-the-customers-searching-the-bar-dwarven-stout": [
+      {
+        "type": "condition",
+        "text": "If the player needs to find another beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This part of the bar only has dwarvern stout. You're trying to find [beverage].",
+            "id": "Ll5e5n"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6PedGL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player needs to find dwarven stout:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You grab some dwarvern stout from the bar and put it on your serving platter.",
+            "id": "MQsI2d"
+          }
+        ],
+        "id": "Z9vWIa"
+      }
+    ],
+    "serving-the-customers-searching-the-bar-beer": [
+      {
+        "type": "condition",
+        "text": "If the player needs to find another beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This part of the bar only has beer. You're trying to find [beverage].",
+            "id": "ewKKtS"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Xn1Nxn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player needs to find beer:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You grab some beer from the bar and put it on your serving platter.",
+            "id": "YHAfU2"
+          }
+        ],
+        "id": "I6otLN"
+      }
+    ],
+    "serving-the-customers-searching-the-bar-wine": [
+      {
+        "type": "condition",
+        "text": "If the player needs to find another beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This part of the bar only has wine. You're trying to find [beverage].",
+            "id": "yDNnM8"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "qicVOe"
+      },
+      {
+        "type": "condition",
+        "text": "If the player needs to find wine:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You grab some wine from the bar and put it on your serving platter.",
+            "id": "NXGcCe"
+          }
+        ],
+        "id": "n1uIj_"
+      }
+    ],
+    "serving-the-customers-searching-the-bar-chocolate-milk": [
+      {
+        "type": "condition",
+        "text": "If the player needs to find another beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This part of the bar only has chocolate milk. You're trying to find [beverage].",
+            "id": "OT3v_F"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "iwbC1r"
+      },
+      {
+        "type": "condition",
+        "text": "If the player needs to find chocolate milk:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You grab some chocolate milk from the bar and put it on your serving platter.",
+            "id": "KwsP_f"
+          }
+        ],
+        "id": "-h0PCy"
+      }
+    ],
+    "serving-the-customers-searching-the-bar-milk": [
+      {
+        "type": "condition",
+        "text": "If the player needs to find another beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This part of the bar only has milk. You're trying to find [beverage].",
+            "id": "vnr7sa"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "4eN4SO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player needs to find milk:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You grab some milk from the bar and put it on your serving platter.",
+            "id": "B2UslE"
+          }
+        ],
+        "id": "GNadrJ"
+      }
+    ],
+    "serving-the-customers-searching-the-bar-eggnog": [
+      {
+        "type": "condition",
+        "text": "If the player needs to find another beverage:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This part of the bar only has eggnog. You're trying to find [beverage].",
+            "id": "EXa6Jn"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "q5OBXw"
+      },
+      {
+        "type": "condition",
+        "text": "If the player needs to find eggnog:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You grab some eggnog from the bar and put it on your serving platter.",
+            "id": "rMdjvA"
+          }
+        ],
+        "id": "jxdKd5"
+      }
+    ],
+    "serving-the-customers-searching-the-bar-searching-with-the-correct-drink-already": [
+      {
+        "type": "message",
+        "text": "You already have the correct drink on your serving platter.",
+        "id": "ZjN2DK"
+      }
+    ],
+    "serving-the-customers-searching-the-main-course-crate": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Beef",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player needs beef as a main:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You place the beef on your serving platter.",
+                    "id": "yhLkyT"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "X0lbXD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not need beef as a main:",
+                "steps": [
+                  {
+                    "player": "That's not what I'm looking for. I'm after [main]."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "XJe2zu"
+                  }
+                ],
+                "id": "GWIm6S"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has beef:",
+                "steps": [
+                  {
+                    "player": "I've already got some beef."
+                  }
+                ],
+                "id": "XgOakK"
+              }
+            ]
+          },
+          {
+            "text": "Jubbly",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player needs jubbly as a main:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You place the jubbly on your serving platter.",
+                    "id": "VlaUMo"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "M2uK5e"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not need jubbly as a main:",
+                "steps": [
+                  {
+                    "player": "That's not what I'm looking for. I'm after [main]."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "G6z7SP"
+                  }
+                ],
+                "id": "gU0Gir"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has jubbly:",
+                "steps": [
+                  {
+                    "player": "I've already got some jubbly."
+                  }
+                ],
+                "id": "oE1Oke"
+              }
+            ]
+          },
+          {
+            "text": "Chicken",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player needs chicken as a main:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You place the chicken on your serving platter.",
+                    "id": "0jkga5"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "LEBFhm"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not need chicken as a main:",
+                "steps": [
+                  {
+                    "player": "That's not what I'm looking for. I'm after [main]."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "RMMSrC"
+                  }
+                ],
+                "id": "o2guKl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has chicken:",
+                "steps": [
+                  {
+                    "player": "I've already got some chicken."
+                  }
+                ],
+                "id": "rQ96aZ"
+              }
+            ]
+          },
+          {
+            "text": "Next",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Nut Roast",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player needs nut roast as a main:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You place the nut roast on your serving platter.",
+                            "id": "ibN4yW"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "BbBTTi"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not need nut roast as a main:",
+                        "steps": [
+                          {
+                            "player": "That's not what I'm looking for. I'm after [main]."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "MekrB_"
+                          }
+                        ],
+                        "id": "j3-g4C"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has nut roast:",
+                        "steps": [
+                          {
+                            "player": "I've already got some nut roast."
+                          }
+                        ],
+                        "id": "cXPG4i"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Mushroom Wellington",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player needs mushroom wellington as a main:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You place the mushroom wellington on your serving platter.",
+                            "id": "VYjjsK"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "pTbAPp"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not need mushroom wellington as a main:",
+                        "steps": [
+                          {
+                            "player": "That's not what I'm looking for. I'm after [main]."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "SXAUyH"
+                          }
+                        ],
+                        "id": "mK3lTX"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has mushroom wellington:",
+                        "steps": [
+                          {
+                            "player": "I've already got some mushroom wellington."
+                          }
+                        ],
+                        "id": "f-FJRl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Trout",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player needs trout as a main:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You place the trout on your serving platter.",
+                            "id": "XsXIHO"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "whqBeT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not need trout as a main:",
+                        "steps": [
+                          {
+                            "player": "That's not what I'm looking for. I'm after [main]."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "XWv6gW"
+                          }
+                        ],
+                        "id": "D24G40"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has trout:",
+                        "steps": [
+                          {
+                            "player": "I've already got some trout."
+                          }
+                        ],
+                        "id": "b6fupX"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Back",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "YSY77p"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "serving-the-customers-searching-the-side-dish-crate": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sprouts",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player needs sprouts as a side:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You place the sprouts on your serving platter.",
+                    "id": "lp64JK"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "nLs8ra"
+                  }
+                ],
+                "id": "y8YTga"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not need sprouts as a side:",
+                "steps": [
+                  {
+                    "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "St3VDM"
+                  }
+                ],
+                "id": "nHDJFX"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has sprouts:",
+                "steps": [
+                  {
+                    "player": "I've already got some sprouts."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "iK1XZB"
+                  }
+                ],
+                "id": "SBUFk4"
+              }
+            ]
+          },
+          {
+            "text": "Potatoes",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player needs potatoes as a side:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You place the potatoes on your serving platter.",
+                    "id": "8jsSl7"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "yN869g"
+                  }
+                ],
+                "id": "-CMHFJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not need potatoes as a side:",
+                "steps": [
+                  {
+                    "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "EjUw25"
+                  }
+                ],
+                "id": "1i8J9p"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has potatoes:",
+                "steps": [
+                  {
+                    "player": "I've already got some potatoes."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "FowaWc"
+                  }
+                ],
+                "id": "P6UDcg"
+              }
+            ]
+          },
+          {
+            "text": "Cauliflower",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player needs cauliflower as a side:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You place the cauliflower on your serving platter.",
+                    "id": "QQ6ruL"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "f88U04"
+                  }
+                ],
+                "id": "bvjTO9"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not need cauliflower as a side:",
+                "steps": [
+                  {
+                    "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "sxGunW"
+                  }
+                ],
+                "id": "YRlyg0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has cauliflower:",
+                "steps": [
+                  {
+                    "player": "I've already got some cauliflower."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "o3sbzT"
+                  }
+                ],
+                "id": "xrfqWG"
+              }
+            ]
+          },
+          {
+            "text": "Next",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Cabbage",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player needs cabbage as a side:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You place the cabbage on your serving platter.",
+                            "id": "fan2Nq"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "58BeQD"
+                          }
+                        ],
+                        "id": "4qNQps"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not need cabbage as a side:",
+                        "steps": [
+                          {
+                            "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "Z9mvK4"
+                          }
+                        ],
+                        "id": "ZYY7UR"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has cabbage:",
+                        "steps": [
+                          {
+                            "player": "I've already got some cabbage."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "7c12jJ"
+                          }
+                        ],
+                        "id": "-sU0vO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Broccoli",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player needs broccoli as a side:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You place the broccoli on your serving platter.",
+                            "id": "PApEUb"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "bykfNs"
+                          }
+                        ],
+                        "id": "asRo6p"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not need broccoli as a side:",
+                        "steps": [
+                          {
+                            "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "PSxxq4"
+                          }
+                        ],
+                        "id": "7QDwt7"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has broccoli:",
+                        "steps": [
+                          {
+                            "player": "I've already got some broccoli."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "2gPIn4"
+                          }
+                        ],
+                        "id": "2Rznwc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Carrots",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player needs carrots as a side:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You place the carrots on your serving platter.",
+                            "id": "yRW-vS"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "O6VbXj"
+                          }
+                        ],
+                        "id": "_Rv3Pa"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not need carrots as a side:",
+                        "steps": [
+                          {
+                            "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "NwGeJZ"
+                          }
+                        ],
+                        "id": "4soHVr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has carrots:",
+                        "steps": [
+                          {
+                            "player": "I've already got some carrots."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "WGtTXR"
+                          }
+                        ],
+                        "id": "f9bP30"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Back",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "nZrcO3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Next",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Parsnips",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player needs parsnips as a side:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You place the parsnips on your serving platter.",
+                                    "id": "BlUcMf"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "qEBVSA"
+                                  }
+                                ],
+                                "id": "ITaK0q"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not need parsnips as a side:",
+                                "steps": [
+                                  {
+                                    "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "xw1raD"
+                                  }
+                                ],
+                                "id": "lBW_7z"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player already has parsnips:",
+                                "steps": [
+                                  {
+                                    "player": "I've already got some parsnips."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "IEQHlU"
+                                  }
+                                ],
+                                "id": "J7tS0W"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Peas",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player needs peas as a side:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You place the peas on your serving platter.",
+                                    "id": "twdwZ6"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "x62YKm"
+                                  }
+                                ],
+                                "id": "18AJf4"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not need peas as a side:",
+                                "steps": [
+                                  {
+                                    "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "QaufT9"
+                                  }
+                                ],
+                                "id": "76bXaw"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player already has peas:",
+                                "steps": [
+                                  {
+                                    "player": "I've already got some peas."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "Tnc6SP"
+                                  }
+                                ],
+                                "id": "qfBdBP"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Stuffing",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player needs stuffing as a side:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You place the stuffing on your serving platter.",
+                                    "id": "LHBFeF"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "VMspKO"
+                                  }
+                                ],
+                                "id": "HbmCOM"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not need stuffing as a side:",
+                                "steps": [
+                                  {
+                                    "player": "That's not what I'm looking for. I'm after [side 1], [side 2] and [side 3]."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "jEGcCA"
+                                  }
+                                ],
+                                "id": "QRxQLd"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player already has stuffing:",
+                                "steps": [
+                                  {
+                                    "player": "I've already got some stuffing."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous",
+                                    "id": "VIcDET"
+                                  }
+                                ],
+                                "id": "V3qy6h"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Back",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "tuKZYX"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "serving-the-customers-after-grabbing-all-ingredients-for-the-first-time": [
+      {
+        "player": "That's everything they wanted to eat. I should get the Cook to..."
+      },
+      {
+        "player": "Well..."
+      },
+      {
+        "player": "Cook them!"
+      }
+    ],
+    "serving-the-customers-attempting-to-serve-a-customer-before-the-ingredients-have-been-cooked": [
+      {
+        "player": "I should get the Cook to prepare these ingredients before I serve them."
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-with-all-the-ingredients-for-the-first-time": [
+      {
+        "player": "I have some food for you to cook!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Fantastic, leave that with me..."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "..."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Okay, order up!"
+      },
+      {
+        "type": "message",
+        "text": "The Cook loads up your serving platter with the food.",
+        "id": "Fr93GW"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-with-all-the-ingredients-subsequent-times": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Okay, order up!"
+      },
+      {
+        "type": "message",
+        "text": "The Cook loads up your serving platter with the food.",
+        "id": "9Le1iQ"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-before-serving-the-meal": [
+      {
+        "player": "Sorry to bother you, but what was I meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "You've got the food, so go serve it while it's hot!"
+      },
+      {
+        "player": "Yes boss!"
+      }
+    ],
+    "serving-the-customers-talking-to-the-cook-before-seating-another-customer": [
+      {
+        "player": "Sorry to bother you, but what was I meant to be doing again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Go get another guest in! Get back to the queue!"
+      },
+      {
+        "player": "On it!"
+      }
+    ],
+    "completing-the-event-talking-to-the-cook": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Good job, kid. That's your shift done!"
+      },
+      {
+        "player": "Phew! Does that mean it's time for my Christmas dinner?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Absolutely, you've earnt it!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Go take a seat and I'll prepare you a meal you'll never forget!"
+      },
+      {
+        "player": "Yippee!"
+      }
+    ],
+    "completing-the-event-sitting-at-the-table": [
+      {
+        "type": "condition",
+        "text": "If the player has 10 or less empty spaces in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need 2-12 more free inventory slots to receive your Christmas event rewards.",
+            "id": "V0Ww8s"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Nt1rHh"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 11 empty spaces in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need 1 more free inventory slot to receive your Christmas event rewards.",
+            "id": "fiWwXq"
+          }
+        ],
+        "id": "LVNkCf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough inventory space:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "A cutscene plays where the cook brings the player Christmas dinner to their table. Mod_Freddie can be seen outside the puffin's pillory cell in the background, doing the cry emote.",
+            "id": "u4QvJB"
+          },
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "And for all your hard work..."
+          },
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "Here's your very own Christmas dinner!"
+          },
+          {
+            "player": "Yippee!"
+          },
+          {
+            "type": "action",
+            "text": "The player does the Jump for Joy emote while the cook laughs.",
+            "action": "emote",
+            "action_source": "text",
+            "id": "CiFo2c"
+          }
+        ],
+        "id": "uSR1LP"
+      }
+    ],
+    "completing-the-event-talking-to-the-cook-after-completing-the-event": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Hi! Thanks for your help earlier, I hope you enjoyed your meal."
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Can you sell me any food?"
+          },
+          {
+            "text": "Can you give me any free food?"
+          },
+          {
+            "text": "I don't want anything from this horrible kitchen."
+          }
+        ]
+      }
+    ],
+    "completing-the-event-talking-to-the-bartender-after-completing-the-event": [
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "No time to chat, we're rushed off our feet!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "A glass of your finest ale please."
+          },
+          {
+            "text": "Can you recommend where an adventurer might make his fortune?"
+          },
+          {
+            "text": "Do you know where I can get some good equipment?"
+          }
+        ]
+      }
+    ],
+    "completing-the-event-searching-food-crates-before-or-after-completing-the-event": [
+      {
+        "player": "I probably shouldn't take what isn't mine on Christmas."
+      }
+    ],
+    "misc-npc-dialogue-talking-to-herquin": [
+      {
+        "player": "Hello, Herquin. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Herquin",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "type": "line",
+        "speaker": "Herquin",
+        "text": "It's hardly the Rising Sun Inn, but I guess it will do."
+      },
+      {
+        "player": "Oh? How come you're here instead then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Herquin",
+        "text": "I'm not allowed back after... the incident."
+      },
+      {
+        "player": "The incident?"
+      },
+      {
+        "type": "line",
+        "speaker": "Herquin",
+        "text": "The Incident!"
+      },
+      {
+        "player": "What happened?"
+      },
+      {
+        "type": "line",
+        "speaker": "Herquin",
+        "text": "It's too embarrassing, but let's just say I ruined a perfectly good table."
+      },
+      {
+        "player": "Right then..."
+      },
+      {
+        "player": "Merry Christmas?"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-doris": [
+      {
+        "player": "Hello, Doris. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "player": "Dave not joining you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "No, I needed a break from him and his rats so I distracted him with a plate of devilled eggs!"
+      },
+      {
+        "player": "That's not very Christmassy?"
+      },
+      {
+        "type": "line",
+        "speaker": "Doris",
+        "text": "He wouldn't have joined me anyway. Christmas is not evil enough, apparently."
+      }
+    ],
+    "misc-npc-dialogue-talking-to-rommik": [
+      {
+        "player": "Hello, Rommik. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rommik",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rommik",
+        "text": "Cities this big always make me a bit nervous, but it'll be worth it for my Christmas dinner!"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-oziach": [
+      {
+        "player": "Hello, Oziach. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "I do hope they're serving trout!"
+      },
+      {
+        "player": "Trout? For Christmas?"
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "Trout with cauliflower is my favourite!"
+      },
+      {
+        "player": "Cauliflower? Cauliflower is not traditional!"
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "Cauliflower is traditional!"
+      },
+      {
+        "player": "Alright, calm down! Each to their own, I guess!"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-karim": [
+      {
+        "player": "Hello, Karim. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Karim",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "type": "line",
+        "speaker": "Karim",
+        "text": "It's awfully cold this far north!"
+      },
+      {
+        "player": "But we're not that far north?"
+      },
+      {
+        "type": "line",
+        "speaker": "Karim",
+        "text": "Hopefully this dinner will warm me up!"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-hans": [
+      {
+        "player": "Hello, Hans. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Hans",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "type": "line",
+        "speaker": "Hans",
+        "text": "As nice as this queue is, I am missing out on my daily steps."
+      },
+      {
+        "player": "Can't you take a break, just for the holidays?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hans",
+        "text": "'tis the season I guess?"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-jobless-jim-before-he-had-his-dinner": [
+      {
+        "player": "Hello, Jobless Jim. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Jobless Jim",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "type": "line",
+        "speaker": "Jobless Jim",
+        "text": "I cannot wait for my din-dins!"
+      },
+      {
+        "player": "Din-dins?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jobless Jim",
+        "text": "My Christmas dinner!"
+      },
+      {
+        "player": "Right..."
+      }
+    ],
+    "misc-npc-dialogue-talking-to-jobless-jim-after-he-had-his-dinner": [
+      {
+        "player": "Hello, Jobless Jim. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Jobless Jim",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "player": "How was your Christmas din-dins, Jim?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jobless Jim",
+        "text": "It was wonderful, thanks!!"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-aggie": [
+      {
+        "player": "Hello, Aggie. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "player": "I didn't know witches celebrated Christmas?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Of course we do! The holiday was ours to begin with!"
+      },
+      {
+        "player": "Is that so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Indeed, but my stomach is far too empty to get into it right now."
+      }
+    ],
+    "misc-npc-dialogue-talking-to-sir-prysin": [
+      {
+        "player": "Hello, Sir Prysin. Merry Christmas!"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "Merry Christmas, [player name]!"
+      },
+      {
+        "player": "A bit surprising to see you here!"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Prysin",
+        "text": "I've never heard that one before..."
+      },
+      {
+        "player": "It was just a joke..."
+      },
+      {
+        "player": "A Christmas joke."
+      }
+    ],
+    "misc-npc-dialogue-talking-to-jonny-the-beard": [
+      {
+        "type": "line",
+        "speaker": "Jonny the Beard",
+        "text": "Whatever you want, I'm not interested!"
+      },
+      {
+        "player": "Hey man, it's Christmas."
+      },
+      {
+        "type": "line",
+        "speaker": "Jonny the Beard",
+        "text": "Oh... Right, sorry. Merry Christmas?"
+      },
+      {
+        "player": "Merry Christmas!"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-dr-harlow": [
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Buy me a drrink pleassh..."
+      },
+      {
+        "player": "I think you've had enough."
+      },
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Fair enough... Merry Christmas!"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-the-barbarian": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Barbarian",
+        "text": "Ha-ha! Merry Christmas little city [man/woman/person]!"
+      }
+    ],
+    "misc-npc-dialogue-talking-to-the-woman-near-the-blue-moon-inn-or-the-man-upstairs-in-the-inn": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Woman",
+        "text": "... whassup?"
+      },
+      {
+        "player": "Are you alright?"
+      },
+      {
+        "type": "line",
+        "speaker": "Woman",
+        "text": "... I'm feeling rather merry today... shush, don't tell anyone!"
+      },
+      {
+        "player": "Right... Merry Christmas!"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "unavailable",
+        "id": "erWCou"
+      }
+    ]
+  },
+  "activation": "explicit",
+  "branches": {
+    "jump-b4451021e27fc24d": [
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "Why, yes I am!"
+      },
+      {
+        "type": "line",
+        "speaker": "[Customer]",
+        "text": "For my main, I would like [main], and for my sides I would like [side 1], [side 2] and [side 3]."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "-mpg_9": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Come back when you've got some space to carry a serving tray."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}
