@@ -214,6 +214,38 @@ def test_invalid_pre_roll_probability_stays_raw_and_unexecutable(rate):
     assert "rarity" not in row
 
 
+@pytest.mark.parametrize(
+    "rate, expected",
+    [("1/181.1", [10, 1811]), ("4/540", [4, 540]), ("1/0", None), ("351/350", None)],
+)
+def test_mixed_denominator_pre_rolls_keep_exact_and_invalid_source_rates(
+    rate, expected
+):
+    source = (
+        "{{Infobox Monster|id=1}}\n==Drops==\n===Pre-roll===\n"
+        "{{DropsLine|name=Rune full helm|quantity=1|rarity=1/100}}\n"
+        "{{DropsLine|name=Draconic visage|quantity=1|rarity=1/100}}\n"
+        "{{DropsLine|name=Coins|quantity=17|rarity=" + rate + "}}"
+    )
+    parsed = drops_wikitext.parse_all_drop_tables(source)[0]
+    row = next(
+        row
+        for row in drops_tables.build_table_json(
+            drops_tables.build_table_spec("Test", parsed, ITEMS)
+        )["entries"]
+        if row.get("name") == "Coins"
+    )
+    assert row["pre_roll"] is True
+    assert row["separate_roll"] is True
+    assert row["quantity"] == [17, 17]
+    if expected is not None:
+        assert [row["weight"], row["out_of"]] == expected
+    else:
+        assert row["rarity_raw"] == rate
+        assert "out_of" not in row
+        assert "rarity" not in row
+
+
 WIKITEXT = """
 {{Infobox Monster
 |id1 = 123,124
