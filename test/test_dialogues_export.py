@@ -511,11 +511,7 @@ def test_open_shop_targets_are_keys_of_the_shops_dump():
     def walk(node):
         if isinstance(node, dict):
             if node.get("action") == "open_shop":
-                if node.get("shops"):
-                    assert set(node["shops"]) <= set(shops)
-                    targets.update(node["shops"])
-                else:
-                    targets.add(node["target"])
+                targets.update(node.get("shops") or [node["target"]])
             for value in node.values():
                 walk(value)
         elif isinstance(node, list):

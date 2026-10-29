@@ -11,6 +11,7 @@ def collect(monkeypatch, pet_titles):
         "Pet dialogue": pet_titles,
         "Quest transcript": ["Transcript:Quest"],
         "Miniquest transcript": ["Transcript:Miniquest"],
+        "Event transcript": ["Transcript:Event"],
     }
     queried, downloads, saved = [], [], []
 

@@ -1,12 +1,19 @@
 # NPC and quest dialogue exports
 
 Build with `python -m scripts.dialogues.update`. The collector fetches the wiki's
-**NPC dialogue**, **Pet dialogue**, **Quest transcript** and **Miniquest transcript**
-categories, follows explicit transcript
+**NPC dialogue**, **Pet dialogue**, **Quest transcript**, **Miniquest transcript**
+and **Event transcript** categories, follows explicit transcript
 links, and fetches NPC identity pages named by transcripts. Cached revisions are
 reused; `--refresh` fetches them again. `--offline` rebuilds only from cached sources.
 A failed download does not publish a partial gameplay export. Explicitly missing
 wiki pages remain cached and unresolved; use `--refresh` to retry them.
+
+Holiday/event transcripts use `quest-pages.json` as reference conversations, so they pass
+through the existing dependency, participant identity, revision and export paths. The
+participant index includes them as candidates; runtime consumers must explicitly gate
+event conversations by activity state instead of choosing the first playable candidate.
+Collecting sources does not install them into a game or implement those activity gates.
+An empty event category fails collection rather than silently dropping seasonal content.
 
 ## Files
 
