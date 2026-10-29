@@ -169,15 +169,15 @@ def test_generated_exports():
     )
     if not (root / "docs/npc-dialogues.json").exists():
         pytest.skip("Regenerate dialogue exports first")
-    schema = json.loads((root / "data/schemas/schema-dialogues.json").read_text())
-    dialogues = json.loads((root / "docs/npc-dialogues.json").read_text())
-    minified = (root / "docs/npc-dialogues-minified.json").read_text()
+    schema = json.loads((root / "data/schemas/schema-dialogues.json").read_text(encoding="utf-8"))
+    dialogues = json.loads((root / "docs/npc-dialogues.json").read_text(encoding="utf-8"))
+    minified = (root / "docs/npc-dialogues-minified.json").read_text(encoding="utf-8")
     assert json.loads(minified) == dialogues
     assert minified == json.dumps(
         dialogues, ensure_ascii=False, separators=(",", ":"), allow_nan=False
     )
     records = {}
-    corrections = json.loads((root / "data/dialogues/corrections.json").read_text())
+    corrections = json.loads((root / "data/dialogues/corrections.json").read_text(encoding="utf-8"))
     jsonschema.Draft202012Validator(schema).validate(dialogues)
     for name, value in dialogues.items():
         records["Transcript:" + name] = value
@@ -215,23 +215,23 @@ def test_generated_exports():
                 assert "entrypoint" not in node
                 if node.get("type") == "reference" and node.get("resolved"):
                     assert node["variant"] in variants(records[node["target"]])
-    manifest = json.loads((root / "docs/dialogue-manifest.json").read_text())
+    manifest = json.loads((root / "docs/dialogue-manifest.json").read_text(encoding="utf-8"))
     assert manifest.keys() == records.keys()
     jsonschema.validate(
         manifest,
-        json.loads((root / "data/schemas/schema-dialogue-manifest.json").read_text()),
+        json.loads((root / "data/schemas/schema-dialogue-manifest.json").read_text(encoding="utf-8")),
     )
-    authoring = json.loads((root / "data/dialogues/authoring-index.json").read_text())
+    authoring = json.loads((root / "data/dialogues/authoring-index.json").read_text(encoding="utf-8"))
     jsonschema.validate(
         authoring,
-        json.loads((root / "data/schemas/schema-dialogue-authoring.json").read_text()),
+        json.loads((root / "data/schemas/schema-dialogue-authoring.json").read_text(encoding="utf-8")),
     )
     assert authoring.keys() == records.keys()
     assert len(set(manifest.values())) == len(manifest)
     for page, record in records.items():
         assert authoring[page]["sections"].keys() == variants(record).keys()
     for page, path in manifest.items():
-        assert json.loads((root / "docs" / path).read_text()) == records[page]
+        assert json.loads((root / "docs" / path).read_text(encoding="utf-8")) == records[page]
         for steps in [
             *variants(records[page]).values(),
             *records[page].get("branches", {}).values(),
@@ -239,10 +239,10 @@ def test_generated_exports():
             for node in walk(steps):
                 if node.get("type") == "call":
                     assert node["branch"] in records[page]["branches"]
-    index = json.loads((root / "docs/npc-dialogue-index.json").read_text())
+    index = json.loads((root / "docs/npc-dialogue-index.json").read_text(encoding="utf-8"))
     jsonschema.validate(
         index,
-        json.loads((root / "data/schemas/schema-npc-dialogue-index.json").read_text()),
+        json.loads((root / "data/schemas/schema-npc-dialogue-index.json").read_text(encoding="utf-8")),
     )
     for entries in index.values():
         for entry in entries:
