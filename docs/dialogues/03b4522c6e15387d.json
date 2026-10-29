@@ -1,0 +1,719 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-without-catspeak": [
+      {
+        "type": "missing",
+        "id": "QUqhzl"
+      }
+    ],
+    "standard-dialogue-with-catspeak-happy": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "Purr...I'm happy. [player name] is good to me. But don't start neglecting me now that I've told you that."
+              },
+              {
+                "player": "Don't worry, I won't."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "kLtPJz"
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "npc": "I feel as old as the last rat I killed - and seeing as it was so tender and juicy, it must have been fairly young."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "eFQE7V"
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is in the sewers of Varrock:",
+                "steps": [
+                  {
+                    "npc": "Here in the sewers seems as good a place as any."
+                  }
+                ],
+                "id": "nTmUGc"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is elsewhere:",
+                "steps": [
+                  {
+                    "npc": "Let's go to the sewers of Varrock."
+                  }
+                ],
+                "id": "Tw9z1Y"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "UK7tf7"
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "I don't know. Master knows, methinks."
+              },
+              {
+                "player": "Is there anywhere in particular that you would like to go?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "jzSRV7"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-content": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "Content. But a little more attention or rat hunting wouldn't go amiss."
+              },
+              {
+                "player": "I'll see what I can do."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "eXM-t6"
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "npc": "I'm getting on a bit, but I feel like there's plenty of life in me yet."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "b1T5Ny"
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is in the Port Sarim rat pits:",
+                "steps": [
+                  {
+                    "npc": "We're in Port Sarim's rat pits, so let's go fighting."
+                  }
+                ],
+                "id": "WfB3Et"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is in Lumbridge:",
+                "steps": [
+                  {
+                    "npc": "There's rats on by the western wall of the castle, let's get them."
+                  }
+                ],
+                "id": "_fPIIn"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is in Ardougne:",
+                "steps": [
+                  {
+                    "npc": "I reckon West Ardougne would be the best bet from here."
+                  }
+                ],
+                "id": "WUjJdV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is elsewhere:",
+                "steps": [
+                  {
+                    "npc": "Let's go hunting in Lumbridge."
+                  }
+                ],
+                "id": "Xqu5Cd"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "G6A0eZ"
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "Hunting! Meow! Yes, hunting is good."
+              },
+              {
+                "player": "Is there anywhere in particular that you would like to go?"
+              },
+              {
+                "type": "jump",
+                "id": "cPY7kH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-954b9eab41aa50f1"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-unhappy": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "Hiss! What does it want?"
+              },
+              {
+                "player": "Oh, are you annoyed at me?"
+              },
+              {
+                "npc": "Hiss! What do you care anyway?"
+              },
+              {
+                "player": "Oh come on, who brings you hunting for nasty ratsies?"
+              },
+              {
+                "npc": "Don't patronise me with your 'ratsies'."
+              },
+              {
+                "npc": "And if you're such a good master, why don't you play with me or rub my tummy?"
+              },
+              {
+                "player": "Why would a tough old cat like you want your tummy rubbed? Wouldn't you much rather go hunting?"
+              },
+              {
+                "npc": "A bit of affection now and again wouldn't go amiss."
+              },
+              {
+                "player": "Aw, you big old softie."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "kMJmmU"
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "npc": "Too old! Thanks for bringing that up. Actually, I think I'm just going to crawl over there and die of old age."
+              },
+              {
+                "player": "Oh come on, stop being such a drama cat. You're not that old."
+              },
+              {
+                "npc": "Hiss! I'm not a drama cat. And if you don't mind I'd like to have a bit of space at the moment."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "hnbOXB"
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "npc": "Why should I bother telling you? It's not as if you'd do anything about it."
+              },
+              {
+                "player": "Oh come on, don't be like that."
+              },
+              {
+                "npc": "Hiss!! Like what?"
+              },
+              {
+                "player": "All cranky and hissy."
+              },
+              {
+                "npc": "Well maybe if you paid me a bit more attention I wouldn't be."
+              },
+              {
+                "player": "So where do you want to go then?"
+              },
+              {
+                "npc": "Bring me to the rat pits, I want to do some hardcore hunting."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "5UQJzQ"
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "Hiss, I don't care, provided we're killing stuff. But you're so selfish anyway, I never get the kill."
+              },
+              {
+                "player": "Oh come on, cheer up, I might bring you to the pits."
+              },
+              {
+                "npc": "Pah. As if that would ever happen."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "ojW1jV"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-with-a-catspeak-amulet-and-cat-ears": [
+      {
+        "npc": "Sorry human, but what are you wearing?"
+      },
+      {
+        "player": "I got some cat ears made for me, don't they look meeeeeeeooooowvalous."
+      },
+      {
+        "type": "message",
+        "text": "The cat looks you dead in the eye, unblinking.",
+        "id": "uTY5JZ"
+      },
+      {
+        "npc": "Am I a joke to you?"
+      },
+      {
+        "player": "UwU?"
+      },
+      {
+        "npc": "Why are you doing this?"
+      },
+      {
+        "player": "I thought it'd be cute and funny."
+      },
+      {
+        "npc": "It's not, take them off now human, before I get myself a pair of human ears to wear."
+      }
+    ],
+    "interacting": [
+      {
+        "type": "choice",
+        "prompt": "Interact with cat",
+        "options": [
+          {
+            "text": "Stroke",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You softly stroke your cat.",
+                "id": "WR82sa"
+              },
+              {
+                "npc": "Purr...purr...",
+                "presentation": "overhead"
+              }
+            ]
+          },
+          {
+            "text": "Chase Vermin"
+          },
+          {
+            "text": "Shoo away",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you sure you want to shoo away the cat?",
+                "options": [
+                  {
+                    "text": "Yes I am.",
+                    "steps": [
+                      {
+                        "player": "Hit the road cat. I've had enough of you. All you ever want to do is go hunting rats. Gah!"
+                      },
+                      {
+                        "npc": "Pah! You were no fun anyway."
+                      },
+                      {
+                        "player": "Shoo cat!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "npc": "Meeeooow!",
+                        "presentation": "overhead"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No I'm not.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You choose not to shoo away the cat.",
+                        "id": "qCrDAt"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "chasing-vermin-chasing-rats-or-hellrats": [
+      {
+        "player": "Go on puss...kill that rat!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "condition",
+        "text": "If the path to the rat is obstructed:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your cat cannot get to its prey.",
+            "id": "OcLYSh"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NioL4V"
+      },
+      {
+        "npc": "Meeeeeoooowww!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat",
+        "text": "Eek!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "condition",
+        "text": "If the rat gets away:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The rat manages to get away!",
+            "id": "0CeZzW"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "TjFYmf"
+      },
+      {
+        "type": "condition",
+        "text": "If the rat is caught:",
+        "steps": [
+          {
+            "player": "Hey well done puss, you got it!",
+            "presentation": "overhead"
+          },
+          {
+            "npc": "MeeeoooooW!",
+            "presentation": "overhead"
+          }
+        ],
+        "id": "SdvTZt"
+      }
+    ],
+    "chasing-vermin-chasing-crypt-rats": [
+      {
+        "player": "Go on get that nasty rodent."
+      },
+      {
+        "npc": "I don't want to."
+      },
+      {
+        "player": "Scardy cat."
+      },
+      {
+        "npc": "I'm not, now if you don't stop right now you'll be sorry."
+      },
+      {
+        "player": "Cowardly custard."
+      },
+      {
+        "npc": "Watch it, be careful what you say now!"
+      },
+      {
+        "player": "Cowardly, cowardly, cowardly custard!"
+      },
+      {
+        "npc": "Hiss!"
+      },
+      {
+        "type": "action",
+        "text": "The cat attacks the player and deals 3 damage.",
+        "id": "iRNMM1"
+      },
+      {
+        "player": "Ow! What did you do that for, you crazy cat?"
+      },
+      {
+        "npc": "I warned you! I did, but would you listen? Would you my tail!"
+      }
+    ],
+    "chasing-vermin-chasing-kalphite-larvae": [
+      {
+        "player": "Go on puss...kill that larva!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Meeeeeoooowww!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "line",
+        "speaker": "Kalphite larva",
+        "text": "Checheche!"
+      },
+      {
+        "type": "condition",
+        "text": "If the larva gets away:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The larva manages to get away!",
+            "id": "wfyCng"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "K3kzdf"
+      },
+      {
+        "type": "condition",
+        "text": "If the larva is caught:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your cat kills the larva.",
+            "id": "jMySVb"
+          },
+          {
+            "player": "Hey well done puss, you got it!",
+            "presentation": "overhead"
+          },
+          {
+            "npc": "MeeeoooooW!",
+            "presentation": "overhead"
+          }
+        ],
+        "id": "3O_7-d"
+      }
+    ],
+    "chasing-vermin-chasing-butterflies": [
+      {
+        "player": "Go on puss...get that butterfly!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Meeeeeoooowww!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "condition",
+        "text": "If the butterfly gets away:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The butterfly manages to get away!",
+            "id": "yfvCNr"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "vou2pc"
+      },
+      {
+        "type": "condition",
+        "text": "If the butterfly is caught:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your cat kills the butterfly.",
+            "id": "K13MLq"
+          },
+          {
+            "player": "Hey well done puss, you got it!",
+            "presentation": "overhead"
+          },
+          {
+            "npc": "MeeeoooooW!",
+            "presentation": "overhead"
+          }
+        ],
+        "id": "hnoiGH"
+      }
+    ],
+    "becoming-lazy": [
+      {
+        "type": "message",
+        "text": "Your cat, through lack of exercise, becomes overweight and lethargic.",
+        "id": "9WSjJU"
+      }
+    ],
+    "naming-the-cat": [
+      {
+        "type": "line",
+        "speaker": "[Cat name]",
+        "text": "Hey [player name], you finally got around to naming me."
+      },
+      {
+        "player": "Sorry I took so long, [Cat name], it took a while to come up with a name for you."
+      }
+    ],
+    "placing-into-the-pet-basket": [
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "message",
+        "text": "The cat goes to sleep on the blanket.",
+        "id": "2f0Vk5"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "npc": "Miaow!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-using-a-scratching-post": [
+      {
+        "npc": "Rrowl!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Ssss!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Hiss!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-menagerie-arena": [
+      {
+        "npc": "Grrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grrrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grarrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "slap*",
+        "presentation": "overhead"
+      }
+    ]
+  },
+  "branches": {
+    "jump-954b9eab41aa50f1": [
+      {
+        "player": "What do you want to do now?"
+      },
+      {
+        "npc": "I don't know. Master knows, methinks."
+      },
+      {
+        "player": "Is there anywhere in particular that you would like to go?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "jzSRV7"
+      }
+    ]
+  }
+}

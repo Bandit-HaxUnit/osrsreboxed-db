@@ -1,0 +1,277 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-without-catspeak": [
+      {
+        "type": "missing",
+        "id": "Hc1OsI"
+      }
+    ],
+    "standard-dialogue-with-catspeak": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "If you don't stop talking to me, I'll never squeeze in my slouching time for the day."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "EsUGBX"
+              }
+            ]
+          },
+          {
+            "text": "How old are you now?",
+            "steps": [
+              {
+                "player": "How old are you now?"
+              },
+              {
+                "npc": "I'm old and fat if that's what you're driving at. What, are you thinking of trading me in for a younger model?"
+              },
+              {
+                "npc": "After all the adventuring we've done together? Is that it?"
+              },
+              {
+                "player": "No, nothing of the sort. I was just making conversation, that's all."
+              },
+              {
+                "npc": "Sure, I know your game. Going to trade me in for some death runes are you? Eh?"
+              },
+              {
+                "player": "What? How do you know about that?"
+              },
+              {
+                "npc": "We cats talk, you know."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "UTilx1"
+              }
+            ]
+          },
+          {
+            "text": "Where do you want to go?",
+            "steps": [
+              {
+                "player": "Where do you want to go?"
+              },
+              {
+                "npc": "I'd just like to go somewhere nice and warm."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "S4-IDa"
+              }
+            ]
+          },
+          {
+            "text": "What do you want to do now?",
+            "steps": [
+              {
+                "player": "What do you want to do now?"
+              },
+              {
+                "npc": "I want to have a snooze, all this talking has made me sleepy."
+              },
+              {
+                "player": "Gosh, you're a bit dull and boring."
+              },
+              {
+                "npc": "I suppose that's what you become once you pass your 10th birthday."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "mCKYGi"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-interacting": [
+      {
+        "type": "choice",
+        "prompt": "Interact with cat",
+        "options": [
+          {
+            "text": "Stroke",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You softly stroke your cat.",
+                "id": "awPxjP"
+              },
+              {
+                "npc": "Purr...purr...",
+                "presentation": "overhead"
+              },
+              {
+                "player": "Hey there fatty! Fancy a tummy rub?"
+              },
+              {
+                "npc": "Purr, nice master."
+              }
+            ]
+          },
+          {
+            "text": "Chase Vermin"
+          },
+          {
+            "text": "Shoo away",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Are you sure you want to shoo away the cat?",
+                "options": [
+                  {
+                    "text": "Yes I am.",
+                    "steps": [
+                      {
+                        "player": "I've had enough of you and your whining, all you do is mope around all day. Just go away and don't come back."
+                      },
+                      {
+                        "npc": "I'm getting tired of your company anyway! You must be the most boring adventurer ever. You couldn't find your way to Lumbridge without me."
+                      },
+                      {
+                        "player": "Shoo cat!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "npc": "Meeeooow!",
+                        "presentation": "overhead"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The cat has run away.",
+                        "id": "H3kezM"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No I'm not.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You choose not to shoo away the cat.",
+                        "id": "mWbR0S"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-catspeak-chasing-a-barrows-crypt-rat": [
+      {
+        "player": "Are you up for some rodent catching?"
+      },
+      {
+        "npc": "If you mean by rodent catching, getting myself killed by attacking that there rat,.... no."
+      },
+      {
+        "player": "Oh go on, I'm sure you'd take it."
+      },
+      {
+        "npc": "Nah, I've just groomed."
+      }
+    ],
+    "standard-dialogue-with-catspeak-chasing-any-other-rat": [
+      {
+        "type": "message",
+        "text": "The cat is just too big to catch vermin.",
+        "id": "mB7iAu"
+      }
+    ],
+    "standard-dialogue-with-catspeak-with-a-catspeak-amulet-and-cat-ears": [
+      {
+        "npc": "Sorry human, but what are you wearing?"
+      },
+      {
+        "player": "I got some cat ears made for me, don't they look meeeeeeeooooowvalous."
+      },
+      {
+        "type": "message",
+        "text": "The cat looks you dead in the eye, unblinking.",
+        "id": "lxGMf7"
+      },
+      {
+        "npc": "Am I a joke to you?"
+      },
+      {
+        "player": "UwU?"
+      },
+      {
+        "npc": "Why are you doing this?"
+      },
+      {
+        "player": "I thought it'd be cute and funny."
+      },
+      {
+        "npc": "It's not, take them off now human, before I get myself a pair of human ears to wear."
+      }
+    ],
+    "placing-into-the-pet-basket": [
+      {
+        "npc": "Meeeew!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "message",
+        "text": "The cat goes to sleep on the blanket.",
+        "id": "iHVXS7"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "npc": "Meeeew!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-menagerie-arena": [
+      {
+        "npc": "Grrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grrrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Grarrr!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "slap*",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-using-a-scratching-post": [
+      {
+        "npc": "Rrowl!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Ssss!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Hiss!",
+        "presentation": "overhead"
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "player": "How come I can talk to you without an amulet?"
+              },
+              {
+                "npc": "Woof woof bark!* Elementary, it's due to the influence of the -SQUIRREL-!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "Walkies!"
+              },
+              {
+                "npc": "..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "player": "Can you help me with this clue?"
+              },
+              {
+                "npc": "Woof! Bark yip woof!* Sure! Eliminate the impossible first."
+              },
+              {
+                "player": "And then?"
+              },
+              {
+                "npc": "Bark! Woof bark bark.* Whatever is left, however improbable, must be the answer."
+              },
+              {
+                "player": "So helpful."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "player": "I wonder if I could sell you to a vampyre to track down dinner."
+              },
+              {
+                "npc": "Woof bark bark woof* I have teeth too you know, that joke was not funny."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "player": "Hey boy, what's up?"
+              },
+              {
+                "npc": "Woof! Bark bark woof!* You smell funny."
+              },
+              {
+                "player": "Err... funny strange or funny ha ha?"
+              },
+              {
+                "npc": "Bark bark woof!* You aren't funny."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-dig-option": [
+      {
+        "npc": "Ruff ruff!",
+        "presentation": "overhead"
+      },
+      {
+        "type": "action",
+        "text": "The Bloodhound digs with its front paws.",
+        "id": "4WKKxP"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not standing on top of a treasure trail step:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your dog can only dig loose soil, often found on the trail of treasure.",
+            "id": "G8naFD"
+          }
+        ],
+        "id": "Ofs8p6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is standing on top of a treasure trail step:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've found a new clue!",
+            "id": "zZb3uX"
+          }
+        ],
+        "id": "zwuOwR"
+      }
+    ],
+    "overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "npc": "Interesting!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "I will eliminate the impossible.",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Elementary!",
+        "presentation": "overhead"
+      }
+    ]
+  }
+}

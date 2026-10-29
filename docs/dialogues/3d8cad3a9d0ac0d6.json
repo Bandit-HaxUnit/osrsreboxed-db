@@ -1,0 +1,238 @@
+{
+  "default": null,
+  "variants": {
+    "bran-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "3P6vdm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If this dialogue is chosen while located in the north-western corner of the upper level of the Brimhaven Dungeon, specifically near the floor vine decorations far north of the Fire Giants:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "s6z6jN"
+          }
+        ],
+        "id": "kxemKw"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "How is the weather down there?"
+              },
+              {
+                "npc": "Hot."
+              },
+              {
+                "player": "Ah, I'm sorry to hear that."
+              },
+              {
+                "npc": "No, I like."
+              },
+              {
+                "player": "Oh right yeah, that makes sense."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "player": "If I get into a fight, are you going to help me?"
+              },
+              {
+                "npc": "I follow."
+              },
+              {
+                "player": "I'll take that as a yes, then?"
+              },
+              {
+                "npc": "Just follow."
+              },
+              {
+                "player": "I'll take that as a no, then."
+              },
+              {
+                "npc": "Yes."
+              },
+              {
+                "player": "Wait, yes? You'll fight?"
+              },
+              {
+                "npc": "No."
+              },
+              {
+                "player": "Cool."
+              },
+              {
+                "npc": "Hot."
+              },
+              {
+                "player": "What?"
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "bran-overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "npc": "I squish!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "You burn!",
+        "presentation": "overhead"
+      }
+    ],
+    "ric-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "3P6vdm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If this dialogue is chosen while located near the Frozen Throne in the Asgarnian Ice Dungeon:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "s6z6jN"
+          }
+        ],
+        "id": "S1f-bz"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "How is the weather down there?"
+              },
+              {
+                "npc": "Cold."
+              },
+              {
+                "player": "Ah, I'm sorry to hear that."
+              },
+              {
+                "npc": "No, I like."
+              },
+              {
+                "player": "Oh right yeah, that makes sense."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "player": "If I get into a fight, are you going to help me?"
+              },
+              {
+                "npc": "I follow."
+              },
+              {
+                "player": "I'll take that as a yes, then?"
+              },
+              {
+                "npc": "Just follow."
+              },
+              {
+                "player": "I'll take that as a no, then."
+              },
+              {
+                "npc": "Yes."
+              },
+              {
+                "player": "Wait, yes? You'll fight?"
+              },
+              {
+                "npc": "No."
+              },
+              {
+                "player": "Cool."
+              },
+              {
+                "npc": "Cool."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ric-overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "presentation": "overhead",
+        "npc": "I squish!"
+      },
+      {
+        "presentation": "overhead",
+        "npc": "You freeze!"
+      }
+    ]
+  },
+  "branches": {
+    "3P6vdm": [
+      {
+        "player": "Anywhere you want to go?"
+      },
+      {
+        "npc": "Home."
+      },
+      {
+        "player": "Maybe another day."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "s6z6jN": [
+      {
+        "player": "Anywhere you want to go?"
+      },
+      {
+        "npc": "No, this feel like home."
+      },
+      {
+        "player": "Oh, I guess I could stay here a while..."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

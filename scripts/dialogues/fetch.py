@@ -12,6 +12,7 @@ from scripts.wiki.wiki_page_titles import WikiPageTitles
 API = "https://oldschool.runescape.wiki/api.php"
 DIALOGUE_CATEGORIES = (
     "NPC dialogue",
+    "Pet dialogue",
     "Quest transcript",
     "Miniquest transcript",
     "Event transcript",
@@ -38,6 +39,18 @@ def save(path, data, *, minified=False):
 
 def read_cache(path):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def transcript_type(raw):
+    """Classify only an unambiguous top-level Transcript declaration."""
+    kinds = set()
+    for template in mw.parse(raw).filter_templates(recursive=False):
+        if str(template.name).strip().casefold() != "transcript":
+            continue
+        key = "type" if template.has("type") else 1
+        value = str(template.get(key).value) if template.has(key) else ""
+        kinds.add(" ".join(value.split()).casefold())
+    return next(iter(kinds)) if len(kinds) == 1 and "" not in kinds else "unclassified"
 
 
 def trailing_template_name(raw, name):
@@ -184,7 +197,7 @@ def fetch(refresh=False):
         if not categories[category]:
             raise ValueError(f"{category} returned no transcripts")
     session = WikiPageText(API, "").session
-    npc_names = categories["NPC dialogue"]
+    npc_names = categories["NPC dialogue"] | categories["Pet dialogue"]
     transcript_names = set().union(
         *(categories[category] for category in TRANSCRIPT_CATEGORIES)
     )
@@ -192,6 +205,12 @@ def fetch(refresh=False):
     quests = download(transcript_names - npc_names, QUEST_CACHE, session, refresh)
     if refresh:
         quests = download(set(quests) - transcript_names, QUEST_CACHE, session, True)
+    # A page previously reached only through a transcript link can later be
+    # listed as an NPC/pet. Its authoritative copy now lives in the NPC cache;
+    # keeping the old reference copy would make the exporter reject both groups.
+    if npc_names & quests.keys():
+        quests = {name: page for name, page in quests.items() if name not in npc_names}
+        save(QUEST_CACHE, quests)
     # Follow explicit dependencies to a fixed point. Cache missing pages too, so a
     # broken wiki link is reported once rather than retried forever.
     while True:

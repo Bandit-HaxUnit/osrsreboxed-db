@@ -12,6 +12,7 @@ from scripts.dialogues import fetch
 def wiki(monkeypatch, tmp_path):
     categories = {
         "NPC dialogue": ["Transcript:Existing NPC"],
+        "Pet dialogue": ["Transcript:Existing NPC"],
         "Quest transcript": ["Transcript:Existing quest"],
         "Miniquest transcript": ["Transcript:Existing miniquest"],
         "Event transcript": ["Transcript:2025 Christmas event", "Transcript:Existing NPC"],

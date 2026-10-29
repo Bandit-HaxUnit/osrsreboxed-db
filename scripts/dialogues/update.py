@@ -24,6 +24,7 @@ from scripts.dialogues.fetch import (
     read_cache,
     save,
     trailing_template_name,
+    transcript_type,
 )
 from scripts.dialogues.hooks import enrich_records, walk as dialogue_nodes
 from scripts.dialogues.compact import compact_record, write_split
@@ -972,12 +973,14 @@ def main():
         (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
     )
     npcs, quests, issues = {}, {}, {}
+    types = collections.defaultdict(set)
     for sources, output in ((pages, npcs), (read_cache(QUEST_CACHE), quests)):
         for title, page in sorted(sources.items()):
             if page.get("missing"):
                 issues[title] = [{"reason": "Missing referenced page"}]
                 continue
             name = title.removeprefix("Transcript:")
+            types[transcript_type(page["wikitext"])].add(title)
             structure = bindings.get(name, {}).get("structure")
             raw = apply_structure_annotations(
                 name, page["wikitext"], structure, page["revision"]
@@ -1028,12 +1031,21 @@ def main():
         json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")),
     )
     dialogues = dict(sorted(data["records"].items()))
+    classified = {title for titles in types.values() for title in titles}
+    for name in dialogues:
+        title = "Transcript:" + name
+        if title not in classified:
+            # Authored corrections can supply a record with no Wiki transcript.
+            types["unclassified"].add(title)
     report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
     report.write_text(report_text, encoding="utf-8")
     save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
     save(args.out.with_name("npc-dialogue-index.json"), index)
+    save(args.out.with_name("dialogue-types.json"), {
+        kind: sorted(titles) for kind, titles in sorted(types.items())
+    })
     write_split(args.out.parent, (dialogues,))
     save(config.DATA_PATH / "dialogues" / "review-issues.json", issues)
     print(

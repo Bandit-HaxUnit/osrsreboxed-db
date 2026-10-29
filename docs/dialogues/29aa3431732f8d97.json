@@ -1,0 +1,215 @@
+{
+  "default": null,
+  "variants": {
+    "jal-nib-rek-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "player": "Yo Nib, what's going on?"
+              },
+              {
+                "npc": "Nibnib? Kl-Rek Nib?"
+              },
+              {
+                "type": "message",
+                "text": "Jal-Nib-Rek nips you.",
+                "id": "5j9hgE"
+              },
+              {
+                "player": "What'd you do that for?"
+              },
+              {
+                "npc": "Heh Nib get you."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "What'd you have for dinner?"
+              },
+              {
+                "npc": "Nibblings!"
+              },
+              {
+                "player": "Nibblings of what exactly?"
+              },
+              {
+                "npc": "Nib."
+              },
+              {
+                "player": "Oh no! That's horrible."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "player": "Can you speak like a human can Nib?"
+              },
+              {
+                "npc": "No, I most definitely can not."
+              },
+              {
+                "player": "Aren't you speaking like a human right now...?"
+              },
+              {
+                "npc": "Jal-Nib-Rek Nib Kl-Jal, Zuk is mum."
+              },
+              {
+                "player": "Interesting."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jal-nib-rek-overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "npc": "Kl-NibNib!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Nib Jal!",
+        "presentation": "overhead"
+      }
+    ],
+    "tzrek-zuk-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "player": "What's up Zuk?"
+              },
+              {
+                "npc": "Feeling a bit down to be honest."
+              },
+              {
+                "player": "Why's that?"
+              },
+              {
+                "npc": "Well..."
+              },
+              {
+                "npc": "Not so long ago, I was a big fearsome boss, Now I'm just another pet."
+              },
+              {
+                "player": "Indeed, and you're going to follow me everywhere I go."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "Why have you got lava around your feet?"
+              },
+              {
+                "npc": "Keeps me cool."
+              },
+              {
+                "player": "But... lava is hot?"
+              },
+              {
+                "npc": "No no, I wasn't referring to the temperature."
+              },
+              {
+                "player": "Ah..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is wielding Dinh's blazing bulwark:",
+                "steps": [
+                  {
+                    "player": "You're a lot smaller now, I don't even need this shield."
+                  },
+                  {
+                    "npc": "Mere mortal, you only survived my challenge because of that convenient pile of rock."
+                  },
+                  {
+                    "player": "Well, you couldn't even break that pile of rock to get at me!"
+                  },
+                  {
+                    "npc": "..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "tnzZ-x"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not:",
+                "steps": [
+                  {
+                    "player": "You're a lot smaller now, I don't even need a shield."
+                  },
+                  {
+                    "npc": "Mere mortal, you only survived my challenge because of that convenient pile of rock."
+                  },
+                  {
+                    "player": "Well, you couldn't even break that pile of rock to get at me!"
+                  },
+                  {
+                    "npc": "..."
+                  }
+                ],
+                "id": "Pml4wK"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4 (only if the player is wielding Dinh's blazing bulwark):",
+            "steps": [
+              {
+                "npc": "That shield won't protect you forever mortal."
+              },
+              {
+                "player": "It might actually."
+              },
+              {
+                "npc": "We shall see about that."
+              },
+              {
+                "type": "message",
+                "text": "TzRek-Zuk channels infernal energy into your shield burning your hands.",
+                "id": "bcxZWz"
+              },
+              {
+                "player": "Ouch! What the..."
+              },
+              {
+                "npc": "He he."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tzrek-zuk-overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "presentation": "overhead",
+        "npc": "Kal-Zuk!"
+      },
+      {
+        "presentation": "overhead",
+        "npc": "Zukkkkkk!"
+      }
+    ]
+  }
+}
