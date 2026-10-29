@@ -126,7 +126,8 @@ def test_generated_quantities_keep_source_conditions_and_discrete_alternatives()
 def test_quantity_export_preserves_npc_mappings_and_unrelated_reward_paths():
     dump = _load("npc-drops.json")
     assert len(dump["tables"]) == 1112
-    assert len(dump["npcs"]) == 3092
+    # Include the 112 bare-ID variants restored alongside numbered infobox IDs.
+    assert len(dump["npcs"]) == 3204
     assert {npc_id for npc_id, npc in dump["npcs"].items() if not npc["tables"]} == {
         "8058",
         "8060",
