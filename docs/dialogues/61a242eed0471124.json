@@ -142,8 +142,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZeVDln"
+                "id": "ZeVDln",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cfc17aecde011e4d"
+                  }
+                ]
               }
             ]
           },
@@ -155,8 +160,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vERXSW"
+                "id": "vERXSW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5b75d9118948fe90"
+                  }
+                ]
               }
             ]
           }
@@ -185,6 +195,18 @@
       },
       {
         "npc": "Don't forget to give me the stick when you're done!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-cfc17aecde011e4d": [
+      {
+        "npc": "Get on with it - you need your whiskers perking!!!!"
+      }
+    ],
+    "jump-5b75d9118948fe90": [
+      {
+        "npc": "Claws first - think later."
       }
     ]
   }

@@ -68,8 +68,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "GSj9b0"
+                                "id": "GSj9b0",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c1ed78f5f78eedc5"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -123,8 +128,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "hAJU-e"
+                                        "id": "hAJU-e",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-7fb6db7c5e2bfa7a"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -244,6 +254,183 @@
       },
       {
         "npc": "Your magical prowess... it is most impressive."
+      }
+    ]
+  },
+  "branches": {
+    "jump-c1ed78f5f78eedc5": [
+      {
+        "player": "So what have you invented?"
+      },
+      {
+        "npc": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+      },
+      {
+        "npc": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So where is the other block?",
+            "steps": [
+              {
+                "player": "So where is the other block?"
+              },
+              {
+                "npc": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+              },
+              {
+                "npc": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I be teleported please?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "hAJU-e",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7fb6db7c5e2bfa7a"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are the GPDT?",
+                    "steps": [
+                      {
+                        "player": "Who are the GPDT?"
+                      },
+                      {
+                        "npc": "The Gielinor Parcel Delivery Team. They come very highly recommended. Their motto is: 'We aim to deliver your stuff at some point after you have paid us!'"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I be teleported please?",
+            "steps": [
+              {
+                "player": "Can I be teleported please?"
+              },
+              {
+                "npc": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, that sounds good. Teleport me!",
+                    "steps": [
+                      {
+                        "player": "Yes, that sounds good. Teleport me!"
+                      },
+                      {
+                        "npc": "Okey dokey! Ready?"
+                      },
+                      {
+                        "npc": "Hmmm.... that's odd... I can't seem to get a signal..."
+                      },
+                      {
+                        "player": "Oh well, never mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That sounds dangerous. Leave me here.",
+                    "steps": [
+                      {
+                        "player": "That sounds dangerous. Leave me here."
+                      },
+                      {
+                        "npc": "As you wish."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well done, that's very clever.",
+            "steps": [
+              {
+                "player": "Well done, that's very clever."
+              },
+              {
+                "npc": "Yes it is isn't it? Forgive me for feeling a little smug, this is a major breakthrough in the field of teleportation!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7fb6db7c5e2bfa7a": [
+      {
+        "player": "Can I be teleported please?"
+      },
+      {
+        "npc": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, that sounds good. Teleport me!",
+            "steps": [
+              {
+                "player": "Yes, that sounds good. Teleport me!"
+              },
+              {
+                "npc": "Okey dokey! Ready?"
+              },
+              {
+                "npc": "Hmmm.... that's odd... I can't seem to get a signal..."
+              },
+              {
+                "player": "Oh well, never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "That sounds dangerous. Leave me here.",
+            "steps": [
+              {
+                "player": "That sounds dangerous. Leave me here."
+              },
+              {
+                "npc": "As you wish."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

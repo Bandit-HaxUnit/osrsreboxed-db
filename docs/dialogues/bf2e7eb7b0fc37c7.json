@@ -154,8 +154,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "r2-vhG"
+                "id": "r2-vhG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-26927732380df1b2"
+                  }
+                ]
               }
             ]
           },
@@ -713,8 +718,13 @@
       },
       {
         "type": "jump",
-        "reference": "below",
-        "id": "A9ChAX"
+        "id": "A9ChAX",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-dd026710c0489f10"
+          }
+        ]
       }
     ],
     "a-strange-fake-talking-to-gordon-after-making-the-clay-head": [
@@ -746,7 +756,7 @@
       },
       {
         "type": "message",
-        "text": "As you talk to Gordon, part of the clay falls off.",
+        "text": "As you talk to Gordon, part of the clay head falls off.",
         "id": "xQdlJY"
       },
       {
@@ -856,8 +866,13 @@
       },
       {
         "type": "jump",
-        "reference": "below",
-        "id": "A8K6NA"
+        "id": "A8K6NA",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-6c367c63fb1ddb10"
+          }
+        ]
       }
     ],
     "a-strange-fake-talking-to-gordon-after-making-the-fur-head": [
@@ -1025,8 +1040,13 @@
       },
       {
         "type": "jump",
-        "reference": "below",
-        "id": "mj7NyY"
+        "id": "mj7NyY",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-b0726c4ee97cd5fd"
+          }
+        ]
       }
     ],
     "a-strange-fake-talking-to-gordon-after-making-the-bloody-head": [
@@ -1176,6 +1196,276 @@
       {
         "type": "unavailable",
         "id": "xr2Llv"
+      }
+    ]
+  },
+  "branches": {
+    "jump-26927732380df1b2": [
+      {
+        "player": "Need a hand with anything?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the requirements to start the quest:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Gordon",
+            "text": "I think we're good. Thank you for the offer though."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "F1Rypv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the requirements to start the quest:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Gordon",
+            "text": "Well actually, there is something we've been having a problem with."
+          },
+          {
+            "type": "line",
+            "speaker": "Gordon",
+            "text": "Recently, some strange beast has been stealing our livestock at night. The soldiers are too busy dealing with the lizardmen to help, so we haven't been able to stop it."
+          },
+          {
+            "type": "line",
+            "speaker": "Gordon",
+            "text": "You look like you know your way around a weapon. If you can kill the beast and bring me its head as proof, I'll ensure you are compensated for your trouble."
+          },
+          {
+            "type": "choice",
+            "prompt": "Start the Getting Ahead quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "Bring back the head? I can do that. I'm good at killing things. Do you know where the beast is?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gordon",
+                    "text": "Well it can't be living too far from here, but I don't know exactly where. You might want to check with my wife, Mary. Perhaps she's seen something I haven't."
+                  },
+                  {
+                    "player": "Very well. I'll return once I have the head of this beast!"
+                  }
+                ],
+                "hook": "quest:getting-ahead:start",
+                "quest": "Getting Ahead"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "Not something I can help with I'm afraid. Good luck though."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gordon",
+                    "text": "I understand. I'm sure someone else will be able to help."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "-vnUdk"
+      }
+    ],
+    "jump-dd026710c0489f10": [
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Its head? This is its head?"
+      },
+      {
+        "player": "That's right!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "But this just looks like clay... It feels like clay..."
+      },
+      {
+        "type": "message",
+        "text": "As you talk to Gordon, part of the clay head falls off.",
+        "id": "xQdlJY"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "It's falling apart... What creature is this?"
+      },
+      {
+        "player": "Ah yes! A good question! A very good question! A good question in need of a good answer I'm sure!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Okay... So what is the answer?"
+      },
+      {
+        "player": "Yes... well... This is the head of a... a claybear!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Claybear? There's no such thing!"
+      },
+      {
+        "player": "They're quite rare around here."
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Quite rare because they don't exist! I'm no fool, this is clearly a pretend head! It doesn't even have any fur!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Come back once you have the real head of the beast!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6c367c63fb1ddb10": [
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Well there's fur this time. It does look like an actual head, I have to admit."
+      },
+      {
+        "type": "action",
+        "text": "It really doesn't, but you let Gordon continue.",
+        "id": "aLxamJ"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Yes, I think this is the head of a beast."
+      },
+      {
+        "player": "Wonderful! So about my payment?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Well hang on just a moment..."
+      },
+      {
+        "player": "Uh oh."
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Where's the blood? If this is a fresh kill, the head should have blood on."
+      },
+      {
+        "player": "Ah... Yes... Well the thing about this head is that this is the head of a..."
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Yes?"
+      },
+      {
+        "player": "A... bloodbear?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Bloodbear? What's a bloodbear?"
+      },
+      {
+        "player": "It's a rare type of bear. One that doesn't have any blood."
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "It's called a bloodbear but it doesn't have blood? Did a fool name it?"
+      },
+      {
+        "player": "Well actually the one that named it is quite the intellectual... Very cool as well... not that I know them or anything."
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "You must take me for an idiot! This is some head you bought from a taxidermist or something. It's clearly not a fresh kill!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Come back once you have the real head!"
+      },
+      {
+        "player": "sigh*"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b0726c4ee97cd5fd": [
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Hmm..."
+      },
+      {
+        "player": "Hmm?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "Hmm..."
+      },
+      {
+        "player": "Well?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "It's..."
+      },
+      {
+        "player": "Yes?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "It's wonderful! This is clearly the head of the beast! Well done adventurer!"
+      },
+      {
+        "player": "Hooray!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "There's just one thing though..."
+      },
+      {
+        "player": "Oh for the love of-"
+      },
+      {
+        "type": "line",
+        "speaker": "Gordon",
+        "text": "A head like this deserves a place of honour! My friend, please could you mount it in our home?"
+      },
+      {
+        "player": "Eugh. Fine."
+      },
+      {
+        "type": "end"
       }
     ]
   }

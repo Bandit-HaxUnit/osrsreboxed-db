@@ -934,7 +934,13 @@
             ]
           },
           {
-            "text": "Do you have anything to trade?"
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "E-5bHF"
+              }
+            ]
           },
           {
             "text": "I'd better get going."
@@ -993,7 +999,13 @@
             ]
           },
           {
-            "text": "Do you have anything to trade?"
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "E-5bHF"
+              }
+            ]
           },
           {
             "text": "I'd better get going."
@@ -1228,8 +1240,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "ARgjTy"
+                            "id": "ARgjTy",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-0b3b6190bb812473"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -2166,7 +2183,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about A Tail of Two Cats.",
@@ -2246,7 +2269,92 @@
             ]
           },
           {
-            "text": "Talk about something else."
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about the Ratcatchers Quest.",
+                    "condition": "After the Ratcatchers quest:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ovPBfc"
+                      }
+                    ],
+                    "id": "t1XORf"
+                  },
+                  {
+                    "text": "Talk about Romeo & Juliet.",
+                    "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "x7febq"
+                      }
+                    ],
+                    "id": "VLEiRD"
+                  },
+                  {
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -2279,7 +2387,13 @@
             "type": "choice",
             "options": [
               {
-                "text": "Can you make potions for me?"
+                "text": "Can you make potions for me?",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "DVEzC8"
+                  }
+                ]
               },
               {
                 "text": "Talk about A Tail of Two Cats.",
@@ -2319,7 +2433,92 @@
                 ]
               },
               {
-                "text": "Talk about something else."
+                "text": "Talk about something else.",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Talk about the Ratcatchers Quest.",
+                        "condition": "After the Ratcatchers quest:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "ovPBfc"
+                          }
+                        ],
+                        "id": "t1XORf"
+                      },
+                      {
+                        "text": "Talk about Romeo & Juliet.",
+                        "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "x7febq"
+                          }
+                        ],
+                        "id": "VLEiRD"
+                      },
+                      {
+                        "text": "Have you got any decent gossip to share?",
+                        "steps": [
+                          {
+                            "player": "Have you got any decent gossip to share?"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player has not started Romeo & Juliet:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "L86AE0"
+                              }
+                            ],
+                            "id": "jYy11c"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has completed Romeo & Juliet:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "2XOSIB"
+                              }
+                            ],
+                            "id": "G78MmP"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Do you know a potion to make hair fall out?",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "hOhPnp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Have you got any good potions to give away?",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "E1Xr88"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -2740,6 +2939,12 @@
     ]
   },
   "branches": {
+    "jump-0b3b6190bb812473": [
+      {
+        "type": "missing",
+        "id": "N99ClL"
+      }
+    ],
     "H_tv-5": [
       {
         "type": "line",
@@ -2750,11 +2955,138 @@
         "player": "Hmm... My cat is trying to say something but I'm not wearing the Amulet of Catspeak."
       }
     ],
+    "E-5bHF": [
+      {
+        "player": "Do you have anything to trade?"
+      },
+      {
+        "type": "line",
+        "speaker": "Reldo",
+        "text": "Only knowledge."
+      },
+      {
+        "player": "How much do you want for that then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Reldo",
+        "text": "No, sorry, that was just my little joke. I'm not the trading type."
+      },
+      {
+        "player": "Ah well."
+      }
+    ],
     "dSxNHx": [
       {
         "type": "line",
         "speaker": "Cat",
         "text": "You've finished that chore."
+      }
+    ],
+    "DVEzC8": [
+      {
+        "player": "Can you make potions for me?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Apothecary's Potions",
+        "id": "bc12Bc"
+      }
+    ],
+    "ovPBfc": [
+      {
+        "player": "You wouldn't be able to make any other cat potions, would you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I have no plans to branch out into cat potions at the moment, but if there was sufficient demand for them I might change my mind."
+      }
+    ],
+    "x7febq": [
+      {
+        "type": "reference",
+        "target": "Transcript:Apothecary",
+        "section": "Romeo & Juliet",
+        "text": "(Quest dialogue shows)",
+        "id": "pmniE2",
+        "resolved": false,
+        "page_available": true
+      }
+    ],
+    "L86AE0": [
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Well I hear young Romeo's having a little woman trouble but other than that all's quiet on the eastern front. Can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "OaTWAr"
+      }
+    ],
+    "2XOSIB": [
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Sad about that affair with young Romeo and Juliet..."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I hear every time Romeo sees Juliet now he runs away screaming something about ghosts and Juliet's cousin?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Always did think he was a bit of a strange one..."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Anyway! Life goes on and so does business! Can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "x76V5W"
+      }
+    ],
+    "hOhPnp": [
+      {
+        "player": "Do you know a potion to make hair fall out?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I do indeed. I gave it to my mother. That's why I now live alone."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "But can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "_FM3_a"
+      }
+    ],
+    "E1Xr88": [
+      {
+        "player": "Have you got any good potions to give away?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Sorry, charity is not my strong point. Do you need anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "D-uQYF"
       }
     ]
   }

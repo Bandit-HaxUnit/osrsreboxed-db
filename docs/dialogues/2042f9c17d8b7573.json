@@ -122,8 +122,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wBx2oq"
+                "id": "wBx2oq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7f51dd16007c618c"
+                  }
+                ]
               }
             ]
           },
@@ -132,8 +137,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NKyfJE"
+                "id": "NKyfJE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1aa11a52cc6cff4b"
+                  }
+                ]
               }
             ]
           },
@@ -207,8 +217,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BfJaya"
+                "id": "BfJaya",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7f51dd16007c618c"
+                  }
+                ]
               }
             ]
           },
@@ -217,8 +232,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rVnAto"
+                "id": "rVnAto",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1aa11a52cc6cff4b"
+                  }
+                ]
               }
             ]
           },
@@ -479,6 +499,37 @@
           }
         ],
         "id": "vKikr-"
+      }
+    ]
+  },
+  "branches": {
+    "jump-7f51dd16007c618c": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "Hmph! Why? What do I know? I'm just an old man; what would anyone want with an old man?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "MDVCnV"
+      }
+    ],
+    "jump-1aa11a52cc6cff4b": [
+      {
+        "player": "I'm lost... Can you help me?"
+      },
+      {
+        "npc": "Hmph! Who says I'm not lost, eh? Ever think of that, did you?"
+      },
+      {
+        "npc": "In a rush to find out all the answers, not thinking for a second that someone else might be just as lost, if not more lost, than you! And what do you care about them, huh?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "W_ty5L"
       }
     ]
   }

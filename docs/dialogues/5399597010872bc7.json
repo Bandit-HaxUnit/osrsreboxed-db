@@ -422,8 +422,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DhUI-m"
+                "id": "DhUI-m",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9de9e81551c99ab7"
+                  }
+                ]
               }
             ]
           },
@@ -432,8 +437,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MS1iXb"
+                "id": "MS1iXb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bef17b0e9f91a606"
+                  }
+                ]
               }
             ]
           }
@@ -452,8 +462,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "41yTLT"
+                "id": "41yTLT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a1a41c4c36346b74"
+                  }
+                ]
               }
             ]
           },
@@ -462,8 +477,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1FU4Ga"
+                "id": "1FU4Ga",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5d88502dd0c3e21b"
+                  }
+                ]
               }
             ]
           },
@@ -568,6 +588,346 @@
         "type": "jump",
         "reference": "above",
         "id": "7nfR6e"
+      }
+    ]
+  },
+  "branches": {
+    "jump-9de9e81551c99ab7": [
+      {
+        "player": "Have you any rewards for me, or anything to trade?"
+      },
+      {
+        "npc": "Those who serve the balance are always rewarded. I can grant these rewards. I can also grant you the equipment needed to serve the balance, for a price of course."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Look at rewards.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Slayer Rewards",
+                "id": "OFB3Ex"
+              }
+            ]
+          },
+          {
+            "text": "Look at shop.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Slayer Equipment (shop)",
+                "id": "E3wSqR"
+              }
+            ]
+          },
+          {
+            "text": "Cancel.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-bef17b0e9f91a606": [
+      {
+        "player": "I'd rather not."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a1a41c4c36346b74": [
+      {
+        "player": "I need another assignment."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have an assignment yet:",
+        "steps": [
+          {
+            "npc": "You are to bring balance to [amount] [monster] in [area]."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Got any tips for me?",
+                "steps": [
+                  {
+                    "player": "Got any tips for me?"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Konar provides the corresponding Slayer task tip.",
+                    "id": "6KaReO",
+                    "action": "slayer_task_tip",
+                    "target": "Konar quo Maten",
+                    "action_source": "text"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Konar provides the corresponding Slayer area description.",
+                    "id": "FCVYVQ"
+                  },
+                  {
+                    "player": "Great, thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Can I cancel that task? (30 Points)",
+                "steps": [
+                  {
+                    "player": "Can I cancel that task?"
+                  },
+                  {
+                    "type": "action",
+                    "text": "If player has at least 30 Slayer points:",
+                    "steps": [
+                      {
+                        "npc": "Your task has been cancelled."
+                      },
+                      {
+                        "player": "Okay, great!"
+                      },
+                      {
+                        "npc": "Once the balance has been served, return to me."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Dj_WsV"
+                  },
+                  {
+                    "type": "action",
+                    "text": "If player does not have at least 30 Slayer points:",
+                    "steps": [
+                      {
+                        "type": "missing",
+                        "id": "57_WgZ"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "3Kp6RO"
+                  }
+                ]
+              },
+              {
+                "text": "Where is that area?",
+                "steps": [
+                  {
+                    "player": "Where is that area?"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Konar provides the corresponding Slayer area description.",
+                    "id": "SmhELZ"
+                  },
+                  {
+                    "player": "Okay, great!"
+                  },
+                  {
+                    "npc": "Once the balance has been served, return to me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Okay, great!",
+                "steps": [
+                  {
+                    "player": "Okay, great!"
+                  },
+                  {
+                    "npc": "Once the balance has been served, return to me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "CViySn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has an assignment:",
+        "steps": [
+          {
+            "npc": "You're still bringing balance to [task monster]; you have [amount] to go. Come back when you're finished."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "LCSOvv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+        "steps": [
+          {
+            "npc": "You're still meant to be bringing balance to [monster] in [area], with [amount] to go."
+          },
+          {
+            "npc": "Bringer of death, I do not feel you are ready for your current task. If you wish, I can cancel it. This will not wipe your task streaks."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please cancel it.",
+                "steps": [
+                  {
+                    "player": "Yes, please cancel it."
+                  },
+                  {
+                    "npc": "Very well. If you still wish to maintain the balance, you can get a new assignment."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No, thanks, I want to try doing it.",
+                "steps": [
+                  {
+                    "player": "No, thanks, I want to try doing it."
+                  },
+                  {
+                    "npc": "Then I wish you well, bringer of death."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "1tLLHT"
+      }
+    ],
+    "jump-5d88502dd0c3e21b": [
+      {
+        "type": "condition",
+        "text": "If the player has disabled combat checking:",
+        "steps": [
+          {
+            "player": "Let's talk about the difficulty of my assignments."
+          },
+          {
+            "npc": "When tasking you to serve the balance, I do not currently consider your combat level."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I can handle any task.",
+                "steps": [
+                  {
+                    "player": "That's fine - I can handle any task."
+                  },
+                  {
+                    "npc": "Your zeal is to be commended. Use it well when serving the balance."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "In future, please don't give anything too tough.",
+                "steps": [
+                  {
+                    "player": "In future, please don't give anything too tough."
+                  },
+                  {
+                    "npc": "As you wish. From now on, your combat level will be taken into account when tasks are assigned."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Slayer Masters will now take the player's combat level into account.",
+                    "id": "u0CLRJ"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "zQ--DL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enabled combat checking:",
+        "steps": [
+          {
+            "player": "Let's talk about the difficulty of my assignments."
+          },
+          {
+            "npc": "When tasking you to serve the balance, I consider your combat level, so you shouldn't get anything too challenging."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I don't want anything too tough.",
+                "steps": [
+                  {
+                    "player": "That's fine - I don't want anything too tough."
+                  },
+                  {
+                    "npc": "Then we will continue on our current path."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Stop checking my combat level - I can take anything!",
+                "steps": [
+                  {
+                    "player": "Stop checking my combat level - I can take anything!"
+                  },
+                  {
+                    "npc": "Your zeal is to be commended. From now on, your combat level will not be considered when tasks are assigned."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Slayer Masters will no longer take the player's combat level into account.",
+                    "id": "Mhu6Gh"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "tWZfLp"
       }
     ]
   }

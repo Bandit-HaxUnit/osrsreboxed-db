@@ -71,7 +71,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "Jy8ri9"
+                        "id": "Jy8ri9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6838d239de99e1a8"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2085,8 +2091,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "iYrVpV"
+                                    "id": "iYrVpV",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-89fea2307231f33d"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -2141,8 +2152,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "G3mCTg"
+                                    "id": "G3mCTg",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-89fea2307231f33d"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -2161,8 +2177,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "melFQw"
+                                    "id": "melFQw",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-2379dfc142d531b7"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -2821,8 +2842,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "fJbjnC"
+            "id": "fJbjnC",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-5f67b8d82b525bb8"
+              }
+            ]
           }
         ],
         "id": "wBcIe9"
@@ -3931,6 +3957,263 @@
       {
         "type": "unavailable",
         "id": "gnE8TF"
+      }
+    ]
+  },
+  "branches": {
+    "jump-6838d239de99e1a8": [
+      {
+        "type": "choice",
+        "prompt": "Start the Ghosts Ahoy quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Yes, of course I will. Tell me what you want me to do."
+              },
+              {
+                "type": "line",
+                "speaker": "Velorina",
+                "text": "Oh, thank you!"
+              },
+              {
+                "type": "line",
+                "speaker": "Velorina",
+                "text": "Necrovarus will not listen to those of us who are already dead. He might rethink his position if someone with a mortal soul pleaded our cause."
+              },
+              {
+                "type": "line",
+                "speaker": "Velorina",
+                "text": "If he declines, there may yet be another way."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:ghosts-ahoy:start",
+            "quest": "Ghosts Ahoy"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'm sorry, but it isn't really my problem."
+              },
+              {
+                "type": "line",
+                "speaker": "Velorina",
+                "text": "No, you're right - it's our own fault. If you do change your mind though, please come back and help us. We will be here ... forever."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-89fea2307231f33d": [
+      {
+        "player": "Yes, I'll give you a game."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Rune-Draw",
+        "id": "1qdKTp"
+      },
+      {
+        "type": "condition",
+        "text": "If the player wins:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've won the game of Runedraw!",
+            "id": "Q_ww9k"
+          },
+          {
+            "player": "So are you going to pay up then? You owe me [#] gold coins!"
+          },
+          {
+            "type": "line",
+            "speaker": "Robin",
+            "text": "How about another game? I'll pay you back with the winnings."
+          },
+          {
+            "player": "What if you lose again?"
+          },
+          {
+            "type": "line",
+            "speaker": "Robin",
+            "text": "Er ... we'll deal with that when we come to it."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, I'll give you a game.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "iYrVpV",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-89fea2307231f33d"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "How do you play Runedraw?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "6Jxrls"
+                  }
+                ]
+              },
+              {
+                "text": "No, you didn't pay up the last time you lost.",
+                "steps": [
+                  {
+                    "player": "No, you didn't pay up the last time you lost."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "yavzUW"
+      },
+      {
+        "type": "condition",
+        "text": "If the player loses:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've lost the game of Runedraw.",
+            "id": "gtlJxk"
+          },
+          {
+            "player": "Well done, you beat me. But you still owe me [#] gold pieces."
+          },
+          {
+            "type": "line",
+            "speaker": "Robin",
+            "text": "Err ... how about another game? We can settle up after we've finished playing."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, I'll give you a game.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "G3mCTg",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-89fea2307231f33d"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "How do you play Runedraw?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "Hbzf8Z"
+                  }
+                ]
+              },
+              {
+                "text": "No, you didn't pay up the last time you lost.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "melFQw",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-2379dfc142d531b7"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ehle2x"
+      },
+      {
+        "type": "condition",
+        "text": "If the player wins 100 coins:",
+        "steps": [
+          {
+            "player": "I've had enough of you not paying up - you owe me 100 gold coins. I'm going to tell the ghosts what you're doing."
+          },
+          {
+            "type": "line",
+            "speaker": "Robin",
+            "text": "Please don't do that!!! They will suck the life from my bones!!!"
+          },
+          {
+            "player": "How about you signing my longbow then?"
+          },
+          {
+            "type": "line",
+            "speaker": "Robin",
+            "text": "Yes, anything!!!"
+          },
+          {
+            "type": "message",
+            "text": "Robin signs the oak longbow for you.",
+            "id": "pX0ymv"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a Signed oak bow",
+            "id": "YWXokZ"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "u4Yl8o"
+      }
+    ],
+    "jump-2379dfc142d531b7": [
+      {
+        "player": "No, you didn't pay up the last time you lost."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5f67b8d82b525bb8": [
+      {
+        "type": "line",
+        "speaker": "Robin",
+        "text": "Do you want another game of Runedraw?"
+      },
+      {
+        "player": "No!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

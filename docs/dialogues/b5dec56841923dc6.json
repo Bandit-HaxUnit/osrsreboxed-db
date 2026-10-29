@@ -83,10 +83,54 @@
             ]
           },
           {
-            "text": "Do you have anything to trade?"
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "player": "Do you have anything to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Only knowledge."
+              },
+              {
+                "player": "How much do you want for that then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "No, sorry, that was just my little joke. I'm not the trading type."
+              },
+              {
+                "player": "Ah well."
+              }
+            ]
           },
           {
-            "text": "What do you do?"
+            "text": "What do you do?",
+            "steps": [
+              {
+                "player": "What do you do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "I am the palace librarian."
+              },
+              {
+                "player": "Ah. That's why you're in the library then."
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Yes."
+              },
+              {
+                "type": "line",
+                "speaker": "Reldo",
+                "text": "Although I would probably be in here even if I didn't work here. I like reading. Someday I hope to catalogue all of the information stored in these books so all may read it."
+              }
+            ]
           }
         ]
       }
@@ -135,16 +179,101 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Charlie the Tramp",
+                "text": "Charles. Charles E. Trampin' at your service. Now, about that change you were going to give me..."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Kfx_xM"
+              }
+            ]
           },
           {
-            "text": "Sorry, I haven't got any."
+            "text": "Sorry, I haven't got any.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mDlx17"
+              }
+            ]
           },
           {
-            "text": "Go get a job!"
+            "text": "Go get a job!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "BRZRuQ"
+              }
+            ]
           },
           {
-            "text": "Ok. Here you go."
+            "text": "Ok. Here you go.",
+            "steps": [
+              {
+                "player": "Ok. Here you go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Player gives Charlie 1 coin.)",
+                    "id": "SPAjYU"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Hey, thanks a lot!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No problem.",
+                        "steps": [
+                          {
+                            "player": "No problem."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Don't I get some sort of quest hint or something now?",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7KuZxK"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Vd68yh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1to67U"
+                  }
+                ],
+                "id": "jyd1Up"
+              }
+            ]
           },
           {
             "text": "Is there anything down this alleyway?",
@@ -406,9 +535,14 @@
                                         "text": "... How unusual. Someone honest wanting to join a gang of thieves. Excuse me if I remain unconvinced."
                                       },
                                       {
-                                        "type": "action",
-                                        "text": "Continues from \"Thinking about it... I may have a solution actually.\"",
-                                        "id": "FHHA0t"
+                                        "type": "jump",
+                                        "id": "FHHA0t",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-484bd39b03f7c008"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -473,9 +607,14 @@
                         "text": "So now you've found us, what do you want?"
                       },
                       {
-                        "type": "action",
-                        "text": "Continues after \"Yes, I can understand that. So what do you want with us?\"",
-                        "id": "XVRupm"
+                        "type": "jump",
+                        "id": "XVRupm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4eda1f8c733f8c4e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -509,9 +648,14 @@
                         "text": "Is there anything else you want to tell me?"
                       },
                       {
-                        "type": "action",
-                        "text": "Continues after \"Yes, I can understand that. So what do you want with us?\"",
-                        "id": "s3Hfrn"
+                        "type": "jump",
+                        "id": "s3Hfrn",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4eda1f8c733f8c4e"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -565,13 +709,83 @@
         "type": "choice",
         "options": [
           {
-            "text": "Sorry, I haven't got any."
+            "text": "Sorry, I haven't got any.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mDlx17"
+              }
+            ]
           },
           {
-            "text": "Go get a job!"
+            "text": "Go get a job!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "BRZRuQ"
+              }
+            ]
           },
           {
-            "text": "Ok. Here you go."
+            "text": "Ok. Here you go.",
+            "steps": [
+              {
+                "player": "Ok. Here you go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Player gives Charlie 1 coin.)",
+                    "id": "SPAjYU"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Hey, thanks a lot!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No problem.",
+                        "steps": [
+                          {
+                            "player": "No problem."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Don't I get some sort of quest hint or something now?",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "7KuZxK"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Vd68yh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1to67U"
+                  }
+                ],
+                "id": "jyd1Up"
+              }
+            ]
           },
           {
             "text": "Any idea where the Phoenix gang hideout is?",
@@ -750,9 +964,14 @@
                                         "player": "So where is the hideout then?"
                                       },
                                       {
-                                        "type": "action",
-                                        "text": "Continues above from \"Now listen closely\"",
-                                        "id": "ruwwlt"
+                                        "type": "jump",
+                                        "id": "ruwwlt",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-7274c1bf2ed3dc39"
+                                          }
+                                        ]
                                       }
                                     ],
                                     "id": "RtUboS"
@@ -1271,9 +1490,14 @@
     ],
     "phoenix-gang-attempting-to-enter-the-phoenix-gang-hideout-before-joining": [
       {
-        "type": "action",
-        "text": "Continues above from \"Hey! You can't go in there.\"",
-        "id": "Ql87he"
+        "type": "jump",
+        "id": "Ql87he",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-55f4117d5fb0221a"
+          }
+        ]
       }
     ],
     "phoenix-gang-talking-to-straven-after-accepting-his-task": [
@@ -1837,6 +2061,543 @@
     ]
   },
   "branches": {
+    "jump-484bd39b03f7c008": [
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "Thinking about it... I may have a solution actually."
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "Our rival gang - the Phoenix Gang - has a weapons stash a little east of here."
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "We're fresh out of crossbows, so if you could steal a couple of crossbows for us it would be very much appreciated."
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "Then I'll be happy to call you a Black Arm."
+      },
+      {
+        "player": "Sounds simple enough. Any particular reason you need two of them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "I have an idea for framing a local merchant who is refusing to pay our, very reasonable, 'keep-your-life-pleasant' insurance rates. I need two phoenix crossbows; one to kill somebody important with and the other to"
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "hide in the merchant's house where the local law can find it! When they find it, they'll suspect him of murdering the target for the Phoenix Gang and, hopefully, arrest the whole gang! Leaving us as the only"
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "thieves gang in Varrock! Brilliant, eh?"
+      },
+      {
+        "player": "Yeah, brilliant. So who are you planning to murder?"
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "I haven't decided yet, but it'll need to be somebody important. Say, why are you being so nosey? You aren't with the law are you?"
+      },
+      {
+        "player": "No, no! Just curious."
+      },
+      {
+        "type": "line",
+        "speaker": "Katrine",
+        "text": "You'd better just keep your mouth shut about this plan, or I'll make sure it stays shut for you. Now, are you going to go get those crossbows or not?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ok, no problem.",
+            "steps": [
+              {
+                "player": "Ok, no problem."
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "Great! You'll find the Phoenix gang's weapon stash just next to a temple, due east of here."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Sounds a little tricky. Got anything easier?",
+            "steps": [
+              {
+                "player": "Sounds a little tricky..."
+              },
+              {
+                "player": "Got anything easier?"
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "If you're not up to a little bit of danger I don't think you've got anything to offer our gang."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4eda1f8c733f8c4e": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I want to become a member of your gang.",
+            "steps": [
+              {
+                "player": "I want to become a member of your gang."
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "How unusual."
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "Normally we recruit for our gang by watching local thugs and thieves in action. People don't normally waltz in here saying 'hello, can I play'."
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "How can I be sure you can be trusted?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Well, you can give me a try can't you?",
+                    "steps": [
+                      {
+                        "player": "Well, you can give me a try can't you?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "I'm not so sure."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "Thinking about it... I may have a solution actually."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "Our rival gang - the Phoenix Gang - has a weapons stash a little east of here."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "We're fresh out of crossbows, so if you could steal a couple of crossbows for us it would be very much appreciated."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "Then I'll be happy to call you a Black Arm."
+                      },
+                      {
+                        "player": "Sounds simple enough. Any particular reason you need two of them?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "I have an idea for framing a local merchant who is refusing to pay our, very reasonable, 'keep-your-life-pleasant' insurance rates. I need two phoenix crossbows; one to kill somebody important with and the other to"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "hide in the merchant's house where the local law can find it! When they find it, they'll suspect him of murdering the target for the Phoenix Gang and, hopefully, arrest the whole gang! Leaving us as the only"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "thieves gang in Varrock! Brilliant, eh?"
+                      },
+                      {
+                        "player": "Yeah, brilliant. So who are you planning to murder?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "I haven't decided yet, but it'll need to be somebody important. Say, why are you being so nosey? You aren't with the law are you?"
+                      },
+                      {
+                        "player": "No, no! Just curious."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "You'd better just keep your mouth shut about this plan, or I'll make sure it stays shut for you. Now, are you going to go get those crossbows or not?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Ok, no problem.",
+                            "steps": [
+                              {
+                                "player": "Ok, no problem."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Katrine",
+                                "text": "Great! You'll find the Phoenix gang's weapon stash just next to a temple, due east of here."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Sounds a little tricky. Got anything easier?",
+                            "steps": [
+                              {
+                                "player": "Sounds a little tricky..."
+                              },
+                              {
+                                "player": "Got anything easier?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Katrine",
+                                "text": "If you're not up to a little bit of danger I don't think you've got anything to offer our gang."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Well, people tell me I have an honest face.",
+                    "steps": [
+                      {
+                        "player": "Well, people tell me I have an honest face!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Katrine",
+                        "text": "... How unusual. Someone honest wanting to join a gang of thieves. Excuse me if I remain unconvinced."
+                      },
+                      {
+                        "type": "jump",
+                        "id": "FHHA0t",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-484bd39b03f7c008"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I want some hints for becoming a thief.",
+            "steps": [
+              {
+                "player": "I want some hints for becoming a thief."
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "Well, I'm sorry luv, I'm not giving away any of my secrets."
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "Not to people who ain't Black Arm members anyway."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I'm looking for the door out of here.",
+            "steps": [
+              {
+                "player": "I'm looking for the door out of here."
+              },
+              {
+                "type": "message",
+                "text": "Katrine groans.",
+                "id": "r2SpLk"
+              },
+              {
+                "type": "line",
+                "speaker": "Katrine",
+                "text": "Try...the one you just came in?"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7274c1bf2ed3dc39": [
+      {
+        "type": "line",
+        "speaker": "Charlie the Tramp",
+        "text": "Now listen closely; to get to the Phoenix hideout, walk south from here and take the first road to the east. It's the one with the Blue moon pub on the corner. Take the first alley leading south off of that road and you'll"
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the Tramp",
+        "text": "find the hideout at the end of that alley. It's called the VTAM corporation."
+      },
+      {
+        "player": "VTAM, got it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-55f4117d5fb0221a": [
+      {
+        "type": "line",
+        "speaker": "Straven",
+        "text": "Hey! You can't go in there. Only authorised personnel of the VTAM Corporation are allowed beyond this point."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I know who you are!",
+            "steps": [
+              {
+                "player": "I know who you are!"
+              },
+              {
+                "type": "line",
+                "speaker": "Straven",
+                "text": "Really."
+              },
+              {
+                "type": "line",
+                "speaker": "Straven",
+                "text": "Well?"
+              },
+              {
+                "type": "line",
+                "speaker": "Straven",
+                "text": "Who are we then?"
+              },
+              {
+                "player": "This is the headquarters of the Phoenix Gang, the most powerful crime syndicate this city has ever seen!"
+              },
+              {
+                "type": "line",
+                "speaker": "Straven",
+                "text": "No, this is a legitimate business run by legitimate businessmen."
+              },
+              {
+                "type": "line",
+                "speaker": "Straven",
+                "text": "Supposing we were this crime gang however, what would you want with us?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to offer you my services.",
+                    "steps": [
+                      {
+                        "player": "I'd like to offer you my services."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "You mean you'd like to join the Phoenix Gang?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "Well, obviously I can't speak for them, but the Phoenix Gang doesn't let people join just like that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "You can't be too careful, you understand."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "Generally someone has to prove their loyalty before they can join."
+                      },
+                      {
+                        "player": "How would I go about doing that?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "Obviously, I would have no idea about that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "Although having said that, a rival gang of ours, er, theirs, called the Black Arm Gang is supposedly meeting a contact from Port Sarim today in the Blue Moon Inn."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "The Blue Moon Inn is just by the south entrance to this city, and supposedly the name of the contact is Jonny the Beard."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "OBVIOUSLY I know NOTHING about the dealings of the Phoenix Gang, but I bet if SOMEBODY were to kill him and bring back his intelligence report, they would be considered loyal enough to join."
+                      },
+                      {
+                        "player": "Ok, I'll get right on it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I want nothing. I was just making sure you were them.",
+                    "steps": [
+                      {
+                        "player": "I want nothing. I was just making sure you were them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "Well, then get lost and stop wasting my time."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Straven",
+                        "text": "...if you know what's good for you."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I get a job with the VTAM corporation?",
+            "steps": [
+              {
+                "player": "How do I get a job with the VTAM corporation?"
+              },
+              {
+                "type": "line",
+                "speaker": "Straven",
+                "text": "Get a copy of the Varrock Herald. If we have any positions right now, they'll be advertised in there."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Why not?",
+            "steps": [
+              {
+                "player": "Why not?"
+              },
+              {
+                "type": "line",
+                "speaker": "Straven",
+                "text": "Sorry. That's classified information."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "mDlx17": [
+      {
+        "player": "Sorry, I haven't got any."
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the Tramp",
+        "text": "Thanks anyway."
+      }
+    ],
+    "BRZRuQ": [
+      {
+        "player": "Go get a job!"
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the Tramp",
+        "text": "You startin? I hope your nose falls off!"
+      }
+    ],
+    "7KuZxK": [
+      {
+        "player": "So...don't I get some sort of quest hint or something now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the Tramp",
+        "text": "Huh? What do you mean? That wasn't why I asked you for money."
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the Tramp",
+        "text": "I just need to eat..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "1to67U": [
+      {
+        "player": "Oh wait. I haven't got any, sorry."
+      },
+      {
+        "type": "line",
+        "speaker": "Charlie the Tramp",
+        "text": "Thanks anyway."
+      }
+    ],
     "aYKnzv": [
       {
         "player": "Oh wait. I haven't got enough, sorry."

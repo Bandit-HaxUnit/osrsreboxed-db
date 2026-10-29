@@ -127,8 +127,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XrHQp4"
+                "id": "XrHQp4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7b79ce6512f9770f"
+                  }
+                ]
               }
             ]
           },
@@ -137,8 +142,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "V8xbfI"
+                "id": "V8xbfI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-86e75757a53db604"
+                  }
+                ]
               }
             ]
           },
@@ -147,8 +157,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rrFM_L"
+                "id": "rrFM_L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4d519922a2544cc9"
+                  }
+                ]
               }
             ]
           },
@@ -157,12 +172,105 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_n5dmj"
+                "id": "_n5dmj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-15d18db21e7081b6"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-7b79ce6512f9770f": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "npc": "I am Kandur Hosidius and I am the lord of Hosidius, the city of farmers and chefs. I live here with my wife, Elena, and my two sons, Artur and Pandur."
+      },
+      {
+        "npc": "My family and I have a peaceful existence here. That's mainly because I care not for the politics of the other houses. I instead devote my time to more meaningful pursuits."
+      },
+      {
+        "player": "Such as?"
+      },
+      {
+        "npc": "Ensuring that Kourend is well fed. We may live in gentle times now but who knows how long it will be that way. Sooner or later another war or long winter will hit us. History has proven that."
+      },
+      {
+        "npc": "Anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "wPRzWD"
+      }
+    ],
+    "jump-86e75757a53db604": [
+      {
+        "player": "Tell me about Hosidius."
+      },
+      {
+        "npc": "Hosidius is home to the farmers and chefs of Kourend. We are the main food supplier to the kingdom and we ensure that her people are fed."
+      },
+      {
+        "npc": "We also own more land than the other Kourend houses. We need the extra space for all of our crops."
+      },
+      {
+        "player": "Do the other houses not get annoyed at how much land you have?"
+      },
+      {
+        "npc": "Sometimes. They know it is necessary though. There was once a time when the land was shared equally. But then the great famine came, and Kourend did not have the food to last through it."
+      },
+      {
+        "npc": "After that, more space was given to Hosidius. We've had the most land ever since."
+      },
+      {
+        "npc": "Anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "e79NUY"
+      }
+    ],
+    "jump-4d519922a2544cc9": [
+      {
+        "player": "Tell me about your plans."
+      },
+      {
+        "npc": "Plans? My only plan is to keep providing food to this kingdom."
+      },
+      {
+        "player": "But what of the Royal Accord of Twill? You must have kept it for a reason."
+      },
+      {
+        "npc": "I did. The Accord has the potential to be a powerful weapon, for words cut deeper than a blade ever can. However, I have no need to use this weapon, not unless the other houses give me reason to."
+      },
+      {
+        "npc": "Anything else I can help you with?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "DwVKta"
+      }
+    ],
+    "jump-15d18db21e7081b6": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "npc": "Until next time."
+      },
+      {
+        "type": "end"
       }
     ]
   }

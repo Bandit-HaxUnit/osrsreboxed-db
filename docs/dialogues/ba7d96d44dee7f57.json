@@ -1,4 +1,28 @@
 {
+  "branches": {
+    "jump-7814c5e27dbdc88a": [
+      {
+        "player": "What are you serving?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The Golden Field",
+        "id": "Al0kvM"
+      }
+    ],
+    "jump-78fbb38773c55e90": [
+      {
+        "player": "I'd better not."
+      },
+      {
+        "npc": "I like a customer who knows when to stop."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What can I get you?"
@@ -37,8 +61,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "3dCXCu"
+                      "id": "3dCXCu",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7814c5e27dbdc88a"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -47,8 +76,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "hH2rgg"
+                      "id": "hH2rgg",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-78fbb38773c55e90"
+                        }
+                      ]
                     }
                   ]
                 }

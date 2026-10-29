@@ -100,8 +100,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "eUh--M"
+                        "id": "eUh--M",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-69090645a077db76"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -210,8 +215,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "_4SlDC"
+                        "id": "_4SlDC",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4152ae71ce4b9756"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -407,6 +417,35 @@
           }
         ],
         "id": "lh1c5j"
+      }
+    ]
+  },
+  "branches": {
+    "jump-69090645a077db76": [
+      {
+        "player": "What is the Achievement Diary?"
+      },
+      {
+        "npc": "It's a diary that helps you keep track of particular achievements. In and around Ardougne it can help you discover some quite useful things. Eventually, with enough exploration, the inhabitants will reward you."
+      },
+      {
+        "npc": "You can see the list of tasks on the side-panel."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "fpYcio"
+      }
+    ],
+    "jump-4152ae71ce4b9756": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you later!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

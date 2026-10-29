@@ -219,8 +219,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "7g2FcP"
+                        "id": "7g2FcP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b7982a71ac94fad8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -267,8 +272,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "clPhMe"
+                        "id": "clPhMe",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b7982a71ac94fad8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -753,6 +763,34 @@
     ]
   },
   "branches": {
+    "jump-b7982a71ac94fad8": [
+      {
+        "type": "line",
+        "speaker": "Prison Pete",
+        "text": "Oh. Well I guess you can leave but I'll still be stuck here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "flWU9-": [
       {
         "type": "line",

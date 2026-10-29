@@ -67,8 +67,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "7fc6ww"
+                        "id": "7fc6ww",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f90ccacbbcd3874d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -176,8 +181,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "A7G4tE"
+                            "id": "A7G4tE",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-5fe1716173ed32a4"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -213,6 +223,27 @@
       },
       {
         "npc": "Guards, catch that thief!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f90ccacbbcd3874d": [
+      {
+        "npc": "Take care, straight shooting."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5fe1716173ed32a4": [
+      {
+        "player": "Thanks for telling me. Bye!"
+      },
+      {
+        "npc": "Take care, straight shooting."
+      },
+      {
+        "type": "end"
       }
     ]
   }

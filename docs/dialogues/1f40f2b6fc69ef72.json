@@ -117,8 +117,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "RnulOF"
+                                "id": "RnulOF",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-22d6d9bbedf65d9b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -127,8 +132,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "RBvDpm"
+                                "id": "RBvDpm",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f6afda482dcff4a3"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -137,8 +147,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "E_Z-9v"
+                                "id": "E_Z-9v",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-30f3d47bc3376128"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -202,8 +217,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "sjm4gM"
+                                "id": "sjm4gM",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-22d6d9bbedf65d9b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -212,8 +232,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "urS5wX"
+                                "id": "urS5wX",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f6afda482dcff4a3"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -222,8 +247,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "3g3bAx"
+                                "id": "3g3bAx",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-30f3d47bc3376128"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -314,8 +344,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "BTAEuI"
+                                "id": "BTAEuI",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-22d6d9bbedf65d9b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -324,8 +359,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "yLLilq"
+                                "id": "yLLilq",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f6afda482dcff4a3"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -363,6 +403,328 @@
     ]
   },
   "branches": {
+    "jump-22d6d9bbedf65d9b": [
+      {
+        "npc": "It will cost you 5,000 coins to make that for you. Is that acceptable?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "YES",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the required materials:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "5Qy4xc"
+                  }
+                ],
+                "id": "FOu7Zo"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required materials:",
+                "steps": [
+                  {
+                    "npc": "Sorry, [Fremennik name]. I will need 1 piece of dark dagger-mouth hide, 1 circular light dagger-mouth hide and 5,000 coins to make you a hunter's helmet."
+                  },
+                  {
+                    "npc": "When you have them, I will still be here."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "e7OKLw"
+              }
+            ]
+          },
+          {
+            "text": "NO",
+            "steps": [
+              {
+                "npc": "That is fine, [Fremennik name]. What type of armour were you looking for?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "A fine helm",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "RnulOF",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-22d6d9bbedf65d9b"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sturdy bodyarmour",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "RBvDpm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f6afda482dcff4a3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Powerful leg armour",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "E_Z-9v",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-30f3d47bc3376128"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f6afda482dcff4a3": [
+      {
+        "npc": "It will cost you 10,000 coins to make that for you. Is that acceptable?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "YES",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the required materials:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "3TYX6K"
+                  }
+                ],
+                "id": "ieBJwJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required materials:",
+                "steps": [
+                  {
+                    "npc": "I'm sorry, but I need 3 pieces of dark dagger-mouth hide, 1 flattened hide and 10,000 coins to make you some hunter's body armour."
+                  },
+                  {
+                    "npc": "I will still be here when you have obtained it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QsLowb"
+              }
+            ]
+          },
+          {
+            "text": "NO",
+            "steps": [
+              {
+                "npc": "That is fine, [Fremennik name]. What type of armour were you looking for?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "A fine helm",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "sjm4gM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-22d6d9bbedf65d9b"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sturdy bodyarmour",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "urS5wX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f6afda482dcff4a3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Powerful leg armour",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "3g3bAx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-30f3d47bc3376128"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-30f3d47bc3376128": [
+      {
+        "npc": "It will cost you 7,500 coins to make that for you. Is that acceptable?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "YES",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the required materials:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "spined chaps",
+                    "id": "px_MMm"
+                  },
+                  {
+                    "npc": "That should do for any hunter! Did you want another set of hunters legs?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "YES",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "cILerI"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "NO",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "hsDiht"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "aWyf1U"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required materials:",
+                "steps": [
+                  {
+                    "npc": "My apologies but I will need 2 pieces of dark dagger-mouth hide, 1 stretched hide and 7,500 coins to make you some leg armour..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "L_N7LG"
+              }
+            ]
+          },
+          {
+            "text": "NO",
+            "steps": [
+              {
+                "npc": "That is fine, [Fremennik name]. What type of armour were you looking for?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "A fine helm",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "BTAEuI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-22d6d9bbedf65d9b"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sturdy bodyarmour",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "yLLilq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f6afda482dcff4a3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Powerful leg armour",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "lWLY3F"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "xqb-P0": [
       {
         "npc": "I do not speak to outerlanders. If you have anything of import to say, go and speak to the Chieftain."

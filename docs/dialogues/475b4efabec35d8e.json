@@ -124,8 +124,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "-o5yYX"
+                    "id": "-o5yYX",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-11423cc872b8d993"
+                      }
+                    ]
                   }
                 ]
               }
@@ -157,6 +162,37 @@
       },
       {
         "player": "... you're welcome."
+      }
+    ]
+  },
+  "branches": {
+    "jump-11423cc872b8d993": [
+      {
+        "type": "line",
+        "speaker": "Burntmeat",
+        "text": "No more burnt meat from Burntmeat, ever. Wolfbone here has made reward for you instead."
+      },
+      {
+        "npc": "Yes, I have learnt a lot here from my friend Burntmeat, and he has let me prepare a reward for you myself."
+      },
+      {
+        "type": "message",
+        "text": "As you no longer wish to receive burnt meat from Burntmeat, Wolfbone presents you with a reward instead.",
+        "id": "YfSrgY"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a full inventory of burnt meat",
+        "id": "BFYl2Z"
+      },
+      {
+        "type": "message",
+        "text": "You hear a suspicious munching sound from the direction of Burntmeat.",
+        "id": "3z8CzF"
+      },
+      {
+        "type": "end"
       }
     ]
   }

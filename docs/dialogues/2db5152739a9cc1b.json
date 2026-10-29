@@ -1,4 +1,88 @@
 {
+  "branches": {
+    "jump-56afceb30ee83f23": [
+      {
+        "player": "What's wrong with that old man?"
+      },
+      {
+        "npc": "He's not looking great, is he? We fear he is a victim of the Sleeper Plague."
+      },
+      {
+        "player": "Sleeper Plague?"
+      },
+      {
+        "npc": "Many years ago, this village was beset by a terrible plague. Those infected fell into a deep sleep, never to wake. Now we fear the plague has returned."
+      },
+      {
+        "player": "Do you any theories on why it's come back?"
+      },
+      {
+        "npc": "Well, there's the strange man being accused out in the centre, but personally I think he's innocent."
+      },
+      {
+        "player": "Hmm, so how long has the old man been asleep?"
+      },
+      {
+        "npc": "Oh, I can't recall exactly, but at least a few weeks. He has spoken a few times though, in his sleep."
+      },
+      {
+        "player": "What did he say?"
+      },
+      {
+        "npc": "It was nonsense, but I recall the words 'Inyetat' and 'Coshmar', whatever those means."
+      },
+      {
+        "player": "How peculiar."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "9wKX4w"
+      }
+    ],
+    "jump-6255b1bc520b79b8": [
+      {
+        "player": "How are things with the Sleeper Plague?"
+      },
+      {
+        "npc": "The one responsible was found out and executed. We haven't had any new cases since."
+      },
+      {
+        "player": "I see... And what of those still ill?"
+      },
+      {
+        "npc": "Well now that the cause has been dealt with, we can focus more heavily on a cure."
+      },
+      {
+        "player": "And how long will that take?"
+      },
+      {
+        "npc": "Well that depends..."
+      },
+      {
+        "player": "On what?"
+      },
+      {
+        "npc": "On how things progress... down below."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "vKKUHg"
+      }
+    ],
+    "jump-235cc05a44ca91f3": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "Be safe, traveller."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello!"
@@ -91,8 +175,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "wi0b29"
+                      "id": "wi0b29",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-56afceb30ee83f23"
+                        }
+                      ]
                     }
                   ],
                   "id": "KjbOE1"
@@ -103,8 +192,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "sqktXM"
+                      "id": "sqktXM",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-6255b1bc520b79b8"
+                        }
+                      ]
                     }
                   ],
                   "id": "w6txGE"
@@ -114,8 +208,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "oUuTLr"
+                      "id": "oUuTLr",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-235cc05a44ca91f3"
+                        }
+                      ]
                     }
                   ]
                 }

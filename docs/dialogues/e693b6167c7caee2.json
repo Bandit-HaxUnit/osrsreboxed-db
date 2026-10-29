@@ -93,7 +93,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "7ex_jj"
+                        "id": "7ex_jj",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cbf219b160a7395c"
+                          }
+                        ]
                       }
                     ],
                     "id": "xPEYQM"
@@ -113,7 +119,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "t90fiY"
+                        "id": "t90fiY",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cbf219b160a7395c"
+                          }
+                        ]
                       }
                     ],
                     "id": "tBYyJ2"
@@ -133,7 +145,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "oXAc_6"
+                        "id": "oXAc_6",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cbf219b160a7395c"
+                          }
+                        ]
                       }
                     ],
                     "id": "lIW7ri"
@@ -153,7 +171,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "ZZJt4a"
+                        "id": "ZZJt4a",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cbf219b160a7395c"
+                          }
+                        ]
                       }
                     ],
                     "id": "n-wLhD"
@@ -528,8 +552,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "33mwEX"
+                "id": "33mwEX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d7d66d881bad7ddd"
+                  }
+                ]
               }
             ]
           },
@@ -538,8 +567,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sagJKZ"
+                "id": "sagJKZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-48b4c55dd086256d"
+                  }
+                ]
               }
             ]
           },
@@ -548,8 +582,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "svPLzm"
+                "id": "svPLzm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-32155d9d4649568c"
+                  }
+                ]
               }
             ]
           }
@@ -559,6 +598,343 @@
     "via-the-astral-contact-spell-if-the-player-is-near-mortimer": [
       {
         "npc": "I may be a skeleton, but I still have feelings! Come talk to me face to... face."
+      }
+    ]
+  },
+  "branches": {
+    "jump-cbf219b160a7395c": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Look at rewards.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Slayer Rewards",
+                "id": "nUSl5Z"
+              }
+            ]
+          },
+          {
+            "text": "Look at shop.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Slayer Equipment (shop)",
+                "id": "Uupd6K"
+              }
+            ]
+          },
+          {
+            "text": "Cancel.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-d7d66d881bad7ddd": [
+      {
+        "player": "I need another assignment."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have an assignment yet:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Slayer Task Choice",
+            "id": "HixcVe"
+          },
+          {
+            "type": "condition",
+            "text": "If the task selected has a quantity modifier:",
+            "steps": [
+              {
+                "id": "mMigo6",
+                "type": "action",
+                "action": "slayer_assignment",
+                "target": "Mortimer",
+                "text": "Your new task is to kill [amount] [task monster].",
+                "action_source": "text"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "7ex_jj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cbf219b160a7395c"
+                  }
+                ]
+              }
+            ],
+            "id": "xPEYQM"
+          },
+          {
+            "type": "condition",
+            "text": "If the task selected has a Slayer Point modifier:",
+            "steps": [
+              {
+                "id": "QZN2GT",
+                "type": "action",
+                "action": "slayer_assignment",
+                "target": "Mortimer",
+                "text": "Your new task is to kill [amount] [task monster]. Completing this task will award [number] bonus Slayer Points.",
+                "action_source": "text"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "t90fiY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cbf219b160a7395c"
+                  }
+                ]
+              }
+            ],
+            "id": "tBYyJ2"
+          },
+          {
+            "type": "condition",
+            "text": "If the task selected has a clue scroll modifier:",
+            "steps": [
+              {
+                "id": "W79L0f",
+                "type": "action",
+                "action": "slayer_assignment",
+                "target": "Mortimer",
+                "text": "Your new task is to kill [amount] [task monster]. Creatures on this task will have an increased chance to award clue scrolls.",
+                "action_source": "text"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "oXAc_6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cbf219b160a7395c"
+                  }
+                ]
+              }
+            ],
+            "id": "lIW7ri"
+          },
+          {
+            "type": "condition",
+            "text": "If the task selected has a superior unique chance modifier:",
+            "steps": [
+              {
+                "id": "e9dQ64",
+                "type": "action",
+                "action": "slayer_assignment",
+                "target": "Mortimer",
+                "text": "Your new task is to kill [amount] [task monster]. Superior creatures on this task will have a higher chance of awarding their unique loot.",
+                "action_source": "text"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "ZZJt4a",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cbf219b160a7395c"
+                  }
+                ]
+              }
+            ],
+            "id": "n-wLhD"
+          },
+          {
+            "type": "condition",
+            "text": "If the task selected has a Slayer experience modifier:",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "gG-7Z-"
+              }
+            ],
+            "id": "FgeoRA"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Got any tips for me?",
+                "steps": [
+                  {
+                    "player": "Got any tips for me?"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Mortimer provides the corresponding Slayer task tip.",
+                    "id": "_jZ32P",
+                    "action": "slayer_task_tip",
+                    "target": "Mortimer",
+                    "action_source": "text"
+                  },
+                  {
+                    "player": "Great, thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Can I cancel that task? (100 Points)",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "bp3m7p"
+                  }
+                ]
+              },
+              {
+                "text": "Okay, great!",
+                "steps": [
+                  {
+                    "player": "Okay, great!"
+                  },
+                  {
+                    "npc": "Good luck! Don't forget to come back when you need a new assignment."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "2qCF4z"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has an assignment:",
+        "steps": [
+          {
+            "npc": "You're still hunting [monster]; you have [amount] to go. Come back when you've finished your task."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "n16SZG"
+      }
+    ],
+    "jump-48b4c55dd086256d": [
+      {
+        "type": "condition",
+        "text": "If the player has disabled combat checking:",
+        "steps": [
+          {
+            "player": "Let's talk about the difficulty of my assignments."
+          },
+          {
+            "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I can handle any task.",
+                "steps": [
+                  {
+                    "player": "That's fine - I can handle any task."
+                  },
+                  {
+                    "npc": "That's the spirit."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "In future, please don't give anything too tough.",
+                "steps": [
+                  {
+                    "player": "In future, please don't give anything too tough."
+                  },
+                  {
+                    "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "73IH_0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enabled combat checking:",
+        "steps": [
+          {
+            "player": "Let's talk about the difficulty of my assignments."
+          },
+          {
+            "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That's fine - I don't want anything too tough.",
+                "steps": [
+                  {
+                    "player": "That's fine - I don't want anything too tough."
+                  },
+                  {
+                    "npc": "Okay, we'll keep checking your combat level."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Stop checking my combat level - I can take anything!",
+                "steps": [
+                  {
+                    "player": "Stop checking my combat level - I can take anything!"
+                  },
+                  {
+                    "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "TK0nPO"
+      }
+    ],
+    "jump-32155d9d4649568c": [
+      {
+        "player": "Er... Nothing..."
+      },
+      {
+        "type": "end"
       }
     ]
   }

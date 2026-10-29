@@ -77,8 +77,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Ri8nZm"
+                        "id": "Ri8nZm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6c0fd86063b6bdf2"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -139,6 +144,16 @@
       },
       {
         "npc": "Good luck out there. Don't be a stranger."
+      }
+    ]
+  },
+  "branches": {
+    "jump-6c0fd86063b6bdf2": [
+      {
+        "player": "Goodbye."
+      },
+      {
+        "type": "end"
       }
     ]
   }

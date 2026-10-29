@@ -556,8 +556,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "RkdQ9G"
+        "id": "RkdQ9G",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-old-coin": [
@@ -566,8 +571,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "eNU8DH"
+        "id": "eNU8DH",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-ancient-coin": [
@@ -576,8 +586,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "UPFzTQ"
+        "id": "UPFzTQ",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-ancient-symbol": [
@@ -586,8 +601,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "0dr6sk"
+        "id": "0dr6sk",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-old-symbol": [
@@ -596,8 +616,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "NaTyrk"
+        "id": "NaTyrk",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-arrowheads": [
@@ -606,8 +631,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "db0RF1"
+        "id": "db0RF1",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-jewellery": [
@@ -616,8 +646,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "738j0K"
+        "id": "738j0K",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-old-chipped-vase": [
@@ -626,8 +661,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "sOWtvZ"
+        "id": "sOWtvZ",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "QM58jl"
+          }
+        ]
       }
     ],
     "using-items-on-marius-giste-any-other-item": [
@@ -636,6 +676,30 @@
       },
       {
         "npc": "Thank you, but I don't need that"
+      }
+    ]
+  },
+  "branches": {
+    "jump-13efb5b2235de065": [
+      {
+        "player": "I found these old necklaces."
+      },
+      {
+        "npc": "An interesting find... Here, let me offer you something in return."
+      },
+      {
+        "player": "Oh! Okay."
+      },
+      {
+        "type": "message",
+        "text": "The archaeologist gives you [5x] coins... must have been worth a lot in his day!",
+        "id": "oyQ3jh"
+      }
+    ],
+    "QM58jl": [
+      {
+        "type": "call",
+        "branch": "jump-13efb5b2235de065"
       }
     ]
   }

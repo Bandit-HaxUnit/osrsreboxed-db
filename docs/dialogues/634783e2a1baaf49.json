@@ -517,8 +517,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ACrwal"
+                "id": "ACrwal",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1d80a0dbef6fe059"
+                  }
+                ]
               }
             ]
           },
@@ -527,8 +532,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "D5r56K"
+                "id": "D5r56K",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3f3da06ac7e0c4a6"
+                  }
+                ]
               }
             ]
           },
@@ -1476,7 +1486,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about something else.",
@@ -1620,13 +1636,30 @@
                     ]
                   },
                   {
-                    "text": "Do you know a potion to make hair fall out?"
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
                   },
                   {
-                    "text": "Have you got any good potions to give away?"
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
                   },
                   {
-                    "text": "No thanks."
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
                   }
                 ]
               }
@@ -1645,7 +1678,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about something else.",
@@ -1742,13 +1781,30 @@
                     ]
                   },
                   {
-                    "text": "Do you know a potion to make hair fall out?"
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
                   },
                   {
-                    "text": "Have you got any good potions to give away?"
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
                   },
                   {
-                    "text": "No thanks."
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
                   }
                 ]
               }
@@ -2339,6 +2395,152 @@
       {
         "type": "unavailable",
         "id": "yShqMu"
+      }
+    ]
+  },
+  "branches": {
+    "jump-1d80a0dbef6fe059": [
+      {
+        "player": "Where can I find Juliet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Why do you ask?"
+      },
+      {
+        "player": "So that I can try and find her for you!"
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Ah yes....quite right. Hmmm, let me think now."
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "She may still be locked away at her Father's house on the sest vide of Warrock."
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Oh, I remember how she loved it when I would sing up to her balcony! She would reward me with her own personal items..."
+      },
+      {
+        "player": "What, she just gave you her stuff?"
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Well, not exactly give...more like 'throw with considerable force'...she's always a kidder that Juliet!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "3tl9pt"
+      }
+    ],
+    "jump-3f3da06ac7e0c4a6": [
+      {
+        "player": "Is there anything else you can tell me about Juliet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Oh, there is so much to tell...she is my true love, we intend to spend together forever...I can tell you so much about her.."
+      },
+      {
+        "player": "Great!"
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Ermmm....."
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "So much can I tell you..."
+      },
+      {
+        "player": "Yes.."
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "So much to tell...why, where do I start!"
+      },
+      {
+        "player": "Yes..yes!  Please go on...don't let me interrupt..."
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Ermmm....."
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "..."
+      },
+      {
+        "player": "You can't remember can you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Romeo",
+        "text": "Not a thing sorry...."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "iOyT_E"
+      }
+    ],
+    "DVEzC8": [
+      {
+        "player": "Can you make potions for me?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Apothecary's Potions",
+        "id": "bc12Bc"
+      }
+    ],
+    "hOhPnp": [
+      {
+        "player": "Do you know a potion to make hair fall out?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I do indeed. I gave it to my mother. That's why I now live alone."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "But can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "_FM3_a"
+      }
+    ],
+    "E1Xr88": [
+      {
+        "player": "Have you got any good potions to give away?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Sorry, charity is not my strong point. Do you need anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "D-uQYF"
       }
     ]
   }

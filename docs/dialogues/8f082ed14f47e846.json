@@ -89,8 +89,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "eXt-pR"
+                "id": "eXt-pR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8294619047663220"
+                  }
+                ]
               }
             ]
           },
@@ -99,8 +104,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nP5u-k"
+                "id": "nP5u-k",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ce4a32d75df81c0b"
+                  }
+                ]
               }
             ]
           },
@@ -109,8 +119,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HMy4zm"
+                "id": "HMy4zm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b29e38244ddd33c4"
+                  }
+                ]
               }
             ]
           }
@@ -119,6 +134,63 @@
     ]
   },
   "branches": {
+    "jump-8294619047663220": [
+      {
+        "player": "Would you look after my coral for me?"
+      },
+      {
+        "npc": "I suppose. Which nursery were you thinking of?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "The eastern nursery.",
+            "steps": [
+              {
+                "npc": "You haven't put any frags in that nursery yet. Do so and I might agree to look after it for you."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "The western nursery.",
+            "steps": [
+              {
+                "npc": "You haven't put any frags in that nursery yet. Do so and I might agree to look after it for you."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ce4a32d75df81c0b": [
+      {
+        "player": "Can you sell me something?"
+      },
+      {
+        "npc": "That depends on whether I have it to sell. What is it that you're looking for?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Farming Supplies",
+        "id": "jzUhBk"
+      }
+    ],
+    "jump-b29e38244ddd33c4": [
+      {
+        "player": "I'll come back another time."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "Zlhi7G": [
       {
         "npc": "You haven't put any frags in that nursery yet. Do so and I might agree to look after it for you."

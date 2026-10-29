@@ -154,7 +154,7 @@
       {
         "type": "line",
         "speaker": "Brother Omad",
-        "text": "yawn*..I'm off to bed! Farewell brave traveller! {{^|Here is where he actually takes the blanket.}}"
+        "text": "yawn*..I'm off to bed! Farewell brave traveller!"
       }
     ],
     "child-s-blanket-talking-to-a-monk-after-retrieving-the-blanket": [
@@ -484,8 +484,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cWpM05"
+                "id": "cWpM05",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5e6daf648e5c0c93"
+                  }
+                ]
               }
             ]
           },
@@ -494,8 +499,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bccgik"
+                "id": "bccgik",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c1d0ec2a1ced88db"
+                  }
+                ]
               }
             ]
           }
@@ -692,6 +702,37 @@
       {
         "type": "unavailable",
         "id": "TCuJEN"
+      }
+    ]
+  },
+  "branches": {
+    "jump-5e6daf648e5c0c93": [
+      {
+        "player": "No, I've helped enough monks today!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Cedric",
+        "text": "In that case I'd better drink more wine! It helps me think."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c1d0ec2a1ced88db": [
+      {
+        "player": "Yes, I'd be happy to!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Cedric",
+        "text": "Excellent, I just need some wood. Some plain logs, or maybe a basic plank."
+      },
+      {
+        "player": "OK, I'll see what I can find."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -42,8 +42,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "CehAyw"
+                "id": "CehAyw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1378b4bf47817c03"
+                  }
+                ]
               },
               {
                 "type": "end"
@@ -55,8 +60,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "zqAFgv"
+                "id": "zqAFgv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-074dd9f5b441ca5a"
+                  }
+                ]
               }
             ]
           }
@@ -163,6 +173,27 @@
           }
         ],
         "id": "FzOmTp"
+      }
+    ]
+  },
+  "branches": {
+    "jump-1378b4bf47817c03": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I am the Lady of the Lake."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-074dd9f5b441ca5a": [
+      {
+        "player": "Good day."
+      },
+      {
+        "type": "end"
       }
     ]
   }

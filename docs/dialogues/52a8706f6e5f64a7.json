@@ -599,7 +599,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, what clothes do you have in stock?"
+            "text": "Yes, what clothes do you have in stock?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Gfg7Gw"
+              }
+            ]
           },
           {
             "text": "Yes, I'm looking for some special clothes.",
@@ -673,7 +679,12 @@
             ]
           },
           {
-            "text": "No, I'm just browsing."
+            "text": "No, I'm just browsing.",
+            "steps": [
+              {
+                "player": "No, I'm just browsing."
+              }
+            ]
           }
         ]
       }
@@ -688,7 +699,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you tell me more about the library?"
+            "text": "Can you tell me more about the library?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "w2Syui"
+              }
+            ]
           },
           {
             "text": "Do you know anything about King Alvis' clothes?",
@@ -817,7 +834,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, what clothes do you have in stock?"
+            "text": "Yes, what clothes do you have in stock?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Gfg7Gw"
+              }
+            ]
           },
           {
             "text": "Yes, about those special clothes again...",
@@ -912,7 +935,12 @@
             ]
           },
           {
-            "text": "No, I'm just browsing."
+            "text": "No, I'm just browsing.",
+            "steps": [
+              {
+                "player": "No, I'm just browsing."
+              }
+            ]
           }
         ]
       }
@@ -970,7 +998,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, what clothes do you have in stock?"
+            "text": "Yes, what clothes do you have in stock?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Gfg7Gw"
+              }
+            ]
           },
           {
             "text": "Yes, about those special clothes again...",
@@ -1123,7 +1157,12 @@
             ]
           },
           {
-            "text": "No, I'm just browsing."
+            "text": "No, I'm just browsing.",
+            "steps": [
+              {
+                "player": "No, I'm just browsing."
+              }
+            ]
           }
         ]
       }
@@ -1150,7 +1189,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, I'm looking for some armour."
+            "text": "Yes, I'm looking for some armour.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "hPT7nW"
+              }
+            ]
           },
           {
             "text": "Yes, I'm looking for a pair of special boots.",
@@ -1211,7 +1256,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -1226,7 +1276,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, I'm looking for some armour."
+            "text": "Yes, I'm looking for some armour.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "hPT7nW"
+              }
+            ]
           },
           {
             "text": "Yes, I'm looking for a pair of special boots.",
@@ -1245,7 +1301,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -1496,7 +1557,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, I'm looking for some weapons."
+            "text": "Yes, I'm looking for some weapons.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "52W3QZ"
+              }
+            ]
           },
           {
             "text": "Yes, I'm looking for a particular battleaxe.",
@@ -1810,7 +1877,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -1825,7 +1897,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, I'm looking for some weapons."
+            "text": "Yes, I'm looking for some weapons.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "52W3QZ"
+              }
+            ]
           },
           {
             "text": "Yes, I'm looking for a particular battleaxe.",
@@ -2002,7 +2080,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -2029,7 +2112,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you tell me more about the library?"
+            "text": "Can you tell me more about the library?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "w2Syui"
+              }
+            ]
           },
           {
             "text": "Can you help me find an Imcando dwarf?",
@@ -2447,7 +2536,22 @@
                     ]
                   },
                   {
-                    "text": "What is that cape you're wearing?"
+                    "text": "What is that cape you're wearing?",
+                    "steps": [
+                      {
+                        "player": "What is that cape you're wearing?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Thurgo",
+                        "text": "It's a Skillcape of Smithing. It shows that I'm a master blacksmith, but that's only to be expected - after all, my ancestors were the greatest blacksmiths in dwarven history."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Thurgo",
+                        "text": "If you ever achieve level 99 Smithing you'll be able to wear a cape like this, and receive more experience when smelting gold ore."
+                      }
+                    ]
                   }
                 ]
               }
@@ -3880,8 +3984,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "FRQtjM"
+                "id": "FRQtjM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-749feb8a887471f7"
+                  }
+                ]
               }
             ]
           },
@@ -4006,8 +4115,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "wbswdc"
+                    "id": "wbswdc",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-665f7e60bed5eb14"
+                      }
+                    ]
                   }
                 ],
                 "id": "eybqmz"
@@ -4019,8 +4133,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_rowLj"
+                "id": "_rowLj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-749feb8a887471f7"
+                  }
+                ]
               }
             ]
           },
@@ -4159,8 +4278,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "7V7Qw5"
+                "id": "7V7Qw5",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-749feb8a887471f7"
+                  }
+                ]
               }
             ]
           },
@@ -5286,8 +5410,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "bE7sLV"
+                                "id": "bE7sLV",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f1e2f4aa130c3b1f"
+                                  }
+                                ]
                               }
                             ],
                             "id": "8vyjs_"
@@ -5321,8 +5450,13 @@
                                   },
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "bXLJ0r"
+                                    "id": "bXLJ0r",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-472dbd3db91808e5"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -5590,6 +5724,867 @@
       {
         "type": "unavailable",
         "id": "bxRjAG"
+      }
+    ]
+  },
+  "branches": {
+    "jump-749feb8a887471f7": [
+      {
+        "player": "I need to speak to the director."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed zero or few tasks for the secretary:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "And I would grant you such a request, why?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "You need to prove yourself to the company first before such a privilege is bestowed on you."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "I don't see any reason to grant such a privilege to a lowly worker. No, first you must prove yourself."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "But I've come from Blasidar the sculptor.",
+                "steps": [
+                  {
+                    "player": "But you don't understand. I've come from Blasidar the sculptor."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Blasidar does not command the [company name]."
+                  },
+                  {
+                    "player": "But... Commander Veldaban of the Black Guard has instructed me to do this!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Nor does the Black Guard. They are under the command of the Consortium, not the other way around."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "How can I prove myself?",
+                "steps": [
+                  {
+                    "player": "How can I prove myself?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "It's all very simple. You perform some tasks for us, help us out a little when we need something done urgently, and in reward you will rise in our estimation."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "TRnN0M"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed some tasks for the secretary:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "That is not a request that I can grant you yet, [player name], even though I am impressed with you so far."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "The [company name] appreciates what you have done so far, [player name], but the director will only speak to the most loyal of followers."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "But I've come from Blasidar the sculptor.",
+                "steps": [
+                  {
+                    "player": "But you don't understand. I've come from Blasidar the sculptor."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Blasidar does not command the [company name]."
+                  },
+                  {
+                    "player": "But... Commander Veldaban of the Black Guard has instructed me to do this!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "I see. This sounds like a most serious matter, but I cannot bend the rules."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "What else must I do?",
+                "steps": [
+                  {
+                    "player": "What else must I do to prove myself?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Keep up what you're doing, [player name]! The more you help us out, the more we appreciate you!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "I'm sure the director will be happy to talk to you once the time is right."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "j33FhT"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed enough tasks for the secretary:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "[company name] Secretary",
+            "text": "Why, naturally [player name]! The director is standing right over there!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Rx8A7A"
+      }
+    ],
+    "jump-665f7e60bed5eb14": [
+      {
+        "player": "Is there anything I can help you with?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player was already assigned a task:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "[company name] Secretary",
+            "text": "Have you completed your task yet? Did you get our [number] pieces of [copper ore/tin ore/clay/iron ore/silver ore/coal/gold ore/mithril ore]?"
+          },
+          {
+            "player": "No, not yet."
+          },
+          {
+            "type": "line",
+            "speaker": "[company name] Secretary",
+            "text": "Then please, hurry up before time runs out."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "OG9Fvx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed enough tasks for the secretary:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "You should speak directly to the director."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "I'm afraid I have no more work to offer you, [player name], please speak to the director."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "5mNpjN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed zero or few tasks for the secretary:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "There's always work to be done, yes."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Just a moment."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Yes, the [company name] always has work to do!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Yes, I think we do have something for you."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 5",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Let's see... yes, yes, I do have a task for you."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 6",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "I believe we have some work available, yes."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "AlJWQd"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed some tasks for the secretary:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Oh yes, as you know the [company name] always has work!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Ah, always looking for ways to help us!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Of course, we reserve our best tasks just for you, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "The [company name] is pleased to offer more work to an eager worker such as yourself, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 5",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "I do believe we do, yes!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 6",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "I dare say we have something for you, yes."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 7",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "[company name] Secretary",
+                    "text": "Naturally, my good human, naturally!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "358NnA"
+      },
+      {
+        "type": "line",
+        "speaker": "[company name] Secretary",
+        "text": "We need [number] pieces of [copper ore/tin ore/clay/iron ore/silver ore/coal/gold ore/mithril ore] in the next [number] minutes."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'll take it.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has completed zero or few tasks for the secretary:",
+                "steps": [
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "That ore needs to go on the trade floor soon, [player name], please hurry back with it."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "I will await your return soon, then."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "The clock is ticking, please hurry back."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Thanks, it's appreciated."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 5",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "The [company name] has noted your willingness to help."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "lWcEhC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed some tasks for the secretary:",
+                "steps": [
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Excellent, I thought you'd like this!"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "You never disappoint, [player name]!"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "The [company name] appreciates the hard work you do."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Thanks! But hurry back please, we really need that ore!"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 5",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "I'm happy to hear that!"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WG1P6M"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has completed zero or few tasks for the secretary:",
+                "steps": [
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "That's unfortunate to hear."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "That does not reflect well on you."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Please, it would be appreciated if you made up your mind before you ask. I'm very busy you know."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Fair enough, maybe some other time?"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 5",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "I can't say I'm too pleased to hear that, to be honest."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 6",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "The [company name] isn't too pleased to hear that."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 7",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Please, in that case, you're wasting my time."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "waIrdt"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed some tasks for the secretary:",
+                "steps": [
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Oh. Didn't know you were the type to refuse work."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "That's a great shame, [player name]."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "I suppose you have other important business to attend to?"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "Is everything okay? I didn't think you normally refused our tasks."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 5",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "[company name] Secretary",
+                            "text": "No? That's unusual for you, [player name]."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "tRKFXE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f1e2f4aa130c3b1f": [
+      {
+        "type": "line",
+        "speaker": "Commander Veldaban",
+        "text": "[player name], are you absolutely sure? You might not get another chance like this. Are you sure you just want to read the summary of the meeting instead of seeing the actual meeting?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "On second thought, I can spare a few minutes to attend.",
+            "steps": [
+              {
+                "player": "On second thought, I can spare a few minutes to attend."
+              },
+              {
+                "type": "line",
+                "speaker": "Commander Veldaban",
+                "text": "Happy to hear that! Let's hurry then, I think the meeting is already starting!"
+              },
+              {
+                "type": "jump",
+                "id": "bXLJ0r",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-472dbd3db91808e5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I just have a lot of smithing to do today, I can't attend.",
+            "steps": [
+              {
+                "player": "I just have a lot of smithing to do today, I can't attend."
+              },
+              {
+                "type": "line",
+                "speaker": "Commander Veldaban",
+                "text": "Very well. I'll give you the meeting minutes after it's finished."
+              },
+              {
+                "type": "action",
+                "text": "The screen fades to black briefly.",
+                "id": "OWj1i-"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "meeting notes",
+                "id": "IZ752f"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-472dbd3db91808e5": [
+      {
+        "type": "line",
+        "speaker": "Commander Veldaban",
+        "text": "Very well. I'll give you the meeting minutes after it's finished."
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black briefly.",
+        "id": "OWj1i-"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "meeting notes",
+        "id": "IZ752f"
+      }
+    ],
+    "Gfg7Gw": [
+      {
+        "player": "Yes, what clothes do you have in stock?"
+      },
+      {
+        "type": "line",
+        "speaker": "Vermundi",
+        "text": "Not a lot, I'm afraid, most of what I produce goes to my sister. Her shop is in Keldagrim-West."
+      },
+      {
+        "player": "Well, show me what you do have then."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Vermundi's Clothes Stall",
+        "id": "x2RQP3"
+      }
+    ],
+    "w2Syui": [
+      {
+        "player": "Can you tell me more about the library?"
+      },
+      {
+        "type": "line",
+        "speaker": "Librarian",
+        "text": "Why, certainly, it is one of my favourite subjects!"
+      },
+      {
+        "type": "line",
+        "speaker": "Librarian",
+        "text": "I am Hugi, you see, I am the chief librarian here. Hugi, my parents named me that, it means 'personification of thought' in the ancient dwarvish tongue."
+      },
+      {
+        "type": "line",
+        "speaker": "Librarian",
+        "text": "Quite like the name myself."
+      },
+      {
+        "type": "line",
+        "speaker": "Librarian",
+        "text": "The books in this library have been collected for many centuries now, through various generous donations."
+      },
+      {
+        "type": "line",
+        "speaker": "Librarian",
+        "text": "You'll find books dating from many different eras as well, such as the Era of Kings, the Rise of the Consortium and the Era of Prosperity, our current era."
+      },
+      {
+        "player": "How do these eras correspond with the Ages of the world?"
+      },
+      {
+        "type": "line",
+        "speaker": "Librarian",
+        "text": "Oh, they are quite different, and most of them take place in the Fourth Age."
+      },
+      {
+        "type": "line",
+        "speaker": "Librarian",
+        "text": "Since we dwarves hid underground for a long time to sit out the wars that raged above the ground our history books differ slightly from those written by humans."
+      },
+      {
+        "player": "Thanks for the information!"
+      }
+    ],
+    "hPT7nW": [
+      {
+        "player": "Yes, I'm looking for some armour."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Quality Armour Shop",
+        "id": "lhaoJA"
+      }
+    ],
+    "52W3QZ": [
+      {
+        "player": "Yes, I'm looking for some weapons."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Quality Weapons Shop",
+        "id": "rTwc29"
       }
     ]
   }

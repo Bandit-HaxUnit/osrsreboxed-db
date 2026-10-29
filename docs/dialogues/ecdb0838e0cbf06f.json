@@ -1,4 +1,29 @@
 {
+  "branches": {
+    "jump-048d3f56dbf5285b": [
+      {
+        "npc": "I know only what my eldersss passssed down. Very little."
+      },
+      {
+        "player": "How long ago since this master left you?"
+      },
+      {
+        "npc": "Many generationsss have come and gone sssince he walked amongssst usss."
+      },
+      {
+        "player": "Do you remember his name?"
+      },
+      {
+        "npc": "K'uhul ajaw isss the name we ssspeak. You manfolk ssspeak a different name."
+      },
+      {
+        "player": "Hmmm..."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Yesss?"
@@ -64,8 +89,13 @@
             },
             {
               "type": "jump",
-              "reference": "above",
-              "id": "2PVl7j"
+              "id": "2PVl7j",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-048d3f56dbf5285b"
+                }
+              ]
             }
           ]
         },

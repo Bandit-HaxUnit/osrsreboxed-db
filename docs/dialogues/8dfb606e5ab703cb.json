@@ -480,10 +480,21 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes."
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "LtaIVw"
+              }
+            ]
           },
           {
-            "text": "No."
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No."
+              }
+            ]
           },
           {
             "text": "Who are you?",
@@ -513,10 +524,21 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Yes."
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "LtaIVw"
+                      }
+                    ]
                   },
                   {
-                    "text": "No."
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No."
+                      }
+                    ]
                   }
                 ]
               }
@@ -766,8 +788,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ZfLyiu"
+                        "id": "ZfLyiu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d83b20de85d2078a"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1270,8 +1297,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "32dtOE"
+                        "id": "32dtOE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a20959671e76be16"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1781,8 +1813,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "syJNJi"
+                                        "id": "syJNJi",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-1974f33268217e63"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1791,8 +1828,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "X9V2tq"
+                                        "id": "X9V2tq",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-a3f541de120e80d5"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -1839,8 +1881,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "grLdiI"
+                "id": "grLdiI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4fefa10cb525f63e"
+                  }
+                ]
               }
             ]
           },
@@ -1849,8 +1896,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8JCpDk"
+                "id": "8JCpDk",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-21c784c02e4d5d7f"
+                  }
+                ]
               }
             ]
           }
@@ -1937,8 +1989,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "KlX1vE"
+                                        "id": "KlX1vE",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-20111d5c35492bcd"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -2825,6 +2882,192 @@
       {
         "type": "unavailable",
         "id": "slY1n-"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d83b20de85d2078a": [
+      {
+        "player": "King Narnode has sent me. I'm investigating the disappearance of Glough."
+      },
+      {
+        "type": "line",
+        "speaker": "Garkor",
+        "text": "Glough... really? We've not had any indication that he has returned to Ape Atoll."
+      },
+      {
+        "type": "line",
+        "speaker": "Garkor",
+        "text": "But we have been seeing a lot of activity from Awowogei and his commanders - I assumed the king would send someone soon enough."
+      },
+      {
+        "player": "Any idea what they're up to?"
+      },
+      {
+        "type": "line",
+        "speaker": "Garkor",
+        "text": "We're not entirely sure, he has been keeping a tight lid on his plans. I guess it could be tied to Glough's disappearance? Perhaps you could get more information from Awowogei directly..."
+      },
+      {
+        "type": "line",
+        "speaker": "Garkor",
+        "text": "He may be willing to share his plans with you, assuming you are disguised with a greegree, that is."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That sounds far too dangerous.",
+            "steps": [
+              {
+                "player": "That sounds far too dangerous."
+              },
+              {
+                "type": "line",
+                "speaker": "Garkor",
+                "text": "A member of the 10th squad should never back down in the face of adversity, come back when you're feeling up to the task."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "It's worth a shot.",
+            "steps": [
+              {
+                "player": "It's worth a shot."
+              },
+              {
+                "type": "line",
+                "speaker": "Garkor",
+                "text": "Good luck, [player name]."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a20959671e76be16": [
+      {
+        "player": "I'll just be on my way."
+      },
+      {
+        "type": "line",
+        "speaker": "Kob",
+        "text": "Hurry before I get hungry!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-1974f33268217e63": [
+      {
+        "player": "Where is the fleet? The shipyard still seems pretty bare."
+      },
+      {
+        "type": "line",
+        "speaker": "Assistant Le Smith",
+        "text": "Aha! The shipyard? Of course you aren't going to find anything there!"
+      },
+      {
+        "player": "..."
+      },
+      {
+        "player": "Aha... right... Of course?"
+      },
+      {
+        "type": "line",
+        "speaker": "Assistant Le Smith",
+        "text": "The airships are being built just off the coast of Ape Atoll."
+      },
+      {
+        "player": "Airships!? I mean... Right."
+      },
+      {
+        "type": "line",
+        "speaker": "Assistant Le Smith",
+        "text": "Anyway, I have to get back to work. Let Awowogei know everything is on schedule."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a3f541de120e80d5": [
+      {
+        "player": "Actually, I know enough already."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-4fefa10cb525f63e": [
+      {
+        "player": "I was just admiring the view."
+      },
+      {
+        "type": "line",
+        "speaker": "Assistant Le Smith",
+        "text": "Me too, it's perfect conditions for my test flight."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Good for you, I'll just be on my way.",
+            "steps": [
+              {
+                "player": "Good for you, I'll just be on my way."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Test flight?",
+            "steps": [
+              {
+                "player": "Test flight?"
+              },
+              {
+                "type": "line",
+                "speaker": "Assistant Le Smith",
+                "text": "Oh sorry, ignore that. I just meant it's a lovely day."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-21c784c02e4d5d7f": [
+      {
+        "player": "I was just leaving."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-20111d5c35492bcd": [
+      {
+        "player": "Thanks for the information."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "LtaIVw": [
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Balloon transport system",
+        "id": "b0g3sj"
       }
     ]
   }

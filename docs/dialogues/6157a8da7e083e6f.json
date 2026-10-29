@@ -55,8 +55,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "5VywBn"
+                        "id": "5VywBn",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bc07a9e7e6874dad"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -65,8 +70,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "I9hV_C"
+                        "id": "I9hV_C",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d3c002c7f34739cc"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -179,6 +189,30 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-bc07a9e7e6874dad": [
+      {
+        "player": "Let me see what you can do."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Patchy",
+        "id": "8UiV0k"
+      }
+    ],
+    "jump-d3c002c7f34739cc": [
+      {
+        "player": "No, thank you."
+      },
+      {
+        "npc": "Fair enough. See you around!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

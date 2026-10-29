@@ -1809,7 +1809,18 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you've got."
+            "text": "Let's see what you've got.",
+            "steps": [
+              {
+                "player": "Let's see what you've got."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "West Ardougne General Store",
+                "id": "-xnBCm"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -1884,7 +1895,17 @@
             ]
           },
           {
-            "text": "Nothing thanks."
+            "text": "Nothing thanks.",
+            "steps": [
+              {
+                "player": "Nothing thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Chadwell",
+                "text": "Okay then."
+              }
+            ]
           }
         ]
       }
@@ -1990,7 +2011,33 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is talking to one of the Bakers in Ardougne:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Ardougne Baker's Stall.",
+                    "id": "10lyz6"
+                  }
+                ],
+                "id": "thk8ML"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is talking to the baker in Great Kourend:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "3UPffh"
+                  }
+                ],
+                "id": "GkwltX"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -2054,7 +2101,12 @@
             ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
           }
         ]
       }
@@ -2069,7 +2121,33 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you have."
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is talking to one of the Bakers in Ardougne:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Ardougne Baker's Stall.",
+                    "id": "10lyz6"
+                  }
+                ],
+                "id": "thk8ML"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is talking to the baker in Great Kourend:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "3UPffh"
+                  }
+                ],
+                "id": "GkwltX"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -2133,7 +2211,12 @@
             ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
           }
         ]
       }
@@ -2215,7 +2298,12 @@
             "text": "Ask about the outpost."
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
           }
         ]
       }
@@ -2306,7 +2394,15 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ardougne Fur Stall.",
+                "id": "rPUMIs"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -2370,7 +2466,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -2385,7 +2486,15 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ardougne Spice Stall.",
+                "id": "Dx2_0G"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -2454,7 +2563,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -2474,10 +2588,301 @@
         "type": "choice",
         "options": [
           {
-            "text": "Tell me about Player Moderators."
+            "text": "Tell me about Player Moderators.",
+            "steps": [
+              {
+                "player": "Tell me about Player Moderators."
+              },
+              {
+                "type": "line",
+                "speaker": "Town crier",
+                "text": "Of course. What would you like to know?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What is a Player Moderator?",
+                    "steps": [
+                      {
+                        "player": "What is a Player Moderator?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Player Moderators are normal players of the game, just like you. However, since they have shown themselves to be trustworthy and active reporters, they have been invited by Jagex to monitor the game and"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "take appropriate action when they see rule breaking. You can spot a Player Moderator in game by looking at the chat screen - when a Player Moderator speaks, a silver crown appears to the left of their name."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Remember, if there's not silver crown there, they are not a Player Moderator!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Is there anything else you'd like to know?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me about Player Moderators.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "GVssT4"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Tell me about something else.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "CWG2Wz"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What can Player Moderators do?",
+                    "steps": [
+                      {
+                        "player": "What can Player Moderators do?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Player Moderators, or 'P-mods', have the ability to mute rule breakers and Jagex view their reports as a priority so that action is taken as quickly as possible. P- Mods also have access to the Player Moderator Centre."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Within the Centre are tools to help them Moderate Old School RuneScape. These tools include dedicated forums, the Player Moderator Guidelines and the Player Moderator Code of Conduct."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Is there anything else you'd like to know?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me about Player Moderators.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "5_ezcF"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Tell me about something else.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "qgm6A1"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do I become a Player Moderator?",
+                    "steps": [
+                      {
+                        "player": "How do I become a Player Moderator?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Jagex picks players who spend their time and effort to help better the Old School RuneScape community. To increase your chances of becoming a Player Moderator:"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Keep your account secure! This is very important, as a player with poor security will never be a P-Mod. Read our Security Tips for more information."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Play by the rules! The rules of Old School RuneScape are enforced for a reason, to make the game a fair and enjoyable environment for all."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Report accurately! When Jagex consider an account for review they look for quality, not quantity. Ensure your reports are of a high quality by following the report guidelines."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Be excellent to each other! Treat others as you would want to be treated yourself. Respect your fellow player."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Is there anything else you'd like to know?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me about Player Moderators.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "_I3Sxs"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Tell me about something else.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "26Fac6"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What can Player Moderators not do?",
+                    "steps": [
+                      {
+                        "player": "What can Player Moderators not do?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "P-Mods cannot ban your account - they can only report offences. Jagex then take action based on the evidence received. If you lose your password or get scammed by another player, P-Mods cannot help you"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "get your account back. All they can do is recommend you to go to Customer Support. They cannot retrieve any items you may have lost and receive no free items from Jagex for helping moderate the game. They are"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "players who give their efforts to help the community out of the goodness of their hearts! P-mods do not work for Jagex and so cannot make you a Moderator, or recommend other accounts to become moderators. If"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "you wish to become a Moderator, please feel free to ask me how!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Is there anything else you'd like to know?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me about Player Moderators.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "R3WCQZ"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Tell me about something else.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "uEzp1x"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Something else.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "-mTcZS"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Tell me about the Rules of Conduct."
+            "text": "Tell me about the Rules of Conduct.",
+            "steps": [
+              {
+                "player": "Tell me about the Rules of Conduct."
+              },
+              {
+                "type": "line",
+                "speaker": "Town crier",
+                "text": "At once. Take a look at my book here..."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Rules",
+                "id": "BC3F8f"
+              }
+            ]
           },
           {
             "text": "Could you help me tell people about some new taxes?",
@@ -2538,7 +2943,321 @@
             ]
           },
           {
-            "text": "Can you give me a handy tip please?"
+            "text": "Can you give me a handy tip please?",
+            "steps": [
+              {
+                "player": "Can you give me a handy tip please?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Did you know most skills have right click 'Make-X' options to help you train faster?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Make your recovery questions and answers hard to guess but easy to remember."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Don't use your RuneScape password on other sites. Keep your account safe!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "If you think someone knows your password - change it!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "The squirrels! The squirrels are coming! Noooo, get them out of my head!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 6",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Did you know you burn food less often on the range in Lumbridge castle than other ranges?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 7",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Players can not trim armour. Don't fall for this popular scam!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 8",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Feeling harassed? Don't forget your ignore list can be especially useful if a player seems to be picking on you!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 9",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "If you're lost and have no idea where to go, use the Home Teleport spell for free!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 10",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "If you see someone breaking the rules, report them!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 11",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Did you know? Superheat Item means you never fail to smelt ore!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 12",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Did you know that at high levels of Runecrafting you get more than one rune per essence?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 13",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Never lend your items out unless you expect them not to come back."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 14",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Never question a penguin."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 15",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Melee armour actually gives you disadvantages when using magic attacks. It may be better to take off your armour entirely!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 16",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "If the chat window is moving too quickly to report a player accurately, run to a quiet spot and review the chat at your leisure!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 17",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Take time to check the second trade window carefully. Don't be scammed!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 18",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Did you know having a bank pin can help secure your valuable items?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 19",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Did you know that mithril equipment is very light?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 20",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "There are no cheats in RuneScape! Never visit websites promising otherwise!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 21",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Jagex will never e-mail you. Do not believe any e-mails that claim to be from us."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 22",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "If you're stuck on a skill, talk to the Lumbridge Tutors for help and tips."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 23",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Did you know that you can wear a shield with a crossbow?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 24",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Beware of players trying to lure you into the wilderness. Your items cannot be returned if you lose them!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 25",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "If a player isn't sure of the rules, send them to me! I'll be happy to remind them!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 26",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Never tell your password to anyone, not even your best friend!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 27",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Town crier",
+                        "text": "Be careful when fighting wizards! Wearing heavy armour can lower your Magic resistance!"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "line",
+                "speaker": "Town crier",
+                "text": "Is there anything else you'd like to know?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about Player Moderators.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "K4Hu6z"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about something else.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "tg1pRx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -2553,7 +3272,15 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'm interested."
+            "text": "I'm interested.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Zenesha's Plate Mail Body Shop.",
+                "id": "yzT0_d"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -2617,7 +3344,12 @@
             ]
           },
           {
-            "text": "Sorry, I'm not interested."
+            "text": "Sorry, I'm not interested.",
+            "steps": [
+              {
+                "player": "Sorry, I'm not interested."
+              }
+            ]
           }
         ]
       }
@@ -2632,10 +3364,1105 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you move my house please?"
+            "text": "Can you move my house please?",
+            "steps": [
+              {
+                "player": "Can you move my house please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Estate agent",
+                "text": "Where would you like it moved to?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "House relocation",
+                "id": "bWnhm7"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Rimmington",
+                    "steps": [
+                      {
+                        "player": "To Rimmington please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Rimmington:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "tW0Sh2"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jhlSsq"
+                          }
+                        ],
+                        "id": "p13-8q"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Rimmington."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Taverley",
+                    "steps": [
+                      {
+                        "player": "To Taverley please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 10."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "_OspA9"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Taverley:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "Aa2vY4"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jhlSsq"
+                          }
+                        ],
+                        "id": "M3Nu4J"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Taverley."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Pollnivneach",
+                    "steps": [
+                      {
+                        "player": "To Pollnivneach please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 20."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "cjiP36"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Pollnivneach:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "lfuZno"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Hmph. Come back when you have 7,500 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "21jZVc"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Pollnivneach."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hosidius",
+                    "steps": [
+                      {
+                        "player": "To Hosidius please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 25."
+                          }
+                        ],
+                        "id": "c9-c53"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Hosidius:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "Eitxfr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Hmph. Come back when you have 8,750 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "meMo6c"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Hosidius."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Rellekka",
+                    "steps": [
+                      {
+                        "player": "To Rellekka please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 30."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "Qv2yUS"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Rellekka:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "0qi4nI"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Hmph. Come back when you have 10,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ZEOxnx"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Rellekka."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Brimhaven",
+                    "steps": [
+                      {
+                        "player": "To Brimhaven please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 40."
+                          }
+                        ],
+                        "id": "I-xfFv"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Brimhaven:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "wOpu1c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Hmph. Come back when you have 15,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "1AZpQ7"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Brimhaven."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yanille",
+                    "steps": [
+                      {
+                        "player": "To Yanille please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 50."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "dJg6jm"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Yanille:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "rU1TuV"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Hmph. Come back when you have 25,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "DWRTS_"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Yanille."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Prifddinas",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If player hasn't completed Song of the Elves quest:",
+                        "steps": [
+                          {
+                            "player": "To Prifddinas please!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Where? Never heard of it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "dN_DjS"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 70."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "GFVk9I"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Prifddinas:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "s20Rra"
+                          }
+                        ],
+                        "id": "0yqs0x"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Hmph. Come back when you have 50,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "sCwZae"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house has been moved to Prifddinas."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Can you redecorate my house please?"
+            "text": "Can you redecorate my house please?",
+            "steps": [
+              {
+                "player": "Can you redecorate my house please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Estate agent",
+                "text": "Certainly. My magic can rebuild the house in a completely new style! What style would you like?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "House style",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Basic wood"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If player's house is already decorated in that style:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Your house is already in that style!"
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "House style",
+                        "id": "qFhvcE"
+                      }
+                    ],
+                    "id": "J9jV0h"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If player doesn't have enough gold:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Estate agent",
+                        "text": "Hmph. Come back when you have 5,000 coins."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "House style",
+                        "id": "IaCidQ"
+                      }
+                    ],
+                    "id": "Oi2pY8"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Estate agent",
+                    "text": "Your house has been redecorated."
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Basic stone",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "KUyFX8"
+                              }
+                            ],
+                            "id": "dXq8CY"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 5,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "MBN-Bx"
+                              }
+                            ],
+                            "id": "OaNohq"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Whitewashed stone",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "db561v"
+                              }
+                            ],
+                            "id": "KZXAqh"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 7,500 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "y71Y_A"
+                              }
+                            ],
+                            "id": "MOwgDS"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Fremennik-style wood",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "QHNh6E"
+                              }
+                            ],
+                            "id": "_3bLRy"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 10,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "ucsXfq"
+                              }
+                            ],
+                            "id": "YUQ5iO"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Tropical wood",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "3Cuz-6"
+                              }
+                            ],
+                            "id": "-UEz3k"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 15,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "eyr_-W"
+                              }
+                            ],
+                            "id": "mmJdhS"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Fancy stone",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "brXhPZ"
+                              }
+                            ],
+                            "id": "6wq-bR"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 25,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "ZNlG_l"
+                              }
+                            ],
+                            "id": "ECUUnl"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Deathly mansion",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player hasn't completed a Halloween event in-game before:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "ohDkGo"
+                              }
+                            ],
+                            "id": "07StnF"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "ofj_Fg"
+                              }
+                            ],
+                            "id": "0OW3Iw"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 35,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "xSdSqT"
+                              }
+                            ],
+                            "id": "G9-SrS"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Twisted theme",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have the Twisted blueprints in their inventory:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "I'm afraid I'd need some blueprints for that."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "XSsZ1z"
+                              }
+                            ],
+                            "id": "Xsac9J"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "i_46z7"
+                              }
+                            ],
+                            "id": "VwsF7-"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hosidius house",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player hasn't given Hosidius blueprints to the Estate agent:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "I'm afraid I'd need some blueprints for that. Maybe you can buy some by working for the contractors."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "4Q10Zc"
+                              }
+                            ],
+                            "id": "W-blzT"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "0xnpN0"
+                              }
+                            ],
+                            "id": "CF8Vzs"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If this is the first time the house is being redecorated:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Absolutely. Hand me your blueprints and I'll make it happen! I'll keep the blueprints, so you'll always be able to switch back to this style in future, for a small fee."
+                              },
+                              {
+                                "type": "choice",
+                                "prompt": "Hand in your blueprints for the Hosidius theme?",
+                                "options": [
+                                  {
+                                    "text": "Yes",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "continue",
+                                        "id": "Q9oCAF"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No",
+                                    "steps": [
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "jz_83_"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 5,000 coins."
+                              }
+                            ],
+                            "id": "ZuyM68"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cosy cabin",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player hasn't completed a Christmas event in-game before:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "ohDkGo"
+                              }
+                            ],
+                            "id": "8o4nee"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "zUjl51"
+                              }
+                            ],
+                            "id": "bjJDkl"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Estate agent",
+                                "text": "Hmph. Come back when you have 35,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "aXZV_A"
+                              }
+                            ],
+                            "id": "HbAnnO"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "gjBDUN"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Canifis",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "AgoRZi"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Civitas",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "56CqSF"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Wilderness theme",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Estate agent",
+                            "text": "Absolutely, let me take your blueprints and I'll make it happen!"
+                          },
+                          {
+                            "type": "choice",
+                            "prompt": "Hand in your blueprints for the Wilderness theme?",
+                            "options": [
+                              {
+                                "text": "Yes",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Estate agent",
+                                    "text": "If you'd like, you can build a new exit portal with these blueprints. Talk to Nigel if you need more."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Estate agent",
+                                    "text": "Your house has been redecorated."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No",
+                                "steps": [
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "7Kytj5"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -2717,7 +4544,28 @@
             "text": "Tell me about pet insurance."
           },
           {
-            "text": "I've lost a pet. Have you got it?"
+            "text": "I've lost a pet. Have you got it?",
+            "steps": [
+              {
+                "player": "I've lost a pet. Have you got it?"
+              },
+              {
+                "type": "line",
+                "speaker": "Probita",
+                "text": "If you've lost your pet, it will be reclaimable here!"
+              },
+              {
+                "type": "line",
+                "speaker": "Probita",
+                "text": "Let's have a look..."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Pet Insurance",
+                "id": "6EBAmv"
+              }
+            ]
           },
           {
             "text": "I'm here to tell you about some new taxes.",
@@ -2786,7 +4634,80 @@
             ]
           },
           {
-            "text": "More options..."
+            "text": "More options...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What pets have I insured?",
+                    "steps": [
+                      {
+                        "player": "What pets have I insured?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Probita",
+                        "text": "Every pet you've ever found is automatically insured here!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Probita",
+                        "text": "Here, take a look..."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Pet Insurance",
+                        "id": "8tSH2m"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "My pet is still lost. Could you look again?",
+                    "steps": [
+                      {
+                        "player": "My pet is still lost. Could you look again?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Probita",
+                        "text": "It's possible there was an error in our records. Let me check again for you."
+                      },
+                      {
+                        "type": "message",
+                        "text": "If you believe you have some pets that are not showing on your insurance record, please visit Probita with your pets and she will automatically insure them for you.",
+                        "id": "Y7FXOl"
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Pet Insurance",
+                        "id": "hJI0A8"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Maybe another time.",
+                    "steps": [
+                      {
+                        "player": "Maybe another time."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Previous options...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "OKFKPC"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -5064,8 +6985,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "D-grXj"
+                "id": "D-grXj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9cc9a9d3bd776cfa"
+                  }
+                ]
               }
             ]
           },
@@ -5074,8 +7000,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yTsScB"
+                "id": "yTsScB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-048a4801732206cd"
+                  }
+                ]
               }
             ]
           },
@@ -6176,8 +8107,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KfjRui"
+                "id": "KfjRui",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -6186,8 +8122,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "A31C7X"
+                "id": "A31C7X",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8eb7aeb551e0eb95"
+                  }
+                ]
               }
             ]
           }
@@ -6529,8 +8470,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2utKFf"
+                "id": "2utKFf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -6854,8 +8800,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "VZJd-_"
+                "id": "VZJd-_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -9044,8 +10995,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "r-fnvT"
+                "id": "r-fnvT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -9054,8 +11010,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "60_LO8"
+                "id": "60_LO8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8eb7aeb551e0eb95"
+                  }
+                ]
               }
             ]
           }
@@ -9079,8 +11040,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "9oy7kX"
+                "id": "9oy7kX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-079f3f47064aa797"
+                  }
+                ]
               }
             ]
           },
@@ -9089,8 +11055,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RSzYHu"
+                "id": "RSzYHu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3f2f11f5d02edb89"
+                  }
+                ]
               }
             ]
           },
@@ -9099,8 +11070,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pJgcR2"
+                "id": "pJgcR2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -9109,8 +11085,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "aI-Gcj"
+                "id": "aI-Gcj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8eb7aeb551e0eb95"
+                  }
+                ]
               }
             ]
           }
@@ -9505,8 +11486,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "hZkJUr"
+                "id": "hZkJUr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -9647,8 +11633,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1mD-4O"
+                "id": "1mD-4O",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -9680,8 +11671,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pkP4wE"
+                "id": "pkP4wE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -11008,8 +13004,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "s2s7E6"
+                "id": "s2s7E6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -11038,8 +13039,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2mYmBD"
+                "id": "2mYmBD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5cbbd7f0d62bb7de"
+                  }
+                ]
               }
             ]
           },
@@ -11048,8 +13054,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XxLhsf"
+                "id": "XxLhsf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d31457f77ad93343"
+                  }
+                ]
               }
             ]
           },
@@ -11058,8 +13069,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lxCZK5"
+                "id": "lxCZK5",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -11068,8 +13084,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MTGKIY"
+                "id": "MTGKIY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d840b2cbfb47d592"
+                  }
+                ]
               }
             ]
           }
@@ -11467,7 +13488,89 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you anymore gauntlets?"
+            "text": "Have you anymore gauntlets?",
+            "steps": [
+              {
+                "player": "Have you any more gauntlets?"
+              },
+              {
+                "type": "line",
+                "speaker": "Klank",
+                "text": "Well..yes, but they're not cheap to make. I'll have to sell you a pair..."
+              },
+              {
+                "player": "How much?"
+              },
+              {
+                "type": "line",
+                "speaker": "Klank",
+                "text": "5,000 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "5,000, you must be joking!",
+                    "steps": [
+                      {
+                        "player": "5,000, you must be joking!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Klank",
+                        "text": "We don't joke down here friend..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay then, I'll take a pair.",
+                    "steps": [
+                      {
+                        "player": "Okay then, I'll take a pair."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 5000 coins:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Klank sells you some gauntlets.",
+                            "id": "86A90e"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Klank",
+                            "text": "There you go... I hope they help."
+                          },
+                          {
+                            "player": "I'll see you around Klank."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "TwL7qI"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins:",
+                        "steps": [
+                          {
+                            "player": "Oh dear, I haven't got enough money..."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Klank",
+                            "text": "Sorry, I can't sell them any cheaper than that."
+                          }
+                        ],
+                        "id": "TeF8xg"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Take care Klank.",
@@ -11839,8 +13942,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "below",
-                                            "id": "k7x164"
+                                            "id": "k7x164",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-45363da930828422"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -11880,8 +13988,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "below",
-                                            "id": "HhKKdC"
+                                            "id": "HhKKdC",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-45363da930828422"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -11942,8 +14055,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "below",
-                                            "id": "JNRCRM"
+                                            "id": "JNRCRM",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-45363da930828422"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -11991,8 +14109,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "below",
-                                            "id": "8sCDTf"
+                                            "id": "8sCDTf",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-45363da930828422"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -12221,8 +14344,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "MFG84s"
+                    "id": "MFG84s",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-45363da930828422"
+                      }
+                    ]
                   }
                 ]
               }
@@ -12332,8 +14460,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZOJeku"
+                "id": "ZOJeku",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "LfB2hA"
+                  }
+                ]
               }
             ]
           },
@@ -13053,6 +15186,502 @@
     ]
   },
   "branches": {
+    "jump-9cc9a9d3bd776cfa": [
+      {
+        "player": "Do you believe what Lord Iorwerth said about Seren?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "To be honest... I really don't know. It seems impossible, and yet..."
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "No. It's just me being wishful. He's lying, he has to be."
+      },
+      {
+        "player": "Wishful?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "By the time I was born, Seren was already gone from this world. All I know of her is the stories my parents told me."
+      },
+      {
+        "player": "You wish you could have met her?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "I do, but that doesn't mean I should fall for the lies of Lord Iorwerth. Seren is gone, nothing can ever bring her back."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "U-fhCB"
+      }
+    ],
+    "jump-048a4801732206cd": [
+      {
+        "player": "Do you think we'll find anything to help us here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "I won't lie, we're clutching straws here. We have nothing else to go on though, so we have to try."
+      },
+      {
+        "type": "line",
+        "speaker": "Arianwyn",
+        "text": "Baxtorian was once king of the elves, anything he left behind might be of use."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "4mp3cT"
+      }
+    ],
+    "jump-4eb5ec3ec987f683": [
+      {
+        "player": "I'd like to ask you something about yourself."
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "I see... Go ahead."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why did you seal yourself away?",
+            "steps": [
+              {
+                "player": "Why did you seal yourself away?"
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "My Glarial... She mattered more to me than anything else, but she was lost to me. The enemy took her, so I searched far and wide to find her again."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "At times I came close, but in the end, I was too weak to carry on. I knew there was a chance she may live though, so I sealed myself away, hoping she would be the one to wake me."
+              },
+              {
+                "player": "I see. I'm sorry."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "I thank you friend, but please, don't be. The burden is mine to bear."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "RGc0FQ"
+              }
+            ]
+          },
+          {
+            "text": "What happened between you and Lord Iorwerth?",
+            "steps": [
+              {
+                "player": "What happened between you and Lord Iorwerth?"
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "To be honest, even today I know little of him. When I left Prifddinas to expand our kingdom into the east, he was but a child, with the Iorwerth clan ruled by his mother."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "The first time I properly met him was after I heard about his takeover of the city. I led my forces through the Underground Pass and confronted him at the city gates."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "I tried to reason with him, but he had already decided that I was his enemy. We had the numbers and our forces were better skilled, so we tried to besiege the city."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "The Iorwerth forces had the strength and safety of the city walls though. They slowly whittled us down until we were too weak to carry on. We had no choice but to retreat."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "We fell back into the Underground Pass, intending to return to our kingdom in the east. Lord Iorwerth sent his forces in after us, hoping to wipe us out."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "We no longer had the strength in numbers, but we still outmatched the Iorwerth troops in skill and experience. We fought back while we retreated. Both sides suffered huge losses."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "Eventually we managed to make it through to the other side. By then, there were few of us left. Lord Iorwerth had failed to wipe us out, but he knew we were beaten."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "While we were gone, an uprising had occurred in the eastern kingdom. We took our best fighters to Prifddinas, those that remained were unable to hold back the enemy."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "My wife was taken and most of my people were slaughtered. I turned my attention to finding my wife and getting the rest of my people to safety."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "Lord Iorwerth became the least of my problems. I suspect he didn't consider me much of a threat at that point anyway."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "HPOD1d"
+              }
+            ]
+          },
+          {
+            "text": "What was Seren like?",
+            "steps": [
+              {
+                "player": "What was Seren like?"
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "She... She was wonderful. She taught us to better ourselves in every way possible. Everything we know, everything we are, it all came from her."
+              },
+              {
+                "player": "I wish I could have met her."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "I feel very blessed to have been able to. The love she had for us, it's unlike anything I've ever seen."
+              },
+              {
+                "player": "Sounds like she was pretty much perfect."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "Well... not quite. Many of the elves alive now were not around when Seren was still with us. They only know her through the stories passed down to them. The stories don't tell everything though."
+              },
+              {
+                "player": "What do you mean?"
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "Seren was remarkable, but under the surface, she hid a great pain. A sadness unlike any other. She never spoke of it, but when you looked hard enough, you could see the anguish."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "I guess we all have our demons, even the gods. Seren was a beacon of light in this grim world, but the brightest light casts the darkest shadow, and none shone brighter than her."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "T_YjCt"
+              }
+            ]
+          },
+          {
+            "text": "What do you think of the current elves?",
+            "steps": [
+              {
+                "player": "What do you think of the current elves?"
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "Arianwyn and the rebels have done well to keep going for this long. They've been fighting this war for centuries, and yet they've never given up. I have much respect for them, they're far stronger than I ever was."
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "Most of them are still young though. They lack the wisdom of the older elves, the ones who were around when Seren still walked this earth. Many of them never saw Prifddinas before the song of inversion."
+              },
+              {
+                "player": "Is that a bad thing?"
+              },
+              {
+                "type": "line",
+                "speaker": "Baxtorian",
+                "text": "Not necessarily, but it is something to be cautious of. That which they fight for, it's a mere dream to them. They should remember that dreams seldom come true."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "pfwZpK"
+              }
+            ]
+          },
+          {
+            "text": "I'll be back later.",
+            "steps": [
+              {
+                "player": "I'll be back later."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8eb7aeb551e0eb95": [
+      {
+        "player": "I'll be back later."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-079f3f47064aa797": [
+      {
+        "player": "How do I find Lord Crwys?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "Here is the clue he left behind: 'The trees of my home will call to me.'"
+      },
+      {
+        "player": "I see, anything else I should know?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "The Crwys clan is a clan of woodcutters and farmers. The entire clan is close to nature, but none more than Lord Crwys."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "ChPCmY"
+      }
+    ],
+    "jump-3f2f11f5d02edb89": [
+      {
+        "player": "How do I find Lady Hefin?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "Here is the clue she left behind: 'I will walk across the water to the south.'"
+      },
+      {
+        "player": "I see, anything else I should know?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "The Hefin clan are our religious leaders. They teach us to better ourselves, not just in mind, but in body as well. Lady Hefin used to lead some of the more vigorous training exercises of the Hefin clan."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "aLPx-y"
+      }
+    ],
+    "jump-5cbbd7f0d62bb7de": [
+      {
+        "player": "What's Lady Ithell's clue?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "Here is the clue she left behind: 'I'll put my soul into my greatest work.'"
+      },
+      {
+        "player": "I see, anything else I should know?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "The Ithell clan is a clan of builders and architects. Before her death, Lady Ithell was considered the finest architect of all the elves. This village was her final and finest contribution to our people."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "9Gpkjx"
+      }
+    ],
+    "jump-d31457f77ad93343": [
+      {
+        "player": "What's Lady Meilyr's clue?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "Here is the clue she left behind: 'Follow the scrolls to find me.'"
+      },
+      {
+        "player": "I see, anything else I should know?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baxtorian",
+        "text": "The Meilyr clan is a clan of scientists and explorers. You'll probably need to do some exploring yourself to find Lady Meilyr. You may also find this of use."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Baxtorian tries to give you a scroll but you don't have enough room to take it.",
+            "id": "IAURNM"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ueqpmL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Baxtorian has given you a scroll.",
+            "id": "vh7Q_s"
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "ZdN3Fb"
+          }
+        ],
+        "id": "vOTCfm"
+      }
+    ],
+    "jump-d840b2cbfb47d592": [
+      {
+        "player": "I'll be back later."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-45363da930828422": [
+      {
+        "player": "Baxtorian said you had an idea to help our defence."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "That's right. One of the dwarves here, Kamen, has brewed up some strange alcohol. Whatever it is, it's very flammable."
+      },
+      {
+        "player": "Ah yes, I've made good use of it in the past."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Well I think we can make use of it again. I've combined the alcohol with some other chemicals. The result is quite explosive!"
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "If we position some of these explosives on the approach to the camp, we can use them against the Iorwerth forces."
+      },
+      {
+        "player": "Hmmm, that could work quite well. Is there anything I can do to help?"
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "I've dug some holes around the camp for the explosives to go in. Could you fill them in for me?"
+      },
+      {
+        "player": "Of course."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena",
+        "text": "Here's the explosives. If you need more just let me know."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Elena tries to give you some potions but you don't have enough room for them.",
+            "id": "4Q1iXL"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "P2yzxj"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Elena gives you some potions.",
+            "id": "gBRsQm"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eU_IkG"
+      }
+    ],
+    "3UPffh": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Kourend Castle Baker's Stall.",
+        "id": "buzTS5"
+      }
+    ],
+    "s20Rra": [
+      {
+        "type": "line",
+        "speaker": "Estate agent",
+        "text": "Your house is already there!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jhlSsq": [
+      {
+        "type": "line",
+        "speaker": "Estate agent",
+        "text": "Hmph. Come back when you have 5,000 coins."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "ohDkGo": [
+      {
+        "type": "line",
+        "speaker": "Estate agent",
+        "text": "I'm afraid you haven't unlocked that style."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "zWmqLP": [
       {
         "player": "I need to prepare."
@@ -13061,6 +15690,12 @@
         "type": "line",
         "speaker": "Councillor Halgrive",
         "text": "Very well, return to us once you are ready."
+      }
+    ],
+    "LfB2hA": [
+      {
+        "type": "call",
+        "branch": "jump-4eb5ec3ec987f683"
       }
     ],
     "PMStN7": [

@@ -102,8 +102,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "hBkXPo"
+                "id": "hBkXPo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d4ad2d8288e6c429"
+                  }
+                ]
               }
             ]
           },
@@ -112,8 +117,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "W-6j82"
+                "id": "W-6j82",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-261e04c51fcc29b6"
+                  }
+                ]
               }
             ]
           },
@@ -122,8 +132,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "H2OQmp"
+                "id": "H2OQmp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9b9a7c6a54e85bc8"
+                  }
+                ]
               }
             ]
           },
@@ -132,8 +147,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xeUzt_"
+                "id": "xeUzt_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ebf1ace0f36b6d12"
+                  }
+                ]
               }
             ]
           }
@@ -213,6 +233,84 @@
           }
         ],
         "id": "wskkyv"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d4ad2d8288e6c429": [
+      {
+        "type": "condition",
+        "text": "If the player is on a free-to-play world:",
+        "steps": [
+          {
+            "npc": "I don't have anything for you to do right now, sorry."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NMPUpC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a members' world:",
+        "steps": [
+          {
+            "type": "reference",
+            "target": "Transcript:Recipe for Disaster/Another Cook's Quest",
+            "section": "",
+            "text": "Continues in Transcript:Recipe for Disaster/Another Cook's Quest",
+            "id": "HqcWnQ",
+            "resolved": false,
+            "page_available": true
+          }
+        ],
+        "id": "r1C5xz"
+      }
+    ],
+    "jump-261e04c51fcc29b6": [
+      {
+        "player": "I am getting strong and mighty. Grrr"
+      },
+      {
+        "npc": "Glad to hear it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9b9a7c6a54e85bc8": [
+      {
+        "player": "I keep on dying."
+      },
+      {
+        "npc": "Ah well, at least you keep coming back to life!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ebf1ace0f36b6d12": [
+      {
+        "player": "Can I use your range?"
+      },
+      {
+        "npc": "Go ahead - it's a very good range. It's easier to use than most other ranges."
+      },
+      {
+        "npc": "Its called the Cook-o-matic 100. It uses a combination of state of the art temperature regulation and magic."
+      },
+      {
+        "player": "Will it mean my food will burn less often?"
+      },
+      {
+        "npc": "Well, that's what the salesman told us anyway..."
+      },
+      {
+        "player": "Thanks?"
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -256,13 +256,133 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The curator hands you a medallion.",
+                            "id": "qrOUUk"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -340,13 +460,133 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The curator hands you a medallion.",
+                            "id": "qrOUUk"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -1285,8 +1525,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8rB6cq"
+                "id": "8rB6cq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-813a5011d3c2d504"
+                  }
+                ]
               }
             ]
           },
@@ -1791,8 +2036,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kG9-eG"
+                "id": "kG9-eG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-813a5011d3c2d504"
+                  }
+                ]
               }
             ]
           },
@@ -2142,8 +2392,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "KWmbns"
+                "id": "KWmbns",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-be0ceccbd50967cd"
+                  }
+                ]
               }
             ]
           },
@@ -2152,8 +2407,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sUF2sf"
+                "id": "sUF2sf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-68ab9ae56dec4038"
+                  }
+                ]
               }
             ]
           },
@@ -2162,8 +2422,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kV8YRz"
+                "id": "kV8YRz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a93ad492ed960d66"
+                  }
+                ]
               }
             ]
           }
@@ -2359,8 +2624,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-1PNLA"
+                "id": "-1PNLA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-813a5011d3c2d504"
+                  }
+                ]
               }
             ]
           },
@@ -2481,13 +2751,73 @@
         "type": "choice",
         "options": [
           {
-            "text": "I have something I need checking out."
+            "text": "I have something I need checking out.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5gFhYZ"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_l2qMw"
+              }
+            ]
           },
           {
-            "text": "Can you tell me anything about the digsite?"
+            "text": "Can you tell me anything about the digsite?",
+            "steps": [
+              {
+                "player": "Can you tell me anything about the digsite?"
+              },
+              {
+                "type": "line",
+                "speaker": "Terry Balando",
+                "text": "Yes, indeed; I am studying the lives of the settlers. During the end of the third age there used to be a great city at the site."
+              },
+              {
+                "type": "line",
+                "speaker": "Terry Balando",
+                "text": "Its inhabitants were humans, supporters of the god Saradomin. It's not recorded what happened to the community here."
+              },
+              {
+                "type": "line",
+                "speaker": "Terry Balando",
+                "text": "I suspect nobody has lived here for over a millennium!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you tell me more about the tools an archaeologist uses?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "FpwvUO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f74e61ecb38b5b57"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thank you!",
+                    "steps": [
+                      {
+                        "player": "Thank you!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I lost the letter you gave me.",
@@ -2540,7 +2870,13 @@
             ]
           },
           {
-            "text": "Can you tell me more about the tools an archaeologist uses?"
+            "text": "Can you tell me more about the tools an archaeologist uses?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnqnP"
+              }
+            ]
           }
         ]
       }
@@ -2589,26 +2925,97 @@
         "type": "choice",
         "options": [
           {
-            "text": "I have something I need checking out."
+            "text": "I have something I need checking out.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5gFhYZ"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_l2qMw"
+              }
+            ]
           },
           {
-            "text": "Can you tell me anything about the digsite?"
+            "text": "Can you tell me anything about the digsite?",
+            "steps": [
+              {
+                "player": "Can you tell me anything about the digsite?"
+              },
+              {
+                "type": "line",
+                "speaker": "Terry Balando",
+                "text": "Yes, indeed; I am studying the lives of the settlers. During the end of the third age there used to be a great city at the site."
+              },
+              {
+                "type": "line",
+                "speaker": "Terry Balando",
+                "text": "Its inhabitants were humans, supporters of the god Saradomin. It's not recorded what happened to the community here."
+              },
+              {
+                "type": "line",
+                "speaker": "Terry Balando",
+                "text": "I suspect nobody has lived here for over a millennium!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you tell me more about the tools an archaeologist uses?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "FpwvUO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f74e61ecb38b5b57"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thank you!",
+                    "steps": [
+                      {
+                        "player": "Thank you!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I lost the letter you gave me.",
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "m-ET2L"
+                "id": "m-ET2L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6281a53347b933ae"
+                  }
+                ]
               }
             ]
           },
           {
-            "text": "Can you tell me more about the tools an archaeologist uses?"
+            "text": "Can you tell me more about the tools an archaeologist uses?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnqnP"
+              }
+            ]
           }
         ]
       }
@@ -2990,8 +3397,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yc_dnv"
+                "id": "yc_dnv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-813a5011d3c2d504"
+                  }
+                ]
               }
             ]
           },
@@ -3053,6 +3465,357 @@
       {
         "type": "unavailable",
         "id": "KraaSM"
+      }
+    ]
+  },
+  "branches": {
+    "jump-813a5011d3c2d504": [
+      {
+        "player": "Can you tell me more about the tools an archaeologist uses?"
+      },
+      {
+        "type": "line",
+        "speaker": "Researcher",
+        "text": "Of course! Let's see now... Rock picks are for splitting rocks or scraping away soil; you can get one from a cupboard in the Education Centre."
+      },
+      {
+        "player": "What about sample jars?"
+      },
+      {
+        "type": "line",
+        "speaker": "Researcher",
+        "text": "I think you'll find them scattered about pretty much everywhere, but I know you can get one from a cupboard somewhere in the Education Centre, just like the rock pick!"
+      },
+      {
+        "player": "Okay, what about a specimen brush?"
+      },
+      {
+        "type": "line",
+        "speaker": "Researcher",
+        "text": "We have a bit of a shortage of those at the moment. You could try borrowing one from a workman on the site... but I don't think they'd give it willingly."
+      },
+      {
+        "player": "Sounds like I'll need to be sneaky to get one of those, then... Okay - trowel?"
+      },
+      {
+        "type": "line",
+        "speaker": "Researcher",
+        "text": "Ahh... that you must earn by passing your exams! The examiner holds those."
+      },
+      {
+        "player": "Anything else?"
+      },
+      {
+        "type": "line",
+        "speaker": "Researcher",
+        "text": "If you need something identified or are not sure about something, give it to Terry; he's the archaeological expert in the next room."
+      },
+      {
+        "player": "Ahh, ok thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-be0ceccbd50967cd": [
+      {
+        "player": "I am stuck on a question."
+      },
+      {
+        "type": "line",
+        "speaker": "Examiner",
+        "text": "Well, well, have you not been doing any studies? I am not giving you the answers, talk to the other students and remember the answers."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-68ab9ae56dec4038": [
+      {
+        "player": "Sorry, I didn't mean to disturb you."
+      },
+      {
+        "type": "line",
+        "speaker": "Examiner",
+        "text": "Oh, no problem at all."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a93ad492ed960d66": [
+      {
+        "player": "I have lost my trowel."
+      },
+      {
+        "type": "condition",
+        "text": "The player does not have a trowel:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Examiner",
+            "text": "Deary me... That was a good one as well. It's a good job I have another. Here you go..."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WdcbQy"
+      },
+      {
+        "type": "condition",
+        "text": "The player has a trowel:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Examiner",
+            "text": "Really? Look in your backpack and make sure first."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JL-TXX"
+      }
+    ],
+    "jump-f74e61ecb38b5b57": [
+      {
+        "player": "Can you tell me more about the tools an archaeologist uses?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "Of course! Let's see now... Rock picks are for splitting rocks or scraping away soil; you can get one from a cupboard in the Education Centre."
+      },
+      {
+        "player": "What about sample jars?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "I think you'll find them scattered about pretty much everywhere, but I know you can get one from a cupboard somewhere in the Education Centre, just like the rock pick!"
+      },
+      {
+        "player": "Okay, what about a specimen brush?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "We have a bit of a shortage of those at the moment. You could try borrowing one from a workman on the site... but I don't think they'd give it willingly."
+      },
+      {
+        "player": "Sounds like I'll need to be sneaky to get one of those, then... Okay - trowel?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "Ahh... that you must earn by passing your exams! The examiner holds those."
+      },
+      {
+        "player": "Ahh, ok thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6281a53347b933ae": [
+      {
+        "player": "I lost the letter you gave me."
+      },
+      {
+        "type": "condition",
+        "text": "If you still have the letter:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Terry Balando",
+            "text": "No you haven't! You have one in your pack!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EuXkaR"
+      },
+      {
+        "type": "condition",
+        "text": "If you have the letter in the bank:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Terry Balando",
+            "text": "No you haven't! You have one in your bank!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Pm9s8G"
+      },
+      {
+        "type": "condition",
+        "text": "If you lost the letter:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Terry Balando",
+            "text": "I can't believe it! I go to all the effort of writing you a letter of recommendation and you lose it! Here, I'll write another... Don't lose it again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "15z9zB"
+      }
+    ],
+    "dwJpG2": [
+      {
+        "player": "Have you any interesting news?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Yes, we found a rather interesting island to the North of Morytania. We believe that it may be of archaeological significance."
+      },
+      {
+        "player": "Oh? That sounds interesting."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Indeed. We are making the final preparations for our voyage, in fact, you may be just the person we are looking for... Assuming you've got the necessary qualifications, that is."
+      },
+      {
+        "player": "Would I qualify then?"
+      },
+      {
+        "type": "reference",
+        "target": "Transcript:Bone Voyage",
+        "section": "",
+        "text": "Continues in Transcript:Bone Voyage",
+        "id": "C60sf8",
+        "resolved": false,
+        "page_available": true
+      }
+    ],
+    "X9TO_8": [
+      {
+        "player": "Have you any interesting news?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "We've seen some incredible specimens come back from Fossil Island!"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Be sure to bring anything you find back for examination - we've got a brand new Palaeontology room downstairs dedicated to finds from the island."
+      }
+    ],
+    "pkFLbX": [
+      {
+        "player": "Do you know where I could find any treasure?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Look around you! This museum is full of treasures!"
+      },
+      {
+        "player": "No, I meant treasures for ME."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Any treasures this museum knows about it goes to great lengths to acquire."
+      }
+    ],
+    "1wehEl": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Well, firstly you'll need to do a bit of work around the museum, then maybe we can talk."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "YRgjB_": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Oh dear. You'll need 250 rubies, a Digsite pendant, 100 cosmic runes and 500 fire runes with you I'm afraid."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "08vMNp": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Thank you. You have [X] to go before you have enough for a medallion."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "5gFhYZ": [
+      {
+        "player": "I have something I need checking out."
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "Okay, give it to me and I'll have a look for you."
+      }
+    ],
+    "_l2qMw": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "Good, let me know if you find anything unusual."
+      }
+    ],
+    "_YnqnP": [
+      {
+        "player": "Can you tell me more about the tools an archaeologist uses?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "Of course! Let's see now... Rock picks are for splitting rocks or scraping away soil; you can get one from a cupboard in the Education Centre."
+      },
+      {
+        "player": "What about sample jars?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "I think you'll find them scattered about pretty much everywhere, but I know you can get one from a cupboard somewhere in the Education Centre, just like the rock pick!"
+      },
+      {
+        "player": "Okay, what about a specimen brush?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "We have a bit of a shortage of those at the moment. You could try borrowing one from a workman on the site... but I don't think they'd give it willingly."
+      },
+      {
+        "player": "Sounds like I'll need to be sneaky to get one of those, then... Okay - trowel?"
+      },
+      {
+        "type": "line",
+        "speaker": "Terry Balando",
+        "text": "Ahh... that you must earn by passing your exams! The examiner holds those."
+      },
+      {
+        "player": "Ahh, ok thanks."
       }
     ]
   }

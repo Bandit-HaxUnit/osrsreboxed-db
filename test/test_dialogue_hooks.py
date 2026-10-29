@@ -162,20 +162,22 @@ def test_generated_exports():
     import os
     import pytest
     import jsonschema
+    from scripts.dialogues.corrections import fingerprint
 
     root = Path(
         os.environ.get("DIALOGUE_EXPORT_ROOT", Path(__file__).resolve().parents[1])
     )
     if not (root / "docs/npc-dialogues.json").exists():
         pytest.skip("Regenerate dialogue exports first")
-    schema = json.loads((root / "data/schemas/schema-dialogues.json").read_text())
-    dialogues = json.loads((root / "docs/npc-dialogues.json").read_text())
-    minified = (root / "docs/npc-dialogues-minified.json").read_text()
+    schema = json.loads((root / "data/schemas/schema-dialogues.json").read_text(encoding="utf-8"))
+    dialogues = json.loads((root / "docs/npc-dialogues.json").read_text(encoding="utf-8"))
+    minified = (root / "docs/npc-dialogues-minified.json").read_text(encoding="utf-8")
     assert json.loads(minified) == dialogues
     assert minified == json.dumps(
         dialogues, ensure_ascii=False, separators=(",", ":"), allow_nan=False
     )
     records = {}
+    corrections = json.loads((root / "data/dialogues/corrections.json").read_text(encoding="utf-8"))
     jsonschema.Draft202012Validator(schema).validate(dialogues)
     for name, value in dialogues.items():
         records["Transcript:" + name] = value
@@ -185,8 +187,8 @@ def test_generated_exports():
             or value["default"] in variants(value)
         )
         assert "entrypoint" not in value and "entrypoints" not in value
-        ids = [
-            n["id"]
+        nodes = [
+            n
             for steps in [
                 *variants(value).values(),
                 *value.get("branches", {}).values(),
@@ -194,40 +196,53 @@ def test_generated_exports():
             for n in walk(steps)
             if "id" in n
         ]
-        assert len(ids) == len(set(ids)), name
+        if name in corrections:
+            assert fingerprint(value) == corrections[name]["audited_sha256"], name
+        else:
+            bindings = {}
+            for node in nodes:
+                own = {
+                    key: val
+                    for key, val in node.items()
+                    if key not in ("steps", "options")
+                    and not (node.get("type") == "jump" and key == "reference")
+                }
+                assert node["id"] not in bindings or bindings[node["id"]] == own, name
+                bindings[node["id"]] = own
     for record in records.values():
         for steps in [*variants(record).values(), *record.get("branches", {}).values()]:
             for node in walk(steps):
                 assert "entrypoint" not in node
                 if node.get("type") == "reference" and node.get("resolved"):
                     assert node["variant"] in variants(records[node["target"]])
-    manifest = json.loads((root / "docs/dialogue-manifest.json").read_text())
+    manifest = json.loads((root / "docs/dialogue-manifest.json").read_text(encoding="utf-8"))
     assert manifest.keys() == records.keys()
     jsonschema.validate(
         manifest,
-        json.loads((root / "data/schemas/schema-dialogue-manifest.json").read_text()),
+        json.loads((root / "data/schemas/schema-dialogue-manifest.json").read_text(encoding="utf-8")),
     )
-    authoring = json.loads((root / "data/dialogues/authoring-index.json").read_text())
+    authoring = json.loads((root / "data/dialogues/authoring-index.json").read_text(encoding="utf-8"))
     jsonschema.validate(
         authoring,
-        json.loads((root / "data/schemas/schema-dialogue-authoring.json").read_text()),
+        json.loads((root / "data/schemas/schema-dialogue-authoring.json").read_text(encoding="utf-8")),
     )
     assert authoring.keys() == records.keys()
     assert len(set(manifest.values())) == len(manifest)
     for page, record in records.items():
         assert authoring[page]["sections"].keys() == variants(record).keys()
-        for branch in record.get("branches", {}).values():
-            assert not any(n.get("type") == "call" for n in walk(branch))
     for page, path in manifest.items():
-        assert json.loads((root / "docs" / path).read_text()) == records[page]
-        for steps in variants(records[page]).values():
+        assert json.loads((root / "docs" / path).read_text(encoding="utf-8")) == records[page]
+        for steps in [
+            *variants(records[page]).values(),
+            *records[page].get("branches", {}).values(),
+        ]:
             for node in walk(steps):
                 if node.get("type") == "call":
                     assert node["branch"] in records[page]["branches"]
-    index = json.loads((root / "docs/npc-dialogue-index.json").read_text())
+    index = json.loads((root / "docs/npc-dialogue-index.json").read_text(encoding="utf-8"))
     jsonschema.validate(
         index,
-        json.loads((root / "data/schemas/schema-npc-dialogue-index.json").read_text()),
+        json.loads((root / "data/schemas/schema-npc-dialogue-index.json").read_text(encoding="utf-8")),
     )
     for entries in index.values():
         for entry in entries:

@@ -128,8 +128,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uGQBEC"
+                "id": "uGQBEC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d120bd3cab35c946"
+                  }
+                ]
               }
             ]
           },
@@ -138,8 +143,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6vmt6T"
+                "id": "6vmt6T",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ee4ee81a6015ac17"
+                  }
+                ]
               }
             ]
           },
@@ -148,12 +158,59 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "EY6f-I"
+                "id": "EY6f-I",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-714b31eeadae1e25"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-d120bd3cab35c946": [
+      {
+        "player": "Khazard Port please."
+      },
+      {
+        "npc": "Very well then me old shipmate, I'll just take your ticket and then we'll set sail."
+      },
+      {
+        "type": "message",
+        "text": "You arrive safely in the quiet fishing port of Khazard.",
+        "id": "nNwFUq"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ee4ee81a6015ac17": [
+      {
+        "player": "Port Sarim please."
+      },
+      {
+        "npc": "Very well then me old shipmate, I'll just take your ticket and then we'll set sail."
+      },
+      {
+        "type": "message",
+        "text": "The ship arrives in busy Port Sarim.",
+        "id": "npsVUp"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-714b31eeadae1e25": [
+      {
+        "player": "Nowhere just at the moment thanks."
+      },
+      {
+        "npc": "Very well then me old shipmate, Just let me know if you change your mind."
       }
     ]
   }

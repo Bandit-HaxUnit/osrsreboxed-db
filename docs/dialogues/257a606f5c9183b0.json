@@ -1,4 +1,48 @@
 {
+  "branches": {
+    "jump-46b73398635f5fdf": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is the Emir's Arena. Fighters come from far and wide to arrange fights against their friends and rivals. They can fight in 1v1 Tournaments or Duels."
+      },
+      {
+        "type": "message",
+        "text": "The Arena is open only on PvP Arena worlds. Switch to one of those game worlds to play in the Arena.",
+        "id": "bYex97"
+      },
+      {
+        "npc": "Head over to the hospital north of the Arena, and speak to the Guides. They'll help you sign up to a fight. Now, can I help you with anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "kYA6rY"
+      }
+    ],
+    "jump-26e975c7c240f05e": [
+      {
+        "player": "Do you have any tips on how to win duels?"
+      },
+      {
+        "npc": "You need to get good."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "YD-dCf"
+      }
+    ],
+    "jump-7526971950c3fd14": [
+      {
+        "player": "I'm fine, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Can I help you, [sir/madam]?"
@@ -71,8 +115,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "-lX1Fn"
+                              "id": "-lX1Fn",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-46b73398635f5fdf"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -91,8 +140,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "BjldMS"
+                              "id": "BjldMS",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-26e975c7c240f05e"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -101,8 +155,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "1ARtfe"
+                              "id": "1ARtfe",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-7526971950c3fd14"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -115,8 +174,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "X61kPK"
+                      "id": "X61kPK",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-46b73398635f5fdf"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -125,8 +189,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "Xks_ve"
+                      "id": "Xks_ve",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-26e975c7c240f05e"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -135,8 +204,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "LmI89D"
+                      "id": "LmI89D",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7526971950c3fd14"
+                        }
+                      ]
                     }
                   ]
                 }

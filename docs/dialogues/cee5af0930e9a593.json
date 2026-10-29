@@ -1357,7 +1357,7 @@
                   {
                     "type": "line",
                     "speaker": "Captain Bentley",
-                    "text": "Well, I would be more than happy to take you, unfortunately the Moon Clan are, frankly, very scary people, and I believe they would not take kindly to us bringing a Fremennik there.{{^|No line from the player in this case.}}"
+                    "text": "Well, I would be more than happy to take you, unfortunately the Moon Clan are, frankly, very scary people, and I believe they would not take kindly to us bringing a Fremennik there."
                   },
                   {
                     "type": "line",
@@ -5824,7 +5824,67 @@
       {
         "type": "choice",
         "prompt": "Rub out symbol?",
-        "options": []
+        "options": [
+          {
+            "text": "Rub away!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "First:",
+                "steps": [
+                  {
+                    "player": "One down, four more to go!"
+                  }
+                ],
+                "id": "bV84hf"
+              },
+              {
+                "type": "condition",
+                "text": "Second:",
+                "steps": [
+                  {
+                    "player": "Two down, three more to go!"
+                  }
+                ],
+                "id": "teW44a"
+              },
+              {
+                "type": "condition",
+                "text": "Third:",
+                "steps": [
+                  {
+                    "player": "Three down, only two more to go!"
+                  }
+                ],
+                "id": "yDfJDc"
+              },
+              {
+                "type": "condition",
+                "text": "Fourth:",
+                "steps": [
+                  {
+                    "player": "Four down, only one more to go!"
+                  }
+                ],
+                "id": "KyZD5w"
+              },
+              {
+                "type": "condition",
+                "text": "Fifth:",
+                "steps": [
+                  {
+                    "player": "That's it, I've removed all the symbols, and hopefully the jinx."
+                  }
+                ],
+                "id": "sJO6ZZ"
+              }
+            ]
+          },
+          {
+            "text": "I'm no cleaner!",
+            "steps": []
+          }
+        ]
       }
     ],
     "pirates-cove-talking-to-the-crew-after-removing-the-jinx-lecherous-lee": [
@@ -6464,9 +6524,13 @@
             "steps": [
               {
                 "type": "action",
-                "action": "open_interface",
+                "action": "open_shop",
                 "target": "Baba Yaga's Magic Shop.",
-                "id": "hssCT1"
+                "id": "hssCT1",
+                "shops": [
+                  "Baba Yaga's Magic Shop. (After Lunar Diplomacy)",
+                  "Baba Yaga's Magic Shop. (During Lunar Diplomacy)"
+                ]
               }
             ]
           },
@@ -6474,36 +6538,8 @@
             "text": "It's a very interesting house you have here.",
             "steps": [
               {
-                "player": "It's a very interesting house you have here. Does he have a name?"
-              },
-              {
-                "type": "line",
-                "speaker": "Baba Yaga",
-                "text": "Why of course. It's Berty."
-              },
-              {
-                "player": "Berty? Berty the Chicken leg house?"
-              },
-              {
-                "type": "line",
-                "speaker": "Baba Yaga",
-                "text": "Yes."
-              },
-              {
-                "player": "May I ask why?"
-              },
-              {
-                "type": "line",
-                "speaker": "Baba Yaga",
-                "text": "It just has that certain ring to it, don't you think? Beeerteeee!"
-              },
-              {
-                "player": "You're ins..."
-              },
-              {
-                "type": "line",
-                "speaker": "Baba Yaga",
-                "text": "Insane? Very."
+                "type": "call",
+                "branch": "Q65_n2"
               }
             ]
           },
@@ -6730,7 +6766,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you got anything to trade?"
+            "text": "Have you got anything to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "i9z-wR"
+              }
+            ]
           },
           {
             "text": "The Oneiromancer told me you may be able to help...",
@@ -6804,10 +6846,21 @@
             ]
           },
           {
-            "text": "It's a very interesting house you have here."
+            "text": "It's a very interesting house you have here.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Q65_n2"
+              }
+            ]
           },
           {
-            "text": "I'm good thanks, bye."
+            "text": "I'm good thanks, bye.",
+            "steps": [
+              {
+                "player": "I'm good thanks, bye."
+              }
+            ]
           }
         ]
       }
@@ -6825,7 +6878,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you got anything to trade?"
+            "text": "Have you got anything to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "i9z-wR"
+              }
+            ]
           },
           {
             "text": "About the potion you wanted me to make...",
@@ -6854,10 +6913,21 @@
             ]
           },
           {
-            "text": "It's a very interesting house you have here."
+            "text": "It's a very interesting house you have here.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Q65_n2"
+              }
+            ]
           },
           {
-            "text": "I'm good thanks, bye."
+            "text": "I'm good thanks, bye.",
+            "steps": [
+              {
+                "player": "I'm good thanks, bye."
+              }
+            ]
           }
         ]
       }
@@ -7353,7 +7423,7 @@
                                 "text": "Do you want this cape or not?"
                               },
                               {
-                                "player": "Sorry, yes please. {{^|Cape drops to ground with full inventory.}}"
+                                "player": "Sorry, yes please."
                               }
                             ]
                           },
@@ -7391,8 +7461,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "6ohEKo"
+                                "id": "6ohEKo",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-dbf8a557eb530716"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -7430,8 +7505,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "-5RO1r"
+                                "id": "-5RO1r",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-dbf8a557eb530716"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -7706,8 +7786,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jg744a"
+                "id": "jg744a",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-23f496c597eb328a"
+                  }
+                ]
               }
             ]
           },
@@ -7737,8 +7822,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "b_3dBF"
+                "id": "b_3dBF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-665d0ad3fe865da8"
+                  }
+                ]
               }
             ]
           }
@@ -7758,7 +7848,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What can you sell me?"
+            "text": "What can you sell me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Is5sBx"
+              }
+            ]
           },
           {
             "text": "You know the ceremonial clothes?",
@@ -7806,10 +7902,21 @@
             ]
           },
           {
-            "text": "It's a very interesting island you have here."
+            "text": "It's a very interesting island you have here.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YRYyTA"
+              }
+            ]
           },
           {
-            "text": "I'm good thanks, bye."
+            "text": "I'm good thanks, bye.",
+            "steps": [
+              {
+                "player": "I'm good thanks, bye."
+              }
+            ]
           }
         ]
       }
@@ -7827,7 +7934,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What can you sell me?"
+            "text": "What can you sell me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Is5sBx"
+              }
+            ]
           },
           {
             "text": "You know the ceremonial clothes?",
@@ -7854,10 +7967,21 @@
             ]
           },
           {
-            "text": "It's a very interesting island you have here."
+            "text": "It's a very interesting island you have here.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YRYyTA"
+              }
+            ]
           },
           {
-            "text": "I'm good thanks, bye."
+            "text": "I'm good thanks, bye.",
+            "steps": [
+              {
+                "player": "I'm good thanks, bye."
+              }
+            ]
           }
         ]
       }
@@ -7875,7 +7999,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What can you sell me?"
+            "text": "What can you sell me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Is5sBx"
+              }
+            ]
           },
           {
             "text": "You know the ceremonial clothes?",
@@ -7938,10 +8068,21 @@
             ]
           },
           {
-            "text": "It's a very interesting island you have here."
+            "text": "It's a very interesting island you have here.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YRYyTA"
+              }
+            ]
           },
           {
-            "text": "I'm good thanks, bye."
+            "text": "I'm good thanks, bye.",
+            "steps": [
+              {
+                "player": "I'm good thanks, bye."
+              }
+            ]
           }
         ]
       }
@@ -10913,8 +11054,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xNA0Sg"
+                "id": "xNA0Sg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cce0701f78b4444f"
+                  }
+                ]
               }
             ]
           },
@@ -10923,8 +11069,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "CczdDN"
+                "id": "CczdDN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-68f9caf23596d3d6"
+                  }
+                ]
               }
             ]
           }
@@ -11128,6 +11279,112 @@
     ]
   },
   "branches": {
+    "jump-dbf8a557eb530716": [
+      {
+        "type": "line",
+        "speaker": "Pauline Polaris",
+        "text": "That's it! Well done."
+      },
+      {
+        "player": "Woo hoo! Not the most normal name is it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Pauline Polaris",
+        "text": "It's not my fault my parents had an over active imagination."
+      },
+      {
+        "player": "Sounds like they were totally insane."
+      },
+      {
+        "type": "line",
+        "speaker": "Pauline Polaris",
+        "text": "Do you want this cape or not?"
+      },
+      {
+        "player": "Sorry, yes please."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-23f496c597eb328a": [
+      {
+        "player": "Can you tell me a bit about your people?"
+      },
+      {
+        "type": "line",
+        "speaker": "Selene",
+        "text": "Ok. Like what?"
+      },
+      {
+        "player": "How about the values of the Moon clan!"
+      },
+      {
+        "type": "line",
+        "speaker": "Selene",
+        "text": "Let me see...  We value knowledge of self because it is this that gives us our strength! It is most important!"
+      },
+      {
+        "player": "Well... I know things about myself. I know I like hot chocolate!"
+      },
+      {
+        "type": "line",
+        "speaker": "Selene",
+        "text": "I was meaning something a little deeper than that.  We also like to see someone listen. You know how they say a wise man listens?"
+      },
+      {
+        "player": "...."
+      },
+      {
+        "type": "line",
+        "speaker": "Selene",
+        "text": "Did you hear me?"
+      },
+      {
+        "player": ".... I'm listening."
+      },
+      {
+        "type": "line",
+        "speaker": "Selene",
+        "text": "Most wise."
+      },
+      {
+        "player": "Huh?"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-665d0ad3fe865da8": [
+      {
+        "player": "I'm not going to talk to someone that calls me 'sweetie'!"
+      },
+      {
+        "type": "line",
+        "speaker": "Selene",
+        "text": "No need to be rude dear!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-cce0701f78b4444f": [
+      {
+        "player": "Of course. I'm ready."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-68f9caf23596d3d6": [
+      {
+        "player": "I'm not ready yet, give me a little more time."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "4nMuFG": [
       {
         "type": "line",
@@ -11183,11 +11440,115 @@
         "type": "end"
       }
     ],
+    "Q65_n2": [
+      {
+        "player": "It's a very interesting house you have here. Does he have a name?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baba Yaga",
+        "text": "Why of course. It's Berty."
+      },
+      {
+        "player": "Berty? Berty the Chicken leg house?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baba Yaga",
+        "text": "Yes."
+      },
+      {
+        "player": "May I ask why?"
+      },
+      {
+        "type": "line",
+        "speaker": "Baba Yaga",
+        "text": "It just has that certain ring to it, don't you think? Beeerteeee!"
+      },
+      {
+        "player": "You're ins..."
+      },
+      {
+        "type": "line",
+        "speaker": "Baba Yaga",
+        "text": "Insane? Very."
+      }
+    ],
+    "i9z-wR": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Baba Yaga's Magic Shop.",
+        "id": "5oe-rV",
+        "shops": [
+          "Baba Yaga's Magic Shop. (After Lunar Diplomacy)",
+          "Baba Yaga's Magic Shop. (During Lunar Diplomacy)"
+        ]
+      }
+    ],
     "JWZmDM": [
       {
         "type": "line",
         "speaker": "Pauline Polaris",
         "text": "Nope. Not even close."
+      }
+    ],
+    "Is5sBx": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Moon Clan Fine Clothes.",
+        "id": "ic58cr"
+      }
+    ],
+    "YRYyTA": [
+      {
+        "player": "It's a very interesting island you have here."
+      },
+      {
+        "type": "line",
+        "speaker": "Rimae Sirsalis",
+        "text": "Why thank you. It's been our haven for a great many generations."
+      },
+      {
+        "player": "Everything seems to have a magical feel to it."
+      },
+      {
+        "type": "line",
+        "speaker": "Rimae Sirsalis",
+        "text": "Of course. We integrate magic into all areas of our lives. It is a part of everyone, so why deny it? It's best to make the most of this innate gift we have all been given."
+      },
+      {
+        "player": "What sort of things do you use your magic for?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rimae Sirsalis",
+        "text": "Take a look around. We use it in our day to day lives, from making a cup of tea, to travelling around the island. You see our ancestors were the ones that found the first rune essence and put it to use! The various"
+      },
+      {
+        "type": "line",
+        "speaker": "Rimae Sirsalis",
+        "text": "factions were eventually created, with people having different ideas on how the essence should be used (or not in some cases!)"
+      },
+      {
+        "player": "What has kept you so secluded on this island?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rimae Sirsalis",
+        "text": "It may be a bit beyond you, but although magic comes from within, we are all very strongly linked to the moon and the effects it has on us cannot be denied!"
+      },
+      {
+        "player": "It can't?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rimae Sirsalis",
+        "text": "Of course not. This very island has a great link to our moon, which helps us understand ourselves - especially our dreams, which is the path to understanding magic."
+      },
+      {
+        "player": "I think I will just have to take your word on that."
       }
     ],
     "nmADQo": [

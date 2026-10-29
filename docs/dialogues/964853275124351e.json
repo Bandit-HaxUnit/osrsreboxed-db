@@ -136,7 +136,28 @@
                               {
                                 "type": "choice",
                                 "prompt": "Start The Fremennik Trials quest?",
-                                "options": []
+                                "options": [
+                                  {
+                                    "text": "Yes.",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "MIkTwL"
+                                      }
+                                    ],
+                                    "hook": "quest:the-fremennik-trials:start",
+                                    "quest": "The Fremennik Trials"
+                                  },
+                                  {
+                                    "text": "No.",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "64l3kq"
+                                      }
+                                    ]
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -236,17 +257,8 @@
                             "text": "Yes.",
                             "steps": [
                               {
-                                "player": "I think I would enjoy the challenge of becoming an honorary Fremennik. Where and how do I start?"
-                              },
-                              {
-                                "type": "line",
-                                "speaker": "Brundt the Chieftain",
-                                "text": "As I say outerlander, you must find and speak to the twelve members of the council of elders, and see what tasks they might set you."
-                              },
-                              {
-                                "type": "line",
-                                "speaker": "Brundt the Chieftain",
-                                "text": "If you can gain the support of seven of the twelve, then you will be accepted as one of us without question."
+                                "type": "call",
+                                "branch": "MIkTwL"
                               }
                             ],
                             "hook": "quest:the-fremennik-trials:start",
@@ -256,12 +268,8 @@
                             "text": "No.",
                             "steps": [
                               {
-                                "player": "No way do I want to become like YOU! Forget you, and forget your whole stupid town! You're a bunch of stupid primitives, from what I've seen!"
-                              },
-                              {
-                                "type": "line",
-                                "speaker": "Brundt the Chieftain",
-                                "text": "I am sorry to say that I expected such a response from an outerlander. I thought perhaps you might have been different to all the others..."
+                                "type": "call",
+                                "branch": "64l3kq"
                               }
                             ]
                           }
@@ -270,10 +278,58 @@
                     ]
                   },
                   {
-                    "text": "Why do you call me outerlander?"
+                    "text": "Why do you call me outerlander?",
+                    "steps": [
+                      {
+                        "player": "Why do you call me outerlander?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Brundt the Chieftain",
+                        "text": "Do not take it as an insult, outerlander. For us, this town is the center of all. Anyone not born here, or that we do not know and trust is an outerlander."
+                      },
+                      {
+                        "player": "So it basically means stranger?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Brundt the Chieftain",
+                        "text": "Aye, but that is an outerlander word. We do not judge someones ways by their name. It simply means one from the outerlands, or one not from Rellekka."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Brundt the Chieftain",
+                        "text": "I know our customs are foreign to you; perhaps you would like me to explain something else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "4HPZyE"
+                      }
+                    ]
                   },
                   {
-                    "text": "I seek an army to destroy Asgarnia!"
+                    "text": "I seek an army to destroy Asgarnia!",
+                    "steps": [
+                      {
+                        "player": "I seek an army to destroy Asgarnia!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Brundt the Chieftain",
+                        "text": "We will have no part in the squabbles of outerlander tribes. Their magics are strange and deadly to us, as we learnt long ago."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Brundt the Chieftain",
+                        "text": "If this is all that you came here for, then you have had a wasted journey. If you are looking for something else, then speak now for my patience dwindles."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "3G71Ip"
+                      }
+                    ]
                   }
                 ]
               }
@@ -313,8 +369,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "LCzC4r"
+                        "id": "LCzC4r",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6283a8bb3b016d09"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -323,8 +384,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Xyo5KI"
+                        "id": "Xyo5KI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-63ae78c2516a69a9"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -623,7 +689,12 @@
             "text": "What Jarvald is doing."
           },
           {
-            "text": "Nothing"
+            "text": "Nothing",
+            "steps": [
+              {
+                "player": "Actually, I don't think I have anything to speak to you about..."
+              }
+            ]
           }
         ]
       }
@@ -728,8 +799,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "IjqcYy"
+            "id": "IjqcYy",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-5ebd61a7c7b57f51"
+              }
+            ]
           }
         ],
         "id": "TneElg"
@@ -8908,6 +8984,240 @@
     ]
   },
   "branches": {
+    "jump-6283a8bb3b016d09": [
+      {
+        "player": "Actually, I would be very interested to hear what you have to offer."
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "You would? These are unusual sentiments to hear from an outerlander! My suggestion was going to be that if you crave adventure and battle,"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "and your heart sings for glory, then perhaps you would be interested in joining our clan, and becoming a Fremennik yourself?"
+      },
+      {
+        "player": "What would that involve exactly?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "Well, there are two ways to become a member of our clan and call yourself a Fremennik: be born a Fremennik, or be voted in by our council of elders."
+      },
+      {
+        "player": "Well, I think I've missed the first way, but how can I get the council of elders to vote to let me join your clan?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "Well, that I cannot answer myself. You will need to speak to each of them and see what they require of you as proof of your dedication."
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "There are twelve council members around this village; you will need to gain a majority vote of at least seven councillors in your favour."
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "So what say you? Give me the word, and I will tell all of my tribe of your intentions, be they yea or nay."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is missing at least one requirement before starting the quest:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it.",
+            "id": "pGn0X0"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "njg4oI"
+          }
+        ],
+        "id": "6w3ifi"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start The Fremennik Trials quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "I think I would enjoy the challenge of becoming an honorary Fremennik. Where and how do I start?"
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt the Chieftain",
+                "text": "As I say outerlander, you must find and speak to the twelve members of the council of elders, and see what tasks they might set you."
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt the Chieftain",
+                "text": "If you can gain the support of seven of the twelve, then you will be accepted as one of us without question."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:the-fremennik-trials:start",
+            "quest": "The Fremennik Trials"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No way do I want to become like YOU! Forget you, and forget your whole stupid town! You're a bunch of stupid primitives, from what I've seen!"
+              },
+              {
+                "type": "line",
+                "speaker": "Brundt the Chieftain",
+                "text": "I am sorry to say that I expected such a response from an outerlander. I thought perhaps you might have been different to all the others..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-63ae78c2516a69a9": [
+      {
+        "player": "You're right. I really couldn't care less."
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "It is as I thought outerlander. Your kind care nothing for the Fremennik, and we feel the same about you. This is the way of the world."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5ebd61a7c7b57f51": [
+      {
+        "type": "line",
+        "speaker": "Manni the Reveller",
+        "text": "Hello outerlander. I overheard your conversation with Brundt just now. You wish to become a member of the Fremennik?"
+      },
+      {
+        "player": "That's right! Why, are you on the council?"
+      },
+      {
+        "type": "line",
+        "speaker": "Manni the Reveller",
+        "text": "Do not let my drink-soused appearance fool you, I earnt my place on the council many years past. I am always glad to see new blood enter our tribe, and will happily vote for you."
+      },
+      {
+        "player": "Great!"
+      },
+      {
+        "type": "line",
+        "speaker": "Manni the Reveller",
+        "text": "...Providing you can pass a little test for me. As a Fremennik, you will need to show cunning, stamina, fortitude, and an iron constitution. I know of only one way to test all of these."
+      },
+      {
+        "player": "And what's that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Manni the Reveller",
+        "text": "Why, a drinking contest!"
+      },
+      {
+        "type": "line",
+        "speaker": "Manni the Reveller",
+        "text": "The task is simple enough! You versus me, a stiff drink each, last man standing wins the trial. So what say you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "player": "A drinking contest? Easy. Set them up, and I'll knock them back."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not already have the tankard and/or beer tankard:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Manni the Reveller",
+                    "text": "When you are ready to begin, go and pick up a keg from that table over there, and come back here."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Manni the Reveller",
+                    "text": "We start when you have your keg of beer with you, and finish when one of us can drink no more and yields."
+                  }
+                ],
+                "id": "KniVWy"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "I don't think drinking myself into a stupor is a very good way of testing my worthiness."
+              },
+              {
+                "type": "line",
+                "speaker": "Manni the Reveller",
+                "text": "Well, perhaps it's not, but it's my way. If you want my vote at the council, I'm afraid you're going to have to drink me under the table."
+              },
+              {
+                "player": "I'm going to find someone else to vote for me then."
+              },
+              {
+                "type": "line",
+                "speaker": "Manni the Reveller",
+                "text": "As you wish, outerlander."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "MIkTwL": [
+      {
+        "player": "I think I would enjoy the challenge of becoming an honorary Fremennik. Where and how do I start?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "As I say outerlander, you must find and speak to the twelve members of the council of elders, and see what tasks they might set you."
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "If you can gain the support of seven of the twelve, then you will be accepted as one of us without question."
+      }
+    ],
+    "64l3kq": [
+      {
+        "player": "No way do I want to become like YOU! Forget you, and forget your whole stupid town! You're a bunch of stupid primitives, from what I've seen!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "I am sorry to say that I expected such a response from an outerlander. I thought perhaps you might have been different to all the others..."
+      }
+    ],
     "WL61gt": [
       {
         "player": "Forget it! This all sounds like way too much work for a stupid vote at a meeting! I'll find someone else instead."

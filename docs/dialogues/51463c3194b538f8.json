@@ -63,8 +63,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "vyR-wp"
+                        "id": "vyR-wp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-44c02d63cb367cc9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -73,8 +78,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "q_nWyv"
+                        "id": "q_nWyv",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-288736ba855f4be9"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -214,6 +224,48 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-44c02d63cb367cc9": [
+      {
+        "player": "Sure, I'll give it a go."
+      },
+      {
+        "npc": "Great! That will be 200 coins then please."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 200 coins:",
+        "steps": [
+          {
+            "player": "Oops, I don't have enough coins on me..."
+          },
+          {
+            "npc": "Never mind, come back when you've got enough."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gdNzeo"
+      },
+      {
+        "type": "message",
+        "text": "You pay the judge and he gives you 10 bronze arrows.",
+        "id": "PnCfxk"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-288736ba855f4be9": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

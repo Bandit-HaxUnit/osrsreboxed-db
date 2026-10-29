@@ -442,7 +442,13 @@
                   {
                     "type": "jump",
                     "reference": "continues",
-                    "id": "SxRwQQ"
+                    "id": "SxRwQQ",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-25c08d47059ae47e"
+                      }
+                    ]
                   }
                 ],
                 "id": "nBKakv"
@@ -477,7 +483,13 @@
                   {
                     "type": "jump",
                     "reference": "continues",
-                    "id": "tf99tR"
+                    "id": "tf99tR",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-25c08d47059ae47e"
+                      }
+                    ]
                   }
                 ],
                 "id": "wv1mt1"
@@ -517,8 +529,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "6CcKOU"
+                        "id": "6CcKOU",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3c84c1086fa8d3fa"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -527,8 +544,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "U4BwqA"
+                        "id": "U4BwqA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-79e8eb3873e5b521"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -537,8 +559,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "bBN43g"
+                        "id": "bBN43g",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a6cdb6cca6a20824"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -553,8 +580,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "aSe2np"
+                                "id": "aSe2np",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-76d75b99dbc6353a"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -563,8 +595,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "-bwQvk"
+                                "id": "-bwQvk",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c52c2770cf67e2c0"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -599,8 +636,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "F-uNQr"
+                "id": "F-uNQr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-79e8eb3873e5b521"
+                  }
+                ]
               }
             ]
           },
@@ -609,8 +651,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "aGZDOs"
+                "id": "aGZDOs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a6cdb6cca6a20824"
+                  }
+                ]
               }
             ]
           },
@@ -625,8 +672,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "rp8-MK"
+                        "id": "rp8-MK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-76d75b99dbc6353a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -639,8 +691,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "5iWqiJ"
+                            "id": "5iWqiJ",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-3457c6037ea51388"
+                              }
+                            ]
                           }
                         ],
                         "id": "VJI4Bh"
@@ -812,6 +869,478 @@
             "steps": []
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-25c08d47059ae47e": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to access your tool storage.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "rp8-MK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-76d75b99dbc6353a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Ask about private access.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has not unlocked private access:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "5iWqiJ",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-3457c6037ea51388"
+                      }
+                    ]
+                  }
+                ],
+                "id": "VJI4Bh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has unlocked private access:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player currently has private access enabled:",
+                    "steps": [
+                      {
+                        "player": "Can I go back to looting with other people?"
+                      },
+                      {
+                        "npc": "I can remove your private access for now, if you're sure."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Return to normal access?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "npc": "Very well. You should now find that when you enter the Hallowed Sepulchre, your peers will join you."
+                              },
+                              {
+                                "npc": "Speak to me again if you would like this effect restored."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "player": "On second thoughts, I've changed my mind."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "dglu2z"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player currently has private access disabled:",
+                    "steps": [
+                      {
+                        "player": "Can I go back to looting on my own?"
+                      },
+                      {
+                        "npc": "I can restore your private access for you, if you're sure."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Return to private access?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "npc": "Very well. You should now find that when you enter the Hallowed Sepulchre, you will end up in different chambers to your peers."
+                              },
+                              {
+                                "npc": "Speak to me again if you would like this effect restored."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "player": "On second thoughts, I've changed my mind."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "_9MbYw"
+                  }
+                ],
+                "id": "Exi51h"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I need to go.",
+            "steps": [
+              {
+                "player": "Sorry, I need to go."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Previous options...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "Q5F5V9"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3c84c1086fa8d3fa": [
+      {
+        "player": "Tell me about yourself."
+      },
+      {
+        "type": "condition",
+        "text": "Before The Blood Moon Rises:",
+        "steps": [
+          {
+            "npc": "Like you, I am not from here. I represent a group who are very interested in the Hallowed marks found within the Hallowed Sepulchre."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has completed A Night at the Theatre:",
+            "steps": [
+              {
+                "player": "You know, I helped out a very similar individual to yourself over at the Theatre of Blood. Any connection?"
+              },
+              {
+                "npc": "So you're the one who the master spoke of. I am aware of your contributions. Helping us out here will earn yourself further favour with him."
+              },
+              {
+                "player": "How do I know that's something I even want?"
+              },
+              {
+                "npc": "That is for you to decide. I have told you all that I have to share."
+              }
+            ],
+            "id": "6IsLJg"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed A Night at the Theatre:",
+            "steps": [
+              {
+                "npc": "That is all you need to know."
+              }
+            ],
+            "id": "3FNl2O"
+          },
+          {
+            "player": "All right then, keep your secrets."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "Rt8Oj0"
+          }
+        ],
+        "id": "QEs_z-"
+      },
+      {
+        "type": "condition",
+        "text": "After The Blood Moon Rises:",
+        "steps": [
+          {
+            "npc": "I am one of the aranei in service to Father Sugadinti. I believe you are quite familar with our kind now."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "hTSLJZ"
+          }
+        ],
+        "id": "EpY9V9"
+      }
+    ],
+    "jump-79e8eb3873e5b521": [
+      {
+        "player": "I'd like to trade in some Hallowed marks."
+      },
+      {
+        "npc": "Of course."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Mysterious Hallowed Goods",
+        "id": "SsfKTZ"
+      }
+    ],
+    "jump-a6cdb6cca6a20824": [
+      {
+        "player": "Do you have any of my items?"
+      },
+      {
+        "type": "condition",
+        "text": "If the Mysterious Stranger does not have any of the player's items:",
+        "steps": [
+          {
+            "npc": "I do not. If I did have any of your items, but you died before collecting them, they'll now be lost."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "5L7-Dw"
+          }
+        ],
+        "id": "Zhn4rG"
+      },
+      {
+        "type": "condition",
+        "text": "If the Mysterious Stranger has any of the player's items:",
+        "steps": [
+          {
+            "npc": "I do have some of your items here. Try not to get hit by the traps next time."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Mysterious Stranger's Item Retrieval Service",
+            "id": "MT5DoQ"
+          }
+        ],
+        "id": "VO4Pnx"
+      }
+    ],
+    "jump-76d75b99dbc6353a": [
+      {
+        "player": "I'd like to access your tool storage."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Hallowed Sepulchre Equipment Storage",
+        "id": "fXtsyh"
+      }
+    ],
+    "jump-c52c2770cf67e2c0": [
+      {
+        "type": "condition",
+        "text": "If the player has not unlocked private access:",
+        "steps": [
+          {
+            "type": "jump",
+            "id": "5iWqiJ",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-3457c6037ea51388"
+              }
+            ]
+          }
+        ],
+        "id": "VJI4Bh"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has unlocked private access:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player currently has private access enabled:",
+            "steps": [
+              {
+                "player": "Can I go back to looting with other people?"
+              },
+              {
+                "npc": "I can remove your private access for now, if you're sure."
+              },
+              {
+                "type": "choice",
+                "prompt": "Return to normal access?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "Very well. You should now find that when you enter the Hallowed Sepulchre, your peers will join you."
+                      },
+                      {
+                        "npc": "Speak to me again if you would like this effect restored."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "On second thoughts, I've changed my mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "dglu2z"
+          },
+          {
+            "type": "condition",
+            "text": "If the player currently has private access disabled:",
+            "steps": [
+              {
+                "player": "Can I go back to looting on my own?"
+              },
+              {
+                "npc": "I can restore your private access for you, if you're sure."
+              },
+              {
+                "type": "choice",
+                "prompt": "Return to private access?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "Very well. You should now find that when you enter the Hallowed Sepulchre, you will end up in different chambers to your peers."
+                      },
+                      {
+                        "npc": "Speak to me again if you would like this effect restored."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "On second thoughts, I've changed my mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "_9MbYw"
+          }
+        ],
+        "id": "Exi51h"
+      }
+    ],
+    "jump-3457c6037ea51388": [
+      {
+        "player": "Is there any way I could have private access to the Sepulchre? The other adventurers in there keep activating traps and messing up my timing."
+      },
+      {
+        "npc": "An interesting problem. But... I suppose I could grant you private access to the Hallowed Sepulchre... for a fee."
+      },
+      {
+        "player": "How much?"
+      },
+      {
+        "npc": "200 Hallowed marks."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has less than 200 Hallowed marks in their inventory:",
+        "steps": [
+          {
+            "player": "I don't have that many marks on me..."
+          },
+          {
+            "npc": "Then I'm afraid that, for now, you will have to contend with your peers activating traps for you."
+          }
+        ],
+        "id": "AsBgZX"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 200 Hallowed marks in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Buy private access for 200 Hallowed marks?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "npc": "Very well. You should now find that when you enter the Hallowed Sepulchre, you will end up in different chambers to your peers."
+                  },
+                  {
+                    "npc": "Speak to me again if you like this effect rescinded."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "npc": "Very well. I shall be here if you change your mind."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "SjY7rw"
       }
     ]
   }

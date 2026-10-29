@@ -1,4 +1,54 @@
 {
+  "branches": {
+    "jump-8d8f313a4203e962": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is the Emir's Arena. Fighters come from far and wide to arrange fights against their friends and rivals. They can fight in 1v1 Tournaments or Duels."
+      },
+      {
+        "type": "message",
+        "text": "The Arena is open only on PvP Arena worlds. Switch to one of those game worlds to play in the Arena.",
+        "id": "T-r91_"
+      },
+      {
+        "npc": "Head over to the hospital north of the Arena, and speak to the Guides. They'll help you sign up to a fight. Now, can I help you with anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "lV2IEh"
+      }
+    ],
+    "jump-7bea15ed30dbdee1": [
+      {
+        "player": "Do you know where I could get some food around here?"
+      },
+      {
+        "npc": "Huh, I have no idea. I just bring my own shrimp for lunch."
+      },
+      {
+        "player": "Can I try one?"
+      },
+      {
+        "npc": "No, fish your own."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "tNAxHP"
+      }
+    ],
+    "jump-1460c0996a87a12e": [
+      {
+        "player": "I'm fine, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Can I help you, [sir/madam]?"
@@ -71,8 +121,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "otfcOC"
+                              "id": "otfcOC",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-8d8f313a4203e962"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -91,8 +146,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "0L2qTb"
+                              "id": "0L2qTb",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-7bea15ed30dbdee1"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -101,8 +161,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "VQ64JP"
+                              "id": "VQ64JP",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-1460c0996a87a12e"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -115,8 +180,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "MZOThR"
+                      "id": "MZOThR",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-8d8f313a4203e962"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -125,8 +195,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "DEhUXp"
+                      "id": "DEhUXp",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7bea15ed30dbdee1"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -135,8 +210,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "zrtDb6"
+                      "id": "zrtDb6",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-1460c0996a87a12e"
+                        }
+                      ]
                     }
                   ]
                 }

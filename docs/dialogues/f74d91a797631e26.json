@@ -107,8 +107,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "PHa2rd"
+                        "id": "PHa2rd",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e3db37c440ff38df"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -136,8 +141,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "4rYQBZ"
+                        "id": "4rYQBZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bf3f3a249e586968"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -146,8 +156,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "CTTI0q"
+                        "id": "CTTI0q",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e3db37c440ff38df"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -341,6 +356,75 @@
     ]
   },
   "branches": {
+    "jump-e3db37c440ff38df": [
+      {
+        "player": "Can you make me some?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a non-members world:",
+        "steps": [
+          {
+            "npc": "I'm sorry, but I can't do that right now."
+          },
+          {
+            "type": "end",
+            "reason": "members"
+          }
+        ],
+        "id": "UGl0TJ"
+      },
+      {
+        "npc": "I need bark from a hollow tree, and some fine cloth. Unfortunately both these items can only be found in Morytania, especially the cloth which is found in the tombs of shades."
+      },
+      {
+        "npc": "Of course I'd happily sell you some at a discounted price if you bring me those items."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, guess I'll go looking then!",
+            "steps": [
+              {
+                "player": "Okay, guess I'll go looking then!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Okay, how much do I need?",
+            "steps": [
+              {
+                "player": "Okay, how much do I need?"
+              },
+              {
+                "npc": "I need 1 piece of each for either gloves or boots, 2 pieces of each for a hat, 3 pieces of each for leggings, and 4 pieces of each for a top."
+              },
+              {
+                "npc": "I'll charge you 1,000 coins for either gloves or boots, 6,000 coins for a hat, 32,000 coins for leggings, and 37,000 for a top."
+              },
+              {
+                "player": "Okay, guess I'll go looking then!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-bf3f3a249e586968": [
+      {
+        "player": "Well good luck with that."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "OLcdCz": [
       {
         "npc": "I'm sorry, but I can't do that right now."

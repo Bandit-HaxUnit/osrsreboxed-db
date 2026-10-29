@@ -152,8 +152,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "rveDLL"
+                                "id": "rveDLL",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c7384abd7a6ebfe9"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -263,8 +268,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "K1P4me"
+        "id": "K1P4me",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-ba9dc243394354e1"
+          }
+        ]
       }
     ],
     "claim-shield-dialogue": [
@@ -273,13 +283,180 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "q5q0HD"
+        "id": "q5q0HD",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-ae4348d5293a8270"
+          }
+        ]
       }
     ],
     "standing-on-the-marker-without-a-shield": [
       {
         "npc": "Watch out! You'll need to equip the shield as soon as you're on the target spot else you could get hit! Speak to me to get one, and make sure both your hands are free to equip it."
+      }
+    ]
+  },
+  "branches": {
+    "jump-c7384abd7a6ebfe9": [
+      {
+        "player": "May I have a shield please?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a defensive shield:",
+        "steps": [
+          {
+            "npc": "Silly muffin, you have one already!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "V2l1SX"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "npc": "I'd be happy ta give you a shield but you've no space for it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "K_yep_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a defensive shield:",
+        "steps": [
+          {
+            "npc": "Of course!"
+          },
+          {
+            "type": "message",
+            "text": "The dwarf hands you a large shield.",
+            "id": "2WjWsw"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Defensive shield",
+            "id": "3DKsRo"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bYP19R"
+      }
+    ],
+    "jump-ba9dc243394354e1": [
+      {
+        "type": "condition",
+        "text": "If the player has earned Warrior guild tokens, but has no inventory space:",
+        "steps": [
+          {
+            "npc": "You don't have space to carry them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "z6cvWS"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned Warrior guild tokens:",
+        "steps": [
+          {
+            "npc": "Of course! Here you go, you've earned [number] token[s]!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Warrior guild tokens",
+            "id": "6np_JT"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "UnDvBg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not earned Warrior guild tokens:",
+        "steps": [
+          {
+            "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+          },
+          {
+            "player": "Ok, I'll go see what I can find."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VoKzFp"
+      }
+    ],
+    "jump-ae4348d5293a8270": [
+      {
+        "type": "condition",
+        "text": "If the player has a defensive shield:",
+        "steps": [
+          {
+            "npc": "Silly muffin, you have one already!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "V2l1SX"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "npc": "I'd be happy ta give you a shield but you've no space for it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "K_yep_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a defensive shield:",
+        "steps": [
+          {
+            "npc": "Of course!"
+          },
+          {
+            "type": "message",
+            "text": "The dwarf hands you a large shield.",
+            "id": "2WjWsw"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Defensive shield",
+            "id": "3DKsRo"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bYP19R"
       }
     ]
   }

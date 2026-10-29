@@ -233,8 +233,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "hsTXXF"
+                    "id": "hsTXXF",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7ab7e05fc11b84ab"
+                      }
+                    ]
                   }
                 ]
               },
@@ -243,8 +248,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "kdJBuP"
+                    "id": "kdJBuP",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b6d9bcd47fab2c76"
+                      }
+                    ]
                   }
                 ]
               }
@@ -606,6 +616,173 @@
           }
         ],
         "id": "MhfAjW"
+      }
+    ]
+  },
+  "branches": {
+    "jump-7ab7e05fc11b84ab": [
+      {
+        "npc": "The sort of stuff you use in brewing."
+      },
+      {
+        "npc": "The sort of stuff the Cooking Guild banned last year."
+      },
+      {
+        "npc": "The sort of stuff that (if added to a vat of brewing ingredients just before the hops) has a higher chance of producin' a mature batch of whatever ale you wanted to make."
+      },
+      {
+        "npc": "That sort of stuff."
+      },
+      {
+        "player": "What was that bit about adding it to something?"
+      },
+      {
+        "npc": "I said, it's the sort of Stuff you add to a brewing vat after you have put the water and barley malt in."
+      },
+      {
+        "npc": "THEN you add the sort of stuff I'm talking about, followed by the hops and the yeast."
+      },
+      {
+        "npc": "Then, when whatever you are making brews it will have a higher chance of being a mature batch of ale."
+      },
+      {
+        "npc": "That clear enough for you or am I going to have to start drawin' pictures on the wall of the hut?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I am here for the stuff.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Honest Jimmy's House of Stuff",
+                "id": "RNAQ1t"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No."
+              },
+              {
+                "npc": "Then sling yer 'ook!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-b6d9bcd47fab2c76": [
+      {
+        "player": "I hear you are the man to talk to about maps."
+      },
+      {
+        "npc": "I might be, you got something for me?"
+      },
+      {
+        "player": "Like what?"
+      },
+      {
+        "npc": "Like...5000 Pieces of Eight?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 5,000 pieces of eight:",
+        "steps": [
+          {
+            "player": "I might have 5000 Pieces of Eight with your name on them if you have a map for me."
+          },
+          {
+            "npc": "Look, I might have a little something for you for that amount of cash, but I'll have to check."
+          },
+          {
+            "npc": "You sure you want in on this?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "npc": "Ok, there you go, now try and keep this to yourself, ok?"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a medium clue scroll",
+                    "id": "kN9yRK"
+                  }
+                ]
+              },
+              {
+                "text": "No",
+                "steps": [
+                  {
+                    "player": "No."
+                  },
+                  {
+                    "npc": "Then sling yer 'ook!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "8POtXr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 5,000 pieces of eight:",
+        "steps": [
+          {
+            "player": "Well, no but..."
+          },
+          {
+            "npc": "Look, you want something or not?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, what are you selling?",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Honest Jimmy's House of Stuff",
+                    "id": "hklJxj"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "No."
+                  },
+                  {
+                    "npc": "Then sling yer 'ook!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "xt-Fyb"
       }
     ]
   }

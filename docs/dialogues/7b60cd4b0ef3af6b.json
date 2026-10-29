@@ -74,8 +74,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8AKkoY"
+                "id": "8AKkoY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2ecd4a2c27121de7"
+                  }
+                ]
               }
             ]
           },
@@ -84,8 +89,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Gy8Ypx"
+                "id": "Gy8Ypx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-77b8760708fd3b42"
+                  }
+                ]
               }
             ]
           },
@@ -94,12 +104,62 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RqlpRK"
+                "id": "RqlpRK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f49cf81515ce2c8c"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-2ecd4a2c27121de7": [
+      {
+        "player": "Where does the blood come from?"
+      },
+      {
+        "npc": "Throughout the generations, countless people of this land have perished in times of strife, with their bodies left to rot where they fell."
+      },
+      {
+        "npc": "Some were slain by the deadly creatures that roam the land; others perished at the hands of their fellow citizens during the wars of this land."
+      },
+      {
+        "npc": "Their blood flowed into the soil, pooling and percolating unseen in the dark, as the power of the Altar drew it to this sacred place to form the River."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "AsN6Kz"
+      }
+    ],
+    "jump-77b8760708fd3b42": [
+      {
+        "player": "Why are you here?"
+      },
+      {
+        "npc": "The blood is the blood of Kourend's citizens. It is fitting that we honour their memory."
+      },
+      {
+        "npc": "Also, it smells so good."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "TSsQFw"
+      }
+    ],
+    "jump-f49cf81515ce2c8c": [
+      {
+        "player": "I'll leave you to enjoy the view."
+      },
+      {
+        "type": "end"
       }
     ]
   }

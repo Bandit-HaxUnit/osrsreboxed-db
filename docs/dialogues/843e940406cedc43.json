@@ -58,8 +58,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "--xm5m"
+                        "id": "--xm5m",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-312d994a13e43488"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -68,8 +73,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ZGBURY"
+                        "id": "ZGBURY",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-78c37927fe8f1b1e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -222,8 +232,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "bOKCBx"
+                                        "id": "bOKCBx",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-86b50cce916a4b72"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -252,8 +267,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "py1-Hx"
+                "id": "py1-Hx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f7a0c9b9f6e6e01e"
+                  }
+                ]
               }
             ]
           },
@@ -262,8 +282,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bkzLMe"
+                "id": "bkzLMe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5697ff8137cb4ddf"
+                  }
+                ]
               }
             ]
           }
@@ -290,9 +315,14 @@
                 "player": "Yes, I want to help you out and find out about the zogres."
               },
               {
-                "type": "action",
-                "text": "Continues above from \"Yes creatures...yous does good fings for Grish and learn why Zogries at Jiggig and den get da Zogries back in da ground.\"",
-                "id": "66IFHw"
+                "type": "jump",
+                "id": "66IFHw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c3d99a3b8566f0c2"
+                  }
+                ]
               }
             ]
           },
@@ -305,9 +335,14 @@
                 "text": "Yous creatures does da good fings for Grish and learn why Zogries at Jiggig and den get da Zogries back in da ground."
               },
               {
-                "type": "action",
-                "text": "Continues above from \"Oh, so you want me to find out why the Zogres have appeared and then find a way of burying them?\"",
-                "id": "4gxGRa"
+                "type": "jump",
+                "id": "4gxGRa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0cb00a9fa165045"
+                  }
+                ]
               }
             ]
           },
@@ -692,9 +727,14 @@
         "text": "Oh yes, Brentle's tankard. Yeah, you've shown me this already. It belonged to Brentle Vahn, he was quite a common customer, though I've not seen him in a while."
       },
       {
-        "type": "action",
-        "text": "Continues above from \"He was talking to some shifty looking wizard the other day. I don't know his name, but I'd recognise him if I saw him.\"",
-        "id": "afqSpK"
+        "type": "jump",
+        "id": "afqSpK",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-f8436cc8f8fdc89a"
+          }
+        ]
       }
     ],
     "investigating-b-vahn-using-the-torn-page-on-the-dragon-inn-bartender": [
@@ -1000,16 +1040,39 @@
         "type": "choice",
         "options": [
           {
-            "text": "What is there to do in the Wizards' Guild?"
+            "text": "What is there to do in the Wizards' Guild?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "SmQZQe"
+              }
+            ]
           },
           {
-            "text": "What are the requirements to get in the Wizards' Guild?"
+            "text": "What are the requirements to get in the Wizards' Guild?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YBjDCm"
+              }
+            ]
           },
           {
-            "text": "What do you do in the Guild?"
+            "text": "What do you do in the Guild?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "MI9KQV"
+              }
+            ]
           },
           {
-            "text": "Ok, thanks."
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1154,9 +1217,14 @@
                 "player": "Very well, if you don't know anything about it, you won't mind if I look around then?"
               },
               {
-                "type": "action",
-                "text": "Continues below from \"Well,err....well, actually yes I do mind...it's my place and I don't want strangers going through my things.\"",
-                "id": "ZOOxFx"
+                "type": "jump",
+                "id": "ZOOxFx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ccc8c9764e5f7ae4"
+                  }
+                ]
               }
             ]
           },
@@ -1834,8 +1902,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "OrHc89"
+                        "id": "OrHc89",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d8bdd40a5152ce65"
+                          }
+                        ]
                       }
                     ],
                     "id": "xFCDlv"
@@ -2091,8 +2164,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bZRPUg"
+                "id": "bZRPUg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-647c48079f05cb4c"
+                  }
+                ]
               }
             ]
           },
@@ -2101,8 +2179,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Uh-DCw"
+                "id": "Uh-DCw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c32be3b939e9710e"
+                  }
+                ]
               }
             ]
           },
@@ -2111,8 +2194,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NZojxh"
+                "id": "NZojxh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f79c408503fedf1e"
+                  }
+                ]
               }
             ]
           },
@@ -2503,8 +2591,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-ZYvIL"
+                "id": "-ZYvIL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fa89593c256e9d49"
+                  }
+                ]
               }
             ]
           },
@@ -2523,8 +2616,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "N_Rfgr"
+                "id": "N_Rfgr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a2649fe8eee3f1c6"
+                  }
+                ]
               }
             ]
           },
@@ -2533,8 +2631,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZbVFOq"
+                "id": "ZbVFOq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2fcda21ce2e41c63"
+                  }
+                ]
               }
             ]
           }
@@ -2564,16 +2667,39 @@
         "type": "choice",
         "options": [
           {
-            "text": "What is there to do in the Wizards' Guild?"
+            "text": "What is there to do in the Wizards' Guild?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "SmQZQe"
+              }
+            ]
           },
           {
-            "text": "What are the requirements to get in the Wizards' Guild?"
+            "text": "What are the requirements to get in the Wizards' Guild?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YBjDCm"
+              }
+            ]
           },
           {
-            "text": "What do you do in the Guild?"
+            "text": "What do you do in the Guild?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "MI9KQV"
+              }
+            ]
           },
           {
-            "text": "Ok, thanks."
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
           }
         ]
       }
@@ -3183,8 +3309,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "scKgk2"
+                "id": "scKgk2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9f96454782f59fc6"
+                  }
+                ]
               }
             ]
           },
@@ -3208,6 +3339,1167 @@
     ]
   },
   "branches": {
+    "jump-312d994a13e43488": [
+      {
+        "player": "I'm just looking around thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Yous creature won'ts see muchly in dis place...just da zogries coming wiv da sickies."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "9-WcyA"
+      }
+    ],
+    "jump-78c37927fe8f1b1e": [
+      {
+        "player": "What do you mean sickies?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Da zogries comin wiv da sickies...yous get bashed by da zogries and get da sickies...den you gonna be like da zogries."
+      },
+      {
+        "player": "Sorry, I just don't understand..."
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Da sickies is when yous creature goes like orange till green and then goes 'Urggghhhh!' ~ Grish imitates falling down with only the white of his eyes visible. ~"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm just looking around thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "--xm5m",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-312d994a13e43488"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you mean sickies?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ZGBURY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-78c37927fe8f1b1e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What are Zogres?",
+            "steps": [
+              {
+                "player": "What are Zogres?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Da Zogres are da bigun nasties wiv da sickies, deys old pals of Grish but deys jig in Jiggig when dey's full home is deep in da dirt, dey's is not da same dead'uns like was before."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "OC4FQ_"
+              }
+            ]
+          },
+          {
+            "text": "Can I help in any way?",
+            "steps": [
+              {
+                "player": "Can I help in any way?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have the requirements to start the quest:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Grish",
+                    "text": "Sorry, yous creatures, but yous is too green behind da ears for dis job Grish finks."
+                  },
+                  {
+                    "player": "No, I'm not!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Grish",
+                    "text": "Yes you are!"
+                  },
+                  {
+                    "player": "No, I'm not!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Grish",
+                    "text": "Yes you are and that's final!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You do not meet all of the requirements to start the Zogre Flesh Eaters quest.",
+                    "id": "PxPnXe"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "toG5S7"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Yes creatures...yous does good fings for Grish and learn why Zogries at Jiggig and den get da Zogries back in da ground."
+              },
+              {
+                "player": "Oh, so you want me to find out why the Zogres have appeared and then find a way of burying them?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Is what Grish says! But dis is da biggy danger fing yous creatures...yous be geddin' sickies most surely...yous needs be ready..wiv da foodies un da glug-glugs."
+              },
+              {
+                "player": "Right, so you think there's a good chance that I can get ill from this, so I need to get some food and something to drink?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Yea creatures, yous just say what Grish says...not know own wordies creature?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Hmm, sorry, it sounds a bit too dangerous.",
+                    "steps": [
+                      {
+                        "player": "Hmm, sorry, it sounds a bit too dangerous."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Yous creature is not a stoopid one...stays out of dere, like clever Grish. Yous can paint circles on chest and be da Shaman too!"
+                      },
+                      {
+                        "player": "Hmm, is it too late to reconsider?"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok, I'll check things out then and report back.",
+                    "steps": [
+                      {
+                        "player": "Ok, I'll check things out then and report back."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Is yous creatures really, really sure yous wanna do dis creatures..we's got no glug-glugs for da sickies? We's knows nuffin for da going of da sickies?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, I'm really sure!",
+                            "steps": [
+                              {
+                                "player": "Yes, I'm really sure!"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Grish",
+                                "text": "Dats da good fing yous creature...yous does Grish a good fing. But yous know dat yous get sickies and mebe get dead!"
+                              },
+                              {
+                                "player": "If that's your idea of a pep talk, I have to say that it leaves a lot to be desired."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Grish",
+                                "text": "Yous creatures is alus says funny stuff...speaks proper like Grish!"
+                              },
+                              {
+                                "type": "unavailable",
+                                "id": "6kbf4F"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Grish",
+                                "text": "Der's yous go creatures...da best me's do for yous...and be back wivout da sickies."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Hmm, sorry, it sounds a bit too dangerous.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "bOKCBx",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-86b50cce916a4b72"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I have to go.",
+            "steps": [
+              {
+                "player": "Sorry, I have to go."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-86b50cce916a4b72": [
+      {
+        "player": "Hmm, sorry, it sounds a bit too dangerous."
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Yous creature is not a stoopid one...stays out of dere, like clever Grish. Yous can paint circles on chest and be da Shaman too!"
+      },
+      {
+        "player": "Hmm, is it too late to reconsider?"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f7a0c9b9f6e6e01e": [
+      {
+        "player": "What are Zogres?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Da Zogres are da bigun nasties wiv da sickies, deys old pals of Grish but deys jig in Jiggig when dey's full home is deep in da dirt, dey's is not da same dead'uns like was before."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "OC4FQ_"
+      }
+    ],
+    "jump-5697ff8137cb4ddf": [
+      {
+        "player": "Sorry, I have to go."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c3d99a3b8566f0c2": [
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Yes creatures...yous does good fings for Grish and learn why Zogries at Jiggig and den get da Zogries back in da ground."
+      },
+      {
+        "player": "Oh, so you want me to find out why the Zogres have appeared and then find a way of burying them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Is what Grish says! But dis is da biggy danger fing yous creatures...yous be geddin' sickies most surely...yous needs be ready..wiv da foodies un da glug-glugs."
+      },
+      {
+        "player": "Right, so you think there's a good chance that I can get ill from this, so I need to get some food and something to drink?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Yea creatures, yous just say what Grish says...not know own wordies creature?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hmm, sorry, it sounds a bit too dangerous.",
+            "steps": [
+              {
+                "player": "Hmm, sorry, it sounds a bit too dangerous."
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Yous creature is not a stoopid one...stays out of dere, like clever Grish. Yous can paint circles on chest and be da Shaman too!"
+              },
+              {
+                "player": "Hmm, is it too late to reconsider?"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Ok, I'll check things out then and report back.",
+            "steps": [
+              {
+                "player": "Ok, I'll check things out then and report back."
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Is yous creatures really, really sure yous wanna do dis creatures..we's got no glug-glugs for da sickies? We's knows nuffin for da going of da sickies?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I'm really sure!",
+                    "steps": [
+                      {
+                        "player": "Yes, I'm really sure!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Dats da good fing yous creature...yous does Grish a good fing. But yous know dat yous get sickies and mebe get dead!"
+                      },
+                      {
+                        "player": "If that's your idea of a pep talk, I have to say that it leaves a lot to be desired."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Yous creatures is alus says funny stuff...speaks proper like Grish!"
+                      },
+                      {
+                        "type": "unavailable",
+                        "id": "6kbf4F"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Der's yous go creatures...da best me's do for yous...and be back wivout da sickies."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hmm, sorry, it sounds a bit too dangerous.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "bOKCBx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-86b50cce916a4b72"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f0cb00a9fa165045": [
+      {
+        "player": "Oh, so you want me to find out why the Zogres have appeared and then find a way of burying them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Is what Grish says! But dis is da biggy danger fing yous creatures...yous be geddin' sickies most surely...yous needs be ready..wiv da foodies un da glug-glugs."
+      },
+      {
+        "player": "Right, so you think there's a good chance that I can get ill from this, so I need to get some food and something to drink?"
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Yea creatures, yous just say what Grish says...not know own wordies creature?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hmm, sorry, it sounds a bit too dangerous.",
+            "steps": [
+              {
+                "player": "Hmm, sorry, it sounds a bit too dangerous."
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Yous creature is not a stoopid one...stays out of dere, like clever Grish. Yous can paint circles on chest and be da Shaman too!"
+              },
+              {
+                "player": "Hmm, is it too late to reconsider?"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Ok, I'll check things out then and report back.",
+            "steps": [
+              {
+                "player": "Ok, I'll check things out then and report back."
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Is yous creatures really, really sure yous wanna do dis creatures..we's got no glug-glugs for da sickies? We's knows nuffin for da going of da sickies?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I'm really sure!",
+                    "steps": [
+                      {
+                        "player": "Yes, I'm really sure!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Dats da good fing yous creature...yous does Grish a good fing. But yous know dat yous get sickies and mebe get dead!"
+                      },
+                      {
+                        "player": "If that's your idea of a pep talk, I have to say that it leaves a lot to be desired."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Yous creatures is alus says funny stuff...speaks proper like Grish!"
+                      },
+                      {
+                        "type": "unavailable",
+                        "id": "6kbf4F"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Grish",
+                        "text": "Der's yous go creatures...da best me's do for yous...and be back wivout da sickies."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hmm, sorry, it sounds a bit too dangerous.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "bOKCBx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-86b50cce916a4b72"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f8436cc8f8fdc89a": [
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "He was talking to some shifty looking wizard the other day. I don't know his name, but I'd recognise him if I saw him."
+      },
+      {
+        "player": "Hmm, I'm sorry to tell you this, but Brentle Vahn is dead - I believe he was murdered."
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "Noooo! I'm shocked..."
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "...but not surprised. He was a good customer...but I knew he would sell his sword arm and do many a dark deed if paid enough."
+      },
+      {
+        "type": "line",
+        "speaker": "Bartender",
+        "text": "If you need help bringing the culprit to justice, you let me know."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ccc8c9764e5f7ae4": [
+      {
+        "type": "line",
+        "speaker": "Sithik Ints",
+        "text": "Well, err....well, actually yes I do mind...it's my place and I don't want strangers going through my things."
+      },
+      {
+        "player": "Well, I'm going to have a look around anyway, if you're not involved in this whole thing, you won't have anything to hide."
+      },
+      {
+        "type": "line",
+        "speaker": "Sithik Ints",
+        "text": "Why, if I was a few years younger I'd give you a good hiding!"
+      },
+      {
+        "player": "I'm sure!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "TBDQcB"
+      }
+    ],
+    "jump-d8bdd40a5152ce65": [
+      {
+        "type": "condition",
+        "text": "If the player has the necromancy book:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the Necromancy book to Zavistic.",
+            "id": "tFIOsZ"
+          },
+          {
+            "player": "I have this necromancy book as evidence that Sithik is involved with the undead ogres at Jiggig."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has shown Zavistic the necromancy book before:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Yeah, you've shown me this before...if this is all the evidence you have?"
+              },
+              {
+                "player": "Please just look at it again..."
+              },
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Ok, let me look then."
+              }
+            ],
+            "id": "r_ML9k"
+          },
+          {
+            "type": "line",
+            "speaker": "Zavistic Rarve",
+            "text": "Ok, so he's researching necromancy...it doesn't mean anything in itself."
+          },
+          {
+            "player": "Yes, but if you look, you can see that there is a half torn page which matches the page I found at Jiggig."
+          },
+          {
+            "type": "line",
+            "speaker": "Zavistic Rarve",
+            "text": "Hmm, yes, but someone could have stolen that from him and then gone and cast it without his permission or to try and deliberately implicate him."
+          }
+        ],
+        "id": "ToSRHJ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the Book of 'H.A.M':",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the HAM book to Zavistic.",
+            "id": "QZF9jm"
+          },
+          {
+            "player": "Look, this book proves that Sithik hates all monsters and most likely Ogres with a passion."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has shown Zavistic the Book of 'H.A.M' before:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Yeah, you've shown me this before...if this is all the evidence you have?"
+              },
+              {
+                "player": "Please just look at it again..."
+              },
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Ok, let me look then."
+              }
+            ],
+            "id": "zgnhIQ"
+          },
+          {
+            "type": "line",
+            "speaker": "Zavistic Rarve",
+            "text": "So what, hating monsters isn't a crime in itself...although I suppose that it does give a motive if Sithik was involved. On its own, it's not enough evidence though."
+          }
+        ],
+        "id": "BB0Rho"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the dragon inn tankard:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the dragon Inn Tankard to Zavistic.",
+            "id": "m5Yh81"
+          },
+          {
+            "player": "This is the tankard I found on the remains of Brentle Vahn!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has shown Zavistic the Dragon Inn tankard before:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Yeah, you've shown me this before...if this is all the evidence you have?"
+              },
+              {
+                "player": "Please just look at it again..."
+              },
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Ok, let me look then."
+              }
+            ],
+            "id": "AF2zp6"
+          },
+          {
+            "type": "line",
+            "speaker": "Zavistic Rarve",
+            "text": "That doesn't mean anything in itself, you could have gotten that from anywhere. Even from the Dragon Inn tavern! There isn't anything to link Brentle Vahn with Sithik Ints."
+          }
+        ],
+        "id": "Wkh1-k"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the signed portrait:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the signed portrait of Sithik to Zavistic.",
+            "id": "5liwsa"
+          },
+          {
+            "player": "This is a portrait of Sithik, signed by the landlord of the Dragon Inn saying that he saw Sithik and Brentle Vahn together."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has shown Zavistic the signed portrait before:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Yeah, you've shown me this before...if this is all the evidence you have?"
+              },
+              {
+                "player": "Please just look at it again..."
+              },
+              {
+                "type": "line",
+                "speaker": "Zavistic Rarve",
+                "text": "Ok, let me look then."
+              }
+            ],
+            "id": "1h6l2m"
+          },
+          {
+            "type": "line",
+            "speaker": "Zavistic Rarve",
+            "text": "Hmmm, well that is interesting."
+          }
+        ],
+        "id": "u1Dkcd"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not yet shown all 4 pieces of evidence:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Zavistic Rarve",
+            "text": "However, there isn't enough evidence for me to take the issue further at this point. If you find any further evidence bring it to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "uE6dyG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has shown all 4 pieces of evidence:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Zavistic Rarve",
+            "text": "And I'm starting to think that Sithik may be involved. Here, take this potion and give some to Sithik. It'll bring on a change which should solicit some answers - tell him the effects won't revert until he's told the truth."
+          },
+          {
+            "type": "message",
+            "text": "Zavistic hands you a strange looking potion bottle and takes all the evidence you've accumulated so far.",
+            "id": "VDahRD"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "oBTnmc"
+      }
+    ],
+    "jump-647c48079f05cb4c": [
+      {
+        "player": "What is there to do in the Wizards' Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "This is the finest wizards' establishment in the land. We have magic portals to the other towers of wizardry around Gielinor. We have a particularly wide collection of runes in our rune shop. We sell some of the finest"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "mage robes in the land and we have a training area full of zombies for you to practice your magic on."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "T5ffS_"
+      }
+    ],
+    "jump-c32be3b939e9710e": [
+      {
+        "player": "What are the requirements to get in the Wizards' Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "You need a magic level of 66, the high magic energy level is too dangerous for anyone below that level."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "9bZm5a"
+      }
+    ],
+    "jump-f79c408503fedf1e": [
+      {
+        "player": "What do you do in the Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "I'm the Grand Secretary for the Wizards' Guild, I have lots of correspondence to keep up with, as well as attending to the discipline of the more problematic guild members."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "AL7rLQ"
+      }
+    ],
+    "jump-fa89593c256e9d49": [
+      {
+        "player": "How do I remove the effects of the spell from the area? The ogres want to get their ceremonial dance area back and can't do that with undead walking all over it."
+      },
+      {
+        "type": "condition",
+        "text": "Asking for the first time:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "Unfortunately you can't. The spell is permanent, it will last forever, the only option you have is to move the ceremonial area."
+          },
+          {
+            "player": "You're an evil man and I'm going to make you pay for this...you can stay like that forever as far as I'm concerned."
+          },
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "No...no, let me try to make amends...please I can help you. Just don't leave me like this."
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "UdbbPL"
+          }
+        ],
+        "id": "QodAi6"
+      },
+      {
+        "type": "condition",
+        "text": "Asking him again:",
+        "id": "84F4T8"
+      },
+      {
+        "type": "line",
+        "speaker": "Sithik Ints",
+        "text": "Haven't I told you this already? You can't remove the spell, it's permanent, it will last forever, the only option you have is to move the ceremonial area."
+      },
+      {
+        "player": "You're an evil man and I'm going to make you pay for this...you can stay like that forever as far as I'm concerned."
+      },
+      {
+        "type": "line",
+        "speaker": "Sithik Ints",
+        "text": "No...no, let me try to make amends...please I can help you. Just don't leave me like this."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "dpeelD"
+      }
+    ],
+    "jump-a2649fe8eee3f1c6": [
+      {
+        "player": "How do I get rid of the disease?"
+      },
+      {
+        "type": "condition",
+        "text": "Asking for the first time:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "My research shows that two jungle based herbs can be used, one is found near river tributaries and looks like a vine, the other is found in caves and grows on the wall."
+          },
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "It's quite well camouflaged so it's unlikely that you'll find it."
+          },
+          {
+            "player": "We'll see about that!"
+          },
+          {
+            "type": "jump",
+            "reference": "previous",
+            "id": "Quzgrb"
+          }
+        ],
+        "id": "kNxjeI"
+      },
+      {
+        "type": "condition",
+        "text": "Asking him again as an ogre:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "Haven't I already explained this disease thing to you once before?"
+          },
+          {
+            "player": "Just tell me again or else I'll never turn you back into a human!"
+          },
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "No...noo...please, I'll tell you."
+          },
+          {
+            "type": "action",
+            "text": "(Continues with \"My research shows...\")",
+            "id": "sk9hMf"
+          }
+        ],
+        "id": "jmK4Z0"
+      },
+      {
+        "type": "condition",
+        "text": "Asking him again as a human:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "Haven't I already explained this disease thing to you once before?"
+          },
+          {
+            "player": "Just tell me again or I'll turn you back into an ogre."
+          },
+          {
+            "type": "line",
+            "speaker": "Sithik Ints",
+            "text": "No...noo...please, I'll tell you."
+          },
+          {
+            "type": "action",
+            "text": "(Continues with \"My research shows...\")",
+            "id": "xhkOuP"
+          }
+        ],
+        "id": "LBwCwE"
+      }
+    ],
+    "jump-2fcda21ce2e41c63": [
+      {
+        "player": "Sorry, I have to go."
+      },
+      {
+        "type": "line",
+        "speaker": "Sithik Ints",
+        "text": "But...you can't just leave me here like this!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9f96454782f59fc6": [
+      {
+        "player": "I have some other questions for you."
+      },
+      {
+        "type": "line",
+        "speaker": "Grish",
+        "text": "Oh yes creatures...what's other fings yous wanna know?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are you much nicer than the Shaman in Gu'Tanoth?",
+            "steps": [
+              {
+                "player": "Why are you much nicer than the Shaman in Gu'Tanoth?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Dey's is da big crazy one's! Dey's biggest angries wiv fings and wanna dead all fings...dey's gotten da biggies wizzy stuff...and dey's wanna eat yous creatures...Grish, not do dat..."
+              },
+              {
+                "player": "Oh, well that's a relief! It's good to know you don't eat humans..."
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Grish not say dat! Me's want's tasty looking creatures for yums...you's looks like da sickies chompy...not good for da gutsies..."
+              },
+              {
+                "player": "Gulp!"
+              },
+              {
+                "type": "line",
+                "speaker": "Uglug Nar",
+                "text": "Grish, you's is fright da creatures! Leave it alone!"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "But it's da big laffsies when it's facey goes to whiteness....ha ha ha!"
+              },
+              {
+                "type": "line",
+                "speaker": "Uglug Nar",
+                "text": "But it's not da big yumsies when it's gone to all frighty..."
+              },
+              {
+                "type": "line",
+                "speaker": "Uglug Nar",
+                "text": "ha ha ha ha!"
+              },
+              {
+                "player": "Yeah...very funny, I'm sure."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "wii_Ol"
+              }
+            ]
+          },
+          {
+            "text": "Do you know Rantz?",
+            "steps": [
+              {
+                "player": "Do you know Rantz?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "Me's know's about Rantz, he's da biggun chompy hunter..he finks...ha ha ha!"
+              },
+              {
+                "player": "How do you mean?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "He's da bad shot chompy sticker, no good at sneaky, sneaky part, he's more gooder at da 'noisy, noisy miss da chompy', ha ha ha!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "uT7vAe"
+              }
+            ]
+          },
+          {
+            "text": "Why doesn't Rantz live with the rest of the Ogres?",
+            "steps": [
+              {
+                "player": "Why doesn't Rantz live with the rest of the Ogres?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "He's been leaving Gu 'Noth 'cos dey's peoples is da big stressy dere? All da ogries is busying all da time...not doin' no good for da healfy fing. Rantz is da brave-un tho! He's got da big secret fing for leaving Gu' Noth"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "but me's not knowin it. But maybe's he's just want's to be da better chompy sticker?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "b3QFA_"
+              }
+            ]
+          },
+          {
+            "text": "Why do you call this place Jiggig?",
+            "steps": [
+              {
+                "player": "Why do you call this place Jiggig?"
+              },
+              {
+                "type": "line",
+                "speaker": "Grish",
+                "text": "It's da place where da Jiggig is done...we's jig at Jiggig..."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "ApbW-4"
+              }
+            ]
+          },
+          {
+            "text": "I want to talk about the quest.",
+            "steps": [
+              {
+                "player": "I want to talk about the quest"
+              },
+              {
+                "type": "jump",
+                "reference": "previous2",
+                "id": "jcdERl"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "SmQZQe": [
+      {
+        "player": "What is there to do in the Wizards' Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "This is the finest wizards' establishment in the land. We have magic portals to the other towers of wizardry around Gielinor. We have a particularly wide collection of runes in our rune shop. We sell some of the finest"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "mage robes in the land and we have a training area full of zombies for you to practice your magic on."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "T5ffS_"
+      }
+    ],
+    "YBjDCm": [
+      {
+        "player": "What are the requirements to get in the Wizards' Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "You need a magic level of 66, the high magic energy level is too dangerous for anyone below that level."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "9bZm5a"
+      }
+    ],
+    "MI9KQV": [
+      {
+        "player": "What do you do in the Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "I'm the Grand Secretary for the Wizards' Guild, I have lots of correspondence to keep up with, as well as attending to the discipline of the more problematic guild members."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "AL7rLQ"
+      }
+    ],
     "ROIypT": [
       {
         "type": "line",

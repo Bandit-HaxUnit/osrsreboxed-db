@@ -43,8 +43,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "JzKhKm"
+                                "id": "JzKhKm",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-290bf73b31964d4d"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -53,8 +58,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "Pctbzi"
+                                "id": "Pctbzi",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-32950036c8587517"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -67,8 +77,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "8oWVym"
+                        "id": "8oWVym",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5b165a534216480f"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -179,8 +194,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "aMM88a"
+                        "id": "aMM88a",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-290bf73b31964d4d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -189,8 +209,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Od5PRk"
+                        "id": "Od5PRk",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-32950036c8587517"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -281,6 +306,89 @@
         "type": "action",
         "text": "You do not have enough Shayzien favour. Current favour: [current favour in %] - Required: 40.0%",
         "id": "sIYZW2"
+      }
+    ]
+  },
+  "branches": {
+    "jump-290bf73b31964d4d": [
+      {
+        "player": "Do you know of any meetings now?"
+      },
+      {
+        "type": "condition",
+        "text": "If there are no gang meetings active:",
+        "steps": [
+          {
+            "npc": "No, not at the moment. Keep checking the notice board - information is written there when we receive it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "FaqHJB"
+      },
+      {
+        "type": "condition",
+        "text": "If there are are gang meetings active:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "(See here for the locations.)",
+            "id": "daWYF1"
+          },
+          {
+            "npc": "We've received reports of a gang [in location]! They're meeting [in location]."
+          },
+          {
+            "type": "condition",
+            "text": "If the meeting is in progress:",
+            "steps": [
+              {
+                "npc": "We believe the meeting is in progress now."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "ZyZuiE"
+          },
+          {
+            "type": "condition",
+            "text": "If the meeting is about to start:",
+            "steps": [
+              {
+                "npc": "We believe the meeting is about to start imminently."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "BlvYGK"
+          },
+          {
+            "npc": "We believe the meeting will start in about [number] minutes."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YuvDB5"
+      }
+    ],
+    "jump-32950036c8587517": [
+      {
+        "player": "I'll be off."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5b165a534216480f": [
+      {
+        "player": "You sound busy. I'll be off."
+      },
+      {
+        "type": "end"
       }
     ]
   }

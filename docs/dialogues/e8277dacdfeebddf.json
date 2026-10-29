@@ -100,7 +100,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "HmJLT_"
+              }
+            ]
           },
           {
             "text": "Can I have a quest?",
@@ -289,8 +295,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "fvBWvG"
+                                "id": "fvBWvG",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-8405ddb3cb103129"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -299,8 +310,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "KIVdhk"
+                                "id": "KIVdhk",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-0a4b4044289de617"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -313,10 +329,30 @@
             ]
           },
           {
-            "text": "I'm not your friend."
+            "text": "I'm not your friend.",
+            "steps": [
+              {
+                "player": "I'm not your friend."
+              },
+              {
+                "type": "line",
+                "speaker": "Oziach",
+                "text": "I'm surprised if you're anyone's friend with those kind of manners."
+              }
+            ]
           },
           {
-            "text": "Yes, it's a very nice day."
+            "text": "Yes, it's a very nice day.",
+            "steps": [
+              {
+                "player": "Yes, it's a very nice day."
+              },
+              {
+                "type": "line",
+                "speaker": "Oziach",
+                "text": "Aye, may the gods walk by yer side. Now leave me alone."
+              }
+            ]
           }
         ]
       }
@@ -346,7 +382,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "HmJLT_"
+              }
+            ]
           },
           {
             "text": "I talked to Oziach...",
@@ -626,8 +668,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_-qM6y"
+                "id": "_-qM6y",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fcc6e43844f5ccf2"
+                  }
+                ]
               }
             ]
           },
@@ -663,8 +710,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "Qaw-Lk"
+                        "id": "Qaw-Lk",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-539ac0e492576873"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -673,8 +725,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "cLD0JG"
+                        "id": "cLD0JG",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5b428127fcc5ea20"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -683,8 +740,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "pFe-89"
+                        "id": "pFe-89",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-041342ae8c67f210"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -703,8 +765,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "A4p4xW"
+                        "id": "A4p4xW",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1eb535746eb22aef"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1746,7 +1813,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "Arrr!"
+            "text": "Arrr!",
+            "steps": [
+              {
+                "player": "Arrr!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Arrr, matey!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "c_-WTR"
+              }
+            ]
           },
           {
             "text": "Can you help me get to Crandor Island?",
@@ -1778,10 +1860,121 @@
             ]
           },
           {
-            "text": "Are you going to sit there all day?"
+            "text": "Are you going to sit there all day?",
+            "steps": [
+              {
+                "player": "Are you going to sit there all day?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Aye, I am. I canna walk, ye see."
+              },
+              {
+                "player": "What's stopping you from walking?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Arrr, I 'ave only the one leg! I lost its twin when my last ship went down."
+              },
+              {
+                "player": "But I can see both your legs!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Nay, young [laddie/lassie], this be a false leg. For years I had me a sturdy wooden peg-leg, but now I wear this dainty little feller."
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Yon peg-leg kept getting stuck in the floorboards."
+              },
+              {
+                "player": "Right..."
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Perhaps a [bright young laddie/bonnie young lassie] like yerself would like to help me? I be needing another ship to go a-hunting my enemy."
+              },
+              {
+                "type": "condition",
+                "text": "If the player owns the ship used during Dragon Slayer:",
+                "steps": [
+                  {
+                    "player": "Well, I do have a ship that I'm not using. It's the Lady Lumbridge."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Ahab",
+                    "text": "Arrr! That ship be known to me, and a fine lass she is."
+                  },
+                  {
+                    "player": "I suppose she might be..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Ahab",
+                    "text": "So would ye be kind enough to let me take her out to sea?"
+                  },
+                  {
+                    "player": "I had to pay 2000 gp for that ship. Have you got that much?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "27Ek2l"
+                  }
+                ],
+                "id": "ooH_mR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not own the ship used during Dragon Slayer:",
+                "steps": [
+                  {
+                    "player": "Hmmm. And can you afford another ship?"
+                  }
+                ],
+                "id": "fdPdBT"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Nay, I have nary a penny to my name. All my worldly goods went down with me old ship."
+              },
+              {
+                "player": "So you're actually asking me to give you a free ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Arrr! Would ye be so kind?"
+              },
+              {
+                "player": "No I jolly well wouldn't!"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Arrr."
+              }
+            ]
           },
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "player": "Do you have anything for trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ahab",
+                "text": "Nothin' at the moment, but then again the Customs Agents are on the warpath right now."
+              }
+            ]
           }
         ]
       }
@@ -1796,10 +1989,97 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you got any quests I could do?"
+            "text": "Have you got any quests I could do?",
+            "steps": [
+              {
+                "player": "Have you got any quests I could do?"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Pirate's Treasure and Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, but the barkeep hears most of the news around here. Or Redbeard Frank, he's often spoken of buried treasure. Perhaps ye should be asking them for quests."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CnZzQ6"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Pirate's Treasure:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, but Redbeard Frank has often spoken of buried treasure. Perhaps ye should be asking him for a quest."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "HbRh8o"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, but the barkeep hears most of the news around here. Perhaps ye should be asking him for a quest."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JctxZS"
+              },
+              {
+                "type": "condition",
+                "text": "After completing Pirate's Treasure and Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Jack Seagull",
+                    "text": "Nay, I've nothing for ye to do. But I hear there's an old landlubber in Draynor Village who's always a-looking for a lively [lad/lass] to do him a favour."
+                  },
+                  {
+                    "player": "Thanks."
+                  }
+                ],
+                "id": "PWoxvK"
+              }
+            ]
           },
           {
-            "text": "What are you doing here?"
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jack Seagull",
+                "text": "Drinking."
+              },
+              {
+                "player": "Fair enough."
+              }
+            ]
           },
           {
             "text": "Can you help me get to Crandor Island?",
@@ -1856,10 +2136,115 @@
         "type": "choice",
         "options": [
           {
-            "text": "Have you got any quests I could do?"
+            "text": "Have you got any quests I could do?",
+            "steps": [
+              {
+                "player": "Have you got any quests I could do?"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Pirate's Treasure and Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Longbow Ben",
+                    "text": "Nay, but the barkeep hears most of the news around here. Or Redbeard Frank, he's often spoken of buried treasure. Perhaps ye should be asking them for quests."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9Cezt7"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Pirate's Treasure:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Longbow Ben",
+                    "text": "Nay, but Redbeard Frank has often spoken of buried treasure. Perhaps ye should be asking him for a quest."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ss_su6"
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Longbow Ben",
+                    "text": "Nay, but the barkeep hears most of the news around here. Perhaps ye should be asking him for a quest."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "savev8"
+              },
+              {
+                "type": "condition",
+                "text": "After completing Pirate's Treasure and Goblin Diplomacy:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Longbow Ben",
+                    "text": "Nay, I've nothing for ye to do. But I hear there's an old landlubber in Draynor Village who's always a-looking for a lively [lad/lass] to do him a favour."
+                  },
+                  {
+                    "player": "Thanks."
+                  }
+                ],
+                "id": "MjhHBO"
+              }
+            ]
           },
           {
-            "text": "Why are you called Longbow Ben?"
+            "text": "Why are you called Longbow Ben?",
+            "steps": [
+              {
+                "player": "Why are you called Longbow Ben?"
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "Arrr, that's a strange yarn."
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "I was to be marooned, ye see. A scurvy troublemaker had taken my ship, and he put me ashore on a little island."
+              },
+              {
+                "player": "Gosh, how did you escape?"
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "Arrr, ye see, he made one mistake! Before he sailed away, he gave me a bow and one arrow so that I wouldn't have to die slowly."
+              },
+              {
+                "type": "line",
+                "speaker": "Longbow Ben",
+                "text": "So I shot him and took my ship back."
+              },
+              {
+                "player": "Right..."
+              }
+            ]
           },
           {
             "text": "Can you help me get to Crandor Island?",
@@ -1924,10 +2309,40 @@
             ]
           },
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh dear, I don't seem to have enough money."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "PWA2Z3"
+              },
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "The player is transported to Karamja.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "ZZHN0-"
+              }
+            ]
           },
           {
-            "text": "No, thank you."
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              }
+            ]
           }
         ]
       }
@@ -1942,7 +2357,82 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Stan",
+                "text": "Why, I'm Trader Stan, owner and operator of the largest fleet of trading ships and chartered vessels to ever sail the seas!"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Stan",
+                "text": "If you want to get to a port in a hurry, then you can charter one of my ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Stan",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Stan",
+                "text": "We certainly do! My crew and I have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "player": "Yes, let's see what you're trading."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Trader Stan's Trading Post",
+                        "id": "6CvgvV"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "abTMT2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c84ee89ebbf19cf4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "PWQwgC"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Yes, I would like to charter a ship.",
@@ -1968,7 +2458,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -2438,10 +2933,182 @@
             ]
           },
           {
-            "text": "Have you any quests for me?"
+            "text": "Have you any quests for me?",
+            "steps": [
+              {
+                "player": "Have you any quests for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting the Rune Mysteries quest.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Well, it's not really a quest but I recently discovered this strange talisman."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "player": "Sure, no problem."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Duke Horacio",
+                            "text": "Thank you very much, stranger. I am sure the head wizard will reward you for such an interesting find."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "air talisman",
+                            "id": "mej1XH"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The Duke shows you a talisman.",
+                            "id": "JjanrH"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "player": "Not right now."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Duke Horacio",
+                            "text": "As you wish, stranger, although I have this strange feeling that it is important. Unfortunately, I cannot leave my castle unattended."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1Xm1Mf"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and still having the talisman.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "The only task remotely approaching a quest is the delivery of that talisman I gave you to the head wizard of the Wizards' Tower,"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "south-west of here. I suggest you deliver it to him as soon as possible. I have the oddest feeling that it is important..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Cz-xNJ"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Did you speak to the head wizard for me yet, adventurer?"
+                  },
+                  {
+                    "player": "No, I lost that air talisman that you gave me."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "Ah, that would explain it. One of my servants found this outside, and it seemed too much of a coincidence that more than one strange"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "object would appear on my land in such a short period of time. Please take this to the head wizard at the Wizards' Tower, south-west of here, and don't lose it this time."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "air talisman",
+                    "id": "RL8KFj"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The Duke hands you the talisman.",
+                    "id": "_k1BJr"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "3RS_bB"
+              },
+              {
+                "type": "action",
+                "text": "After giving the talisman to Sedridor.",
+                "id": "KISUz1"
+              },
+              {
+                "type": "action",
+                "text": "After starting the Rune Mysteries quest and having the Research package.",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "The only job I had was the delivery of that talisman, so I'm afraid not."
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Duke Horacio",
+                    "text": "No, all is well for me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "VAZRgi"
+              }
+            ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "player": "Where can I find money?"
+              },
+              {
+                "type": "line",
+                "speaker": "Duke Horacio",
+                "text": "I've heard that the blacksmiths are prosperous amongst the peasantry. Maybe you could try your hand at that?"
+              }
+            ]
           }
         ]
       }
@@ -2749,8 +3416,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Miy6_8"
+                "id": "Miy6_8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d3f49a813559a9fb"
+                  }
+                ]
               }
             ]
           },
@@ -2759,8 +3431,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5wzJga"
+                "id": "5wzJga",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-beb6221405dd1f18"
+                  }
+                ]
               }
             ]
           },
@@ -2769,8 +3446,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RKdOPa"
+                "id": "RKdOPa",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7aa68a737af61729"
+                  }
+                ]
               }
             ]
           }
@@ -2794,7 +3476,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "HmJLT_"
+              }
+            ]
           },
           {
             "text": "I killed the dragon!",
@@ -2868,6 +3556,356 @@
     ]
   },
   "branches": {
+    "jump-8405ddb3cb103129": [
+      {
+        "player": "I thought you were going to give me a quest."
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "Sigh*"
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "All right, I'll give ye a quest. I'll let ye wear my rune platemail if ye..."
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "Slay the dragon of Crandor!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "A dragon, that sounds like fun.",
+            "steps": [
+              {
+                "player": "A dragon, that sounds like fun!"
+              },
+              {
+                "type": "line",
+                "speaker": "Oziach",
+                "text": "Hah, yes, you are a typical reckless adventurer, aren't you? Now go kill the dragon and get out of my face."
+              },
+              {
+                "player": "But how can I defeat the dragon?"
+              },
+              {
+                "type": "line",
+                "speaker": "Oziach",
+                "text": "Go talk to the Guildmaster in the Champions' Guild. He'll help ye out if yer so keen on doing a quest. I'm not going to be handholding any adventurers."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I may be a champion, but I don't think I'm up to dragon-killing yet.",
+            "steps": [
+              {
+                "player": "I may be a champion, but I don't think I'm up to dragon-killing yet."
+              },
+              {
+                "type": "line",
+                "speaker": "Oziach",
+                "text": "Yes, I can understand that. Yer a coward."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0a4b4044289de617": [
+      {
+        "player": "That's a pity, I'm not a hero."
+      },
+      {
+        "type": "line",
+        "speaker": "Oziach",
+        "text": "Aye, I ken tell!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-fcc6e43844f5ccf2": [
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "This is the Champions' Guild. Only adventurers who have proved themselves worthy by gaining influence from quests are allowed in here."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-539ac0e492576873": [
+      {
+        "player": "Where can I find a map to Crandor?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "After what happened, people were afraid of enraging the dragon. Most maps to the island were destroyed, but I have heard that one survived. It was held by Melzar, Thalzar and Lozar."
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "However, the three apparently split the map into three pieces, which each of them taking one piece."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where is Melzar's map piece?",
+            "steps": [
+              {
+                "player": "Where is Melzar's map piece?"
+              },
+              {
+                "type": "line",
+                "speaker": "Guildmaster",
+                "text": "Melzar built a castle on the site of the Crandorian refugee camp, north of Rimmington. He's locked himself in there and no one's seen him for years."
+              },
+              {
+                "type": "line",
+                "speaker": "Guildmaster",
+                "text": "The inside of his castle is like a maze, and is populated by undead monsters. Maybe, if you could get all the way through the maze, you could find his piece of the map."
+              },
+              {
+                "type": "line",
+                "speaker": "Guildmaster",
+                "text": "Adventurers sometimes go in there to prove themselves, so I can give you this key to Melzar's Maze."
+              },
+              {
+                "type": "message",
+                "text": "The Guildmaster hands you a key.",
+                "id": "xUz7Ja"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "qxxLzc"
+              }
+            ]
+          },
+          {
+            "text": "Where is Thalzar's map piece?",
+            "steps": [
+              {
+                "player": "Where is Thalzar's map piece?"
+              },
+              {
+                "type": "line",
+                "speaker": "Guildmaster",
+                "text": "Thalzar was the most paranoid of the three wizards. He hid his map piece and took the secret of its location to his grave."
+              },
+              {
+                "type": "line",
+                "speaker": "Guildmaster",
+                "text": "I don't think you'd be able to find out where it is by ordinary means. You'll need to talk to the Oracle on Ice Mountain."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "iNO3Cg"
+              }
+            ]
+          },
+          {
+            "text": "Where is Lozar's map piece?",
+            "steps": [
+              {
+                "player": "Where is Lozar's map piece?"
+              },
+              {
+                "type": "line",
+                "speaker": "Guildmaster",
+                "text": "A few weeks ago, I'd have told you to speak to Lozar herself, in her house across the river from Lumbridge."
+              },
+              {
+                "type": "line",
+                "speaker": "Guildmaster",
+                "text": "Unfortunately, goblin raiders killed her and stole everything. One of the goblins from the Goblin Village probably has the map piece now."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "M8RzIz"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5b428127fcc5ea20": [
+      {
+        "player": "What kind of ship do I need?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "Quite a specific one I'm afraid. Even with a map, very few ships will be able to navigate the reefs around the island. You're going to need one of Crandorian design."
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "If there's still one in existence, it's probably in Port Sarim. However, a ship will also need a captain, and I'm not sure where you'd find one willing to sail to Crandor!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Pandemonium:",
+        "steps": [
+          {
+            "player": "Could I not just captain it myself? I have some experience in that area."
+          },
+          {
+            "type": "line",
+            "speaker": "Guildmaster",
+            "text": "I suppose you could, but given you have a dragon to be dealing with, I'd suggest getting someone else to worry about the captaining for you."
+          }
+        ],
+        "id": "t9SRVY"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "mcHuuu"
+      }
+    ],
+    "jump-041342ae8c67f210": [
+      {
+        "player": "How can I protect myself from the dragon's breath?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "That part shouldn't be too difficult, actually. I believe the Duke of Lumbridge has a special shield in his armoury that is enchanted against dragon's breath."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "QT0kX4"
+      }
+    ],
+    "jump-1eb535746eb22aef": [
+      {
+        "player": "Okay, I'll get going!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c84ee89ebbf19cf4": [
+      {
+        "player": "Yes, I would like to charter a ship."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Stan",
+        "text": "[Certainly sir/Certainly madam/Certainly]. Where would you like to go?"
+      },
+      {
+        "type": "action",
+        "text": "The player chooses from the map interface.",
+        "id": "NAxaHN"
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Stan",
+        "text": "Crandor? Are you crazy? No charter ship would take you to that island. You'd need to use your own ship, but even then, you'd need a miracle to find a safe route there!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d3f49a813559a9fb": [
+      {
+        "type": "condition",
+        "text": "If the player has not fixed the ship:",
+        "steps": [
+          {
+            "player": "So, what needs fixing on this ship?"
+          },
+          {
+            "type": "line",
+            "speaker": "Klarense",
+            "text": "Well, the big gaping hole in the hold is the problem. You'll need a few wooden planks hammered in with steel nails to fix it."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "DNVUrS"
+          }
+        ],
+        "id": "l0vnYX"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has fixed the ship:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Klarense",
+            "text": "I dunno. It looks fine to me."
+          },
+          {
+            "player": "But you said it needed fix-"
+          },
+          {
+            "type": "line",
+            "speaker": "Klarense",
+            "text": "Yes, but that was before you fixed it!"
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "mZoGaU"
+          }
+        ],
+        "id": "u_WKoM"
+      }
+    ],
+    "jump-beb6221405dd1f18": [
+      {
+        "player": "What are you going to do now you don't have a ship?"
+      },
+      {
+        "type": "line",
+        "speaker": "Klarense",
+        "text": "Oh, I'll be fine. I've got work as Port Sarim's first lifeguard!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "w5UIJ-"
+      }
+    ],
+    "jump-7aa68a737af61729": [
+      {
+        "player": "Can I board the ship now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Klarense",
+        "text": "Sure thing, she's all yours."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "HmJLT_": [
+      {
+        "type": "line",
+        "speaker": "Guildmaster",
+        "text": "This is the Champions' Guild. Only adventurers who have proved themselves worthy by gaining influence from quests are allowed in here."
+      }
+    ],
     "_obeMQ": [
       {
         "player": "I'd like to inspect her some more."

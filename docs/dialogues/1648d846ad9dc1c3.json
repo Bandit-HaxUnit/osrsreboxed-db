@@ -69,8 +69,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "PRswJt"
+                            "id": "PRswJt",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-14699201be82907e"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -306,6 +311,17 @@
     ]
   },
   "branches": {
+    "jump-14699201be82907e": [
+      {
+        "player": "What happened to you?"
+      },
+      {
+        "npc": "Lizardman bite. There's always a fever after you've been bitten by one of those. I'm sure they don't clean their teeth."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "i7nFK_": [
       {
         "player": "Sorry, I haven't got one."

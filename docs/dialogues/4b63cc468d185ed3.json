@@ -171,8 +171,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jiWq1e"
+                "id": "jiWq1e",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-921767990514e9b7"
+                  }
+                ]
               }
             ]
           },
@@ -259,6 +264,101 @@
         "type": "action",
         "text": "...",
         "id": "Sxjo-3"
+      }
+    ]
+  },
+  "branches": {
+    "jump-921767990514e9b7": [
+      {
+        "type": "action",
+        "text": "The scene cuts to each part of the laboratory as they are discussed",
+        "id": "t8PGp0"
+      },
+      {
+        "npc": "Start by breaking down herbs or unfinished potions over at the Refiner. This will give you your reagents: Mox, Aga, and Lye paste. The type you get will depend on the quality of what you put in."
+      },
+      {
+        "npc": "Insert the paste into the Hopper and it will become available to use in the Mixer."
+      },
+      {
+        "npc": "From here, you'll need to pull the Mixer Levers to create the right combination of reagents."
+      },
+      {
+        "player": "But how do I know what the combinations are?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has mixology lab notes:",
+        "steps": [
+          {
+            "npc": "I see you've already found our book of lab notes. That'll give you the formulas for our various products."
+          }
+        ],
+        "id": "fxY3CG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have mixology lab notes:",
+        "steps": [
+          {
+            "npc": "Have a look on the bookshelf for a book of lab notes. That'll give you the formulas for our various products."
+          }
+        ],
+        "id": "GyeGtB"
+      },
+      {
+        "npc": "To know what needs making, you'll need to check the order list. There will always be three orders to choose from. You can work on just one or them, or multiple. It's up to you."
+      },
+      {
+        "npc": "Just be aware that demand shifts fast here. Every time you fulfil one or more orders, a new set will come through."
+      },
+      {
+        "npc": "Now, once you have set your desired combination of reagents, collect the unfinished mixture from the Mixing Vessel. This will then need to be processed on one of the three tables to finish it off."
+      },
+      {
+        "npc": "The Alembic will Crystalise the mixture."
+      },
+      {
+        "npc": "The Agitator will Homogenise the mixture."
+      },
+      {
+        "npc": "And finally, the Retort will Concentrate the mixture."
+      },
+      {
+        "npc": "After processing, place the finished mixture on the Conveyor Belt and move on to the next order."
+      },
+      {
+        "player": "What if I get an order wrong, or am unable to fulfil any of the orders?"
+      },
+      {
+        "npc": "We always have need for spares, so fulfilling an incorrect order will still grant you a small reward and will refresh the orders."
+      },
+      {
+        "npc": "One final thing to mention... We have some Digweed growing in the lab."
+      },
+      {
+        "npc": "These rare herbs will occasionally come into maturity for a short period of time. Harvest them while you can!"
+      },
+      {
+        "npc": "Mixing some into your product will increase its potency and grant you bonus rewards."
+      },
+      {
+        "player": "Bonus rewards?"
+      },
+      {
+        "npc": "That's right. As you produce potions, you'll find yourself collecting three types of Resin. The types obtained depend on what reagents are used, with the quantities being determined by the complexity of the"
+      },
+      {
+        "npc": "potion."
+      },
+      {
+        "npc": "Potions using Digweed will reward additional Resin, as will handing in multiple potions in one go."
+      },
+      {
+        "player": "Got it! So, refine herbs, deposit into the hopper, mix some products, process them, and then throw them on the conveyor. Seems easy enough!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

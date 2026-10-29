@@ -414,8 +414,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "jkC4w7"
+                                "id": "jkC4w7",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-53cbfa4401143720"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -532,6 +537,52 @@
         "action": "open_shop",
         "target": "Ali's Discount Wares.",
         "id": "n6dMWy"
+      }
+    ]
+  },
+  "branches": {
+    "jump-53cbfa4401143720": [
+      {
+        "player": "Well, good luck with your business."
+      },
+      {
+        "npc": "Before you go, have a look at my wares."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a random item from Ali's Discount Wares",
+        "id": "DXYOYi"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, I'm really too busy.",
+            "steps": [
+              {
+                "player": "No, I'm really too busy."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ali's Discount Wares.",
+                "id": "BnG9nR"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

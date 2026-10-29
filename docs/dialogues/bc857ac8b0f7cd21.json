@@ -1,4 +1,150 @@
 {
+  "branches": {
+    "jump-7325104a038cf33c": [
+      {
+        "type": "action",
+        "text": "(Bank space purchase interface opens.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Bank space purchase",
+        "id": "--8fYw"
+      },
+      {
+        "type": "choice",
+        "prompt": "How many do you wish to purchase?",
+        "options": [
+          {
+            "text": "[number] slots ([number] coins):",
+            "steps": [
+              {
+                "player": "[number] slots please."
+              },
+              {
+                "npc": "Buying [number] additional bank slots will cost [number] coins. Be warned, this purchase is not reversible. Are you happy to proceed?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins in their inventory or bank:",
+                        "steps": [
+                          {
+                            "player": "Oh... I don't seem to have enough money for that. Never mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "CxFEQe"
+                      },
+                      {
+                        "player": "Yes, I'm happy with that."
+                      },
+                      {
+                        "npc": "Your additional bank slots have been added."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Actually, I've changed my mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do I have any other options for extra bank space?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has set up a bank PIN, an Authenticator and is playing on a Jagex Account:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid not! You've already got as much bank space as you can obtain without purchase."
+                  },
+                  {
+                    "npc": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+                  },
+                  {
+                    "type": "jump",
+                    "id": "UpbTcS",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-7325104a038cf33c"
+                      }
+                    ]
+                  }
+                ],
+                "id": "K3ZYLW"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not satisfy all three conditions:",
+                "steps": [
+                  {
+                    "npc": "I'm not supposed to tell you this, but you can obtain more bank space by [setting up a PIN], [setting up an Authenticator] [or] [upgrading to a Jagex Account]."
+                  },
+                  {
+                    "npc": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+                  },
+                  {
+                    "type": "jump",
+                    "id": "K3g5DA",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-fd0a7c3f1f16c03b"
+                      }
+                    ]
+                  }
+                ],
+                "id": "9nE8Sj"
+              }
+            ]
+          },
+          {
+            "text": "(Cancel)",
+            "steps": [
+              {
+                "player": "Actually, I've changed my mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-fd0a7c3f1f16c03b": [
+      {
+        "type": "jump",
+        "id": "UpbTcS",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-7325104a038cf33c"
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Good day, how may I help you?"
@@ -139,8 +285,13 @@
                         },
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "UpbTcS"
+                          "id": "UpbTcS",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-7325104a038cf33c"
+                            }
+                          ]
                         }
                       ],
                       "id": "K3ZYLW"
@@ -157,8 +308,13 @@
                         },
                         {
                           "type": "jump",
-                          "reference": "above",
-                          "id": "K3g5DA"
+                          "id": "K3g5DA",
+                          "steps": [
+                            {
+                              "type": "call",
+                              "branch": "jump-fd0a7c3f1f16c03b"
+                            }
+                          ]
                         }
                       ],
                       "id": "9nE8Sj"

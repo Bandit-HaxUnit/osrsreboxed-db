@@ -75,8 +75,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "f7wVI-"
+                        "id": "f7wVI-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b947e5ab0f6c8a5d"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -85,8 +90,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "QeKrfJ"
+                        "id": "QeKrfJ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d7ebbaea152cc301"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -167,6 +177,39 @@
     "entering-the-meeting-room-if-disguised": [
       {
         "npc": "I wouldn't... [oh I'm sorry, sir/oh I'm sorry, madam/oh I'm sorry], please go on through."
+      }
+    ]
+  },
+  "branches": {
+    "jump-b947e5ab0f6c8a5d": [
+      {
+        "player": "Oh pleeeaaase let me in!"
+      },
+      {
+        "npc": "Go away. You're getting annoying."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d7ebbaea152cc301": [
+      {
+        "player": "So what is this uniform?"
+      },
+      {
+        "npc": "Well you can see me wearing it. It's an iron chainbody and a medium bronze helm."
+      },
+      {
+        "player": "Hmmm... I wonder if I can make that or get some in the local towns...."
+      },
+      {
+        "npc": "What was that you muttered?"
+      },
+      {
+        "player": "Oh, nothing important!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

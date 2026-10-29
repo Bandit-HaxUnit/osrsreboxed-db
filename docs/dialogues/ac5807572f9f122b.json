@@ -69,8 +69,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "kaUnCK"
+                        "id": "kaUnCK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-08a80200f1708e9c"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -98,8 +103,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "KITCjy"
+                        "id": "KITCjy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a0a3504759b5011a"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -138,6 +148,75 @@
       },
       {
         "player": "Umm... sorry"
+      }
+    ]
+  },
+  "branches": {
+    "jump-08a80200f1708e9c": [
+      {
+        "npc": "My doctor told me to take up ein velaxing hobby. Vhen I am stressed I tend to get ein little..."
+      },
+      {
+        "npc": "..thirsty."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You're a vampyre aren't you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "KITCjy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a0a3504759b5011a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "If you get thirsty you should drink something.",
+            "steps": [
+              {
+                "player": "If you get thirsty you should drink something."
+              },
+              {
+                "npc": "I tsink I may do zat soon..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Well, good luck with the fishing.",
+            "steps": [
+              {
+                "player": "Well, good luck with the fishing."
+              },
+              {
+                "npc": "Luck haz notsing to do vith it it iz all in ze technique."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a0a3504759b5011a": [
+      {
+        "player": "You're a vampyre aren't you?"
+      },
+      {
+        "npc": "Just because I can't stand ze smell ov garlic und I don't like bright sunlight doesn't necessarily mean I'm ein vampyre!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

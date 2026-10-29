@@ -310,8 +310,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lvS9Z5"
+                "id": "lvS9Z5",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1fa0553f430977bf"
+                  }
+                ]
               }
             ]
           }
@@ -378,8 +383,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2UAN-y"
+                "id": "2UAN-y",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-82e579a4857deecd"
+                  }
+                ]
               }
             ]
           }
@@ -602,8 +612,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "nHkti3"
+                    "id": "nHkti3",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-de876788b5e9f551"
+                      }
+                    ]
                   }
                 ]
               }
@@ -773,6 +788,151 @@
         "type": "jump",
         "reference": "above",
         "id": "5mmGey"
+      }
+    ]
+  },
+  "branches": {
+    "jump-1fa0553f430977bf": [
+      {
+        "npc": "Dig?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sack",
+        "text": "Mumblemumble"
+      },
+      {
+        "npc": "Oh, you must have got the wrong end of the stick."
+      },
+      {
+        "npc": "I need some fresh, whole bones to replace ones that have become damaged."
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "Err..."
+      },
+      {
+        "type": "line",
+        "speaker": "Sack",
+        "text": "Mumblemumblemumblemumblemumble. Mumblemumblemumblemumble. Mumble."
+      },
+      {
+        "player": "Excuse me..."
+      },
+      {
+        "type": "line",
+        "speaker": "Sack",
+        "text": "Shhh!"
+      },
+      {
+        "player": "Sorry..."
+      },
+      {
+        "type": "line",
+        "speaker": "Sack",
+        "text": "Mumblemumble. Mumblemumblemumble."
+      },
+      {
+        "npc": "Ok, got it."
+      },
+      {
+        "npc": "Ok, here is the thing. While sorting out what bones I do have I managed to lose or damage a few. If you can get me some fresh, unbroken bones to use as replacements then I can get on with things."
+      },
+      {
+        "npc": "That make things clearer?"
+      },
+      {
+        "player": "Well, it makes some sense I suppose..."
+      },
+      {
+        "npc": "Great. If you can get me a bone from a Goblin, a Bear, a Big Frog, a Ram, a Unicorn, a Monkey, a Giant rat and a Giant Bat then I'll be able to move on with the..."
+      },
+      {
+        "npc": "Displays..."
+      },
+      {
+        "player": "So you just want me to bring you these bones and that will be that?"
+      },
+      {
+        "npc": "Well, I wouldn't mind you sticking them in a pot and boiling them in vinegar first, if you don't mind."
+      },
+      {
+        "npc": "There is a Wine Merchant in Draynor called Fortunato that sells the stuff you'll need."
+      },
+      {
+        "npc": "You can even use my pot-boiler if you want."
+      },
+      {
+        "player": "Why do I need to boil them in vinegar?"
+      },
+      {
+        "npc": "It gets them bright and sparking white."
+      },
+      {
+        "npc": "It's an archaeologist thing."
+      },
+      {
+        "npc": "Just put the bone in a pot of vinegar, throw some logs on the fire, put the pot in the holder and light the logs."
+      },
+      {
+        "npc": "It takes a while for the vinegar to evaporate, but the bone will be nice and clean in the end."
+      },
+      {
+        "player": "All right, I'll be back later."
+      },
+      {
+        "npc": "Bye!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-82e579a4857deecd": [
+      {
+        "player": "Where is that mumbling coming from?"
+      },
+      {
+        "npc": "Errr..."
+      },
+      {
+        "type": "line",
+        "speaker": "Sack",
+        "text": "Mumblemumble"
+      },
+      {
+        "npc": "What mumbling?"
+      },
+      {
+        "npc": "Anyway, I have enough problems of my own without dealing with a delusional adventurer."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "4loYLt"
+      }
+    ],
+    "jump-de876788b5e9f551": [
+      {
+        "player": "Where was that mumbling coming from anyway?"
+      },
+      {
+        "npc": "Errr..."
+      },
+      {
+        "type": "line",
+        "speaker": "Sack",
+        "text": "Mumblemumble"
+      },
+      {
+        "npc": "What mumbling?"
+      },
+      {
+        "npc": "You must be hearing things. I think you need to have a lie down."
+      },
+      {
+        "type": "end"
       }
     ]
   }

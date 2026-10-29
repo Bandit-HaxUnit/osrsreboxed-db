@@ -97,8 +97,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "J0Pxlg"
+                        "id": "J0Pxlg",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-bd864e2f30e407a9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -107,8 +112,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "DqmsgI"
+                        "id": "DqmsgI",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b52e60718b68e44b"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -117,8 +127,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "0Fs4h1"
+                        "id": "0Fs4h1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c7724cb02f5ece5f"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -406,8 +421,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-P2tOr"
+                "id": "-P2tOr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6dca0b5c3bed8678"
+                  }
+                ]
               }
             ]
           },
@@ -416,8 +436,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Wjy1LK"
+                "id": "Wjy1LK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ba6b09e5146ac743"
+                  }
+                ]
               }
             ]
           },
@@ -426,8 +451,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4NeZlh"
+                "id": "4NeZlh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b52e60718b68e44b"
+                  }
+                ]
               }
             ]
           },
@@ -587,6 +617,304 @@
       },
       {
         "npc": "Glory will improve your status and reputation around the city. You might even get some rewards."
+      }
+    ]
+  },
+  "branches": {
+    "jump-bd864e2f30e407a9": [
+      {
+        "npc": "You'll get a range of benefits depending on your status."
+      },
+      {
+        "player": "How do I improve my status?"
+      },
+      {
+        "npc": "Earn more Glory of course. The more you earn, the better your standing in the city."
+      },
+      {
+        "npc": "You can check your status on that board over there. I keep it up to date."
+      },
+      {
+        "player": "What exactly are the benefits?"
+      },
+      {
+        "npc": "Well..."
+      },
+      {
+        "npc": "Reaching Brawler status will give you access to the bank within the Colosseum."
+      },
+      {
+        "npc": "Reaching Challenger status will allow you to respawn in Civitas illa Fortis if you so desire."
+      },
+      {
+        "npc": "Reaching Gladiator status might persuade some of the more shady folk around the city to give you more money for... Let's just say illicit valuables."
+      },
+      {
+        "npc": "Reaching Hero status will allow you to travel to the Colosseum via the Ring of Dueling."
+      },
+      {
+        "npc": "Reaching Champion status will grant you free herb patch protection just west of the city."
+      },
+      {
+        "npc": "And reaching Grand Champion status will unlock you the Fortis Salute emote."
+      },
+      {
+        "player": "Do you know how much Glory I need for each status?"
+      },
+      {
+        "npc": "You'll have to figure that out on your journey to becoming a Grand Champion."
+      },
+      {
+        "player": "Fair enough."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "2VW5W7"
+      }
+    ],
+    "jump-b52e60718b68e44b": [
+      {
+        "player": "Do you know my Glory status?"
+      },
+      {
+        "npc": "That I do, [player name]."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a Rookie:",
+        "steps": [
+          {
+            "npc": "It seems as though you are still a Rookie to the people of Fortis."
+          },
+          {
+            "npc": "You'll make a name of yourself in no time, [player name]."
+          },
+          {
+            "player": "I'll do my very best."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "V2URNp"
+          }
+        ],
+        "id": "8gSTis"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a Brawler:",
+        "steps": [
+          {
+            "npc": "You are a Brawler!"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "lOQImV"
+          }
+        ],
+        "id": "SyHI8h"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a Challenger:",
+        "steps": [
+          {
+            "npc": "You are a Challenger!"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "11ffkD"
+          }
+        ],
+        "id": "or0C2w"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a Gladiator:",
+        "steps": [
+          {
+            "npc": "You are a Gladiator!"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "okC5PY"
+          }
+        ],
+        "id": "YnrwWN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a Hero:",
+        "steps": [
+          {
+            "npc": "You are a Hero!"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "t8J7yi"
+          }
+        ],
+        "id": "HTigzp"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a Champion:",
+        "steps": [
+          {
+            "npc": "You are a Champion!"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "T1_TR7"
+          }
+        ],
+        "id": "5dLChc"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is a Grand Champion:",
+        "steps": [
+          {
+            "npc": "You are a Grand Champion!"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "FKa4Yj"
+          }
+        ],
+        "id": "LKwAyj"
+      },
+      {
+        "npc": "You can check that board over there to see any details of your Glory. I try to update it regularly."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "ydOW_Z"
+      }
+    ],
+    "jump-c7724cb02f5ece5f": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6dca0b5c3bed8678": [
+      {
+        "player": "How does Glory work?"
+      },
+      {
+        "npc": "It's simple really, you get Glory from participating in the Colosseum! You'll get more Glory the better you perform."
+      },
+      {
+        "npc": "Performance is measured by a few things. For example, how many hits you take or how quickly you complete the challenges."
+      },
+      {
+        "player": "Sounds good to me. Have you earned any Glory yourself?"
+      },
+      {
+        "npc": "Ha! No. But I do have this fancy armour which is pretty glorious! You may be lucky enough to get some of your own from within the Colosseum."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are there any rewards?",
+            "steps": [
+              {
+                "player": "Tell me more about these rewards."
+              },
+              {
+                "npc": "But of course! People all accross Varlamore will hear of your Glory."
+              },
+              {
+                "type": "jump",
+                "id": "J0Pxlg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bd864e2f30e407a9"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you know my Glory status?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "DqmsgI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b52e60718b68e44b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "0Fs4h1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c7724cb02f5ece5f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-ba6b09e5146ac743": [
+      {
+        "player": "Tell me more about these rewards."
+      },
+      {
+        "npc": "But of course! People all accross Varlamore will hear of your Glory."
+      },
+      {
+        "type": "jump",
+        "id": "J0Pxlg",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-bd864e2f30e407a9"
+          }
+        ]
       }
     ]
   }

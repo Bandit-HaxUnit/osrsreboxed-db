@@ -98,8 +98,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Zhm-51"
+                "id": "Zhm-51",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ff92162add34f49f"
+                  }
+                ]
               }
             ]
           },
@@ -108,8 +113,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YEAF_5"
+                "id": "YEAF_5",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f9640b3551af65b3"
+                  }
+                ]
               }
             ]
           },
@@ -118,8 +128,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Te-mq-"
+                "id": "Te-mq-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-47a715bde222bfde"
+                  }
+                ]
               }
             ]
           }
@@ -129,6 +144,38 @@
     "using-serum-208-on-him-using-serum-208-on-him-again": [
       {
         "npc": "You've already used the permanent serum on me, you don't need to use that any more."
+      }
+    ]
+  },
+  "branches": {
+    "jump-ff92162add34f49f": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Razmire General Store.",
+        "id": "CxA0n2"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f9640b3551af65b3": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Razmire Builders Merchants.",
+        "id": "QwvoZl"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-47a715bde222bfde": [
+      {
+        "player": "Ok, thanks"
+      },
+      {
+        "type": "end"
       }
     ]
   }

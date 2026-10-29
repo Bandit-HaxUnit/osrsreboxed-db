@@ -67,7 +67,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "KTFh4R"
+                        "id": "KTFh4R",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ee90ba1ce5e5b9e5"
+                          }
+                        ]
                       }
                     ],
                     "id": "I3aml_"
@@ -75,7 +81,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "Yju4YW"
+                    "id": "Yju4YW",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-ee90ba1ce5e5b9e5"
+                      }
+                    ]
                   }
                 ],
                 "id": "M9QDD3"
@@ -93,7 +105,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "I2pwqz"
+                        "id": "I2pwqz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ee90ba1ce5e5b9e5"
+                          }
+                        ]
                       }
                     ],
                     "id": "YOddRp"
@@ -116,7 +134,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "TQIkvu"
+                    "id": "TQIkvu",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-ee90ba1ce5e5b9e5"
+                      }
+                    ]
                   }
                 ],
                 "id": "cgvHpz"
@@ -243,7 +267,40 @@
               {
                 "type": "choice",
                 "prompt": "How do you want to handle picking up ammo?",
-                "options": []
+                "options": [
+                  {
+                    "text": "Automatically equip it.",
+                    "steps": [
+                      {
+                        "npc": "There you go! Your ammo will now automatically be equipped when you pick it up."
+                      },
+                      {
+                        "npc": "Is there anything else you want to know?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "5ag9GO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Place it in my inventory.",
+                    "steps": [
+                      {
+                        "npc": "There you go! Your ammo will now go to your inventory when you pick it up."
+                      },
+                      {
+                        "npc": "Is there anything else you want to know?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "uxt1Xw"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -475,8 +532,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "_tT89n"
+                        "id": "_tT89n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-228a4e63c17dcc7d"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -516,6 +578,54 @@
     "using-items-on-ranged-combat-tutor-any-other-item": [
       {
         "npc": "I have no use for that, sorry."
+      }
+    ]
+  },
+  "branches": {
+    "jump-ee90ba1ce5e5b9e5": [
+      {
+        "type": "choice",
+        "prompt": "How do you want to handle picking up ammo?",
+        "options": [
+          {
+            "text": "Automatically equip it.",
+            "steps": [
+              {
+                "npc": "There you go! Your ammo will now automatically be equipped when you pick it up."
+              },
+              {
+                "npc": "Is there anything else you want to know?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "5ag9GO"
+              }
+            ]
+          },
+          {
+            "text": "Place it in my inventory.",
+            "steps": [
+              {
+                "npc": "There you go! Your ammo will now go to your inventory when you pick it up."
+              },
+              {
+                "npc": "Is there anything else you want to know?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "uxt1Xw"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-228a4e63c17dcc7d": [
+      {
+        "type": "missing",
+        "id": "320YXr"
       }
     ]
   }

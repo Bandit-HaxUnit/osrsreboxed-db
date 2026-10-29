@@ -1,4 +1,17 @@
 {
+  "branches": {
+    "jump-71dfa2223cbdb0d9": [
+      {
+        "player": "Ok... Bye."
+      },
+      {
+        "npc": "See you around."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Good day!"
@@ -94,8 +107,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "e1AuoO"
+                              "id": "e1AuoO",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-71dfa2223cbdb0d9"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -108,8 +126,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "9mXe_M"
+                      "id": "9mXe_M",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-71dfa2223cbdb0d9"
+                        }
+                      ]
                     }
                   ]
                 }

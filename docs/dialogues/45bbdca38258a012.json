@@ -25,8 +25,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "pHuAsK"
+                        "id": "pHuAsK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9c155080359d44a3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -35,8 +40,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "R3wS8N"
+                        "id": "R3wS8N",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-46ab90cd4635cb03"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -95,8 +105,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "E7jg-0"
+                        "id": "E7jg-0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3547b77fef2a979c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -105,8 +120,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "BVS6q9"
+                        "id": "BVS6q9",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-46ab90cd4635cb03"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -212,8 +232,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "j6DFl3"
+                        "id": "j6DFl3",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9f8d99b957c4ff93"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -222,8 +247,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "LyP83D"
+                        "id": "LyP83D",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9b95d3c1d2377c46"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -310,6 +340,158 @@
           }
         ],
         "id": "U1ELbw"
+      }
+    ]
+  },
+  "branches": {
+    "jump-9c155080359d44a3": [
+      {
+        "player": "Are you alright?"
+      },
+      {
+        "npc": "Ohhh... can't complain. I just can't cope with being stuck here, by the bank. I want to travel - that's why they call me Isles. Really, I want to go to the island called Grimstone!"
+      },
+      {
+        "npc": "I don't know much about it, but it sounds like the most exciting island ever! I bet I could engage better with my work if I lived there, so I could finally earn a bit of cash."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I haven't sailed to Grimstone yet, either.",
+            "condition": "If the player has never been to Grimstone:",
+            "steps": [
+              {
+                "player": "I haven't sailed to Grimstone yet, either."
+              },
+              {
+                "npc": "Maybe one day I'll meet someone who'll take me there, so that I can work."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "1z5DDv"
+              }
+            ],
+            "id": "ibZ8ib"
+          },
+          {
+            "text": "Would you like me to sail you to Grimstone?",
+            "condition": "If the player has been to Grimstone:",
+            "steps": [
+              {
+                "player": "Would you like me to sail you to Grimstone?"
+              },
+              {
+                "npc": "That sounds amazing! Yes, I'll hop aboard your boat, next time you embark from here. Thank you."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "ZMEOh8"
+          },
+          {
+            "text": "What can you actually do?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "E7jg-0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3547b77fef2a979c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "BVS6q9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-46ab90cd4635cb03"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-46ab90cd4635cb03": [
+      {
+        "player": "I'll be off."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3547b77fef2a979c": [
+      {
+        "player": "What can you actually do?"
+      },
+      {
+        "npc": "Banknote conversion, mostly - exchanging banknotes for real items. I specialise in metal bars. But I can't face doing it just now."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you alright?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "pHuAsK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9c155080359d44a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "R3wS8N",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-46ab90cd4635cb03"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9f8d99b957c4ff93": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "npc": "Hand me the banknotes you wish me to exchange."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9b95d3c1d2377c46": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -100,8 +100,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "B6zIIg"
+                "id": "B6zIIg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9d35765a68226179"
+                  }
+                ]
               }
             ]
           },
@@ -111,8 +116,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TGCAlL"
+                "id": "TGCAlL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2e5c124f6d01494f"
+                  }
+                ]
               }
             ],
             "id": "j-je7k"
@@ -122,12 +132,85 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QNOFsQ"
+                "id": "QNOFsQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bfaa38f9e61674a9"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-9d35765a68226179": [
+      {
+        "player": "That armour looks mighty fancy!"
+      },
+      {
+        "npc": "Indeed! A family heirloom of mine, passed down from my father."
+      },
+      {
+        "player": "Oh? Are you from a family of famous knights?"
+      },
+      {
+        "npc": "You could say that..."
+      },
+      {
+        "player": "What's wrong?"
+      },
+      {
+        "npc": "Oh, nothing... it's just... old memories. I'm getting old, as you can probably see. My family have all died to war. This is meant to be my retirement."
+      },
+      {
+        "player": "Retirement? Then why still wear the armour? Especially with how hot it is here."
+      },
+      {
+        "npc": "I find it's best to be prepared in this region. Bandits regularly visit this fine oasis, and they ask fewer questions when they see me in armour."
+      },
+      {
+        "player": "I see."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2e5c124f6d01494f": [
+      {
+        "player": "How's the tea here?"
+      },
+      {
+        "npc": "Hmm..."
+      },
+      {
+        "npc": "Umm..."
+      },
+      {
+        "npc": "Well... I think it's quite nice! I prefer a warm cup of Saradomin's Wisdom, a special recipe of mine."
+      },
+      {
+        "player": "Oh? How's it made?"
+      },
+      {
+        "npc": "Bit of a family secret. A fine blend of herbs that are quite magical."
+      },
+      {
+        "player": "Alright then. Keep your secrets."
+      }
+    ],
+    "jump-bfaa38f9e61674a9": [
+      {
+        "player": "I'd best be off."
+      },
+      {
+        "npc": "Quite. Perhaps I'll see you around..."
+      },
+      {
+        "type": "end"
       }
     ]
   }

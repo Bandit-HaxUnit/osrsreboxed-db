@@ -307,8 +307,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "MIysqy"
+                        "id": "MIysqy",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7bab541449c8a982"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -389,8 +394,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "PknsIH"
+                        "id": "PknsIH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7bab541449c8a982"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -447,8 +457,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "FZrZvg"
+                            "id": "FZrZvg",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-7bab541449c8a982"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -491,6 +506,19 @@
         "action_source": "text",
         "target": "Interface showing the next clue",
         "id": "xIiaje"
+      }
+    ]
+  },
+  "branches": {
+    "jump-7bab541449c8a982": [
+      {
+        "player": "Bye."
+      },
+      {
+        "npc": "Have a good day!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -1,4 +1,474 @@
 {
+  "branches": {
+    "jump-eba12380162765fd": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is our home. In your tongue, it is known as Mount Karuulm."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "My tongue?",
+            "steps": [
+              {
+                "player": "My tongue?"
+              },
+              {
+                "npc": "Yes. You speak the language of humans but we Kahlith have our own language."
+              },
+              {
+                "npc": "In the past, we have tried to teach our language to your kind. However, despite the simplicity of our tongue, success was limited."
+              },
+              {
+                "npc": "We find that it is easier to just use your language when your kind are around."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Kahlith?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "-VdWv8",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-eefca008d6f91a9e"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you give an example?",
+                    "steps": [
+                      {
+                        "player": "Can you give an example?"
+                      },
+                      {
+                        "npc": "Of our language?"
+                      },
+                      {
+                        "player": "Yes please."
+                      },
+                      {
+                        "npc": "Well you'll find our language is quite a simple one. Our names are a good example of how it is used."
+                      },
+                      {
+                        "npc": "I am Xorrah quo Sihar. The first word, 'Xorrah', is unique to me and it is how I can be identified."
+                      },
+                      {
+                        "npc": "The second word, 'quo', is a basic Kahlith word that translates to 'the' in your language."
+                      },
+                      {
+                        "npc": "The final word, 'Sihar', is my title. There are four possible titles, one for each role in Kahlith society. My title translates to 'Mystic' in your tongue."
+                      },
+                      {
+                        "player": "So in my language your name would be Xorrah the Mystic?"
+                      },
+                      {
+                        "npc": "Exactly."
+                      },
+                      {
+                        "player": "Interesting. Thanks for the information."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's all thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "DWrzeC",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-aa6a2968de0e7e6b"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "gLy5Ej",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-87c0f031f311eb00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ImtXeV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-aa6a2968de0e7e6b"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-aa6a2968de0e7e6b": [
+      {
+        "player": "That's all thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-eefca008d6f91a9e": [
+      {
+        "player": "Kahlith?"
+      },
+      {
+        "npc": "Yes. At one time we were like you, but then we met the Tasakaal. They taught us to have purpose. They taught us to serve the balance."
+      },
+      {
+        "npc": "Our old lives were left behind. In their place, the Kahlith were born."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tasakaal?",
+            "steps": [
+              {
+                "player": "Tasakaal?"
+              },
+              {
+                "npc": "Our teachers. They showed us the way and taught us to serve the balance."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "cu4Z5K"
+              }
+            ]
+          },
+          {
+            "text": "The balance?",
+            "steps": [
+              {
+                "player": "The balance?"
+              },
+              {
+                "npc": "For every death, there must be life. For every life, there must be a death. This is the balance."
+              },
+              {
+                "npc": "Our purpose, as taught to us by the Tasakaal, is to keep this balance, no matter the cost."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "5kYv7L"
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Lx-jh2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-eba12380162765fd"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "uiBAt_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-aa6a2968de0e7e6b"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7a7ada4553d7e48e": [
+      {
+        "player": "Tasakaal?"
+      },
+      {
+        "npc": "Our teachers. They showed us the way and taught us to serve the balance."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "cu4Z5K"
+      }
+    ],
+    "jump-0717639fb2d75083": [
+      {
+        "player": "The balance?"
+      },
+      {
+        "npc": "For every death, there must be life. For every life, there must be a death. This is the balance."
+      },
+      {
+        "npc": "Our purpose, as taught to us by the Tasakaal, is to keep this balance, no matter the cost."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "5kYv7L"
+      }
+    ],
+    "jump-87c0f031f311eb00": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I am Xorrah quo Sihar. I am one of the mystics of the Kahlith."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Kahlith?",
+            "steps": [
+              {
+                "player": "Kahlith?"
+              },
+              {
+                "npc": "Yes. At one time we were like you, but then we met the Tasakaal. They taught us to have purpose. They taught us to serve the balance."
+              },
+              {
+                "npc": "Our old lives were left behind. In their place, the Kahlith were born."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tasakaal?",
+                    "steps": [
+                      {
+                        "player": "Tasakaal?"
+                      },
+                      {
+                        "npc": "Our teachers. They showed us the way and taught us to serve the balance."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "cu4Z5K"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The balance?",
+                    "steps": [
+                      {
+                        "player": "The balance?"
+                      },
+                      {
+                        "npc": "For every death, there must be life. For every life, there must be a death. This is the balance."
+                      },
+                      {
+                        "npc": "Our purpose, as taught to us by the Tasakaal, is to keep this balance, no matter the cost."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "5kYv7L"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What is this place?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Lx-jh2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-eba12380162765fd"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's all thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "uiBAt_",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-aa6a2968de0e7e6b"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "A mystic?",
+            "steps": [
+              {
+                "player": "A mystic?"
+              },
+              {
+                "npc": "Yes. All Kahlith serve the balance. To do this, we take on one of four roles."
+              },
+              {
+                "npc": "My role is that of a mystic. I learn from the Tasakaal and then pass on their teachings."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Kahlith?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "sVDfta",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-eefca008d6f91a9e"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tasakaal?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "2g4_Z0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7a7ada4553d7e48e"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The balance?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HRPNiH",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0717639fb2d75083"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What is this place?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "uqLeun",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-eba12380162765fd"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's all thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "obsZH2",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-aa6a2968de0e7e6b"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ZCgCLI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-eba12380162765fd"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all thanks.",
+            "steps": [
+              {
+                "player": "That's all thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Greetings human. Do you seek guidance?"
@@ -73,8 +543,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "Lx-jh2"
+                              "id": "Lx-jh2",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-eba12380162765fd"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -83,8 +558,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "uiBAt_"
+                              "id": "uiBAt_",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-aa6a2968de0e7e6b"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -112,8 +592,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "sVDfta"
+                              "id": "sVDfta",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-eefca008d6f91a9e"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -122,8 +607,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "2g4_Z0"
+                              "id": "2g4_Z0",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-7a7ada4553d7e48e"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -132,8 +622,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "HRPNiH"
+                              "id": "HRPNiH",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-0717639fb2d75083"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -142,8 +637,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "uqLeun"
+                              "id": "uqLeun",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-eba12380162765fd"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -152,8 +652,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "below",
-                              "id": "obsZH2"
+                              "id": "obsZH2",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-aa6a2968de0e7e6b"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -166,8 +671,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "ZCgCLI"
+                      "id": "ZCgCLI",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-eba12380162765fd"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -218,8 +728,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "-VdWv8"
+                              "id": "-VdWv8",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-eefca008d6f91a9e"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -263,8 +778,13 @@
                           "steps": [
                             {
                               "type": "jump",
-                              "reference": "above",
-                              "id": "DWrzeC"
+                              "id": "DWrzeC",
+                              "steps": [
+                                {
+                                  "type": "call",
+                                  "branch": "jump-aa6a2968de0e7e6b"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -277,8 +797,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "gLy5Ej"
+                      "id": "gLy5Ej",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-87c0f031f311eb00"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -287,8 +812,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "ImtXeV"
+                      "id": "ImtXeV",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-aa6a2968de0e7e6b"
+                        }
+                      ]
                     }
                   ]
                 }

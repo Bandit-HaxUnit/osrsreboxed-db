@@ -191,8 +191,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LNIaug"
+                "id": "LNIaug",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-409c9bb8b6ccf87a"
+                  }
+                ]
               }
             ]
           },
@@ -356,6 +361,71 @@
     "overhead-dialogue-catching-players-attempting-to-steal-from-stalls-in-mor-ul-rek": [
       {
         "npc": "Oi JalYt!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-409c9bb8b6ccf87a": [
+      {
+        "player": "What are you guarding?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has access to Mor Ul Rek:",
+        "steps": [
+          {
+            "npc": "Ah, trusted and most capable JalYt, this is the city of Mor Ul Rek. It has grand central inferno, our birthing pool. Go! See for yourself [TzHaar caste]-[player name]"
+          },
+          {
+            "type": "jump",
+            "reference": "below",
+            "id": "H2iWhj"
+          }
+        ],
+        "id": "b16WQ0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have access to Mor Ul Rek:",
+        "steps": [
+          {
+            "npc": "[TzHaar caste]-[player name], you are not trusted, this is secret area. Less questions! I will say that it's the inner core of the city though."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Oh well, Goodbye.",
+                "steps": [
+                  {
+                    "player": "Oh well, goodbye."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Oh well, [TzHaar caste]-[player name] over and out.",
+                "steps": [
+                  {
+                    "player": "Oh well, [TzHaar caste]-[player name] over and out."
+                  },
+                  {
+                    "npc": "Haha funny JalYt try to speak language, why do you put that accent on when attempting it?"
+                  },
+                  {
+                    "player": "maybe it helps you to understand what I'm saying. See you around."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "4bzfEp"
       }
     ]
   }

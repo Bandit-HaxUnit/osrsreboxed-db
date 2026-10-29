@@ -1397,7 +1397,208 @@
       },
       {
         "type": "choice",
-        "options": []
+        "options": [
+          {
+            "text": "What tunnel?",
+            "steps": [
+              {
+                "player": "What tunnel?"
+              },
+              {
+                "type": "line",
+                "speaker": "Anna Jones",
+                "text": "Why, the Chaos Tunnel of course! I imagine Surok will have told you of it."
+              },
+              {
+                "player": "Oh, I see. Well, what can you tell me about it?"
+              },
+              {
+                "type": "line",
+                "speaker": "Anna Jones",
+                "text": "Well, story and rumour has it that the Dagon'hai built a tunnel here under the statue of Saradomin that would allow them to visit the Chaos Altar without having to go through the Wilderness."
+              },
+              {
+                "player": "That's extremely handy!"
+              },
+              {
+                "type": "line",
+                "speaker": "Anna Jones",
+                "text": "Yes, it is. Or, at least, it would be. Unfortunately, I haven't been able to get in there so far."
+              },
+              {
+                "player": "Why not?"
+              },
+              {
+                "type": "line",
+                "speaker": "Anna Jones",
+                "text": "The tunnel entrance needs to be cleared before anyone can get in there. However, my Mining skill isn't high enough at all to do it myself. Perhaps you could have a go?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "VjQ3Lz"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, who are you?",
+            "steps": [
+              {
+                "player": "Sorry, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Anna Jones",
+                "text": "My name is Louisiana Jones, although most people call me Anna. I'm an archaeologist."
+              },
+              {
+                "player": "Pleased to meet you."
+              },
+              {
+                "type": "line",
+                "speaker": "Anna Jones",
+                "text": "Likewise!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What tunnel were you talking about?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "e2R2MW"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who does this statue represent?",
+                    "steps": [
+                      {
+                        "player": "Who does this statue represent?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Anna Jones",
+                        "text": "That, my dear, is the statue of the great god Saradomin himself. Stand and admire in awe for you are in the presence of greatness!"
+                      },
+                      {
+                        "player": "Consider me awed!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Anna Jones",
+                        "text": "Indeed!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "Om7pOx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why are you here?",
+                    "steps": [
+                      {
+                        "player": "What are you doing here?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Anna Jones",
+                        "text": "Well story and rumour has it that the Dagon'hai built a tunnel under this statue of Saradomin that would allow them to visit the Chaos Altar without having to go through the Wilderness."
+                      },
+                      {
+                        "player": "That's extremely handy!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Anna Jones",
+                        "text": "Yes, it is. Or, at least, it would be. I came to excavate the tunnel but, unfortunately, there so far."
+                      },
+                      {
+                        "player": "Why not?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Anna Jones",
+                        "text": "The tunnel entrance needs to be cleared before anyone can get in there. However, my Mining skill just isn't what it used to be. Perhaps you could have a go?"
+                      },
+                      {
+                        "player": "Maybe. I might do."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, I'd better go.",
+                    "steps": [
+                      {
+                        "player": "Okay, I'd better go."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Anna Jones",
+                        "text": "Okay, then!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Who does this statue represent?",
+            "steps": [
+              {
+                "player": "Who does this statue represent?"
+              },
+              {
+                "type": "jump",
+                "id": "BEHHo_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9ac8482c6426046f"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "type": "jump",
+                "id": "ECScMu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-97fd392fd1f6c993"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, I'd better go.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "pfrlnK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e25f8acdb1e52c63"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "statue-of-saradomin-talking-to-anna-jones-before-digging-the-statue-of-saradomin-excavating-the-statue-after-talking-to-anna-jones": [
@@ -1701,8 +1902,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "BSPNV0"
+                        "id": "BSPNV0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-05dcdd062a6ce198"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1711,8 +1917,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "6cyaKF"
+                        "id": "6cyaKF",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-cf59cb01d70ee313"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1721,8 +1932,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "T9oYrF"
+                        "id": "T9oYrF",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b60553ab56473f11"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1731,8 +1947,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "qQv4DT"
+                        "id": "qQv4DT",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d97db4f6cc4ad7c6"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1756,8 +1977,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vdtjEz"
+                "id": "vdtjEz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-43e28fff136fe18f"
+                  }
+                ]
               }
             ]
           }
@@ -1908,8 +2134,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "g5Cw8i"
+                    "id": "g5Cw8i",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-43e28fff136fe18f"
+                      }
+                    ]
                   }
                 ]
               }
@@ -2238,8 +2469,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "5y-but"
+                        "id": "5y-but",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a82791ed600d507e"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2262,8 +2498,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "_JIMfj"
+                                "id": "_JIMfj",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-a82791ed600d507e"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -2272,8 +2513,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "HBWC6L"
+                                "id": "HBWC6L",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-b68fb54c67df849b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -2346,8 +2592,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "kl5t1Q"
+                        "id": "kl5t1Q",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0152362d5ca0e1a3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2366,8 +2617,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "dhcyhS"
+                        "id": "dhcyhS",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-327cc6ff294cf50d"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -2380,8 +2636,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "SYLP2o"
+                "id": "SYLP2o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b68fb54c67df849b"
+                  }
+                ]
               }
             ]
           },
@@ -2390,8 +2651,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "B6Toxo"
+                "id": "B6Toxo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0152362d5ca0e1a3"
+                  }
+                ]
               }
             ]
           },
@@ -2448,13 +2714,31 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, please!"
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "onhy1g"
+              }
+            ]
           },
           {
-            "text": "Have you any extra stock of battlestaffs I can buy?"
+            "text": "Have you any extra stock of battlestaffs I can buy?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iwH_b4"
+              }
+            ]
           },
           {
-            "text": "No, thank you."
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "S5YVwy"
+              }
+            ]
           },
           {
             "text": "Rat Burgiss sent me!",
@@ -2576,13 +2860,31 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, please!"
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "onhy1g"
+              }
+            ]
           },
           {
-            "text": "Have you any extra stock of battlestaffs I can buy?"
+            "text": "Have you any extra stock of battlestaffs I can buy?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iwH_b4"
+              }
+            ]
           },
           {
-            "text": "No, thank you."
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "S5YVwy"
+              }
+            ]
           },
           {
             "text": "I need to ask you something else.",
@@ -3015,8 +3317,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "jgmjay"
+                                "id": "jgmjay",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-8b67c8591ae1055d"
+                                  }
+                                ]
                               },
                               {
                                 "type": "choice",
@@ -3026,8 +3333,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "Ielph1"
+                                        "id": "Ielph1",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-f2f986d8db7861e8"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -3036,8 +3348,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "3JdvHX"
+                                        "id": "3JdvHX",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-18e2fc0f4b14c2e7"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -3086,8 +3403,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "08671I"
+                            "id": "08671I",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-8d35a90f50381c26"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -3096,8 +3418,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "a3n77V"
+                            "id": "a3n77V",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-8b4da814d9340ae6"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -3110,8 +3437,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "ZN3zr-"
+                    "id": "ZN3zr-",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f2f986d8db7861e8"
+                      }
+                    ]
                   }
                 ]
               },
@@ -3120,8 +3452,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "sOHX75"
+                    "id": "sOHX75",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b983e5d8e7a81454"
+                      }
+                    ]
                   }
                 ]
               },
@@ -3130,8 +3467,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "DrYW6a"
+                    "id": "DrYW6a",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-8d35a90f50381c26"
+                      }
+                    ]
                   }
                 ]
               },
@@ -3140,8 +3482,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "YNoPgb"
+                    "id": "YNoPgb",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-18e2fc0f4b14c2e7"
+                      }
+                    ]
                   }
                 ]
               }
@@ -3591,10 +3938,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, please!"
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "onhy1g"
+              }
+            ]
           },
           {
-            "text": "Have you any extra stock of battlestaffs I can buy?"
+            "text": "Have you any extra stock of battlestaffs I can buy?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iwH_b4"
+              }
+            ]
           },
           {
             "text": "Why did you teleport us?",
@@ -3622,8 +3981,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "FoSd-F"
+                "id": "FoSd-F",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3a3d9ab240c1d238"
+                  }
+                ]
               }
             ]
           },
@@ -3632,8 +3996,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IpA9Yp"
+                "id": "IpA9Yp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-72781359221aa29f"
+                  }
+                ]
               }
             ]
           }
@@ -3679,13 +4048,31 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, please!"
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "onhy1g"
+              }
+            ]
           },
           {
-            "text": "Have you any extra stock of battlestaffs I can buy?"
+            "text": "Have you any extra stock of battlestaffs I can buy?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "iwH_b4"
+              }
+            ]
           },
           {
-            "text": "No, thank you."
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "S5YVwy"
+              }
+            ]
           },
           {
             "text": "We did it! We beat Surok!",
@@ -3828,6 +4215,1118 @@
     ]
   },
   "branches": {
+    "jump-9ac8482c6426046f": [
+      {
+        "type": "line",
+        "speaker": "Anna Jones",
+        "text": "That, my dear, is the statue of the great god Saradomin himself. Stand and admire in awe for you are in the presence of greatness!"
+      },
+      {
+        "player": "Consider me awed!"
+      },
+      {
+        "type": "line",
+        "speaker": "Anna Jones",
+        "text": "Indeed!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "Om7pOx"
+      }
+    ],
+    "jump-97fd392fd1f6c993": [
+      {
+        "type": "line",
+        "speaker": "Anna Jones",
+        "text": "Well story and rumour has it that the Dagon'hai built a tunnel under this statue of Saradomin that would allow them to visit the Chaos Altar without having to go through the Wilderness."
+      },
+      {
+        "player": "That's extremely handy!"
+      },
+      {
+        "type": "line",
+        "speaker": "Anna Jones",
+        "text": "Yes, it is. Or, at least, it would be. I came to excavate the tunnel but, unfortunately, there so far."
+      },
+      {
+        "player": "Why not?"
+      },
+      {
+        "type": "line",
+        "speaker": "Anna Jones",
+        "text": "The tunnel entrance needs to be cleared before anyone can get in there. However, my Mining skill just isn't what it used to be. Perhaps you could have a go?"
+      },
+      {
+        "player": "Maybe. I might do."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e25f8acdb1e52c63": [
+      {
+        "player": "Okay, I'd better go."
+      },
+      {
+        "type": "line",
+        "speaker": "Anna Jones",
+        "text": "Okay, then!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-05dcdd062a6ce198": [
+      {
+        "player": "Who is this Sin'keth?"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "Sin'keth Magis? From what I have read, it would appear he was a great leader of the Dagon'hai Mages."
+      },
+      {
+        "player": "The Dagon-what?"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "Hmph! If you read the diary or perused that tome I mentioned, you would know who they are."
+      },
+      {
+        "player": "Hey, wait! Isn't your last name Magis too? Are you related to him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "No. Not at all. Purely coincidence! Now, haven't you got work to do already?"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "es41Vw"
+      }
+    ],
+    "jump-cf59cb01d70ee313": [
+      {
+        "player": "Where did it come from?"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "How I came to have the diary is of no concern to you!"
+      },
+      {
+        "player": "Oooo, tetchy!"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "I suggest that you concentrate on getting the things I need and stop asking pointless questions!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "RqantN"
+      }
+    ],
+    "jump-b60553ab56473f11": [
+      {
+        "player": "Where is the safe route?"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "I could tell you, of course; I know more or less exactly where it is. However, that would take all the fun out of this, wouldn't it?"
+      },
+      {
+        "player": "No, really! It's okay! You can tell me where it is!"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "No, I think you should see if you can find it for yourself. I have given you the diary and, along with the tome around here, you should be able to find that alternate route easily enough on your own!"
+      }
+    ],
+    "jump-d97db4f6cc4ad7c6": [
+      {
+        "player": "Can I have another one?"
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "You want another copy of the diary?"
+      },
+      {
+        "player": "Yes, I seem to have misplaced the last one."
+      },
+      {
+        "type": "condition",
+        "text": "If the diary is still in the player's inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Surok Magis",
+            "text": "Hang on! I can see the last copy I gave you in your inventory there! You don't need another one!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "TvVDiA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the diary in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Surok Magis",
+            "text": "Fine, but this diary is important you know! It has secrets that you should not share around with just anybody!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Sin'keth's diary either in their inventory or on the ground if the player has no inventory space",
+            "id": "XFp_i-"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "f8S0Sx"
+      }
+    ],
+    "jump-43e28fff136fe18f": [
+      {
+        "player": "Never mind, I forgot the question."
+      },
+      {
+        "type": "line",
+        "speaker": "Surok Magis",
+        "text": "Fair enough. Go then. I expect you have a lot of work to do!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a82791ed600d507e": [
+      {
+        "player": "What am I doing now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "You need to go and see Zaff. He can be found at 'Zaffs Staffs', the staff shop in Varrock. He will tell you what to do next."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What am I doing now?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "5y-but",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a82791ed600d507e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you think we can stop Surok?",
+            "steps": [
+              {
+                "player": "Do you think we can stop Surok?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "Surok is a powerful mage and ruthless too. Who knows what will happen. I am sure that we will prevail, though. Don't worry, [player name]! You'll be fine!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What am I doing now?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "_JIMfj",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a82791ed600d507e"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you think we can stop Surok?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HBWC6L",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b68fb54c67df849b"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you have anything to trade yet?",
+                    "steps": [
+                      {
+                        "player": "Do you have anything to trade yet?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rat Burgiss",
+                        "text": "No, I'm afraid I have nothing in stock, largely due to the fact that I'm not really a trader, as I just mentioned."
+                      },
+                      {
+                        "player": "Ah yes, I remember!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "rP-iTi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You know, your cart IS kind of small!",
+                    "steps": [
+                      {
+                        "player": "You know, your cart IS kind of small!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rat Burgiss",
+                        "text": "What are you implying?"
+                      },
+                      {
+                        "player": "Oh, nothing! It's very...er...cute!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rat Burgiss",
+                        "text": "Why exactly are you still here?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "fRg-Yw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, I better go!",
+                    "steps": [
+                      {
+                        "player": "Okay, I better go!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Rat Burgiss",
+                        "text": "Okay, good luck!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything to trade yet?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "kl5t1Q",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0152362d5ca0e1a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Hey, your cart has no donkey!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "0Yy4UC"
+              }
+            ]
+          },
+          {
+            "text": "Okay, I better go!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "dhcyhS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-327cc6ff294cf50d"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-b68fb54c67df849b": [
+      {
+        "player": "Do you think we can stop Surok?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "Surok is a powerful mage and ruthless too. Who knows what will happen. I am sure that we will prevail, though. Don't worry, [player name]! You'll be fine!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What am I doing now?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "_JIMfj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a82791ed600d507e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you think we can stop Surok?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HBWC6L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b68fb54c67df849b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything to trade yet?",
+            "steps": [
+              {
+                "player": "Do you have anything to trade yet?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "No, I'm afraid I have nothing in stock, largely due to the fact that I'm not really a trader, as I just mentioned."
+              },
+              {
+                "player": "Ah yes, I remember!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "rP-iTi"
+              }
+            ]
+          },
+          {
+            "text": "You know, your cart IS kind of small!",
+            "steps": [
+              {
+                "player": "You know, your cart IS kind of small!"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "What are you implying?"
+              },
+              {
+                "player": "Oh, nothing! It's very...er...cute!"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "Why exactly are you still here?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "fRg-Yw"
+              }
+            ]
+          },
+          {
+            "text": "Okay, I better go!",
+            "steps": [
+              {
+                "player": "Okay, I better go!"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "Okay, good luck!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-0152362d5ca0e1a3": [
+      {
+        "player": "Do you have anything to trade yet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "No, I'm afraid I have nothing in stock, largely due to the fact that I'm not really a trader, as I just mentioned."
+      },
+      {
+        "player": "Ah yes, I remember!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "rP-iTi"
+      }
+    ],
+    "jump-327cc6ff294cf50d": [
+      {
+        "player": "Okay, I better go!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "Okay, good luck!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8b67c8591ae1055d": [
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "You will need to go and speak to Surok now. Arrest him under the authority of the Varrock Palace Secret Guard."
+      },
+      {
+        "player": "Right then."
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "It may be tough and Surok will most likely not be arrested without a fight, so be on your guard!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me of the Dagon'hai?",
+            "steps": [
+              {
+                "player": "Can you tell me of the Dagon'hai?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "How do you know of them?"
+              },
+              {
+                "player": "Surok gave me a diary that spoke of them. Do you know anything about them?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "I see. The Dagon'hai were a powerful order of Zamorakian mages who resided here in this very city."
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "However, the priests of Saradomin warred ferociously with them and tried to destroy them. The Dagon'hai, though, were very clever and extremely cunning."
+              },
+              {
+                "player": "What do you mean?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "They hid themselves away within the city and, rumour has it, they even had a way of getting to the Wilderness and back without ever being seen, although I have no idea how that might have been."
+              },
+              {
+                "player": "So where are they now?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "Nobody knows. They disappeared from the city a hundred years ago and very few people even remember who they were."
+              },
+              {
+                "player": "So how do you know about them?"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "My grandfather's brother, my great uncle, was a priest of Saradomin and he would tell me stories of the wars with the Dagon'hai as a child."
+              },
+              {
+                "player": "Oh, I see."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "5FcjW4"
+              }
+            ]
+          },
+          {
+            "text": "I've lost that ring I had!",
+            "steps": [
+              {
+                "player": "I've lost that ring I had!"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "Then you will have to go and speak to Zaff at Zaff's Staffs to get another one!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "0wXlia"
+              }
+            ]
+          },
+          {
+            "text": "You're in the army now!!",
+            "steps": [
+              {
+                "player": "At ease, soldier!"
+              },
+              {
+                "type": "line",
+                "speaker": "Rat Burgiss",
+                "text": "You shouldn't mock your commanding officer, private! Don't forget, I can still have you arrested for conspiracy with Surok!"
+              },
+              {
+                "player": "Uh, yes, sorry! I forgot about that!",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "So, what next?"
+                      }
+                    ]
+                  },
+                  {
+                    "player": "What are my orders again?"
+                  },
+                  {
+                    "type": "jump",
+                    "id": "jgmjay",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-8b67c8591ae1055d"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Can you tell me of the Dagon'hai?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "Ielph1",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-f2f986d8db7861e8"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I've lost that ring I had!",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "id": "3JdvHX",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-18e2fc0f4b14c2e7"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "What benefits do I get in the VPSG?",
+                        "steps": [
+                          {
+                            "player": "What benefits do I get in the VPSG?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rat Burgiss",
+                            "text": "Unfortunately, as an honorary member of the VPSG, you only get to act under our authority. You aren't entitled to the full Secret Guard package."
+                          },
+                          {
+                            "player": "So I don't get the secret spy-pack then?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rat Burgiss",
+                            "text": "I'm afraid not. No."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, I need to go!",
+                        "steps": [
+                          {
+                            "player": "Okay, I need to go!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Rat Burgiss",
+                            "text": "Yes, you have an important job! Good luck, [player name]!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What benefits do I get in the VPSG?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "08671I",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8d35a90f50381c26"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, I need to go!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "a3n77V",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8b4da814d9340ae6"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f2f986d8db7861e8": [
+      {
+        "player": "Can you tell me of the Dagon'hai?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "How do you know of them?"
+      },
+      {
+        "player": "Surok gave me a diary that spoke of them. Do you know anything about them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "I see. The Dagon'hai were a powerful order of Zamorakian mages who resided here in this very city."
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "However, the priests of Saradomin warred ferociously with them and tried to destroy them. The Dagon'hai, though, were very clever and extremely cunning."
+      },
+      {
+        "player": "What do you mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "They hid themselves away within the city and, rumour has it, they even had a way of getting to the Wilderness and back without ever being seen, although I have no idea how that might have been."
+      },
+      {
+        "player": "So where are they now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "Nobody knows. They disappeared from the city a hundred years ago and very few people even remember who they were."
+      },
+      {
+        "player": "So how do you know about them?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "My grandfather's brother, my great uncle, was a priest of Saradomin and he would tell me stories of the wars with the Dagon'hai as a child."
+      },
+      {
+        "player": "Oh, I see."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "5FcjW4"
+      }
+    ],
+    "jump-18e2fc0f4b14c2e7": [
+      {
+        "player": "I've lost that ring I had!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "Then you will have to go and speak to Zaff at Zaff's Staffs to get another one!"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "0wXlia"
+      }
+    ],
+    "jump-8d35a90f50381c26": [
+      {
+        "player": "What benefits do I get in the VPSG?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "Unfortunately, as an honorary member of the VPSG, you only get to act under our authority. You aren't entitled to the full Secret Guard package."
+      },
+      {
+        "player": "So I don't get the secret spy-pack then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "I'm afraid not. No."
+      }
+    ],
+    "jump-8b4da814d9340ae6": [
+      {
+        "player": "Okay, I need to go!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "Yes, you have an important job! Good luck, [player name]!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b983e5d8e7a81454": [
+      {
+        "player": "At ease, soldier!"
+      },
+      {
+        "type": "line",
+        "speaker": "Rat Burgiss",
+        "text": "You shouldn't mock your commanding officer, private! Don't forget, I can still have you arrested for conspiracy with Surok!"
+      },
+      {
+        "player": "Uh, yes, sorry! I forgot about that!",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "So, what next?"
+              }
+            ]
+          },
+          {
+            "player": "What are my orders again?"
+          },
+          {
+            "type": "jump",
+            "id": "jgmjay",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-8b67c8591ae1055d"
+              }
+            ]
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can you tell me of the Dagon'hai?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "Ielph1",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-f2f986d8db7861e8"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "I've lost that ring I had!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "3JdvHX",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-18e2fc0f4b14c2e7"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "What benefits do I get in the VPSG?",
+                "steps": [
+                  {
+                    "player": "What benefits do I get in the VPSG?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Rat Burgiss",
+                    "text": "Unfortunately, as an honorary member of the VPSG, you only get to act under our authority. You aren't entitled to the full Secret Guard package."
+                  },
+                  {
+                    "player": "So I don't get the secret spy-pack then?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Rat Burgiss",
+                    "text": "I'm afraid not. No."
+                  }
+                ]
+              },
+              {
+                "text": "Okay, I need to go!",
+                "steps": [
+                  {
+                    "player": "Okay, I need to go!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Rat Burgiss",
+                    "text": "Yes, you have an important job! Good luck, [player name]!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3a3d9ab240c1d238": [
+      {
+        "player": "Can I have another ring?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has a ring in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Zaff",
+            "text": "You have one already. It's there in your inventory!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "tM4ikL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player destroyed their ring:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player has no inventory space:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Zaff",
+                "text": "Yes, I have another one, but you don't have any space for it. Speak to me when your inventory is less full!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "7ohqD8"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has inventory space:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Zaff",
+                "text": "Well, I do happen to have another one here that you can have. Please try and be a bit more careful with this one!"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another beacon ring",
+                "id": "fdFTWH"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "lLdK13"
+          }
+        ],
+        "id": "YD6w5n"
+      }
+    ],
+    "jump-72781359221aa29f": [
+      {
+        "player": "Can I have the instructions again?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has the instructions in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Zaff",
+            "text": "You have one already. It's there in your inventory!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "IW31Z7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player destroyed the instructions and has no inventory space:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Zaff",
+            "text": "Yes, I have another one, but you don't have any space for it. Speak to me when your inventory is less full!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "-Ar5Ko"
+      },
+      {
+        "type": "condition",
+        "text": "If the player destroyed the instructions and has one free inventory space:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Zaff",
+            "text": "Well, I do happen to have another one here that you can have. Please try and be a bit more careful with this one!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another set of instructions",
+            "id": "4w2LWG"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "sX3iUH"
+      }
+    ],
+    "onhy1g": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Zaff's Superior Staffs!",
+        "id": "kKU2uc"
+      }
+    ],
+    "iwH_b4": [
+      {
+        "player": "Have you any extra stock of battlestaffs I can buy?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zaff",
+        "text": "For you, my friend, maybe. Take a look in the barrel in the corner."
+      }
+    ],
+    "S5YVwy": [
+      {
+        "player": "No, thank you."
+      },
+      {
+        "type": "line",
+        "speaker": "Zaff",
+        "text": "Well, 'stick' your head in again if you change your mind."
+      },
+      {
+        "player": "Huh, terrible pun! You just can't get the 'staff' these days!"
+      }
+    ],
     "6VV4d7": [
       {
         "type": "line",

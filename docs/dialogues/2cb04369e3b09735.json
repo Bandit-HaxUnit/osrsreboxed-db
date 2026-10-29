@@ -74,8 +74,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XXaEXl"
+                "id": "XXaEXl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-db0e3b1d9b02f2aa"
+                  }
+                ]
               }
             ]
           },
@@ -104,12 +109,41 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "p9gYH8"
+                "id": "p9gYH8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-05344a68856a93ac"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-db0e3b1d9b02f2aa": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Dargaud's Bow and Arrows.",
+        "id": "pzlPAQ"
+      }
+    ],
+    "jump-05344a68856a93ac": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "Okay good day to you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -64,8 +64,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "S6A9ht"
+                        "id": "S6A9ht",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0c61db26425bfad9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -74,8 +79,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "Mb2IJT"
+                        "id": "Mb2IJT",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8acf41996ac91edd"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -116,8 +126,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "kYSda-"
+                        "id": "kYSda-",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b99a98c0075759c7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -126,8 +141,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "tvLW5U"
+                        "id": "tvLW5U",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8acf41996ac91edd"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -168,8 +188,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "b53M2w"
+                        "id": "b53M2w",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b99a98c0075759c7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -178,8 +203,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "BJ_w5U"
+                        "id": "BJ_w5U",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0c61db26425bfad9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -285,6 +315,198 @@
           }
         ],
         "id": "dd1gAA"
+      }
+    ]
+  },
+  "branches": {
+    "jump-0c61db26425bfad9": [
+      {
+        "player": "So why tortoises?"
+      },
+      {
+        "npc": "Isn't it obvious? Surely even to your untrained eye that giant tortoises are the perfect mobile armoured field unit?"
+      },
+      {
+        "npc": "They are sturdy animals, and well protected by their shell. They can even swim! All we need to do is put a bit of fire in their bellies."
+      },
+      {
+        "player": "I suppose so...."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So what are you training these tortoises to do?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "kYSda-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b99a98c0075759c7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where did these tortoises come from?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "tvLW5U",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8acf41996ac91edd"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've heard enough.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "d1K8pr"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8acf41996ac91edd": [
+      {
+        "player": "Where do these tortoises come from?"
+      },
+      {
+        "npc": "We breed them. The originals were found by gnome explorers back in King Healthorg the Great's rule. On their discovery King Healthorg authorised a small party to go there and transport a breeding pair back here. He"
+      },
+      {
+        "npc": "kept one for himself to ride into battle."
+      },
+      {
+        "npc": "Trouble is they take a lot of skill and time to breed, so we're only just getting them battle ready."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So what are you training these tortoises to do?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "b53M2w",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b99a98c0075759c7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why tortoises?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "BJ_w5U",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0c61db26425bfad9"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've heard enough.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-b99a98c0075759c7": [
+      {
+        "npc": "Tortoises are naturally pacifistic animals that eat nothing but cabbages. I am required to beat those peaceful tendencies out of the softies and turn them into hardened battle-trained killers."
+      },
+      {
+        "npc": "Firstly I acclimatise them to excessive aural stimulation and simple physical confrontation."
+      },
+      {
+        "player": "You shout at them and beat them with sticks?"
+      },
+      {
+        "npc": "Of course. Then I re-educate them to become comfortable with riders and military combat situations."
+      },
+      {
+        "player": "You sit on their backs and prod them with sharp pointy things."
+      },
+      {
+        "npc": "If you like."
+      },
+      {
+        "player": "Doesn't seem very fair on the tortoises."
+      },
+      {
+        "npc": "This is War! Fairness is a luxury of the weak."
+      },
+      {
+        "player": "Hmmm, profound but disturbing."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why tortoises?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "S6A9ht",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0c61db26425bfad9"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where did these tortoises come from?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "Mb2IJT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8acf41996ac91edd"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've heard enough.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "LIXskk"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

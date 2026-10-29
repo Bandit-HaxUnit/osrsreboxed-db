@@ -420,8 +420,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2hBYs3"
+                "id": "2hBYs3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-30c775b634ae110d"
+                  }
+                ]
               }
             ]
           },
@@ -430,8 +435,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "iD-kG8"
+                "id": "iD-kG8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-7bda60e0519f2e35"
+                  }
+                ]
               }
             ]
           }
@@ -2050,6 +2060,164 @@
     ]
   },
   "branches": {
+    "jump-30c775b634ae110d": [
+      {
+        "player": "What do you mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "The Carnillean home does not belong to them. The builder of the house was Lord Hazeel, one of the Mahjarrat followers of Zamorak. Many years ago there was a civil war"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "in this land, and the hateful Saradominists declared war upon all Zamorakians who lived here. Lord Hazeel nobly would not repent his beliefs, and the Carnilleans harrassed"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Hazeel and his followers for many decades. One fateful night, under cover of darkness, they stormed his home in an angry mob torturing and butchering all loyal"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Zamorakians they encountered inside. The following morning, the Carnillean forefathers moved into the empty household and claimed it as their own."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "They have grown fat on the hard work of Lord Hazeel ever since. Unluckily for them Lord Hazeel as a Mahjarrat had access to powers and enchantments they knew nothing"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "about, and made preparations for his return when first they began to storm his home. Soon the day will come when he will return to wreak his vengeance upon the thieves!"
+      },
+      {
+        "player": "The politics and histories of Ardougne do not concern me. I have been given a job and intend to see it through to the end."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Well then friend, perhaps I can offer you a different job then? Sooner or later Our master WILL return to this land; those faithful to him will be well rewarded."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Join our cult and assist us in his restoration, and you will be well rewarded; try and prevent his return and suffer the wrath of Zamorak and the Mahjarrat."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You're crazy, I'd never help you.",
+            "steps": [
+              {
+                "player": "You're crazy, I'd never help you."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Then you are a fool. Go back to your small minded mundane little life; you will never know the glories you could have tasted as one of us!"
+              },
+              {
+                "type": "message",
+                "text": "The man jumps onto the raft and pushes off down into the sewer system.",
+                "id": "gqvTor"
+              },
+              {
+                "type": "message",
+                "text": "Clivet: You'll never find us...",
+                "id": "T_jkxJ"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "So what would I have to do?",
+            "steps": [
+              {
+                "player": "So what would I have to do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "You must prove your loyalty to our cause. Killing one of the Carnillean household should be sufficient proof of your dedication to resurrecting our master Lord Hazeel."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "So what say you adventurer? Join our side against the Carnillean thieves?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "No. I won't do it.",
+                    "steps": [
+                      {
+                        "player": "No. I won't do it."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Then you are a fool. Go back to your small minded, mundane little life; you will never know the glories you could have tasted as one of us!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok, count me in.",
+                    "steps": [
+                      {
+                        "player": "Ok, count me in."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Excellent. It takes a rare character to see through the cursed Carnillean lies. I can tell you are a [man/lady] of exactly the right character to join the followers of Hazeel."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Here. Take this poison. Pour it into their food, and once the deed is done, return here and speak to me once more."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Poison (item)",
+                        "id": "_TD-Wu"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7bda60e0519f2e35": [
+      {
+        "player": "I've heard enough of your rubbish!"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Then leave, fool!"
+      },
+      {
+        "type": "end"
+      }
+    ],
     "mfGGw6": [
       {
         "type": "line",

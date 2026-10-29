@@ -115,8 +115,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "JqZqP9"
+                                "id": "JqZqP9",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f2abc9ee14bbbb59"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -125,8 +130,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "gSHajT"
+                                "id": "gSHajT",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-85c2748499172926"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -139,8 +149,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "NbYhOa"
+                        "id": "NbYhOa",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-85c2748499172926"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -157,6 +172,67 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-f2abc9ee14bbbb59": [
+      {
+        "player": "If you insist..."
+      },
+      {
+        "player": "Is it a dwarf with a really long beard?"
+      },
+      {
+        "type": "action",
+        "text": "(Player takes damage.)",
+        "id": "ixCfJx"
+      },
+      {
+        "npc": "Ask me another question! I dare you!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "If you insist...",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "JqZqP9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f2abc9ee14bbbb59"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, okay! I'm leaving.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "gSHajT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-85c2748499172926"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-85c2748499172926": [
+      {
+        "player": "Okay, okay! I'm leaving."
+      },
+      {
+        "type": "end"
       }
     ]
   }

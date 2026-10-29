@@ -61,8 +61,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "AjPUDn"
+                "id": "AjPUDn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ff2b322341beb9eb"
+                  }
+                ]
               }
             ]
           },
@@ -128,8 +133,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "b9G3i0"
+                                    "id": "b9G3i0",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-7acb749dedede9f6"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -138,8 +148,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "below",
-                                    "id": "UOJFoL"
+                                    "id": "UOJFoL",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-4d0bef4ed87bfae4"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -186,8 +201,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_pvOTb"
+                "id": "_pvOTb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2d679600306a54af"
+                  }
+                ]
               }
             ]
           }
@@ -212,8 +232,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "xAyNsQ"
+                        "id": "xAyNsQ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ff2b322341beb9eb"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -267,8 +292,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "yZH4-G"
+                                    "id": "yZH4-G",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-4d0bef4ed87bfae4"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -315,8 +345,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ERc1aM"
+                        "id": "ERc1aM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2d679600306a54af"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -387,8 +422,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Q_4U2L"
+                "id": "Q_4U2L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ff2b322341beb9eb"
+                  }
+                ]
               }
             ]
           },
@@ -397,8 +437,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "k_xkbA"
+                "id": "k_xkbA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-698d8761bcc5ace3"
+                  }
+                ]
               }
             ]
           },
@@ -407,12 +452,81 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "R-N9kl"
+                "id": "R-N9kl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2d679600306a54af"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-ff2b322341beb9eb": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "My name is Twiggy O'Korn and I am the Mistress of all of the Achievement Diaries. It is a pleasure to make your acquaintance."
+      },
+      {
+        "player": "Likewise."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "RbE3Bn"
+      }
+    ],
+    "jump-7acb749dedede9f6": [
+      {
+        "player": "Okay, here's 99,000 coins."
+      },
+      {
+        "type": "message",
+        "text": "Twiggy sells you a cape and hood.",
+        "id": "TkdagW"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a Achievement diary cape and Achievement diary hood",
+        "id": "IrG5Gq"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-4d0bef4ed87bfae4": [
+      {
+        "player": "Actually, forget it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2d679600306a54af": [
+      {
+        "player": "Goodbye!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-698d8761bcc5ace3": [
+      {
+        "player": "That's a nice cape - please tell me about it."
+      },
+      {
+        "npc": "Ah yes, this is a Cape of Accomplishment, available only to those who complete every single Achievement Diary."
+      },
+      {
+        "type": "end"
       }
     ]
   }

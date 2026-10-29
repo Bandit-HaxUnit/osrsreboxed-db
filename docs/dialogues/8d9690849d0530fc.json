@@ -246,8 +246,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ZtoMHA"
+                "id": "ZtoMHA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-467aed4bbfcce669"
+                  }
+                ]
               }
             ]
           },
@@ -264,8 +269,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kFqE7-"
+                "id": "kFqE7-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5fe8d07d77cacde8"
+                  }
+                ]
               }
             ]
           },
@@ -282,8 +292,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8ZkYmS"
+                "id": "8ZkYmS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6b285e1f5639d482"
+                  }
+                ]
               }
             ]
           }
@@ -359,6 +374,53 @@
           }
         ],
         "id": "lTFCh9"
+      }
+    ]
+  },
+  "branches": {
+    "jump-467aed4bbfcce669": [
+      {
+        "npc": "Drop and give me push ups on that mat, private!"
+      },
+      {
+        "type": "message",
+        "text": "Go to this mat and do some push ups!",
+        "id": "gkkMYF"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "PB3MTk"
+      }
+    ],
+    "jump-5fe8d07d77cacde8": [
+      {
+        "npc": "Get yourself over there and jog on that mat, private!"
+      },
+      {
+        "type": "message",
+        "text": "Go to this mat and jog on the spot!",
+        "id": "Y0Qnmt"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "tE2osq"
+      }
+    ],
+    "jump-6b285e1f5639d482": [
+      {
+        "npc": "Get on that mat and give me sit ups, private!"
+      },
+      {
+        "type": "message",
+        "text": "Go to this mat and do some sit ups!",
+        "id": "C3fbZC"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "60mugK"
       }
     ]
   }

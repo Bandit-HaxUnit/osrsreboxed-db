@@ -289,8 +289,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "hPp2B8"
+                "id": "hPp2B8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b71a5be56ce8361e"
+                  }
+                ]
               }
             ]
           },
@@ -299,8 +304,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pEfLUM"
+                "id": "pEfLUM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d2f4435172b17fb3"
+                  }
+                ]
               }
             ]
           },
@@ -309,8 +319,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8eg7aU"
+                "id": "8eg7aU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-304df9b9e6d5c878"
+                  }
+                ]
               }
             ]
           },
@@ -319,8 +334,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HKI3Kr"
+                "id": "HKI3Kr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c5974c846b0ecb3b"
+                  }
+                ]
               }
             ]
           }
@@ -495,6 +515,192 @@
         "type": "jump",
         "reference": "initial",
         "id": "ugamaj"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b71a5be56ce8361e": [
+      {
+        "player": "Can I have some more boots?"
+      },
+      {
+        "type": "message",
+        "text": "Thorodin gives you another pair of boots.",
+        "id": "MUopQd"
+      }
+    ],
+    "jump-d2f4435172b17fb3": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "Thorodin, taskmaster for the Fremennik Achievement Diary."
+      },
+      {
+        "player": "What is the Achievement Diary?"
+      },
+      {
+        "npc": "It's a diary that helps you keep track of particular achievements. In the Fremennik lands it can help you discover some quite useful things. Eventually, with enough exploration, the inhabitants will reward you."
+      },
+      {
+        "npc": "You can see the list of tasks on the side-panel."
+      }
+    ],
+    "jump-304df9b9e6d5c878": [
+      {
+        "player": "I have a question about my Achievement diary."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is the Achievement Diary?",
+            "steps": [
+              {
+                "player": "What is the Achievement Diary?"
+              },
+              {
+                "npc": "It's a diary that helps you keep track of particular achievements. In the Fremennik lands it can help you discover some quite useful things. Eventually, with enough exploration, the inhabitants will reward you."
+              },
+              {
+                "npc": "You can see the list of tasks on the side-panel."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "gvpWd_"
+              }
+            ]
+          },
+          {
+            "text": "What are the rewards?",
+            "steps": [
+              {
+                "npc": "Well, there are four different pairs of Fremennik sea boots, which match up with the four levels of difficulty. Each has the same rewards as the previous level and some additional benefits too... which tier of rewards"
+              },
+              {
+                "npc": "would you like to know more about?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Easy Rewards.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Easy rewards please!"
+                      },
+                      {
+                        "npc": "If you complete all of the easy tasks in the Fremennik Province, Peer the Seer can bank items for you at all times and your enchanted lyre can hold an extra charge."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Medium Rewards.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Medium rewards please!"
+                      },
+                      {
+                        "npc": "In addition to the easy rewards, your boots can teleport you to Rellekka once per day as well as an increased rate of gaining approval with your subjects."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hard Rewards.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Hard rewards please!"
+                      },
+                      {
+                        "npc": "In addition to the easy and medium benefits, you'll be able to change your lyre teleport location to Waterbirth Island, access two new Lunar spells and you'll receive extra Agility experience from the Rellekka rooftop"
+                      },
+                      {
+                        "npc": "course."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Elite Rewards.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Elite rewards please!"
+                      },
+                      {
+                        "npc": "In addition to the previous tiers of rewards, your boots now have unlimited teleports to Rellekka, your lyre can be attuned to teleport you to Jatiszo or Neitiznot, you'll no longer need a seal of passage on Lunar Isle,"
+                      },
+                      {
+                        "npc": "Dagannoth bones will be dropped as notes and your subjects will approve of your kingdom management even faster than before."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I claim the rewards?",
+            "steps": [
+              {
+                "npc": "Just complete the tasks in the Fremennik Province so they're ticked off, then come and speak to me for your rewards."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "1XkOXI"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "See you later."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c5974c846b0ecb3b": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you later."
+      },
+      {
+        "type": "end"
       }
     ]
   }

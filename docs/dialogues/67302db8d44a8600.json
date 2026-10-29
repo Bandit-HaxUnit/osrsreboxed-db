@@ -92,8 +92,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "AhCRxZ"
+                "id": "AhCRxZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d9d9b33f60b12fbd"
+                  }
+                ]
               }
             ]
           },
@@ -102,8 +107,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vKyEY8"
+                "id": "vKyEY8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-feb1e19481828362"
+                  }
+                ]
               }
             ]
           }
@@ -202,6 +212,50 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-d9d9b33f60b12fbd": [
+      {
+        "player": "Let's do it!"
+      },
+      {
+        "npc": "Kuani! We will depart at once."
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black, and the player arrives at Civitas illa Fortis.",
+        "id": "Kectpl"
+      },
+      {
+        "npc": "Well, here we are! Welcome to Fortis!"
+      },
+      {
+        "player": "It's beautiful!"
+      },
+      {
+        "npc": "I'm glad you think so! Now, I'm sure you're keen to get exploring, but Prince Itzla is very keen to meet with you first."
+      },
+      {
+        "player": "You mentioned he'd be sending some people to meet with me?"
+      },
+      {
+        "npc": "Yes, the Tullus twins. That's them just to the west, by the stairs up to the palace. Why don't you head on over and introduce yourself?"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-feb1e19481828362": [
+      {
+        "player": "There's something I need to do first."
+      },
+      {
+        "npc": "Very well. I will wait for you here."
+      },
+      {
+        "type": "end"
       }
     ]
   }

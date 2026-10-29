@@ -134,8 +134,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "2nGm8d"
+                "id": "2nGm8d",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-63ba295a575376c4"
+                  }
+                ]
               }
             ],
             "id": "9KdQRU"
@@ -146,8 +151,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "EGYk6E"
+                "id": "EGYk6E",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-adb9e2d273d81037"
+                  }
+                ]
               }
             ],
             "id": "ydjtkz"
@@ -179,8 +189,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DbBy30"
+                "id": "DbBy30",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c5dea92c52638d1f"
+                  }
+                ]
               }
             ]
           }
@@ -217,6 +232,46 @@
       },
       {
         "npc": "Oh well done! Thank you for aiding our citizens."
+      }
+    ]
+  },
+  "branches": {
+    "jump-63ba295a575376c4": [
+      {
+        "player": "Could you exchange my tokens for me?"
+      },
+      {
+        "npc": "No need, friend. You can do that yourself."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-adb9e2d273d81037": [
+      {
+        "player": "Do you know what these nail beast nails are used for?"
+      },
+      {
+        "npc": "Hmmm, not really sure. They do look disgusting though..oh, actually, I remember some other adventurers taking some of these to Sanfew now...something about being able to make a potion with them."
+      },
+      {
+        "player": "Ok, so perhaps Sanfew knows then?"
+      },
+      {
+        "npc": "Maybe. It's worth a try. Next time you're in Taverley, pop in and ask him. I think I remember some adventurers saying something about a serum though, some sort of potion that can be made with them."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "HjNNiq"
+      }
+    ],
+    "jump-c5dea92c52638d1f": [
+      {
+        "player": "Ok, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

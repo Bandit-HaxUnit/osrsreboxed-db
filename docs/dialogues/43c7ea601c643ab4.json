@@ -112,10 +112,22 @@
             ]
           },
           {
-            "text": "Arr!"
+            "text": "Arr!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "E90IKL"
+              }
+            ]
           },
           {
-            "text": "Do you have anything for trade?"
+            "text": "Do you have anything for trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "33rCGL"
+              }
+            ]
           }
         ]
       }
@@ -410,8 +422,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BgMh_V"
+                "id": "BgMh_V",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2f5d8e510e647c6d"
+                  }
+                ]
               }
             ]
           }
@@ -729,13 +746,76 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Food Store",
+                "id": "B_OBOI"
+              }
+            ]
           },
           {
-            "text": "No, thank you."
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              }
+            ]
           },
           {
-            "text": "What can you recommend?"
+            "text": "What can you recommend?",
+            "steps": [
+              {
+                "player": "What can you recommend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wydin",
+                "text": "We have this really exotic fruit all the way from Karamja. It's called a banana."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Hmm, I think I'll try one.",
+                    "steps": [
+                      {
+                        "player": "Hmm, I think I'll try one."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wydin",
+                        "text": "Great. You might as well take a look at the rest of my wares as well."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Food Store",
+                        "id": "NCbZfo"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't like the sound of that.",
+                    "steps": [
+                      {
+                        "player": "I don't like the sound of that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wydin",
+                        "text": "Well, it's your choice, but I do recommend them."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Can I get a job here?",
@@ -1103,8 +1183,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "iHgPRa"
+        "id": "iHgPRa",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-c94763c65d4c613a"
+          }
+        ]
       }
     ],
     "delivering-the-rum-reclaiming-the-key": [
@@ -1136,10 +1221,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "Arr!"
+            "text": "Arr!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "E90IKL"
+              }
+            ]
           },
           {
-            "text": "Do you have anything for trade?"
+            "text": "Do you have anything for trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "33rCGL"
+              }
+            ]
           }
         ]
       }
@@ -1226,6 +1323,118 @@
       {
         "type": "unavailable",
         "id": "EOUN2C"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2f5d8e510e647c6d": [
+      {
+        "player": "That customs officer is annoying isn't she?"
+      },
+      {
+        "type": "line",
+        "speaker": "Luthas",
+        "text": "Well I know her pretty well. She doesn't cause me any trouble any more."
+      },
+      {
+        "type": "line",
+        "speaker": "Luthas",
+        "text": "She doesn't even search my export crates any more. She knows they only contain bananas."
+      },
+      {
+        "player": "Really? How interesting. Whereabouts do you send those to?"
+      },
+      {
+        "type": "line",
+        "speaker": "Luthas",
+        "text": "There is a little shop over in Port Sarim that buys them up by the crate. I believe it is run by a man called Wydin."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c94763c65d4c613a": [
+      {
+        "type": "line",
+        "speaker": "Redbeard Frank",
+        "text": "Hector were very successful and became very rich. But about a year ago we were boarded by the Customs and Excise Agents."
+      },
+      {
+        "type": "line",
+        "speaker": "Redbeard Frank",
+        "text": "Hector were killed along with many of the crew, I were one of the few to escape and I escaped with this."
+      },
+      {
+        "type": "message",
+        "text": "Frank happily takes the rum... and hands you a key.",
+        "id": "Uy0FFQ"
+      },
+      {
+        "type": "line",
+        "speaker": "Redbeard Frank",
+        "text": "This be Hector's key. I believe it opens his chest in his old room in the Blue Moon Inn in Varrock."
+      },
+      {
+        "type": "line",
+        "speaker": "Redbeard Frank",
+        "text": "With any luck his treasure will be in there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ok thanks, I'll go and get it.",
+            "steps": [
+              {
+                "player": "Ok thanks, I'll go and get it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "So why didn't you ever get it?",
+            "steps": [
+              {
+                "player": "So why didn't you ever get it?"
+              },
+              {
+                "type": "line",
+                "speaker": "Redbeard Frank",
+                "text": "I'm not allowed in the Blue Moon Inn. Apparently I'm a drunken trouble maker."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "E90IKL": [
+      {
+        "player": "Arr!"
+      },
+      {
+        "type": "line",
+        "speaker": "Redbeard Frank",
+        "text": "Arr!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "WSie6L"
+      }
+    ],
+    "33rCGL": [
+      {
+        "player": "Do you have anything for trade?"
+      },
+      {
+        "type": "line",
+        "speaker": "Redbeard Frank",
+        "text": "Nothin' at the moment, but then again the Customs Agents are on the warpath right now."
       }
     ]
   }

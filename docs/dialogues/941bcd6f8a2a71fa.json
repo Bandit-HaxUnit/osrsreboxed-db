@@ -65,8 +65,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "8j9b39"
+                "id": "8j9b39",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f20bbe01338512bc"
+                  }
+                ]
               }
             ]
           }
@@ -79,6 +84,16 @@
       },
       {
         "npc": "Sorry, I don't have time to talk. Bravek needs lots of help running the city."
+      }
+    ]
+  },
+  "branches": {
+    "jump-f20bbe01338512bc": [
+      {
+        "player": "I'm just looking thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

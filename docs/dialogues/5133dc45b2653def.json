@@ -75,8 +75,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "7btfuj"
+                "id": "7btfuj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-acaa0bc4f8c7c672"
+                  }
+                ]
               }
             ]
           },
@@ -85,12 +90,55 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pl_DI7"
+                "id": "pl_DI7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ed45e9f1b1530a69"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-acaa0bc4f8c7c672": [
+      {
+        "type": "condition",
+        "text": "If the player is talking to one of the Bakers in Ardougne:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_shop",
+            "target": "Ardougne Baker's Stall.",
+            "id": "10lyz6"
+          }
+        ],
+        "id": "thk8ML"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is talking to the baker in Great Kourend:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_shop",
+            "target": "Kourend Castle Baker's Stall.",
+            "id": "buzTS5"
+          }
+        ],
+        "id": "GkwltX"
+      }
+    ],
+    "jump-ed45e9f1b1530a69": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -408,8 +408,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "5i2z86"
+        "id": "5i2z86",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-3597b2211016cc17"
+          }
+        ]
       }
     ],
     "ruins-in-cam-torum-talking-to-the-builders-after-zuma-departs-talking-to-the-builders-again": [
@@ -839,8 +844,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JnVx09"
+                "id": "JnVx09",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e6be2fc933b37ba2"
+                  }
+                ]
               }
             ]
           },
@@ -1134,8 +1144,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "npqimd"
+        "id": "npqimd",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-bf7336eb1f2ed538"
+          }
+        ]
       }
     ],
     "remnants-of-the-old-ones-attempting-to-enter-an-entrance-without-the-building-supplies": [
@@ -1929,10 +1944,89 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "CDCdY0"
+              }
+            ]
           },
           {
-            "text": "Where do you get your runes from?"
+            "text": "Where do you get your runes from?",
+            "steps": [
+              {
+                "player": "Where do you get your runes from?"
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "That is not the kind of information I intend to give to a human."
+              },
+              {
+                "player": "Why?"
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "Because before the Varlamorians decided to open their lands up to visitors, Cam Torum was the sole supplier of runes to the entire region."
+              },
+              {
+                "player": "Okay... But that's not the case anymore. With the kingdom open, they can just get their runes from the mainland."
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "A fact I'm all too aware of, especially given the impact it is having on my prices."
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "Nevertheless, there is still a benefit to having a source of runes closer to home, and I do not intend to share any information on that source."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing a ring of Charos(a):",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "y-Btho"
+                  }
+                ],
+                "id": "mmw57D"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing a ring of Charos(a):",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Fair enough.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "mVIcfo"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "[Charm] You can trust me. I won't tell anyone else.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "c0MVgK"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ERi-tu"
+              }
+            ]
           },
           {
             "text": "Actually, I've been sent by Attala.",
@@ -2030,7 +2124,13 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "FDZ47C"
+              }
+            ]
           }
         ]
       }
@@ -2046,8 +2146,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "q_WBWx"
+        "id": "q_WBWx",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-aa63bfaa2eab3442"
+          }
+        ]
       }
     ],
     "remnants-of-the-old-ones-using-a-water-or-earth-talisman-on-nahta-talking-to-nahta-again": [
@@ -2060,10 +2165,89 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "CDCdY0"
+              }
+            ]
           },
           {
-            "text": "Where do you get your runes from?"
+            "text": "Where do you get your runes from?",
+            "steps": [
+              {
+                "player": "Where do you get your runes from?"
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "That is not the kind of information I intend to give to a human."
+              },
+              {
+                "player": "Why?"
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "Because before the Varlamorians decided to open their lands up to visitors, Cam Torum was the sole supplier of runes to the entire region."
+              },
+              {
+                "player": "Okay... But that's not the case anymore. With the kingdom open, they can just get their runes from the mainland."
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "A fact I'm all too aware of, especially given the impact it is having on my prices."
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "Nevertheless, there is still a benefit to having a source of runes closer to home, and I do not intend to share any information on that source."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing a ring of Charos(a):",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "y-Btho"
+                  }
+                ],
+                "id": "mmw57D"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing a ring of Charos(a):",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Fair enough.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "mVIcfo"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "[Charm] You can trust me. I won't tell anyone else.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "c0MVgK"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ERi-tu"
+              }
+            ]
           },
           {
             "text": "Actually, I've been sent by Attala.",
@@ -2084,8 +2268,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "7SAMCh"
+                        "id": "7SAMCh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8388ebcde963afd2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2094,8 +2283,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "96eHef"
+                        "id": "96eHef",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-29d843aa67c16008"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -2104,7 +2298,13 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "FDZ47C"
+              }
+            ]
           }
         ]
       }
@@ -2219,7 +2419,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you have?"
+            "text": "What do you have?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "eJKaWz"
+              }
+            ]
           },
           {
             "text": "I need your help with these talismans.",
@@ -2349,7 +2555,13 @@
             ]
           },
           {
-            "text": "I'll get going."
+            "text": "I'll get going.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "cN7mdx"
+              }
+            ]
           }
         ]
       }
@@ -2379,7 +2591,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you have?"
+            "text": "What do you have?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "eJKaWz"
+              }
+            ]
           },
           {
             "text": "I need your help with these talismans.",
@@ -2400,8 +2618,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "k2aAVz"
+                        "id": "k2aAVz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-82f479f43a623134"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -2418,7 +2641,13 @@
             ]
           },
           {
-            "text": "I'll get going."
+            "text": "I'll get going.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "cN7mdx"
+              }
+            ]
           }
         ]
       }
@@ -2536,8 +2765,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XVcl_Y"
+                "id": "XVcl_Y",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8978611a0c9d4758"
+                  }
+                ]
               }
             ]
           },
@@ -2546,8 +2780,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "x-topJ"
+                "id": "x-topJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3042278df2ae6098"
+                  }
+                ]
               }
             ]
           },
@@ -2586,8 +2825,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "FER6fo"
+                "id": "FER6fo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3dc65c357c17a3d7"
+                  }
+                ]
               }
             ]
           },
@@ -2596,8 +2840,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IbQfj-"
+                "id": "IbQfj-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16a9777d82dabae9"
+                  }
+                ]
               }
             ]
           },
@@ -2724,8 +2973,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Soo2vm"
+                "id": "Soo2vm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fca0cbf422185010"
+                  }
+                ]
               }
             ]
           },
@@ -2734,8 +2988,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UNXMGq"
+                "id": "UNXMGq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fd9ab45220d68697"
+                  }
+                ]
               }
             ]
           },
@@ -2769,8 +3028,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "y_-mSX"
+                "id": "y_-mSX",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8978611a0c9d4758"
+                  }
+                ]
               }
             ]
           },
@@ -2779,8 +3043,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Tf2QSo"
+                "id": "Tf2QSo",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3042278df2ae6098"
+                  }
+                ]
               }
             ]
           },
@@ -2814,8 +3083,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bB3xnb"
+                "id": "bB3xnb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3dc65c357c17a3d7"
+                  }
+                ]
               }
             ]
           },
@@ -2824,8 +3098,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TLuiu4"
+                "id": "TLuiu4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-16a9777d82dabae9"
+                  }
+                ]
               }
             ]
           },
@@ -3036,8 +3315,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "l1YHZe"
+        "id": "l1YHZe",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-a140cab63858ac50"
+          }
+        ]
       }
     ],
     "remnants-of-the-old-ones-talking-to-jessamine-after-meeting-eyatlalli-talking-to-eyatlalli-again": [
@@ -4003,6 +4287,608 @@
     ]
   },
   "branches": {
+    "jump-3597b2211016cc17": [
+      {
+        "player": "Who's Jess?"
+      },
+      {
+        "type": "line",
+        "speaker": "Builder 2",
+        "text": "She's the archaeologist in charge of the dig into these ruins they've found. Discovering the mysteries of the past and that."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e6be2fc933b37ba2": [
+      {
+        "player": "How come the dwarves let you in?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "I work at the museum in Fortis. The dwarves have a begrudging alliance with the capital, and so they begrudgingly let me in."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "They demanded agreement to some absurdly expensive export deals in exchange, and even exclusive rights to some imports from the mainland."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "It took weeks of negotiation, and they still don't seem entirely satisfied."
+      },
+      {
+        "player": "I take it you don't get on too well?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "No. It's a shame. They would be a great source of historical knowledge, if they were just more willing to share it."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "tHW7mf"
+      }
+    ],
+    "jump-bf7336eb1f2ed538": [
+      {
+        "player": "Speaking of which, what about you? Why a life of archaeology?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "I've always loved it. When I was a child, I had a friend in Fortis who I'd collect old trinkets with."
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "It's right here! It clearly says..."
+      },
+      {
+        "player": "I see. I guess it was a natural next step then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "I don't care what your book says! Your book won't keep us safe from..."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Indeed. The employees at the museum already knew me well by the time I applied. I've spent a lot of my life browsing it."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "The last time you humans did something like this..."
+      },
+      {
+        "player": "You should visit the museum in Varrock some time. There's a lot to see!"
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "Always 'you humans'. You do realise I am not my great-grandfather..."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "I've been meaning to! Thing is, I couldn't turn down this opportunity when it came up."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Keep this up and I'll have you kicked out of the..."
+      },
+      {
+        "player": "Understandable. Right, I should get back to those camps."
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "The secrets of this dungeon belong to the Varlamorian people! You can't..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-aa63bfaa2eab3442": [
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "Attala? Why's that?"
+      },
+      {
+        "player": "We're trying to find out more about a source of magic in the ruins beneath the city. She asked me to bring some talismans to you."
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "If she needs me to get involved, then no doubt this is something well beyond your people and probably highly dangerous."
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "But I suppose if she's okay with that... Go on then, let's have a look."
+      },
+      {
+        "type": "condition",
+        "text": "If the player lost a talisman:",
+        "steps": [
+          {
+            "player": "Er... I seem to have misplaced them."
+          },
+          {
+            "type": "line",
+            "speaker": "Nahta",
+            "text": "Then you'd better go and find them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "UxEXqy"
+      },
+      {
+        "type": "message",
+        "text": "You show the talismans to Nahta.",
+        "id": "5GmIxR"
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "How in the... Where did you get these?"
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "Actually, on second thoughts, I'm not sure I want to know."
+      },
+      {
+        "type": "message",
+        "text": "Nahta casts a spell on the talismans.",
+        "id": "K3y7TW"
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "There. Now take them to the blacksmith. Tell him they've been enchanted to react to naguanil magic and they need some finishing touches."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Naguanil? What's that?",
+            "steps": [
+              {
+                "player": "Naguanil? What's that?"
+              },
+              {
+                "type": "line",
+                "speaker": "Nahta",
+                "text": "A type of magic your people have forgotten, alongside many other things. I don't have time to catch you up on the history of the word though, so you'll need to learn more somewhere else."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks for the help.",
+            "steps": [
+              {
+                "player": "Okay, thanks for the help."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-8388ebcde963afd2": [
+      {
+        "player": "Naguanil? What's that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "A type of magic your people have forgotten, alongside many other things. I don't have time to catch you up on the history of the word though, so you'll need to learn more somewhere else."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-29d843aa67c16008": [
+      {
+        "player": "Okay, thanks for the help."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-82f479f43a623134": [
+      {
+        "player": "What do you know about magic? Aren't you a blacksmith?"
+      },
+      {
+        "type": "line",
+        "speaker": "Blacksmith",
+        "text": "I am one of the Dwarves of Cam Torum, human! Our metalwork and our magic are one. I am an expert in both."
+      },
+      {
+        "player": "That sounds interesting. Could you teach me how to mix smithing and magic?"
+      },
+      {
+        "type": "line",
+        "speaker": "Blacksmith",
+        "text": "Hah, that's a good joke!"
+      },
+      {
+        "player": "Oh... But can you help with the talismans?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "FHD77g"
+      }
+    ],
+    "jump-8978611a0c9d4758": [
+      {
+        "player": "Good job mediating those two."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Thanks. It does feel a bit like I'm walking a tightrope over a scorpion nest at times."
+      },
+      {
+        "player": "Attala might be worse than a pit of scorpions!"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Did I hear my name?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Yes! We were just saying how helpful you've been!"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Hmph."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Quite!"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "1zbGKp"
+      }
+    ],
+    "jump-3042278df2ae6098": [
+      {
+        "player": "So how did you end up getting assigned to these ruins?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "The museum suspected there might be an Old One connection. It's one of my specialties, so exploring these kinds of places is what I do."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "px4-0h"
+      }
+    ],
+    "jump-3dc65c357c17a3d7": [
+      {
+        "player": "What lead you to be such a devout follower of Ranul?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "Ralos appeals to many who wish to live fast-paced lives."
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "I do see that appeal, but there is a calmness and peace in Ranul that calls to me."
+      },
+      {
+        "player": "Doesn't Ranul govern over death? That doesn't put you off?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "Making peace with death is one of the things that attracted me to Ranul's teachings."
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "That, and all the time I get to spend in nice and quiet libraries."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "l2-iLw"
+      }
+    ],
+    "jump-16a9777d82dabae9": [
+      {
+        "player": "So is this place what you were expecting?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "Far more so! As much as Attala refuses to believe it, I think these ruins are connected to Ranul."
+      },
+      {
+        "player": "Is it because of all the moon symbology?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "That's part of it, but there's also that thing at the centre of this room. Some of the markings remind me of something I once read about."
+      },
+      {
+        "player": "Interesting, if a bit vague. Care to elaborate on what it is you read about?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zuma",
+        "text": "I can't really. I'm still not done putting my theory together."
+      },
+      {
+        "player": "Well I look forward to hearing more once you've done so."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "AZgcuk"
+      }
+    ],
+    "jump-fca0cbf422185010": [
+      {
+        "player": "You seem to be well known by the other dwarves in Cam Torum."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Of course. I am a key advisor to Highlord Katlo himself. Few dwarves hold as much sway as I do. Not just anyone can authorise the entry of a human."
+      },
+      {
+        "player": "I suppose I should thank you for letting me in then."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Hmph! Don't make me regret it."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "1N26xI"
+      }
+    ],
+    "jump-fd9ab45220d68697": [
+      {
+        "player": "Your friends weren't very happy to see me."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "That doesn't surprise me. They're busy people with much less patience for humans than I have."
+      },
+      {
+        "player": "You have patience for humans?"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Excuse me?"
+      },
+      {
+        "player": "Nevermind."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "2YV5V2"
+      }
+    ],
+    "jump-a140cab63858ac50": [
+      {
+        "player": "I'm not sure!"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Hang on... is that..."
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "I am Eyatlalli, a nagua of-"
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Never mind the introductions, what was that shaking?!"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "The icosahedron has been disturbed."
+      },
+      {
+        "player": "The icosa-who?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "Icosahedron. An object of twenty facets, floating at the centre of this room."
+      },
+      {
+        "player": "Did anybody touch that thing whilst I was gone?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Zuma did something. We were discussing the murals and when we turned around, he was gone!"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "I knew I shouldn't have let that fool priest in!"
+      },
+      {
+        "player": "What does the icosahedron do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "It is key to the magics that keep the Moons of Peril contained. It reshapes and reweaves the magical seals as the Moons attempt to break them."
+      },
+      {
+        "player": "Isn't it a good thing it moved then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "For it to have moved means that the seals must have needed reshaping. That has not happened for decades."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Zuma must have done something!"
+      },
+      {
+        "player": "Can we fix it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "For centuries, the magic used to seal the Moons has been woven into Neypotzli and the creatures that inhabit it."
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "Naguanil is the magic of nature. A ritual involving the living parts of this place could re-infuse the icosahedron."
+      },
+      {
+        "type": "line",
+        "speaker": "Jessamine",
+        "text": "Living parts? As in the animals?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "Yes. Bring me scales of a bream, the tail of a moss lizard and paste made of moonlight grubs. I will begin preparing the rest of the ritual."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "CDCdY0": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The Runic Emporium",
+        "id": "rIpmuI"
+      }
+    ],
+    "y-Btho": [
+      {
+        "player": "Fair enough."
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "Now, are you in need of some runes?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "XkKP0x"
+      }
+    ],
+    "c0MVgK": [
+      {
+        "player": "You can trust me. I won't tell anyone else."
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "You display the typical arrogance of a human. I am a Dwarf of Cam Torum. My people have mastered Smithing and Magic in equal measure."
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "That little trinket of yours may well work wonders on a lesser mind, but you will find it to be of little use here."
+      },
+      {
+        "player": "Oh..."
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "Now, are you in need of some runes?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "_i-PWU"
+      }
+    ],
+    "FDZ47C": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Nahta",
+        "text": "Then we have nothing more to discuss."
+      }
+    ],
+    "eJKaWz": [
+      {
+        "player": "What do you have?"
+      },
+      {
+        "type": "line",
+        "speaker": "Blacksmith (Cam Torum)",
+        "text": "In a blacksmith? What do you think? Weapons!"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Cam Torum Blacksmith",
+        "id": "7k6ZoF"
+      }
+    ],
+    "cN7mdx": [
+      {
+        "player": "I'll get going."
+      },
+      {
+        "type": "line",
+        "speaker": "Blacksmith (Cam Torum)",
+        "text": "Good."
+      }
+    ],
     "KSopRL": [
       {
         "type": "line",

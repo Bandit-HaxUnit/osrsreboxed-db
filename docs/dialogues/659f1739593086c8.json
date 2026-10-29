@@ -172,8 +172,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NOupEY"
+                "id": "NOupEY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ea9b643125338605"
+                  }
+                ]
               }
             ],
             "id": "d-Ceax"
@@ -195,8 +200,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "rckAXT"
+                        "id": "rckAXT",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3a89c10344b9e3c9"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -220,8 +230,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "eFMV18"
+                                "id": "eFMV18",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-183a92840fcfbda5"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -230,8 +245,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "Zk6VAe"
+                                "id": "Zk6VAe",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3cd780dc0befa669"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -244,8 +264,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "RqAKtp"
+                        "id": "RqAKtp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-5ab5cc8dfd824406"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -258,12 +283,85 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qBI9bP"
+                "id": "qBI9bP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-007c8ac2febde0ed"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-ea9b643125338605": [
+      {
+        "player": "What have you got for sale?"
+      },
+      {
+        "npc": "Take a look."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Trader Sven's Black-market Goods.",
+        "id": "oiuLmw"
+      }
+    ],
+    "jump-3a89c10344b9e3c9": [
+      {
+        "player": "Yes, I'll take a look at your wares."
+      },
+      {
+        "npc": "Good on ya!"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Trader Sven's Black-market Goods.",
+        "id": "PudjrZ"
+      }
+    ],
+    "jump-183a92840fcfbda5": [
+      {
+        "player": "Yes, I'll take a look at your wares."
+      },
+      {
+        "npc": "Good on ya!"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Trader Sven's Black-market Goods.",
+        "id": "1AxkbM"
+      }
+    ],
+    "jump-3cd780dc0befa669": [
+      {
+        "player": "I'm good."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5ab5cc8dfd824406": [
+      {
+        "player": "I'm good."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-007c8ac2febde0ed": [
+      {
+        "player": "Actually, I'm good."
+      },
+      {
+        "type": "end"
       }
     ]
   }

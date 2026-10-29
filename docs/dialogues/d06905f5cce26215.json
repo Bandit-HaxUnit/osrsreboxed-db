@@ -93,8 +93,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_Bomty"
+                "id": "_Bomty",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-29c655a4e48348f1"
+                  }
+                ]
               }
             ]
           }
@@ -144,8 +149,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "7VHtLU"
+                "id": "7VHtLU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9f49737788ee85b6"
+                  }
+                ]
               }
             ]
           },
@@ -154,8 +164,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-f4kvT"
+                "id": "-f4kvT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-29c655a4e48348f1"
+                  }
+                ]
               }
             ]
           }
@@ -169,6 +184,39 @@
       {
         "type": "missing",
         "id": "Ye-y6l"
+      }
+    ]
+  },
+  "branches": {
+    "jump-29c655a4e48348f1": [
+      {
+        "player": "That customs officer is annoying isn't she?"
+      },
+      {
+        "npc": "Well I know her pretty well. She doesn't cause me any trouble any more."
+      },
+      {
+        "npc": "She doesn't even search my export crates any more. She knows they only contain bananas."
+      },
+      {
+        "player": "Really? How interesting. Whereabouts do you send those to?"
+      },
+      {
+        "npc": "There is a little shop over in Port Sarim that buys them up by the crate. I believe it is run by a man called Wydin."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9f49737788ee85b6": [
+      {
+        "player": "So where are these bananas going to be delivered to?"
+      },
+      {
+        "npc": "I sell them to Wydin who runs a grocery store in Port Sarim."
+      },
+      {
+        "type": "end"
       }
     ]
   }

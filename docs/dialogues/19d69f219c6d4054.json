@@ -152,8 +152,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "l7BuqH"
+        "id": "l7BuqH",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-8df5a0860f7f8137"
+          }
+        ]
       }
     ],
     "when-at-the-pandemonium": [
@@ -177,6 +182,104 @@
       {
         "type": "missing",
         "id": "Rj5Rmo"
+      }
+    ]
+  },
+  "branches": {
+    "jump-8df5a0860f7f8137": [
+      {
+        "type": "condition",
+        "text": "Before 40 Sailing:",
+        "steps": [
+          {
+            "player": "I'm afraid not. At some point I hope to hire a crew to sail with, but I'm not really ready for that yet."
+          },
+          {
+            "npc": "Hmm... Well, maybe you should let me know when you are..."
+          },
+          {
+            "type": "message",
+            "text": "You need a Sailing level of 40 to manage a crew.",
+            "id": "-RvShX"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zxxLgE"
+      },
+      {
+        "type": "condition",
+        "text": "After 40 Sailing:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Well, I guess you could join my crew.",
+                "steps": [
+                  {
+                    "player": "Well, I guess you could join my crew."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Before 70 Sailing:",
+                    "steps": [
+                      {
+                        "npc": "Hmm... I don't know... You say you're not one of them, but I reckon you're trying to fool me!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You require the following to recruit this crew member: Level 70 Sailing.",
+                        "id": "45TvNg"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "lTRks0"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "After 70 Sailing:",
+                    "steps": [
+                      {
+                        "player": "Well, I guess you could join my crew."
+                      },
+                      {
+                        "npc": "Hmm... Dogs can't swim, can they? Yes... I think this might work..."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You recruit Jittery Jim as a crew member. He heads off in search of your boat.",
+                        "id": "bVAMKE"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "8vg01y"
+                  }
+                ]
+              },
+              {
+                "text": "No, I don't think so.",
+                "steps": [
+                  {
+                    "player": "No, I don't think so."
+                  },
+                  {
+                    "npc": "Hmm... If you say so."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Esxmuq"
       }
     ]
   }

@@ -64,8 +64,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "PWQwgC"
+                        "id": "PWQwgC",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f2653d0ce4b7c15b"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -361,8 +366,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "below",
-                    "id": "nnkYZU"
+                    "id": "nnkYZU",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-a86530c816fbd78b"
+                      }
+                    ]
                   }
                 ]
               },
@@ -417,6 +427,30 @@
     "historical-dialogue-sailing-alpha-charter": [
       {
         "npc": "This is a Sailing Alpha, find out how to get there yourself!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-f2653d0ce4b7c15b": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a86530c816fbd78b": [
+      {
+        "player": "Yes, I would like to charter a ship."
+      },
+      {
+        "npc": "Certainly [sir/madam]. Where would you like to go?"
+      },
+      {
+        "npc": "This is a Sailing Alpha, find out how to get there yourself!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

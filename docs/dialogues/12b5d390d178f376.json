@@ -1,4 +1,50 @@
 {
+  "branches": {
+    "jump-d16039d062d8e8da": [
+      {
+        "type": "jump",
+        "id": "lldK5f",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-64188c9d3e375ad8"
+          }
+        ]
+      }
+    ],
+    "jump-64188c9d3e375ad8": [
+      {
+        "npc": "Making flour is pretty easy. First of all you need to get some grain. You can pick some from wheat fields. There is one just outside the Mill, but there are many others scattered across Gielinor. Feel free to pick wheat"
+      },
+      {
+        "npc": "from our field! There always seems to be plenty of wheat there."
+      },
+      {
+        "player": "Then I bring my wheat here?"
+      },
+      {
+        "npc": "Yes, or one of the other mills in Gielinor. They all work the same way. Just take your grain to the top floor of the mill (up two ladders, there are three floors including this one) and then place some grain into the hopper."
+      },
+      {
+        "npc": "Then you need to start the grinding process by pulling the hopper lever. You can add more grain, but each time you add grain you have to pull the hopper lever again."
+      },
+      {
+        "player": "So where does the flour go then?"
+      },
+      {
+        "npc": "The flour appears in this room here, you'll need a pot to put the flour into. One pot will hold the flour made by one load of grain"
+      },
+      {
+        "npc": "And that's it! You now have some pots of finely ground flour of the highest quality. Ideal for making tasty cakes or delicous bread. I'm not a cook so you'll have to ask a cook to find out how to bake things."
+      },
+      {
+        "player": "Great! Thanks for your help."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Hello Adventurer. Welcome to Mill Lane Mill. Can I help you?"
@@ -23,8 +69,13 @@
             },
             {
               "type": "jump",
-              "reference": "below",
-              "id": "9FpnLX"
+              "id": "9FpnLX",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-d16039d062d8e8da"
+                }
+              ]
             }
           ]
         },
@@ -45,8 +96,13 @@
             },
             {
               "type": "jump",
-              "reference": "below",
-              "id": "lldK5f"
+              "id": "lldK5f",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-64188c9d3e375ad8"
+                }
+              ]
             }
           ]
         },

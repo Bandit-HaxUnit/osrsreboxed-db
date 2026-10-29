@@ -284,7 +284,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "IrILPW"
+                    "id": "IrILPW",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-c0c9dfb7f1e14da7"
+                      }
+                    ]
                   }
                 ],
                 "id": "r0rAn_"
@@ -505,7 +511,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "t4I4Yo"
+                    "id": "t4I4Yo",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-6892812ae706d545"
+                      }
+                    ]
                   }
                 ],
                 "id": "ry1GUd"
@@ -685,6 +697,270 @@
     ]
   },
   "branches": {
+    "jump-c0c9dfb7f1e14da7": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about Fish and Meat.",
+            "steps": [
+              {
+                "player": "Tell me about Fish and Meat."
+              },
+              {
+                "type": "message",
+                "text": "Fish and meat of most varieties can be cooked very simply on either a fire or range, experiment which one works for you.",
+                "id": "OdliiK"
+              },
+              {
+                "npc": "You might find that when killing monsters, they drop some raw meat for you to cook."
+              },
+              {
+                "npc": "Some of them might have hidden properties. Such as anglerfish, but you will find it hard getting hold of any of them at this time."
+              },
+              {
+                "npc": "Most of the time, cooking meat and fish requires nothing else but a range or fire. More complicated dishes might require specialized equipment."
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "59diXD"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Brewing.",
+            "steps": [
+              {
+                "player": "Tell me about Brewing."
+              },
+              {
+                "type": "message",
+                "text": "You can brew your own beers using the fermenting vats in either Keldagrim or Port Phasmatys.",
+                "id": "h1Icd_"
+              },
+              {
+                "npc": "You might find it hard getting to these places but you can always buy beer at any pub. Some pubs sell unique beers too."
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "q8S7sG"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Vegetables.",
+            "steps": [
+              {
+                "player": "Tell me about Vegetables."
+              },
+              {
+                "type": "message",
+                "text": "Baked potatoes are a more advanced food and are healthy too!",
+                "id": "FiFJ6R"
+              },
+              {
+                "npc": "They require many different ingredients to make, such as butter and vegetables, but you will find it hard to acquire the ingredients needed."
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "AVKAtZ"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Pies and Pizzas.",
+            "steps": [
+              {
+                "player": "Tell me about Pies and Pizzas."
+              },
+              {
+                "type": "message",
+                "text": "Use a pot of flour with a bucket of water. You will then need to make some pastry dough.",
+                "id": "Ewe3Xm"
+              },
+              {
+                "type": "message",
+                "text": "Use the pastry dough with a pie dish to get a pie shell, then add your choice of filling such as apples or red berries.",
+                "id": "JRWdOX"
+              },
+              {
+                "npc": "Finally cook your pie by using the unbaked pie on a cooking range. Mmmm...pie."
+              },
+              {
+                "npc": "Next, we have pizza. You will first need to make yourself a pizza base, use a pot of flour with a bucket of water and make a pizza base."
+              },
+              {
+                "type": "message",
+                "text": "Now you will need to get yourself a tomato and some cheese. Use the tomato on the pizza base and then use the cheese. Cook the uncooked pizza base and there you have yourself a plain pizza.",
+                "id": "7ItEAk"
+              },
+              {
+                "npc": "If you want to, you could add yourself a topping to the pizza too. Why not try some anchovies?"
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "oLEeou"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6892812ae706d545": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about Fish and Meat.",
+            "steps": [
+              {
+                "player": "Tell me about Fish and Meat."
+              },
+              {
+                "type": "message",
+                "text": "Fish and meat of most varieties can be cooked very simply on either a fire or range, experiment which one works for you.",
+                "id": "bpHlcK"
+              },
+              {
+                "npc": "You might find that when killing monsters, they drop some raw meat for you to cook."
+              },
+              {
+                "npc": "Some foods have hidden properties. Anglerfish can provide you with an overheal effect where you have a few more hitpoints than your level. The higher your hitpoints the better the boost."
+              },
+              {
+                "npc": "Most of the time, cooking meat and fish requires nothing else but a range or fire. More complicated dishes might require specialized equipment."
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "T-li_N"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Brewing.",
+            "steps": [
+              {
+                "player": "Tell me about Brewing."
+              },
+              {
+                "type": "message",
+                "text": "You can brew your own beers using the fermenting vats in either Keldagrim or Port Phasmatys.",
+                "id": "nwzjCk"
+              },
+              {
+                "npc": "Use two buckets of water, two handfuls of barley malt, 4 hops of your choice and a pot of ale yeast, then leave to ferment for a few days!"
+              },
+              {
+                "npc": "Simply turn the tap and let the ale flow into the barrel next to the vat, then use empty beer glasses on the barrel."
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "zLGEJo"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Vegetables.",
+            "steps": [
+              {
+                "player": "Tell me about Vegetables."
+              },
+              {
+                "type": "message",
+                "text": "Baked potatoes are excellent foods and they are healthy too!",
+                "id": "I-54g8"
+              },
+              {
+                "npc": "You'll need to churn some butter and cheese. Look for the churn icon on the minimap. There is a churn in the farm building northwest of Lumbridge."
+              },
+              {
+                "type": "message",
+                "text": "The nearest dairy cow is north of the nearby water mill. Take buckets of milk with you to the churn and use the milk on the churn to make butter or cheese.",
+                "id": "NQqSNF"
+              },
+              {
+                "npc": "Now you will need to pick your topping if you want one. Get yourself a bowel and create the perfect topping. Then put the topping onto the potato."
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "UOGt-m"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about Pies and Pizzas.",
+            "steps": [
+              {
+                "player": "Tell me about Pies and Pizzas."
+              },
+              {
+                "type": "message",
+                "text": "Use a pot of flour with a bucket of water. You will then need to make some pastry dough.",
+                "id": "YFVkAo"
+              },
+              {
+                "type": "message",
+                "text": "Use the pastry dough with a pie dish to get a pie shell, then add your choice of filling such as apples or red berries.",
+                "id": "w3w9AY"
+              },
+              {
+                "npc": "Finally cook your pie by using the unbaked pie on a cooking range. Mmmm...pie."
+              },
+              {
+                "npc": "Some pies might even be able to boost some of your skills, be it temporarily."
+              },
+              {
+                "npc": "Next, we have pizza. You will first need to make yourself a pizza base, use a pot of flour with a bucket of water and make a pizza base."
+              },
+              {
+                "type": "message",
+                "text": "Now you will need to get yourself a tomato and some cheese. Use the tomato on the pizza base and then use the cheese. Cook the uncooked pizza base and there you have yourself a plain pizza.",
+                "id": "4Amece"
+              },
+              {
+                "npc": "If you want to, you could add yourself a topping to the pizza too. Why not try some anchovies?"
+              },
+              {
+                "npc": "Would you like to hear about anything else I mentioned?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "dGbyUw"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "6mz66Y": [
       {
         "player": "No, thank you."

@@ -97,8 +97,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "nLzJUU"
+                                        "id": "nLzJUU",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-d59366d6c0800751"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -107,8 +112,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "6tByoz"
+                                        "id": "6tByoz",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-75d62258b474a108"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -982,9 +992,14 @@
             "text": "What do we do?",
             "steps": [
               {
-                "type": "action",
-                "text": "Continues above from \"So what do we do?\"",
-                "id": "Vql_6_"
+                "type": "jump",
+                "id": "Vql_6_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6f0222a06826818e"
+                  }
+                ]
               }
             ]
           }
@@ -1159,8 +1174,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ESIiL_"
+                "id": "ESIiL_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-04ea177ca68d3e7c"
+                  }
+                ]
               }
             ]
           },
@@ -1230,8 +1250,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1ePIWA"
+                "id": "1ePIWA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-04ea177ca68d3e7c"
+                  }
+                ]
               }
             ]
           },
@@ -1270,8 +1295,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "I6MLM5"
+                "id": "I6MLM5",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-04ea177ca68d3e7c"
+                  }
+                ]
               }
             ]
           },
@@ -1838,6 +1868,195 @@
       {
         "type": "unavailable",
         "id": "VLQURQ"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d59366d6c0800751": [
+      {
+        "player": "Why do you care about Drezel anyway?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Well, that is a slightly impertinent question to ask of your King, but I shall overlook it this time."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "As you are no doubt aware, this kingdom worships Saradomin, the god of wisdom and order. As such, it is a peaceful place to live and prosper."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Paterdomus, the temple where Drezel lives, stands on the eastern border of Misthalin. It guards the only passage into the evil lands of Morytania."
+      },
+      {
+        "player": "Evil?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Oh yes. Morytania is a fearful place, filled to the brim with accursed servants of the chaos god Zamorak. All of them are terrible, but none more so than the rulers of the region, the vampyres."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Thankfully, the sacred River Salve marks a natural border between Misthalin and Morytania. The waters of the river have been blessed with Saradomin's almighty power, preventing any invasion by the vampyres."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Drezel is descended from one of the original Saradominist priests who first blessed the river. His job is to ensure nothing happens to the river that might allow the evil of Morytania to invade this land."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "This is the reason why the lack of communication from him bothers me somewhat, although I am sure it's nothing too serious. Nobody would dare to try and attack our kingdom!"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "IqMlSF"
+      }
+    ],
+    "jump-75d62258b474a108": [
+      {
+        "player": "Do I get a reward for this?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "You will be rewarded with the knowledge that you have done the right thing and assisted the King of Misthalin."
+      },
+      {
+        "player": "So... that would be a 'no' then?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "That is correct."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "P1WXW7"
+      }
+    ],
+    "jump-6f0222a06826818e": [
+      {
+        "player": "So what do we do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "First, we need to get me out of this cell. The leader of those Zamorakians probably has the key. I believe he's the one in the hood."
+      },
+      {
+        "player": "So I need to go and find this key. Anything else I should be aware of?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I'm afraid so. When the Salve was first blessed, a small number of vampyres were left trapped on this side of it. They were heavily weakened, but still posed a dangerous threat."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Even with them weakened, the brave Saradominists who built this temple were unable to kill them. Instead, they trapped them in coffins and buried them outside the temple."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "This coffin here contains one of those vampyres. The Zamorakians must have dug it up and brought it in here with them."
+      },
+      {
+        "player": "But why?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Well, as those fiends pointed out to me with delight, as I am the descendant of one of the Seven Priestly Warriors who blessed the river, it will likely recognise the smell of my blood."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "If I get too close, it will probably wake up and kill me, very slowly and painfully."
+      },
+      {
+        "player": "Maybe I could kill it somehow?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I would not risk waking it. Even now, it could pose a huge threat. The priests of old would incapacitate trapped vampyres with the blessings of Saradomin. Perhaps there's a way for you do the same."
+      },
+      {
+        "player": "Right. So, I need to find the key to your cell and do something about the vampyre. Got it."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Good luck."
+      }
+    ],
+    "jump-04ea177ca68d3e7c": [
+      {
+        "player": "Could you tell me more about this temple?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "It is said that many years ago, the land that is now Morytania was a peaceful Saradominist kingdom. Alas, all that ended when the vampyres invaded, claiming the land as their own."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Morytania wasn't enough for them though. Soon, they set their sights on these lands as well. Misthalin would have quickly fallen to the vampyres, were it not for the bravery of the Seven Priestly Warriors."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "They led the armies of Misthalin against the vampyres, with the war culminating in a great battle that took place right where this temple stands."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "For ten days and nights they fought, never sleeping, never eating, fuelled only by their faith in Saradomin."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "On the eleventh day, reinforcements arrived, but when they did, they found the Seven Priestly Warriors had been slain by the vampyres, along with most of their forces."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "However, their sacrifice was not in vain. Before they were defeated, the Seven Priestly Warriors managed to bless the Salve with the holy power of Saradomin."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Those blessings remain to this day, ensuring no vampyre can cross the river. The temple here was built soon after. It guards the source of the River Salve, and acts as the only passage into Morytania."
+      },
+      {
+        "player": "And what about the mausoleum below?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "That is the most important part of the temple, for it is where the passage into Morytania is found. It is also the final resting place of the Seven Priestly Warriors."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Their tombs are built around the well that provides direct access to the source of the Salve, with a golden gift placed upon each of the tombs as a mark of respect."
+      },
+      {
+        "player": "I see. Thanks for the information. I'll get going."
+      },
+      {
+        "type": "end"
       }
     ]
   }

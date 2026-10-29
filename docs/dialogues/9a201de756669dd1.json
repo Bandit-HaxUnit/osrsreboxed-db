@@ -66,8 +66,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DvCa7Y"
+                "id": "DvCa7Y",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-51baa9a520fab14b"
+                  }
+                ]
               }
             ]
           },
@@ -76,12 +81,50 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HxkOBe"
+                "id": "HxkOBe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bfb8f95c7c992bee"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-51baa9a520fab14b": [
+      {
+        "player": "What's the Pilgrim Path?"
+      },
+      {
+        "npc": "It is a sacred pilgrimage between the Teomat and the Proudspire. I do it every year, as do many others."
+      },
+      {
+        "npc": "The hardest part is the last bit: Reaching the summit of the Proudspire. Only upon touching the obelisk at the top is your journey complete."
+      },
+      {
+        "player": "I see. Well good luck with your journey."
+      },
+      {
+        "npc": "Thank you, traveller. May the sun light your way."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-bfb8f95c7c992bee": [
+      {
+        "player": "Good luck with your journey."
+      },
+      {
+        "npc": "Thank you, traveller. May the sun light your way."
+      },
+      {
+        "type": "end"
       }
     ]
   }

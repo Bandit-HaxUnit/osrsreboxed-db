@@ -1,4 +1,28 @@
 {
+  "branches": {
+    "jump-2d18e3d322487008": [
+      {
+        "player": "I'd like to buy something."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Shayzien Styles",
+        "id": "Y2Pv1V"
+      }
+    ],
+    "jump-3510948c3945cdb4": [
+      {
+        "player": "No thanks, I'm just browsing."
+      },
+      {
+        "npc": "I'll be right here if you need anything!"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Hello there! Is there anything I can help you with?"
@@ -43,8 +67,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "8fEXse"
+                      "id": "8fEXse",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-2d18e3d322487008"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -53,8 +82,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "78pAGU"
+                      "id": "78pAGU",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-3510948c3945cdb4"
+                        }
+                      ]
                     }
                   ]
                 }

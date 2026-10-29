@@ -477,8 +477,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "b5WzJ4"
+                "id": "b5WzJ4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-115bb5adf7828db6"
+                  }
+                ]
               }
             ]
           },
@@ -487,8 +492,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RxcTHy"
+                "id": "RxcTHy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-733af62b6df0cb37"
+                  }
+                ]
               }
             ]
           }
@@ -850,10 +860,41 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Horace",
+                "text": "Hello my friend, my name is Horace! You're in the city of Hosidius. Most everyone round here tends the farms. Without us, Kourend would have no crops at all."
+              },
+              {
+                "type": "line",
+                "speaker": "Horace",
+                "text": "So, do you need to buy or sell something today?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "6Ro2fW"
+              }
+            ]
           },
           {
-            "text": "Okay, let's trade."
+            "text": "Okay, let's trade.",
+            "steps": [
+              {
+                "player": "Okay, let's trade."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Little Shop of Horace",
+                "id": "zvtm-J"
+              }
+            ]
           },
           {
             "text": "Had any councillors shop here recently?",
@@ -872,7 +913,12 @@
             ]
           },
           {
-            "text": "No, I'm fine."
+            "text": "No, I'm fine.",
+            "steps": [
+              {
+                "player": "No, I'm fine."
+              }
+            ]
           }
         ]
       }
@@ -926,10 +972,61 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you've got."
+            "text": "Let's see what you've got.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "bh5iBQ"
+              }
+            ]
           },
           {
-            "text": "I don't want to talk about my pleasure."
+            "text": "I don't want to talk about my pleasure.",
+            "steps": [
+              {
+                "player": "I don't want to talk about my pleasure."
+              },
+              {
+                "type": "line",
+                "speaker": "Fuggy",
+                "text": "Ah, you sound like a human who's not been drinking yet. Would you like to start now?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's see what you've got.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Yzwddi",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7e04e3587e11cf92"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm alright, thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "ziHl6i",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-36a12e1fc52b014c"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Had any councillors stay here recently?",
@@ -1008,10 +1105,109 @@
             ]
           },
           {
-            "text": "Have you heard any rumours here?"
+            "text": "Have you heard any rumours here?",
+            "steps": [
+              {
+                "player": "Have you heard any rumours here?"
+              },
+              {
+                "type": "condition",
+                "text": "If Client of Kourend has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pl-p-B"
+                  }
+                ],
+                "id": "AmPebY"
+              },
+              {
+                "type": "condition",
+                "text": "If The Queen of Thieves has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "0dwAmX"
+                  }
+                ],
+                "id": "9d4A3N"
+              },
+              {
+                "type": "condition",
+                "text": "If The Depths of Despair has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "M_Y_TZ"
+                  }
+                ],
+                "id": "yg-nvl"
+              },
+              {
+                "type": "condition",
+                "text": "If Tale of the Righteous has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "oYsagV"
+                  }
+                ],
+                "id": "7C7nBW"
+              },
+              {
+                "type": "condition",
+                "text": "If The Forsaken Tower has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "D_NiwS"
+                  }
+                ],
+                "id": "oOLDA1"
+              },
+              {
+                "type": "condition",
+                "text": "If The Ascent of Arceuus has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "DJFyWw"
+                  }
+                ],
+                "id": "5i_8x1"
+              },
+              {
+                "type": "condition",
+                "text": "If A Kingdom Divided has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kzJfHw"
+                  }
+                ],
+                "id": "B9iIjK"
+              },
+              {
+                "type": "condition",
+                "text": "If all quests above have been completed:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Fuggy",
+                    "text": "No, it hasn't been very busy lately."
+                  }
+                ],
+                "id": "yydNAu"
+              }
+            ]
           },
           {
-            "text": "I'm alright, thank you."
+            "text": "I'm alright, thank you.",
+            "steps": [
+              {
+                "player": "I'm alright, thank you."
+              }
+            ]
           }
         ]
       }
@@ -1026,10 +1222,61 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's see what you've got."
+            "text": "Let's see what you've got.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "bh5iBQ"
+              }
+            ]
           },
           {
-            "text": "I don't want to talk about my pleasure."
+            "text": "I don't want to talk about my pleasure.",
+            "steps": [
+              {
+                "player": "I don't want to talk about my pleasure."
+              },
+              {
+                "type": "line",
+                "speaker": "Fuggy",
+                "text": "Ah, you sound like a human who's not been drinking yet. Would you like to start now?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's see what you've got.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "Yzwddi",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7e04e3587e11cf92"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm alright, thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "ziHl6i",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-36a12e1fc52b014c"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "So about the Councillor.",
@@ -1053,10 +1300,109 @@
             ]
           },
           {
-            "text": "Have you heard any rumours here?"
+            "text": "Have you heard any rumours here?",
+            "steps": [
+              {
+                "player": "Have you heard any rumours here?"
+              },
+              {
+                "type": "condition",
+                "text": "If Client of Kourend has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pl-p-B"
+                  }
+                ],
+                "id": "AmPebY"
+              },
+              {
+                "type": "condition",
+                "text": "If The Queen of Thieves has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "0dwAmX"
+                  }
+                ],
+                "id": "9d4A3N"
+              },
+              {
+                "type": "condition",
+                "text": "If The Depths of Despair has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "M_Y_TZ"
+                  }
+                ],
+                "id": "yg-nvl"
+              },
+              {
+                "type": "condition",
+                "text": "If Tale of the Righteous has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "oYsagV"
+                  }
+                ],
+                "id": "7C7nBW"
+              },
+              {
+                "type": "condition",
+                "text": "If The Forsaken Tower has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "D_NiwS"
+                  }
+                ],
+                "id": "oOLDA1"
+              },
+              {
+                "type": "condition",
+                "text": "If The Ascent of Arceuus has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "DJFyWw"
+                  }
+                ],
+                "id": "5i_8x1"
+              },
+              {
+                "type": "condition",
+                "text": "If A Kingdom Divided has not been started:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kzJfHw"
+                  }
+                ],
+                "id": "B9iIjK"
+              },
+              {
+                "type": "condition",
+                "text": "If all quests above have been completed:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Fuggy",
+                    "text": "No, it hasn't been very busy lately."
+                  }
+                ],
+                "id": "yydNAu"
+              }
+            ]
           },
           {
-            "text": "I'm alright, thank you."
+            "text": "I'm alright, thank you.",
+            "steps": [
+              {
+                "player": "I'm alright, thank you."
+              }
+            ]
           }
         ]
       }
@@ -1082,7 +1428,124 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you take me somewhere?"
+            "text": "Can you take me somewhere?",
+            "steps": [
+              {
+                "player": "Can you take me somewhere?"
+              },
+              {
+                "type": "condition",
+                "text": "On non-members worlds:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Cabin Boy Herbert",
+                    "text": "I'm afraid that you're not eligible to travel to Great Kourend at the moment. Come back when you are and I'll happily take you there."
+                  },
+                  {
+                    "type": "end",
+                    "reason": "members"
+                  }
+                ],
+                "id": "8t_YGm"
+              },
+              {
+                "type": "condition",
+                "text": "On members worlds:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Cabin Boy Herbert",
+                    "text": "Where would you like to go?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Travel to Port Sarim.",
+                        "condition": "If the player is not at Port Sarim:",
+                        "steps": [
+                          {
+                            "player": "I'd like to travel to Port Sarim, please."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cabin Boy Herbert",
+                            "text": "As you wish, I hope you don't get seasick, it is a long voyage."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is transported to Port Sarim",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "fR2FKv"
+                          }
+                        ],
+                        "id": "gq2FMz"
+                      },
+                      {
+                        "text": "Travel to Port Piscarilius.",
+                        "condition": "If the player is not at Port Piscarilius:",
+                        "steps": [
+                          {
+                            "player": "I'd like to travel to Port Piscarilius, please."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cabin Boy Herbert",
+                            "text": "As you wish."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is transported to Port Piscarilius",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "lMeKBi"
+                          }
+                        ],
+                        "id": "xEod4K"
+                      },
+                      {
+                        "text": "Travel to Land's End.",
+                        "condition": "If the player is not at Land's End:",
+                        "steps": [
+                          {
+                            "player": "I'd like to travel to Land's End, please."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cabin Boy Herbert",
+                            "text": "As you wish."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is transported to Land's End",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "nCPA0F"
+                          }
+                        ],
+                        "id": "vI_fQZ"
+                      },
+                      {
+                        "text": "Stay where you are.",
+                        "steps": [
+                          {
+                            "player": "Actually I'd like to stay here."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cabin Boy Herbert",
+                            "text": "As you wish."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "umx2H4"
+              }
+            ]
           },
           {
             "text": "I'm looking for a councillor.",
@@ -1783,10 +2246,143 @@
         "type": "choice",
         "options": [
           {
-            "text": "What is this place?"
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "This is the Library Historical Archive. Here you'll find historical documents and texts from all eras of Great Kourend's history, dating all the way back to the first decade."
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "Are you looking for something in particular?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Which subject would you like to hear about?",
+                "options": [
+                  {
+                    "text": "What information do you have on Xeric?",
+                    "steps": [
+                      {
+                        "player": "What information do you have on Xeric?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Ah, Xeric. Our most infamous ruler... We do have extensive records regarding Xeric. You can examine some of the texts here or speak to Ektheme, our Xerician expert."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Is there something else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "jpr-Q3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What can you tell me about the Wintertodt?",
+                    "steps": [
+                      {
+                        "player": "What can you tell me about the Wintertodt?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "The Wintertodt, or the Winter beast as it was often known at the time, terrorised northern Kourend for five decades."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Logios is currently studying the Wintertodt Invasion, and we have various texts from that era."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Is there something else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "4J10IO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What can you tell me about Mount Quidamortem?",
+                    "steps": [
+                      {
+                        "player": "What can you tell me about Mount Quidamortem?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Our first records of the mountain date back to the 36th decade where a Shayzien patrol discovered the mountain during a survey of the Kebos Lowlands."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "King Shayzien VII was keen on conquering more land for Kourend and demanded his people explore suitable territories."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "The mountain became known as Mount Quidamortem after it was realised venturing towards the summit resulted in certain death."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Gnosi is our expert on Mount Quidamortem, but I'm afraid she's currently on an expedition to the temple near the summit of the mountain. However, we do have some texts available detailing the great expedition."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Istoria",
+                        "text": "Is there something else I can help you with?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "n6nKUc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "None",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "My name is Istoria. I'm the chief historian and curator of the Library Historical Archive."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "S7pKqr"
+              }
+            ]
           },
           {
             "text": "I have a question about Rose.",
@@ -1836,10 +2432,48 @@
             ]
           },
           {
-            "text": "How do I get out of here?"
+            "text": "How do I get out of here?",
+            "steps": [
+              {
+                "player": "How do I get out of here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Istoria",
+                "text": "I can teleport you back to the Grand Library. Would you like to leave now?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Leave the Library Historical Archive?",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": []
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "oQAVD0"
+              }
+            ]
           }
         ]
       }
@@ -2356,8 +2990,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "EGdr5_"
+                "id": "EGdr5_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3f4b5ea5f0fc7523"
+                  }
+                ]
               }
             ]
           }
@@ -3327,8 +3966,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xo5Q9L"
+                "id": "xo5Q9L",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6d10cfeebb19b980"
+                  }
+                ]
               }
             ]
           },
@@ -3337,8 +3981,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Z2VBvH"
+                "id": "Z2VBvH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5ec021891fe14edc"
+                  }
+                ]
               }
             ]
           },
@@ -3347,8 +3996,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tjZ2Eu"
+                "id": "tjZ2Eu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c6461b6375d1bf90"
+                  }
+                ]
               }
             ]
           }
@@ -3365,7 +4019,52 @@
         "type": "choice",
         "options": [
           {
-            "text": "You can speak!?"
+            "text": "You can speak!?",
+            "steps": [
+              {
+                "player": "You can speak!?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Of courssse, sssome of usss remember the high ssspeech out old massster ssspoke in."
+              },
+              {
+                "player": "Hmm, I suppose I've never had a chance to speak with most Lizardmen, they're generally quite aggressive."
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Yesss, we ssspeak the language of war far better. It isss the only way we know of."
+              },
+              {
+                "player": "This master you speak of..."
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "I know only what my eldersss passssed down. Very little."
+              },
+              {
+                "player": "How long ago since this master left you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Many generationsss have come and gone sssince he walked amongssst usss."
+              },
+              {
+                "player": "Do you remember his name?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "K'uhul ajaw isss the name we ssspeak. You manfolk ssspeak a different name."
+              },
+              {
+                "player": "Hmmm..."
+              }
+            ]
           },
           {
             "text": "I have a question about that door over there.",
@@ -3471,10 +4170,47 @@
             ]
           },
           {
-            "text": "Why are you down here?"
+            "text": "Why are you down here?",
+            "steps": [
+              {
+                "player": "Why are you down here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss isss our temple, we don't usssually get many visssitorsss... We make sssacrifice, offeringsss to our massster."
+              },
+              {
+                "player": "What kind of... sacrifices?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss and that. Whatever out massster desssiresss."
+              },
+              {
+                "player": "This master you speak of..."
+              },
+              {
+                "type": "jump",
+                "id": "2PVl7j",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-048d3f56dbf5285b"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Nevermind, bye."
+            "text": "Nevermind, bye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jSma2_"
+              }
+            ]
           }
         ]
       }
@@ -3510,10 +4246,47 @@
             ]
           },
           {
-            "text": "Why are you down here?"
+            "text": "Why are you down here?",
+            "steps": [
+              {
+                "player": "Why are you down here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss isss our temple, we don't usssually get many visssitorsss... We make sssacrifice, offeringsss to our massster."
+              },
+              {
+                "player": "What kind of... sacrifices?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss and that. Whatever out massster desssiresss."
+              },
+              {
+                "player": "This master you speak of..."
+              },
+              {
+                "type": "jump",
+                "id": "2PVl7j",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-048d3f56dbf5285b"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Nevermind, bye."
+            "text": "Nevermind, bye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jSma2_"
+              }
+            ]
           }
         ]
       }
@@ -3572,10 +4345,47 @@
             ]
           },
           {
-            "text": "Why are you down here?"
+            "text": "Why are you down here?",
+            "steps": [
+              {
+                "player": "Why are you down here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss isss our temple, we don't usssually get many visssitorsss... We make sssacrifice, offeringsss to our massster."
+              },
+              {
+                "player": "What kind of... sacrifices?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss and that. Whatever out massster desssiresss."
+              },
+              {
+                "player": "This master you speak of..."
+              },
+              {
+                "type": "jump",
+                "id": "2PVl7j",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-048d3f56dbf5285b"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Nevermind, bye."
+            "text": "Nevermind, bye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jSma2_"
+              }
+            ]
           }
         ]
       }
@@ -3611,10 +4421,47 @@
             ]
           },
           {
-            "text": "Why are you down here?"
+            "text": "Why are you down here?",
+            "steps": [
+              {
+                "player": "Why are you down here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss isss our temple, we don't usssually get many visssitorsss... We make sssacrifice, offeringsss to our massster."
+              },
+              {
+                "player": "What kind of... sacrifices?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kaht B'alam",
+                "text": "Thisss and that. Whatever out massster desssiresss."
+              },
+              {
+                "player": "This master you speak of..."
+              },
+              {
+                "type": "jump",
+                "id": "2PVl7j",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-048d3f56dbf5285b"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Nevermind, bye."
+            "text": "Nevermind, bye.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jSma2_"
+              }
+            ]
           }
         ]
       }
@@ -4926,8 +5773,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "00pdnY"
+                "id": "00pdnY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6bc5d74fb35341b5"
+                  }
+                ]
               }
             ]
           },
@@ -4936,8 +5788,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PfEp16"
+                "id": "PfEp16",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-908d8590e6a6a5bd"
+                  }
+                ]
               }
             ]
           },
@@ -4946,8 +5803,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5FcAVf"
+                "id": "5FcAVf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-32519c65f4939752"
+                  }
+                ]
               }
             ]
           },
@@ -4956,8 +5818,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_FyEvn"
+                "id": "_FyEvn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ce398e7caec57cb6"
+                  }
+                ]
               }
             ]
           },
@@ -4966,8 +5833,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3rLCXl"
+                "id": "3rLCXl",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-10ec49e01694bdd4"
+                  }
+                ]
               }
             ]
           },
@@ -4976,8 +5848,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "VRz636"
+                "id": "VRz636",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c641ee093d58f47c"
+                  }
+                ]
               }
             ]
           }
@@ -5949,8 +6826,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "pFJhEB"
+                "id": "pFJhEB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-48b88d7fb8869b60"
+                  }
+                ]
               }
             ]
           },
@@ -6424,8 +7306,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "EL7JWW"
+                "id": "EL7JWW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c641ee093d58f47c"
+                  }
+                ]
               }
             ]
           }
@@ -6470,8 +7357,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wLvV1v"
+                "id": "wLvV1v",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a41137976a2c23ec"
+                  }
+                ]
               }
             ]
           },
@@ -6480,8 +7372,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "OYSxwW"
+                "id": "OYSxwW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c641ee093d58f47c"
+                  }
+                ]
               }
             ]
           }
@@ -7215,7 +8112,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Pandur Hosidius",
+                "text": "What? Everyone knows who I am. I'm Pandur Hosidius, son of Lord Kandur Hosidius. You know him? The man who owns all this land? Well I'm his son."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "eOwdca"
+              }
+            ]
           },
           {
             "text": "I hear your father has an office here.",
@@ -7255,13 +8167,82 @@
             ]
           },
           {
-            "text": "What are these farming patches for?"
+            "text": "What are these farming patches for?",
+            "steps": [
+              {
+                "player": "What are these farming patches for?"
+              },
+              {
+                "type": "line",
+                "speaker": "Pandur Hosidius",
+                "text": "This is our vinery. My father's cracked the secret of viticulture, and although our climate's too cold for most grapes, we've made a working vineyard here."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough Hosidius favour:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Pandur Hosidius",
+                    "text": "You seem to have got yourself a decent reputation around here, so you can grow grapes if you like. Old Gallow will look after them for you."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "LTaWB6"
+                  }
+                ],
+                "id": "tPi7aD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough Hosidius favour:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Pandur Hosidius",
+                    "text": "Don't get any ideas, though. We're not having just any random stranger wander in off the fields and try to grow grapes."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "QLFXnM"
+                  }
+                ],
+                "id": "MfWs5m"
+              }
+            ]
           },
           {
-            "text": "Have you been drinking?"
+            "text": "Have you been drinking?",
+            "steps": [
+              {
+                "player": "Have you been drinking?"
+              },
+              {
+                "type": "line",
+                "speaker": "Pandur Hosidius",
+                "text": "I've got to test the produce. Ever since I was a child, I've been the official tester for the bacon, the beef, the pies, the beer, everything. Now there's wine!"
+              },
+              {
+                "type": "line",
+                "speaker": "Pandur Hosidius",
+                "text": "BURP *"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "qjRU4p"
+              }
+            ]
           },
           {
-            "text": "I'll leave you to it."
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              }
+            ]
           }
         ]
       }
@@ -8032,8 +9013,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "lrIjYy"
+                "id": "lrIjYy",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-996adf8c6a820d17"
+                  }
+                ]
               }
             ]
           }
@@ -8704,6 +9690,567 @@
       {
         "type": "unavailable",
         "id": "Z5b9xl"
+      }
+    ]
+  },
+  "branches": {
+    "jump-115bb5adf7828db6": [
+      {
+        "player": "Let's get going."
+      },
+      {
+        "type": "action",
+        "text": "A cutscene begins. The player and Commander Fullore approach Kingstown, and are stopped by Tomas Lawry and Captain Ginea.",
+        "id": "d8IG31"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Commander Fullore! How wonderful to see you."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Tomas! What are you doing here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Why, I'm here about Sophia Hughes of course! As the person who discovered her corruption in the first place, I was an obvious choice to lead the investigation into her disappearance."
+      },
+      {
+        "player": "But that wasn't you! I did all the work!"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Ah, and hello again, my financially challenged friend! Of course, the capture of Sophia Hughes wouldn't have been possible without your minor contributions."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "The Kourend Royal Guard are conducting the investigation, Tomas. Your presence is not needed."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Well, that's just the thing. Councillor Andrews was so impressed with my work, he put me in charge of this investigation."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "That is not his call to make! I'm in charge of Council security. This investigation is mine to lead!"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "He is head of the Council. If he wants to make that call, he can."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Regardless..."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Look, I can see you're very passionate, which is wonderful. Tell you what, as you're so eager, I'll allow you both to help me in my investigation."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Do join me inside when you're ready."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Captain Ginea. I'm guessing Lord Shayzien sent you."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Ginea",
+        "text": "He did. He's keen to see this Hughes business sorted quickly."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "He's not alone there, but he doesn't need to worry. We have things under control."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Ginea",
+        "text": "Forgive me Commander, but it doesn't seem like you do. Hughes escaped from right under your nose, and now Councillor Andrews is putting his faith in Lawry over you."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Ginea",
+        "text": "While this may be Council business, Lord Shayzien is responsible for dealing with both internal and external threats. He wants to be sure that Hughes won't be an issue."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "You have my word. She'll be back in a cell before the day is out."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Ginea",
+        "text": "I hope you're right. There's already a lot of doubt in the Council these days. It would be rather embarrassing for them if the Shayzien Army had to step in."
+      },
+      {
+        "player": "For someone who supports the Council so much, you don't seem very happy about Councillor Andrews' decision."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "I can support the Council while not agreeing with every choice they make."
+      },
+      {
+        "player": "I feel like you're not totally being honest with me."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Would that be so wrong? I hardly know you."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Here's some advice for you: focus on the investigation. Leave the politics to the experts."
+      },
+      {
+        "player": "Fine. I guess we'd better get started."
+      },
+      {
+        "type": "action",
+        "text": "Cutscene ends, and the player is now in front of Councillor Hughes' house.",
+        "id": "231zxS"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Have a look around the house and see if you can find any hints on where Councillor Hughes might have gone. I'll ask around out here and see if anyone's seen anything suspicious."
+      },
+      {
+        "player": "Sounds good."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Good luck. Don't let Lawry get in your way."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-733af62b6df0cb37": [
+      {
+        "player": "I just need to do something first."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Okay, just let me know when you're ready to depart."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-7e04e3587e11cf92": [
+      {
+        "player": "Let's see what you've got."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The Deeper Lode",
+        "id": "Udwi7L"
+      }
+    ],
+    "jump-36a12e1fc52b014c": [
+      {
+        "player": "I'm alright, thank you."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3f4b5ea5f0fc7523": [
+      {
+        "player": "Alright. I'll see you soon."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6d10cfeebb19b980": [
+      {
+        "player": "How are you doing?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "I'd rather not talk about it. We have work to focus on. There'll be plenty of time to contemplate later."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "UdUzLJ"
+      }
+    ],
+    "jump-5ec021891fe14edc": [
+      {
+        "player": "How are things back at the castle?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Terrible. I take it you heard about Martin?"
+      },
+      {
+        "player": "The arrest? I was there."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Such a stupid move. I told Councillor Andrews not to do it, but he listened to Lawry instead. Now the protestors are even angrier."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "At this rate, it's only a matter of time before things get violent. I even had Councillor Unkar moved to the castle for his own safety."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Not that he deserves safety! What a mess this is."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "P2LBel"
+      }
+    ],
+    "jump-c6461b6375d1bf90": [
+      {
+        "player": "I'd better be off."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-048d3f56dbf5285b": [
+      {
+        "type": "line",
+        "speaker": "Kaht B'alam",
+        "text": "I know only what my eldersss passssed down. Very little."
+      },
+      {
+        "player": "How long ago since this master left you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kaht B'alam",
+        "text": "Many generationsss have come and gone sssince he walked amongssst usss."
+      },
+      {
+        "player": "Do you remember his name?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kaht B'alam",
+        "text": "K'uhul ajaw isss the name we ssspeak. You manfolk ssspeak a different name."
+      },
+      {
+        "player": "Hmmm..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6bc5d74fb35341b5": [
+      {
+        "player": "What do you think of Lord Arceuus?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "He intrigues me. I find there's a certain level of arrogance when it comes to anyone from Arceuus. Living for a thousand years will do that, I guess."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "The thing is, he's not like that. He seems to have a lot more humility than the other leaders."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Still, I find it hard to trust anyone who's been around that long. Think about what he must have seen and done over the years. He'll have more secrets than the rest of them combined."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-908d8590e6a6a5bd": [
+      {
+        "player": "What do you think of Lady Piscarilius?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "She's lazy and arrogant. She talks like she cares for the people, but one look at Port Piscarilius shows the truth. She only cares for herself."
+      },
+      {
+        "player": "Maybe there's more to her than meets the eye."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "You think she really cares?"
+      },
+      {
+        "player": "I wouldn't rule it out."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Maybe she should start looking after her citizens then. Thoughts and feelings mean nothing when people are suffering."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-32519c65f4939752": [
+      {
+        "player": "What do you think of Lord Shayzien?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "I have a lot of respect for him. He's achieved a lot in his short time as a ruler."
+      },
+      {
+        "player": "But?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Does there need to be a but?"
+      },
+      {
+        "player": "No, but there generally is one."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "He's a man of war, not peace. You always need to be careful with someone like that. He's also the youngest of all the rulers. Age often brings experience."
+      },
+      {
+        "player": "Often, but not always."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "True."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-ce398e7caec57cb6": [
+      {
+        "player": "What do you think of Lord Hosidius?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "He's well-liked by his people, and he does genuinely seem to care for them. The world might be a better place if more leaders were like him."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "That said, we should still be careful. Everyone has two sides, and he knew exactly what he was doing when he brought out the Royal Accord of Twill."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-10ec49e01694bdd4": [
+      {
+        "player": "What do you think of Lady Lovakengj?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "I think she's the most dangerous of all of them."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "She seems to be nothing more than a slightly senile dwarf with a love for sherry. If that's true, then she's not the kind of person who should be in charge of anything."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "But maybe that's not who she really is. Maybe it's all just an act. If that's the case, then she's managed to fool everyone around her."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Either way, she's one to keep an eye on."
+      },
+      {
+        "player": "The biggest threat is the one you never see coming."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Exactly."
+      }
+    ],
+    "jump-c641ee093d58f47c": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-48b88d7fb8869b60": [
+      {
+        "player": "Where can I get volcanic sulphur?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kaal-Mej-San",
+        "text": "It can be mined in Lovakengj."
+      },
+      {
+        "player": "Got it. I'll be back soon."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a41137976a2c23ec": [
+      {
+        "player": "I wanted to ask you something about the leaders."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Go ahead."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "JSxZqh"
+      }
+    ],
+    "jump-996adf8c6a820d17": [
+      {
+        "player": "I need to do something first."
+      },
+      {
+        "type": "line",
+        "speaker": "Commander Fullore",
+        "text": "Don't take too long. Let me know when you're ready."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "bh5iBQ": [
+      {
+        "player": "Let's see what you've got."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "The Deeper Lode",
+        "id": "Udwi7L"
+      }
+    ],
+    "pl-p-B": [
+      {
+        "type": "line",
+        "speaker": "Fuggy",
+        "text": "Apparently Veos is looking for some help with something. He hangs around the docks of Port Piscarilius."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "0dwAmX": [
+      {
+        "type": "line",
+        "speaker": "Fuggy",
+        "text": "They say there's trouble in Port Piscarilius. Something about gangs uniting. Might be worth looking into."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "M_Y_TZ": [
+      {
+        "type": "line",
+        "speaker": "Fuggy",
+        "text": "I hear that Lord Hosidius has misplaced one of his sons. The Hosidius family might pay a lot to see him returned safely."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "oYsagV": [
+      {
+        "type": "line",
+        "speaker": "Fuggy",
+        "text": "Phileas Rimor has supposedly been looking for some assistance with something in Shayzien. Maybe worth investigating."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "D_NiwS": [
+      {
+        "type": "line",
+        "speaker": "Fuggy",
+        "text": "I hear that the rulers of Lovakengj have some work available. You'll find them in the Lovakengj Assembly."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "DJFyWw": [
+      {
+        "type": "line",
+        "speaker": "Fuggy",
+        "text": "Apparently there's been some commotion in the middle of Arceuus. Might be worth checking out."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "kzJfHw": [
+      {
+        "type": "line",
+        "speaker": "Fuggy",
+        "text": "That protest outside Kourend Castle is starting to attract some attention. Could be worth taking a look."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jSma2_": [
+      {
+        "player": "Nevermind, bye."
+      },
+      {
+        "type": "line",
+        "speaker": "Kaht B'alam",
+        "text": "Ye niauh, human."
       }
     ]
   }

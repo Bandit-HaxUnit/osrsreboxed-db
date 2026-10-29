@@ -68,13 +68,153 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you tell me more about the early history of Varlamore?"
+            "text": "Could you tell me more about the early history of Varlamore?",
+            "steps": [
+              {
+                "player": "Could you tell me more about the early history of Varlamore?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Certainly! When it comes to the existence of Varlamore, it is Xeric we have to thank. During his Age of Strife, many refugees fled Kourend over the previously unexplored Custodia Mountains."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "There were three notable groups of these refugees. The first group, the Talkasti, settled in the Tlati Rainforest."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "While they initially lived nomadic lives, they eventually started to establish more permanent settlements, with Tal Teklan being the first."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "The next group were the Pericans. They first settled right here, building the town of Fortis, or Civitas illa Fortis as it eventually became."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Finally we have the dwarves. These were refugees from Lovakengj who established a home beneath Ralos' Rise, becoming known as the Dwarves of Cam Torum."
+              },
+              {
+                "player": "Was there any friction between these groups initially?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Oh yes, very much so. The dwarves, just as they do today, mostly kept to themselves. However, the Talkasti and Pericans came into regular conflict over various matters."
+              },
+              {
+                "player": "But that's not the case now, right? What brought them together?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "As you may well have already guessed, it was religion. Long before leaving Kourend, the Talkasti had taken to secretly worshipping Ralos and Ranul."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "After arriving here, they were able to openly practice their religion for the first time. Over time, the Pericans started to adopt this religion as well."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "As the two groups came together, the population of the region started to rapidly expand. This eventually led to the construction of Tempestus, and with it, the founding of Varlamore."
+              },
+              {
+                "player": "So are there still distinctions between the Talkasti and the Pericans now?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Yes and no. Those terms are no longer used to describe people today. Since we united, we have all been Varlamorians. However, you'll still find many traces of our previous divide."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "For example, here in Fortis, you'll find yourself surrounded by Perican architecture, whereas over in the Tlati Rainforest, the influence of the Talkasti remains clear."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Names are another good example. Indeed, look no further than our rulers. For most of our history, we were ruled by the Tullus dynasty, with Tullus very much being a name of Perican origin."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "However, we are now ruled by the Arkan dynasty, whose name can be traced back to early Talkasti nomads."
+              },
+              {
+                "player": "I see. So where did the name Varlamore come from."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "The name comes from the River Varla that separated Talkasti and Perican territory. What was once a symbol of our divide, became the symbol of our unification."
+              },
+              {
+                "player": "That was all super interesting! Thanks for the information."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Not a problem, iknami!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you tell me more about religion in Varlamore?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "J5NlyO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Varlamore's recent history?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "IfP9XU"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better get going. Thanks again.",
+                    "steps": [
+                      {
+                        "player": "I'd better get going. Thanks again."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Could you tell me more about religion in Varlamore?"
+            "text": "Could you tell me more about religion in Varlamore?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-Mmaqk"
+              }
+            ]
           },
           {
-            "text": "Could you tell me more about Varlamore's recent history?"
+            "text": "Could you tell me more about Varlamore's recent history?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Yh0cAL"
+              }
+            ]
           },
           {
             "text": "Could you tell me more about that empty display?",
@@ -116,7 +256,12 @@
             ]
           },
           {
-            "text": "Thanks. If I have any questions, I'll be sure to ask."
+            "text": "Thanks. If I have any questions, I'll be sure to ask.",
+            "steps": [
+              {
+                "player": "Thanks. If I have any questions, I'll be sure to ask."
+              }
+            ]
           }
         ]
       }
@@ -131,13 +276,153 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you tell me more about the early history of Varlamore?"
+            "text": "Could you tell me more about the early history of Varlamore?",
+            "steps": [
+              {
+                "player": "Could you tell me more about the early history of Varlamore?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Certainly! When it comes to the existence of Varlamore, it is Xeric we have to thank. During his Age of Strife, many refugees fled Kourend over the previously unexplored Custodia Mountains."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "There were three notable groups of these refugees. The first group, the Talkasti, settled in the Tlati Rainforest."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "While they initially lived nomadic lives, they eventually started to establish more permanent settlements, with Tal Teklan being the first."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "The next group were the Pericans. They first settled right here, building the town of Fortis, or Civitas illa Fortis as it eventually became."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Finally we have the dwarves. These were refugees from Lovakengj who established a home beneath Ralos' Rise, becoming known as the Dwarves of Cam Torum."
+              },
+              {
+                "player": "Was there any friction between these groups initially?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Oh yes, very much so. The dwarves, just as they do today, mostly kept to themselves. However, the Talkasti and Pericans came into regular conflict over various matters."
+              },
+              {
+                "player": "But that's not the case now, right? What brought them together?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "As you may well have already guessed, it was religion. Long before leaving Kourend, the Talkasti had taken to secretly worshipping Ralos and Ranul."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "After arriving here, they were able to openly practice their religion for the first time. Over time, the Pericans started to adopt this religion as well."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "As the two groups came together, the population of the region started to rapidly expand. This eventually led to the construction of Tempestus, and with it, the founding of Varlamore."
+              },
+              {
+                "player": "So are there still distinctions between the Talkasti and the Pericans now?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Yes and no. Those terms are no longer used to describe people today. Since we united, we have all been Varlamorians. However, you'll still find many traces of our previous divide."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "For example, here in Fortis, you'll find yourself surrounded by Perican architecture, whereas over in the Tlati Rainforest, the influence of the Talkasti remains clear."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Names are another good example. Indeed, look no further than our rulers. For most of our history, we were ruled by the Tullus dynasty, with Tullus very much being a name of Perican origin."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "However, we are now ruled by the Arkan dynasty, whose name can be traced back to early Talkasti nomads."
+              },
+              {
+                "player": "I see. So where did the name Varlamore come from."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "The name comes from the River Varla that separated Talkasti and Perican territory. What was once a symbol of our divide, became the symbol of our unification."
+              },
+              {
+                "player": "That was all super interesting! Thanks for the information."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Not a problem, iknami!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you tell me more about religion in Varlamore?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "J5NlyO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Varlamore's recent history?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "IfP9XU"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better get going. Thanks again.",
+                    "steps": [
+                      {
+                        "player": "I'd better get going. Thanks again."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Could you tell me more about religion in Varlamore?"
+            "text": "Could you tell me more about religion in Varlamore?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-Mmaqk"
+              }
+            ]
           },
           {
-            "text": "Could you tell me more about Varlamore's recent history?"
+            "text": "Could you tell me more about Varlamore's recent history?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Yh0cAL"
+              }
+            ]
           },
           {
             "text": "About that empty display...",
@@ -369,7 +654,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "e5GbYF"
+              }
+            ]
           },
           {
             "text": "Have you seen anybody suspicious around?",
@@ -417,7 +708,17 @@
             "text": "I'd like to change Renu's appearance."
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "Very well."
+              }
+            ]
           }
         ]
       }
@@ -432,7 +733,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "e5GbYF"
+              }
+            ]
           },
           {
             "text": "Have you seen anybody suspicious around?",
@@ -459,7 +766,17 @@
             "text": "I'd like to change Renu's appearance."
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "Very well."
+              }
+            ]
           }
         ]
       }
@@ -474,10 +791,196 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uuFChe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "lFWXUZ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E16ELi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "4La08M"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Yes, I would like to charter a ship."
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "cWB7vl"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "rZ5yT3"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J9Hspg"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "IM1Hv_"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "whvpaK"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "wYH6u4"
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
           },
           {
             "text": "Have you seen a man with a case?",
@@ -624,7 +1127,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -639,10 +1147,196 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uuFChe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "lFWXUZ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E16ELi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "4La08M"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Yes, I would like to charter a ship."
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "cWB7vl"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "rZ5yT3"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J9Hspg"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "IM1Hv_"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "whvpaK"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "wYH6u4"
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
           },
           {
             "text": "Have you seen a man with a case?",
@@ -671,8 +1365,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "6qr6Mw"
+                            "id": "6qr6Mw",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-b9a2ce46c6963855"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -693,8 +1392,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "oGeunj"
+                            "id": "oGeunj",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-b27f78b7223cffd6"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -736,10 +1440,196 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uuFChe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "lFWXUZ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E16ELi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "4La08M"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Yes, I would like to charter a ship."
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "cWB7vl"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "rZ5yT3"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J9Hspg"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "IM1Hv_"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "whvpaK"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "wYH6u4"
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
           },
           {
             "text": "So, about that man with the case.",
@@ -847,7 +1737,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you have?"
+            "text": "What do you have?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-xYzkA"
+              }
+            ]
           },
           {
             "text": "I was hoping for some help.",
@@ -946,7 +1842,13 @@
             ]
           },
           {
-            "text": "Just passing through, thanks."
+            "text": "Just passing through, thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "u5O9rO"
+              }
+            ]
           }
         ]
       }
@@ -961,7 +1863,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you have?"
+            "text": "What do you have?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-xYzkA"
+              }
+            ]
           },
           {
             "text": "So about those sails...",
@@ -1002,7 +1910,13 @@
             ]
           },
           {
-            "text": "Just passing through, thanks."
+            "text": "Just passing through, thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "u5O9rO"
+              }
+            ]
           }
         ]
       }
@@ -1017,7 +1931,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you have?"
+            "text": "What do you have?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-xYzkA"
+              }
+            ]
           },
           {
             "text": "So about those sails...",
@@ -1077,7 +1997,13 @@
             ]
           },
           {
-            "text": "Just passing through, thanks."
+            "text": "Just passing through, thanks.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "u5O9rO"
+              }
+            ]
           }
         ]
       }
@@ -1092,10 +2018,196 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uuFChe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "lFWXUZ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E16ELi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "4La08M"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Yes, I would like to charter a ship."
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "cWB7vl"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "rZ5yT3"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J9Hspg"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "IM1Hv_"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "whvpaK"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "wYH6u4"
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
           },
           {
             "text": "So, about that man with the case.",
@@ -1143,7 +2255,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -1158,10 +2275,196 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uuFChe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "lFWXUZ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E16ELi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "4La08M"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Yes, I would like to charter a ship."
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "cWB7vl"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "rZ5yT3"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J9Hspg"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "IM1Hv_"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "whvpaK"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "wYH6u4"
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
           },
           {
             "text": "So, about that man with the case.",
@@ -1176,13 +2479,23 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "n9i26i"
+                "id": "n9i26i",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-125c024e51aae5eb"
+                  }
+                ]
               }
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -1197,10 +2510,196 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uuFChe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "lFWXUZ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E16ELi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "4La08M"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Yes, I would like to charter a ship."
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "cWB7vl"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "rZ5yT3"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J9Hspg"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "IM1Hv_"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "whvpaK"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "wYH6u4"
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
           },
           {
             "text": "Have you seen a grey-haired man with a case?",
@@ -1227,7 +2726,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -1242,10 +2746,196 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes, who are you?"
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uuFChe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rzmokz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "lFWXUZ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E16ELi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "4La08M"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Yes, I would like to charter a ship."
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "cWB7vl"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "rZ5yT3"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J9Hspg"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "IM1Hv_"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "whvpaK"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "wYH6u4"
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
           },
           {
             "text": "Have you seen a grey-haired man with a case?",
@@ -1264,7 +2954,12 @@
             ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           }
         ]
       }
@@ -1279,7 +2974,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can I see your wares?"
+            "text": "Can I see your wares?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "q51isp"
+              }
+            ]
           },
           {
             "text": "Have you seen a grey-haired man with a case?",
@@ -1357,10 +3058,76 @@
             ]
           },
           {
-            "text": "Could I buy some more pink dye?"
+            "text": "Could I buy some more pink dye?",
+            "steps": [
+              {
+                "player": "Could I buy some more pink dye?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "Of course. It's 20 coins per bottle."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 20 coins and open inventory space:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sounds good.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JcQibM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, I'll pass.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JFc3Pi"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "dUcE4v"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 20 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xd9gqu"
+                  }
+                ],
+                "id": "JiHT8c"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have free inventory space:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for any."
+                  }
+                ],
+                "id": "67DfrZ"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1375,7 +3142,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can I see your wares?"
+            "text": "Can I see your wares?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "q51isp"
+              }
+            ]
           },
           {
             "text": "About those notes...",
@@ -1449,10 +3222,76 @@
             ]
           },
           {
-            "text": "Could I buy some more pink dye?"
+            "text": "Could I buy some more pink dye?",
+            "steps": [
+              {
+                "player": "Could I buy some more pink dye?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "Of course. It's 20 coins per bottle."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 20 coins and open inventory space:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sounds good.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JcQibM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, I'll pass.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JFc3Pi"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "dUcE4v"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 20 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xd9gqu"
+                  }
+                ],
+                "id": "JiHT8c"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have free inventory space:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for any."
+                  }
+                ],
+                "id": "67DfrZ"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1472,7 +3311,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can I see your wares?"
+            "text": "Can I see your wares?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "q51isp"
+              }
+            ]
           },
           {
             "text": "I managed to decipher those notes.",
@@ -1496,10 +3341,76 @@
             ]
           },
           {
-            "text": "Could I buy some more pink dye?"
+            "text": "Could I buy some more pink dye?",
+            "steps": [
+              {
+                "player": "Could I buy some more pink dye?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "Of course. It's 20 coins per bottle."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 20 coins and open inventory space:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sounds good.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JcQibM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, I'll pass.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JFc3Pi"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "dUcE4v"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 20 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Xd9gqu"
+                  }
+                ],
+                "id": "JiHT8c"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have free inventory space:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for any."
+                  }
+                ],
+                "id": "67DfrZ"
+              }
+            ]
           },
           {
-            "text": "I'm good, thanks."
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1514,7 +3425,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Talk about Fossil Island."
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ZKRGaf"
+              }
+            ]
           },
           {
             "text": "I'm looking for Xerna's Diadem.",
@@ -1546,13 +3463,132 @@
             ]
           },
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "aevsei"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -1567,7 +3603,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Talk about Fossil Island."
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ZKRGaf"
+              }
+            ]
           },
           {
             "text": "I'm looking for Xerna's Diadem.",
@@ -1583,13 +3625,132 @@
             ]
           },
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "aevsei"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -1658,7 +3819,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Talk about Fossil Island."
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ZKRGaf"
+              }
+            ]
           },
           {
             "text": "I found Xerna's Diadem...",
@@ -2589,13 +4756,132 @@
             ]
           },
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "aevsei"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -2610,7 +4896,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Talk about Fossil Island."
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ZKRGaf"
+              }
+            ]
           },
           {
             "text": "About Xerna's Diadem...",
@@ -2629,13 +4921,132 @@
             ]
           },
           {
-            "text": "Have you any interesting news?"
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dwJpG2"
+                  }
+                ],
+                "id": "eSsOcb"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X9TO_8"
+                  }
+                ],
+                "id": "1RIiH_"
+              }
+            ]
           },
           {
-            "text": "Do you know where I could find any treasure?"
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pkFLbX"
+              }
+            ]
           },
           {
-            "text": "How do I get a medallion?"
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1wehEl"
+                  }
+                ],
+                "id": "Lg_PTN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "YRgjB_"
+                  }
+                ],
+                "id": "MM8_yB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "08vMNp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uls3V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "aevsei"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "Rp1F04"
+              }
+            ]
           }
         ]
       }
@@ -2653,13 +5064,156 @@
         "type": "choice",
         "options": [
           {
-            "text": "Could you tell me more about the early history of Varlamore?"
+            "text": "Could you tell me more about the early history of Varlamore?",
+            "steps": [
+              {
+                "player": "Could you tell me more about the early history of Varlamore?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Certainly! When it comes to the existence of Varlamore, it is Xeric we have to thank. During his Age of Strife, many refugees fled Kourend over the previously unexplored Custodia Mountains."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "There were three notable groups of these refugees. The first group, the Talkasti, settled in the Tlati Rainforest."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "While they initially lived nomadic lives, they eventually started to establish more permanent settlements, with Tal Teklan being the first."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "The next group were the Pericans. They first settled right here, building the town of Fortis, or Civitas illa Fortis as it eventually became."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Finally we have the dwarves. These were refugees from Lovakengj who established a home beneath Ralos' Rise, becoming known as the Dwarves of Cam Torum."
+              },
+              {
+                "player": "Was there any friction between these groups initially?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Oh yes, very much so. The dwarves, just as they do today, mostly kept to themselves. However, the Talkasti and Pericans came into regular conflict over various matters."
+              },
+              {
+                "player": "But that's not the case now, right? What brought them together?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "As you may well have already guessed, it was religion. Long before leaving Kourend, the Talkasti had taken to secretly worshipping Ralos and Ranul."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "After arriving here, they were able to openly practice their religion for the first time. Over time, the Pericans started to adopt this religion as well."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "As the two groups came together, the population of the region started to rapidly expand. This eventually led to the construction of Tempestus, and with it, the founding of Varlamore."
+              },
+              {
+                "player": "So are there still distinctions between the Talkasti and the Pericans now?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Yes and no. Those terms are no longer used to describe people today. Since we united, we have all been Varlamorians. However, you'll still find many traces of our previous divide."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "For example, here in Fortis, you'll find yourself surrounded by Perican architecture, whereas over in the Tlati Rainforest, the influence of the Talkasti remains clear."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Names are another good example. Indeed, look no further than our rulers. For most of our history, we were ruled by the Tullus dynasty, with Tullus very much being a name of Perican origin."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "However, we are now ruled by the Arkan dynasty, whose name can be traced back to early Talkasti nomads."
+              },
+              {
+                "player": "I see. So where did the name Varlamore come from."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "The name comes from the River Varla that separated Talkasti and Perican territory. What was once a symbol of our divide, became the symbol of our unification."
+              },
+              {
+                "player": "That was all super interesting! Thanks for the information."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator",
+                "text": "Not a problem, iknami!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you tell me more about religion in Varlamore?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "J5NlyO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Varlamore's recent history?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "IfP9XU"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better get going. Thanks again.",
+                    "steps": [
+                      {
+                        "player": "I'd better get going. Thanks again."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Could you tell me more about religion in Varlamore?"
+            "text": "Could you tell me more about religion in Varlamore?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-Mmaqk"
+              }
+            ]
           },
           {
-            "text": "Could you tell me more about Varlamore's recent history?"
+            "text": "Could you tell me more about Varlamore's recent history?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Yh0cAL"
+              }
+            ]
           },
           {
             "text": "About that empty display...",
@@ -2714,13 +5268,728 @@
             ]
           },
           {
-            "text": "Thanks. If I have any questions, I'll be sure to ask."
+            "text": "Thanks. If I have any questions, I'll be sure to ask.",
+            "steps": [
+              {
+                "player": "Thanks. If I have any questions, I'll be sure to ask."
+              },
+              {
+                "type": "end"
+              }
+            ]
           }
         ]
       },
       {
         "type": "unavailable",
         "id": "FdCw-Z"
+      }
+    ]
+  },
+  "branches": {
+    "jump-6e899c9e7fd0c879": [
+      {
+        "player": "Yes, I would like to charter a ship."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the bedsheet in their inventory:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Charter ship",
+            "id": "mbDjCu"
+          },
+          {
+            "type": "action",
+            "text": "Player selects destination",
+            "id": "8WudTZ"
+          },
+          {
+            "type": "action",
+            "text": "Sailing to [destination] costs [x] coins.",
+            "id": "ihG9Wq"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player is transported to the destination",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "U7KiEJ"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Choose again",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "mmm4uy"
+                  }
+                ]
+              },
+              {
+                "text": "Cancel",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "pl6h8_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player chooses Crandor during Dragon Slayer I:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Trader Crewmember",
+            "text": "Crandor? Are you crazy? No charter ship would take you to that island. You'd need to use your own ship, but even then, you'd need a miracle to find a safe route there!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XLEH9H"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the bedsheet in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Trader Crewmember",
+            "text": "Sorry, but we aren't a laundry ship. You'll need to leave those dirty bedsheets behind."
+          },
+          {
+            "player": "Would you let me bring it if I told you it was a security blanket?"
+          },
+          {
+            "type": "line",
+            "speaker": "Trader Crewmember",
+            "text": "No, then we would just mock you."
+          },
+          {
+            "player": "Ah, I see."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "78kMDr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Trader Crewmember",
+            "text": "Is that your bedsheet covered in filthy slime?"
+          },
+          {
+            "player": "I can say in all honesty that it is not."
+          },
+          {
+            "type": "line",
+            "speaker": "Trader Crewmember",
+            "text": "Well, whoever it belongs to, it's not coming on this ship!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KoR3ZR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has Karamjan rum in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Trader Crewmember",
+            "text": "I'm afraid we can't take you anywhere if you're trying to smuggle that rum."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1R0gqM"
+      }
+    ],
+    "jump-b9a2ce46c6963855": [
+      {
+        "player": "Sure. What do you need?"
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "duCd6b"
+      }
+    ],
+    "jump-b27f78b7223cffd6": [
+      {
+        "player": "As long as it is just the one favour..."
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "uNFa9J"
+      }
+    ],
+    "jump-125c024e51aae5eb": [
+      {
+        "player": "So, about that man with the case."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Oh, yeah. You're meant to be getting our sails fixed up, right?"
+      },
+      {
+        "player": "Here they are!"
+      },
+      {
+        "type": "message",
+        "text": "You hand the newly fixed sails over to the trader.",
+        "id": "7Wg9ig"
+      },
+      {
+        "player": "Oh, and Artima said thanks for the latest shipment."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "That's great! Always nice to hear from a happy customer!"
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Anyway, the man with the case. Grey-haired fella, right? Yeah, he came by. Asked if he could have a go with our boat. Told him that's not really how this works."
+      },
+      {
+        "player": "And then what? Where did he go?"
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Well, we explained how it does work and he then asked us to take him to Port Sarim..."
+      },
+      {
+        "player": "Port Sarim? I see... Thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "-Mmaqk": [
+      {
+        "player": "Could you tell me more about religion in Varlamore?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Of course! Whereas in other parts of the world you'll likely find followers of many gods, here in Varlamore, you'll only really find those dedicated to Ralos and Ranul."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Losanium is the official term for this religion, though it is not a term you'll find used very often."
+      },
+      {
+        "player": "How come?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Losanium encompasses the worship of both Ralos and Ranul, and while they do indeed go hand in hand, it is rare to find individuals equally dedicated to both."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Instead, most people focus their worship on one of the two, with Ralos being by far the more popular. Something that isn't too surprising given Ranul's association with death."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Now that said, you might actually find a higher than normal number of Ranul worshippers right here in the museum."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Something that is easily forgotten is that while Ranul is indeed a god of death, he is also a god of learning and knowledge."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "If you wish to learn more, you may well want to seek out one of the teoki in the temple to the south. Though of course, they may well have somewhat biased takes on their religious practices."
+      },
+      {
+        "player": "I'll keep that in mind. Thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Don't mention it."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "S0bAhq"
+      }
+    ],
+    "Yh0cAL": [
+      {
+        "player": "Could you tell me more about Varlamore's recent history?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "I can indeed! When it comes to recent events in the kingdom, the best place to start is with the War of Betrayal. It all started around 100 years ago when Imafore Tullus ascended to the throne."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "He soon reorganised the kingdom into the Varlamorian Empire, a controversial choice to say the least, though it soon became clear that controversial choices were quite popular with Imafore."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "While public opinion was always mixed, nothing he did resulted in outright conflict until his sudden and brutal murder of the Kourend Royal Family. War was quickly declared."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Until that day, Varlamore had successfully managed to avoid conflict since before the kingdom was officially established. To say the war was unpopular would be an understatement."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Imafore soon found himself facing as much resistance from within as he did from Kourend. The end result was predictable."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Imafore and his forces found themselves trapped between two armies at the Battle of the Proudspire. He was captured and executed, bringing an end to the Tullus dynasty."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "This brings us to a fun little fact. After his death, Imafore was succeeded by King Mezpah Arkan. One of his first acts was to call for the beheading of every statue of Imafore in the kingdom."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "The statues remain to this day. It's actually a crime to try and remove them. They exist as a reminder of our history, and a warning to any who would try to follow in Imafore's footsteps."
+      },
+      {
+        "player": "I'll have to keep an eye out for them."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Indeed. I often like to challenge people to try and find them all!"
+      },
+      {
+        "player": "So how has the kingdom changed since Imafore died?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "The War of Betrayal was very much seen as a wake- up call. While Varlamore had once flourished under the traditions of the Tullus dynasty, by the end, it's fair to say we were stagnating."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "King Mezpah set to work on transforming the kingdom. His ambitions were high, to the point that much of what he desired never came to pass in his lifetime."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "One of his most notable goals was to see Varlamore open more widely to the outer world. A goal which thanks to his great-granddaughter, has now finally been achieved!"
+      },
+      {
+        "player": "Well then I should be very thankful. Without him, I might never have been allowed to visit!"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "Indeed. We would often send our students on trips to the east prior to the opening of the borders. The amount of paperwork needed was astounding! Now we can just hop on a ship any time we like!"
+      },
+      {
+        "player": "That definitely sounds much more fun. Thanks for all the information."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator",
+        "text": "It's not a problem, iknami."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "OVOLmP"
+      }
+    ],
+    "e5GbYF": [
+      {
+        "player": "Yes please."
+      },
+      {
+        "type": "line",
+        "speaker": "Regulus Cento",
+        "text": "Then we will depart at once."
+      }
+    ],
+    "uuFChe": [
+      {
+        "player": "Yes, let's see what you're trading."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Trader Stan's Trading Post",
+        "id": "TwQVDu"
+      }
+    ],
+    "lFWXUZ": [
+      {
+        "type": "call",
+        "branch": "jump-6e899c9e7fd0c879"
+      }
+    ],
+    "E16ELi": [
+      {
+        "player": "Isn't it tricky to sail about in those clothes?"
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Tricky? Tricky!"
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "With all due credit, Trader Stan is a great employer, but he insists we wear the latest in high fashion even when sailing."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Do you have even the slightest idea how tricky it is to sail in this stuff?"
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Some of us tried tearing it and arguing that it was too fragile to wear when on a boat, but he just had it enchanted to re-stitch itself."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "It's hard to hate him when we know how much he shells out on this gear, but if I fall overboard because of this getup one more time, I'm going to quit."
+      },
+      {
+        "player": "Wow, that's kind of harsh."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Yes... Anyway, would you like to take a look at our exotic wares from around the world? Or would you like to charter a ship?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "BON-iU"
+      }
+    ],
+    "4La08M": [
+      {
+        "type": "jump",
+        "reference": "below",
+        "id": "cp72IU"
+      }
+    ],
+    "cWB7vl": [
+      {
+        "type": "action",
+        "text": "The player is transported to the destination",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "U7KiEJ"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "rZ5yT3": [
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "mmm4uy"
+      }
+    ],
+    "J9Hspg": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Crandor? Are you crazy? No charter ship would take you to that island. You'd need to use your own ship, but even then, you'd need a miracle to find a safe route there!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "IM1Hv_": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Sorry, but we aren't a laundry ship. You'll need to leave those dirty bedsheets behind."
+      },
+      {
+        "player": "Would you let me bring it if I told you it was a security blanket?"
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "No, then we would just mock you."
+      },
+      {
+        "player": "Ah, I see."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "whvpaK": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Is that your bedsheet covered in filthy slime?"
+      },
+      {
+        "player": "I can say in all honesty that it is not."
+      },
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Well, whoever it belongs to, it's not coming on this ship!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "wYH6u4": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "I'm afraid we can't take you anywhere if you're trying to smuggle that rum."
+      }
+    ],
+    "-xYzkA": [
+      {
+        "player": "What do you have?"
+      },
+      {
+        "type": "line",
+        "speaker": "Artima",
+        "text": "Have a look."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Artima's Crafting Supplies",
+        "id": "f3uUCS"
+      }
+    ],
+    "u5O9rO": [
+      {
+        "player": "Just passing through, thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Artima",
+        "text": "Well come back if you change your mind."
+      }
+    ],
+    "q51isp": [
+      {
+        "player": "Can I see your wares?"
+      },
+      {
+        "type": "line",
+        "speaker": "Betty",
+        "text": "Of course."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Betty's Magic Emporium",
+        "id": "uweQRh"
+      }
+    ],
+    "JcQibM": [
+      {
+        "player": "Sounds good."
+      },
+      {
+        "type": "message",
+        "text": "Betty sells you some pink dye in exchange for 20 coins.",
+        "id": "cbITuD"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "JFc3Pi": [
+      {
+        "player": "Actually, I'll pass."
+      },
+      {
+        "type": "line",
+        "speaker": "Betty",
+        "text": "Fair enough."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "Xd9gqu": [
+      {
+        "player": "Oh, I don't have enough money with me."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "ZKRGaf": [
+      {
+        "player": "I've got some questions regarding Fossil Island."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Ah, how can I help?"
+      },
+      {
+        "type": "choice",
+        "options": []
+      }
+    ],
+    "dwJpG2": [
+      {
+        "player": "Have you any interesting news?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Yes, we found a rather interesting island to the North of Morytania. We believe that it may be of archaeological significance."
+      },
+      {
+        "player": "Oh? That sounds interesting."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Indeed. We are making the final preparations for our voyage, in fact, you may be just the person we are looking for... Assuming you've got the necessary qualifications, that is."
+      },
+      {
+        "player": "Would I qualify then?"
+      },
+      {
+        "type": "reference",
+        "target": "Transcript:Bone Voyage",
+        "section": "",
+        "text": "Continues in Transcript:Bone Voyage",
+        "id": "C60sf8",
+        "resolved": false,
+        "page_available": true
+      }
+    ],
+    "X9TO_8": [
+      {
+        "player": "Have you any interesting news?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "We've seen some incredible specimens come back from Fossil Island!"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Be sure to bring anything you find back for examination - we've got a brand new Palaeontology room downstairs dedicated to finds from the island."
+      }
+    ],
+    "pkFLbX": [
+      {
+        "player": "Do you know where I could find any treasure?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Look around you! This museum is full of treasures!"
+      },
+      {
+        "player": "No, I meant treasures for ME."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Any treasures this museum knows about it goes to great lengths to acquire."
+      }
+    ],
+    "1wehEl": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Well, firstly you'll need to do a bit of work around the museum, then maybe we can talk."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "YRgjB_": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Oh dear. You'll need 250 rubies, a Digsite pendant, 100 cosmic runes and 500 fire runes with you I'm afraid."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "08vMNp": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Thank you. You have [X] to go before you have enough for a medallion."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "aevsei": [
+      {
+        "type": "message",
+        "text": "The curator hands you a medallion.",
+        "id": "qrOUUk"
       }
     ]
   }

@@ -425,8 +425,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "i1mZ3b"
+                "id": "i1mZ3b",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4829b27fe52b50a7"
+                  }
+                ]
               }
             ]
           }
@@ -2115,7 +2120,18 @@
         "type": "choice",
         "options": [
           {
-            "text": "Okay, let's see what you've got then."
+            "text": "Okay, let's see what you've got then.",
+            "steps": [
+              {
+                "player": "Okay, let's see what you've got then."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Fancy Clothes Store",
+                "id": "7E_2Gl"
+              }
+            ]
           },
           {
             "text": "Do you have a spare Priest Gown?",
@@ -2147,13 +2163,42 @@
             ]
           },
           {
-            "text": "I think I might just leave the perusing for now, thanks."
+            "text": "I think I might just leave the perusing for now, thanks.",
+            "steps": [
+              {
+                "player": "I think I might just leave the perusing for now, thanks."
+              }
+            ]
           },
           {
             "text": "Can you make clothing suitable for hunting?"
           },
           {
-            "text": "What sort of unusual materials did you have in mind?"
+            "text": "What sort of unusual materials did you have in mind?",
+            "steps": [
+              {
+                "player": "What sort of unusual materials did you have in mind?"
+              },
+              {
+                "type": "line",
+                "speaker": "Asyff",
+                "text": "Well, some more colourful feathers might be useful. For some surreal reason, all I normally seem to get offered are large quantities of rather beaten-up looking chicken feathers."
+              },
+              {
+                "type": "line",
+                "speaker": "Asyff",
+                "text": "People must have some very strange pastimes around these parts, that's all I can say."
+              },
+              {
+                "player": "Ok, let's see what you've got then."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Fancy Clothes Store",
+                "id": "u7z1Bf"
+              }
+            ]
           }
         ]
       }
@@ -2715,6 +2760,19 @@
     ]
   },
   "branches": {
+    "jump-4829b27fe52b50a7": [
+      {
+        "player": "I'll be back soon."
+      },
+      {
+        "type": "line",
+        "speaker": "Omart",
+        "text": "Don't take too long, those mourners will soon be rid of those birds."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "dW9Dl-": [
       {
         "type": "line",

@@ -157,8 +157,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "MtTmuA"
+                        "id": "MtTmuA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-dc57317efb23d9b0"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -184,8 +189,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "61xwQ6"
+                "id": "61xwQ6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-03f013519d359307"
+                  }
+                ]
               }
             ]
           }
@@ -1262,6 +1272,92 @@
       {
         "type": "unavailable",
         "id": "0h167k"
+      }
+    ]
+  },
+  "branches": {
+    "jump-dc57317efb23d9b0": [
+      {
+        "player": "Elves? I've never seen an elf before."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "Well that may well change soon. Apparently, my brother has been causing them quite a bit of trouble. As such, they've agreed to help us get rid of him once and for all."
+      },
+      {
+        "player": "So what do I need to do?"
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "You are to head into the Underground Pass and through the Well of Voyage. Lord Iorwerth, the leader of the elves, will send some representatives to meet you on the other side."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "With their help, you are to find my brother and kill him. Once that's done, return to me."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Regicide quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Very well. Anything else I should know?"
+              },
+              {
+                "type": "line",
+                "speaker": "King Lathas",
+                "text": "My brother may not be the only threat you face. I hear the elves are currently dealing with a rebellion. The rebels likely won't take kindly to you working with their enemy so be on the look out."
+              },
+              {
+                "player": "I see. I'll be careful."
+              },
+              {
+                "type": "line",
+                "speaker": "King Lathas",
+                "text": "Good luck adventurer."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:regicide:start",
+            "quest": "Regicide"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Actually, I don't think I'm ready for this yet."
+              },
+              {
+                "type": "line",
+                "speaker": "King Lathas",
+                "text": "As you wish. Return to me when you are ready and we will begin."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-03f013519d359307": [
+      {
+        "player": "Sounds good. See you later."
+      },
+      {
+        "type": "line",
+        "speaker": "King Lathas",
+        "text": "Farewell adventurer. Return to me once you are ready to begin."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -143,8 +143,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "iGVU_a"
+                        "id": "iGVU_a",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-11e6e3137bcf5d39"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -196,8 +201,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "crv411"
+                            "id": "crv411",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-d9f6b5f79376c6ab"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -266,8 +276,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XwIKca"
+                "id": "XwIKca",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6be190f0ca4faa9e"
+                  }
+                ]
               }
             ]
           }
@@ -368,8 +383,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-pKvVi"
+                "id": "-pKvVi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6be190f0ca4faa9e"
+                  }
+                ]
               }
             ]
           }
@@ -414,6 +434,134 @@
       },
       {
         "npc": "Eugh."
+      }
+    ]
+  },
+  "branches": {
+    "jump-11e6e3137bcf5d39": [
+      {
+        "npc": "A new gang calling themselves the Saviours of Kourend has recently formed. That's not surprising as gangs come and go all of the time, but this one is different."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "npc": "The Saviours of Kourend have been absorbing many of the other gangs. Within a few weeks they've already become the largest gang in Kourend and more join them each day."
+      },
+      {
+        "npc": "The talk amongst the people is that it's all down to their leader, a mysterious figure known only as the Queen of Thieves."
+      },
+      {
+        "player": "Nice name. Why doesn't the ruler of Port Piscarilius do something about this?"
+      },
+      {
+        "npc": "Shauna Piscarilius is the ruler of Port Piscarilius, but she spends most of her time galavanting around in that boat of hers rather than looking after her home."
+      },
+      {
+        "player": "Fair enough. So what do you need me for?"
+      },
+      {
+        "npc": "Well my original plan was to infiltrate the gang to get close to the Queen and capture her. However, I've been unable to make any progress. Apparently, I don't look the part."
+      },
+      {
+        "player": "Yeah not sure what that's all about. You clearly fit right in here."
+      },
+      {
+        "npc": "Quite right. They're quite insistent though, so someone else will need to give it a go. You look like you might be just the type they're after."
+      },
+      {
+        "player": "What are you trying to say?"
+      },
+      {
+        "npc": "That you look poor."
+      },
+      {
+        "player": "Oh..."
+      },
+      {
+        "npc": "Anyway if you're up for the task you'll need to infiltrate the Saviours of Kourend, find the Queen of Thieves, apprehend her and then bring her to me."
+      },
+      {
+        "npc": "So are you up for it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Absolutely.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The Queen of Thieves has been started.",
+                "id": "ZWTOyC"
+              },
+              {
+                "player": "Absolutely."
+              },
+              {
+                "npc": "Excellent. The Saviours of Kourend must have their headquarters somewhere nearby. You should ask around town and see if anyone knows where they are. Good luck."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Nah.",
+            "steps": [
+              {
+                "player": "Nah."
+              },
+              {
+                "npc": "Fair enough. I'll be here if you change your mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-d9f6b5f79376c6ab": [
+      {
+        "player": "What's the Kourend Council?"
+      },
+      {
+        "npc": "Although it's called a kingdom, Great Kourend hasn't actually had a king for many years. These days Kourend is a republic and it is ruled by the Kourend Council."
+      },
+      {
+        "npc": "The Council consists of four councillors who are elected by the people every four years. The current councillors are Councillor Hughes, Councillor Unkar, Councillor Orson and Councillor Andrews."
+      },
+      {
+        "player": "I see. So what are you investigating?"
+      },
+      {
+        "npc": "Port Piscarilius is home to various gangs. They're a nuisance, but up until now we haven't had much trouble in dealing with them."
+      },
+      {
+        "player": "So what's the problem?"
+      },
+      {
+        "type": "jump",
+        "id": "iGVU_a",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-11e6e3137bcf5d39"
+          }
+        ]
+      }
+    ],
+    "jump-6be190f0ca4faa9e": [
+      {
+        "player": "Nothing thanks."
+      },
+      {
+        "npc": "Very well. Until next time."
+      },
+      {
+        "type": "end"
       }
     ]
   }

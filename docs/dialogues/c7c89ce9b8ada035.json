@@ -1,5 +1,63 @@
 {
   "branches": {
+    "jump-b89b89abc446a635": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have enough money:",
+        "steps": [
+          {
+            "player": "I don't have that much money on me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eJifzx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough money:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "All right",
+                "steps": [
+                  {
+                    "player": "All right."
+                  },
+                  {
+                    "npc": "There you go."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "their requested portrait.",
+                    "id": "Rh0qHh"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "npc": "Well, mmm, maybe some other time, mmm?"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "4ffnYZ"
+      }
+    ],
     "vbxGFH": [
       {
         "npc": "You do not seem to be very devoted to any god. I will not let you have a divine symbol unless you have level 70 prayer."
@@ -852,8 +910,13 @@
                                     },
                                     {
                                       "type": "jump",
-                                      "reference": "above",
-                                      "id": "z9C7bV"
+                                      "id": "z9C7bV",
+                                      "steps": [
+                                        {
+                                          "type": "call",
+                                          "branch": "jump-b89b89abc446a635"
+                                        }
+                                      ]
                                     }
                                   ]
                                 },

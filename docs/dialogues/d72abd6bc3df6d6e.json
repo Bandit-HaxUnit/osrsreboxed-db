@@ -468,8 +468,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XlERfs"
+                "id": "XlERfs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2dd18e4cddf42508"
+                  }
+                ]
               }
             ]
           }
@@ -1479,6 +1484,29 @@
       {
         "type": "unavailable",
         "id": "rpGhae"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2dd18e4cddf42508": [
+      {
+        "player": "Well... I don't know... This doesn't really sound like my kind of thing..."
+      },
+      {
+        "player": "To be honest, I'd rather go kill stuff for loot than use my mind to work things out..."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Well, it takes all sorts to make the world spin, what? Maybe you'll find a nice job with the Guards sometime."
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Sad though, your intelligence file seemed quite promising. Should you change your mind, you come back and let me know, what?"
+      },
+      {
+        "type": "end"
       }
     ]
   }

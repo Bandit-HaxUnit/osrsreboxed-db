@@ -111,8 +111,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LYCh32"
+                "id": "LYCh32",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-314b1b38883c75a3"
+                  }
+                ]
               }
             ]
           },
@@ -121,8 +126,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Zfpuf9"
+                "id": "Zfpuf9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-064825082b11c1e3"
+                  }
+                ]
               }
             ]
           }
@@ -152,6 +162,50 @@
           }
         ],
         "id": "5biOuW"
+      }
+    ]
+  },
+  "branches": {
+    "jump-314b1b38883c75a3": [
+      {
+        "player": "Do you have any of my items?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items in Torfinn's collection:",
+        "steps": [
+          {
+            "npc": "I do have some of your items here [Fremennik name]. Try not to lose them next time."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Torfinn's Item Retrieval Service",
+            "id": "VU92g2"
+          }
+        ],
+        "id": "k9djVI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have items in Torfinn's collection:",
+        "steps": [
+          {
+            "npc": "I'm afraid not [Fremennik name]. If I did have any of your items, but you died before collecting them, they'll now be lost."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Tj5FP2"
+      }
+    ],
+    "jump-064825082b11c1e3": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

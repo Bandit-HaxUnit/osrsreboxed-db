@@ -94,8 +94,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1Q1lib"
+                "id": "1Q1lib",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-129d6229990f070b"
+                  }
+                ]
               }
             ]
           },
@@ -104,8 +109,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "l3jrGv"
+                "id": "l3jrGv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-73b3136c7d25a5e4"
+                  }
+                ]
               }
             ]
           },
@@ -114,8 +124,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "dtiqPw"
+                "id": "dtiqPw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f48f5a1cade5e3c2"
+                  }
+                ]
               }
             ]
           }
@@ -131,8 +146,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YM4hWu"
+                "id": "YM4hWu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-129d6229990f070b"
+                  }
+                ]
               }
             ]
           },
@@ -141,8 +161,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Zo9CW0"
+                "id": "Zo9CW0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-73b3136c7d25a5e4"
+                  }
+                ]
               }
             ]
           },
@@ -195,8 +220,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "JW5ehw"
+                "id": "JW5ehw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f48f5a1cade5e3c2"
+                  }
+                ]
               }
             ]
           }
@@ -252,6 +282,91 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-129d6229990f070b": [
+      {
+        "npc": "Ha, well I'm retired now, but in my heyday I was quite the expert fisherman! These days I just help out around the village where I can, my old bones don't allow me to do any more than that."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "T0xhMF"
+      }
+    ],
+    "jump-73b3136c7d25a5e4": [
+      {
+        "player": "Is there anything interesting to do around here?"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Bwana, if anyone else asks me that question today, I'll explode! Go and ask someone else!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Not that I'm aware of, just sit back and enjoy the sunshine bwana!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Well, I think that there's some work to be done...perhaps Murcaily can help you. He usually tends to the hardwood grove to the east of Trufitus's hut."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "It's just village life as normal around here Bwana, always something interesting to find to occupy your time if you look hard enough."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Sorry Bwana, I'm already busy, why not go and talk to Murcaily! He's around the village somewhere."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f48f5a1cade5e3c2": [
+      {
+        "player": "Ok, thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

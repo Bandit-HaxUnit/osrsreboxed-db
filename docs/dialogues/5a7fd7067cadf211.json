@@ -100,8 +100,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4jx9AC"
+                "id": "4jx9AC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2a474a2fe3e589bc"
+                  }
+                ]
               }
             ]
           }
@@ -258,6 +263,19 @@
             "id": "CoOk32"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-2a474a2fe3e589bc": [
+      {
+        "player": "I'm not interested, no."
+      },
+      {
+        "npc": "I'm really sorry to hear that, I thought you were just the human for the job."
+      },
+      {
+        "type": "end"
       }
     ]
   }

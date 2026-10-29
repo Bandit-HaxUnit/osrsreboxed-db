@@ -133,8 +133,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Qpdswu"
+                "id": "Qpdswu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-073a24c7dbb2dd6f"
+                  }
+                ]
               }
             ]
           },
@@ -143,8 +148,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "eyO111"
+                "id": "eyO111",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ce8e65bb6e896e5e"
+                  }
+                ]
               }
             ]
           }
@@ -154,6 +164,32 @@
     "after-pirate-s-treasure-using-a-karamjan-rum-on-him-after-pirate-s-treasure-is-completed": [
       {
         "npc": "Thanks fer the thought, but I still have to finish this bottle."
+      }
+    ]
+  },
+  "branches": {
+    "jump-073a24c7dbb2dd6f": [
+      {
+        "player": "Arr!"
+      },
+      {
+        "npc": "Arr!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "WSie6L"
+      }
+    ],
+    "jump-ce8e65bb6e896e5e": [
+      {
+        "player": "Do you have anything for trade?"
+      },
+      {
+        "npc": "Nothin' at the moment, but then again the Customs Agents are on the warpath right now."
+      },
+      {
+        "type": "end"
       }
     ]
   }

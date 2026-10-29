@@ -43,8 +43,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "KRGkkz"
+                                "id": "KRGkkz",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e59288e430b2a742"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -115,8 +120,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "ND57-U"
+                                "id": "ND57-U",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-15c77702cbdb0a88"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -172,8 +182,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "10Y1jX"
+                        "id": "10Y1jX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9ba13c472af738f3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -276,8 +291,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nJtAAS"
+                "id": "nJtAAS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-44b5635cfecad1d3"
+                  }
+                ]
               }
             ]
           },
@@ -310,8 +330,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "Qjb7wW"
+                                "id": "Qjb7wW",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3329147fe51a9c78"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -332,8 +357,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "k_VlFT"
+                        "id": "k_VlFT",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-3329147fe51a9c78"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -342,8 +372,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "nlQy-f"
+                        "id": "nlQy-f",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-018863cd1e40ac06"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -447,6 +482,316 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-e59288e430b2a742": [
+      {
+        "player": "What kind of work?"
+      },
+      {
+        "npc": "Ah well you see we try to keep Gielinor as Guthix intended, it's very challenging. Actually we've been having some problems recently, maybe you could help us?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yeah ok, what's the problem?",
+            "steps": [
+              {
+                "player": "Yeah ok, what's the problem?"
+              },
+              {
+                "npc": "Well the order has become quite diminished over the years, it's a very long process to learn the skills of a Void Knight. Recently there have been breaches into our realm from somewhere else, and strange creatures"
+              },
+              {
+                "npc": "have been pouring through. We can't let that happen, and we'd be very grateful if you'd help us."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How can I help?",
+                    "steps": [
+                      {
+                        "player": "How can I help?"
+                      },
+                      {
+                        "npc": "We send launchers from our outpost to the nearby islands. If you go and wait in the lander there that'd really help."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sorry, but I can't.",
+                    "steps": [
+                      {
+                        "player": "Sorry, but I can't."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What's 'Gielinor'?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ND57-U",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-15c77702cbdb0a88"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd rather not, sorry.",
+            "steps": [
+              {
+                "player": "I'd rather not, sorry."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-15c77702cbdb0a88": [
+      {
+        "player": "What's 'Gielinor'?"
+      },
+      {
+        "npc": "It is the name that Guthix gave to this world, so we honour him with its use."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9ba13c472af738f3": [
+      {
+        "player": "I'd like to go to your outpost."
+      },
+      {
+        "npc": "Certainly, right this way."
+      },
+      {
+        "type": "action",
+        "text": "Player is transported to the Void Knights' Outpost",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "XkS9kZ"
+      },
+      {
+        "type": "message",
+        "text": "The ship arrives at the Void Knight outpost.",
+        "id": "zjAxna"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-44b5635cfecad1d3": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I'm a Squire for the Void Knights."
+      },
+      {
+        "player": "The who?"
+      },
+      {
+        "npc": "The Void Knights, they are great warriors of balance who do Guthix's work here in Gielinor."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Wow, can I join?",
+            "steps": [
+              {
+                "player": "Wow, can I join?"
+              },
+              {
+                "npc": "Entry is strictly invite only, however we do need help continuing Guthix's work."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What kind of work?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "KRGkkz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e59288e430b2a742"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Good luck with that.",
+                    "steps": [
+                      {
+                        "player": "Good luck with that."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What kind of work?",
+            "steps": [
+              {
+                "player": "What kind of work?"
+              },
+              {
+                "npc": "Ah well you see we try to keep Gielinor as Guthix intended, it's very challenging. Actually we've been having some problems recently, maybe you could help us?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yeah ok, what's the problem?",
+                    "steps": [
+                      {
+                        "player": "Yeah ok, what's the problem?"
+                      },
+                      {
+                        "npc": "Well the order has become quite diminished over the years, it's a very long process to learn the skills of a Void Knight. Recently there have been breaches into our realm from somewhere else, and strange creatures"
+                      },
+                      {
+                        "npc": "have been pouring through. We can't let that happen, and we'd be very grateful if you'd help us."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "How can I help?",
+                            "steps": [
+                              {
+                                "player": "How can I help?"
+                              },
+                              {
+                                "npc": "We send launchers from our outpost to the nearby islands. If you go and wait in the lander there that'd really help."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Sorry, but I can't.",
+                            "steps": [
+                              {
+                                "player": "Sorry, but I can't."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What's 'Gielinor'?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "ND57-U",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-15c77702cbdb0a88"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd rather not, sorry.",
+                    "steps": [
+                      {
+                        "player": "I'd rather not, sorry."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What's 'Gielinor'?",
+            "steps": [
+              {
+                "player": "What's 'Gielinor'?"
+              },
+              {
+                "npc": "It is the name that Guthix gave to this world, so we honour him with its use."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Uh huh, sure.",
+            "steps": [
+              {
+                "player": "Uh huh, sure."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3329147fe51a9c78": [
+      {
+        "player": "How can I help?"
+      },
+      {
+        "npc": "We send launchers from our outpost to the nearby islands. If you go and wait in the lander there that'd really help."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-018863cd1e40ac06": [
+      {
+        "player": "Good luck with that."
+      },
+      {
+        "type": "end"
       }
     ]
   }

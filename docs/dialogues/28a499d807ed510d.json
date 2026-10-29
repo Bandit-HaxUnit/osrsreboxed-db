@@ -1,4 +1,28 @@
 {
+  "branches": {
+    "jump-62629e5c2773860a": [
+      {
+        "player": "Show me what you have."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Daryl's Ranging Surplus",
+        "id": "bHEA-c"
+      }
+    ],
+    "jump-1664b61a5ae513ef": [
+      {
+        "player": "I don't think I need anything."
+      },
+      {
+        "npc": "Hmph..."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "What are you buying?"
@@ -43,8 +67,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "above",
-                      "id": "BpeRvH"
+                      "id": "BpeRvH",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-62629e5c2773860a"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -53,8 +82,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "B52Ud5"
+                      "id": "B52Ud5",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-1664b61a5ae513ef"
+                        }
+                      ]
                     }
                   ]
                 }

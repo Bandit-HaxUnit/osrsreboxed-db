@@ -266,8 +266,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "wiGYUM"
+                "id": "wiGYUM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-679e3b51b83c1183"
+                  }
+                ]
               }
             ]
           },
@@ -276,8 +281,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "mwv1-n"
+                "id": "mwv1-n",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8f26e3ac11a8eb69"
+                  }
+                ]
               }
             ]
           },
@@ -287,13 +297,76 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "RWhVeP"
+                "id": "RWhVeP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9929cf645056d948"
+                  }
+                ]
               }
             ],
             "id": "icdDCl"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-679e3b51b83c1183": [
+      {
+        "player": "What can I do in the city?"
+      },
+      {
+        "npc": "Why don't you visit the market? I hear there is quite a craze for surface foods at the moment, so you might be able to sell something there."
+      },
+      {
+        "npc": "You might also want to visit the caves to the south of the city. There are many monsters to fight there, and Zanik apparently found ways to cross over their heads!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ambassador Alvijar",
+        "text": "Headman Ur-tag, I cannot stress enough how important it is that this train link be completed on time. The mining companies have taken out considerable loans..."
+      },
+      {
+        "npc": "I understand your concerns, Ambassador, but you must realise that the discoveries must change the whole schedule. To remove them too hurriedly would be a crime against knowledge."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "O3Dznv"
+      }
+    ],
+    "jump-8f26e3ac11a8eb69": [
+      {
+        "player": "Why did you decide to open the city?"
+      },
+      {
+        "npc": "For trade, and for fostering goodwill between races! I am sure that it will benefit both our races."
+      },
+      {
+        "type": "line",
+        "speaker": "Ambassador Alvijar",
+        "text": "Headman Ur-tag, I cannot stress enough how important it is that this train link be completed on time. The mining companies have taken out considerable loans..."
+      },
+      {
+        "npc": "I understand your concerns, Ambassador, but you must realise that the discoveries must change the whole schedule. To remove them too hurriedly would be a crime against knowledge."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "xRkqzc"
+      }
+    ],
+    "jump-9929cf645056d948": [
+      {
+        "player": "May I have permission to sell food in the market?"
+      },
+      {
+        "npc": "Of course you can."
+      },
+      {
+        "type": "end"
       }
     ]
   }

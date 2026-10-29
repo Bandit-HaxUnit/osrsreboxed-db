@@ -270,8 +270,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1i3WrD"
+                "id": "1i3WrD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f449712b4a6e4369"
+                  }
+                ]
               }
             ]
           },
@@ -280,8 +285,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vfy839"
+                "id": "vfy839",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4bbf687281fe3423"
+                  }
+                ]
               }
             ]
           },
@@ -290,12 +300,92 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "e5umi7"
+                "id": "e5umi7",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f96c74eace83e64b"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-f449712b4a6e4369": [
+      {
+        "player": "Are you searching for something here?"
+      },
+      {
+        "npc": "Of course. As I said, my search is for knowledge."
+      },
+      {
+        "player": "What kind of knowledge?"
+      },
+      {
+        "npc": "Information lost to the ages. Specifically, information on an ancient race."
+      },
+      {
+        "player": "And you expect to find something here?"
+      },
+      {
+        "npc": "Not quite here, but up on the plateau. There's an old mastaba up there that I believe dates from a time when the race resided in these lands."
+      },
+      {
+        "player": "Well if you ever need help raiding an ancient tomb, I reckon I can be of service."
+      },
+      {
+        "npc": "A generous offer! I still have quite a bit of preparatory work to do before I dare head inside, but once that's done, maybe we can work something out."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "9ET9RD"
+      }
+    ],
+    "jump-4bbf687281fe3423": [
+      {
+        "player": "Where do you call home?"
+      },
+      {
+        "npc": "Ah, I've lived in many places over the years, but I wouldn't really say I have a home. I guess Varrock would be the closest answer."
+      },
+      {
+        "player": "Sounds like you have quite the history."
+      },
+      {
+        "npc": "Oh yes! If nothing else, I've definitely lived a varied life."
+      },
+      {
+        "player": "So you weren't always an explorer?"
+      },
+      {
+        "npc": "Not at all. I've done all sorts of things in my time. In fact, at one point I was an adventurer like you!"
+      },
+      {
+        "player": "What happened? Some sort of life-changing injury?"
+      },
+      {
+        "npc": "Thankfully not. I just found that when it came to my work, it was the history I discovered that interested me more than the treasure."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "nyYps0"
+      }
+    ],
+    "jump-f96c74eace83e64b": [
+      {
+        "player": "I'd better get going."
+      },
+      {
+        "npc": "Until next time."
+      },
+      {
+        "type": "end"
       }
     ]
   }

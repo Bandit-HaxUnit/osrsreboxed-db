@@ -62,8 +62,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "T7Ru0f"
+                            "id": "T7Ru0f",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-2ccf2e6b750d23a2"
+                              }
+                            ]
                           }
                         ],
                         "id": "iIjtNv"
@@ -308,8 +313,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "9zx90E"
+                "id": "9zx90E",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3e71dfe02933a770"
+                  }
+                ]
               }
             ]
           }
@@ -871,8 +881,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "UsmGbC"
+        "id": "UsmGbC",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-3fe0bded2b873d2f"
+          }
+        ]
       }
     ],
     "revelation-of-a-redhead-talking-to-the-queen-of-thieves-again": [
@@ -1051,6 +1066,181 @@
     ]
   },
   "branches": {
+    "jump-2ccf2e6b750d23a2": [
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Port Piscarilius is home to various gangs. They're a nuisance, but up until now we haven't had much trouble in dealing with them."
+      },
+      {
+        "player": "So what's the problem?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "A new gang calling themselves the Saviours of Kourend has recently formed. That's not surprising as gangs come and go all of the time, but this one is different."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "The Saviours of Kourend have been absorbing many of the other gangs. Within a few weeks, they've already become the largest gang in Kourend and more join them each day."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "The talk amongst the people is that it's all down to their leader, a mysterious figure known only as the Queen of Thieves."
+      },
+      {
+        "player": "Nice name. Why doesn't the ruler of Port Piscarilius do something about this?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Shauna Piscarilius is the ruler of Port Piscarilius, but she spends most of her time galavanting around in that boat of hers rather than looking after her home."
+      },
+      {
+        "player": "Fair enough. So what do you need me for?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Well my original plan was to infiltrate the gang to get close to the queen and capture her. However, I've been unable to make any progress. Apparently, I don't look the part."
+      },
+      {
+        "player": "Yeah not sure what that's all about. You clearly fit right in here."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Quite right. They're quite insistent though, so someone else will need to give it a go. You look like you might be just the type they're after."
+      },
+      {
+        "player": "What are you trying to say?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "That you look poor."
+      },
+      {
+        "player": "Oh..."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Anyway, if you're up for the task you'll need to infiltrate the Saviours of Kourend, find the Queen of Thieves, apprehend her and then bring her to me."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "So, do you think you can do it?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start The Queen of Thieves quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Absolutely."
+              },
+              {
+                "type": "line",
+                "speaker": "Tomas Lawry",
+                "text": "Excellent. The Saviours of Kourend must have their headquarters somewhere nearby. You should ask around town and see if anyone knows where they are. Good luck."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:the-queen-of-thieves:start",
+            "quest": "The Queen of Thieves"
+          },
+          {
+            "text": "Nah.",
+            "steps": [
+              {
+                "player": "Nah."
+              },
+              {
+                "type": "line",
+                "speaker": "Tomas Lawry",
+                "text": "Fair enough. I'll be here if you change your mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3e71dfe02933a770": [
+      {
+        "player": "Nothing thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Tomas Lawry",
+        "text": "Very well. Until next time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-3fe0bded2b873d2f": [
+      {
+        "player": "That does sound odd."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Shauna Piscarilius",
+        "text": "Exactly. The Council is clearly corrupt, and we intend to bring that to light. Councillor Hughes is our first target. We have reason to believe that she may be in league with the Disciples of Yama."
+      },
+      {
+        "player": "Disciples of Yama?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Shauna Piscarilius",
+        "text": "A cult of Zamorakians who supposedly serve a demon called Yama."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Shauna Piscarilius",
+        "text": "They've been a problem for a while, but they haven't been deemed dangerous enough to be properly dealt with. Councillor Hughes' influence, no doubt."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Shauna Piscarilius",
+        "text": "Anyway, go to her home and find proof of her corruption. If you find it, you will know I'm telling the truth. If you don't... well don't pretend you care about breaking and entering anyway."
+      },
+      {
+        "player": "Fine, I'll give you benefit of the doubt. But if you're wrong, I'm coming straight back here to apprehend you."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Shauna Piscarilius",
+        "text": "I'll pretend I didn't hear that. Councillor Hughes' home is on the northern side of Kingstown. Even a fool like you should be able to find it. Don't worry, she's never in."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Shauna Piscarilius",
+        "text": "Once you have the evidence, give it to that Lawry fellow. Provided he's not as useless as you, he'll make sure that she's dealt with."
+      },
+      {
+        "type": "line",
+        "speaker": "Lady Shauna Piscarilius",
+        "text": "Now get lost."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "47icvg": [
       {
         "player": "Nothing thanks."

@@ -434,8 +434,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jiCGAg"
+                "id": "jiCGAg",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8a96509fe63cb659"
+                  }
+                ]
               }
             ]
           }
@@ -1289,10 +1294,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "What have you got?"
+            "text": "What have you got?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "o7VuXx"
+              }
+            ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ibKuI4"
+              }
+            ]
           }
         ]
       }
@@ -1568,10 +1585,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "What have you got?"
+            "text": "What have you got?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "o7VuXx"
+              }
+            ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ibKuI4"
+              }
+            ]
           }
         ]
       }
@@ -1833,10 +1862,22 @@
         "type": "choice",
         "options": [
           {
-            "text": "What have you got?"
+            "text": "What have you got?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "o7VuXx"
+              }
+            ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ibKuI4"
+              }
+            ]
           }
         ]
       }
@@ -1953,6 +1994,42 @@
       {
         "type": "unavailable",
         "id": "LNfnsC"
+      }
+    ]
+  },
+  "branches": {
+    "jump-8a96509fe63cb659": [
+      {
+        "player": "Not now, thanks."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "o7VuXx": [
+      {
+        "player": "What have you got?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bolkoy",
+        "text": "Take a look."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Bolkoy's Village Shop",
+        "id": "GQKlIT"
+      }
+    ],
+    "ibKuI4": [
+      {
+        "player": "No thank you."
+      },
+      {
+        "type": "line",
+        "speaker": "Bolkoy",
+        "text": "Ok, maybe later."
       }
     ]
   }

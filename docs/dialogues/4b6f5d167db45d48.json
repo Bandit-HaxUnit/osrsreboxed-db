@@ -1,4 +1,14 @@
 {
+  "branches": {
+    "jump-d2506afe41a83277": [
+      {
+        "player": "That's nice, see you around."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "player": "Hello! Who are you?"
@@ -67,8 +77,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "c0f_nI"
+                      "id": "c0f_nI",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-d2506afe41a83277"
+                        }
+                      ]
                     }
                   ]
                 }

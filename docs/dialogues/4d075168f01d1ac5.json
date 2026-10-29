@@ -294,8 +294,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "xrQF-p"
+                "id": "xrQF-p",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3b5c6628afe1a3bb"
+                  }
+                ]
               }
             ],
             "id": "u2wgr_"
@@ -334,8 +339,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TGItSU"
+                "id": "TGItSU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-de49bfca9c7faa3f"
+                  }
+                ]
               }
             ]
           },
@@ -344,8 +354,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Nd1Afe"
+                "id": "Nd1Afe",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8ca5d1a74d3455c7"
+                  }
+                ]
               }
             ]
           }
@@ -393,8 +408,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "hrkxvV"
+                        "id": "hrkxvV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-de49bfca9c7faa3f"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -403,8 +423,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "sopis8"
+                        "id": "sopis8",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-8ca5d1a74d3455c7"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -557,8 +582,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5B9jxW"
+                "id": "5B9jxW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-de49bfca9c7faa3f"
+                  }
+                ]
               }
             ]
           },
@@ -619,8 +649,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6FrtF6"
+                "id": "6FrtF6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0caba651df55e9a9"
+                  }
+                ]
               }
             ]
           }
@@ -716,8 +751,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "gQUjGD"
+                "id": "gQUjGD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0caba651df55e9a9"
+                  }
+                ]
               }
             ]
           }
@@ -750,8 +790,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "99eo6P"
+                "id": "99eo6P",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0caba651df55e9a9"
+                  }
+                ]
               }
             ]
           }
@@ -884,6 +929,148 @@
     ]
   },
   "branches": {
+    "jump-3b5c6628afe1a3bb": [
+      {
+        "player": "I'm in search of a quest."
+      },
+      {
+        "npc": "Hmm... I don't believe there are any here."
+      },
+      {
+        "npc": "Let me think actually..."
+      },
+      {
+        "npc": "Ah, yes. I think I have something, if you're definitely interested?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's combat level is less than 10.",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that you combat level is lower than the recommended level of 10.",
+            "id": "QLLOxo"
+          }
+        ],
+        "id": "Lzzehj"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Shield of Arrav quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Of course."
+              },
+              {
+                "npc": "Well, if you look around for book called The Shield of Arrav, you'll find a quest in there."
+              },
+              {
+                "npc": "I'm not sure where the book is mind you... but I'm sure it's around here somewhere."
+              },
+              {
+                "player": "Great! Thank you."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:shield-of-arrav:start",
+            "quest": "Shield of Arrav"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Actually, I don't think I am. Goodbye."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-de49bfca9c7faa3f": [
+      {
+        "player": "Do you have anything to trade?"
+      },
+      {
+        "npc": "Only knowledge."
+      },
+      {
+        "player": "How much do you want for that then?"
+      },
+      {
+        "npc": "No, sorry, that was just my little joke. I'm not the trading type."
+      },
+      {
+        "player": "Ah well."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8ca5d1a74d3455c7": [
+      {
+        "player": "What do you do?"
+      },
+      {
+        "npc": "I am the palace librarian."
+      },
+      {
+        "player": "Ah. That's why you're in the library then."
+      },
+      {
+        "npc": "Yes."
+      },
+      {
+        "npc": "Although I would probably be in here even if I didn't work here. I like reading. Someday I hope to catalogue all of the information stored in these books so all may read it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0caba651df55e9a9": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "hrkxvV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-de49bfca9c7faa3f"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you do?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "sopis8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8ca5d1a74d3455c7"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "9ea2nP": [
       {
         "player": "Do you have anything to trade?"

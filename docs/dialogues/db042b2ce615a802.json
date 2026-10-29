@@ -642,8 +642,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lr8Vps"
+                "id": "lr8Vps",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ea233f5186801ad7"
+                  }
+                ]
               }
             ],
             "id": "drj_Ct"
@@ -1138,8 +1143,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "6omOWQ"
+                "id": "6omOWQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-89fa2e41e62328b5"
+                  }
+                ]
               }
             ]
           },
@@ -1148,8 +1158,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ILjmJC"
+                "id": "ILjmJC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0fe7b2bbb38348ac"
+                  }
+                ]
               }
             ]
           }
@@ -1285,8 +1300,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "0m_hOc"
+                "id": "0m_hOc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1ee8ce52fc8052a4"
+                  }
+                ]
               }
             ]
           }
@@ -1442,8 +1462,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MywTUm"
+                "id": "MywTUm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1ee8ce52fc8052a4"
+                  }
+                ]
               }
             ]
           }
@@ -1528,8 +1553,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "G0T4aP"
+                "id": "G0T4aP",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1ee8ce52fc8052a4"
+                  }
+                ]
               }
             ]
           }
@@ -2620,6 +2650,447 @@
       {
         "type": "unavailable",
         "id": "ovRwNO"
+      }
+    ]
+  },
+  "branches": {
+    "jump-ea233f5186801ad7": [
+      {
+        "type": "condition",
+        "text": "If the artefact is an armour shard:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "It looks like a fragment of armour."
+          },
+          {
+            "type": "line",
+            "speaker": "Zanik",
+            "text": "Look at the design! That's a lot like the design of the goblin armour I saw on the surface."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "That confirms that our ancestors retained a lot of customs from the surface even after they came down here. Our guards didn't start wearing lighter chainmail until after the Civil War."
+          },
+          {
+            "type": "condition",
+            "text": "If that was the sixth artefact handed in:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Tegdak",
+                "text": "That's all the artefacts we needed to extract. Thanks again, [player name]!"
+              },
+              {
+                "type": "line",
+                "speaker": "Tegdak",
+                "text": "Now, the most interesting one is this ancient mace. It's the only intact weapon, and I'm pretty sure it dates back to the time when the Dorgeshuun were on the surface."
+              },
+              {
+                "type": "line",
+                "speaker": "Tegdak",
+                "text": "It's covered in symbols, but I can't decipher them. Zanik, could you take it to the scribe? He might know what they mean. I'll finish up the dig here."
+              },
+              {
+                "type": "line",
+                "speaker": "Zanik",
+                "text": "Sure thing! Come on, [player name], let's go talk to the scribe"
+              },
+              {
+                "type": "action",
+                "text": "Zanik starts following the player.",
+                "id": "IAgIan"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "VUBFDh"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has another cleaned artefact:",
+            "steps": [
+              {
+                "player": "I have another one."
+              },
+              {
+                "type": "line",
+                "speaker": "Zanik",
+                "text": "What is it?"
+              },
+              {
+                "type": "jump",
+                "id": "lr8Vps",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ea233f5186801ad7"
+                  }
+                ]
+              }
+            ],
+            "id": "drj_Ct"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have another cleaned artefact:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "n_Z8Dm"
+          }
+        ],
+        "id": "MN6jwN"
+      },
+      {
+        "type": "condition",
+        "text": "If the artefact is a shield fragment:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "It looks like a piece of a shield."
+          },
+          {
+            "type": "line",
+            "speaker": "Zanik",
+            "text": "Look at that stress fracture. It looks like this shield broke pretty easily."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "I would guess that this shield was made during the Dorgeshuun Civil War and not handed down from the time on the surface."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "It seems that even by the time of the Civil War, our ancestors were beginning to lose their skills at making weapons."
+          },
+          {
+            "type": "condition",
+            "text": "If that was the sixth artefact handed in:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "AUPiYA"
+              }
+            ],
+            "id": "mehvOR"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has another cleaned artefact:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "iNitq7"
+              }
+            ],
+            "id": "EzyaLd"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have another cleaned artefact:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "G9kn3b"
+          }
+        ],
+        "id": "BbDvSB"
+      },
+      {
+        "type": "condition",
+        "text": "If the artefact is a helmet fragment:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "It looks like a piece of a helmet."
+          },
+          {
+            "type": "line",
+            "speaker": "Zanik",
+            "text": "A helmet? So those are eye-holes? They look too small."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "This was from the early days of Dorgesh-Kaan. It must have been before our ancestors' eyes reached their current size."
+          },
+          {
+            "type": "condition",
+            "text": "If that was the sixth artefact handed in:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "XIMrTW"
+              }
+            ],
+            "id": "wIvaR9"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has another cleaned artefact:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "34l87O"
+              }
+            ],
+            "id": "8XmMFB"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have another cleaned artefact:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "SbGs5Q"
+          }
+        ],
+        "id": "X2Dw2s"
+      },
+      {
+        "type": "condition",
+        "text": "If the artefact is a sword fragment:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "I'm not sure. What do you think?"
+          },
+          {
+            "type": "line",
+            "speaker": "Zanik",
+            "text": "It looks a bit like a sword, doesn't it? I saw some people using them on the surface."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "The early Dorgeshuun must have used a much larger variety of weapons than we do now."
+          },
+          {
+            "type": "condition",
+            "text": "If that was the sixth artefact handed in:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ubR8xR"
+              }
+            ],
+            "id": "thmn78"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has another cleaned artefact:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kBcaVL"
+              }
+            ],
+            "id": "FMhHwW"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have another cleaned artefact:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "C-Ng9o"
+          }
+        ],
+        "id": "KX4iC8"
+      },
+      {
+        "type": "condition",
+        "text": "If the artefact is an axe head:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "I'm not sure. It's got some kind of blade... Is it a spear tip?"
+          },
+          {
+            "type": "line",
+            "speaker": "Zanik",
+            "text": "Oh, I know what it is! It's an axe head!"
+          },
+          {
+            "type": "line",
+            "speaker": "Zanik",
+            "text": "Axes are these things they use on the surface for cutting down trees. I think they can be used as weapons too."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "Our ancestors must have brought it down from the surface, then. There would be no need for them to make axes when they were down here, as there are no trees."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "It's amazing to think that we're handling objects that date back to the time of the war of the gods!"
+          },
+          {
+            "type": "condition",
+            "text": "If that was the sixth artefact handed in:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nJBqGf"
+              }
+            ],
+            "id": "RshbWX"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has another cleaned artefact:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eSOC4i"
+              }
+            ],
+            "id": "MUqdG8"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have another cleaned artefact:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "ByO6L6"
+          }
+        ],
+        "id": "AaJqrV"
+      },
+      {
+        "type": "condition",
+        "text": "If the artefact is a mace:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "It's... Actually, what is it? It's a sort of stick with a lump on the end."
+          },
+          {
+            "player": "I think it's a mace."
+          },
+          {
+            "type": "line",
+            "speaker": "Tegdak",
+            "text": "A mace?"
+          },
+          {
+            "player": "A kind of weapon."
+          },
+          {
+            "type": "condition",
+            "text": "If that was the sixth artefact handed in:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "fn-Zac"
+              }
+            ],
+            "id": "qizxJZ"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has another cleaned artefact:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "In4uZX"
+              }
+            ],
+            "id": "7Bzulj"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have another cleaned artefact:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "E3jGqc"
+          }
+        ],
+        "id": "-jSaii"
+      }
+    ],
+    "jump-89fa2e41e62328b5": [
+      {
+        "player": "What can I do in the city?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ur-tag",
+        "text": "Why don't you visit the market? I hear there is quite a craze for surface foods at the moment, so you might be able to sell something there."
+      },
+      {
+        "type": "line",
+        "speaker": "Ur-tag",
+        "text": "You might also want to visit the caves to the south of the city. There are many monsters to fight there, and Zanik apparently found ways to cross over their heads!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0fe7b2bbb38348ac": [
+      {
+        "player": "Why did you decide to open the city?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ur-tag",
+        "text": "For trade, and for fostering goodwill between races! I am sure that it will benefit both our races."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-1ee8ce52fc8052a4": [
+      {
+        "player": "I need to do something else for a bit."
+      },
+      {
+        "type": "line",
+        "speaker": "Zanik",
+        "text": "All right. I'll go back and help finish the dig."
+      },
+      {
+        "type": "action",
+        "text": "Zanik returns to the railway",
+        "id": "seu6_8"
+      },
+      {
+        "type": "end"
       }
     ]
   }

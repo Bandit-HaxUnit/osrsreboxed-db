@@ -11,10 +11,126 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who's Saradomin?"
+            "text": "Who's Saradomin?",
+            "steps": [
+              {
+                "player": "Who's Saradomin?"
+              },
+              {
+                "type": "line",
+                "speaker": "Father Aereck",
+                "text": "Surely you have heard of the god, Saradomin?"
+              },
+              {
+                "type": "line",
+                "speaker": "Father Aereck",
+                "text": "He who creates the forces of goodness and purity in this world? I cannot believe your ignorance!"
+              },
+              {
+                "type": "line",
+                "speaker": "Father Aereck",
+                "text": "This is the god with more followers than any other! ...At least in this part of the world."
+              },
+              {
+                "type": "line",
+                "speaker": "Father Aereck",
+                "text": "He who created this world along with his brothers Guthix and Zamorak?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Oh, THAT Saradomin...",
+                    "steps": [
+                      {
+                        "player": "Oh, THAT Saradomin..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Father Aereck",
+                        "text": "There... is only one Saradomin..."
+                      },
+                      {
+                        "player": "Yeah... I, uh, thought you said something else."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Oh, sorry. I'm not from this world.",
+                    "steps": [
+                      {
+                        "player": "Oh, sorry. I'm not from this world."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Father Aereck",
+                        "text": "..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Father Aereck",
+                        "text": "That's... strange."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Father Aereck",
+                        "text": "I thought things not from this world were all... You know. Slime and tentacles."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "You don't understand. This is an online game!",
+                            "steps": [
+                              {
+                                "player": "You don't understand. This is an online game!"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Father Aereck",
+                                "text": "I... beg your pardon?"
+                              },
+                              {
+                                "player": "Never mind."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I am - do you like my disguise?",
+                            "steps": [
+                              {
+                                "player": "I am - do you like my disguise?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Father Aereck",
+                                "text": "Aargh! Avaunt foul creature from another dimension! Avaunt! Begone in the name of Saradomin!"
+                              },
+                              {
+                                "player": "Ok, ok, I was only joking..."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Nice place you've got here."
+            "text": "Nice place you've got here.",
+            "steps": [
+              {
+                "player": "Nice place you've got here."
+              },
+              {
+                "type": "line",
+                "speaker": "Father Aereck",
+                "text": "It is, isn't it? It was built over 230 years ago."
+              }
+            ]
           },
           {
             "text": "I'm looking for a quest!",
@@ -253,8 +369,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "hSn9eY"
+                        "id": "hSn9eY",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d68d752c416cf89a"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -354,8 +475,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "g_mgWc"
+                "id": "g_mgWc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2bc3369259106313"
+                  }
+                ]
               }
             ]
           },
@@ -453,8 +579,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "J_klno"
+                "id": "J_klno",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-25e27eb9dd381b94"
+                  }
+                ]
               }
             ]
           }
@@ -563,8 +694,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "DlsSyO"
+                                        "id": "DlsSyO",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-482d9c3db8583478"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -587,8 +723,13 @@
                                             "steps": [
                                               {
                                                 "type": "jump",
-                                                "reference": "below",
-                                                "id": "ght7aW"
+                                                "id": "ght7aW",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-482d9c3db8583478"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           },
@@ -614,8 +755,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "gvuWVK"
+                                "id": "gvuWVK",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-482d9c3db8583478"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -845,8 +991,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "6AVit4"
+                                "id": "6AVit4",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2c0c1366d79f5fec"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -900,8 +1051,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "P_473A"
+                        "id": "P_473A",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fa50c5b5cde44ec7"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -910,8 +1066,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "iNriJk"
+                        "id": "iNriJk",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-9b0e69f56cecff85"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -962,8 +1123,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DNemMO"
+                "id": "DNemMO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4ad6048993ec9861"
+                  }
+                ]
               }
             ]
           },
@@ -972,8 +1138,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "sd5tZ8"
+                "id": "sd5tZ8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e58c957480201d7f"
+                  }
+                ]
               }
             ]
           },
@@ -982,8 +1153,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tr5XCu"
+                "id": "tr5XCu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6430eba1bb0e8ebb"
+                  }
+                ]
               }
             ]
           }
@@ -1167,6 +1343,501 @@
     ]
   },
   "branches": {
+    "jump-d68d752c416cf89a": [
+      {
+        "type": "line",
+        "speaker": "Father Urhney",
+        "text": "Oh, the silly fool."
+      },
+      {
+        "type": "line",
+        "speaker": "Father Urhney",
+        "text": "I leave town for just five months, and ALREADY he can't manage."
+      },
+      {
+        "type": "line",
+        "speaker": "Father Urhney",
+        "text": "(sigh)"
+      },
+      {
+        "type": "line",
+        "speaker": "Father Urhney",
+        "text": "Well, I can't go back and exorcise it. I vowed not to leave this place. Until I had done a full two years of prayer and meditation."
+      },
+      {
+        "type": "line",
+        "speaker": "Father Urhney",
+        "text": "Tell you what I can do though; take this amulet."
+      }
+    ],
+    "jump-2bc3369259106313": [
+      {
+        "player": "Well, that's friendly."
+      },
+      {
+        "type": "line",
+        "speaker": "Father Urhney",
+        "text": "I SAID go AWAY."
+      },
+      {
+        "player": "Okay, okay... sheesh, what a grouch."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-25e27eb9dd381b94": [
+      {
+        "player": "I've come to repossess your house."
+      },
+      {
+        "type": "line",
+        "speaker": "Father Urhney",
+        "text": "Under what grounds???"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Repeated failure on mortgage repayments.",
+            "steps": [
+              {
+                "player": "Repeated failure on mortgage repayments."
+              },
+              {
+                "type": "line",
+                "speaker": "Father Urhney",
+                "text": "What?"
+              },
+              {
+                "type": "line",
+                "speaker": "Father Urhney",
+                "text": "But... I don't have a mortgage! I built this house myself!"
+              },
+              {
+                "player": "Sorry. I must have got the wrong address. All the houses look the same around here."
+              },
+              {
+                "type": "line",
+                "speaker": "Father Urhney",
+                "text": "What? What houses? What ARE you talking about???"
+              },
+              {
+                "player": "Never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't know. I just wanted this house.",
+            "steps": [
+              {
+                "player": "I don't know. I just wanted this house..."
+              },
+              {
+                "type": "line",
+                "speaker": "Father Urhney",
+                "text": "Oh... go away and stop wasting my time!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-482d9c3db8583478": [
+      {
+        "player": "Goodbye. Thanks for the chat."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Wooo wooo?"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2c0c1366d79f5fec": [
+      {
+        "player": "I've been told a certain task may need to be completed so you can rest in peace."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "I should think it is probably because a warlock has come along and stolen my skull. If you look inside my coffin there, you'll find my corpse without a head on it."
+      },
+      {
+        "player": "Do you know where this warlock might be now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "I think it was one of the warlocks who lives in the big tower by the sea south-west from here."
+      },
+      {
+        "player": "Ok. I will try and get the skull back for you, then you can rest in peace."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Ooh, thank you. That would be such a great relief!"
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "It is so dull being a ghost..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-fa50c5b5cde44ec7": [
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Nope. I just know I can't do much of anything like this!"
+      },
+      {
+        "type": "jump",
+        "id": "6AVit4",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-2c0c1366d79f5fec"
+          }
+        ]
+      }
+    ],
+    "jump-9b0e69f56cecff85": [
+      {
+        "player": "No, you're scary!"
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Great."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "The first person I can speak to in ages..."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "..and they're an idiot."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-4ad6048993ec9861": [
+      {
+        "player": "Sorry, I don't speak ghost."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Woo woo?"
+      },
+      {
+        "player": "Nope, still don't understand you."
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "WOOOOOOOOO!"
+      },
+      {
+        "player": "Never mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e58c957480201d7f": [
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Woo wooo. Woooooooooooooooooo!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Did he really?",
+            "steps": [
+              {
+                "player": "Did he really?"
+              },
+              {
+                "type": "line",
+                "speaker": "Restless ghost",
+                "text": "Woo."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "My brother had EXACTLY the same problem.",
+                    "steps": [
+                      {
+                        "player": "My brother had EXACTLY the same problem."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Woo Wooooo!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooooo Woo woo woo!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Goodbye. Thanks for the chat.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "DlsSyO",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-482d9c3db8583478"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "You'll have to give me the recipe some time...",
+                            "steps": [
+                              {
+                                "player": "You'll have to give me the recipe some time..."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Restless ghost",
+                                "text": "Wooooooo woo woooooooo."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Goodbye. Thanks for the chat.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "ght7aW",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-482d9c3db8583478"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Hmm... I'm not so sure about that.",
+                                    "steps": [
+                                      {
+                                        "player": "Hmm... I'm not so sure about that."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Restless ghost",
+                                        "text": "Wooo woo?"
+                                      },
+                                      {
+                                        "player": "Well, if you INSIST."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Restless ghost",
+                                        "text": "Wooooooooo!"
+                                      },
+                                      {
+                                        "player": "Ah well, better be off now..."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Restless ghost",
+                                        "text": "Woo."
+                                      },
+                                      {
+                                        "player": "Bye."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye. Thanks for the chat.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "gvuWVK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-482d9c3db8583478"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yeah, that's what I thought.",
+            "steps": [
+              {
+                "player": "Yeah, that's what I thought."
+              },
+              {
+                "type": "line",
+                "speaker": "Restless ghost",
+                "text": "Wooo woooooooooooooo..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Goodbye. Thanks for the chat.",
+                    "steps": [
+                      {
+                        "player": "Goodbye. Thanks for the chat."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooo wooo?"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hmm I'm not sure about that.",
+                    "steps": [
+                      {
+                        "player": "Hmm... I'm not so sure about that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooo woo?"
+                      },
+                      {
+                        "player": "Well, if you INSIST."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Wooooooooo!"
+                      },
+                      {
+                        "player": "Ah well, better be off now..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Restless ghost",
+                        "text": "Woo."
+                      },
+                      {
+                        "player": "Bye."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6430eba1bb0e8ebb": [
+      {
+        "player": "Any hints where I can find some treasure?"
+      },
+      {
+        "type": "line",
+        "speaker": "Restless ghost",
+        "text": "Wooooooo woo! Wooooo woo wooooo woowoowoo woo Woo wooo. Wooooo woo woo? Woooooooooooooooooo!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sorry, I don't speak ghost.",
+            "steps": [
+              {
+                "player": "Sorry, I don't speak ghost."
+              },
+              {
+                "type": "line",
+                "speaker": "Restless ghost",
+                "text": "Woo woo?"
+              },
+              {
+                "player": "Nope, still don't understand you."
+              },
+              {
+                "type": "line",
+                "speaker": "Restless ghost",
+                "text": "WOOOOOOOOO!"
+              },
+              {
+                "player": "Never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Thank you. You've been very helpful.",
+            "steps": [
+              {
+                "player": "Thank you. You've been very helpful."
+              },
+              {
+                "type": "line",
+                "speaker": "Restless ghost",
+                "text": "Wooooooo."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "w66Qeh": [
       {
         "player": "Sorry, I don't speak ghost."

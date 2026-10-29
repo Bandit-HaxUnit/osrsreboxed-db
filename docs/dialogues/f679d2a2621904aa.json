@@ -176,8 +176,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Fy-zTH"
+                "id": "Fy-zTH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5a1bf80f5ff32482"
+                  }
+                ]
               }
             ]
           }
@@ -300,6 +305,19 @@
             "id": "5RWGdE"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-5a1bf80f5ff32482": [
+      {
+        "player": "I don't work for rude people."
+      },
+      {
+        "npc": "You're just as bad as my son, or worse!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

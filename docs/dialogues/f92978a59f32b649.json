@@ -40,8 +40,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "SgAT2E"
+                                "id": "SgAT2E",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-cd0a33a8e002e3fb"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -50,8 +55,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "QFbvhb"
+                                "id": "QFbvhb",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f0ad65017751cd6b"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -60,8 +70,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "6OScnP"
+                                "id": "6OScnP",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "ziHcqW"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -165,8 +180,13 @@
                                             "steps": [
                                               {
                                                 "type": "jump",
-                                                "reference": "below",
-                                                "id": "OOAi53"
+                                                "id": "OOAi53",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-476fde78aa94d5ba"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           },
@@ -175,8 +195,13 @@
                                             "steps": [
                                               {
                                                 "type": "jump",
-                                                "reference": "below",
-                                                "id": "Z4nJUT"
+                                                "id": "Z4nJUT",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "ziHcqW"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           },
@@ -200,8 +225,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "below",
-                                                        "id": "gadF-X"
+                                                        "id": "gadF-X",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "jump-476fde78aa94d5ba"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   },
@@ -210,8 +240,13 @@
                                                     "steps": [
                                                       {
                                                         "type": "jump",
-                                                        "reference": "below",
-                                                        "id": "GyI-ix"
+                                                        "id": "GyI-ix",
+                                                        "steps": [
+                                                          {
+                                                            "type": "call",
+                                                            "branch": "ziHcqW"
+                                                          }
+                                                        ]
                                                       }
                                                     ]
                                                   }
@@ -228,8 +263,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "UrcLFq"
+                                        "id": "UrcLFq",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-476fde78aa94d5ba"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -238,8 +278,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "X3-mZQ"
+                                        "id": "X3-mZQ",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "ziHcqW"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -263,8 +308,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "qgnwQR"
+                                "id": "qgnwQR",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "ziHcqW"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -345,8 +395,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "v6ym3k"
+                                        "id": "v6ym3k",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "ziHcqW"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -705,6 +760,406 @@
       },
       {
         "npc": "You fools, you let it overheat!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-cd0a33a8e002e3fb": [
+      {
+        "player": "How can I help work the blast furnace?"
+      },
+      {
+        "npc": "The blast furnace will only work if there is a group of people keeping it going. Let me explain..."
+      },
+      {
+        "type": "action",
+        "text": "(The Blast Furnace Plan interface opens, with the X next to the stove flashing.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Blast Furnace Plan",
+        "id": "ykoAyT"
+      },
+      {
+        "npc": "Firstly, the stove needs to be kept filled with coal. If this runs out the furnace will not work."
+      },
+      {
+        "type": "action",
+        "text": "(The X next to the Air Pump starts flashing.)",
+        "id": "a8U561"
+      },
+      {
+        "npc": "Secondly, someone needs to operate the pump that keeps the hot air blast circulating through the furnace."
+      },
+      {
+        "type": "action",
+        "text": "(The X next to the Temp Gauge starts flashing.)",
+        "id": "9Dui2j"
+      },
+      {
+        "npc": "Thirdly, someone needs to keep an eye on the temperature gauge. They should tell the pumper to start or stop so that the temperature stays in the right range."
+      },
+      {
+        "type": "action",
+        "text": "(The X next to the Cogs starts flashing.)",
+        "id": "rEDqeE"
+      },
+      {
+        "npc": "Lastly, someone needs to be on the pedals to power the conveyor belt that puts ore into the furnace."
+      },
+      {
+        "npc": "Someone will also need to be on standby with a hammer in case the machine breaks!"
+      },
+      {
+        "npc": "While that's going, anyone else can put their ore on the conveyor belt to have it smelted."
+      },
+      {
+        "type": "action",
+        "text": "(The Blast Furnace Plan interface closes.)",
+        "id": "CtO8nb"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So what do I get out of it?",
+            "steps": [
+              {
+                "player": "So what do I get out of it?"
+              },
+              {
+                "npc": "Keeping the furnace going is valuable experience in itself!"
+              },
+              {
+                "npc": "Keeping the stove alight will train your Firemaking, working the pump will train your Strength, pedalling the conveyor belt will train your Agility and repairing the furnace will train Crafting."
+              },
+              {
+                "npc": "Plus, everyone working the furnace will get a bit of experience in Smithing whenever anyone smelts ore in it."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So I don't actually get paid then?",
+                    "steps": [
+                      {
+                        "player": "So I don't actually get paid then?"
+                      },
+                      {
+                        "npc": "I offer you the privilege of working on the greatest example of dwarven engineering and you want to be PAID?"
+                      },
+                      {
+                        "npc": "If you co-operate with a group of people you can all get your smelting done pretty quickly. Or perhaps some humans who need to do some smelting will pay you, since you humans are all so obsessed with money."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, I'll get to work.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "OOAi53",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-476fde78aa94d5ba"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Maybe some other time.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "Z4nJUT",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-df50422f06f48b1b"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No wonder you have a labour shortage if you don't pay your workers!",
+                            "steps": [
+                              {
+                                "player": "No wonder you have a labour shortage if you don't pay your workers!"
+                              },
+                              {
+                                "npc": "What would be the point of making money if I gave it all away to menial workers?"
+                              },
+                              {
+                                "npc": "I mean... Money isn't important! What about the greater glory of dwarven engineering? What about the satisfaction of helping others? What about the XP?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Okay, I'll get to work.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "gadF-X",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-476fde78aa94d5ba"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Maybe some other time.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "GyI-ix",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-df50422f06f48b1b"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, I'll get to work.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "UrcLFq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-476fde78aa94d5ba"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Maybe some other time.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "X3-mZQ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-df50422f06f48b1b"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay I'll get to work.",
+            "steps": [
+              {
+                "player": "Okay, I'll get to work."
+              },
+              {
+                "npc": "Splendid!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Maybe some other time.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "qgnwQR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-df50422f06f48b1b"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f0ad65017751cd6b": [
+      {
+        "player": "Can I use the furnace to smelt ore?"
+      },
+      {
+        "npc": "You can, although you'll need to find some people to work it for you as well. But the furnace is very delicate so I charge a fee for anyone who doesn't have level 60 smithing."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have level 60!",
+            "steps": [
+              {
+                "player": "I have level 60!"
+              },
+              {
+                "npc": "A human has level 60 smithing? How extraordinary!"
+              },
+              {
+                "npc": "Feel free to use the furnace. Remember, you only need half as much coal as with a regular furnace."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I don't have level 60.",
+            "steps": [
+              {
+                "player": "I don't have level 60."
+              },
+              {
+                "npc": "Hmm, well, I'll let you use the furnace if you want, but you must pay a fee of 2,500 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay.",
+                    "steps": [
+                      {
+                        "player": "Okay, here you are."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins:",
+                        "steps": [
+                          {
+                            "npc": "Where?"
+                          },
+                          {
+                            "player": "Actually I don't have enough money on me."
+                          },
+                          {
+                            "npc": "Well go get it then."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "nM-vqv"
+                      },
+                      {
+                        "npc": "Okay, you can use the furnace for ten minutes. Remember, you only need half as much coal as with a regular furnace."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Maybe some other time.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "v6ym3k",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-df50422f06f48b1b"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[Charm] How about I give you 1250 coins and I work extra hard?",
+                    "condition": "If the player is wearing the Ring of Charos(a):",
+                    "steps": [
+                      {
+                        "player": "How about I give you 1250 coins and I work extra hard?"
+                      },
+                      {
+                        "npc": "You'll have to work hard enough for two humans if I agree..."
+                      },
+                      {
+                        "player": "Oh, three humans, easily!"
+                      },
+                      {
+                        "npc": "Well, okay then - 1250GP it is."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins:",
+                        "steps": [
+                          {
+                            "player": "Actually I don't have enough money on me."
+                          },
+                          {
+                            "npc": "Well why did you try and haggle with me then? You'd better go and get some - you're not using the blast furnace for free."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "NCZ97a"
+                      },
+                      {
+                        "npc": "Okay, you can use the furnace for ten minutes. Remember, you only need half as much coal as with a regular furnace. And I want to see you doing the work of four humans!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "ZAxSmX"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-df50422f06f48b1b": [
+      {
+        "player": "Maybe some other time."
+      },
+      {
+        "npc": "Well if you're not here to work, go hang around somewhere else!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-476fde78aa94d5ba": [
+      {
+        "npc": "Splendid!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "ziHcqW": [
+      {
+        "type": "call",
+        "branch": "jump-df50422f06f48b1b"
       }
     ]
   }

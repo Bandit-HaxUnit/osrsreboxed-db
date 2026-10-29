@@ -202,8 +202,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "eMWj-6"
+                                    "id": "eMWj-6",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-3efe2a89d49a48af"
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -212,8 +217,13 @@
                                 "steps": [
                                   {
                                     "type": "jump",
-                                    "reference": "above",
-                                    "id": "jWVN8j"
+                                    "id": "jWVN8j",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-f7fc954aff3572c7"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -233,8 +243,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ciOQgY"
+                "id": "ciOQgY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e0f293f6ca923670"
+                  }
+                ]
               }
             ]
           },
@@ -243,8 +258,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "r1pegd"
+                "id": "r1pegd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a1ce55646019a38b"
+                  }
+                ]
               }
             ]
           },
@@ -253,8 +273,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "n1DQUi"
+                "id": "n1DQUi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-08467cc382d39dff"
+                  }
+                ]
               }
             ]
           },
@@ -347,6 +372,64 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-3efe2a89d49a48af": [
+      {
+        "player": "Oayk, I'll pay 3000 coins for the hammer."
+      },
+      {
+        "npc": "A good deal and I'm sure of it!"
+      },
+      {
+        "type": "action",
+        "text": "Player receives the Gadderhammer",
+        "action": "receive",
+        "action_source": "text",
+        "id": "6qLnJV"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-f7fc954aff3572c7": [
+      {
+        "player": "No thanks, I'll leave it, 3000 coins is too much to pay."
+      },
+      {
+        "npc": "Very good then! I'll have no guilty conscience in offering it to other adventurers that frequent my shop then. Many thanks for your time and good day to ya sir."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-e0f293f6ca923670": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "I'm Aurel the village store owner."
+      },
+      {
+        "player": "Can you open the shop for me please?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Aurel's Supplies",
+        "id": "DhS8GF"
+      }
+    ],
+    "jump-a1ce55646019a38b": [
+      {
+        "player": "What's happening around here?"
+      }
+    ],
+    "jump-08467cc382d39dff": [
+      {
+        "player": "Is there anything I can do to help out?"
       }
     ]
   }

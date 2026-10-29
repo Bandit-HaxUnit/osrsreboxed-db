@@ -1,0 +1,3004 @@
+{
+  "Demon Slayer": {
+    "reason": "Start the quest at the captured cutscene boundary and retain the start prompt.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/63c7cd9b9753b4e434fc159a2955348a5058d3ab"
+    ],
+    "base_sha256": "9f41f2a9a85fba7082cef1cbc3fb696ce013bf808b2441eb4f18700bf631d6c6",
+    "audited_sha256": "c61eddfedba53f750057ee41db71d914c2eab0642575f051cf85117f609b6c65",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Demon Slayer",
+          "variants",
+          "starting-demon-slayer",
+          2,
+          "options",
+          0,
+          "steps",
+          15,
+          "options",
+          3,
+          "steps",
+          9,
+          "action"
+        ],
+        "expected": null,
+        "value": "quest_start"
+      },
+      {
+        "path": [
+          "records",
+          "Demon Slayer",
+          "variants",
+          "starting-demon-slayer",
+          2,
+          "options",
+          0,
+          "steps",
+          15,
+          "options",
+          3,
+          "steps",
+          9,
+          "hook"
+        ],
+        "expected": null,
+        "value": "quest:demon-slayer:start"
+      },
+      {
+        "path": [
+          "records",
+          "Demon Slayer",
+          "variants",
+          "starting-demon-slayer",
+          2,
+          "options",
+          0,
+          "steps",
+          15,
+          "options",
+          3,
+          "steps",
+          9,
+          "quest"
+        ],
+        "expected": null,
+        "value": "Demon Slayer"
+      },
+      {
+        "path": [
+          "records",
+          "Demon Slayer",
+          "variants",
+          "starting-demon-slayer",
+          2,
+          "options",
+          0,
+          "steps",
+          15,
+          "options",
+          3,
+          "steps",
+          12,
+          "options",
+          4,
+          "steps",
+          2,
+          "action"
+        ],
+        "expected": "92d1a2b177ea4446e594acdfee89859b9f3f94196bfe34b935986c67da0415fb"
+      },
+      {
+        "path": [
+          "records",
+          "Demon Slayer",
+          "variants",
+          "starting-demon-slayer",
+          2,
+          "options",
+          0,
+          "steps",
+          15,
+          "options",
+          3,
+          "steps",
+          12,
+          "options",
+          4,
+          "steps",
+          2,
+          "hook"
+        ],
+        "expected": "7e59d50f4b292c59236b7524da8f96427fd8b6591ccffca30e309066c0e0d368"
+      },
+      {
+        "path": [
+          "records",
+          "Demon Slayer",
+          "variants",
+          "starting-demon-slayer",
+          2,
+          "prompt"
+        ],
+        "expected": null,
+        "value": "Start the Demon Slayer quest?"
+      }
+    ]
+  },
+  "Getting Ahead": {
+    "reason": "Retain the captured clay-head message.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/381e23467ebacd57e3892be82cb43d51ada94b50"
+    ],
+    "base_sha256": "dd05c5e89defc81bbec30e14b659c71376d2070dd9475406ba18bb90fb1d078b",
+    "audited_sha256": "e63e320202312d4aa6b84260875ea7ce4e36cc88586f7450ef2ba5244d8bb609",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Getting Ahead",
+          "branches",
+          "jump-dd026710c0489f10",
+          3,
+          "text"
+        ],
+        "expected": "484d164518bfad46a732f4b3fef3dd3d9ae8bec5097556edb99cfa5f9371c964",
+        "value": "As you talk to Gordon, part of the clay head falls off."
+      },
+      {
+        "path": [
+          "records",
+          "Getting Ahead",
+          "variants",
+          "a-strange-fake-talking-to-gordon-after-making-the-clay-head",
+          6,
+          "text"
+        ],
+        "expected": "484d164518bfad46a732f4b3fef3dd3d9ae8bec5097556edb99cfa5f9371c964",
+        "value": "As you talk to Gordon, part of the clay head falls off."
+      }
+    ]
+  },
+  "Kovac": {
+    "reason": "Hide the equipment-help option while a commission is active, preserving its condition ID.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/d821aa2ad197f38db45bbe0c8997384f64930161"
+    ],
+    "base_sha256": "23e154da5d5f95baff8892c2beee3b3844a52201d6389431d0da63e01b4c5646",
+    "audited_sha256": "5d37335344d175b6c91cdd9771719d5b01ba4f914b2458d0bc792ae5b647648d",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Kovac",
+          "variants",
+          "standard-dialogue",
+          1,
+          "options",
+          2,
+          "condition"
+        ],
+        "expected": null,
+        "value": "If the player does not have a commission:"
+      },
+      {
+        "path": [
+          "records",
+          "Kovac",
+          "variants",
+          "standard-dialogue",
+          1,
+          "options",
+          2,
+          "id"
+        ],
+        "expected": null,
+        "value": "Gf7nCm"
+      }
+    ]
+  },
+  "Meat and Greet": {
+    "reason": "Retain the captured spelling of business.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/d874f789779c1c863ede166b105f4e2f059e149b"
+    ],
+    "base_sha256": "a9e8f44132778e804dd3849bf323f6bb63af53e63863410cc12309b8c0162535",
+    "audited_sha256": "5edcc35985df3481b08c8f0a8b03daca58500b95da143069d1515190b8b23608",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Meat and Greet",
+          "variants",
+          "guerilla-marketing",
+          2,
+          "text"
+        ],
+        "expected": "ceedd2299e97c864dd87816fe5c2e57ca923f58060c44c6cccb0a65f1d82f489",
+        "value": "Looking to market another one of his business ideas is he? It will cost him double this time. We still haven't cleaned up the mess made by his last great idea."
+      }
+    ]
+  },
+  "Prince Ali Rescue": {
+    "reason": "Retain the working rope branch while shared NPC responses remain ambiguous between quest-state variants.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/062768d56aac9c98e726f582bf8e90411644b1d3"
+    ],
+    "base_sha256": "139c20b222b28bf818214f86fba678ff97652d8474b5b032c032761b06968db3",
+    "audited_sha256": "25b9706d5075429ab3e0d8595a415a8bfc72f255bfc85ef3277f172f3a386eea",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Prince Ali Rescue",
+          "variants",
+          "preparations-for-rescue-talking-to-ned",
+          1,
+          "options",
+          1,
+          "steps"
+        ],
+        "expected": null,
+        "value": [
+          {
+            "player": "Yes, I would like some rope."
+          },
+          {
+            "npc": "Well, I can sell you some rope for 15 coins. Or I can be making you some if you gets me 4 balls of wool. I strands them together I does, makes em strong."
+          },
+          {
+            "player": "You make rope from wool?"
+          },
+          {
+            "npc": "Of course you can!"
+          },
+          {
+            "player": "I thought you needed hemp or jute."
+          },
+          {
+            "npc": "Do you want some rope or not?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay, please sell me some rope.",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player doesn't have 15 coins:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You don't have enough coins to buy any rope!",
+                        "id": "tU8YgL"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the The Fremennik Isles quest:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "s9z0lO"
+                          }
+                        ],
+                        "id": "IbK9Jf"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has not completed the The Fremennik Isles quest:",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "dLz-Se"
+                      }
+                    ],
+                    "id": "Vdg9ko"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 15 coins:",
+                    "steps": [
+                      {
+                        "player": "Okay, please sell me some rope."
+                      },
+                      {
+                        "npc": "There you go, finest rope in Gielinor."
+                      },
+                      {
+                        "type": "message",
+                        "id": "T0Ll6J",
+                        "text": "You hand Ned 15 coins. Ned gives you a coil of rope."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the The Fremennik Isles quest:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "UsrLjU"
+                          }
+                        ],
+                        "id": "HRLdKq"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has not completed the The Fremennik Isles quest:",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "KuAGDP"
+                      }
+                    ],
+                    "id": "c-c-Yc"
+                  },
+                  {
+                    "player": "Thanks. Hmmm, do you know something? This rope has a funny smell."
+                  },
+                  {
+                    "npc": "Really?"
+                  },
+                  {
+                    "player": "Yes, It reminds me of...yaks. I was travelling in the Fremennik Isles recently and, do you know what? They made rope out of yak's hair."
+                  },
+                  {
+                    "npc": "What a coincidence?"
+                  },
+                  {
+                    "player": "There was a lady over there who sold wool, she said she traded rope for the wool."
+                  },
+                  {
+                    "npc": "Who would have thought it?"
+                  },
+                  {
+                    "player": "I don't think you make rope at all. I think you trade balls of wool for rope."
+                  },
+                  {
+                    "npc": "Oh, I confess. You have found the truth. I used to make the rope myself, but my fingers aren't as nimble as they used to be and so many people wanted my rope. Demand was so high I had to find another"
+                  },
+                  {
+                    "npc": "source. But I couldn't tell anyone since Ned's Handmade Rope (100% Wool) is a high profile brand now."
+                  },
+                  {
+                    "player": "Yes, well, the wool is still pretty good, though yak hair makes fine rope. I don't suppose any harm will come of it."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has inventory space:",
+                    "steps": [
+                      {
+                        "npc": "Thanks. Here take this, a free sample! Please, don't tell anyone."
+                      }
+                    ],
+                    "id": "XCSVv3"
+                  },
+                  {
+                    "player": "Well, it's always good to keep on the good side of a sailor. Your secret is safe with me."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has inventory space:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "rope",
+                        "id": "337_6B"
+                      }
+                    ],
+                    "id": "PNswI5"
+                  },
+                  {
+                    "npc": "Oh, if you're in the Isles again, tell Jofridr that her Neddie will be there soon."
+                  },
+                  {
+                    "player": "I will do that!"
+                  }
+                ]
+              },
+              {
+                "text": "I have some balls of wool. Could you make me some rope?",
+                "condition": "If the player has 4 balls of wool:",
+                "steps": [
+                  {
+                    "player": "I have some balls of wool. Could you make me some rope?"
+                  },
+                  {
+                    "npc": "Sure I can."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You hand over 4 balls of wool. Ned gives you a coil of rope.",
+                    "id": "pCcGIe"
+                  }
+                ],
+                "id": "nTfH1T"
+              },
+              {
+                "text": "That's a little more than I want to pay.",
+                "steps": [
+                  {
+                    "player": "That's a little more than I want to pay."
+                  },
+                  {
+                    "npc": "Well, if you ever need rope that's the price. Sorry. An old sailor needs money for a little drop o' rum."
+                  }
+                ]
+              },
+              {
+                "text": "I will go and get some wool.",
+                "condition": "If the player does not have 4 balls of wool:",
+                "steps": [
+                  {
+                    "player": "I will go and get some wool."
+                  },
+                  {
+                    "npc": "Aye, you do that. Remember, it takes 4 balls of wool to make strong rope."
+                  }
+                ],
+                "id": "B-1eaJ"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Prospector Percy": {
+    "reason": "The wiki leaves the sack-purchase response missing. Preserve the existing purchase text inferred from Percy’s other purchases and the remaining unlock menu until verified source dialogue or captures replace it.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/efbeda3d8b722a971e222ca5fc5c7116e9f996ba"
+    ],
+    "base_sha256": "5b508927767f114410640320cbd8328ab3e2f7d2e377cd4368a09a80ea18dc37",
+    "audited_sha256": "734297e9eaed61bd01cdc99ee11847f9f4b2f47220fd75d27bdeafeb45956752",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Prospector Percy",
+          "variants",
+          "standard-dialogue",
+          1,
+          "options",
+          3,
+          "steps",
+          1,
+          "steps",
+          4,
+          "options",
+          1,
+          "steps",
+          1,
+          "steps"
+        ],
+        "expected": "e4c344a2eb4a9e58bd7fdffd094e3e6a18381a4458e955438f5d876c0b38a874",
+        "value": [
+          {
+            "type": "message",
+            "text": "You pay Percy 200 nuggets.",
+            "id": "percyBiggerSack"
+          },
+          {
+            "player": "Is there anything else I can unlock here?"
+          },
+          {
+            "type": "jump",
+            "reference": "below"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Prospector Percy",
+          "variants",
+          "standard-dialogue",
+          1,
+          "options",
+          3,
+          "steps",
+          2,
+          "steps",
+          1,
+          "options",
+          0,
+          "steps",
+          1,
+          "steps"
+        ],
+        "expected": "3010c75617d489e5196d91463fab7477ede5d813df5dcb9a0d4861a6020d3cbb",
+        "value": [
+          {
+            "type": "message",
+            "text": "You pay Percy 200 nuggets.",
+            "id": "percyBiggerSack"
+          },
+          {
+            "player": "Is there anything else I can unlock here?"
+          },
+          {
+            "type": "jump",
+            "reference": "below"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Prospector Percy",
+          "variants",
+          "standard-dialogue",
+          1,
+          "options",
+          3,
+          "steps",
+          3,
+          "steps"
+        ],
+        "expected": "9062ee71128a28ef39100ebde670841287a6d664d5d319044d73dc482e8be4e4",
+        "value": [
+          {
+            "npc": "Let me have a think..."
+          },
+          {
+            "npc": "If ye've got level 57 Mining, ye could pay to use my restricted mine, up the ladder. 100 nuggets gives unlimited access."
+          },
+          {
+            "npc": "I can give ye access to a special hopper in the restricted mine for 50 nuggets, but you'll need access to the restricted mine first."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Restricted mine access: 100 nuggets",
+                "steps": [
+                  {
+                    "player": "I'd like to buy access to the restricted mine, please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 100 nuggets and is at least level 54 Mining:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You pay Percy 100 nuggets.",
+                        "id": "oc01u6"
+                      },
+                      {
+                        "npc": "Right, ye can go up there whenever ye likes. Just behave yerself, or my Ma will tan yer hide."
+                      },
+                      {
+                        "player": "Is there anything else I can unlock here?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "gDIrfC"
+                      }
+                    ],
+                    "id": "NWLyzF"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is not at least level 57 Mining:",
+                    "steps": [
+                      {
+                        "npc": "Ye'll need level 57 Mining first. An' don't think ye can fool me with yer potions and fancy stat-boosts. Get yer level up for real."
+                      },
+                      {
+                        "player": "Is there anything else I can unlock here?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "zZbpUq"
+                      }
+                    ],
+                    "id": "2QIYv4"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have 100 nuggets:",
+                    "steps": [
+                      {
+                        "npc": "That'll be 100 nuggets. If ye ain't got enough, ye'd better do some more mining - that's how ye gets stuff round here!"
+                      },
+                      {
+                        "player": "Is there anything else I can unlock here?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "A63syc"
+                      }
+                    ],
+                    "id": "tIxEMT"
+                  }
+                ]
+              },
+              {
+                "text": "Cancel",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "initial"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Sheep Shearer": {
+    "reason": "Keep the captured wool handover order and shared handover effect ID.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/63c7cd9b9753b4e434fc159a2955348a5058d3ab"
+    ],
+    "base_sha256": "a1d65a7d2e41156f614ab89e8cf25025f223245982131c51a5fa32da137d7210",
+    "audited_sha256": "784794f637763b5b0cf3d3f48729ba40949b9a9e5131aeff5ae6c6d0dc4c0deb",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Sheep Shearer",
+          "variants",
+          "finishing-up",
+          1,
+          "options",
+          0,
+          "steps"
+        ],
+        "expected": "ecf12c9ca9eaa9ec247f25371f0ab8ccbf898a26cd35d1083567fedf6d0fd639",
+        "value": [
+          {
+            "player": "I need to talk to you about shearing these sheep!"
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "Oh. How are you doing getting those balls of wool?"
+          },
+          {
+            "player": "I have some."
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "Give 'em here then."
+          },
+          {
+            "type": "message",
+            "text": "You give Fred [number] balls of wool.",
+            "id": "sheep-shearer:finish-handover"
+          },
+          {
+            "player": "That's the last of them."
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "I guess I'd better pay you then."
+          },
+          {
+            "type": "action",
+            "text": "Congratulations! Quest complete!",
+            "id": "l--V3R"
+          },
+          {
+            "type": "end"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Sheep Shearer",
+          "variants",
+          "starting-off",
+          1,
+          "options",
+          0,
+          "steps"
+        ],
+        "expected": "9a65f7a6675b5f2fca35910d20e334e96e55e1c43bf7b59034b9ef2b4852c21d",
+        "value": [
+          {
+            "player": "I'm looking for a quest."
+          },
+          {
+            "type": "condition",
+            "text": "On quest speedrunning worlds:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "You're after a quest, you say? Well I don't have any here."
+              },
+              {
+                "type": "message",
+                "text": "This quest is not available on Speedrunning Worlds.",
+                "id": "p5vu0z"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "br3A1e"
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "You're after a quest, you say? Actually, I could do with a bit of help."
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "My sheep are getting mighty woolly. I'd be much obliged if you could shear them. And while you're at it, spin the wool for me too."
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "Yes, that's it. Bring me 20 balls of wool. And I'm sure I could sort out some sort of payment. Of course, there's the small matter of The Thing."
+          },
+          {
+            "player": "What do you mean, The Thing?"
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "Well now, no one has ever seen The Thing. That's why we call it The Thing, 'cos we don't know what it is."
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "Some say it's a black hearted shapeshifter, hungering for the souls of hard working decent folk like me. Others say it's just a sheep."
+          },
+          {
+            "type": "line",
+            "speaker": "Fred the Farmer",
+            "text": "Well I don't have all day to stand around and gossip. Are you going to shear my sheep or what!"
+          },
+          {
+            "type": "choice",
+            "prompt": "Start the Sheep Shearer quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "Yes, okay. I can do that."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player already has 20 balls of wool in their inventory:",
+                    "action_source": "text",
+                    "steps": [
+                      {
+                        "player": "In fact Fred, funnily enough, I actually have 20 balls of wool already on me."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Have you been shearing my sheep without permission!?"
+                      },
+                      {
+                        "player": "No! Well, maybe... They just looked a little wooly! Surely you like a shave once in a while, too?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "It's rude to shave another person without permission - don't be coming at me with them shears!"
+                      },
+                      {
+                        "player": "I'm sorry, I'll ask permission next time."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "I guess no real 'arm was done. Hand the balls over and we can put this whole thing behind us."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You give Fred 20 balls of wool.",
+                        "id": "sheep-shearer:finish-handover"
+                      },
+                      {
+                        "player": "That's the last of them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "I guess I'd better pay you then."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Quest complete!",
+                        "id": "MW-4c0"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "JlC38d"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Good! Now one more thing, do you actually know how to shear a sheep?"
+                  },
+                  {
+                    "player": "Err. No, I don't know actually."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player doesn't have shears:",
+                    "id": "HK3p0J"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Well, first things first, you need a pair of shears. I've got some here you can use."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Fred gives you a set of sharp shears.",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "You just need to go and use them on the sheep out in my field."
+                      },
+                      {
+                        "player": "Sounds easy!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "That's what they all say!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Some of the sheep don't like it too much... Persistence is the key."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Once you've collected some wool you can spin it into balls."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "SSI1JE"
+                      }
+                    ],
+                    "id": "H9GkGT"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has shears already:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Well, you're half way there already! You have a set of shears in your inventory. Just use those on a Sheep to shear it."
+                      },
+                      {
+                        "player": "That's all I have to do?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Well once you've collected some wool you'll need to spin it into balls."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "zSnezd"
+                      }
+                    ],
+                    "id": "4-ne12"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Do you know how to spin wool?"
+                  },
+                  {
+                    "player": "I don't know how to spin wool, sorry."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Don't worry, it's quite simple!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "The nearest Spinning Wheel can be found on the first floor of Lumbridge Castle."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "To get to Lumbridge Castle just follow the road east."
+                  },
+                  {
+                    "type": "message",
+                    "text": "This icon denotes a Spinning Wheel on the world map.",
+                    "id": "xlDu6G"
+                  },
+                  {
+                    "player": "Thank you!"
+                  }
+                ],
+                "hook": "quest:sheep-shearer:start",
+                "quest": "Sheep Shearer"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "No, I'll give it a miss."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Suit yourself."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Shield of Arrav": {
+    "reason": "Captured museum greeting is absent from this wiki variant; recruitment navigation now comes from the dumper.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/63c7cd9b9753b4e434fc159a2955348a5058d3ab"
+    ],
+    "base_sha256": "0bd86fdd69a404fdfe735654f42747f542b37e8f5372f05e83d6b350f315d886",
+    "audited_sha256": "938ed268225f4877fc559951758fca122d7a85e4aa8894155212630a0f4e3a97",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "finishing-up-talking-to-curator-haig-halen"
+        ],
+        "expected": "21e688d00a44ad36868a40ab9f1153e3cd697ca73002511cfc206f604d3d4abd",
+        "value": [
+          {
+            "type": "line",
+            "speaker": "Curator Haig Halen",
+            "text": "Welcome to the museum of Varrock."
+          },
+          {
+            "player": "Hello there. I'm here about the Shield of Arrav."
+          },
+          {
+            "type": "line",
+            "speaker": "Curator Haig Halen",
+            "text": "The Shield of Arrav? The Museum has been searching for that for years! The late King Roald II offered a generous reward for its return!"
+          },
+          {
+            "player": "Well, I'm here to claim it."
+          },
+          {
+            "type": "line",
+            "speaker": "Curator Haig Halen",
+            "text": "You've found the shield? Let's have a look!"
+          },
+          {
+            "type": "message",
+            "text": "You show the shield half to the curator.",
+            "id": "qmfYSC"
+          },
+          {
+            "type": "line",
+            "speaker": "Curator Haig Halen",
+            "text": "This is incredible! But where's the other half?"
+          },
+          {
+            "player": "I obtained this half from the [Phoenix Gang/Black Arm Gang]. The [Black Arm Gang/Phoenix Gang] might have the other half."
+          },
+          {
+            "type": "line",
+            "speaker": "Curator Haig Halen",
+            "text": "That does sound plausible. We will have to hope that another adventurer can recover that half."
+          },
+          {
+            "player": "So will I be rewarded for recovering half of the shield?"
+          },
+          {
+            "type": "line",
+            "speaker": "Curator Haig Halen",
+            "text": "I'm afraid the reward is for the recovery of the full shield. However, what I'll do is write you out two half- certificates. If another adventurer returns the other shield half, I'll do the same for them."
+          },
+          {
+            "type": "line",
+            "speaker": "Curator Haig Halen",
+            "text": "The two of you can then swap one of the half- certificates to make a full one each. Take that to the King and he will grant you your reward."
+          },
+          {
+            "type": "message",
+            "text": "The curator gives you two half-certificates.",
+            "id": "2pltJk"
+          }
+        ]
+      }
+    ]
+  },
+  "The Corsair Curse": {
+    "reason": "Retain the captured quest-start prompt and Yes/No choices.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/062768d56aac9c98e726f582bf8e90411644b1d3"
+    ],
+    "base_sha256": "6823211367854b39f7e2fd884052a8db903368e7ee5c4676b6fbf304957c037c",
+    "audited_sha256": "ebe68f0238c4961d2f9a44c8dd62e17407a0b3c4757e24189888e232cf08d22a",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "The Corsair Curse",
+          "variants",
+          "the-cursed-crew-talking-to-captain-tock",
+          1,
+          "options",
+          1,
+          "steps",
+          4,
+          "options",
+          0,
+          "text"
+        ],
+        "expected": "aeaaccdb0e81d76684e79387cf3187d8c34839e139ef60e2b54b8d59d56c7d9e",
+        "value": "Yes."
+      },
+      {
+        "path": [
+          "records",
+          "The Corsair Curse",
+          "variants",
+          "the-cursed-crew-talking-to-captain-tock",
+          1,
+          "options",
+          1,
+          "steps",
+          4,
+          "options",
+          1,
+          "text"
+        ],
+        "expected": "dc60590915435f06f788ce899ce59cc23382988d34b3fd351a4b2e58ad8d691f",
+        "value": "No."
+      },
+      {
+        "path": [
+          "records",
+          "The Corsair Curse",
+          "variants",
+          "the-cursed-crew-talking-to-captain-tock",
+          1,
+          "options",
+          1,
+          "steps",
+          4,
+          "prompt"
+        ],
+        "expected": null,
+        "value": "Start The Corsair Curse quest?"
+      }
+    ]
+  },
+  "The Garden of Death": {
+    "reason": "Retain both captured note-on-the-floor messages.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/381e23467ebacd57e3892be82cb43d51ada94b50"
+    ],
+    "base_sha256": "681547b47775c90446bcd882d131162c4d7f863bed40978205846917f8465bd9",
+    "audited_sha256": "213e53664c79ff0565e973e2fad777183876255054abdc5998f5cdcd139d8662",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "The Garden of Death",
+          "variants",
+          "the-first-dungeon-reading-the-stone-tablet",
+          0,
+          "text"
+        ],
+        "expected": "af8795826bf2b30ba7954d6a0053feda5baf4b16c7e1a8d87d4b29f73fa2bbe4",
+        "value": "As you finish reading, you spot a note on the floor."
+      },
+      {
+        "path": [
+          "records",
+          "The Garden of Death",
+          "variants",
+          "the-fourth-dungeon-reading-the-stone-tablet-after-translating-it",
+          1,
+          "steps",
+          0,
+          "text"
+        ],
+        "expected": "af8795826bf2b30ba7954d6a0053feda5baf4b16c7e1a8d87d4b29f73fa2bbe4",
+        "value": "As you finish reading, you spot a note on the floor."
+      }
+    ]
+  },
+  "While Guthix Sleeps": {
+    "reason": "Retain fellowship and Dark Squall continuations, Betty and Kuradal services, notes, sketch recovery and confirmed one-use teleports.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/9a0e0d6f0c9c59766a77264ba9a974e8d7043e48",
+      "https://github.com/RSPSApp/tsps/commit/ad7777fff1a965580c0c25a1e5808f0d7e57afe4",
+      "https://github.com/RSPSApp/tsps/commit/5870b8a45586f0ff2ee720d96d1dac28ad50c6ff",
+      "https://github.com/RSPSApp/tsps/commit/977f3b73ddd76a07045c21ab7b62a9487d0db179",
+      "https://github.com/RSPSApp/tsps/commit/d5a483d30bd49ad6561d5a286bbdd2a2f2248aac",
+      "https://github.com/RSPSApp/tsps/commit/0d1b129a03da3d8aa03996d652fc40cc5a9c9854",
+      "https://github.com/RSPSApp/tsps/commit/6cd09f5bce806b2e0bfd49955a22637e2d81c641"
+    ],
+    "base_sha256": "20f44e3ddd982c068ff20dbd78e42e0a786c8a97eb78b699d0dacb3d8125acca",
+    "audited_sha256": "e72f3e0852919aa199b8a420fed0e0ce4f5d90e4f1d552a7b63c9a7ec980487b",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-capturing-a-spy-talking-to-the-group-after-planting-a-teleorb",
+          38,
+          "options",
+          0,
+          "steps"
+        ],
+        "expected": "acf3aaf7f36cde9272d8201eb418f896adf4bad890db3870a901366d614397bf",
+        "value": [
+          {
+            "player": "Could I have that seed?"
+          },
+          {
+            "type": "line",
+            "speaker": "Thaerisk",
+            "text": "Of course."
+          },
+          {
+            "type": "message",
+            "text": "Thaerisk gives you a snapdragon seed.",
+            "id": "z_F_Aq"
+          },
+          {
+            "type": "line",
+            "speaker": "Thaerisk",
+            "text": "Now, would you like me to teleport you to Port Sarim?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Teleport to Port Sarim? You can only use this teleport once.",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player is teleported.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "wgs-sarim-after-seed"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-first-recruitment-talking-to-duradel-talking-to-kuradal",
+          1,
+          "options"
+        ],
+        "expected": "66bd1380f15b741dfb89607d54066b496c248b32a076fdbfdfe2fa2f8a1ce0d0",
+        "value": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "npc": "Excellent, you're doing great. Your new task is to kill [amount] [task monster]."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Got any tips for me?",
+                        "steps": [
+                          {
+                            "player": "Got any tips for me?"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Kuradal provides the corresponding Slayer task tip.",
+                            "id": "rRaUxL"
+                          },
+                          {
+                            "player": "Great, thanks!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, great!",
+                        "steps": [
+                          {
+                            "player": "Okay, great!"
+                          },
+                          {
+                            "npc": "Good luck! Don't forget to come back when you need a new assignment."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "bCA0q6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster]; you have [amount] to go. Come back when you've finished your task."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "AcTTKx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster], with [amount] to go."
+                  },
+                  {
+                    "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please cancel it.",
+                        "steps": [
+                          {
+                            "player": "Yes, please cancel it."
+                          },
+                          {
+                            "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks, I want to try doing it.",
+                        "steps": [
+                          {
+                            "player": "No, thanks, I want to try doing it."
+                          },
+                          {
+                            "npc": "Good luck with that."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Y6-wL7"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "FG6zB_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "qqeFC1"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "player": "Let's talk about the difficulty of my assignments."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "That's the spirit."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will now take the player's combat level into account.",
+                            "id": "pkD5ZH"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "45tThY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Okay, we'll keep checking your combat level."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will no longer take the player's combat level into account.",
+                            "id": "wsjos4"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ISTcUz"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about your skillcape, please.",
+            "condition": "If the player does not have 99 Slayer:",
+            "steps": [
+              {
+                "player": "Tell me about your skillcape, please."
+              },
+              {
+                "npc": "This is a Slayer's Skillcape. Only a true Slayer master is permitted to wear one and in recognition of such an achievement, Slayer masters may be persuaded to allow you to select the same assignment in a row."
+              },
+              {
+                "npc": "You need more training before you earn that honour, though."
+              }
+            ],
+            "id": "OT4fJI"
+          },
+          {
+            "text": "Can you sell me a Slayer Skillcape?",
+            "condition": "If the player has 99 Slayer:",
+            "steps": [
+              {
+                "player": "May I buy a Slayer's Skillcape, please?"
+              },
+              {
+                "npc": "Well you have performed well as a student. I guess you have earned the right to wear such a prestigious cape now. The Slayer masters will recognize this cape and may offer you the same assignment twice in a row."
+              },
+              {
+                "npc": "That will be 99000 coins, please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I've changed my mind, I don't want it.",
+                    "steps": [
+                      {
+                        "player": "I've changed my mind; I don't want it."
+                      },
+                      {
+                        "npc": "Okay. Well, if you change it back again, I will be waiting."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Great; I've always wanted one!",
+                    "steps": [
+                      {
+                        "npc": "Well, come back and see me when you do."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WNvjoq"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins and enough inventory space:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Slayer cape and hood",
+                    "id": "9b1oEJ"
+                  },
+                  {
+                    "npc": "Good hunting, [player name]."
+                  }
+                ],
+                "id": "azQvkc"
+              }
+            ],
+            "id": "gMWHzo"
+          },
+          {
+            "text": "So you're filling in for Duradel?",
+            "steps": [
+              {
+                "player": "So you're filling in for Duradel?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kuradal",
+                "text": "I am. The task he has been given is an important one, but this post must always be filled. Who better to fill it than his own daughter."
+              },
+              {
+                "player": "Daughter? So being a Slayer Master runs in the family?"
+              },
+              {
+                "type": "line",
+                "speaker": "Kuradal",
+                "text": "Of course. One cannot simply grow up with someone like my father. My childhood consisted of a lot of training. My father has always been among the best, but he wanted me to be even better."
+              },
+              {
+                "player": "Sounds like a lot of hard work."
+              },
+              {
+                "type": "line",
+                "speaker": "Kuradal",
+                "text": "Yes, but we wouldn't have it any other way."
+              }
+            ]
+          },
+          {
+            "text": "Er... Nothing...",
+            "steps": [
+              {
+                "player": "Er... Nothing..."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-making-a-replacement-serum-talking-to-betty",
+          1,
+          "options",
+          2,
+          "steps"
+        ],
+        "expected": "c4ec9c8549040a777560734c9c2407a333a75ab7a3222f3127dc180632096f68",
+        "value": [
+          {
+            "player": "Could I buy some more pink dye?"
+          },
+          {
+            "type": "line",
+            "speaker": "Betty",
+            "text": "It's 20 coins per bottle."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have 20 coins:",
+            "steps": [
+              {
+                "player": "Oh, I don't have enough money with me."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "nomyMm"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Sounds good.",
+                "steps": [
+                  {
+                    "player": "Sounds good."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Betty sells you some pink dye in exchange for 20 coins.",
+                    "id": "PilX__"
+                  }
+                ]
+              },
+              {
+                "text": "Actually, I'll pass.",
+                "steps": [
+                  {
+                    "player": "Actually, I'll pass."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Betty",
+                    "text": "Fair enough."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-making-a-replacement-serum-talking-to-betty-talking-to-betty-again",
+          1,
+          "options",
+          2,
+          "steps"
+        ],
+        "expected": "c4ec9c8549040a777560734c9c2407a333a75ab7a3222f3127dc180632096f68",
+        "value": [
+          {
+            "player": "Could I buy some more pink dye?"
+          },
+          {
+            "type": "line",
+            "speaker": "Betty",
+            "text": "It's 20 coins per bottle."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have 20 coins:",
+            "steps": [
+              {
+                "player": "Oh, I don't have enough money with me."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "nomyMm"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Sounds good.",
+                "steps": [
+                  {
+                    "player": "Sounds good."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Betty sells you some pink dye in exchange for 20 coins.",
+                    "id": "PilX__"
+                  }
+                ]
+              },
+              {
+                "text": "Actually, I'll pass.",
+                "steps": [
+                  {
+                    "player": "Actually, I'll pass."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Betty",
+                    "text": "Fair enough."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-second-recruitment-talking-to-the-akrisae-after-all-the-heroes-are-assembled",
+          48,
+          "options",
+          0,
+          "id"
+        ],
+        "expected": null,
+        "value": "wgs-ice-mountain"
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-second-recruitment-talking-to-the-akrisae-after-all-the-heroes-are-assembled-talking-to-akrisae-again"
+        ],
+        "expected": "1c482cac0cd1854e15a7cc39ae63d60fc5f17d8db01b579c6e05a9335bf4fae2",
+        "value": [
+          {
+            "type": "line",
+            "speaker": "Akrisae",
+            "text": "Hello there, [player name]. Any luck finding Silif or the Dark Squall?"
+          },
+          {
+            "player": "Not yet."
+          },
+          {
+            "type": "line",
+            "speaker": "Akrisae",
+            "text": "We lost contact with Silif shortly after he entered the Black Knights' Fortress, so I'd suggest you start there."
+          },
+          {
+            "type": "line",
+            "speaker": "Akrisae",
+            "text": "If you want, I can speed things up a bit by teleporting you to Ice Mountain."
+          },
+          {
+            "type": "choice",
+            "prompt": "Teleport to Ice Mountain? You can only use this teleport once.",
+            "options": [
+              {
+                "text": "Yes.",
+                "id": "wgs-ice-mountain"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Akrisae",
+                    "text": "Very well. You know where I am if you change your mind."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-using-the-serum-talking-to-the-shady-stranger-while-inside-the-cell-with-the-serum-talking-to-the-shady-stranger-again-after-sketching-the-suspect",
+          4,
+          "id"
+        ],
+        "expected": null,
+        "value": "wgs-sketch-lost"
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-using-the-serum-talking-to-the-shady-stranger-while-inside-the-cell-with-the-serum-talking-to-the-shady-stranger-again-after-sketching-the-suspect",
+          4,
+          "options"
+        ],
+        "expected": "1f46e8b48710ecfd7717ef41e1bd8e26b631b518a1180800af9d2d3518996f63"
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-using-the-serum-talking-to-the-shady-stranger-while-inside-the-cell-with-the-serum-talking-to-the-shady-stranger-again-after-sketching-the-suspect",
+          4,
+          "steps"
+        ],
+        "expected": null,
+        "value": [
+          {
+            "type": "message",
+            "text": "You quickly make a sketch that matches the stranger's description of the Dark Squall.",
+            "id": "IcllDi"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-using-the-serum-talking-to-the-shady-stranger-while-inside-the-cell-with-the-serum-talking-to-the-shady-stranger-again-after-sketching-the-suspect",
+          4,
+          "text"
+        ],
+        "expected": null,
+        "value": "If the player does not have the sketch"
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "forming-a-fellowship-using-the-serum-talking-to-the-shady-stranger-while-inside-the-cell-with-the-serum-talking-to-the-shady-stranger-again-after-sketching-the-suspect",
+          4,
+          "type"
+        ],
+        "expected": "a5b7bf5479b9deadc22c17d106268f65a5010da7d852d45b75e0fd36d4c714cf",
+        "value": "condition"
+      },
+      {
+        "path": [
+          "records",
+          "While Guthix Sleeps",
+          "variants",
+          "post-quest-dialogue-talking-to-kuradal",
+          1,
+          "options"
+        ],
+        "expected": "9a68b7158bfab579896a89527e60873df2022d4b0586963378d350e5170c3360",
+        "value": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "npc": "Excellent, you're doing great. Your new task is to kill [amount] [task monster]."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Got any tips for me?",
+                        "steps": [
+                          {
+                            "player": "Got any tips for me?"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Kuradal provides the corresponding Slayer task tip.",
+                            "id": "rRaUxL"
+                          },
+                          {
+                            "player": "Great, thanks!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, great!",
+                        "steps": [
+                          {
+                            "player": "Okay, great!"
+                          },
+                          {
+                            "npc": "Good luck! Don't forget to come back when you need a new assignment."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "bCA0q6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster]; you have [amount] to go. Come back when you've finished your task."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "AcTTKx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster], with [amount] to go."
+                  },
+                  {
+                    "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please cancel it.",
+                        "steps": [
+                          {
+                            "player": "Yes, please cancel it."
+                          },
+                          {
+                            "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks, I want to try doing it.",
+                        "steps": [
+                          {
+                            "player": "No, thanks, I want to try doing it."
+                          },
+                          {
+                            "npc": "Good luck with that."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Y6-wL7"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "FG6zB_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "qqeFC1"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "player": "Let's talk about the difficulty of my assignments."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "That's the spirit."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will now take the player's combat level into account.",
+                            "id": "pkD5ZH"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "45tThY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Okay, we'll keep checking your combat level."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will no longer take the player's combat level into account.",
+                            "id": "wsjos4"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ISTcUz"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about your skillcape, please.",
+            "condition": "If the player does not have 99 Slayer:",
+            "steps": [
+              {
+                "player": "Tell me about your skillcape, please."
+              },
+              {
+                "npc": "This is a Slayer's Skillcape. Only a true Slayer master is permitted to wear one and in recognition of such an achievement, Slayer masters may be persuaded to allow you to select the same assignment in a row."
+              },
+              {
+                "npc": "You need more training before you earn that honour, though."
+              }
+            ],
+            "id": "OT4fJI"
+          },
+          {
+            "text": "Can you sell me a Slayer Skillcape?",
+            "condition": "If the player has 99 Slayer:",
+            "steps": [
+              {
+                "player": "May I buy a Slayer's Skillcape, please?"
+              },
+              {
+                "npc": "Well you have performed well as a student. I guess you have earned the right to wear such a prestigious cape now. The Slayer masters will recognize this cape and may offer you the same assignment twice in a row."
+              },
+              {
+                "npc": "That will be 99000 coins, please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I've changed my mind, I don't want it.",
+                    "steps": [
+                      {
+                        "player": "I've changed my mind; I don't want it."
+                      },
+                      {
+                        "npc": "Okay. Well, if you change it back again, I will be waiting."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Great; I've always wanted one!",
+                    "steps": [
+                      {
+                        "npc": "Well, come back and see me when you do."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WNvjoq"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins and enough inventory space:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Slayer cape and hood",
+                    "id": "9b1oEJ"
+                  },
+                  {
+                    "npc": "Good hunting, [player name]."
+                  }
+                ],
+                "id": "azQvkc"
+              }
+            ],
+            "id": "gMWHzo"
+          },
+          {
+            "text": "About Duradel...",
+            "steps": [
+              {
+                "player": "About Duradel..."
+              },
+              {
+                "type": "line",
+                "speaker": "Kuradal",
+                "text": "Are you here with news on Lucien?"
+              },
+              {
+                "player": "I'm afraid not."
+              },
+              {
+                "type": "line",
+                "speaker": "Kuradal",
+                "text": "The moment you find him, you must come to me. I will ensure my father is avenged!"
+              },
+              {
+                "player": "He wouldn't want you to get yourself killed as well!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not yet received Duradel's notes:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Kuradal",
+                    "text": "I will not suffer the same fate as my father. I intend to be prepared. For a start, I have been researching my father's notes to find weaknesses in Lucien's demonic thralls."
+                  },
+                  {
+                    "player": "Those sound interesting. May I see them?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Kuradal",
+                    "text": "Of course. If we expect to defeat Lucien, we must work together."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's inventory is full:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Kuradal",
+                        "text": "Return to me when you have space to carry them."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "vhO3yX"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Kuradal hands you an old notebook.",
+                    "id": "PGNPip"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "omXWyi"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has received Duradel's notes:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Kuradal",
+                    "text": "I will not suffer the same fate as my father. That fate is reserved for Lucien!"
+                  },
+                  {
+                    "player": "I hope you're right..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "yU0Tl1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not read Duradel's notes and it is not in their possession:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Kuradal",
+                    "text": "I will not suffer the same fate as my father. I intend to be prepared. For a start, I have been researching my father's notes to find weaknesses in Lucien's demonic thralls."
+                  },
+                  {
+                    "player": "Speaking of those notes, I seem to have misplaced them. Do you happen to have another copy?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Kuradal",
+                    "text": "Luckily for you, I made many."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has sufficient inventory space:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Kuradal hands you an old notebook.",
+                        "id": "PGNPip"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "5OgFOR"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has no free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Kuradal",
+                        "text": "Return to me when you have space to carry them."
+                      }
+                    ],
+                    "id": "zVDDzY"
+                  }
+                ],
+                "id": "lIknwQ"
+              }
+            ]
+          },
+          {
+            "text": "Er... Nothing...",
+            "steps": [
+              {
+                "player": "Er... Nothing..."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "X Marks the Spot": {
+    "reason": "Retain captured start menus, scroll handover and Veos continuations.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/062768d56aac9c98e726f582bf8e90411644b1d3"
+    ],
+    "base_sha256": "7a56c7442c22ee9606d13a90ab29677cde21062eb641c998993805301813768f",
+    "audited_sha256": "bfec14e761a900563bd85ba463f84f65ab3a072d6e6476291a4898d7deb74edb",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "X Marks the Spot",
+          "variants",
+          "starting-off-if-the-player-has-not-visited-great-kourend-before",
+          1,
+          "options",
+          0,
+          "steps",
+          7,
+          "options",
+          0,
+          "steps"
+        ],
+        "expected": "e714ea7237f521de07fade782b103e43bd2e0aefaf98a2840b016f0a688a6aae",
+        "value": [
+          {
+            "player": "Can I help?"
+          },
+          {
+            "type": "line",
+            "speaker": "Veos",
+            "text": "Hmmm. Maybe you can. You probably know this area better than I do. You might be able to work the scroll out. I'll be able to reward you if you help."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "Sounds good, what should I do?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "A8qY2A"
+                      }
+                    ],
+                    "id": "eWfCON"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has a free inventory space:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Veos",
+                        "text": "Take this scroll. It should lead you to the treasure I seek. Once you've found it, meet me at my ship. It's docked at the northernmost pier in Port Sarim."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Veos has given you a scroll.",
+                        "id": "vNA0zu"
+                      },
+                      {
+                        "player": "Awesome. Anything else I should know?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Veos",
+                        "text": "You'll probably want a spade, I find they're pretty much always needed when it comes to hunting treasure. Check the general store if you don't have one. If you need any extra help, just let me know."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Veos",
+                        "text": "I'll be sticking around here a little longer before heading back to my ship. If you need extra guidance with anything, just let me know and I'll see what I can do."
+                      },
+                      {
+                        "player": "Okay, thanks Veos."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Veos",
+                        "text": "Good luck."
+                      }
+                    ],
+                    "id": "ds0BER"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "I'm good thanks."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Veos",
+                    "text": "Fair enough. I'll be here if you change your mind."
+                  }
+                ]
+              }
+            ],
+            "prompt": "Start the X Marks the Spot quest?"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "X Marks the Spot",
+          "variants",
+          "starting-off-if-the-player-has-not-visited-great-kourend-before",
+          1,
+          "options",
+          1,
+          "steps",
+          2,
+          "steps"
+        ],
+        "expected": "89e7c7f67b6c9575fbc0e757ae0cedc6094dbb1839576f1006eb5f2589dcfd5b",
+        "value": [
+          {
+            "type": "line",
+            "speaker": "Veos",
+            "text": "Across the sea to the far west. It is a truly magnificent place."
+          },
+          {
+            "player": "Interesting. So what brings you to Lumbridge?"
+          },
+          {
+            "type": "line",
+            "speaker": "Veos",
+            "text": "I'm here on a bit of a hunt. The hunt for treasure. Back in my home of Great Kourend, I came across a scroll. I believe it will lead me to something of great value."
+          },
+          {
+            "type": "line",
+            "speaker": "Veos",
+            "text": "Alas, I've hit a bit of a blocker. The scroll has led me here but as I don't really know the area, I'm not sure what to do next."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can I help?",
+                "steps": [
+                  {
+                    "player": "Can I help?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Veos",
+                    "text": "Hmmm. Maybe you can. You probably know this area better than I do. You might be able to work the scroll out. I'll be able to reward you if you help."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "player": "Sounds good, what should I do?"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have any free inventory space:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "A8qY2A"
+                              }
+                            ],
+                            "id": "eWfCON"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has a free inventory space:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Veos",
+                                "text": "Take this scroll. It should lead you to the treasure I seek. Once you've found it, meet me at my ship. It's docked at the northernmost pier in Port Sarim."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Veos has given you a scroll.",
+                                "id": "vNA0zu"
+                              },
+                              {
+                                "player": "Awesome. Anything else I should know?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Veos",
+                                "text": "You'll probably want a spade, I find they're pretty much always needed when it comes to hunting treasure. Check the general store if you don't have one. If you need any extra help, just let me know."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Veos",
+                                "text": "I'll be sticking around here a little longer before heading back to my ship. If you need extra guidance with anything, just let me know and I'll see what I can do."
+                              },
+                              {
+                                "player": "Okay, thanks Veos."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Veos",
+                                "text": "Good luck."
+                              }
+                            ],
+                            "id": "ds0BER"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "player": "I'm good thanks."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Veos",
+                            "text": "Fair enough. I'll be here if you change your mind."
+                          }
+                        ]
+                      }
+                    ],
+                    "prompt": "Start the X Marks the Spot quest?"
+                  }
+                ]
+              },
+              {
+                "text": "Well good luck with it.",
+                "steps": [
+                  {
+                    "player": "Well good luck with it."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "General Montoya": {
+    "reason": "Release-day RSProx 241.1 dialogue preserved from the Fractured Archive implementation while no cached Wiki transcript exists. A newly collected Wiki record must stop the dump for review, not be overwritten.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f",
+      "https://github.com/RSPSApp/tsps/blob/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f/docs/fractured-archive.md"
+    ],
+    "base_sha256": null,
+    "audited_sha256": "884687af6f575c873c05dc7bd06826435d79d9f0ae78d684d06d5ba15d5e01f8",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "General Montoya"
+        ],
+        "expected": null,
+        "value": {
+          "default": "standard-dialogue",
+          "variants": {
+            "standard-dialogue": [
+              {
+                "player": "Hello!"
+              },
+              {
+                "npc": "Good day!"
+              },
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "I organise people according to the Alliance's defence plans. That means bringing newcomers quickly up to speed, and communicating any changes to the plan across the troops."
+              },
+              {
+                "type": "choice",
+                "prompt": "Select an option",
+                "options": [
+                  {
+                    "text": "Tell me more about the Archive.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Archive."
+                      },
+                      {
+                        "npc": "You can see the Archive's layout on the board beside me. The central chamber, which we're calling the Nexus, is currently occupied by a hostile automaton. We plan to take that chamber and establish our defences there."
+                      },
+                      {
+                        "player": "And by 'we' you mean me?"
+                      },
+                      {
+                        "npc": "Indeed. Before he left, Armacus informed me you would clear the way whilst he and the others mobilised the rest of the troops."
+                      },
+                      {
+                        "player": "He did, did he?"
+                      },
+                      {
+                        "npc": "Yes! He seemed confident you would help. 'I can see it in [his/her] eyes. The flame of justice!'"
+                      },
+                      {
+                        "npc": "He is a bit eccentric, but he is a fine leader, and a good judge of character."
+                      },
+                      {
+                        "player": "At least one of those is true. What comes after the Nexus?"
+                      },
+                      {
+                        "npc": "There are six peripheral chambers we expect to come under attack, all of which can be reached from the Nexus. As soon as the Nexus is secured, we will begin deploying troops to the furthest chambers."
+                      },
+                      {
+                        "npc": "They will hold the line whilst we work on clearing the foremost ones. We are relying on you to take one side whilst we take the other."
+                      },
+                      {
+                        "player": "So that makes... the Nexus plus three chambers you want taking care of?"
+                      },
+                      {
+                        "npc": "Yes. It is no small ask, but we do not think we can manage any more ourselves. I would suggest you seek allies of your own to help you."
+                      },
+                      {
+                        "player": "I'll see what I can do."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "tfa-montoya-archive-back"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are our enemies?",
+                    "steps": [
+                      {
+                        "player": "Who are our enemies?"
+                      },
+                      {
+                        "npc": "We have followers of Lucien, Zamorak and Bandos to deal with. Evidence also suggests there are other foes yet to fully reveal themselves. For example, there have been reports of a lone knight."
+                      },
+                      {
+                        "player": "A lone knight?"
+                      },
+                      {
+                        "npc": "Yes. The scouting report is spotty. Only one of our people made it back alive, but they were heavily wounded. Apparently this knight took out a whole squadron by himself."
+                      },
+                      {
+                        "player": "That's concerning... What about the others?"
+                      },
+                      {
+                        "npc": "The Bandosian forces are mostly goblins. You wouldn't think they'd pose much of a threat, but they've managed to build some sort of siege engine. If that weren't enough, they're being lead by a huge ork."
+                      },
+                      {
+                        "npc": "As for the forces of Lucien and Zamorak, we spotted a clash between the two factions in some of the deeper tunnels. An army of skeletons facing off against a group of Zamorakian mages."
+                      },
+                      {
+                        "player": "The Dagon'hai?"
+                      },
+                      {
+                        "npc": "Interestingly, no, but we'll get to them. We managed to capture one of the mages and interrogate them. They refused to say much, but we gather they're trying to summon some sort of powerful demon."
+                      },
+                      {
+                        "player": "And the skeletons?"
+                      },
+                      {
+                        "npc": "There seems to be an endless tide of them. A necromancer must be present. It's possible this is the work of Moia, the leader of Lucien's forces."
+                      },
+                      {
+                        "player": "And let me guess, there's more?"
+                      },
+                      {
+                        "npc": "Quite... You mentioned the Dagon'hai. A group of them were spotted near the Stone of Jas' old location. They seemed to be fending off an unusually capable tormented demon."
+                      },
+                      {
+                        "player": "In what way?"
+                      },
+                      {
+                        "npc": "Most tormented demons seem to struggle with the strength of their own flames. This one seemed to fully control them, lending it both greater power and durability."
+                      },
+                      {
+                        "player": "Did it manage to get rid of the Dagon'hai?"
+                      },
+                      {
+                        "npc": "No, they disengaged and made for a tunnel we think leads to the Archive. The demon followed, but went down a different path."
+                      },
+                      {
+                        "player": "That's quite the list we're up against."
+                      },
+                      {
+                        "npc": "Yes... but we are not without allies either. The Alliance is rallying as we speak. Together we can do this."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "tfa-montoya-enemies-back"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where is everybody else?",
+                    "steps": [
+                      {
+                        "player": "Where is everybody else?"
+                      },
+                      {
+                        "npc": "Armacus, Eva and Ivy have gone to rally the rest of the forces. We are only a small vanguard sent to assess the situation and prepare if necessary."
+                      },
+                      {
+                        "player": "Let's hope they don't take too long."
+                      },
+                      {
+                        "npc": "Fear not, they will soon return with help. Once they are here, we estimate we can defeat three sets of intruders. As for the rest... we will be relying on you and any allies you can gather yourself."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "tfa-montoya-everybody-back"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thank you.",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "path": [
+          "authoring",
+          "Transcript:General Montoya"
+        ],
+        "expected": null,
+        "value": {
+          "source": {
+            "page": "Transcript:General Montoya",
+            "capture": "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f"
+          },
+          "sections": {
+            "standard-dialogue": [
+              "Standard dialogue"
+            ]
+          },
+          "participants": [
+            "General Montoya"
+          ],
+          "npc_ids": [
+            16705
+          ]
+        }
+      },
+      {
+        "path": [
+          "index",
+          "16705"
+        ],
+        "expected": null,
+        "value": [
+          {
+            "page": "Transcript:General Montoya",
+            "variants": [
+              "standard-dialogue"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Record Keeper": {
+    "reason": "Release-day RSProx 241.1 dialogue preserved from the Fractured Archive implementation while no cached Wiki transcript exists. A newly collected Wiki record must stop the dump for review, not be overwritten.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f",
+      "https://github.com/RSPSApp/tsps/blob/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f/docs/fractured-archive.md"
+    ],
+    "base_sha256": null,
+    "audited_sha256": "72b1daf8d69d8e399ecfeabf895b3809efd178ee7d6edc410f6cc14b1c07f3ce",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Record Keeper"
+        ],
+        "expected": null,
+        "value": {
+          "default": "standard-dialogue",
+          "variants": {
+            "standard-dialogue": [
+              {
+                "player": "Hello."
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "Hello?"
+              },
+              {
+                "npc": "Hmm? What what?"
+              },
+              {
+                "player": "I hope I'm not interrupting."
+              },
+              {
+                "npc": "Interrupting who?"
+              },
+              {
+                "player": "You?"
+              },
+              {
+                "npc": "What about me?"
+              },
+              {
+                "player": "Am I interrupting you?"
+              },
+              {
+                "npc": "I'm not sure... What is it you're interrupting me for?"
+              },
+              {
+                "player": "Well, I was just going to ask what you're doing, but I'm starting to regret it."
+              },
+              {
+                "npc": "Why didn't you say so, my dear!"
+              },
+              {
+                "npc": "I... am... the Keeper of the Records!"
+              },
+              {
+                "player": "..."
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "You're a record keeper?"
+              },
+              {
+                "npc": "THE Record Keeper!"
+              },
+              {
+                "npc": "These sensitive records are under my precise curation!"
+              },
+              {
+                "npc": "The secrets of the Archive, the progress of the Alliance, the very steps you took towards me today, all recorded in these... very... pages!"
+              },
+              {
+                "player": "Can I have a loo-"
+              },
+              {
+                "npc": "No!"
+              },
+              {
+                "player": "Sorry, I was just interested."
+              },
+              {
+                "npc": "Hmm... I suppose you may view some of the records, should your curiosity need satisfying."
+              },
+              {
+                "type": "choice",
+                "prompt": "View Stats?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [],
+                    "id": "tfa-record-keeper-view-stats"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [],
+                    "id": "tfa-record-keeper-no"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "path": [
+          "authoring",
+          "Transcript:Record Keeper"
+        ],
+        "expected": null,
+        "value": {
+          "source": {
+            "page": "Transcript:Record Keeper",
+            "capture": "https://github.com/RSPSApp/tsps/commit/7a3e4ea0aaac84239de15060454b3f2eb57a8f3f"
+          },
+          "sections": {
+            "standard-dialogue": [
+              "Standard dialogue"
+            ]
+          },
+          "participants": [
+            "Record Keeper"
+          ],
+          "npc_ids": [
+            16692
+          ]
+        }
+      },
+      {
+        "path": [
+          "index",
+          "16692"
+        ],
+        "expected": null,
+        "value": [
+          {
+            "page": "Transcript:Record Keeper",
+            "variants": [
+              "standard-dialogue"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

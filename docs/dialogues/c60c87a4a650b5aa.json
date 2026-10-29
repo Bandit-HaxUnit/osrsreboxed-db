@@ -466,8 +466,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bM1vG_"
+                "id": "bM1vG_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb785b60b2bef58d"
+                  }
+                ]
               }
             ]
           },
@@ -515,8 +520,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ti6uCG"
+                "id": "ti6uCG",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb785b60b2bef58d"
+                  }
+                ]
               }
             ]
           },
@@ -525,6 +535,62 @@
             "steps": [
               {
                 "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-fb785b60b2bef58d": [
+      {
+        "player": "Do I have to pay every time I use the carts?"
+      },
+      {
+        "npc": "Hmmm... We normally charge 50 coins per ride. For 100,000 coins, you'll never have to pay again."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "100,000 coins is a rip-off!",
+            "steps": [
+              {
+                "player": "100,000 coins is a rip-off!"
+              },
+              {
+                "npc": "Take it or leave it, human! You may enjoy being about to ride our carts without having to carry coins every time."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "9XgbR7"
+              }
+            ]
+          },
+          {
+            "text": "Okay, I'll pay.",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "nmEGp7"
+              }
+            ]
+          },
+          {
+            "text": "I'd rather not, thanks.",
+            "steps": [
+              {
+                "player": "I'd rather not, thanks."
+              },
+              {
+                "npc": "Can I do anything else for you, human?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "ugAh6U"
               }
             ]
           }

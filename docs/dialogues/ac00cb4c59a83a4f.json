@@ -763,8 +763,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "0aUwhR"
+                "id": "0aUwhR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6eeb8b26940ee4b0"
+                  }
+                ]
               }
             ]
           },
@@ -776,8 +781,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "EMo7fT"
+                "id": "EMo7fT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6eeb8b26940ee4b0"
+                  }
+                ]
               }
             ]
           },
@@ -804,8 +814,13 @@
               },
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "Dj9sxh"
+                "id": "Dj9sxh",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1f8c667cb17de6b9"
+                  }
+                ]
               }
             ]
           },
@@ -1719,6 +1734,53 @@
       {
         "type": "unavailable",
         "id": "QmGBZH"
+      }
+    ]
+  },
+  "branches": {
+    "jump-6eeb8b26940ee4b0": [
+      {
+        "type": "line",
+        "speaker": "Killer",
+        "text": "This game didn't involve you [player name]! Now her death is on you! Her blood is on your hands you fool!"
+      },
+      {
+        "type": "action",
+        "text": "The killer stabs Lacey.",
+        "id": "HVer_D"
+      },
+      {
+        "type": "line",
+        "speaker": "Lacey",
+        "text": "Gargle...urgh..."
+      },
+      {
+        "type": "jump",
+        "id": "Dj9sxh",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-1f8c667cb17de6b9"
+          }
+        ]
+      }
+    ],
+    "jump-1f8c667cb17de6b9": [
+      {
+        "type": "action",
+        "text": "Lacey dies.",
+        "id": "vmWaWt"
+      },
+      {
+        "type": "action",
+        "text": "The killer slips a note through the fence, and walks away.",
+        "id": "2A-oCi"
+      },
+      {
+        "player": "That monster! I have to stop them! Let's see what that new note says."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -73,8 +73,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "qpPRCf"
+                        "id": "qpPRCf",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-63e99f81f4810f26"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -271,8 +276,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "rEtGW1"
+                                        "id": "rEtGW1",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-63150a6a006ea01d"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -1465,8 +1475,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "BPV8hz"
+                        "id": "BPV8hz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6e71cebb50964246"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1478,8 +1493,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "srS-rx"
+                        "id": "srS-rx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6e71cebb50964246"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1800,8 +1820,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "below",
-                    "id": "iIRm6c"
+                    "id": "iIRm6c",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-a8c8e99c1272dd2a"
+                      }
+                    ]
                   }
                 ],
                 "id": "_ItCLB"
@@ -2979,8 +3004,13 @@
                   },
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "Uh3Q2n"
+                    "id": "Uh3Q2n",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-796f9a0edff1b059"
+                      }
+                    ]
                   }
                 ]
               }
@@ -3281,25 +3311,526 @@
           {
             "text": "Excuse me, have you seen my helmet?",
             "condition": "If you've lost the bearhead",
-            "id": "3OkZxS"
+            "id": "3OkZxS",
+            "steps": [
+              {
+                "player": "Excuse me, have you seen my helmet?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "And what helmet would that be?"
+              },
+              {
+                "player": "The one from the bear man thing person... you know!"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Oh, yes... as a matter of fact we did find such a helmet inside the cave."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "We had a look in there after you killed the abomination that used to live inside."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Here, take it. You should take proper care of this, trophies from your enemy are an important keepsake."
+              },
+              {
+                "type": "message",
+                "text": "You take back your helmet of the bearman.",
+                "id": "n7WQai"
+              },
+              {
+                "type": "end"
+              }
+            ]
           },
           {
-            "text": "Well, I must be off again."
+            "text": "Well, I must be off again.",
+            "steps": [
+              {
+                "player": "That's all very interesting but I must be off again."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Safe journey, outerlander."
+              },
+              {
+                "type": "end"
+              }
+            ]
           },
           {
-            "text": "What exactly happened to your daughter?"
+            "text": "What exactly happened to your daughter?",
+            "steps": [
+              {
+                "player": "What exactly happened to your daughter?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "I cannot exactly say. I believe some of her spirit must have fused with the pool she loved so much. She is no longer my daughter, but the daughter of the mountain."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "We will stay here, under her protection. With our new food supplies we will be able to stay here for many years more."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "iEaVF3"
+              }
+            ]
           },
           {
-            "text": "I thought you didn't believe in magic?"
+            "text": "I thought you didn't believe in magic?",
+            "steps": [
+              {
+                "player": "I thought you didn't believe in magic?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "How little do you understand our ways. Of course we believe in magic, we merely believe it is not for the living to wield it."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Many spirits are connected with the earth or the water. There is the Draugen, for instance, a malevolent spirit."
+              },
+              {
+                "type": "condition",
+                "text": "If The Fremennik Trials has been completed:",
+                "steps": [
+                  {
+                    "player": "Oh yeah, I ran into him."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Hamal the Chieftain",
+                    "text": "Have you? We do not approve of the Fremennik hunt, the Draugen should be left alone, evil though it is."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Hamal the Chieftain",
+                    "text": "And perhaps you have also come across the Fossegrimen?"
+                  },
+                  {
+                    "player": "Yes, I have."
+                  }
+                ],
+                "id": "VlXOMk"
+              },
+              {
+                "type": "condition",
+                "text": "If The Fremennik Trials hasn't been completed:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Hamal the Chieftain",
+                    "text": "Then there is an ancient water spirit that the Fremennik call the Fossegrimen."
+                  }
+                ],
+                "id": "-KpRbh"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Now that is a spirit that is quite different from the Draugen... she is, perhaps, not entirely dissimilar to the Mountain Dottir."
+              },
+              {
+                "player": "The mountain what?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "You would call her mountain daughter. Asleif is no longer my daughter, she belongs to the mountains now."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "ivBefv"
+              }
+            ]
           },
           {
-            "text": "I think you're all mad."
+            "text": "I think you're all mad.",
+            "steps": [
+              {
+                "player": "I think you're all mad. You, the guy in the bearsuit, Ragnar... you're all completely mad! I think the cold got to your brains!"
+              },
+              {
+                "player": "I mean, your daughter was missing for 14 years and you still thought she was just missing! And you ignored and walled in the bearman because you thought he was a god!"
+              },
+              {
+                "player": "What were you people thinking?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Yet you participated in what you call madness, outerlander. You are perhaps not so different from any of us."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "OeqByG"
+              }
+            ]
           }
         ]
       },
       {
         "type": "unavailable",
         "id": "wh4kht"
+      }
+    ]
+  },
+  "branches": {
+    "jump-63e99f81f4810f26": [
+      {
+        "player": "So what are you lot all doing up here in the mountains?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "We left Rellekka because we wanted to live closer to nature. We feel that the people of Rellekka have grown complacent and rely too much on their tools rather than their skill. And while they share our view on the sanctity"
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "of the runestones, they still employ and actively use magic."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Their Seer is an affront to the gods!"
+      },
+      {
+        "type": "condition",
+        "text": "If The Fremennik Trials has been completed:",
+        "steps": [
+          {
+            "player": "And you haven't even seen what he did to his house!"
+          },
+          {
+            "type": "line",
+            "speaker": "Hamal the Chieftain",
+            "text": "What?"
+          }
+        ],
+        "id": "r3V1Co"
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Anyway."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "We do not recognise the council of Rellekka and want nothing more to do with them. We live on rock and stone now, pure and hard."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "We move on to another part of the mountain slope when the rough land cannot sustain us anymore."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "That said, we have tarried at this location for too long and should be moving on."
+      },
+      {
+        "player": "So why are you still here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "For one thing, this side of the mountain is mostly free from the menace of the trolls and the delvings of the deformed dwarves."
+      },
+      {
+        "player": "And?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Well, you see..."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "My daughter has gone missing. We have been looking for her and cannot go on without her."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I will search for her!",
+            "steps": [
+              {
+                "player": "A damsel in distress! I will search for her!"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Haha, you have spirit, [player name/fremennik name]."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "But we do not employ outerlanders."
+              },
+              {
+                "player": "You don't need to employ me! Just let me look for her."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Hmmm."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "That seems acceptable to me. Very well, I will allow you to look for her."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "I will instruct my people to let you roam about the area freely, and give limited consent to them to talk to you."
+              },
+              {
+                "player": "Great! I'll be back with her soon. Just wait here."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Oh, I'll be waiting here alright."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I'm sorry to hear that.",
+            "steps": [
+              {
+                "player": "I'm sorry to hear that."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "We do not need your sympathy, outerlander."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Maybe the trolls got her?",
+            "steps": [
+              {
+                "player": "Maybe the trolls got her?"
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Do not say such things in jest, outerlander."
+              },
+              {
+                "type": "line",
+                "speaker": "Hamal the Chieftain",
+                "text": "Besides, stealth and kidnapping is not their way."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I will search for her!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "rEtGW1",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-63150a6a006ea01d"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Forget it then.",
+                    "steps": [
+                      {
+                        "player": "Forget it then, you can figure it out on your own."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-63150a6a006ea01d": [
+      {
+        "player": "A damsel in distress! I will search for her!"
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Haha, you have spirit, [player name/fremennik name]."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "But we do not employ outerlanders."
+      },
+      {
+        "player": "You don't need to employ me! Just let me look for her."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Hmmm."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "That seems acceptable to me. Very well, I will allow you to look for her."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "I will instruct my people to let you roam about the area freely, and give limited consent to them to talk to you."
+      },
+      {
+        "player": "Great! I'll be back with her soon. Just wait here."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Oh, I'll be waiting here alright."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6e71cebb50964246": [
+      {
+        "type": "condition",
+        "text": "If The Fremennik Trials has been completed:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Brundt the Chieftain",
+            "text": "Amusing, [Fremennik name], but as a Fremennik yourself you know better than that."
+          }
+        ],
+        "id": "Vlftst"
+      },
+      {
+        "type": "condition",
+        "text": "If The Fremennik Trials hasn't been completed:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Brundt the Chieftain",
+            "text": "No, no, no. Little do you understand our ways, outerlander."
+          }
+        ],
+        "id": "Eeyk_-"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "The rock was just that, a rock. It had no special properties and was in essence no different from any other rock."
+      },
+      {
+        "player": "So what did it mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "It symbolised our refusal to use the runestones for ourselves, instead relying on our own abilities."
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "The people you speak of took the stone with them when they left for the mountains. They claimed their way of living was more pure and closer to nature."
+      },
+      {
+        "player": "And is that true?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "Maybe, but where's the harm in a bit of feasting from time to time?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "In any case, before the council and I meet with anyone from their camp, they will have to give our rock back."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a8c8e99c1272dd2a": [
+      {
+        "type": "line",
+        "speaker": "Brundt the Chieftain",
+        "text": "Oh yes, here it is."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a safety guarantee",
+        "id": "iKqP0b"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-796f9a0edff1b059": [
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Then please listen closely. If she is given a proper burial, she is to be buried with some of her possessions. I see she's still wearing her dress, so you will need one more item."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "When she has been buried, you must build a cairn on top. It is our tradition to build these cairns in the shape of our longboats that we use when we need to cross the seas. You can use rocks for this purpose, about five or so should be enough."
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Only then are the burial rites complete."
+      },
+      {
+        "player": "So I need to bury her with one of her possessions, and build a cairn on top made out of rocks. So where do I get another one of her possessions?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hamal the Chieftain",
+        "text": "Asleif had little possessions in life and none that have survived the years. I do not know where you might find such a thing, but perhaps Ragnar does, out by the pool."
+      },
+      {
+        "type": "end"
       }
     ]
   }

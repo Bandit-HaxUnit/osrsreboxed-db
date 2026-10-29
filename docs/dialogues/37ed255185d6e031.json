@@ -355,8 +355,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "4tpaZV"
+                        "id": "4tpaZV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-06a2ea7b509fecf8"
+                          }
+                        ]
                       }
                     ],
                     "id": "Lvoq8t"
@@ -367,8 +372,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "jROsXm"
+                        "id": "jROsXm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-06a2ea7b509fecf8"
+                          }
+                        ]
                       }
                     ],
                     "id": "qV9Wtz"
@@ -539,6 +549,79 @@
     ]
   },
   "branches": {
+    "jump-06a2ea7b509fecf8": [
+      {
+        "player": "Okay, I'll take it."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have 100 coins:",
+        "steps": [
+          {
+            "player": "Oops, sorry, I don't have enough money."
+          },
+          {
+            "type": "line",
+            "speaker": "Doctor Orbon",
+            "text": "That's okay. Just don't go near those sheep. When you can find the money come back here."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "on-jxN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 100 coins and 2 free inventory spaces:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You give Doctor Orbon 100 coins. He hands over a protective suit.",
+            "id": "DpeZ6M"
+          },
+          {
+            "type": "line",
+            "speaker": "Doctor Orbon",
+            "text": "These should protect you from infection."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "GU1VZY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 100 coins but not 2 free inventory spaces:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Doctor Orbon",
+            "text": "You don't seem to have enough room to hold the protective suit. Come back when you do."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Z9IDwn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the 100 coins:",
+        "steps": [
+          {
+            "player": "Oops, sorry, I don't have enough money."
+          },
+          {
+            "type": "line",
+            "speaker": "Doctor Orbon",
+            "text": "That's okay. Just don't go near those sheep. When you can find the money come back here."
+          }
+        ],
+        "id": "a1I5gn"
+      }
+    ],
     "ZFiuTC": [
       {
         "player": "The sheep looks extremely unwell. I don't want to touch it without a full protective suit."

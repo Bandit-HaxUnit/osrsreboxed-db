@@ -217,8 +217,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "aVHJw6"
+                        "id": "aVHJw6",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-d6e33aed3a9be444"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -313,6 +318,19 @@
           }
         ],
         "id": "BWwKdF"
+      }
+    ]
+  },
+  "branches": {
+    "jump-d6e33aed3a9be444": [
+      {
+        "player": "No, hitting rocks is for the boring people, sorry."
+      },
+      {
+        "npc": "That is your choice. Nice to meet you anyway."
+      },
+      {
+        "type": "end"
       }
     ]
   }

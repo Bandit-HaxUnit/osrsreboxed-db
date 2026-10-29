@@ -253,8 +253,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "lg4aR-"
+                                "id": "lg4aR-",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-9ec9364c25f6577d"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -263,8 +268,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "HXmfb6"
+                                "id": "HXmfb6",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2d04c8a6449fdf24"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -277,8 +287,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "rOHfSq"
+                        "id": "rOHfSq",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2d04c8a6449fdf24"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -291,8 +306,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "StQz-8"
+                "id": "StQz-8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0e33aeeb925cbfa9"
+                  }
+                ]
               }
             ]
           }
@@ -900,6 +920,154 @@
     ]
   },
   "branches": {
+    "jump-9ec9364c25f6577d": [
+      {
+        "player": "Me? How can I help?"
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "I need to make a special brew! A potion that helps me to commune with the gods. For this potion, I need very special herbs, that are only found in the deep jungle."
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "I can only guide you so far as the herbs are not easy to find. With some luck, you will find each herb in turn and bring to me. I will give you details of where to find the next herb."
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "In return for this great favour I will give you training in Herblore."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Jungle Potion quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "It sounds like just the challenge for me. And it would make a nice break from killing things!"
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "That is excellent Bwana! The first herb that you need to gather is called"
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "Snake Weed."
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "It grows near the vines in an area to the south west where"
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "the ground turns soft and the water kisses your feet."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:jungle-potion:start",
+            "quest": "Jungle Potion"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Hmmm, sounds difficult, I don't know if I am ready for the challenge."
+              },
+              {
+                "type": "line",
+                "speaker": "Trufitus",
+                "text": "Very well then Bwana, maybe you will return to me invigorated and ready to take up the challenge one day?"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-2d04c8a6449fdf24": [
+      {
+        "player": "I am sorry, but I am very busy."
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "Very well then, may your journeys bring you much joy."
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "Maybe you will pass this way again and you then take up my proposal?"
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "But for now, fare thee well."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-0e33aeeb925cbfa9": [
+      {
+        "player": "It's a nice village, where is everyone?"
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "My people are afraid to stay in the village. They have returned to the jungle. I need to commune with the gods to see what fate befalls us."
+      },
+      {
+        "type": "line",
+        "speaker": "Trufitus",
+        "text": "You may be able to help with this."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Me? How can I help?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "lg4aR-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9ec9364c25f6577d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I am sorry, but I am very busy.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HXmfb6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2d04c8a6449fdf24"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "vlnIBx": [
       {
         "type": "line",

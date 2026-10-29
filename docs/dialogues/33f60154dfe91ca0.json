@@ -26,7 +26,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "B8j-1r"
+                    "id": "B8j-1r",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-83066e63db64025c"
+                      }
+                    ]
                   }
                 ],
                 "id": "HpdHuW"
@@ -41,7 +47,13 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "PAv0Fw"
+                    "id": "PAv0Fw",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-83066e63db64025c"
+                      }
+                    ]
                   }
                 ],
                 "id": "1Rebay"
@@ -226,8 +238,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "e5F0JJ"
+                        "id": "e5F0JJ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b7bd92313fe6b0e3"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -449,6 +466,184 @@
           }
         ],
         "id": "erZj-q"
+      }
+    ]
+  },
+  "branches": {
+    "jump-83066e63db64025c": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is the Achievement Diary?",
+            "steps": [
+              {
+                "player": "What is the Achievement Diary?"
+              },
+              {
+                "npc": "It's a diary that helps you keep track of particular achievements. In Great Kourend and the Kebos Lowlands, it can help you discover some quite useful things."
+              },
+              {
+                "npc": "Eventually, with enough exploration, you'll be rewarded."
+              },
+              {
+                "npc": "You can see the list of tasks on the side-panel."
+              },
+              {
+                "type": "jump",
+                "reference": "previous2",
+                "id": "ZICHC5"
+              }
+            ]
+          },
+          {
+            "text": "What are the rewards?",
+            "steps": [
+              {
+                "npc": "Well, there are four different blessings, which match up with the four levels of difficulty. Each has the same rewards as the previous level and some additional benefits too..."
+              },
+              {
+                "npc": "which tier of rewards would you like to know more about?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me more about the easy rewards please.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Easy rewards please."
+                      },
+                      {
+                        "npc": "If you complete all of the easy tasks, you'll get a 2% chance of catching two fish at once while using the blessing. It will also provide 3 daily teleports to the Kourend Woodland. On top of that, you'll be able to"
+                      },
+                      {
+                        "npc": "access Crabclaw Island for half the price, lizardmen will be more likely to drop a Xeric's talisman,, the people of Hosidius will protect your farming patches for free, you'll be able to use the Hosidius Kitchens and Eodan"
+                      },
+                      {
+                        "npc": "in the Forthos Dungeon will now tan hide for you at 8 times the normal price down from 10 times."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about the medium rewards please.",
+                    "steps": [
+                      {
+                        "npc": "In addition to the easy rewards, you'll get a 4% chance of catching two fish at once while using the blessing. It will also provide 5 daily teleports to the Kourend Woodland. On top of that, you'll have a 5% chance to"
+                      },
+                      {
+                        "npc": "mine two dense essence blocks at once, Thirus will give you 20 free Dynamite per day and Eodan in the Forthos Dungeon will now tan hide for you at 6 times the normal price down from 8 times."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about the hard rewards please.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Hard rewards please."
+                      },
+                      {
+                        "npc": "In addition to the easy and medium benefits, you'll get a 6% chance of catching two fish at once while using the blessing. It will also provide unlimited teleports to the Kourend Woodland and 3 daily teleports to Mount"
+                      },
+                      {
+                        "npc": "Karuulm. On top of that, Captain Cleive will show you how to use a Slayer helmet in place of a Shayzien helm, you'll get a 5% increase in yield from the Hosidius and Farming Guild Herb patches, Thirus will give you 40"
+                      },
+                      {
+                        "npc": "free Dynamite per day and Eodan in the Forthos Dungeon will now tan hide for you at 4 times the normal price down from 6 times. Tyss at the Dark Altar will give you an ash sanctifier too!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about the elite rewards please.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about the Elite rewards please."
+                      },
+                      {
+                        "npc": "In addition to the previous tiers of rewards, you'll get an 8% chance of catching two fish at once while using the blessing. It will also provide unlimited teleports to the Kourend Woodland and to Mount Karuulm. On top of"
+                      },
+                      {
+                        "npc": "that, Konar quo Maten will give you 20 Slayer Points per task rather than 18, you'll be 10% less likely to burn food at the Hosidius City Kitchens, you'll get 10% more Blood runes when Runecrafting, you'll no longer"
+                      },
+                      {
+                        "npc": "need to wear heat protection inside of the Karuulm Slayer Dungeon, Thirus will give you 80 free Dynamite per day, Eodan in the Forthos Dungeon will now tan hide for you at 2 times the normal price down"
+                      },
+                      {
+                        "npc": "from 4 times and the experience provided by the ash sanctifier is increased too."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I claim the rewards?",
+            "steps": [
+              {
+                "player": "How do I claim the rewards?"
+              },
+              {
+                "npc": "Just complete the tasks in Kourend & Kebos area so they're ticked off, then come and speak to me for your rewards."
+              },
+              {
+                "type": "jump",
+                "reference": "previous2",
+                "id": "nrgDzz"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "e5F0JJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b7bd92313fe6b0e3"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-b7bd92313fe6b0e3": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "npc": "See you later."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -31,7 +31,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "F2grJX"
+                        "id": "F2grJX",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ea6f3b7d0213afcb"
+                          }
+                        ]
                       }
                     ],
                     "id": "jb4ovv"
@@ -102,7 +108,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "v7VktZ"
+                        "id": "v7VktZ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ea6f3b7d0213afcb"
+                          }
+                        ]
                       }
                     ],
                     "id": "QxrtHJ"
@@ -160,7 +172,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "l6YnPU"
+                        "id": "l6YnPU",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ea6f3b7d0213afcb"
+                          }
+                        ]
                       }
                     ],
                     "id": "xMfOFB"
@@ -453,7 +471,47 @@
                 "steps": [
                   {
                     "type": "choice",
-                    "options": []
+                    "options": [
+                      {
+                        "text": "Skillcape",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "PYzCL6"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hood",
+                        "steps": [
+                          {
+                            "player": "May I have another hood for my cape, please?"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has no inventory space:",
+                            "steps": [
+                              {
+                                "npc": "You don't appear to have enough space in your inventory, come back and see me when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "GbMdxh"
+                          },
+                          {
+                            "npc": "Most certainly, and free of charge!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The tutor hands you another hood for your skillcape.",
+                            "id": "H1Vo-1"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "id": "PBdcUm"
@@ -465,6 +523,111 @@
     ]
   },
   "branches": {
+    "jump-ea6f3b7d0213afcb": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Oak and Willow",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Almost every tree can be chopped down. Normal logs will be produced by chopping 'Trees' and Oak logs will come from chopping 'Oak Trees'. You can find Oak trees in amongst normal trees scattered about the lands.",
+                "id": "swf0uT"
+              },
+              {
+                "type": "message",
+                "text": "Willow trees will yield willow logs. You'll find willows like to grow near water, you can find some south of Draynor.",
+                "id": "Edcneu"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "tDN4MJ"
+              }
+            ]
+          },
+          {
+            "text": "Maple and Yew",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Maple logs can be gleaned from Maple trees. You'll usually find Maple trees standing alone amongst other trees.",
+                "id": "-trNnv"
+              },
+              {
+                "type": "message",
+                "text": "Yew trees are few and far between. We do our best to cultivate them. Look for the tree icon on your minimap to find rare trees. Try North of Port Sarim.",
+                "id": "6nGm_6"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "goEheA"
+              }
+            ]
+          },
+          {
+            "text": "Magic and other trees",
+            "condition": "If the player has level 29-98 Woodcutting",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Magic trees are... magic. A difficult wood to work with, but worth it for the rewards. Find them in the areas south of Seers village or on the East side of the Mage Arena.",
+                "id": "YmkOKP"
+              },
+              {
+                "npc": "Hollow trees can be found in the Haunted Woods east of Canifis, but be careful of the leeches."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "0NQw0w"
+              }
+            ],
+            "id": "xebNiu"
+          },
+          {
+            "text": "Axes",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Bronze axes are easy to get, simply go visit Bob in his shop in Lumbridge, or talk to me if you have mislaid yours.",
+                "id": "g0fI0a"
+              },
+              {
+                "npc": "As you progress in your combat skill you will find you can wield your woodcutting axe as a weapon, it's not very effective, but it frees up a slot for another log."
+              },
+              {
+                "type": "message",
+                "text": "As your woodcutting skill increases you will find yourself able to use better axes to chop trees faster.... anything up to steel you can buy from Bob's axe shop.",
+                "id": "mF9pOr"
+              },
+              {
+                "type": "message",
+                "text": "Rune axes can be player made with very high level smithing and mining. They can also be obtained through killing one of the fearsome tree spirits, though this is very rare.",
+                "id": "MWelnj"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "3VQqUH"
+              }
+            ]
+          },
+          {
+            "text": "Go back to teaching",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "d932XN"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "BpbZ4K": [
       {
         "player": "What is that cape you're wearing?"

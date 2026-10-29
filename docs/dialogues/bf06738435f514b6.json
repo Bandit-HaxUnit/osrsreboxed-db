@@ -972,8 +972,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "QQ1TM1"
+                "id": "QQ1TM1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a2f1928945dc70a3"
+                  }
+                ]
               }
             ]
           },
@@ -1005,8 +1010,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "c4Zy-D"
+                "id": "c4Zy-D",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c9d06a176b2d77d4"
+                  }
+                ]
               }
             ]
           },
@@ -1730,8 +1740,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XN9uls"
+                "id": "XN9uls",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-12219bd619419b0d"
+                  }
+                ]
               }
             ]
           },
@@ -2043,8 +2058,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YEHxKv"
+                "id": "YEHxKv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-12219bd619419b0d"
+                  }
+                ]
               }
             ]
           },
@@ -2387,8 +2407,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nWtOqW"
+                "id": "nWtOqW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c9d06a176b2d77d4"
+                  }
+                ]
               },
               {
                 "type": "condition",
@@ -4065,8 +4090,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "gL4z5J"
+                "id": "gL4z5J",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fa38e0036a3ce788"
+                  }
+                ]
               }
             ]
           },
@@ -4157,8 +4187,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "fXPPcC"
+                "id": "fXPPcC",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fa38e0036a3ce788"
+                  }
+                ]
               }
             ]
           },
@@ -4442,6 +4477,577 @@
       {
         "type": "unavailable",
         "id": "JDyyMt"
+      }
+    ]
+  },
+  "branches": {
+    "jump-a2f1928945dc70a3": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to one of Florin, Luscion, Sergiu, Sorin, Ileana, Radu, Valeria, Grigore, Emilia:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "My name's [citizen name]. I do a bit of this, a bit of that. Just try to survive really, there's nothing much else we can do."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "4zaHeQ"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Oh, my name's [citizen name]. I just help out around here, you know, gathering food and so on."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "qowhRU"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Not that it makes much difference but my name's [citizen name]. Like all the other survivors here, I just try to make do and get through each day at a time."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "Dp2L0C"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Cd-uBv"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to one of Vasile, Razvan, Luminata:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Oh hi. I'm [citizen name]. I hunt rats mostly. Speaking of which, this rat tastes awful, but it's the only food we have!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "EQymQW"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Huh? I'm [citizen name]. Ravaging after food is what I mostly do. Ocasionally I'll happen across a rat, and that's a good day, just like today!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "hh2R8_"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Oh, hello. [Citizen name] is the name and I help to keep the village clear of rat infestations. Clearly I love my work, as I bring it home with me... On a stick!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "8ylT1n"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "YkY6P5"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to one of Simona, Calin, Nicoleta, Mihail:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Citizen",
+            "text": "I'm [citizen name]. I'm just trying to stay warm."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "hKXmI1"
+          }
+        ],
+        "id": "QgfxfQ"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Elisabeta:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Elisabeta",
+            "text": "I'm Elisabeta, the village leader."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "CC2dxI"
+          }
+        ],
+        "id": "LI091z"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Teodor:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Teodor",
+            "text": "I'm Teodor. I'm a farmer. Not that there's much to grow here."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "--OXa1"
+          }
+        ],
+        "id": "MOCofG"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Aurel:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "e7nmyP"
+          },
+          {
+            "player": "What do you do here?"
+          },
+          {
+            "type": "line",
+            "speaker": "Aurel",
+            "text": "I'm Aurel, the village store owner."
+          },
+          {
+            "player": "Can you open the shop for me please?"
+          },
+          {
+            "type": "line",
+            "speaker": "Aurel",
+            "text": "I'm sorry my friend, but I cannot open a store which has no stock."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "CJjOsL"
+          }
+        ],
+        "id": "W7PXmc"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Cornelius:",
+        "steps": [
+          {
+            "player": "What do you do here?"
+          },
+          {
+            "type": "line",
+            "speaker": "Cornelius",
+            "text": "I'm Cornelius. I don't really do anything here."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "zeMJ7E"
+          }
+        ],
+        "id": "DFVOiZ"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Gabriela:",
+        "steps": [
+          {
+            "player": "What do you do here?"
+          },
+          {
+            "type": "line",
+            "speaker": "Gabriela",
+            "text": "I'm Gabriela. I'm looking after my husband who isn't feeling too well!"
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "wN7gWw"
+          }
+        ],
+        "id": "pSicFq"
+      }
+    ],
+    "jump-c9d06a176b2d77d4": [
+      {
+        "type": "condition",
+        "text": "If speaking to one of Florin, Luscion, Sergiu, Sorin, Ileana, Radu, Valeria, Grigore, Emilia:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "My name's [citizen name]. I do a bit of this, a bit of that. Just try to survive really, there's nothing much else we can do."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "4zaHeQ"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Oh, my name's [citizen name]. I just help out around here, you know, gathering food and so on."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "qowhRU"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Not that it makes much difference but my name's [citizen name]. Like all the other survivors here, I just try to make do and get through each day at a time."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "Dp2L0C"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Cd-uBv"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to one of Vasile, Razvan, Luminata:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Oh hi. I'm [citizen name]. I hunt rats mostly. Speaking of which, this rat tastes awful, but it's the only food we have!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "EQymQW"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Huh? I'm [citizen name]. Ravaging after food is what I mostly do. Ocasionally I'll happen across a rat, and that's a good day, just like today!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "hh2R8_"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Citizen",
+                    "text": "Oh, hello. [Citizen name] is the name and I help to keep the village clear of rat infestations. Clearly I love my work, as I bring it home with me... On a stick!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "8ylT1n"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "YkY6P5"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to one of Simona, Calin, Nicoleta, Mihail:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Citizen",
+            "text": "I'm [citizen name]. I'm just trying to stay warm."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "hKXmI1"
+          }
+        ],
+        "id": "QgfxfQ"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Elisabeta:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Elisabeta",
+            "text": "I'm Elisabeta, the village leader."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "CC2dxI"
+          }
+        ],
+        "id": "LI091z"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Teodor:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Teodor",
+            "text": "I'm Teodor. I'm a farmer. Not that there's much to grow here."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "--OXa1"
+          }
+        ],
+        "id": "MOCofG"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Aurel:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "e7nmyP"
+          },
+          {
+            "player": "What do you do here?"
+          },
+          {
+            "type": "line",
+            "speaker": "Aurel",
+            "text": "I'm Aurel, the village store owner."
+          },
+          {
+            "player": "Can you open the shop for me please?"
+          },
+          {
+            "type": "line",
+            "speaker": "Aurel",
+            "text": "I'm sorry my friend, but I cannot open a store which has no stock."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "CJjOsL"
+          }
+        ],
+        "id": "W7PXmc"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Cornelius:",
+        "steps": [
+          {
+            "player": "What do you do here?"
+          },
+          {
+            "type": "line",
+            "speaker": "Cornelius",
+            "text": "I'm Cornelius. I don't really do anything here."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "zeMJ7E"
+          }
+        ],
+        "id": "DFVOiZ"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to Gabriela:",
+        "steps": [
+          {
+            "player": "What do you do here?"
+          },
+          {
+            "type": "line",
+            "speaker": "Gabriela",
+            "text": "I'm Gabriela. I'm looking after my husband who isn't feeling too well!"
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "wN7gWw"
+          }
+        ],
+        "id": "pSicFq"
+      }
+    ],
+    "jump-12219bd619419b0d": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aurel",
+        "text": "I'm Aurel the village store owner."
+      },
+      {
+        "player": "Can you open the shop for me please?"
+      },
+      {
+        "type": "condition",
+        "text": "Before fully helping the shop:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Aurel",
+            "text": "I'm sorry my friend, but I cannot open a store which has no stock."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "Wqkhe2"
+          }
+        ],
+        "id": "q11mmS"
+      },
+      {
+        "type": "condition",
+        "text": "After fully helping the shop:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_shop",
+            "target": "Aurel's Supplies",
+            "id": "rhkVOf"
+          }
+        ],
+        "id": "0EKc0N"
+      }
+    ],
+    "jump-fa38e0036a3ce788": [
+      {
+        "player": "What do you know about Ivandis?"
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Ivandis Seergaze was one of the Seven Priestly Warriors. Along with the other six, he managed to hold back the vampyres when they attempted to invade Misthalin."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "The seven of them were also responsible for blessing the Salve, preventing the vampyres from ever crossing."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "It is said that Ivandis wielded a great weapon against the vampyres. One that could render them immobile for a short time."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "There are also stories that credit him with the restoring of something called 'Guthix balance'."
+      },
+      {
+        "player": "Guthix? Interesting."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Indeed. As the god of balance, it is said that Guthix will always try to ensure that both Saradomin and Zamorak do not gain an upper hand against the other."
+      },
+      {
+        "type": "line",
+        "speaker": "Veliaf Hurtz",
+        "text": "Now, why a Saradominist warrior-priest is connected to him, I couldn't say."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "MfD1JQ"
       }
     ]
   }

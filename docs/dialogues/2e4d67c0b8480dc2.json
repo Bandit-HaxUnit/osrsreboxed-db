@@ -25,8 +25,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "WsUXEO"
+                        "id": "WsUXEO",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-820948ded1a80384"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -35,8 +40,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "LXKMKV"
+                        "id": "LXKMKV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-6cd01e142dde0c64"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -100,8 +110,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bvtqHF"
+                "id": "bvtqHF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-de32213d24504db1"
+                  }
+                ]
               }
             ]
           },
@@ -171,6 +186,99 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-820948ded1a80384": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "It should be clear to anyone that I am the chief of Tai Bwo Wannai. I ensure that things run smoothly in this village."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "WsUXEO",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-820948ded1a80384"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Is there anything interesting to do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "LXKMKV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-6cd01e142dde0c64"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've been doing some work around the village.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "wEx5BL"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-6cd01e142dde0c64": [
+      {
+        "player": "Is there anything interesting to do here?"
+      },
+      {
+        "npc": "Yes Bwana, plenty of interesting things to do. Firstly you could make an effort to tidy the place up a little. Equip yourself with a machete and start cutting down the jungle that seems to be growing all around here."
+      },
+      {
+        "npc": "Go and have a chat with Murcaily for information, he's tending the hardwood grove to the east of here."
+      },
+      {
+        "type": "choice",
+        "options": []
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "1PitWV"
+      }
+    ],
+    "jump-de32213d24504db1": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "1PitWV"
       }
     ]
   }

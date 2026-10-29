@@ -70,7 +70,13 @@
             ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           }
         ]
       }
@@ -146,7 +152,13 @@
             ]
           },
           {
-            "text": "Where can I find money?"
+            "text": "Where can I find money?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "p5txee"
+              }
+            ]
           }
         ]
       }
@@ -465,8 +477,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "5xhrEn"
+                                "id": "5xhrEn",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-16b6cad514199d60"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -504,8 +521,13 @@
                               },
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "Ue5ILg"
+                                "id": "Ue5ILg",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-e8cbb5c0fa6c5400"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -595,10 +617,24 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please!"
+            "text": "Yes please!",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Aubury's Rune Shop.",
+                "id": "NN4tJn"
+              }
+            ]
           },
           {
-            "text": "Oh, it's a rune shop. No thank you, then."
+            "text": "Oh, it's a rune shop. No thank you, then.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pRSAC7"
+              }
+            ]
           },
           {
             "text": "I have been sent here with a package for you.",
@@ -723,10 +759,24 @@
             "type": "choice",
             "options": [
               {
-                "text": "Yes please!"
+                "text": "Yes please!",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Aubury's Rune Shop.",
+                    "id": "NN4tJn"
+                  }
+                ]
               },
               {
-                "text": "Oh, it's a rune shop. No thank you, then."
+                "text": "Oh, it's a rune shop. No thank you, then.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pRSAC7"
+                  }
+                ]
               }
             ]
           }
@@ -928,6 +978,289 @@
       {
         "type": "unavailable",
         "id": "mhrG3W"
+      }
+    ]
+  },
+  "branches": {
+    "jump-16b6cad514199d60": [
+      {
+        "player": "Ok, here you are."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the talisman:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand the talisman to Sedridor.",
+            "id": "uyQDyo"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Wow! This is... incredible!"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Th-this talisman you brought me...! It is the last piece of the puzzle, I think! Finally! The legacy of our ancestors... it will return to us once more!"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "I need time to study this, [player name]. Can you please do me this task while I study this talisman you have brought me? In the mighty town of Varrock, which"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "is located North East of here, there is a certain shop that sells magical runes. I have in this package all of the research I have done relating to the Rune Stones, and"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "require somebody to take them to the shopkeeper so that he may share my research and offer me his insights. Do this thing for me, and bring back what he gives you,"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "and if my suspicions are correct, I will let you into the knowledge of one of the greatest secrets this world has ever known! A secret so powerful that it destroyed the"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "original Wizards' Tower all of those centuries ago! My research, combined with this mysterious talisman... I cannot believe the answer to the mysteries is so close now!"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Do this thing for me [player name]. Be rewarded in a way you can never imagine."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, certainly.",
+                "steps": [
+                  {
+                    "player": "Yes, certainly."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "Take this package, and head directly North from here, through Draynor village, until you reach the Barbarian Village. Then head East from there until you reach Varrock."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "Once in Varrock, take this package to the owner of the rune shop. His name is Aubury. You may find it helpful to ask one of Varrock's citizens for directions,"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "as Varrock can be a confusing place for the first time visitor. He will give you a special item - bring it back to me, and I shall show you the mystery of the runes..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The wizard gives you a package.",
+                    "id": "MQj87Z"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "Best of luck with your quest, [player name]."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No, I'm busy.",
+                "steps": [
+                  {
+                    "player": "No, I'm busy."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "As you wish adventurer. I will continue to study this talisman you have brought me. Return here if you find yourself with some spare time to help me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Q-8oVJ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the talisman:",
+        "steps": [
+          {
+            "player": "...except I don't have it with me..."
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Hmmm? You are a very odd person. Come back again when you have found it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "lH63Bt"
+      }
+    ],
+    "jump-e8cbb5c0fa6c5400": [
+      {
+        "type": "condition",
+        "text": "If the player has the talisman:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand the talisman to Sedridor.",
+            "id": "uyQDyo"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Wow! This is... incredible!"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Th-this talisman you brought me...! It is the last piece of the puzzle, I think! Finally! The legacy of our ancestors... it will return to us once more!"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "I need time to study this, [player name]. Can you please do me this task while I study this talisman you have brought me? In the mighty town of Varrock, which"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "is located North East of here, there is a certain shop that sells magical runes. I have in this package all of the research I have done relating to the Rune Stones, and"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "require somebody to take them to the shopkeeper so that he may share my research and offer me his insights. Do this thing for me, and bring back what he gives you,"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "and if my suspicions are correct, I will let you into the knowledge of one of the greatest secrets this world has ever known! A secret so powerful that it destroyed the"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "original Wizards' Tower all of those centuries ago! My research, combined with this mysterious talisman... I cannot believe the answer to the mysteries is so close now!"
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Do this thing for me [player name]. Be rewarded in a way you can never imagine."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, certainly.",
+                "steps": [
+                  {
+                    "player": "Yes, certainly."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "Take this package, and head directly North from here, through Draynor village, until you reach the Barbarian Village. Then head East from there until you reach Varrock."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "Once in Varrock, take this package to the owner of the rune shop. His name is Aubury. You may find it helpful to ask one of Varrock's citizens for directions,"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "as Varrock can be a confusing place for the first time visitor. He will give you a special item - bring it back to me, and I shall show you the mystery of the runes..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The wizard gives you a package.",
+                    "id": "MQj87Z"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "Best of luck with your quest, [player name]."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No, I'm busy.",
+                "steps": [
+                  {
+                    "player": "No, I'm busy."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Sedridor",
+                    "text": "As you wish adventurer. I will continue to study this talisman you have brought me. Return here if you find yourself with some spare time to help me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Q-8oVJ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the talisman:",
+        "steps": [
+          {
+            "player": "...except I don't have it with me..."
+          },
+          {
+            "type": "line",
+            "speaker": "Sedridor",
+            "text": "Hmmm? You are a very odd person. Come back again when you have found it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "lH63Bt"
+      }
+    ],
+    "p5txee": [
+      {
+        "player": "Where can I find money?"
+      },
+      {
+        "type": "line",
+        "speaker": "Duke Horacio",
+        "text": "I've heard that the blacksmiths are prosperous amongst the peasantry. Maybe you could try your hand at that?"
+      }
+    ],
+    "pRSAC7": [
+      {
+        "player": "Oh, it's a rune shop. No thank you, then."
+      },
+      {
+        "type": "line",
+        "speaker": "Aubury",
+        "text": "Well, if you find someone who does want runes, please send them my way."
       }
     ]
   }

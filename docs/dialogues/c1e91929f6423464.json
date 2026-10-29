@@ -50,8 +50,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "ei9ZFA"
+                        "id": "ei9ZFA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2891ef883a7587ea"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -106,8 +111,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "h3Wwsd"
+                        "id": "h3Wwsd",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-77d57022293174ce"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -116,8 +126,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "w5N9lx"
+                        "id": "w5N9lx",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c0d2bb072abf566f"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -273,8 +288,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "8dybNg"
+                                "id": "8dybNg",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-12cacebb9d41b577"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -283,8 +303,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "nnl4kU"
+                                "id": "nnl4kU",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-5a9d9d6ac47992a1"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -293,8 +318,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "EAPf6s"
+                                "id": "EAPf6s",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-63cd492872ab9603"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -303,8 +333,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "_vBCAX"
+                                "id": "_vBCAX",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-11f7e51e9b0fb0ea"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -321,8 +356,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "ww2mUx"
+                "id": "ww2mUx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-77d57022293174ce"
+                  }
+                ]
               }
             ]
           },
@@ -331,8 +371,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "UtU4DY"
+                "id": "UtU4DY",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d0d837c7e8366efe"
+                  }
+                ]
               }
             ]
           },
@@ -341,8 +386,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "FW17QW"
+                "id": "FW17QW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-cab0998b62906592"
+                  }
+                ]
               }
             ]
           }
@@ -361,8 +411,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "BKK5KB"
+                "id": "BKK5KB",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5a9d9d6ac47992a1"
+                  }
+                ]
               }
             ]
           },
@@ -470,6 +525,269 @@
         "action": "receive",
         "text": "a elite clue scroll or a elite reward casket",
         "id": "Pm-FqH"
+      }
+    ]
+  },
+  "branches": {
+    "jump-2891ef883a7587ea": [
+      {
+        "npc": "Two reasons really. Firstly, I can see in the dark, so light or dark makes little difference to me."
+      },
+      {
+        "npc": "Lastly, I gather it's normal for powerful terrifying creatures to lurk around in dark caves, so I found this one to lurk in myself, nice isn't it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Very pleasant, the snakes are a nice touch.",
+            "steps": [
+              {
+                "player": "Very pleasant, the snakes are a nice touch."
+              },
+              {
+                "npc": "Why do I get the sense that I'm not being taken seriously here? Please try to remember I am very dangerous and not to be trifled with."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "LQFCYo"
+              }
+            ]
+          },
+          {
+            "text": "You're a genie, grant me a wish.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "h3Wwsd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-77d57022293174ce"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I must be off now.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "w5N9lx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c0d2bb072abf566f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-77d57022293174ce": [
+      {
+        "player": "You're a genie, grant me a wish."
+      },
+      {
+        "npc": "Not all genies are goody two shoes who go round granting wishes. It's something that my pathetic brother does to make people like him, but that's not my style."
+      },
+      {
+        "npc": "I like to think of myself more as an evil and scary sort of genie, who people talk about in hushed and fearful tones."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well you seem quite scary.",
+            "steps": [
+              {
+                "player": "Well you seem quite scary."
+              },
+              {
+                "npc": "Why thank you, I put a lot of effort into my terrifyingness."
+              },
+              {
+                "npc": "Wait! Did you say quite scary? I'll have you know I am VERY scary!"
+              },
+              {
+                "player": "Erm yes that's what I meant."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "I5v-ZX"
+              }
+            ]
+          },
+          {
+            "text": "Why are you sitting here in the dark.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ei9ZFA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2891ef883a7587ea"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I must be off now.",
+            "steps": [
+              {
+                "player": "Well I must be off now."
+              },
+              {
+                "npc": "Yes, run. Ruuuun in fear of.. The crevice genie of Nardah! Muhahaha!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-c0d2bb072abf566f": [
+      {
+        "player": "Well I must be off now."
+      },
+      {
+        "npc": "Yes, run. Ruuuun in fear of.. The crevice genie of Nardah! Muhahaha!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-12cacebb9d41b577": [
+      {
+        "player": "Isn't that a little harsh?"
+      },
+      {
+        "npc": "I wouldn't have said so. It seems a perfectly reasonable thing to request to me. I can think of many things a lot worse I could have asked for."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "PkQShh"
+      }
+    ],
+    "jump-5a9d9d6ac47992a1": [
+      {
+        "player": "How am I meant to remove someone's soul?"
+      },
+      {
+        "npc": "Oh that's easy. In my experience soles are very easy to remove with just a knife."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "Ed6paC"
+      }
+    ],
+    "jump-63cd492872ab9603": [
+      {
+        "player": "Ok I agree to the deal."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-11f7e51e9b0fb0ea": [
+      {
+        "player": "No way am I agreeing to that."
+      },
+      {
+        "npc": "Ah well it's your loss. No sole, then no statuette."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d0d837c7e8366efe": [
+      {
+        "player": "Why are you sitting here in the dark?"
+      },
+      {
+        "npc": "Two reasons really. Firstly, I can see in the dark, so light or dark makes little difference to me."
+      },
+      {
+        "npc": "Lastly, I gather it's normal for powerful terrifying creatures to lurk around in dark caves, so I found this one to lurk in myself, nice isn't it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Very pleasant, the snakes are a nice touch.",
+            "steps": [
+              {
+                "player": "Very pleasant, the snakes are a nice touch."
+              },
+              {
+                "npc": "Why do I get the sense that I'm not being taken seriously here? Please try to remember I am very dangerous and not to be trifled with."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "LQFCYo"
+              }
+            ]
+          },
+          {
+            "text": "You're a genie, grant me a wish.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "h3Wwsd",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-77d57022293174ce"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well I must be off now.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "w5N9lx",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c0d2bb072abf566f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-cab0998b62906592": [
+      {
+        "player": "I'm just looking around."
+      },
+      {
+        "npc": "I don't know about that. I can't have just anybody traipsing in here. I have a reputation to keep you see."
+      },
+      {
+        "npc": "Actually I'll tell you what, you can hang around here for a bit, but be sure to spread the word about what a terrifying experience you had when you ran into... The crevice genie of Nardah!"
+      },
+      {
+        "player": "...Ok I think I can manage that."
+      },
+      {
+        "type": "end"
       }
     ]
   }

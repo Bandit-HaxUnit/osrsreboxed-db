@@ -110,8 +110,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "3wVnZp"
+                            "id": "3wVnZp",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-11eadb855c6bb71f"
+                              }
+                            ]
                           }
                         ],
                         "id": "-b3kkr"
@@ -122,8 +127,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "Mm__ab"
+                            "id": "Mm__ab",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-58cc9281a444cc31"
+                              }
+                            ]
                           }
                         ],
                         "id": "q7cEFQ"
@@ -322,8 +332,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "9DVZgT"
+                        "id": "9DVZgT",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-ad6d2d1f42901df9"
+                          }
+                        ]
                       }
                     ],
                     "id": "lOY49p"
@@ -334,8 +349,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "-TbgHu"
+                        "id": "-TbgHu",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-11726317400e6c16"
+                          }
+                        ]
                       }
                     ],
                     "id": "xdhuLe"
@@ -355,8 +375,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "kJk_5Z"
+                        "id": "kJk_5Z",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-76a12ae32c0ae58b"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -466,8 +491,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "Css4Y2"
+                            "id": "Css4Y2",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-ad6d2d1f42901df9"
+                              }
+                            ]
                           }
                         ],
                         "id": "CbcKZC"
@@ -478,8 +508,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "v5raec"
+                            "id": "v5raec",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-11726317400e6c16"
+                              }
+                            ]
                           }
                         ],
                         "id": "KbfxZh"
@@ -506,8 +541,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "AgEXR0"
+                        "id": "AgEXR0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-530d54aa6bdd8394"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -516,8 +556,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "0LJCiM"
+                        "id": "0LJCiM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b6f0d60c3dfd3277"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -685,8 +730,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "N2qdfl"
+                    "id": "N2qdfl",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-ad6d2d1f42901df9"
+                      }
+                    ]
                   }
                 ]
               },
@@ -695,8 +745,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "Pp4IJo"
+                    "id": "Pp4IJo",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-379a6f87b2bd69e5"
+                      }
+                    ]
                   }
                 ]
               }
@@ -708,6 +763,226 @@
     ]
   },
   "branches": {
+    "jump-11eadb855c6bb71f": [
+      {
+        "player": "I have some stymphike feathers here."
+      },
+      {
+        "type": "message",
+        "text": "How many feathers would you like to hand over? (1 - [number])",
+        "id": "QwcJTm"
+      },
+      {
+        "type": "message",
+        "text": "You give [number] feathers to the aranei. They now have [number] in total.",
+        "id": "xep8aM"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-58cc9281a444cc31": [
+      {
+        "player": "How many stymphike feathers have I handed in?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one feather stored:",
+        "steps": [
+          {
+            "npc": "Currently, my fellow disciples and I have 1 feather that has been handed in by you."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "kk8BM_"
+          }
+        ],
+        "id": "4BCyoY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has two or more feathers stored:",
+        "steps": [
+          {
+            "npc": "Currently, my fellow disciples and I have [number] feathers that have been handed in by you."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "rSwezH"
+          }
+        ],
+        "id": "6lZYdQ"
+      }
+    ],
+    "jump-ad6d2d1f42901df9": [
+      {
+        "player": "I have some stymphike feathers here."
+      },
+      {
+        "type": "message",
+        "text": "How many feathers would you like to hand over? (1 - [number])",
+        "id": "_KSEuJ"
+      },
+      {
+        "type": "message",
+        "text": "You give [number] feathers to the aranei. They now have [number] in total.",
+        "id": "kYLJey"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-11726317400e6c16": [
+      {
+        "player": "How many stymphike feathers have I handed in?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one feather stored:",
+        "steps": [
+          {
+            "npc": "Currently, my fellow disciples and I have 1 feather that has been handed in by you."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "t0yw2D"
+          }
+        ],
+        "id": "n5I5rL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has two or more feathers stored:",
+        "steps": [
+          {
+            "npc": "Currently, my fellow disciples and I have [number] feathers that have been handed in by you."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "KzS1HB"
+          }
+        ],
+        "id": "nZuUYt"
+      }
+    ],
+    "jump-76a12ae32c0ae58b": [
+      {
+        "player": "I'd better be off."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-530d54aa6bdd8394": [
+      {
+        "player": "Let's trade venator teeth."
+      },
+      {
+        "type": "choice",
+        "prompt": "Trade venator teeth for dragon arrowtips and dart tips?",
+        "options": []
+      }
+    ],
+    "jump-b6f0d60c3dfd3277": [
+      {
+        "player": "What do you use venator teeth for?"
+      },
+      {
+        "npc": "We fashion our own arrowheads and dart tips out of them."
+      },
+      {
+        "player": "Interesting..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's trade venator teeth.",
+            "steps": [
+              {
+                "player": "Let's trade venator teeth."
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade venator teeth for dragon arrowtips and dart tips?",
+                "options": []
+              }
+            ]
+          },
+          {
+            "text": "I have some stymphike feathers here.",
+            "condition": "If the player has stymphike feathers in their inventory:",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "9DVZgT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ad6d2d1f42901df9"
+                  }
+                ]
+              }
+            ],
+            "id": "lOY49p"
+          },
+          {
+            "text": "How many stymphike feathers have I handed in?",
+            "condition": "If the player has handed in at least one stymphike feather:",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "-TbgHu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-11726317400e6c16"
+                  }
+                ]
+              }
+            ],
+            "id": "xdhuLe"
+          },
+          {
+            "text": "Could you tell me more about this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "R7IMbd"
+              }
+            ]
+          },
+          {
+            "text": "I'd better be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "kJk_5Z",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-76a12ae32c0ae58b"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-379a6f87b2bd69e5": [
+      {
+        "player": "I may take you up on the offer some time."
+      },
+      {
+        "type": "end"
+      }
+    ],
     "_qyyWZ": [
       {
         "player": "I may take you up on the offer some time."

@@ -42,8 +42,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "VaYJbh"
+                        "id": "VaYJbh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4e8a7f21562a23c8"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -52,8 +57,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "JcOF_n"
+                        "id": "JcOF_n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c5744fa9812140c3"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -278,6 +288,66 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-4e8a7f21562a23c8": [
+      {
+        "player": "I need another flail."
+      },
+      {
+        "npc": "I have some here, along with a few other things. It will cost you though."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Ivan's Supplies",
+        "id": "NOO-QA"
+      }
+    ],
+    "jump-c5744fa9812140c3": [
+      {
+        "player": "I need another Drakan's Medallion."
+      },
+      {
+        "npc": "Sure."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Drakan's medallion reclaim",
+        "id": "R8U1L0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player reclaims one medallion:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Ivan gives you another medallion.",
+            "id": "9rH_yW"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xIqi1p"
+      },
+      {
+        "type": "condition",
+        "text": "If the player reclaims multiple medallions:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Ivan gives you [number] medallions.",
+            "id": "ZHPgWP"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "I7b7VV"
       }
     ]
   }

@@ -220,8 +220,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "P-56wL"
+                "id": "P-56wL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2af72e13c80ad7cd"
+                  }
+                ]
               }
             ]
           },
@@ -245,6 +250,19 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-2af72e13c80ad7cd": [
+      {
+        "player": "Did you already give me some sand today?"
+      },
+      {
+        "npc": "Yep, I dropped it off a while ago. Mebbe come back tomorrow fer some more."
+      },
+      {
+        "type": "end"
       }
     ]
   }

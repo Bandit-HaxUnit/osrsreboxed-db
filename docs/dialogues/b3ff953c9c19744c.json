@@ -89,10 +89,50 @@
             ]
           },
           {
-            "text": "I thought the White Knights controlled Asgarnia?"
+            "text": "I thought the White Knights controlled Asgarnia?",
+            "steps": [
+              {
+                "player": "I thought the White Knights controlled Asgarnia?"
+              },
+              {
+                "type": "line",
+                "speaker": "Denulth",
+                "text": "You are right citizen. The White Knights have taken advantage of the old and weak king, they control most of Asgarnia, including Falador. However they do not control Burthorpe!"
+              },
+              {
+                "type": "line",
+                "speaker": "Denulth",
+                "text": "We are the prince's elite troops! We keep Burthorpe secure!"
+              },
+              {
+                "type": "line",
+                "speaker": "Denulth",
+                "text": "The White Knights have overlooked us, until now! They are pouring money into their war against the Black Knights, they are looking for an excuse to stop our funding and I'm afraid they may have found it!"
+              },
+              {
+                "type": "line",
+                "speaker": "Denulth",
+                "text": "If we can not destroy the troll camp on Death Plateau then the Imperial Guard will be disbanded and Burthorpe will come under control of the White Knights. We can not let this happen!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "tg8P9Q"
+              }
+            ]
           },
           {
-            "text": "See you about Denulth!"
+            "text": "See you about Denulth!",
+            "steps": [
+              {
+                "player": "See you about Denulth!"
+              },
+              {
+                "type": "line",
+                "speaker": "Denulth",
+                "text": "God speed friend!"
+              }
+            ]
           }
         ]
       }
@@ -130,13 +170,117 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you put some spikes on my Climbing boots?"
+            "text": "Can you put some spikes on my Climbing boots?",
+            "steps": [
+              {
+                "player": "Can you put some spikes on my Climbing boots?"
+              },
+              {
+                "type": "line",
+                "speaker": "Dunstan",
+                "text": "For you, no problem."
+              },
+              {
+                "type": "line",
+                "speaker": "Dunstan",
+                "text": "Do you realise that you can only use the Climbing boots right now? The Spiked boots can only be used in the Icelands but no one's been able to get there for years!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, but I still want them.",
+                    "steps": [
+                      {
+                        "player": "Yes, but I still want them."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have an iron bar in their inventory:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Dunstan",
+                            "text": "Sorry, I'll need an Iron bar to make the spikes."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Dunstan",
+                            "text": "Anything else before I get on with my work?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous2",
+                            "id": "QQ7GCB"
+                          }
+                        ],
+                        "id": "BRhCHm"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Oh OK, I'll leave them thanks.",
+                    "steps": [
+                      {
+                        "player": "Oh OK, I'll leave them thanks."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Dunstan",
+                        "text": "Anything else before I get on with my work?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous2",
+                        "id": "6YHhP_"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Is it OK if I use your anvil?"
+            "text": "Is it OK if I use your anvil?",
+            "steps": [
+              {
+                "player": "Is it OK if I use your anvil?"
+              },
+              {
+                "type": "line",
+                "speaker": "Dunstan",
+                "text": "So you're a smithy are you?"
+              },
+              {
+                "player": "I dabble."
+              },
+              {
+                "type": "line",
+                "speaker": "Dunstan",
+                "text": "A fellow smith is welcome to use my anvil!"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "line",
+                "speaker": "Dunstan",
+                "text": "Anything else before I get on with my work?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "xbYmAG"
+              }
+            ]
           },
           {
-            "text": "Nothing, thanks."
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "player": "Nothing, thanks."
+              }
+            ]
           }
         ]
       }
@@ -206,8 +350,13 @@
                           },
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "njGft-"
+                            "id": "njGft-",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-4a124b12831595a0"
+                              }
+                            ]
                           }
                         ],
                         "id": "GaGZZL"
@@ -227,8 +376,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "AN55Jm"
+                        "id": "AN55Jm",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-451bd43832c6ef6e"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -237,16 +391,89 @@
             ]
           },
           {
-            "text": "What does a Sherpa do?"
+            "text": "What does a Sherpa do?",
+            "steps": [
+              {
+                "player": "What does a Sherpa do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "We are expert guides that take adventurers, such as yourself, on mountaineering expeditions."
+              },
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "Was there anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "dRs4hH"
+              }
+            ]
           },
           {
-            "text": "How did you find out about the secret way?"
+            "text": "How did you find out about the secret way?",
+            "steps": [
+              {
+                "player": "How did you find out about the secret way?"
+              },
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "I used to take adventurers up Death Plateau and further north before the trolls came. I know these mountains well."
+              },
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "Was there anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "JjnedR"
+              }
+            ]
           },
           {
-            "text": "Nice place you have here."
+            "text": "Nice place you have here.",
+            "steps": [
+              {
+                "player": "Nice place you have here."
+              },
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "Thanks, I built it myself! I'm usually self sufficient but I can't earn any money with the trolls camped on Death Plateau."
+              },
+              {
+                "player": "Now that the Imperial Guard know about the secret way they will be able to destroy the trolls!"
+              },
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "Let us hope so traveller!"
+              },
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "Was there anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "GxdxLC"
+              }
+            ]
           },
           {
-            "text": "Nothing, thanks!"
+            "text": "Nothing, thanks!",
+            "steps": [
+              {
+                "player": "Nothing, thanks!"
+              }
+            ]
           }
         ]
       }
@@ -680,6 +907,27 @@
       {
         "type": "unavailable",
         "id": "UqqAHb"
+      }
+    ]
+  },
+  "branches": {
+    "jump-4a124b12831595a0": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "t0MSd2"
+      }
+    ],
+    "jump-451bd43832c6ef6e": [
+      {
+        "type": "jump",
+        "id": "njGft-",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-4a124b12831595a0"
+          }
+        ]
       }
     ]
   }

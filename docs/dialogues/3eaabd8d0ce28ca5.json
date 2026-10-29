@@ -352,8 +352,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "XIQBj3"
+                "id": "XIQBj3",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c442fa6a43b70e92"
+                  }
+                ]
               }
             ]
           },
@@ -363,8 +368,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "m0ZJn6"
+                "id": "m0ZJn6",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-de81f2b63d6f27b7"
+                  }
+                ]
               }
             ],
             "id": "MNFgB2"
@@ -375,13 +385,84 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "LiGqHS"
+                "id": "LiGqHS",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dd0c67abcce28dc8"
+                  }
+                ]
               }
             ],
             "id": "qBQdLD"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-c442fa6a43b70e92": [
+      {
+        "player": "Could you tell me how to make an origami balloon?"
+      },
+      {
+        "npc": "First, use the papyrus on the ball of wool. The papyrus is folded into an origami box and the yarn will support the heat source."
+      },
+      {
+        "npc": "Next, add the unlit candle to the balloon structure. It will act as the heat source."
+      },
+      {
+        "npc": "Now you have an origami balloon!"
+      },
+      {
+        "npc": "If you use your origami balloon with any dye, you can change the colour."
+      },
+      {
+        "npc": "You can release the balloon and watch it float in the air, just use a tinderbox on it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-de81f2b63d6f27b7": [
+      {
+        "type": "condition",
+        "text": "If the bomber cap has not been lost:",
+        "id": "bOybQz"
+      }
+    ],
+    "jump-dd0c67abcce28dc8": [
+      {
+        "npc": "There you go! You look like a true airship pilot now."
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing them:",
+        "steps": [
+          {
+            "npc": "I can't combine them if you are wearing them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NgGEtY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have space for the cap and goggles:",
+        "steps": [
+          {
+            "npc": "You don't have enough free space for the cap and goggles."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6RmZ_h"
       }
     ]
   }

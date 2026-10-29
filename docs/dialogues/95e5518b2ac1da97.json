@@ -1059,8 +1059,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WtLuFW"
+                "id": "WtLuFW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0cc2061b20651613"
+                  }
+                ]
               }
             ]
           },
@@ -1069,8 +1074,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Bjt3MT"
+                "id": "Bjt3MT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bc60c26ee7e23b90"
+                  }
+                ]
               }
             ]
           }
@@ -3256,13 +3266,30 @@
             ]
           },
           {
-            "text": "Do you ever get tired of guarding this place?"
+            "text": "Do you ever get tired of guarding this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jACxO5"
+              }
+            ]
           },
           {
-            "text": "This place is beautiful. I thought it was supposed to be a prison?"
+            "text": "This place is beautiful. I thought it was supposed to be a prison?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Hb2Uzt"
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
           }
         ]
       }
@@ -3311,10 +3338,21 @@
             ]
           },
           {
-            "text": "So how long has Cam Torum been around?"
+            "text": "So how long has Cam Torum been around?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YKiT7E"
+              }
+            ]
           },
           {
-            "text": "I'd better get going."
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              }
+            ]
           }
         ]
       }
@@ -4020,7 +4058,13 @@
               {
                 "type": "jump",
                 "reference": "continue",
-                "id": "FsaQez"
+                "id": "FsaQez",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-42d681bb88a1c1f8"
+                  }
+                ]
               },
               {
                 "type": "choice",
@@ -4041,7 +4085,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "nTDApr"
+                        "id": "nTDApr",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4b8754ffbab8ac53"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4061,7 +4111,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "t6oBhR"
+                        "id": "t6oBhR",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4b8754ffbab8ac53"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4081,7 +4137,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "Cv68VE"
+                        "id": "Cv68VE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4b8754ffbab8ac53"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4101,7 +4163,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "_v2YmY"
+                        "id": "_v2YmY",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4b8754ffbab8ac53"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4116,7 +4184,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "PYRsWn"
+                        "id": "PYRsWn",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4b8754ffbab8ac53"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -4625,7 +4699,28 @@
           {
             "type": "choice",
             "prompt": "Place some kindling on the statue?",
-            "options": []
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "-UZlI-"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "K1A_kB"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "id": "WUkMyZ"
@@ -5714,7 +5809,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "So how long has Cam Torum been around?"
+            "text": "So how long has Cam Torum been around?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YKiT7E"
+              }
+            ]
           },
           {
             "text": "Not really. I'd better get going."
@@ -5755,10 +5856,21 @@
             ]
           },
           {
-            "text": "So how long has Cam Torum been around?"
+            "text": "So how long has Cam Torum been around?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "YKiT7E"
+              }
+            ]
           },
           {
-            "text": "I'd better get going."
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              }
+            ]
           }
         ]
       }
@@ -5810,13 +5922,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you ever get tired of guarding this place?"
+            "text": "Do you ever get tired of guarding this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jACxO5"
+              }
+            ]
           },
           {
-            "text": "This place is beautiful. I thought it was supposed to be a prison?"
+            "text": "This place is beautiful. I thought it was supposed to be a prison?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Hb2Uzt"
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
           }
         ]
       }
@@ -5901,13 +6030,30 @@
             ]
           },
           {
-            "text": "Do you ever get tired of guarding this place?"
+            "text": "Do you ever get tired of guarding this place?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jACxO5"
+              }
+            ]
           },
           {
-            "text": "This place is beautiful. I thought it was supposed to be a prison?"
+            "text": "This place is beautiful. I thought it was supposed to be a prison?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Hb2Uzt"
+              }
+            ]
           },
           {
-            "text": "Goodbye."
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
           }
         ]
       }
@@ -5964,6 +6110,357 @@
       {
         "type": "unavailable",
         "id": "eoiNE6"
+      }
+    ]
+  },
+  "branches": {
+    "jump-0cc2061b20651613": [
+      {
+        "player": "So you're a Knight of Varlamore?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Vibia",
+        "text": "I am. What of it?"
+      },
+      {
+        "player": "That makes Itzla your boss, right?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Vibia",
+        "text": "He is the leader of the Knights of Varlamore, though I am currently filling that role in his absense."
+      },
+      {
+        "player": "What do you think of this whole situation with him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Vibia",
+        "text": "I think we have a job to do, and I think we should get on with it rather than making small talk."
+      },
+      {
+        "player": "Fair enough."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-bc60c26ee7e23b90": [
+      {
+        "player": "I'll get searching."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-42d681bb88a1c1f8": [
+      {
+        "type": "choice",
+        "prompt": "Which altar do you want Itzla to move to?",
+        "options": [
+          {
+            "text": "North.",
+            "steps": [
+              {
+                "player": "The north one."
+              },
+              {
+                "type": "condition",
+                "text": "If Itzla is not currently standing near the chosen altar:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Prince Itzla Arkan runs to the selected altar:",
+                    "id": "aeRWSV"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "webYwJ"
+              },
+              {
+                "type": "condition",
+                "text": "If Itzla is already at the chosen altar:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Prince Itzla Arkan",
+                    "text": "I'm already at that altar, [player name]. Is there another you want me to move to?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "xDX6lP"
+                  }
+                ],
+                "id": "Daf3CP"
+              }
+            ]
+          },
+          {
+            "text": "North east.",
+            "steps": [
+              {
+                "player": "The north east one."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "hutQEN"
+              }
+            ]
+          },
+          {
+            "text": "East.",
+            "steps": [
+              {
+                "player": "The east one."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "exDPTa"
+              }
+            ]
+          },
+          {
+            "text": "South east.",
+            "steps": [
+              {
+                "player": "The south east one."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "b44IuL"
+              }
+            ]
+          },
+          {
+            "text": "South.",
+            "steps": [
+              {
+                "player": "The south one."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "vz84lP"
+              }
+            ]
+          },
+          {
+            "text": "South west.",
+            "steps": [
+              {
+                "player": "The south west one."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Ol5BLo"
+              }
+            ]
+          },
+          {
+            "text": "West.",
+            "steps": [
+              {
+                "player": "The west one."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "IlG5G_"
+              }
+            ]
+          },
+          {
+            "text": "North west.",
+            "steps": [
+              {
+                "player": "The north west one."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "JD-pu8"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4b8754ffbab8ac53": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Thanks! Could you translate another?",
+            "steps": [
+              {
+                "player": "Thanks! Could you translate another?"
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "I'll give it a go."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "xsvu4q"
+              }
+            ]
+          },
+          {
+            "text": "Thanks! I'm done translating for now.",
+            "steps": [
+              {
+                "player": "Thanks! I'm done translating for now."
+              },
+              {
+                "type": "line",
+                "speaker": "Prince Itzla Arkan",
+                "text": "Hopefully it helps in some way, iknami."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jACxO5": [
+      {
+        "player": "Do you ever get tired of guarding this place?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "No."
+      },
+      {
+        "player": "Care to explain further?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "Does the stream tire of eroding the earth? Does the earth tire of forming the mountain?"
+      },
+      {
+        "player": "Not that I can tell."
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "I have more in common with them than I do with most of your kind, iknil. Think of me as you do them."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "1CZCvw"
+      }
+    ],
+    "Hb2Uzt": [
+      {
+        "player": "This place is beautiful. I thought it was supposed to be a prison?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "It is a prison. Everything around us serves that purpose."
+      },
+      {
+        "player": "Even the plants and the streams?"
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "I am a nagua of earth and stream. Being close to both empowers me to do my task."
+      },
+      {
+        "type": "line",
+        "speaker": "Eyatlalli",
+        "text": "Just as being far from moonlight weakens the Moons of Peril."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "x02byZ"
+      }
+    ],
+    "YKiT7E": [
+      {
+        "player": "So how long has Cam Torum been around?"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "What am I, a historian?"
+      },
+      {
+        "player": "No, but you're the only dwarf here that might be willing to share that sort of information with me."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Hmph. Very well. The Varlamorians won't mention this, but we were the first to settle here. Our ancestors saw the writing on the wall when Xeric came to power in Kourend. They chose not to stick around."
+      },
+      {
+        "player": "Must have been a big thing for them, leaving their home."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Doubtful. My people are all too familiar with that sort of thing. The Lovakengj dwarves have mostly forgotten their history, but we Dwarves of Cam Torum remember it all too well."
+      },
+      {
+        "player": "Remember what?"
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Before Lovakengj, there was Imcandoria. Our ancestors there were forced to abandon their home, just as we were forced to leave Kourend."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "If you humans had had your way, we might have had to abandon Cam Torum by now as well."
+      },
+      {
+        "player": "You don't know that."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "But I do know that. As I said, we remember our history, and we know that those who don't are doomed to repeat it."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "The Varlamorians nearly destroyed themselves in their War of Betrayal, but it was not them who were betrayed, it was us."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "I was a young dwarf when their war risked destroying our home. I saw the results of their pride. Meanwhile, they've all but forgotten it."
+      },
+      {
+        "player": "Sorry. I didn't mean to dig up old wounds."
+      },
+      {
+        "type": "line",
+        "speaker": "Attala",
+        "text": "Hmph. It's fine. Your intentions are good, [player name], which is more than can be said for most of your kind. Who knows, maybe one or two dwarves here might even grow to tolerate you."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "M-7gJ5"
       }
     ]
   }

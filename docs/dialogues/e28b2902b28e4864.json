@@ -205,8 +205,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "below",
-                            "id": "1FkDr4"
+                            "id": "1FkDr4",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-8f27a9f85da4bcb2"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -322,8 +327,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tnRZt_"
+                "id": "tnRZt_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-81f79501f95f3c67"
+                  }
+                ]
               }
             ]
           },
@@ -332,8 +342,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "z2WD41"
+                "id": "z2WD41",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d98119f8c901a022"
+                  }
+                ]
               }
             ]
           },
@@ -342,8 +357,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "mhD5k9"
+                "id": "mhD5k9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8569b7a8a6a97a9a"
+                  }
+                ]
               }
             ]
           },
@@ -352,12 +372,186 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "qzNfTQ"
+                "id": "qzNfTQ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-db3704bc83e264fb"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-8f27a9f85da4bcb2": [
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "npc": "You don't appear to have enough space in your inventory, come back and see me when you do."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "2a7_Ph"
+      },
+      {
+        "npc": "Most certainly, and free of charge!"
+      },
+      {
+        "type": "message",
+        "text": "Sloane hands you another hood for your skillcape.",
+        "id": "QN5Hvw"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-81f79501f95f3c67": [
+      {
+        "player": "What can I do here?"
+      },
+      {
+        "npc": "Ahh, the shot put is a great test of strength and can be quite rewarding. Mind you do it properly though, you might want to dust your hands with some powdery substance first. It'll give better grip."
+      },
+      {
+        "player": "I'll remember that. What should I use?"
+      },
+      {
+        "npc": "I personally prefer ground ashes, it makes a nice fine powder and gives some really good grip."
+      },
+      {
+        "player": "Ok, what else?"
+      },
+      {
+        "npc": "Basically you'll need to go in there, make sure you've got nothing cluttering up your hands, pick up a shot and throw it.... depending upon your technique, you can get quite long throws."
+      },
+      {
+        "player": "What was your best?"
+      },
+      {
+        "npc": "Ahh that would be telling..."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "q-qfuy"
+      }
+    ],
+    "jump-d98119f8c901a022": [
+      {
+        "player": "That's a big axe!"
+      },
+      {
+        "npc": "Yes indeed it is. Have to be mighty strong to wield it too."
+      },
+      {
+        "player": "But you don't look that strong!"
+      },
+      {
+        "npc": "Maybe, maybe not, but I still had to beat a Barbarian to get it. Mind you, usually they don't part with them. This was an unusual circumstance."
+      },
+      {
+        "player": "Oh?"
+      },
+      {
+        "npc": "I bet him he couldn't catch a squirrel whilst still holding his axe but that I could... and that if I won I'd get his axe."
+      },
+      {
+        "player": "What happened?"
+      },
+      {
+        "npc": "He went running after the squirrel... nearly caught it too... it shot up a tree and he tried to climb up it, only got a bit tangled up with his axe cause he couldn't hang on to it at the same time... he fell out of the tree and it"
+      },
+      {
+        "npc": "was my turn...."
+      },
+      {
+        "npc": "I simply went and chopped the tree down with this big old axe, still holding it. The squirrel was so petrified it simply jumped straight out of the tree onto me, I won the axe and let the poor creature go!"
+      },
+      {
+        "player": "I sense a moral in there somewhere."
+      },
+      {
+        "npc": "Aye indeed. Brawn isn't all you need to wield a big axe, brains are required too!"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "azeSk5"
+      }
+    ],
+    "jump-8569b7a8a6a97a9a": [
+      {
+        "player": "May I claim my tokens please?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no tokens to claim:",
+        "steps": [
+          {
+            "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+          },
+          {
+            "player": "Ok, I'll go see what I can find."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "FTkIcH"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "npc": "You don't have space to carry them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "mvZVKA"
+      },
+      {
+        "npc": "Of course! Here you go, you've earned [amount] tokens!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "[amount] Warrior guild tokens",
+        "id": "XVN5uC"
+      },
+      {
+        "player": "Thanks!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-db3704bc83e264fb": [
+      {
+        "player": "Bye!"
+      },
+      {
+        "type": "action",
+        "text": "(Sloane bows.)",
+        "action": "emote",
+        "action_source": "text",
+        "id": "q9J9-a"
+      },
+      {
+        "npc": "Be well, warrior [player name]."
+      },
+      {
+        "type": "end"
       }
     ]
   }

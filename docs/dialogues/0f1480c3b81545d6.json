@@ -184,8 +184,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "I6yM4f"
+                "id": "I6yM4f",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d0b7a49feadd1642"
+                  }
+                ]
               }
             ]
           },
@@ -225,8 +230,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "eyqH9o"
+                "id": "eyqH9o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d0b7a49feadd1642"
+                  }
+                ]
               }
             ]
           },
@@ -246,12 +256,50 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1ns8Vc"
+                "id": "1ns8Vc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-8988ebdebd1ec861"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-d0b7a49feadd1642": [
+      {
+        "player": "What are you doing up here?"
+      },
+      {
+        "npc": "Why, I'm ensuring everyone stays well fed and hydrated, of course! Fighting monsters is hard work, as I'm sure you know."
+      },
+      {
+        "npc": "Say, when was the last time you drank some water?"
+      },
+      {
+        "player": "Uh, I suppose I am a bit thirsty..."
+      },
+      {
+        "npc": "Off you go and refresh yourself! Don't want you collapsing in front of the Hueycoatl now, do we?"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-8988ebdebd1ec861": [
+      {
+        "player": "I'm fine, thanks."
+      },
+      {
+        "npc": "Suit yourself."
+      },
+      {
+        "type": "end"
       }
     ]
   }

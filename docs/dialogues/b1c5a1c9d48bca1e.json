@@ -204,8 +204,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "sNE2nc"
+        "id": "sNE2nc",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-d75c794d29367323"
+          }
+        ]
       }
     ],
     "starting-off-talking-to-anne-or-will-after-being-offered-the-job": [
@@ -786,8 +791,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "ALRuwI"
+        "id": "ALRuwI",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-4dbcd3ff04c59139"
+          }
+        ]
       }
     ],
     "reaching-the-salvaging-point-talking-to-anne-or-will-after-they-explain-salvaging-or-interacting-with-the-helm-or-sails": [
@@ -880,8 +890,13 @@
       },
       {
         "type": "jump",
-        "reference": "below",
-        "id": "e9tBwN"
+        "id": "e9tBwN",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-b098a28c5136a3eb"
+          }
+        ]
       }
     ],
     "at-the-pandemonium-talking-to-squawking-steve-beanie": [
@@ -967,8 +982,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "2otoVC"
+            "id": "2otoVC",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-41458eb7fb95471b"
+              }
+            ]
           }
         ],
         "id": "CNjUL8"
@@ -1293,8 +1313,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_aMzVK"
+                "id": "_aMzVK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c48e4f5140c505cb"
+                  }
+                ]
               }
             ]
           },
@@ -1362,8 +1387,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "5TDCa4"
+                        "id": "5TDCa4",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e908d75bce48951c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1422,8 +1452,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "biE6zw"
+                "id": "biE6zw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-94da1f6a06fccdf3"
+                  }
+                ]
               }
             ],
             "id": "pAfp8-"
@@ -1433,8 +1468,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "b2Aijt"
+                "id": "b2Aijt",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d5e5644d636c8294"
+                  }
+                ]
               }
             ]
           }
@@ -1455,8 +1495,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "PQZ094"
+                "id": "PQZ094",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c48e4f5140c505cb"
+                  }
+                ]
               }
             ]
           },
@@ -1487,8 +1532,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "orcSAp"
+                "id": "orcSAp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-94da1f6a06fccdf3"
+                  }
+                ]
               }
             ],
             "id": "4sgadi"
@@ -1508,8 +1558,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "bQ7fcw"
+                "id": "bQ7fcw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d5e5644d636c8294"
+                  }
+                ]
               }
             ]
           }
@@ -1690,8 +1745,13 @@
           },
           {
             "type": "jump",
-            "reference": "above",
-            "id": "1Nbnie"
+            "id": "1Nbnie",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "jump-5ac214bb9df33a7b"
+              }
+            ]
           }
         ],
         "id": "a8695u"
@@ -1705,8 +1765,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "XnuXo-"
+        "id": "XnuXo-",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-9a2ac2d2ecd480ff"
+          }
+        ]
       }
     ],
     "the-shipyard-talking-to-junior-jim-again": [
@@ -2315,8 +2380,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "Wb0rz8"
+        "id": "Wb0rz8",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-43834fb7e2ce07a0"
+          }
+        ]
       }
     ],
     "miscellaneous-before-sailing-release": [
@@ -2390,6 +2460,480 @@
     ]
   },
   "branches": {
+    "jump-d75c794d29367323": [
+      {
+        "player": "[player name]."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Pleased to meet you, [player name]. I'm Anne, and this is Will."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Next question: Do you have any experience captaining a ship?"
+      },
+      {
+        "player": "Not really..."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Oh..."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Will, it's important we not be too picky! It's a competitive market, after all."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Okay, final question: Do you agree to waive all rights to pursue legal action against your new employer in the event of injury or horrific death?"
+      },
+      {
+        "player": "Is that likely to happen?"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Not at all!"
+      },
+      {
+        "player": "I'm not sure if I..."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Excellent! Well then, [player name], I'm pleased to say that we have the results of your interview. You bring some impressive stuff to the table. We'd love to offer you the role!"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Congratulations!"
+      },
+      {
+        "player": "Thanks... only, you didn't actually mention what the role was..."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Ah, how forgetful of us! Given that you've already accepted, how about we discuss the details on our ship."
+      },
+      {
+        "player": "But I didn't accept anything..."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Just let us know when you're ready, and we'll hop aboard!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I guess I'm ready...",
+            "steps": [
+              {
+                "player": "I guess I'm ready..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Will",
+                    "text": "Oh dear! It doesn't quite look like you are! You'll need to make some room to carry some things before we head off!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CCJ1aq"
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Then let us away!"
+              },
+              {
+                "type": "action",
+                "text": "The player, Will, and Anne go to the ship.",
+                "id": "BDfVg8"
+              }
+            ]
+          },
+          {
+            "text": "I'd rather not...",
+            "steps": [
+              {
+                "player": "I'd rather not..."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Well, don't take too long. This work won't do itself, will it?"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4dbcd3ff04c59139": [
+      {
+        "player": "Hang on... why am I lowering the hook? I thought the helm was my responsibility?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Yes! The helm... and the hook!"
+      },
+      {
+        "player": "Of course. I'll just do everything while you two reap the rewards. Sounds about right."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Don't go getting grumpy on us now, [player name]. This isn't about the rewards. It's all about the experience!"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "That's right! Think of what you'll learn today!"
+      },
+      {
+        "player": "sigh*"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b098a28c5136a3eb": [
+      {
+        "player": "I think I must be having some sort of fever dream... or maybe I'm dead?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Ha! Far from it, matey! Though the fever dream I can't comment on. They're rather common around here... but I assure you that it's well-nigh certainly like enough most likely not the rum doing it!"
+      },
+      {
+        "player": "Okay... You said words there, but I don't think they actually formed a sentence."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Ah, me wee hearty! You seem to be having quite the crisis! Thankfully, you've rigged the starboard and docked yourself at the right port! Welcome to the Pandemonium!"
+      },
+      {
+        "player": "Pandemonium?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Aye! To be sure! This here is the finest establishment in all the seas. Sit back! Have a drink! Let the good times, and the rum, flow!"
+      },
+      {
+        "player": "If this is the Pandemonium, do you know of a pair of salvagers called Will and Anne?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Avast ye! You name a pair of pinching looting plundering seadogs!"
+      },
+      {
+        "player": "I see. So you do know them. They claimed to have purchased a map here, but I'm guessing they weren't being totally honest about that..."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Purchased?! Purchased?! You're pulling my leg, you scallywag! Those scurvy dogs came here and broke the one rule of the Pandemonium! That map was pilfered! Stolen!"
+      },
+      {
+        "player": "Well, I had quite the fun run in with them myself. They had me help them salvage an old shipwreck before throwing me overboard."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Arrr, you poor scallywag."
+      },
+      {
+        "player": "Thank you. It was the map they stole that led them to the wreck. What do you know about it?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Not a lot, I'm afraid. You should hoist your sails and go speak to Ribs instead. It was his map they looted. He's the old dog over in the corner. Avast!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-41458eb7fb95471b": [
+      {
+        "player": "I see. So you do know them. They claimed to have purchased a map here, but I'm guessing they weren't being totally honest about that..."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Purchased?! Purchased?! You're pulling my leg, you scallywag! Those scurvy dogs came here and broke the one rule of the Pandemonium! That map was pilfered! Stolen!"
+      },
+      {
+        "player": "Well, I had quite the fun run in with them myself. They had me help them salvage an old shipwreck before throwing me overboard."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Arrr, you poor scallywag."
+      },
+      {
+        "player": "Thank you. It was the map they stole that led them to the wreck. What do you know about it?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Not a lot, I'm afraid. You should hoist your sails and go speak to Ribs instead. It was his map they looted. He's the old dog over in the corner. Avast!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-c48e4f5140c505cb": [
+      {
+        "player": "Let's see what you have."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Aye!"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Pandemonium",
+        "id": "n-AhO0"
+      }
+    ],
+    "jump-e908d75bce48951c": [
+      {
+        "player": "And where would I find Old Grog?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Ah, the old scallywag left not that long ago, but he'll be back here before long. He enjoys a drink far too much! In the meantime, you should hoist the sails and ready your vessel!"
+      },
+      {
+        "player": "But I don't have a vessel..."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "What? But then how did you get here?"
+      },
+      {
+        "player": "Will and Anne threw me overboard and I washed up here. I did mention this earlier..."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Blistering barnacles! Well, you won't be getting far without a boat of your own. You should head to the docks and speak with Junior Jim, our local shipwright. He'll get you sorted out."
+      },
+      {
+        "player": "Alright, I'll go and see him."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Jolly Roger!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-94da1f6a06fccdf3": [
+      {
+        "player": "I think I might have lost a cup here."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Aye! Someone handed it in earlier. Here you go."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Steve tries to give you a cup, but you don't have enough room to take it.",
+            "id": "c2hHrr"
+          },
+          {
+            "type": "line",
+            "speaker": "'Squawking' Steve Beanie",
+            "text": "Blistering barnacles! You don't seem to have room for it. You'd better come back later."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "43Ms0-"
+      },
+      {
+        "type": "message",
+        "text": "Steve gives you a cup.",
+        "id": "P7HYtI"
+      },
+      {
+        "player": "Thanks!"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yo ho ho!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-d5e5644d636c8294": [
+      {
+        "player": "Nothing, thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Shiver me timbers!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5ac214bb9df33a7b": [
+      {
+        "player": "Sorry, I think I must have misheard you. Did you say raft?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "That's right! The best one I have!"
+      },
+      {
+        "player": "I was kind of hoping for a bit more than a raft. It's not just the cup I have. I'm sure I can make up the funds to buy something bigger."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Sorry, mate, but even if you could, the raft is all I've got to hand right now. Besides, you're gonna want to build up some experience before you captain anything too big. A raft will be perfect for you."
+      },
+      {
+        "player": "Okay..."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Lighten up, mate. I'll have plenty more vessels in stock soon. Come back once you've got a bit more know-how and I'll be able to sort you right out."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Now, about your raft... With that cup I'll be able to sort you out with the finest helm, but it won't be enough to cover the sails."
+      },
+      {
+        "player": "But I won't get anywhere without sails!"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Don't panic, you silly plonker. I ain't about to send you off on a raft with no sails. I'll sort them out for you, but I'll just need a little favour in return."
+      },
+      {
+        "player": "What favour?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "I've got some cargo I need picking up from Port Sarim and bringing back here. In return for sorting you out with some sails, I'll need you to go and collect it for me."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Oh, and I tell you what, I'll even set you up with the materials to whack together a cargo hold. You won't be shifting that cargo far without one."
+      },
+      {
+        "player": "Thanks!"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Now, hand over that cup and we can get cracking."
+      },
+      {
+        "type": "message",
+        "text": "You give the cup to Junior Jim.",
+        "id": "jkS3Ej"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Right, time to sort you out with a cargo hold. Let's head on over to the shipyard..."
+      },
+      {
+        "type": "action",
+        "text": "Junior Jim and the player head to the shipyard.",
+        "id": "TIfJ86"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You'll want to grab yourself some tools from the crates over there, mate. After that, just use the gangplank to hop onto your raft. Once you're on board, you can get to work."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-9a2ac2d2ecd480ff": [
+      {
+        "type": "action",
+        "text": "Junior Jim and the player head to the shipyard.",
+        "id": "TIfJ86"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You'll want to grab yourself some tools from the crates over there, mate. After that, just use the gangplank to hop onto your raft. Once you're on board, you can get to work."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-43834fb7e2ce07a0": [
+      {
+        "player": "Will do!"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "To help you on your way, I've got some pirate looty here for you! Sawmill coupons! Useful if you want a top vessel like mine."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Oh, and don't forget to pop back for a drink from time to time. My rum is to die for! Now, avast!"
+      },
+      {
+        "type": "action",
+        "text": "Quest complete!",
+        "id": "SJ3WVd"
+      }
+    ],
     "KpSbKi": [
       {
         "type": "line",

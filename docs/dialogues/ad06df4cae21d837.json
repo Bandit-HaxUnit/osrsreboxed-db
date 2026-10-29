@@ -262,8 +262,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "CMafxw"
+                                "id": "CMafxw",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-37f967f96e1660e8"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -287,8 +292,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "FqTkIA"
+                        "id": "FqTkIA",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-37f967f96e1660e8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -412,8 +422,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "u_SsVd"
+                        "id": "u_SsVd",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2c1d5923fdeddacc"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -422,8 +437,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "apLsTi"
+                        "id": "apLsTi",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-37f967f96e1660e8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -459,8 +479,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "6J-5nN"
+                        "id": "6J-5nN",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2c1d5923fdeddacc"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -469,8 +494,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "LiFZrM"
+                        "id": "LiFZrM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-37f967f96e1660e8"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -601,8 +631,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "eOiReN"
+        "id": "eOiReN",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-b79925e93e87cf2e"
+          }
+        ]
       }
     ],
     "historical-dialogue": [
@@ -660,6 +695,378 @@
               }
             ],
             "id": "163Ju2"
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-37f967f96e1660e8": [
+      {
+        "player": "No, thank you."
+      },
+      {
+        "npc": "Well, please return if you change your mind."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2c1d5923fdeddacc": [
+      {
+        "player": "What have you got?"
+      },
+      {
+        "npc": "Well, I have a number of fine pieces of clothing on sale or, if you prefer, I can offer you an exclusive, total- clothing makeover?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me more about this makeover.",
+            "steps": [
+              {
+                "player": "Tell me more about this makeover."
+              },
+              {
+                "npc": "Certainly!"
+              },
+              {
+                "npc": "Here at Thessalia's fine clothing boutique, we offer a unique service where we will totally revamp your outfit to your choosing."
+              },
+              {
+                "npc": "It's on the house, completely free! Tired of always wearing the same old outfit, day in, day out? This is the service for you!"
+              },
+              {
+                "npc": "So what do you say? Interested? We can change either your top or your legwear!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to change my top please.",
+                    "steps": [
+                      {
+                        "npc": "Just select what style and colour you would like from this catalogue."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Makeover",
+                        "id": "A1vhc7"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "After choosing a top:",
+                        "steps": [
+                          {
+                            "type": "random",
+                            "options": [
+                              {
+                                "text": "Dialogue 1",
+                                "steps": [
+                                  {
+                                    "npc": "Wow! Good choice! You're looking great!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 2",
+                                "steps": [
+                                  {
+                                    "npc": "Totally cool! That outfit looks great!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 3",
+                                "steps": [
+                                  {
+                                    "npc": "Woah! Fabulous! You look absolutely great!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 4",
+                                "steps": [
+                                  {
+                                    "npc": "Very stylish! It really suits you!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 5",
+                                "steps": [
+                                  {
+                                    "npc": "WoooOOOooo! Hot stuff!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 6",
+                                "steps": [
+                                  {
+                                    "npc": "Fantastic! You should be a model!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "IUzrGx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like to change my legwear please.",
+                    "steps": [
+                      {
+                        "npc": "Just select what style and colour you would like from this catalogue."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Makeover",
+                        "id": "W6u5TY"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "After choosing a bottom:",
+                        "steps": [
+                          {
+                            "type": "random",
+                            "options": [
+                              {
+                                "text": "Dialogue 1",
+                                "steps": [
+                                  {
+                                    "npc": "Wow! Good choice! You're looking great!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 2",
+                                "steps": [
+                                  {
+                                    "npc": "Totally cool! That outfit looks great!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 3",
+                                "steps": [
+                                  {
+                                    "npc": "Woah! Fabulous! You look absolutely great!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 4",
+                                "steps": [
+                                  {
+                                    "npc": "Very stylish! It really suits you!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 5",
+                                "steps": [
+                                  {
+                                    "npc": "WoooOOOooo! Hot stuff!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Dialogue 6",
+                                "steps": [
+                                  {
+                                    "npc": "Fantastic! You should be a model!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "O1Bc-4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd just like to buy some clothes.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Thessalia's Fine Clothes.",
+                        "id": "ed46K9"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "CMafxw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-37f967f96e1660e8"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd just like to buy some clothes.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Thessalia's Fine Clothes.",
+                "id": "qjCu_B"
+              }
+            ]
+          },
+          {
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "FqTkIA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-37f967f96e1660e8"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-b79925e93e87cf2e": [
+      {
+        "npc": "That entitles you to a free costume! Do you want a frog mask, a royal tunic & leggings or a royal blouse & skirt? I've also got some lamps a strange blue chap gave me."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "A frog mask, please!",
+            "steps": [
+              {
+                "player": "A frog mask, please!"
+              },
+              {
+                "type": "message",
+                "text": "Thessalia exchanges your token for a frog mask.",
+                "id": "LR8HY8"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "A royal tunic & leggings, please.",
+            "steps": [
+              {
+                "player": "A royal tunic & leggings, please."
+              },
+              {
+                "type": "message",
+                "text": "Thessalia exchanges your token for a royal tunic & leggings.",
+                "id": "ULI8iF"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "A royal blouse & skirt, please.",
+            "steps": [
+              {
+                "player": "A royal blouse & skirt, please."
+              },
+              {
+                "type": "message",
+                "text": "Thessalia exchanges your token for a royal blouse & skirt.",
+                "id": "6Iby_2"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I'll take a lamp, thanks.",
+            "steps": [
+              {
+                "player": "I'll take the reward lamp, thanks."
+              },
+              {
+                "type": "message",
+                "text": "Thessalia exchanges your token for a lamp.",
+                "id": "4yJDRT"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Maybe another time.",
+            "steps": [
+              {
+                "player": "Maybe another time."
+              },
+              {
+                "type": "end"
+              }
+            ]
           }
         ]
       }

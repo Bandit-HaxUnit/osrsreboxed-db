@@ -12,6 +12,7 @@ import re
 import mwparserfromhell as mw
 
 from scripts.shops.shop_owners import npc_ids_from_wikitext
+from scripts.dialogues.flow import resolve_navigation, resolve_shared
 
 
 def slug(text):
@@ -24,11 +25,15 @@ def token(value):
     ).hexdigest()[:16]
 
 
-def walk(nodes):
+def walk(nodes, branches=None, seen=None):
+    seen = set() if seen is None else seen
     for node in nodes:
         yield node
-        yield from walk(node.get("steps", []))
-        yield from walk(node.get("options", []))
+        yield from walk(node.get("steps", []), branches, seen)
+        yield from walk(node.get("options", []), branches, seen)
+        if branches and node.get("type") == "call" and node["branch"] not in seen:
+            seen.add(node["branch"])
+            yield from walk(branches[node["branch"]], branches, seen)
 
 
 def identity(name, page, clean):
@@ -53,7 +58,12 @@ def annotate(nodes, parent, quest_names):
     for node in nodes:
         # Exclude child bodies: adding a line to an option does not rename its
         # branch or descendants. Duplicate identical siblings use a local suffix.
-        own = {k: v for k, v in node.items() if k not in ("steps", "options")}
+        own = {
+            k: v
+            for k, v in node.items()
+            if k not in ("steps", "options") and not k.startswith("_")
+        }
+        own = node.pop("_identity", own)
         key = token([parent, own])
         counts[key] += 1
         node["id"] = f"{parent.split('/node:')[0]}/node:{key}" + (
@@ -94,7 +104,7 @@ def annotate(nodes, parent, quest_names):
                         option["quest"] = quest_names[key]
 
 
-def enrich_records(npcs, quests, npc_pages, clean):
+def enrich_records(npcs, quests, npc_pages, clean, bindings=None):
     identities = {name: identity(name, page, clean) for name, page in npc_pages.items()}
     all_records = {
         "Transcript:" + name: record
@@ -117,6 +127,17 @@ def enrich_records(npcs, quests, npc_pages, clean):
                     node.pop("speaker")
                     node["npc"] = text
             annotate(steps, f"{page}#{variant}", quest_names)
+            for node in walk(steps):
+                if node.get("type") == "reference" and not node.get("target"):
+                    node["target"] = page
+    resolve_shared(npcs, quests, identities)
+    for page, record in all_records.items():
+        binding = (bindings or {}).get(page.removeprefix("Transcript:"), {})
+        resolve_navigation(record, binding.get("navigation"))
+    for page, record in all_records.items():
+        name = page.removeprefix("Transcript:")
+        is_npc = name in npcs
+        ids = record.get("npc_ids", [])
         if is_npc:
             for npc_id in ids:
                 index[str(npc_id)].append(
@@ -130,13 +151,19 @@ def enrich_records(npcs, quests, npc_pages, clean):
                 variants = [
                     key
                     for key, steps in record["variants"].items()
-                    if any(n.get("speaker") in aliases for n in walk(steps))
+                    if any(
+                        n.get("speaker") in aliases
+                        for n in walk(steps, record.get("branches"))
+                    )
                 ]
                 if variants:
                     for npc_id in participant_ids:
                         index[str(npc_id)].append({"page": page, "variants": variants})
     for record in all_records.values():
-        for steps in record["variants"].values():
+        for steps in [
+            *record["variants"].values(),
+            *record.get("branches", {}).values(),
+        ]:
             for node in walk(steps):
                 if node.get("type") != "reference":
                     continue

@@ -9,16 +9,68 @@
         "type": "choice",
         "options": [
           {
+            "text": "Talk about Fossil Island.",
+            "condition": "After Bone Voyage:",
+            "steps": [
+              {
+                "player": "I've got some questions regarding Fossil Island."
+              },
+              {
+                "npc": "Ah, how can I help?"
+              },
+              {
+                "type": "choice",
+                "options": []
+              }
+            ],
+            "id": "5xOdLs"
+          },
+          {
+            "text": "What can I do with fossils I find on Fossil Island?",
+            "steps": [
+              {
+                "player": "What can I do with fossils I find on Fossil Island?"
+              },
+              {
+                "npc": "I'm not entirely sure just yet."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Nevermind.",
+            "steps": [
+              {
+                "player": "Nevermind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
             "text": "I found a strange relic while salvaging...",
             "condition": "If the player has a salvaging relic on them:",
             "steps": [
               {
                 "type": "jump",
-                "reference": "below",
-                "id": "aKpJnW"
+                "id": "eWmBFm",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ],
-            "id": "36lI-v"
+            "id": "L_kSQT"
           },
           {
             "text": "Have you any interesting news?",
@@ -47,12 +99,12 @@
                     "target": "Transcript:Bone Voyage",
                     "section": "",
                     "text": "Continues in Transcript:Bone Voyage",
-                    "id": "G7E9Z9",
+                    "id": "C60sf8",
                     "resolved": false,
                     "page_available": true
                   }
                 ],
-                "id": "6GMQvw"
+                "id": "eSsOcb"
               },
               {
                 "type": "condition",
@@ -68,7 +120,7 @@
                     "npc": "Be sure to bring anything you find back for examination - we've got a brand new Palaeontology room downstairs dedicated to finds from the island."
                   }
                 ],
-                "id": "vJxRlb"
+                "id": "1RIiH_"
               }
             ]
           },
@@ -103,7 +155,7 @@
                     "type": "end"
                   }
                 ],
-                "id": "TCe4Ju"
+                "id": "Lg_PTN"
               },
               {
                 "type": "condition",
@@ -116,7 +168,7 @@
                     "type": "end"
                   }
                 ],
-                "id": "F6LNBC"
+                "id": "MM8_yB"
               },
               {
                 "type": "condition",
@@ -151,7 +203,7 @@
                     ]
                   }
                 ],
-                "id": "1aURsU"
+                "id": "2uls3V"
               },
               {
                 "type": "condition",
@@ -169,7 +221,7 @@
                           {
                             "type": "message",
                             "text": "The curator hands you a medallion.",
-                            "id": "U9LNui"
+                            "id": "qrOUUk"
                           }
                         ]
                       },
@@ -180,7 +232,7 @@
                     ]
                   }
                 ],
-                "id": "UQ4-IT"
+                "id": "Rp1F04"
               }
             ]
           }
@@ -390,8 +442,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "jTZgm4"
+                "id": "jTZgm4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -498,8 +555,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "DUt9x0"
+                "id": "DUt9x0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -508,8 +570,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "tln1Qs"
+                "id": "tln1Qs",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -518,8 +585,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "Cr6xSL"
+                "id": "Cr6xSL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -538,8 +610,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uxcCKF"
+                "id": "uxcCKF",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -646,8 +723,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "NnzPms"
+                "id": "NnzPms",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -656,8 +738,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "-3LiL8"
+                "id": "-3LiL8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -666,8 +753,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uTmGmU"
+                "id": "uTmGmU",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -686,8 +778,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "TGuRUR"
+                "id": "TGuRUR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -794,8 +891,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "eC8yWj"
+                "id": "eC8yWj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -804,8 +906,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kyTlLM"
+                "id": "kyTlLM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -814,8 +921,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_DMCYL"
+                "id": "_DMCYL",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -834,8 +946,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "y7haJM"
+                "id": "y7haJM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -942,8 +1059,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "_IxCD8"
+                "id": "_IxCD8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -952,8 +1074,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "dQPq5V"
+                "id": "dQPq5V",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -962,8 +1089,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "eP_P3o"
+                "id": "eP_P3o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -982,8 +1114,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "otSMkw"
+                "id": "otSMkw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -1090,8 +1227,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "gf9aEK"
+                "id": "gf9aEK",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -1100,8 +1242,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "yixSMA"
+                "id": "yixSMA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -1110,8 +1257,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "iW6Ejv"
+                "id": "iW6Ejv",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -1130,8 +1282,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "GKlxS0"
+                "id": "GKlxS0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -1238,8 +1395,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "x14Qfi"
+                "id": "x14Qfi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -1248,8 +1410,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nA7g72"
+                "id": "nA7g72",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -1258,8 +1425,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "fuzIzR"
+                "id": "fuzIzR",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -1278,8 +1450,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "iFUZJA"
+                "id": "iFUZJA",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -1386,8 +1563,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "APoMuw"
+                "id": "APoMuw",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -1396,8 +1578,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "1OHL2F"
+                "id": "1OHL2F",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -1406,8 +1593,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "rJfA-V"
+                "id": "rJfA-V",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -1426,8 +1618,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "CdkZvW"
+                "id": "CdkZvW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "kLQdcm"
+                  }
+                ]
               }
             ]
           },
@@ -1534,8 +1731,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "3VQdCk"
+                "id": "3VQdCk",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "siVoke"
+                  }
+                ]
               }
             ]
           },
@@ -1544,8 +1746,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cZlSDj"
+                "id": "cZlSDj",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "GRm96B"
+                  }
+                ]
               }
             ]
           },
@@ -1554,8 +1761,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "IPpBNq"
+                "id": "IPpBNq",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "mKYe56"
+                  }
+                ]
               }
             ]
           }
@@ -1608,6 +1820,198 @@
     ]
   },
   "branches": {
+    "jump-99747e5bb8cecb51": [
+      {
+        "type": "condition",
+        "text": "Before Bone Voyage:",
+        "steps": [
+          {
+            "player": "Have you any interesting news?"
+          },
+          {
+            "npc": "Yes, we found a rather interesting island to the North of Morytania. We believe that it may be of archaeological significance."
+          },
+          {
+            "player": "Oh? That sounds interesting."
+          },
+          {
+            "npc": "Indeed. We are making the final preparations for our voyage, in fact, you may be just the person we are looking for... Assuming you've got the necessary qualifications, that is."
+          },
+          {
+            "player": "Would I qualify then?"
+          },
+          {
+            "type": "reference",
+            "target": "Transcript:Bone Voyage",
+            "section": "",
+            "text": "Continues in Transcript:Bone Voyage",
+            "id": "C60sf8",
+            "resolved": false,
+            "page_available": true
+          }
+        ],
+        "id": "eSsOcb"
+      },
+      {
+        "type": "condition",
+        "text": "After Bone Voyage:",
+        "steps": [
+          {
+            "player": "Have you any interesting news?"
+          },
+          {
+            "npc": "We've seen some incredible specimens come back from Fossil Island!"
+          },
+          {
+            "npc": "Be sure to bring anything you find back for examination - we've got a brand new Palaeontology room downstairs dedicated to finds from the island."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1RIiH_"
+      }
+    ],
+    "jump-5910ecf8c32d74d5": [
+      {
+        "player": "I've got some questions regarding Fossil Island."
+      },
+      {
+        "npc": "Ah, how can I help?"
+      },
+      {
+        "type": "choice",
+        "options": []
+      }
+    ],
+    "jump-14054517386e348f": [
+      {
+        "player": "Do you know where I could find any treasure?"
+      },
+      {
+        "npc": "Look around you! This museum is full of treasures!"
+      },
+      {
+        "player": "No, I meant treasures for ME."
+      },
+      {
+        "npc": "Any treasures this museum knows about it goes to great lengths to acquire."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-13a862802e3a224f": [
+      {
+        "type": "condition",
+        "text": "If the player hasn't discovered the digsite pendant:",
+        "steps": [
+          {
+            "npc": "Well, firstly you'll need to do a bit of work around the museum, then maybe we can talk."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Lg_PTN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the required items:",
+        "steps": [
+          {
+            "npc": "Oh dear. You'll need 250 rubies, a Digsite pendant, 100 cosmic runes and 500 fire runes with you I'm afraid."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "MM8_yB"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have all the rubies required:",
+        "steps": [
+          {
+            "npc": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+          },
+          {
+            "type": "choice",
+            "prompt": "Pay some rubies now? (No refunds!)",
+            "options": [
+              {
+                "text": "Yes - I know I can't get them back.",
+                "steps": [
+                  {
+                    "npc": "Thank you. You have [X] to go before you have enough for a medallion."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "2uls3V"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the required items:",
+        "steps": [
+          {
+            "npc": "Why, I can give you one now if you wish?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The curator hands you a medallion.",
+                    "id": "qrOUUk"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No, keep my stuff.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Rp1F04"
+      }
+    ],
+    "siVoke": [
+      {
+        "type": "call",
+        "branch": "jump-99747e5bb8cecb51"
+      }
+    ],
+    "kLQdcm": [
+      {
+        "type": "call",
+        "branch": "jump-5910ecf8c32d74d5"
+      }
+    ],
     "bwF8Lk": [
       {
         "npc": "Why yes, that does look rather interesting. The museum would gladly take that off your hands, and I think we could reward you with an item from our lamp collection in return."
@@ -1627,6 +2031,18 @@
     "tKzy5B": [
       {
         "npc": "Hmm.... while it is interesting, I'm afraid you've already brought us one just like it. We'd still be happy to take it off your hands, but I'm afraid we can only offer a monetary reward of 5,000 coins."
+      }
+    ],
+    "GRm96B": [
+      {
+        "type": "call",
+        "branch": "jump-14054517386e348f"
+      }
+    ],
+    "mKYe56": [
+      {
+        "type": "call",
+        "branch": "jump-13a862802e3a224f"
       }
     ]
   }

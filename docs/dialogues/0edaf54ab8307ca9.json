@@ -211,10 +211,61 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who are you?"
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Gillie Groats",
+                "text": "My name is Gillie Groats. My father is a farmer and I milk the cows for him."
+              },
+              {
+                "player": "Do you have any buckets of milk spare?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gillie Groats",
+                "text": "I'm afraid not. We need all of our milk to sell to market, but you can milk the cow yourself if you need the milk."
+              },
+              {
+                "player": "Thanks."
+              }
+            ]
           },
           {
-            "text": "Can you tell me how to milk a cow?"
+            "text": "Can you tell me how to milk a cow?",
+            "steps": [
+              {
+                "player": "So how do you get milk from a cow then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gillie Groats",
+                "text": "It's very easy. First you need an empty bucket to hold the milk."
+              },
+              {
+                "type": "line",
+                "speaker": "Gillie Groats",
+                "text": "Then find a dairy cow to milk - you can't milk just any cow."
+              },
+              {
+                "player": "How do I find a dairy cow?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gillie Groats",
+                "text": "They are easy to spot - they are dark brown and white, unlike beef cows, which are light brown and white. We also tether them to a post to stop them wandering around all over the place."
+              },
+              {
+                "type": "line",
+                "speaker": "Gillie Groats",
+                "text": "There are a couple very near, in this field."
+              },
+              {
+                "type": "line",
+                "speaker": "Gillie Groats",
+                "text": "Then just milk the cow and your bucket will fill with tasty, nutritious milk."
+              }
+            ]
           },
           {
             "text": "Can you share what makes your cows so productive?",
@@ -1338,6 +1389,58 @@
       {
         "type": "unavailable",
         "id": "5KmlDA"
+      }
+    ],
+    "returning-to-cassius-after-sampling-the-milk-resume": [
+      {
+        "type": "line",
+        "speaker": "Cassius",
+        "text": "So, what do you think? The milk is fantastic, isn't it?"
+      },
+      {
+        "player": "It wasn't what I was expecting, certainly."
+      },
+      {
+        "type": "line",
+        "speaker": "Cassius",
+        "text": "We're going to change the lactic landscape! Before we do though, I have another task for you."
+      },
+      {
+        "player": "Now what do you need?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cassius",
+        "text": "We need... a permit."
+      },
+      {
+        "player": "Shouldn't you have got a permit before making milk?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cassius",
+        "text": "The permit is to sell milk, not to make milk!"
+      },
+      {
+        "player": "Fine, where are we going to get this permit?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cassius",
+        "text": "From the Duke of Lumbridge! Where else? You need to bring him our milk and I'm sure he'll give us our permit without fuss."
+      },
+      {
+        "player": "Are you sure having the Duke drink our milk is a good idea?"
+      },
+      {
+        "type": "line",
+        "speaker": "Cassius",
+        "text": "Of course! Soon the whole of Lumbridge will be drinking my, I mean our milk!"
+      },
+      {
+        "type": "message",
+        "text": "Cassius hands you a milk sample.",
+        "id": "gAirRb"
       }
     ]
   },

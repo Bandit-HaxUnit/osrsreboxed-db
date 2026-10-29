@@ -319,16 +319,203 @@
             ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "I'm a forester, and I specialise in exotic woods. I haven't gone into the Kharazi myself, but I've found some interesting tree specimens out here."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "If you do find a safe path into the jungle, do come and let me know. I'd love to have a nose around in there."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How do I get into the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "7iUxDE"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "76wNTb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "09uOtu"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "How do I get into the Kharazi Jungle?"
+            "text": "How do I get into the Kharazi Jungle?",
+            "steps": [
+              {
+                "player": "How do I get into the Kharazi Jungle?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Apparently he was on a mission to map the area. How foolish is that?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Actually, I plan to map the jungle myself.",
+                    "steps": [
+                      {
+                        "player": "Actually, I plan to map the jungle myself."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Best of luck though... Guthix knows, you'll need it."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Do you have any other tips about the Kharazi Jungle?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "RfZ3_7"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "Bsw4pl"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok thanks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "KEwsmu"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Are you calling me foolish?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "8adRZx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you do here?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HWlRzp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f0efcd504c225506"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "s5xw7n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "HFNoRd"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Who are you?"
           },
           {
-            "text": "I have a question about my Achievement Diary."
+            "text": "I have a question about my Achievement Diary.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-K8FY8"
+              }
+            ]
           }
         ]
       }
@@ -431,16 +618,208 @@
             ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "I'm a forester, and I specialise in exotic woods. I haven't gone into the Kharazi myself, but I've found some interesting tree specimens out here."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "If you do find a safe path into the jungle, do come and let me know. I'd love to have a nose around in there."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How do I get into the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "7iUxDE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-28de3985cc6df343"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "76wNTb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "09uOtu"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "How do I get into the Kharazi Jungle?"
+            "text": "How do I get into the Kharazi Jungle?",
+            "steps": [
+              {
+                "player": "How do I get into the Kharazi Jungle?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Apparently he was on a mission to map the area. How foolish is that?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Actually, I plan to map the jungle myself.",
+                    "steps": [
+                      {
+                        "player": "Actually, I plan to map the jungle myself."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Best of luck though... Guthix knows, you'll need it."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Do you have any other tips about the Kharazi Jungle?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "RfZ3_7"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "Bsw4pl"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok thanks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "KEwsmu"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Are you calling me foolish?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "8adRZx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you do here?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HWlRzp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f0efcd504c225506"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "s5xw7n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "HFNoRd"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Who are you?"
           },
           {
-            "text": "I have a question about my Achievement Diary."
+            "text": "I have a question about my Achievement Diary.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-K8FY8"
+              }
+            ]
           }
         ]
       }
@@ -471,16 +850,208 @@
             ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "I'm a forester, and I specialise in exotic woods. I haven't gone into the Kharazi myself, but I've found some interesting tree specimens out here."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "If you do find a safe path into the jungle, do come and let me know. I'd love to have a nose around in there."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How do I get into the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "7iUxDE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-28de3985cc6df343"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "76wNTb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "09uOtu"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "How do I get into the Kharazi Jungle?"
+            "text": "How do I get into the Kharazi Jungle?",
+            "steps": [
+              {
+                "player": "How do I get into the Kharazi Jungle?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Apparently he was on a mission to map the area. How foolish is that?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Actually, I plan to map the jungle myself.",
+                    "steps": [
+                      {
+                        "player": "Actually, I plan to map the jungle myself."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Best of luck though... Guthix knows, you'll need it."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Do you have any other tips about the Kharazi Jungle?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "RfZ3_7"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "Bsw4pl"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok thanks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "KEwsmu"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Are you calling me foolish?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "8adRZx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you do here?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HWlRzp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f0efcd504c225506"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "s5xw7n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "HFNoRd"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Who are you?"
           },
           {
-            "text": "I have a question about my Achievement Diary."
+            "text": "I have a question about my Achievement Diary.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-K8FY8"
+              }
+            ]
           }
         ]
       }
@@ -690,8 +1261,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "oK3fAr"
+                                "id": "oK3fAr",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f2303a38c38292be"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -700,8 +1276,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "ZGvp83"
+                                "id": "ZGvp83",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-775d69c529433c45"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -987,8 +1568,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "WUirav"
+                "id": "WUirav",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f4cd3b6f9c1eede9"
+                  }
+                ]
               }
             ]
           },
@@ -1011,8 +1597,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "8Hz5Wc"
+                        "id": "8Hz5Wc",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-373ab2184172c8af"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1082,13 +1673,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "What kind of organisation is this?"
+            "text": "What kind of organisation is this?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mtTOSy"
+              }
+            ]
           },
           {
-            "text": "Who are you and what do you do here?"
+            "text": "Who are you and what do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "1V7Ncr"
+              }
+            ]
           },
           {
-            "text": "Ok, thanks."
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              }
+            ]
           },
           {
             "text": "I'm looking for Jimmy the Chisel.",
@@ -1125,8 +1733,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "mA88iK"
+                        "id": "mA88iK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-24dcfefbd86fa812"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1135,8 +1748,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "nVoRrz"
+                        "id": "nVoRrz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c5465e642f5a35f2"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1224,13 +1842,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "What kind of organisation is this?"
+            "text": "What kind of organisation is this?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mtTOSy"
+              }
+            ]
           },
           {
-            "text": "Who are you and what do you do here?"
+            "text": "Who are you and what do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "1V7Ncr"
+              }
+            ]
           },
           {
-            "text": "Ok, thanks."
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              }
+            ]
           },
           {
             "text": "I'm back!",
@@ -2041,13 +2676,48 @@
             ]
           },
           {
-            "text": "What're you doing here?"
+            "text": "What're you doing here?",
+            "steps": [
+              {
+                "player": "What're you doing here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Dwarf gang member",
+                "text": "Well, as if it's any of your business, I'm an associate of Hammerspike. He's a great dwarf you know. You could learn a lot from a dwarf like him."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "RLIkuH"
+              }
+            ]
           },
           {
-            "text": "Who do you work for?"
+            "text": "Who do you work for?",
+            "steps": [
+              {
+                "player": "Who do you work for?"
+              },
+              {
+                "type": "line",
+                "speaker": "Dwarf gang member",
+                "text": "I have an ongoing contract with Hammerspike, when he gives the word, the hammer starts flying."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "qQb4iq"
+              }
+            ]
           },
           {
-            "text": "Ok, thanks."
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              }
+            ]
           }
         ]
       }
@@ -3137,10 +3807,161 @@
         "type": "choice",
         "options": [
           {
-            "text": "Two jobs? That's got to be tough."
+            "text": "Two jobs? That's got to be tough.",
+            "steps": [
+              {
+                "player": "Two jobs? That's got to be tough."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Not when you combine them it isn't! I invent MAGIC things!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So what have you invented?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "GSj9b0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c1ed78f5f78eedc5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well, I shall leave you to your inventing.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "U-f7Pw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "So what have you invented?"
+            "text": "So what have you invented?",
+            "steps": [
+              {
+                "player": "So what have you invented?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So where is the other block?",
+                    "steps": [
+                      {
+                        "player": "So where is the other block?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can I be teleported please?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "hAJU-e",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-7fb6db7c5e2bfa7a"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Who are the GPDT?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "sNLgxh"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I be teleported please?",
+                    "steps": [
+                      {
+                        "player": "Can I be teleported please?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, that sounds good. Teleport me!",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "cW51Tu"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "That sounds dangerous. Leave me here.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "iFN_QA"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well done, that's very clever.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "YeEFfh"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Can you teleport me to the Rune Essence Mine?"
@@ -3261,10 +4082,161 @@
         "type": "choice",
         "options": [
           {
-            "text": "Two jobs? That's got to be tough."
+            "text": "Two jobs? That's got to be tough.",
+            "steps": [
+              {
+                "player": "Two jobs? That's got to be tough."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Not when you combine them it isn't! I invent MAGIC things!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So what have you invented?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "GSj9b0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-c1ed78f5f78eedc5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well, I shall leave you to your inventing.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "U-f7Pw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "So what have you invented?"
+            "text": "So what have you invented?",
+            "steps": [
+              {
+                "player": "So what have you invented?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So where is the other block?",
+                    "steps": [
+                      {
+                        "player": "So where is the other block?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can I be teleported please?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "hAJU-e",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-7fb6db7c5e2bfa7a"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Who are the GPDT?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "sNLgxh"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I be teleported please?",
+                    "steps": [
+                      {
+                        "player": "Can I be teleported please?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, that sounds good. Teleport me!",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "cW51Tu"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "That sounds dangerous. Leave me here.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "iFN_QA"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well done, that's very clever.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "YeEFfh"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Can you teleport me to the Rune Essence Mine?"
@@ -3835,8 +4807,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "cYY20O"
+                "id": "cYY20O",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-049a3ea21db6c50b"
+                  }
+                ]
               }
             ]
           },
@@ -3845,8 +4822,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "mX1kxn"
+                "id": "mX1kxn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c59e02b2338984d1"
+                  }
+                ]
               }
             ]
           },
@@ -4220,8 +5202,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "f46KwT"
+                "id": "f46KwT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-049a3ea21db6c50b"
+                  }
+                ]
               }
             ]
           },
@@ -4230,8 +5217,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "CqRIl8"
+                "id": "CqRIl8",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c59e02b2338984d1"
+                  }
+                ]
               }
             ]
           },
@@ -4634,7 +5626,31 @@
           {
             "text": "Claim free pure essence.",
             "condition": "If the medium Ardougne Diary is completed:",
-            "id": "jlPhew"
+            "id": "jlPhew",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has not claimed their daily allowance:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pRDN8X"
+                  }
+                ],
+                "id": "wnm-1i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their daily allowance:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "CTrdKq"
+                  }
+                ],
+                "id": "Y5kbOg"
+              }
+            ]
           },
           {
             "text": "Chat.",
@@ -4648,10 +5664,161 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Two jobs? That's got to be tough."
+                    "text": "Two jobs? That's got to be tough.",
+                    "steps": [
+                      {
+                        "player": "Two jobs? That's got to be tough."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Not when you combine them it isn't! I invent MAGIC things!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So what have you invented?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "GSj9b0",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c1ed78f5f78eedc5"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well, I shall leave you to your inventing.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "U-f7Pw"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "So what have you invented?"
+                    "text": "So what have you invented?",
+                    "steps": [
+                      {
+                        "player": "So what have you invented?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So where is the other block?",
+                            "steps": [
+                              {
+                                "player": "So where is the other block?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can I be teleported please?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "hAJU-e",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-7fb6db7c5e2bfa7a"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Who are the GPDT?",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "sNLgxh"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I be teleported please?",
+                            "steps": [
+                              {
+                                "player": "Can I be teleported please?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Yes, that sounds good. Teleport me!",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "cW51Tu"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "That sounds dangerous. Leave me here.",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "iFN_QA"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well done, that's very clever.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "YeEFfh"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "text": "Can you teleport me to the Rune Essence Mine?"
@@ -4703,7 +5870,31 @@
           {
             "text": "Claim free pure essence.",
             "condition": "If the medium Ardougne Diary is completed:",
-            "id": "NT0rsO"
+            "id": "NT0rsO",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has not claimed their daily allowance:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pRDN8X"
+                  }
+                ],
+                "id": "wnm-1i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their daily allowance:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "CTrdKq"
+                  }
+                ],
+                "id": "Y5kbOg"
+              }
+            ]
           },
           {
             "text": "Chat.",
@@ -4717,10 +5908,161 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Two jobs? That's got to be tough."
+                    "text": "Two jobs? That's got to be tough.",
+                    "steps": [
+                      {
+                        "player": "Two jobs? That's got to be tough."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Not when you combine them it isn't! I invent MAGIC things!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So what have you invented?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "GSj9b0",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c1ed78f5f78eedc5"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well, I shall leave you to your inventing.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "U-f7Pw"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "So what have you invented?"
+                    "text": "So what have you invented?",
+                    "steps": [
+                      {
+                        "player": "So what have you invented?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So where is the other block?",
+                            "steps": [
+                              {
+                                "player": "So where is the other block?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can I be teleported please?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "hAJU-e",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-7fb6db7c5e2bfa7a"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Who are the GPDT?",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "sNLgxh"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I be teleported please?",
+                            "steps": [
+                              {
+                                "player": "Can I be teleported please?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Yes, that sounds good. Teleport me!",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "cW51Tu"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "That sounds dangerous. Leave me here.",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "iFN_QA"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well done, that's very clever.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "YeEFfh"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "text": "Can you teleport me to the Rune Essence Mine?"
@@ -4757,7 +6099,31 @@
           {
             "text": "Claim free pure essence.",
             "condition": "If the medium Ardougne Diary is completed:",
-            "id": "YoyfQK"
+            "id": "YoyfQK",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has not claimed their daily allowance:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pRDN8X"
+                  }
+                ],
+                "id": "wnm-1i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their daily allowance:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "CTrdKq"
+                  }
+                ],
+                "id": "Y5kbOg"
+              }
+            ]
           },
           {
             "text": "Chat.",
@@ -4771,10 +6137,161 @@
                 "type": "choice",
                 "options": [
                   {
-                    "text": "Two jobs? That's got to be tough."
+                    "text": "Two jobs? That's got to be tough.",
+                    "steps": [
+                      {
+                        "player": "Two jobs? That's got to be tough."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Not when you combine them it isn't! I invent MAGIC things!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So what have you invented?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "GSj9b0",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-c1ed78f5f78eedc5"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well, I shall leave you to your inventing.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "U-f7Pw"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "text": "So what have you invented?"
+                    "text": "So what have you invented?",
+                    "steps": [
+                      {
+                        "player": "So what have you invented?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So where is the other block?",
+                            "steps": [
+                              {
+                                "player": "So where is the other block?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can I be teleported please?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "id": "hAJU-e",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-7fb6db7c5e2bfa7a"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Who are the GPDT?",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "sNLgxh"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I be teleported please?",
+                            "steps": [
+                              {
+                                "player": "Can I be teleported please?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Wizard Cromperty",
+                                "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Yes, that sounds good. Teleport me!",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "cW51Tu"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "That sounds dangerous. Leave me here.",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "iFN_QA"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well done, that's very clever.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "YeEFfh"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "text": "Can you teleport me to the Rune Essence Mine?"
@@ -5063,8 +6580,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "above",
-                                        "id": "DjWrqn"
+                                        "id": "DjWrqn",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-70e20bbc89d3530a"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -5224,8 +6746,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "5zjajq"
+                                        "id": "5zjajq",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-e4033f4f704e3c08"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -5234,8 +6761,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "U2mPU1"
+                                        "id": "U2mPU1",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-2bdb4b63f5491abe"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -5344,8 +6876,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "HeUHAx"
+        "id": "HeUHAx",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-35d28c428363fe66"
+          }
+        ]
       },
       {
         "type": "choice",
@@ -5646,7 +7183,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you have for sale?"
+            "text": "What do you have for sale?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "EzJ93F"
+              }
+            ]
           },
           {
             "text": "I have the weather report for you.",
@@ -5700,7 +7243,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "What do you have for sale?"
+            "text": "What do you have for sale?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "EzJ93F"
+              }
+            ]
           },
           {
             "text": "What did you want me to do again?",
@@ -5772,7 +7321,67 @@
           {
             "text": "Ask about Sanfew Serum.",
             "condition": "If Zogre Flesh Eaters has been partially completed:",
-            "id": "z7Hg8N"
+            "id": "z7Hg8N",
+            "steps": [
+              {
+                "player": "Hey there, can you tell me something about this Sanfew Serum, like how do I make it, and what does it do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "Certainly. It was after all, my creation, and mine alone. If anyone should know how to make it, it should be me!"
+              },
+              {
+                "player": "Can't fault that logic!"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "Ok, essentially this potion is a mixture of a cure poison, cure disease and restore stats all rolled into one! Very handy for the adventurers with an eye on conserving inventory space."
+              },
+              {
+                "player": "Ok, I'm sold... How do you make it?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "Well, it's very easy really. You take a standard super stat restore potion. Add some ground unicorn horn. Then, add some snake weed from the island of Karamja. Finally, add some nail beast nails. You can"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "only get these from the area of Morytania, specifically, if you go deep in the Mort Myre swamp."
+              },
+              {
+                "player": "How do you mean, deep into the Mort Myre swamp?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "Well, most adventurers avoid the deep Mort Myre swamp, whereas the Paterdomus trek and the Burgh de Rott trek take you through the most interesting areas. These area's often allow the quickest, but potentially"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "more dangerous routes through Mort Myre. This is where you're likely to encounter a Nail beast."
+              },
+              {
+                "player": "Are they very dangerous?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "They can be pretty dangerous. They'll defend for a long time, then attack suddenly and seemingly without warning, landing three viscious attacks at once. This can be pretty lethal. However, the nail beasts themselves"
+              },
+              {
+                "type": "line",
+                "speaker": "Sanfew",
+                "text": "are curiously wounded from the Sanfew Serum itself...very bizzare, that a potion made from their claws should have such a pronounced effect on them."
+              },
+              {
+                "player": "Ok, that's very helpful. Many thanks for your assistance."
+              }
+            ]
           },
           {
             "text": "Hi there, the Gnome Pilot has agreed to take you to see the ogres!",
@@ -5886,7 +7495,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about One Small Favour.",
@@ -5927,7 +7542,92 @@
             ]
           },
           {
-            "text": "Talk about something else."
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about the Ratcatchers Quest.",
+                    "condition": "After the Ratcatchers quest:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ovPBfc"
+                      }
+                    ],
+                    "id": "t1XORf"
+                  },
+                  {
+                    "text": "Talk about Romeo & Juliet.",
+                    "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "x7febq"
+                      }
+                    ],
+                    "id": "VLEiRD"
+                  },
+                  {
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -5942,7 +7642,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about One Small Favour.",
@@ -5961,7 +7667,92 @@
             ]
           },
           {
-            "text": "Talk about something else."
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about the Ratcatchers Quest.",
+                    "condition": "After the Ratcatchers quest:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ovPBfc"
+                      }
+                    ],
+                    "id": "t1XORf"
+                  },
+                  {
+                    "text": "Talk about Romeo & Juliet.",
+                    "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "x7febq"
+                      }
+                    ],
+                    "id": "VLEiRD"
+                  },
+                  {
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -5976,7 +7767,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Can you make potions for me?"
+            "text": "Can you make potions for me?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "DVEzC8"
+              }
+            ]
           },
           {
             "text": "Talk about One Small Favour.",
@@ -6073,7 +7870,92 @@
             ]
           },
           {
-            "text": "Talk about something else."
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about the Ratcatchers Quest.",
+                    "condition": "After the Ratcatchers quest:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ovPBfc"
+                      }
+                    ],
+                    "id": "t1XORf"
+                  },
+                  {
+                    "text": "Talk about Romeo & Juliet.",
+                    "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "x7febq"
+                      }
+                    ],
+                    "id": "VLEiRD"
+                  },
+                  {
+                    "text": "Have you got any decent gossip to share?",
+                    "steps": [
+                      {
+                        "player": "Have you got any decent gossip to share?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player has not started Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "L86AE0"
+                          }
+                        ],
+                        "id": "jYy11c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed Romeo & Juliet:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "2XOSIB"
+                          }
+                        ],
+                        "id": "G78MmP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know a potion to make hair fall out?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "hOhPnp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you got any good potions to give away?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "E1Xr88"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -6088,7 +7970,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnAoj"
+              }
+            ]
           },
           {
             "text": "I have the herbal tincture.",
@@ -6104,7 +7992,13 @@
             ]
           },
           {
-            "text": "No thanks. I'm just looking around."
+            "text": "No thanks. I'm just looking around.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "btSyiT"
+              }
+            ]
           }
         ]
       }
@@ -6119,7 +8013,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnAoj"
+              }
+            ]
           },
           {
             "text": "I have the breathing salts.",
@@ -6135,7 +8035,13 @@
             ]
           },
           {
-            "text": "No thanks. I'm just looking around."
+            "text": "No thanks. I'm just looking around.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "btSyiT"
+              }
+            ]
           }
         ]
       }
@@ -6150,7 +8056,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnAoj"
+              }
+            ]
           },
           {
             "text": "I have the tincture and the breathing salts.",
@@ -6163,7 +8075,13 @@
             ]
           },
           {
-            "text": "No thanks. I'm just looking around."
+            "text": "No thanks. I'm just looking around.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "btSyiT"
+              }
+            ]
           }
         ]
       }
@@ -6178,7 +8096,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnAoj"
+              }
+            ]
           },
           {
             "text": "What did you want me to do again?",
@@ -6194,7 +8118,13 @@
             ]
           },
           {
-            "text": "No thanks. I'm just looking around."
+            "text": "No thanks. I'm just looking around.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "btSyiT"
+              }
+            ]
           }
         ]
       }
@@ -6209,7 +8139,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnAoj"
+              }
+            ]
           },
           {
             "text": "I only have [a single/X] pigeon cage[s].",
@@ -6225,7 +8161,13 @@
             ]
           },
           {
-            "text": "No thanks. I'm just looking around."
+            "text": "No thanks. I'm just looking around.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "btSyiT"
+              }
+            ]
           }
         ]
       }
@@ -6240,7 +8182,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnAoj"
+              }
+            ]
           },
           {
             "text": "I have the five pigeon cages you asked for!",
@@ -6276,7 +8224,13 @@
             ]
           },
           {
-            "text": "No thanks. I'm just looking around."
+            "text": "No thanks. I'm just looking around.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "btSyiT"
+              }
+            ]
           }
         ]
       }
@@ -6291,7 +8245,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "_YnAoj"
+              }
+            ]
           },
           {
             "text": "I've lost [a chicken cage/X of the chicken cages]!",
@@ -6394,7 +8354,13 @@
             ]
           },
           {
-            "text": "No thanks. I'm just looking around."
+            "text": "No thanks. I'm just looking around.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "btSyiT"
+              }
+            ]
           }
         ]
       }
@@ -6483,10 +8449,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "I'm looking for something to kill."
+            "text": "I'm looking for something to kill.",
+            "steps": [
+              {
+                "player": "I'm looking for something to kill."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "What, on my land? Leave my livestock alone you scoundrel!"
+              }
+            ]
           },
           {
-            "text": "I'm lost."
+            "text": "I'm lost.",
+            "steps": [
+              {
+                "player": "I'm lost."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "How can you be lost? Just follow the road east and south. You'll end up in Lumbridge fairly quickly."
+              }
+            ]
           },
           {
             "text": "Don't worry about Jimmy. His release is imminent!",
@@ -6514,13 +8500,30 @@
         "type": "choice",
         "options": [
           {
-            "text": "What kind of organisation is this?"
+            "text": "What kind of organisation is this?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mtTOSy"
+              }
+            ]
           },
           {
-            "text": "Who are you and what do you do here?"
+            "text": "Who are you and what do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "1V7Ncr"
+              }
+            ]
           },
           {
-            "text": "Ok, thanks."
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              }
+            ]
           },
           {
             "text": "You're in luck, I've managed to swing that chicken deal for you.",
@@ -6596,10 +8599,140 @@
             ]
           },
           {
-            "text": "Can you make dyes for me, please?"
+            "text": "Can you make dyes for me, please?",
+            "steps": [
+              {
+                "player": "Can you make dyes for me please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "What sort of dye would you like? Red, yellow or blue?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What do you need to make red dye?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "N9OV1_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make yellow dye?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "cG1-Wx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you need to make blue dye?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "RfmFzA"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "You mad old witch, you can't help me."
+            "text": "You mad old witch, you can't help me.",
+            "steps": [
+              {
+                "player": "You mad old witch, you can't help me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 21-100 coins:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Oh, you like to call a witch names do you?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Aggie waves her hands about, and you seem to be five coins poorer.",
+                    "id": "ZgmmGS"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "That's a fine for insulting a witch. You should learn some respect."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2FpbvQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying 101 or more coins:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Oh, you like to call a witch names do you?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Aggie waves her hands about, and you seem to be 20 coins poorer.",
+                    "id": "EIPyFf"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "That's a fine for insulting a witch. You should learn some respect."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "b-i7IK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying a pot of flour:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Oh, you like to call a witch names do you?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Aggie waves her hands about, and you seem to have a pot of flour less.",
+                    "id": "KCH5mX"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Aggie",
+                    "text": "Thank you for your kind present of some flour. I am sure you never meant to insult me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "N62aqF"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "You should be careful about insulting a witch. You never know what shape you could wake up in."
+              }
+            ]
           },
           {
             "text": "I'm okay, thanks."
@@ -6887,16 +9020,295 @@
             ]
           },
           {
-            "text": "How do I get into the Kharazi Jungle?"
+            "text": "How do I get into the Kharazi Jungle?",
+            "steps": [
+              {
+                "player": "How do I get into the Kharazi Jungle?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Apparently he was on a mission to map the area. How foolish is that?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Actually, I plan to map the jungle myself.",
+                    "steps": [
+                      {
+                        "player": "Actually, I plan to map the jungle myself."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Best of luck though... Guthix knows, you'll need it."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Do you have any other tips about the Kharazi Jungle?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "RfZ3_7"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "Bsw4pl"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok thanks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "KEwsmu"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Are you calling me foolish?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "8adRZx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you do here?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "HWlRzp",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f0efcd504c225506"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "s5xw7n",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "HFNoRd"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "What do you do here?"
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "I'm a forester, and I specialise in exotic woods. I haven't gone into the Kharazi myself, but I've found some interesting tree specimens out here."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "If you do find a safe path into the jungle, do come and let me know. I'd love to have a nose around in there."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How do I get into the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "7iUxDE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-28de3985cc6df343"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi tribespeople in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "76wNTb",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qNKIGD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "09uOtu"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "Have you seen any Kharazi tribespeople in the jungle?"
+            "text": "Have you seen any Kharazi tribespeople in the jungle?",
+            "steps": [
+              {
+                "player": "Have you seen any Kharazi tribespeople in the jungle?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Oh yes, I've met loads of them! Lovely lot. I haven't seen many about recently, though."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "If you're looking to say hello, you'll need a Bullroarer. If you swing it above your head it makes a loud noise - that should attract someone's attention."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have a Bullroarer I could borrow?",
+                    "steps": [
+                      {
+                        "player": "Do you have a Bullroarer I could borrow?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "I wish I did! But I just have the one, and I've grown fond of it. Besides, I might need it if I ever get lost in the jungle."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Will you trade something for it?",
+                            "steps": [
+                              {
+                                "player": "Will you trade something for it?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Jungle forester",
+                                "text": "Hmm, maybe. Tell you what, you show me something interesting and I'll see if it's worth my Bullroarer. How about that?"
+                              },
+                              {
+                                "player": "It's a deal!"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Okay, thanks.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "qgLRAq"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do I get into the Kharazi jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "oeZumO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok thanks.",
+                    "steps": [
+                      {
+                        "player": "Okay, thanks."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "You're welcome! See you around..."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "I have a question about my Achievement Diary."
+            "text": "I have a question about my Achievement Diary.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "-K8FY8"
+              }
+            ]
           }
         ]
       }
@@ -7004,6 +9416,1179 @@
       {
         "type": "unavailable",
         "id": "KXoGxT"
+      }
+    ]
+  },
+  "branches": {
+    "jump-dc3d5520eb92eff0": [
+      {
+        "player": "Have you seen any Kharazi tribespeople in the jungle?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Oh yes, I've met loads of them! Lovely lot. I haven't seen many about recently, though."
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "If you're looking to say hello, you'll need a Bullroarer. If you swing it above your head it makes a loud noise - that should attract someone's attention."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have a Bullroarer I could borrow?",
+            "steps": [
+              {
+                "player": "Do you have a Bullroarer I could borrow?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "I wish I did! But I just have the one, and I've grown fond of it. Besides, I might need it if I ever get lost in the jungle."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Will you trade something for it?",
+                    "steps": [
+                      {
+                        "player": "Will you trade something for it?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Hmm, maybe. Tell you what, you show me something interesting and I'll see if it's worth my Bullroarer. How about that?"
+                      },
+                      {
+                        "player": "It's a deal!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "qgLRAq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I get into the Kharazi jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "oeZumO"
+              }
+            ]
+          },
+          {
+            "text": "Ok thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "You're welcome! See you around..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f0efcd504c225506": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "I'm a forester, and I specialise in exotic woods. I haven't gone into the Kharazi myself, but I've found some interesting tree specimens out here."
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "If you do find a safe path into the jungle, do come and let me know. I'd love to have a nose around in there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I get into the Kharazi Jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "7iUxDE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-28de3985cc6df343"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you seen any Kharazi tribespeople in the jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "76wNTb",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc3d5520eb92eff0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "09uOtu"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-28de3985cc6df343": [
+      {
+        "player": "How do I get into the Kharazi Jungle?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Well, I don't recommend just walking in! The last guy I saw try that barely escaped with his life."
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Apparently he was on a mission to map the area. How foolish is that?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Actually, I plan to map the jungle myself.",
+            "steps": [
+              {
+                "player": "Actually, I plan to map the jungle myself."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Oh. Oops. Sorry if I sounded rude, it just seems like a really bad idea."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "I mean it's a noble calling. Lots of people around here could use a proper map to navigate with. But, you know... there's something not quite right about that jungle."
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Best of luck though... Guthix knows, you'll need it."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have any other tips about the Kharazi Jungle?",
+                    "steps": [
+                      {
+                        "player": "Do you have any other tips about the Kharazi Jungle?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Jungle forester",
+                        "text": "Not really. Just be careful - there's a lot of weird stuff going on in there lately."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you seen any Kharazi Tribesmen in the jungle?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Bsw4pl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "KEwsmu"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Are you calling me foolish?",
+            "steps": [
+              {
+                "player": "Are you calling me foolish?"
+              },
+              {
+                "type": "line",
+                "speaker": "Jungle forester",
+                "text": "Er... maybe? I'll just be on my way..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "HWlRzp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f0efcd504c225506"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you seen any Kharazi tribespeople in the jungle?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "s5xw7n",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-dc3d5520eb92eff0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "HFNoRd"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-f2303a38c38292be": [
+      {
+        "player": "Look, can you sharpen this cursed axe or what?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brian",
+        "text": "Well, I'd like to. I really would, but I wouldn't be able to concentrate while worrying about my friend so much. I tell you what. If you could do me just one small favour, I promise to help you!"
+      },
+      {
+        "player": "Oh, so you want a favour doing as well?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brian",
+        "text": "Well, yes, if you wouldn't mind? Aggie the witch is a family friend and she's a pillar of the local community."
+      },
+      {
+        "type": "line",
+        "speaker": "Brian",
+        "text": "I know you wouldn't think it would you! Could you ask her if she'll act as a character witness for my friend?"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brian",
+        "text": "Oh, please. It would mean such a lot to me! Just ask Aggie if she'll be a character witness for my friend. She only lives in Draynor Village. It'll only take you a few minutes!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "But...what?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "az5Qch"
+              }
+            ]
+          },
+          {
+            "text": "Look, can you sharpen this cursed axe or what?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "oK3fAr",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f2303a38c38292be"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Is there anyone else who can sharpen this axe?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ZGvp83",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-775d69c529433c45"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Ok, ok, I'll do it! I'll go and see Aggie.",
+            "steps": [
+              {
+                "player": "Ok, ok, I'll do it! I'll go and see Aggie."
+              },
+              {
+                "type": "action",
+                "text": "(Blunt axe is removed from the player's inventory.)",
+                "id": "xC0PO1"
+              },
+              {
+                "type": "line",
+                "speaker": "Brian",
+                "text": "Oh, great, that would be really helpful! Here, give me the axe for safe keeping and I'll get it sharpened as soon as she agrees to help."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "7ePeVp"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-775d69c529433c45": [
+      {
+        "player": "Is there anyone else who can sharpen this axe?"
+      },
+      {
+        "type": "line",
+        "speaker": "Brian",
+        "text": "Hmm, well you could try your luck in Lumbridge at Bob's Axes, though I've no clue if he offers this kind of service."
+      },
+      {
+        "type": "line",
+        "speaker": "Brian",
+        "text": "He always seemed very focused on selling axes to blood-hungry killers keen to explore the wilderness."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "mmu806"
+      }
+    ],
+    "jump-f4cd3b6f9c1eede9": [
+      {
+        "player": "Hey you're a witch aren't you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "My, you're observant!"
+      },
+      {
+        "type": "action",
+        "text": "Continues with regular options",
+        "id": "hZfe8O"
+      }
+    ],
+    "jump-373ab2184172c8af": [
+      {
+        "player": "What am I supposed to be doing?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aggie",
+        "text": "Well, I had hoped that you would go and look for 'Jimmy the Chisel'...but it looks like you've had other 'more important' things to do!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What am I supposed to be doing?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "8Hz5Wc",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-373ab2184172c8af"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where am I supposed to look?",
+            "steps": [
+              {
+                "player": "Where am I supposed to look?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "I don't know where he is! But I suggest that you check out that ruined building to the east, you know, the one with all the spiders in it! Doesn't look like anyone's been living in there for years!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "-OEoNE"
+              }
+            ]
+          },
+          {
+            "text": "What am I doing this for?",
+            "steps": [
+              {
+                "player": "What am I doing this for?"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "Oh, I don't know, you mumbled something about 'witnesses', I just can't think straight worrying so much about that poor little Jimmy."
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "He could be lying somewhere in a pool of his blood, crying out for help...oooh, it's too much for me to bear."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "OaI4SE"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-24dcfefbd86fa812": [
+      {
+        "player": "What kind of organisation is this?"
+      },
+      {
+        "type": "line",
+        "speaker": "Johanhus Ulsbrecht",
+        "text": "We're a proactive organisation working towards the cessation of monsters in normal civilised human society. There seems to be no backbone in this land so we're stepping up to the challenge."
+      },
+      {
+        "player": "Hmm, how do you propose to do that? I mean, I see people everyday killing goblins around here!"
+      },
+      {
+        "type": "line",
+        "speaker": "Johanhus Ulsbrecht",
+        "text": "We're mobilising people and we're starting our own society...cleaning out the caves once inhabited by these foul creatures and defending them so that they can never again shelter sub human species."
+      },
+      {
+        "player": "That sounds kind of strange, but hey it's your choice."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "htR0Wt"
+      }
+    ],
+    "jump-c5465e642f5a35f2": [
+      {
+        "player": "Who are you and what do you do here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Johanhus Ulsbrecht",
+        "text": "My name is Johanhus and I lead these glorious people on a courageous mission called, 'Humans against Monsters', we mean to make this land free of monsters so we can all live in peace."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "mFAVA-"
+      }
+    ],
+    "jump-c1ed78f5f78eedc5": [
+      {
+        "player": "So what have you invented?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So where is the other block?",
+            "steps": [
+              {
+                "player": "So where is the other block?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I be teleported please?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "hAJU-e",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7fb6db7c5e2bfa7a"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are the GPDT?",
+                    "steps": [
+                      {
+                        "player": "Who are the GPDT?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "The Gielinor Parcel Delivery Team. They come very highly recommended. Their motto is: 'We aim to deliver your stuff at some point after you have paid us!'"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I be teleported please?",
+            "steps": [
+              {
+                "player": "Can I be teleported please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, that sounds good. Teleport me!",
+                    "steps": [
+                      {
+                        "player": "Yes, that sounds good. Teleport me!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Okey dokey! Ready?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "Hmmm.... that's odd... I can't seem to get a signal..."
+                      },
+                      {
+                        "player": "Oh well, never mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That sounds dangerous. Leave me here.",
+                    "steps": [
+                      {
+                        "player": "That sounds dangerous. Leave me here."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Wizard Cromperty",
+                        "text": "As you wish."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well done, that's very clever.",
+            "steps": [
+              {
+                "player": "Well done, that's very clever."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Yes it is isn't it? Forgive me for feeling a little smug, this is a major breakthrough in the field of teleportation!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7fb6db7c5e2bfa7a": [
+      {
+        "player": "Can I be teleported please?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, that sounds good. Teleport me!",
+            "steps": [
+              {
+                "player": "Yes, that sounds good. Teleport me!"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Okey dokey! Ready?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "Hmmm.... that's odd... I can't seem to get a signal..."
+              },
+              {
+                "player": "Oh well, never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "That sounds dangerous. Leave me here.",
+            "steps": [
+              {
+                "player": "That sounds dangerous. Leave me here."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Cromperty",
+                "text": "As you wish."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-049a3ea21db6c50b": [
+      {
+        "player": "Hello there, what are you working on?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gnormadium Avlafrim",
+        "text": "Well, it's quite exciting... we're extending the glider network to include the Feldip Hills so that people can come and look at these curious ogres."
+      },
+      {
+        "type": "line",
+        "speaker": "Gnormadium Avlafrim",
+        "text": "They are impressive creatures aren't they - quite mystified they are by the technology we gnomes have invented."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "rnA3lb"
+      }
+    ],
+    "jump-c59e02b2338984d1": [
+      {
+        "player": "What are you working on?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gnormadium Avlafrim",
+        "text": "Well, people will be able to visit this area, once construction has finished, by using the most advanced network of glider routes in the whole of Gielinor... in fact, the only network of glider routes!"
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "-nMLU6"
+      }
+    ],
+    "jump-70e20bbc89d3530a": [
+      {
+        "player": "You're making me angry! I did you a favour, now pay up!"
+      },
+      {
+        "type": "line",
+        "speaker": "Phantuwti Fanstuwi Farsight",
+        "text": "I'm not making you angry, you're doing all that on your own! I just don't have a weather report to give you!"
+      },
+      {
+        "type": "line",
+        "speaker": "Phantuwti Fanstuwi Farsight",
+        "text": "I can't help that, you should be more understanding and less forceful, then I might be persuaded to give you the weather report."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "S1yrrQ"
+      }
+    ],
+    "jump-e4033f4f704e3c08": [
+      {
+        "player": "You're just a fake...you can't predict the weather!"
+      },
+      {
+        "type": "line",
+        "speaker": "Phantuwti Fanstuwi Farsight",
+        "text": "Why...how dare you...I've never been so insulted in my life."
+      },
+      {
+        "player": "You should get out more!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2bdb4b63f5491abe": [
+      {
+        "player": "What's it going to take for you to give me that weather report."
+      },
+      {
+        "type": "line",
+        "speaker": "Phantuwti Fanstuwi Farsight",
+        "text": "Well, nothing in fact, as I can't give you a weather report. I'm sorry, but that's just the way it is."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "LkJOgR"
+      }
+    ],
+    "jump-35d28c428363fe66": [
+      {
+        "type": "line",
+        "speaker": "Phantuwti Fanstuwi Farsight",
+        "text": "What for?"
+      },
+      {
+        "player": "I may be able to fix it and then you can give me a weather report...come on, let's go!"
+      },
+      {
+        "type": "line",
+        "speaker": "Phantuwti Fanstuwi Farsight",
+        "text": "Oh, very well..but you'll need to be a specialist to fix this weather vane, it was made by some of the most experienced...."
+      },
+      {
+        "player": "Just show me it!"
+      },
+      {
+        "type": "line",
+        "speaker": "Phantuwti Fanstuwi Farsight",
+        "text": "Ok, ok, it's up on the roof..."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "qNKIGD": [
+      {
+        "type": "call",
+        "branch": "jump-dc3d5520eb92eff0"
+      }
+    ],
+    "RfZ3_7": [
+      {
+        "player": "Do you have any other tips about the Kharazi Jungle?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Not really. Just be careful - there's a lot of weird stuff going on in there lately."
+      }
+    ],
+    "8adRZx": [
+      {
+        "player": "Are you calling me foolish?"
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Er... maybe? I'll just be on my way..."
+      }
+    ],
+    "-K8FY8": [
+      {
+        "player": "I have a question about my Achievement Diary."
+      },
+      {
+        "type": "line",
+        "speaker": "Jungle forester",
+        "text": "Sorry, I don't do that kind of thing any more. You should go and talk to Pirate Jackie in Brimhaven instead."
+      }
+    ],
+    "mtTOSy": [
+      {
+        "player": "What kind of organisation is this?"
+      },
+      {
+        "type": "line",
+        "speaker": "Johanhus Ulsbrecht",
+        "text": "We're a proactive organisation working towards the cessation of monsters in normal civilised human society. There seems to be no backbone in this land so we're stepping up to the challenge."
+      },
+      {
+        "player": "Hmm, how do you propose to do that? I mean, I see people everyday killing goblins around here!"
+      },
+      {
+        "type": "line",
+        "speaker": "Johanhus Ulsbrecht",
+        "text": "We're mobilising people and we're starting our own society...cleaning out the caves once inhabited by these foul creatures and defending them so that they can never again shelter sub human species."
+      },
+      {
+        "player": "That sounds kind of strange, but hey it's your choice."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "htR0Wt"
+      }
+    ],
+    "1V7Ncr": [
+      {
+        "player": "Who are you and what do you do here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Johanhus Ulsbrecht",
+        "text": "My name is Johanhus and I lead these glorious people on a courageous mission called, 'Humans against Monsters', we mean to make this land free of monsters so we can all live in peace."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "mFAVA-"
+      }
+    ],
+    "U-f7Pw": [
+      {
+        "player": "Well, I shall leave you to your inventing."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "Thanks for dropping by! Stop again anytime!"
+      }
+    ],
+    "sNLgxh": [
+      {
+        "player": "Who are the GPDT?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "The Gielinor Parcel Delivery Team. They come very highly recommended. Their motto is: 'We aim to deliver your stuff at some point after you have paid us!'"
+      }
+    ],
+    "cW51Tu": [
+      {
+        "player": "Yes, that sounds good. Teleport me!"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "Okey dokey! Ready?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "Hmmm.... that's odd... I can't seem to get a signal..."
+      },
+      {
+        "player": "Oh well, never mind."
+      }
+    ],
+    "iFN_QA": [
+      {
+        "player": "That sounds dangerous. Leave me here."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "As you wish."
+      }
+    ],
+    "YeEFfh": [
+      {
+        "player": "Well done, that's very clever."
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "Yes it is isn't it? Forgive me for feeling a little smug, this is a major breakthrough in the field of teleportation!"
+      }
+    ],
+    "pRDN8X": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "[amount] pure essence",
+        "id": "oQuAx0"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "There you go, [amount] free pure essence. Return tomorrow for some more."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "CTrdKq": [
+      {
+        "type": "line",
+        "speaker": "Wizard Cromperty",
+        "text": "I've already given you your free allowance for today. Come back to me tomorrow for some more."
+      }
+    ],
+    "EzJ93F": [
+      {
+        "player": "What do you have for sale?"
+      },
+      {
+        "type": "line",
+        "speaker": "Arhein",
+        "text": "All sorts of things! Why don't you take a look?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Arhein's General Goods",
+        "id": "F7ULNK"
+      }
+    ],
+    "DVEzC8": [
+      {
+        "player": "Can you make potions for me?"
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Apothecary's Potions",
+        "id": "bc12Bc"
+      }
+    ],
+    "ovPBfc": [
+      {
+        "player": "You wouldn't be able to make any other cat potions, would you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I have no plans to branch out into cat potions at the moment, but if there was sufficient demand for them I might change my mind."
+      }
+    ],
+    "x7febq": [
+      {
+        "type": "reference",
+        "target": "Transcript:Apothecary",
+        "section": "Romeo & Juliet",
+        "text": "(Quest dialogue shows)",
+        "id": "pmniE2",
+        "resolved": false,
+        "page_available": true
+      }
+    ],
+    "L86AE0": [
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Well I hear young Romeo's having a little woman trouble but other than that all's quiet on the eastern front. Can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "OaTWAr"
+      }
+    ],
+    "2XOSIB": [
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Sad about that affair with young Romeo and Juliet..."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I hear every time Romeo sees Juliet now he runs away screaming something about ghosts and Juliet's cousin?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Always did think he was a bit of a strange one..."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Anyway! Life goes on and so does business! Can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "x76V5W"
+      }
+    ],
+    "hOhPnp": [
+      {
+        "player": "Do you know a potion to make hair fall out?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I do indeed. I gave it to my mother. That's why I now live alone."
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "But can I do something for you?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "_FM3_a"
+      }
+    ],
+    "E1Xr88": [
+      {
+        "player": "Have you got any good potions to give away?"
+      },
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "Sorry, charity is not my strong point. Do you need anything else?"
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "D-uQYF"
+      }
+    ],
+    "_YnAoj": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Horvik's Armour Shop.",
+        "id": "NaGkyt"
+      }
+    ],
+    "btSyiT": [
+      {
+        "player": "No thanks. I'm just looking around."
+      },
+      {
+        "type": "line",
+        "speaker": "Horvik",
+        "text": "Well, come and see me if you're ever in need of armour!"
       }
     ]
   }

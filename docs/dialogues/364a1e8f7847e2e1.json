@@ -556,8 +556,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "EQEjQC"
+        "id": "EQEjQC",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-old-coin": [
@@ -566,8 +571,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "Jkfac3"
+        "id": "Jkfac3",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-ancient-coin": [
@@ -576,8 +586,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "uRceT2"
+        "id": "uRceT2",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-ancient-symbol": [
@@ -586,8 +601,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "bIqwcM"
+        "id": "bIqwcM",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-old-symbol": [
@@ -596,8 +616,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "Fj70To"
+        "id": "Fj70To",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-arrowheads": [
@@ -606,8 +631,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "YOYfAP"
+        "id": "YOYfAP",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-jewellery": [
@@ -616,8 +646,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "bgjO7k"
+        "id": "bgjO7k",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-old-chipped-vase": [
@@ -626,8 +661,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "n8-0JS"
+        "id": "n8-0JS",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "CAc1Ly"
+          }
+        ]
       }
     ],
     "using-items-on-caden-azro-any-other-item": [
@@ -636,6 +676,30 @@
       },
       {
         "npc": "Thank you, but I don't need that"
+      }
+    ]
+  },
+  "branches": {
+    "jump-898b892cef70ef44": [
+      {
+        "player": "I found these old necklaces."
+      },
+      {
+        "npc": "An interesting find... Here, let me offer you something in return."
+      },
+      {
+        "player": "Oh! Okay."
+      },
+      {
+        "type": "message",
+        "text": "The archaeologist gives you [5x] coins... must have been worth a lot in his day!",
+        "id": "SwkEZ0"
+      }
+    ],
+    "CAc1Ly": [
+      {
+        "type": "call",
+        "branch": "jump-898b892cef70ef44"
       }
     ]
   }

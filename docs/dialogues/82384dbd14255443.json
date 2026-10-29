@@ -50,8 +50,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "below",
-                        "id": "CkXpzK"
+                        "id": "CkXpzK",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-03a99d466ef7e4d6"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -92,8 +97,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "vzKnkM"
+                        "id": "vzKnkM",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-1c653b1e1b2a0c0f"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -110,6 +120,63 @@
       },
       {
         "npc": "Many thanks with your help previously Effendi!"
+      }
+    ]
+  },
+  "branches": {
+    "jump-03a99d466ef7e4d6": [
+      {
+        "player": "What is this place?"
+      },
+      {
+        "npc": "This is the home of the Bedabin. We're a peaceful tribe of desert dwellers. Some idiots call us 'Tenti's', a childish name borne of ignorance."
+      },
+      {
+        "npc": "We're renowned for surviving in the harshest desert climate. We also grow the 'Bedabin ambrosia.'... A pineapple of such delicious sumptiousness that it defies description."
+      },
+      {
+        "npc": "Take a look around our camp if you like!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay Thanks!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "e8q_T2"
+              }
+            ]
+          },
+          {
+            "text": "What is there to do around here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "vzKnkM",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1c653b1e1b2a0c0f"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-1c653b1e1b2a0c0f": [
+      {
+        "player": "What is there to do around here?"
+      },
+      {
+        "npc": "Well, we are all very busy most of the time, tending to the pineapples. They are grown in a secret location, to stop thieves from raiding our most precious prize."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -521,13 +521,117 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who is that man walking around outside?"
+            "text": "Who is that man walking around outside?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "wTRkh4"
+              }
+            ]
           },
           {
-            "text": "I'd like a beer please."
+            "text": "I'd like a beer please.",
+            "steps": [
+              {
+                "player": "I'd like a beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barmaid",
+                "text": "That'll be 2 gold coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "With 2 gp:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "uI1m9Z"
+                          }
+                        ],
+                        "id": "fCZQTE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without 2 gp:",
+                        "steps": [
+                          {
+                            "player": "Sorry, I don't have 2 coins on me."
+                          }
+                        ],
+                        "id": "zaeaii"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "I'd like some food please."
+            "text": "I'd like some food please.",
+            "steps": [
+              {
+                "player": "I'd like some food please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barmaid",
+                "text": "I can make you a stew for 20 gold coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "With 20 gp:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RFJEgx"
+                          }
+                        ],
+                        "id": "-_vFfT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without 20 gp:",
+                        "steps": [
+                          {
+                            "player": "Sorry, I don't have 20 coins on me."
+                          }
+                        ],
+                        "id": "9cbQ2e"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I'd like a Kelda stout please.",
@@ -546,7 +650,12 @@
             ]
           },
           {
-            "text": "I have to go."
+            "text": "I have to go.",
+            "steps": [
+              {
+                "player": "I have to go."
+              }
+            ]
           }
         ]
       }
@@ -902,8 +1011,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "x49Lnn"
+                "id": "x49Lnn",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-282a6baf8436d283"
+                  }
+                ]
               }
             ]
           }
@@ -920,13 +1034,163 @@
         "type": "choice",
         "options": [
           {
-            "text": "A beer please."
+            "text": "A beer please.",
+            "steps": [
+              {
+                "player": "A beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barman (King's Axe Inn)",
+                "text": "That'll be 1 gold coin please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 1 coin:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fHAJKQ"
+                          }
+                        ],
+                        "id": "XypKZr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does have at least 1 coin:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dTcjQ2"
+                          }
+                        ],
+                        "id": "m-JhT4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "A dwarven stout please."
+            "text": "A dwarven stout please.",
+            "steps": [
+              {
+                "player": "A dwarven stout please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barman (King's Axe Inn)",
+                "text": "It'll be yours for just 2 gold coins!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 2 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fHAJKQ"
+                          }
+                        ],
+                        "id": "iGdSGN"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does have at least 2 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "bxlTGn"
+                          }
+                        ],
+                        "id": "hAn9RW"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "A fine wine please."
+            "text": "A fine wine please.",
+            "steps": [
+              {
+                "player": "A  fine wine please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barman (King's Axe Inn)",
+                "text": "Ah, I see you have taste! A jug of wine will cost you 10 gold coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 10 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fHAJKQ"
+                          }
+                        ],
+                        "id": "qJqUrc"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does have at least 10 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "H9H-di"
+                          }
+                        ],
+                        "id": "ZwNKQH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "A Kelda stout please.",
@@ -958,7 +1222,12 @@
             ]
           },
           {
-            "text": "Nothing, thanks"
+            "text": "Nothing, thanks",
+            "steps": [
+              {
+                "player": "Nothing, thanks."
+              }
+            ]
           }
         ]
       }
@@ -1596,13 +1865,117 @@
         "type": "choice",
         "options": [
           {
-            "text": "Who is that man walking around outside?"
+            "text": "Who is that man walking around outside?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "wTRkh4"
+              }
+            ]
           },
           {
-            "text": "I'd like a beer please."
+            "text": "I'd like a beer please.",
+            "steps": [
+              {
+                "player": "I'd like a beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barmaid",
+                "text": "That'll be 2 gold coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "With 2 gp:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "uI1m9Z"
+                          }
+                        ],
+                        "id": "fCZQTE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without 2 gp:",
+                        "steps": [
+                          {
+                            "player": "Sorry, I don't have 2 coins on me."
+                          }
+                        ],
+                        "id": "zaeaii"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "I'd like some food please."
+            "text": "I'd like some food please.",
+            "steps": [
+              {
+                "player": "I'd like some food please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barmaid",
+                "text": "I can make you a stew for 20 gold coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "With 20 gp:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "RFJEgx"
+                          }
+                        ],
+                        "id": "-_vFfT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without 20 gp:",
+                        "steps": [
+                          {
+                            "player": "Sorry, I don't have 20 coins on me."
+                          }
+                        ],
+                        "id": "9cbQ2e"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I'd like a Kelda stout please.",
@@ -1662,7 +2035,12 @@
             ]
           },
           {
-            "text": "I have to go."
+            "text": "I have to go.",
+            "steps": [
+              {
+                "player": "I have to go."
+              }
+            ]
           }
         ]
       }
@@ -1677,13 +2055,163 @@
         "type": "choice",
         "options": [
           {
-            "text": "A beer please."
+            "text": "A beer please.",
+            "steps": [
+              {
+                "player": "A beer please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barman (King's Axe Inn)",
+                "text": "That'll be 1 gold coin please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 1 coin:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fHAJKQ"
+                          }
+                        ],
+                        "id": "XypKZr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does have at least 1 coin:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "dTcjQ2"
+                          }
+                        ],
+                        "id": "m-JhT4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "A dwarven stout please."
+            "text": "A dwarven stout please.",
+            "steps": [
+              {
+                "player": "A dwarven stout please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barman (King's Axe Inn)",
+                "text": "It'll be yours for just 2 gold coins!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 2 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fHAJKQ"
+                          }
+                        ],
+                        "id": "iGdSGN"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does have at least 2 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "bxlTGn"
+                          }
+                        ],
+                        "id": "hAn9RW"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "A fine wine please."
+            "text": "A fine wine please.",
+            "steps": [
+              {
+                "player": "A  fine wine please."
+              },
+              {
+                "type": "line",
+                "speaker": "Barman (King's Axe Inn)",
+                "text": "Ah, I see you have taste! A jug of wine will cost you 10 gold coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 10 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fHAJKQ"
+                          }
+                        ],
+                        "id": "qJqUrc"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does have at least 10 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "H9H-di"
+                          }
+                        ],
+                        "id": "ZwNKQH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, I changed my mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "A Kelda stout please.",
@@ -1702,7 +2230,12 @@
             ]
           },
           {
-            "text": "Nothing, thanks"
+            "text": "Nothing, thanks",
+            "steps": [
+              {
+                "player": "Nothing, thanks."
+              }
+            ]
           }
         ]
       }
@@ -2674,6 +3207,302 @@
       {
         "type": "unavailable",
         "id": "g6drr9"
+      }
+    ]
+  },
+  "branches": {
+    "jump-282a6baf8436d283": [
+      {
+        "player": "Borrow?? How can I borrow a seed? I can hardly give it back once I've grown it."
+      },
+      {
+        "type": "line",
+        "speaker": "Khorvak, a dwarven engineer",
+        "text": "Then we've got no deal!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What if I offer you a drink?",
+            "steps": [
+              {
+                "player": "What if I offer you a drink?"
+              },
+              {
+                "type": "line",
+                "speaker": "Khorvak, a dwarven engineer",
+                "text": "Ah, err, are you offering?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a dwarven stout:",
+                "steps": [
+                  {
+                    "player": "I just thought I'd save myself the trouble of waiting for you to ask me this time."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Khorvak, a dwarven engineer",
+                    "text": "I've never ashked you for a drink in my life!"
+                  },
+                  {
+                    "player": "No, but it seems just about everyone else has!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Khorvak, a dwarven engineer",
+                    "text": "Well it'sh hardly a big deal, ish it? We've got a huge shupply of dwarven shtouts right here."
+                  },
+                  {
+                    "player": "That's not the point!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Khorvak, a dwarven engineer",
+                    "text": "And a dwarven shtout against a Kelda hop seed? I'm not sure if that'sh a fair trade."
+                  },
+                  {
+                    "player": "Look!"
+                  },
+                  {
+                    "player": "Dwarven stout, here!"
+                  },
+                  {
+                    "player": "Now do you want it or not? I'm not asking you again!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Khorvak, a dwarven engineer",
+                    "text": "Alright, you talked me into it."
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "dwarven stout",
+                    "id": "1Ss_fy"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Kelda seed",
+                    "id": "81z3Dh"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Khorvak, a dwarven engineer",
+                    "text": "Hmm, that shtout was delicious... here, have my invaluable Kelda hop sheed now, it wash my lasht one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZcKAPm"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a dwarven stout:",
+                "steps": [
+                  {
+                    "player": "Er, well, I was going to offer you a dwarven stout, but I seem to have left it in my other pants."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Khorvak, a dwarven engineer",
+                    "text": "Haha, you make me laugh human!"
+                  },
+                  {
+                    "player": "Shtouts are just on the table over there, help yourshelf!"
+                  }
+                ],
+                "id": "DBXhTl"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "No wait, I want to borrow it after all.",
+            "steps": [
+              {
+                "player": "No wait, I want to borrow it after all."
+              },
+              {
+                "type": "line",
+                "speaker": "Khorvak, a dwarven engineer",
+                "text": "You are going to give it back after you're done widdit, right?"
+              },
+              {
+                "player": "Of course, of course! After I've grown my Kelda seeds into hops, then harvested the hops and brewed my Kelda stout... sure, I'll give you back your seed!"
+              },
+              {
+                "type": "line",
+                "speaker": "Khorvak, a dwarven engineer",
+                "text": "That'sh very deshent of you, human."
+              },
+              {
+                "player": "Only too happy to help!"
+              },
+              {
+                "type": "line",
+                "speaker": "Khorvak, a dwarven engineer",
+                "text": "Hey, err... wait... wait a second! Hey, wait!"
+              },
+              {
+                "player": "Err, yes?"
+              },
+              {
+                "type": "line",
+                "speaker": "Khorvak, a dwarven engineer",
+                "text": "How are you goin' to give me back my sheed once you've made the Kelda stout? You'll be too drunk to find your way back here!"
+              },
+              {
+                "player": "Oh, don't worry... like I said, it's not for myself, it's for a friend."
+              },
+              {
+                "type": "line",
+                "speaker": "Khorvak, a dwarven engineer",
+                "text": "That'sh alright then, here you go."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Kelda seed",
+                "id": "D41l86"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "wTRkh4": [
+      {
+        "player": "Who is that man walking around outside?"
+      },
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "What man?"
+      },
+      {
+        "player": "I mean the dwarf, the one with the sign."
+      },
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "Oh, him. Yes, we employ him to advertise our pub, he's the cheapest labour we could find. We don't have a lot of money to spare you know, we pay him in beer."
+      },
+      {
+        "player": "But what's wrong with him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "Well, he's drunk isn't he?"
+      },
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "I told you, he's cheap. He couldn't get any other work since the Red Axe fired him. Been drinking ever since."
+      },
+      {
+        "player": "How did that happen?"
+      },
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "I'm not quite sure, I think he kept wearing the wrong coloured cap all the time. They don't much like it if you don't wear your red uniform into work."
+      },
+      {
+        "player": "They fired him for that??"
+      },
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "The Red Axe will fire you for just about anything if they want to."
+      }
+    ],
+    "uI1m9Z": [
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "Thanks for your custom."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "beer",
+        "id": "S3CE3e"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "RFJEgx": [
+      {
+        "type": "line",
+        "speaker": "Barmaid",
+        "text": "Thanks for your custom."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "stew",
+        "id": "XTQqay"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "fHAJKQ": [
+      {
+        "player": "I'm sorry, I seem to have run out of money."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "dTcjQ2": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a beer for 1 coin",
+        "id": "hJfg_e"
+      },
+      {
+        "type": "line",
+        "speaker": "Barman (King's Axe Inn)",
+        "text": "Here you go. One delicious pint of beer."
+      }
+    ],
+    "bxlTGn": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a dwarven stout for 2 coins",
+        "id": "4vwQGf"
+      },
+      {
+        "type": "line",
+        "speaker": "Barman (King's Axe Inn)",
+        "text": "One dwarven stout, best in all of Keldagrim!"
+      }
+    ],
+    "H9H-di": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a jug of wine for 10 coins",
+        "id": "8XPkJA"
+      },
+      {
+        "type": "line",
+        "speaker": "Barman (King's Axe Inn)",
+        "text": "I hope you enjoy it!"
       }
     ]
   }

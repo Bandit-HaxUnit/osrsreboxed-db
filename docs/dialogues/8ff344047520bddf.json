@@ -1641,8 +1641,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "oCLKsN"
+                "id": "oCLKsN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f900b8ab25d896db"
+                  }
+                ]
               }
             ]
           }
@@ -3417,6 +3422,247 @@
     ]
   },
   "branches": {
+    "jump-f900b8ab25d896db": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Every 16 years.",
+            "steps": [
+              {
+                "player": "Every 16 years."
+              },
+              {
+                "type": "line",
+                "speaker": "Crab",
+                "text": "No. You don't know enough about my kin. Begone."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Every other year.",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Crab",
+                "text": "No. You don't know enough about my kin. Begone."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Every 100 years.",
+            "steps": [
+              {
+                "player": "Every 100 years."
+              },
+              {
+                "type": "line",
+                "speaker": "Crab",
+                "text": "It could be luck, but you did give me the correct answer."
+              },
+              {
+                "type": "line",
+                "speaker": "Crab",
+                "text": "Where does our ceremony take place?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "On the beach.",
+                    "steps": [
+                      {
+                        "player": "On the beach."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Crab",
+                        "text": "Correct again! Hmm. My destination is 100 paces to the east and 12 paces to the south. How many paces would that be if I was a bird that flew straight there?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "142.",
+                            "steps": [
+                              {
+                                "player": "142."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Crab",
+                                "text": "I haven't figured out how to solve it, but I don't know what this '42' is that you speak of. I think you just made that up. Begone!"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "101.",
+                            "steps": [
+                              {
+                                "player": "101."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Crab",
+                                "text": "I can't possibly tell whether it's the correct answer. I haven't figured out how to solve it."
+                              },
+                              {
+                                "player": "I have a good feeling about it."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Crab",
+                                "text": "Maybe bashing on a coconut repeatedly would help me discover the answer to this problem. Fine, I will help."
+                              },
+                              {
+                                "type": "message",
+                                "text": "The crab scutters away to practise.",
+                                "id": "uxsvrh"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "210.",
+                            "steps": [
+                              {
+                                "player": "210."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Crab",
+                                "text": "I can't possibly tell whether it's the correct answer. I haven't figured out how to solve it."
+                              },
+                              {
+                                "player": "I have a good feeling about it."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Crab",
+                                "text": "Maybe bashing on a coconut repeatedly would help me discover the answer to this problem. Fine, I will help."
+                              },
+                              {
+                                "type": "message",
+                                "text": "The crab scutters away to practise.",
+                                "id": "NQTJwM"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "You can't possibly expect me to know that!",
+                            "steps": [
+                              {
+                                "player": "You can't possibly expect me to know that!"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Crab",
+                                "text": "I suppose not. Even I don't have the answer."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Crab",
+                                "text": "Maybe bashing on a coconut repeatedly would help me discover the answer to this problem. Fine, I will help."
+                              },
+                              {
+                                "type": "message",
+                                "text": "The crab scutters away to practise.",
+                                "id": "pyykYg"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "In the sea.",
+                    "steps": [
+                      {
+                        "player": "In the sea."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Crab",
+                        "text": "No. You don't know enough about my kin. Begone."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "In the trees.",
+                    "steps": [
+                      {
+                        "player": "In the trees."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Crab",
+                        "text": "No. You don't know enough about my kin. Begone."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I was told, but I wasn't listening.",
+                    "steps": [
+                      {
+                        "player": "I was told, but I wasn't listening."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Crab",
+                        "text": "And you want me to listen to you? No. Begone."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I was told, but I wasn't listening.",
+            "steps": [
+              {
+                "player": "I was told, but I wasn't listening."
+              },
+              {
+                "type": "line",
+                "speaker": "Crab",
+                "text": "And you want me to listen to you? No. Begone."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "fP3Phx": [
       {
         "type": "line",

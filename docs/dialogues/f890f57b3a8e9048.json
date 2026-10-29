@@ -192,7 +192,13 @@
             ]
           },
           {
-            "text": "I seek knowledge and power!"
+            "text": "I seek knowledge and power!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "f5KoxQ"
+              }
+            ]
           }
         ]
       }
@@ -219,13 +225,24 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "vIvuNu"
+                "id": "vIvuNu",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-ab38660099082e39"
+                  }
+                ]
               }
             ]
           },
           {
-            "text": "I seek knowledge and power!"
+            "text": "I seek knowledge and power!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "f5KoxQ"
+              }
+            ]
           }
         ]
       }
@@ -285,7 +302,13 @@
             ]
           },
           {
-            "text": "I seek knowledge and power!"
+            "text": "I seek knowledge and power!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "f5KoxQ"
+              }
+            ]
           }
         ]
       }
@@ -300,10 +323,28 @@
         "type": "choice",
         "options": [
           {
-            "text": "I could be, yes."
+            "text": "I could be, yes.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Helmet Shop.",
+                "id": "dHTm2X"
+              }
+            ]
           },
           {
-            "text": "No, I'll pass on that."
+            "text": "No, I'll pass on that.",
+            "steps": [
+              {
+                "player": "No, I'll pass on that."
+              },
+              {
+                "type": "line",
+                "speaker": "Peksa",
+                "text": "Well, come back if you change your mind."
+              }
+            ]
           },
           {
             "text": "I've heard you have a small scorpion in your possession.",
@@ -367,6 +408,53 @@
       {
         "type": "unavailable",
         "id": "-axBRu"
+      }
+    ]
+  },
+  "branches": {
+    "jump-ab38660099082e39": [
+      {
+        "type": "message",
+        "text": "The seer produces a small mirror",
+        "id": "6gXj06"
+      },
+      {
+        "type": "message",
+        "text": "The seer gazes into the mirror",
+        "id": "Nzys5a"
+      },
+      {
+        "type": "message",
+        "text": "The seer smoothes his hair with hand",
+        "id": "RffiPC"
+      },
+      {
+        "type": "line",
+        "speaker": "Seer",
+        "text": "I can see a scorpion that you seek. It would appear to be near some nasty spiders. I can see two coffins there as well."
+      },
+      {
+        "type": "line",
+        "speaker": "Seer",
+        "text": "The scorpion seems to be going through some crack in the wall. It's gone into some sort of secret room."
+      },
+      {
+        "type": "line",
+        "speaker": "Seer",
+        "text": "Well see if you can find that scorpion then, and I'll try and get you some information on the others."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "f5KoxQ": [
+      {
+        "player": "I seek knowledge and power!"
+      },
+      {
+        "type": "line",
+        "speaker": "Seer",
+        "text": "Knowledge comes from experience, power comes from battleaxes."
       }
     ]
   }

@@ -1,4 +1,62 @@
 {
+  "branches": {
+    "jump-7c6f220b838ace49": [
+      {
+        "player": "Beer please."
+      },
+      {
+        "npc": "One beer coming up. Ok, that'll be two coins."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 2 coins:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "give",
+            "text": "2 coins",
+            "id": "jEvkgA"
+          },
+          {
+            "type": "message",
+            "text": "You buy a pint of beer.",
+            "id": "h2xsuB"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a beer",
+            "id": "4KV5Yt"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1yO7Fm"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 2 coins:",
+        "steps": [
+          {
+            "player": "Oh dear. I don't seem to have enough money."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "90CAxu"
+      }
+    ],
+    "jump-29b7bba0260d1fca": [
+      {
+        "player": "I don't really want anything thanks."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
   "steps": [
     {
       "npc": "Good morning, what would you like?"
@@ -23,8 +81,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "5fiK5N"
+                      "id": "5fiK5N",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-7c6f220b838ace49"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -129,8 +192,13 @@
                   "steps": [
                     {
                       "type": "jump",
-                      "reference": "below",
-                      "id": "li0T7z"
+                      "id": "li0T7z",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "jump-29b7bba0260d1fca"
+                        }
+                      ]
                     }
                   ]
                 }

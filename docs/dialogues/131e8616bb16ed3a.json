@@ -57,8 +57,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "PZP38o"
+                                        "id": "PZP38o",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-f3961627bdee6268"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -165,8 +170,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "ebzH9d"
+                                        "id": "ebzH9d",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-b04eabd9a16a9953"
+                                          }
+                                        ]
                                       }
                                     ]
                                   },
@@ -175,8 +185,13 @@
                                     "steps": [
                                       {
                                         "type": "jump",
-                                        "reference": "below",
-                                        "id": "XeSEaN"
+                                        "id": "XeSEaN",
+                                        "steps": [
+                                          {
+                                            "type": "call",
+                                            "branch": "jump-9c8b7835b0361309"
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -207,8 +222,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "below",
-                                "id": "KF_tny"
+                                "id": "KF_tny",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f3961627bdee6268"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -243,8 +263,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "uhev1W"
+                                "id": "uhev1W",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-abb78a333d9e8e8e"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -253,8 +278,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "QaeHq2"
+                                "id": "QaeHq2",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-bb0d32ad5d48c6be"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -349,8 +379,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "Pbz5B2"
+                                "id": "Pbz5B2",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-b04eabd9a16a9953"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -359,8 +394,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "KiD3SK"
+                                "id": "KiD3SK",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-9c8b7835b0361309"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -495,16 +535,84 @@
             ]
           },
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Tool Leprechaun{{!}}Amazing Farming Equipment Store",
+                "id": "eE5g38"
+              }
+            ]
           },
           {
-            "text": "What can you store?"
+            "text": "What can you store?",
+            "steps": [
+              {
+                "player": "What can you store?"
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "We'll hold onto yer rake, yer seed dibber, yer spade, yer secateurs, yer waterin' can and yer trowel - but mind it's not one of them fancy trowels only archaeologists use!"
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "We'll take a few buckets off yer hands too, and even yer compost, supercompost an' ultracompost! Also plant cure vials."
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "Aside from that, if ye hands me yer farming produce, I can mebbe change it into banknotes for ye."
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "So... do ye want to be using the store?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Pzr1oi"
+              }
+            ]
           },
           {
-            "text": "What do you do with the tools you're storing?"
+            "text": "What do you do with the tools you're storing?",
+            "steps": [
+              {
+                "player": "What do you do with the tools you're storing? They can't possibly all fit in your pockets!"
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "We leprechauns have a shed where we keep 'em. It's a magic shed, so ye can get yer items back from any of us leprechauns whenever ye want. Saves ye havin' to carry loads of stuff around the country!"
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "So... do ye want to be using the store?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "1dfRko"
+              }
+            ]
           },
           {
-            "text": "No thanks, I'll keep hold of my stuff."
+            "text": "No thanks, I'll keep hold of my stuff.",
+            "steps": [
+              {
+                "player": "No thanks, I'll keep hold of my stuff."
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "Ye must be dafter than ye look if ye likes luggin' yer tools everywhere ye goes!"
+              }
+            ]
           }
         ]
       }
@@ -814,6 +922,279 @@
     ]
   },
   "branches": {
+    "jump-f3961627bdee6268": [
+      {
+        "player": "Please tell me?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "No."
+      },
+      {
+        "player": "Please?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "No!"
+      },
+      {
+        "player": "PLEEEEEEEEEEEEEEEEEEEEEASE?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "NO!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-b04eabd9a16a9953": [
+      {
+        "player": "What's Zanaris?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "I don't think we want other people competing with us to find it. Forget I said anything."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Please tell me.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "KF_tny",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f3961627bdee6268"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Oh well. Never mind.",
+            "steps": [
+              {
+                "player": "Oh well. Never mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-9c8b7835b0361309": [
+      {
+        "player": "What makes you think it's out here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "Don't you know of the legends that tell of the magical city, hidden in the swam... Uh, no, you're right, we're wasting our time here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "If it's hidden how are you planning to find it?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "uhev1W",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-abb78a333d9e8e8e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "There's no such thing!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "QaeHq2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-bb0d32ad5d48c6be"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-abb78a333d9e8e8e": [
+      {
+        "player": "If it's hidden how are you planning to find it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "Well, we don't want to tell anyone else about that, because we don't want anyone else sharing in all that glory and treasure."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Please tell me.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "PZP38o",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f3961627bdee6268"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Looks like you don't know either.",
+            "steps": [
+              {
+                "player": "Well, it looks to me like YOU don't know EITHER seeing as you're all just sat around here."
+              },
+              {
+                "type": "line",
+                "speaker": "Warrior",
+                "text": "Of course we know! We just haven't found which tree the stupid leprechaun's hiding in yet!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lower than 45 combat and either 31 Crafting or 36 Woodcutting:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it. Your combat level is also lower than the recommended level of 45.",
+                    "id": "LrBc5e"
+                  }
+                ],
+                "id": "ROewAn"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Lost City quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Leprechaun?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "GAH! I didn't mean to tell you that! Look, just forget I said anything okay?"
+                      },
+                      {
+                        "player": "So a leprechaun knows where Zanaris is eh?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "Ye.. uh, no. No, not at all. And even if he did - which he doesn't - he DEFINITELY ISN'T hiding in some tree around here. Nope, definitely not. Honestly."
+                      },
+                      {
+                        "player": "Thanks for the help!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "Help? What help? I didn't help! Please don't say I did, I'll get in trouble!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "hook": "quest:lost-city:start",
+                    "quest": "Lost City"
+                  },
+                  {
+                    "text": "No",
+                    "steps": [
+                      {
+                        "player": "Right... Well good luck with it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-bb0d32ad5d48c6be": [
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "When we've found Zanaris you'll... GAH! I mean, we're not here for any particular reason at all."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who's Zanaris?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "pkofds"
+              }
+            ]
+          },
+          {
+            "text": "What's Zanaris?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "ebzH9d",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b04eabd9a16a9953"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What makes you think it's out here?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "XeSEaN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9c8b7835b0361309"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "GphveU": [
       {
         "type": "line",

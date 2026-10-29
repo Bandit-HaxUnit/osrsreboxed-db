@@ -9,7 +9,7 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
 - **`builders/items/`**, **`builders/monsters/`** — main regeneration entry points (`builder.py`); common orchestration in `builders/base_builder.py`; run logging via `builders/run_log.py` → `logs/`.
 - **`scripts/`** — domain scripts: `cache`, `wiki`, `items`, `monsters`, `shops`, `icons`, `update` (prepare or refresh inputs in `data/`).
 - **`data/`** — source JSON, wiki dumps, schemas (`data/schemas/`), icons; `data/cache/` is local/large.
-- **`docs/`** — generated static API JSON; treat as build output unless the task is explicitly a one-off fix with a follow-up generator change.
+- **`docs/`** — generated static API JSON; build output only, never manually edited.
 - **`osrsreboxed/`** — PyPI API (dataclasses); must match exported JSON contracts.
 - **`test/`** — pytest; extend when export shape or validation rules change.
 - **`validator.py`** — Cerberus extensions used in validation.
@@ -31,6 +31,9 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
   shop-opening option is resolved **per NPC ID**, not per owner — an owner's IDs are per-location variants that do not always share a menu
   layout, so copying one variant's option across the rest silently mislabels them.
 - **Drops** are likewise a `scripts/` domain (**`scripts/drops/`**, output in **`docs/drops-json/`**), not a builder.
+- **Object examines** are a `scripts/` domain too (**`scripts/examines/`**, output **`docs/object-examines.json`**, minified):
+  object ID -> examine text from every page's `{{Infobox Scenery}}` (listed by the `infobox_scenery` bucket), per version.
+  The cache has no loc examines; OSRS sends them from the server.
 - **NPC click options** live in **`scripts/npcs/`** → **`docs/npcs-interactions.json`**, parsed from a cache NPC dump at the git-ignored
   `data/cache/dump.npc`. Option keys are the cache's **1-based** `op1`..`op5`; the RuneLite-format `ops` array in `monsters-cache-data.json` is
   0-based, so joining the two needs a `+1`.
@@ -45,5 +48,11 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
 
 ## Avoid
 
-- Large manual edits under `docs/**` that should be regenerated.
+- **All manual modifications to generated JSON are strictly forbidden**, including
+  `npc-dialogues.json`, its minified/index/shard exports, and every JSON export consumed by
+  TSPS from [RSPSApp/osrsreboxed-db](https://github.com/RSPSApp/osrsreboxed-db). This includes
+  hand-resolving conflicts, one-off fixes, and post-dump patches. Fix the canonical inputs,
+  parser or dumper, add a regression check, regenerate and import the output. Repeated
+  dumps from unchanged inputs must produce identical content. Disclose any remaining
+  mismatch instead of hiding it with downstream overrides.
 - Drive-by unrelated refactors outside the requested scope.

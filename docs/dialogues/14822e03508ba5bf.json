@@ -31,7 +31,24 @@
       {
         "type": "choice",
         "prompt": "Are you ready to leave the Tombs of Amascut?",
-        "options": []
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Player gets teleported to the Tombs of Amascut lobby.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "xbQLdI"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
       }
     ],
     "talking-to-osmumten-afterwards": [

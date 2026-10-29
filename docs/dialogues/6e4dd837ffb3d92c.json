@@ -138,8 +138,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "uI2RO_"
+                "id": "uI2RO_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-46ef4162961265fa"
+                  }
+                ]
               }
             ]
           }
@@ -296,6 +301,19 @@
             "id": "t0LPw0"
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-46ef4162961265fa": [
+      {
+        "player": "I'm incredibly busy, yes."
+      },
+      {
+        "npc": "Pfft, I'm sure you are!"
+      },
+      {
+        "type": "end"
       }
     ]
   }

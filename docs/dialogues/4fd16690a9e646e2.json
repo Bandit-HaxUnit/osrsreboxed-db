@@ -93,8 +93,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "kc70HJ"
+                "id": "kc70HJ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-957e73927f8da491"
+                  }
+                ]
               }
             ]
           },
@@ -103,8 +108,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "0hTRVI"
+                "id": "0hTRVI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-97b50b3cf3bce9e9"
+                  }
+                ]
               }
             ]
           },
@@ -129,12 +139,62 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "HI_27i"
+                "id": "HI_27i",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-fb213d4d1cd90a7c"
+                  }
+                ]
               }
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-957e73927f8da491": [
+      {
+        "player": "Tell me about the sacred eels."
+      },
+      {
+        "npc": "As Zulrah's skin is shed, the scales fall to the bottom of the swamp, where I believe the eels are permitted to consume them. Thus the eels become sacred, dumb though they are."
+      },
+      {
+        "npc": "Then the mighty Zulrah sends the eels to us. Once you eat of them, and absorb their sacred properties yourself, you become part of our tribe forever - no other community will let you in."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "z7yh_E"
+      }
+    ],
+    "jump-97b50b3cf3bce9e9": [
+      {
+        "player": "Can you give me any eels?"
+      },
+      {
+        "npc": "Zul-Cheray and her younger son are due for an extra large ration of eels when her older son is sacrificed, so I can't spare any for you."
+      },
+      {
+        "player": "But I'm being sacrificed first."
+      },
+      {
+        "npc": "All the same, after your sacrifice is complete, Zulrah will return for Zul-Cheray's son, and she will want her eels at that time."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "SRPKXH"
+      }
+    ],
+    "jump-fb213d4d1cd90a7c": [
+      {
+        "player": "I'm off."
+      },
+      {
+        "type": "end"
       }
     ]
   }

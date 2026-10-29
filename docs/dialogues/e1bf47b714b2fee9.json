@@ -56,9 +56,14 @@
                         "text": "time. When you captured a rival family's clan, you also captured their lands and wealth."
                       },
                       {
-                        "type": "action",
-                        "text": "Continues from \"So where is this crest?\"",
-                        "id": "IkJGaQ"
+                        "type": "jump",
+                        "id": "IkJGaQ",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b87d10178840142c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -174,9 +179,14 @@
                         "player": "Why are you so desperate for it?"
                       },
                       {
-                        "type": "action",
-                        "text": "Continues above from \"Well, there is a long standing rule\"",
-                        "id": "QPpRuw"
+                        "type": "jump",
+                        "id": "QPpRuw",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a366530e1a49de02"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -185,8 +195,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "9_6c8s"
+                        "id": "9_6c8s",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-b87d10178840142c"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -195,8 +210,13 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "ijPSdP"
+                        "id": "ijPSdP",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-a548ce800a79eeff"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -351,10 +371,25 @@
             ]
           },
           {
-            "text": "Nothing, I will be on my way."
+            "text": "Nothing, I will be on my way.",
+            "steps": [
+              {
+                "player": "Nothing, I will be on my way."
+              }
+            ]
           },
           {
-            "text": "I see you are a chef, will you cook me anything?"
+            "text": "I see you are a chef, will you cook me anything?",
+            "steps": [
+              {
+                "player": "I see you are a chef... Could you cook me something?"
+              },
+              {
+                "type": "line",
+                "speaker": "Caleb",
+                "text": "I would, but I am very busy. I am trying to increase my reknown as one of the worlds' leading chefs by preparing a special and unique fish salad."
+              }
+            ]
           }
         ]
       }
@@ -573,10 +608,151 @@
         "type": "choice",
         "options": [
           {
-            "text": "How much are they?"
+            "text": "How much are they?",
+            "steps": [
+              {
+                "player": "How much are they?"
+              },
+              {
+                "type": "line",
+                "speaker": "Silk trader",
+                "text": "3 gp."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "No. That's too much for me.",
+                    "steps": [
+                      {
+                        "player": "No. That's too much for me."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Silk trader",
+                        "text": "2 gp and that's as low as I'll go."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Silk trader",
+                        "text": "I'm not selling it for any less. You'll probably go and sell it in Varrock for a profit, anyway."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "2 gp sounds good.",
+                            "steps": [
+                              {
+                                "player": "2 gp sounds good."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You buy some silk for 2 gp.",
+                                    "id": "eEkQ65"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "action": "receive",
+                                    "text": "Silk",
+                                    "id": "NirMRI"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "f8mJhp"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "player": "Oh dear. I don't have enough money."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Silk trader",
+                                    "text": "Well, come back when you do have some money!"
+                                  }
+                                ],
+                                "id": "13HCow"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, really. I don't want it.",
+                            "steps": [
+                              {
+                                "player": "No, really. I don't want it."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Silk trader",
+                                "text": "Okay, but that's the best price you're going to get."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, that sounds good.",
+                    "steps": [
+                      {
+                        "player": "Okay, that sounds good."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has enough money:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You buy some silk for 3 gp.",
+                            "id": "GZnaVK"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Silk",
+                            "id": "1lib8I"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "pMw6wc"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough money:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "dcC4Fj"
+                          }
+                        ],
+                        "id": "4lSDFL"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "text": "No. Silk doesn't suit me."
+            "text": "No. Silk doesn't suit me.",
+            "steps": [
+              {
+                "player": "No. Silk doesn't suit me."
+              }
+            ]
           },
           {
             "text": "I'm in search of a man named Avan Fitzharmon.",
@@ -604,10 +780,95 @@
         "type": "choice",
         "options": [
           {
-            "text": "Do you want to trade?"
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "player": "Do you want to trade?"
+              },
+              {
+                "type": "line",
+                "speaker": "Zeke",
+                "text": "Yes, certainly. I deal in scimitars."
+              }
+            ]
           },
           {
-            "text": "Could you sell me a dragon scimitar?"
+            "text": "Could you sell me a dragon scimitar?",
+            "steps": [
+              {
+                "player": "Could you sell me a dragon scimitar?"
+              },
+              {
+                "type": "line",
+                "speaker": "Zeke",
+                "text": "A dragon scimitar? A DRAGON scimitar?"
+              },
+              {
+                "type": "line",
+                "speaker": "Zeke",
+                "text": "The banana-brained nitwits who make them would never dream of selling any to me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Monkey Madness I:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Zeke",
+                    "text": "Seriously, you'll be a monkey's uncle before you'll ever hold a dragon scimitar."
+                  },
+                  {
+                    "player": "Oh well, thanks anyway."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Hw-pkj"
+                  }
+                ],
+                "id": "rkbRAG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Monkey Madness I:",
+                "steps": [
+                  {
+                    "player": "Hmmm, funny you should say that..."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "tx-Bo3"
+                  }
+                ],
+                "id": "eLuj8o"
+              },
+              {
+                "type": "line",
+                "speaker": "Zeke",
+                "text": "Perhaps you'd like to take a look at my stock?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please, Zeke.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Zeke's Superior Scimitars.",
+                        "id": "94-K0q"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not today, thank you.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "I'm in search of a man named Avan Fitzharmon.",
@@ -635,10 +896,51 @@
         "type": "choice",
         "options": [
           {
-            "text": "I think I'll give it a miss."
+            "text": "I think I'll give it a miss.",
+            "steps": [
+              {
+                "player": "I think I'll give it a miss."
+              }
+            ]
           },
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one coin:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a kebab and pays one coin",
+                    "id": "txBQAi"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MXzEDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no coins:",
+                "steps": [
+                  {
+                    "player": "Oops, I forgot to bring any money with me."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Karim",
+                    "text": "Come back when you have some."
+                  }
+                ],
+                "id": "saCV1e"
+              }
+            ]
           },
           {
             "text": "I'm in search of a man named Avan Fitzharmon.",
@@ -666,10 +968,23 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please. What are you selling?"
+            "text": "Yes please. What are you selling?",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Al Kharid General Store",
+                "id": "ovmVc8"
+              }
+            ]
           },
           {
-            "text": "No thanks."
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
           },
           {
             "text": "I'm in search of a man named Avan Fitzharmon.",
@@ -697,10 +1012,31 @@
         "type": "choice",
         "options": [
           {
-            "text": "What have you got?"
+            "text": "What have you got?",
+            "steps": [
+              {
+                "player": "What have you got?"
+              },
+              {
+                "type": "line",
+                "speaker": "Louie Legs",
+                "text": "I provide items to help you keep your legs!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Louie's Armoured Legs Bazaar.",
+                "id": "1XPWOn"
+              }
+            ]
           },
           {
-            "text": "No, thank you."
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              }
+            ]
           },
           {
             "text": "I'm in search of a man named Avan Fitzharmon.",
@@ -728,10 +1064,23 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ranael's Super Skirt Store.",
+                "id": "kFOupM"
+              }
+            ]
           },
           {
-            "text": "No thank you, that's not my scene."
+            "text": "No thank you, that's not my scene.",
+            "steps": [
+              {
+                "player": "No thank you, that's not my scene."
+              }
+            ]
           },
           {
             "text": "I'm in search of a man named Avan Fitzharmon.",
@@ -769,10 +1118,28 @@
         "type": "choice",
         "options": [
           {
-            "text": "Yes please."
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Gem Trader.",
+                "id": "n0i6Qm"
+              }
+            ]
           },
           {
-            "text": "No thank you."
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              },
+              {
+                "type": "line",
+                "speaker": "Gem trader",
+                "text": "Eh, suit yourself."
+              }
+            ]
           },
           {
             "text": "I'm in search of a man named Avan Fitzharmon.",
@@ -948,10 +1315,38 @@
             ]
           },
           {
-            "text": "Hello short person."
+            "text": "Hello short person.",
+            "steps": [
+              {
+                "player": "Hello short person."
+              },
+              {
+                "type": "line",
+                "speaker": "Boot",
+                "text": "Hello tall person."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "YnSmT9"
+              }
+            ]
           },
           {
-            "text": "Why are you called boot?"
+            "text": "Why are you called boot?",
+            "steps": [
+              {
+                "player": "Why are you called Boot?"
+              },
+              {
+                "type": "line",
+                "speaker": "Boot",
+                "text": "I'm called Boot, because when I was very young, I used to sleep, in a large boot."
+              },
+              {
+                "player": "Yeah, great, I didn't want your life story."
+              }
+            ]
           }
         ]
       }
@@ -1558,6 +1953,135 @@
       {
         "type": "unavailable",
         "id": "8W_Fb5"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b87d10178840142c": [
+      {
+        "player": "So where is this crest?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "Well, my three sons took it with them many years ago when they rode out to fight in the war against the undead necromancer and his army in the battle to save Varrock."
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "For many years I had assumed them all dead, as I had heard no word from them, but recently I heard word that my son Caleb is alive and well, and trying to earn his fortune as a great chef in the lands beyond White"
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "Wolf Mountain, although I know not where."
+      },
+      {
+        "type": "condition",
+        "text": "If the player lacks one or more requirements of the quest and has a combat level lower than 55:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it. Your combat level is also lower than the recommended level of 55.",
+            "id": "eth8vu"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "GhRCBJ"
+          }
+        ],
+        "id": "3848ch"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Family Crest quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Ok, I will help you."
+              },
+              {
+                "type": "line",
+                "speaker": "Dimintheis",
+                "text": "I thank you greatly adventurer! Also... if you find Caleb... please... let him know his father still loves him..."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "hook": "quest:family-crest:start",
+            "quest": "Family Crest"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'm not interested in that adventure right now."
+              },
+              {
+                "type": "line",
+                "speaker": "Dimintheis",
+                "text": "I realise it was a lot to ask of a stranger."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-a366530e1a49de02": [
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "Well, there is a long standing rule of chivalry amongst the Varrockian aristocracy, where each noble family is in possession of a unique crest, which signifies the honour and lineage of the family. More than this"
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "however, it also represents the lawful rights of each family to prove their ownership of their wealth and lands. If the family crest is lost, then the family's estate is handed over to the current monarch until the crest is"
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "restored."
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "This dates back to the times when there was much in-fighting amongst the noble families and their clans, and was introduced as a way of reducing the bloodshed that was devestating the ranks of the ruling classes at that"
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "time. When you captured a rival family's clan, you also captured their lands and wealth."
+      },
+      {
+        "type": "jump",
+        "id": "IkJGaQ",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-b87d10178840142c"
+          }
+        ]
+      }
+    ],
+    "jump-a548ce800a79eeff": [
+      {
+        "player": "I'm not interested in that adventure right now."
+      },
+      {
+        "type": "line",
+        "speaker": "Dimintheis",
+        "text": "I realise it was a lot to ask of a stranger."
+      },
+      {
+        "type": "end"
       }
     ]
   }

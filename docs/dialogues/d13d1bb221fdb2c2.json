@@ -165,7 +165,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's trade."
+            "text": "Let's trade.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "9X9TA4"
+              }
+            ]
           },
           {
             "text": "I'm here about a missing delivery.",
@@ -218,7 +224,13 @@
             ]
           },
           {
-            "text": "I'll pass."
+            "text": "I'll pass.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "P_Wnbr"
+              }
+            ]
           }
         ]
       }
@@ -233,7 +245,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's trade."
+            "text": "Let's trade.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "9X9TA4"
+              }
+            ]
           },
           {
             "text": "Could I have a look at that locked box?",
@@ -257,7 +275,13 @@
             ]
           },
           {
-            "text": "I'll pass."
+            "text": "I'll pass.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "P_Wnbr"
+              }
+            ]
           }
         ]
       }
@@ -287,7 +311,13 @@
         "type": "choice",
         "options": [
           {
-            "text": "Let's trade."
+            "text": "Let's trade.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "9X9TA4"
+              }
+            ]
           },
           {
             "text": "About that missing delivery...",
@@ -306,7 +336,13 @@
             ]
           },
           {
-            "text": "I'll pass."
+            "text": "I'll pass.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "P_Wnbr"
+              }
+            ]
           }
         ]
       }
@@ -1107,8 +1143,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "YTd8t1"
+                "id": "YTd8t1",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b0759240a0ec14c7"
+                  }
+                ]
               }
             ]
           }
@@ -1329,8 +1370,13 @@
       },
       {
         "type": "jump",
-        "reference": "above",
-        "id": "r6oSAf"
+        "id": "r6oSAf",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-46e5a242c402324f"
+          }
+        ]
       }
     ],
     "making-the-ultimate-kebab-talking-to-lucas-after-a-successful-taste-test": [
@@ -1481,7 +1527,7 @@
       {
         "type": "line",
         "speaker": "Lelia",
-        "text": "Looking to market another one of his buisness ideas is he? It will cost him double this time. We still haven't cleaned up the mess made by his last great idea."
+        "text": "Looking to market another one of his business ideas is he? It will cost him double this time. We still haven't cleaned up the mess made by his last great idea."
       },
       {
         "player": "Is this a common occurance?"
@@ -1752,8 +1798,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "1CCZca"
+                    "id": "1CCZca",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-c532fbcccb78e887"
+                      }
+                    ]
                   }
                 ]
               }
@@ -1832,8 +1883,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "MaU76p"
+                "id": "MaU76p",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-c532fbcccb78e887"
+                  }
+                ]
               }
             ]
           }
@@ -1864,8 +1920,13 @@
                 "steps": [
                   {
                     "type": "jump",
-                    "reference": "above",
-                    "id": "dn0aZU"
+                    "id": "dn0aZU",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-c532fbcccb78e887"
+                      }
+                    ]
                   }
                 ]
               }
@@ -1964,6 +2025,162 @@
       {
         "type": "unavailable",
         "id": "ZntBH2"
+      }
+    ]
+  },
+  "branches": {
+    "jump-b0759240a0ec14c7": [
+      {
+        "player": "I think that's perfect!"
+      },
+      {
+        "type": "line",
+        "speaker": "Emelio",
+        "text": "Kuani! That gives us [number] portion[s] of meat, [number] portion[s] of salad, [number] portion[s] of spice and [number] portion[s] of sauce. Definitely happy with that?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sounds good to me.",
+            "steps": [
+              {
+                "player": "Sounds good to me."
+              },
+              {
+                "type": "line",
+                "speaker": "Emelio",
+                "text": "Well in that case, why don't you take this kebab to one of our connoisseurs outside and see what they reckon."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Emelio tries to give you a kebab, but you don't have enough room for it.",
+                    "id": "RGxqm5"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "VVK8P_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has space in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Emelio gives you a kebab.",
+                    "id": "sw-3DW"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a test kebab",
+                    "id": "7WnuHP"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "PNqiJZ"
+              }
+            ]
+          },
+          {
+            "text": "Actually, let's make some more changes.",
+            "steps": [
+              {
+                "player": "Actually, let's make some more changes."
+              },
+              {
+                "type": "line",
+                "speaker": "Emelio",
+                "text": "Very well."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "h2TyXL"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-46e5a242c402324f": [
+      {
+        "type": "condition",
+        "text": "If the player does not have enough free inventory slots:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Emelio tries to give you some kebabs, but you don't have enough room for them.",
+            "id": "UcLCn6"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3_tkee"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough free inventory slots:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Emelio gives you some kebabs.",
+            "id": "NUZMwQ"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "two test kebabs",
+            "id": "_LMMpb"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "r0O40y"
+      }
+    ],
+    "jump-c532fbcccb78e887": [
+      {
+        "player": "I need to prepare first."
+      },
+      {
+        "type": "line",
+        "speaker": "Lelia",
+        "text": "Well make it quick."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "9X9TA4": [
+      {
+        "player": "Let's trade."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Fortis Spice Stall",
+        "id": "YrhjGC"
+      }
+    ],
+    "P_Wnbr": [
+      {
+        "player": "I'll pass."
+      },
+      {
+        "type": "line",
+        "speaker": "Spice Merchant",
+        "text": "Your loss."
       }
     ]
   }

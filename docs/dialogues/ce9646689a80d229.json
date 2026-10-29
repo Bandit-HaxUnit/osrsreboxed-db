@@ -132,8 +132,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "-mLf6K"
+                                "id": "-mLf6K",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6345efc538d61280"
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -142,8 +147,13 @@
                             "steps": [
                               {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "bAnP31"
+                                "id": "bAnP31",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-6b5d568b987baa9f"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -244,6 +254,29 @@
         "type": "line",
         "speaker": "Shipyard Worker (B)",
         "text": "The joys indeed."
+      }
+    ]
+  },
+  "branches": {
+    "jump-6345efc538d61280": [
+      {
+        "player": "Yes please!"
+      },
+      {
+        "type": "message",
+        "text": "It's not entirely clear where it came from, but the worker hands you a cup of tea.",
+        "id": "v-518e"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-6b5d568b987baa9f": [
+      {
+        "player": "No, thank you."
+      },
+      {
+        "type": "end"
       }
     ]
   }

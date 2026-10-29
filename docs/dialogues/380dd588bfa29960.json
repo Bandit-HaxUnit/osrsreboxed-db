@@ -781,13 +781,31 @@
                         "type": "choice",
                         "options": [
                           {
-                            "text": "What is there to do in the Wizards' Guild?"
+                            "text": "What is there to do in the Wizards' Guild?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "SmQZQe"
+                              }
+                            ]
                           },
                           {
-                            "text": "What are the requirements to get in the Wizards' Guild?"
+                            "text": "What are the requirements to get in the Wizards' Guild?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "YBjDCm"
+                              }
+                            ]
                           },
                           {
-                            "text": "What do you do in the Guild?"
+                            "text": "What do you do in the Guild?",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "MI9KQV"
+                              }
+                            ]
                           },
                           {
                             "text": "I've lost my magical scrying orb!",
@@ -829,13 +847,31 @@
                     "type": "choice",
                     "options": [
                       {
-                        "text": "What is there to do in the Wizards' Guild?"
+                        "text": "What is there to do in the Wizards' Guild?",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "SmQZQe"
+                          }
+                        ]
                       },
                       {
-                        "text": "What are the requirements to get in the Wizards' Guild?"
+                        "text": "What are the requirements to get in the Wizards' Guild?",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "YBjDCm"
+                          }
+                        ]
                       },
                       {
-                        "text": "What do you do in the Guild?"
+                        "text": "What do you do in the Guild?",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "MI9KQV"
+                          }
+                        ]
                       },
                       {
                         "text": "Can you help me more?",
@@ -1958,6 +1994,56 @@
     ]
   },
   "branches": {
+    "SmQZQe": [
+      {
+        "player": "What is there to do in the Wizards' Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "This is the finest wizards' establishment in the land. We have magic portals to the other towers of wizardry around Gielinor. We have a particularly wide collection of runes in our rune shop. We sell some of the finest"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "mage robes in the land and we have a training area full of zombies for you to practice your magic on."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "T5ffS_"
+      }
+    ],
+    "YBjDCm": [
+      {
+        "player": "What are the requirements to get in the Wizards' Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "You need a magic level of 66, the high magic energy level is too dangerous for anyone below that level."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "9bZm5a"
+      }
+    ],
+    "MI9KQV": [
+      {
+        "player": "What do you do in the Guild?"
+      },
+      {
+        "type": "line",
+        "speaker": "Zavistic Rarve",
+        "text": "I'm the Grand Secretary for the Wizards' Guild, I have lots of correspondence to keep up with, as well as attending to the discipline of the more problematic guild members."
+      },
+      {
+        "type": "jump",
+        "reference": "previous",
+        "id": "AL7rLQ"
+      }
+    ],
     "MKhbhI": [
       {
         "type": "line",

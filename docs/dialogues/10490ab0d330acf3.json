@@ -305,8 +305,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "4ZeB-T"
+                "id": "4ZeB-T",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-b5f4904e8f772808"
+                  }
+                ]
               }
             ]
           },
@@ -315,8 +320,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "lH83Tf"
+                "id": "lH83Tf",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-9c1634496eb0ea34"
+                  }
+                ]
               }
             ]
           },
@@ -325,8 +335,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "nB3AIZ"
+                "id": "nB3AIZ",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5e67e1eb77422d25"
+                  }
+                ]
               }
             ]
           }
@@ -561,6 +576,239 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-b5f4904e8f772808": [
+      {
+        "player": "Why don't you do the clue scrolls yourself? Wouldn't you make more money?"
+      },
+      {
+        "npc": "HA! Sure, the guy in the 50,000,000 coin suit is going to run around all day digging holes. Come on! Now, do you want to buy one?"
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "I3zOMK"
+      }
+    ],
+    "jump-9c1634496eb0ea34": [
+      {
+        "player": "Sounds good to me."
+      },
+      {
+        "npc": "Okay, they're 50 coins each. How much of a challenge would you like? I'll take a look and see if I have a clue fitting for your experience."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "The easier the better.",
+            "steps": [
+              {
+                "player": "The easier the better."
+              },
+              {
+                "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+              },
+              {
+                "type": "action",
+                "text": "Player receives an easy clue scroll.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "gqyE7A"
+              },
+              {
+                "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Not too easy, not too hard.",
+            "steps": [
+              {
+                "player": "Not too easy, not too hard."
+              },
+              {
+                "type": "condition",
+                "text": "If the player receives the tier of clue they asked for:",
+                "steps": [
+                  {
+                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives an medium clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "Y4Jomg"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Km5ZYv"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives a easy clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "8Myb5o"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ICvrGC"
+              }
+            ]
+          },
+          {
+            "text": "I like a challenge. Give me one to wrinkle my brain.",
+            "steps": [
+              {
+                "player": "I like a challenge. Give me one to wrinkle my brain."
+              },
+              {
+                "type": "condition",
+                "text": "If the player receives the tier of clue they asked for:",
+                "steps": [
+                  {
+                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives an hard clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "EgdsYB"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "uMQeny"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives a medium clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "bmIqwY"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "E08Bn4"
+              }
+            ]
+          },
+          {
+            "text": "Give me the hardest clue you can get your hands on.",
+            "steps": [
+              {
+                "player": "Give me the hardest clue you can get your hands on."
+              },
+              {
+                "type": "condition",
+                "text": "If the player receives the tier of clue they asked for:",
+                "steps": [
+                  {
+                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives an elite clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "Sc56lX"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qRP8gz"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives a hard clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "OqOPRE"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "vZrxgO"
+              }
+            ]
+          },
+          {
+            "text": "Forget it, I changed my mind.",
+            "steps": [
+              {
+                "player": "Forget it, I changed my mind."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-5e67e1eb77422d25": [
+      {
+        "player": "No thanks."
+      },
+      {
+        "type": "end"
       }
     ]
   }

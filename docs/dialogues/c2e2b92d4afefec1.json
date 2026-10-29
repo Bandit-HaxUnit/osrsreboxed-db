@@ -217,8 +217,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "above",
-                                            "id": "-JW4C_"
+                                            "id": "-JW4C_",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-5f537fe4814b5901"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -227,8 +232,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "above",
-                                            "id": "g6sogV"
+                                            "id": "g6sogV",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-4b73e88bf3bb6ac7"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -237,8 +247,13 @@
                                         "steps": [
                                           {
                                             "type": "jump",
-                                            "reference": "above",
-                                            "id": "0GrL3v"
+                                            "id": "0GrL3v",
+                                            "steps": [
+                                              {
+                                                "type": "call",
+                                                "branch": "jump-1917ef74d006bb60"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -304,8 +319,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "AQvKDD"
+                "id": "AQvKDD",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-23ee76d8087540f3"
+                  }
+                ]
               }
             ]
           },
@@ -373,8 +393,13 @@
                       },
                       {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "kP50rh"
+                        "id": "kP50rh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-4ce13f52a0fd6de9"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -414,8 +439,13 @@
               },
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "5_CUs9"
+                "id": "5_CUs9",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e54408437c8dcdce"
+                  }
+                ]
               }
             ]
           }
@@ -546,6 +576,488 @@
       {
         "type": "unavailable",
         "id": "pqY-5o"
+      }
+    ]
+  },
+  "branches": {
+    "jump-5f537fe4814b5901": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "There is a Mill fairly close, go North and then West. Mill Lane Mill is just off the road to Draynor. I usually get my flour from there."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty pot with them:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "Talk to Millie, she'll help, she's a lovely girl and a fine Miller. Make sure you take a pot with you for the flour though, you've got one on you already."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "xSWPoP"
+          }
+        ],
+        "id": "6smrb1"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have an empty pot with them:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "Talk to Millie, she'll help, she's a lovely girl and a fine Miller. Make sure you take a pot with you for the flour though, there should be one on the table in here."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "02HG3O"
+          }
+        ],
+        "id": "aVGicp"
+      }
+    ],
+    "jump-4b73e88bf3bb6ac7": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "There is a cattle field on the other side of the river, just across the road from the Groats' Farm."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Talk to Gillie Groats, she looks after the Dairy cows - she'll tell you everything you need to know about milking cows!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty bucket with them:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "You'll need an empty bucket for the milk itself. I do see you've got a bucket with you already luckily!"
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "DHKYm8"
+          }
+        ],
+        "id": "LtDYHW"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have an empty bucket with them:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "You'll need an empty bucket for the milk itself. The general store just north of the castle will sell you one for a couple of coins."
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "zosP8v"
+          }
+        ],
+        "id": "m8g9IW"
+      }
+    ],
+    "jump-1917ef74d006bb60": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "I normally get my eggs from the Groats' farm, on the other side of the river."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "But any chicken should lay eggs."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where do I find some flour?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "-JW4C_",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5f537fe4814b5901"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How about milk?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "g6sogV",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-4b73e88bf3bb6ac7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "And eggs? Where are they found?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "0GrL3v",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-1917ef74d006bb60"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've got all the information I need. Thanks.",
+            "steps": [
+              {
+                "player": "I've got all the information I need. Thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-23ee76d8087540f3": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "Oh dear, oh dear, oh dear, I'm in a terrible terrible mess! It's the Duke's birthday today, and I should be making him a lovely big birthday cake."
+      },
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "I've forgotten to buy the ingredients. I'll never get them in time now. He'll sack me! What will I do? I have four children and a goat to look after. Would you help me? Please?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Cook's Assistant quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Yes, I'll help you."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Oh thank you, thank you. I need milk, an egg and flour. I'd be very grateful if you can get them for me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has the necessary items:",
+                "steps": [
+                  {
+                    "player": "I have all of those ingredients on me already!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "That's an odd coincidence... Were you planning on making a cake too?"
+                  },
+                  {
+                    "player": "Not exactly. I just had an odd feeling you might be needing these ingredients. If I see a cook, I presume there's food of some kind! Lucky guess I suppose."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "Well thank you! Hand them over, please."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You hand the cook all of the ingredients.",
+                    "id": "qPWhXs"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "You've brought me everything I need! I am saved! Thank you!"
+                  },
+                  {
+                    "player": "So do I get to go to the Duke's Party?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "I'm afraid not, only the big cheeses get to dine with the Duke."
+                  },
+                  {
+                    "player": "Well, maybe one day I'll be important enough to sit on the Duke's table."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "Maybe, but I won't be holding my breath."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "vci6DY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have the necessary items:",
+                "steps": [
+                  {
+                    "player": "So where do I find these ingredients then?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Where do I find some flour?",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "There is a Mill fairly close, go North and then West. Mill Lane Mill is just off the road to Draynor. I usually get my flour from there."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has an empty pot with them:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Cook",
+                                "text": "Talk to Millie, she'll help, she's a lovely girl and a fine Miller. Make sure you take a pot with you for the flour though, you've got one on you already."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "xSWPoP"
+                              }
+                            ],
+                            "id": "6smrb1"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have an empty pot with them:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Cook",
+                                "text": "Talk to Millie, she'll help, she's a lovely girl and a fine Miller. Make sure you take a pot with you for the flour though, there should be one on the table in here."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "02HG3O"
+                              }
+                            ],
+                            "id": "aVGicp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "How about milk?",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "There is a cattle field on the other side of the river, just across the road from the Groats' Farm."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "Talk to Gillie Groats, she looks after the Dairy cows - she'll tell you everything you need to know about milking cows!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has an empty bucket with them:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Cook",
+                                "text": "You'll need an empty bucket for the milk itself. I do see you've got a bucket with you already luckily!"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "DHKYm8"
+                              }
+                            ],
+                            "id": "LtDYHW"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have an empty bucket with them:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Cook",
+                                "text": "You'll need an empty bucket for the milk itself. The general store just north of the castle will sell you one for a couple of coins."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "zosP8v"
+                              }
+                            ],
+                            "id": "m8g9IW"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "And eggs? Where are they found?",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "I normally get my eggs from the Groats' farm, on the other side of the river."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "But any chicken should lay eggs."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Where do I find some flour?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "id": "-JW4C_",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-5f537fe4814b5901"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "How about milk?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "id": "g6sogV",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-4b73e88bf3bb6ac7"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "And eggs? Where are they found?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "id": "0GrL3v",
+                                    "steps": [
+                                      {
+                                        "type": "call",
+                                        "branch": "jump-1917ef74d006bb60"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I've got all the information I need. Thanks.",
+                                "steps": [
+                                  {
+                                    "player": "I've got all the information I need. Thanks."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, I know where to find this stuff.",
+                        "steps": [
+                          {
+                            "player": "Actually, I know where to find this stuff."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "QDPNgE"
+              }
+            ],
+            "hook": "quest:cook-s-assistant:start",
+            "quest": "Cook's Assistant"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, I don't feel like it. Maybe later."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Fine. I always knew you Adventurer types were callous beasts. Go on your merry way!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-4ce13f52a0fd6de9": [
+      {
+        "type": "jump",
+        "id": "AQvKDD",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-23ee76d8087540f3"
+          }
+        ]
+      }
+    ],
+    "jump-e54408437c8dcdce": [
+      {
+        "type": "jump",
+        "id": "kP50rh",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-4ce13f52a0fd6de9"
+          }
+        ]
       }
     ]
   }
