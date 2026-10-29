@@ -81,6 +81,16 @@ def test_npcs_reference_known_tables():
             ), f"npc {npc_id} references unknown table {table_id}"
 
 
+def test_shellbane_uses_current_page_without_stale_duplicate():
+    drops = _load("npc-drops.json")
+    npc = drops["npcs"]["14860"]
+    assert npc["tables"] == ["shellbane_gryphon"]
+    table = drops["tables"][npc["tables"][0]]
+    assert table["wiki_page"] == "Shellbane gryphon"
+    assert table["main_max_roll"] == 128
+    assert "shellbane_gryphon_2" not in drops["tables"]
+
+
 def test_shared_tables_are_exported():
     """Every shared table a drop table rolls into is defined in subtables.json."""
     npc_drops = _load("npc-drops.json")
@@ -125,9 +135,9 @@ def test_generated_quantities_keep_source_conditions_and_discrete_alternatives()
 
 def test_quantity_export_preserves_npc_mappings_and_unrelated_reward_paths():
     dump = _load("npc-drops.json")
-    assert len(dump["tables"]) == 1112
-    # Include the 112 bare-ID variants restored alongside numbered infobox IDs.
-    assert len(dump["npcs"]) == 3204
+    # Keep restored bare-ID variants, excluding stale category-unlisted pages.
+    assert len(dump["tables"]) == 1105
+    assert len(dump["npcs"]) == 3199
     assert {npc_id for npc_id, npc in dump["npcs"].items() if not npc["tables"]} == {
         "8058",
         "8060",
