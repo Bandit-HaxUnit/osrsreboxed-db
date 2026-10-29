@@ -24,6 +24,7 @@ def test_fetch_discovers_miniquest_transcript_category(monkeypatch):
                 "Pet dialogue": ["Transcript:Olmlet"],
                 "Quest transcript": ["Transcript:Quest"],
                 "Miniquest transcript": ["Transcript:His Faithful Servants"],
+                "Event transcript": ["Transcript:Event"],
             }
             return iter(titles[self.category])
 

@@ -713,7 +713,7 @@ def shop_index():
     if not path.exists():
         print(f"{path} not built; every interface stays open_interface", flush=True)
         return {}
-    shops = json.loads(path.read_text())
+    shops = json.loads(path.read_text(encoding="utf-8"))
     names = collections.defaultdict(set)
     for shop in shops:
         for key in shop_keys(shop):
@@ -819,7 +819,7 @@ def slayer_masters():
         return set()
     return {
         master["dialogue"]
-        for master in json.loads(path.read_text()).values()
+        for master in json.loads(path.read_text(encoding="utf-8")).values()
         if master.get("dialogue")
     }
 
@@ -970,7 +970,7 @@ def main():
     pages = read_cache(CACHE) if args.offline else fetch(refresh=args.refresh)
     nav_templates = load_navigation_templates()
     bindings = json.loads(
-        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text()
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
     )
     npcs, quests, issues = {}, {}, {}
     types = collections.defaultdict(set)
@@ -1028,7 +1028,7 @@ def main():
     apply_bindings(data, bindings)
     apply_corrections(
         data,
-        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text()),
+        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")),
     )
     dialogues = dict(sorted(data["records"].items()))
     classified = {title for titles in types.values() for title in titles}
@@ -1038,7 +1038,7 @@ def main():
             # Authored corrections can supply a record with no Wiki transcript.
             types["unclassified"].add(title)
     report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
-    report.write_text(report_text)
+    report.write_text(report_text, encoding="utf-8")
     save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
