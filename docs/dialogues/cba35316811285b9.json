@@ -1,0 +1,135 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "player": "Hey, Soup. Why did you want to follow me?"
+              },
+              {
+                "npc": "Sometimes it's nice to stretch the flippers and dry them out."
+              },
+              {
+                "player": "Can't you do that alone?"
+              },
+              {
+                "npc": "I wanted to follow someone who looked like they wouldn't let me be turned into Soup soup."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "Hey, Soup. Where did your name come from?"
+              },
+              {
+                "npc": "Soup is my favourite food."
+              },
+              {
+                "player": "Any soup in particular?"
+              },
+              {
+                "npc": "When you live in salt water, all food is soup."
+              },
+              {
+                "player": "So your favourite food is... food?"
+              },
+              {
+                "npc": "Yes, pretty much."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "player": "How are you feeling, Soup?"
+              },
+              {
+                "npc": "Souper."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-a-raw-sea-turtle-cooked-sea-turtle-or-burnt-sea-turtle-on-soup": [
+      {
+        "npc": "I can't believe you would show me this..."
+      },
+      {
+        "type": "message",
+        "text": "Soup turns away from you and the [raw/cooked/burnt] sea turtle, a single salty tear forming in his eye.",
+        "id": "VecSfJ"
+      }
+    ],
+    "using-non-soup-items-on-soup": [
+      {
+        "npc": "No, thank you. I don't want that."
+      }
+    ],
+    "using-a-bowl-of-hot-water-on-soup": [
+      {
+        "npc": "That soup doesn't look very tasty."
+      }
+    ],
+    "using-soup-items-on-soup": [
+      {
+        "npc": "Can we make this into soup?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have hot water in their inventory:",
+        "steps": [
+          {
+            "player": "It isn't soup... I could get you some hot water to make it soup?"
+          },
+          {
+            "npc": "Yes please!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "N-Pukm"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has hot water in their inventory:",
+        "steps": [
+          {
+            "player": "Yes, I have some hot water here."
+          },
+          {
+            "type": "message",
+            "text": "Soup gobbles up the stew soup.",
+            "id": "IUeWlY"
+          }
+        ],
+        "id": "b-NM1H"
+      }
+    ],
+    "overhead-dialogue-interacting-with-a-scratching-post-built-in-the-menagerie": [
+      {
+        "npc": "Ow ow!",
+        "presentation": "overhead"
+      }
+    ],
+    "overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "npc": "Oww!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Ow ow! Owwww!",
+        "presentation": "overhead"
+      }
+    ]
+  }
+}

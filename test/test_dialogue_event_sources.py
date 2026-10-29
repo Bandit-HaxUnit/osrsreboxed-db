@@ -12,12 +12,15 @@ from scripts.dialogues import fetch
 def wiki(monkeypatch, tmp_path):
     categories = {
         "NPC dialogue": ["Transcript:Existing NPC"],
+        "Pet dialogue": ["Transcript:Existing NPC"],
         "Quest transcript": ["Transcript:Existing quest"],
+        "Miniquest transcript": ["Transcript:Existing miniquest"],
         "Event transcript": ["Transcript:2025 Christmas event", "Transcript:Existing NPC"],
     }
     pages = {
         "Transcript:Existing NPC": "* '''Player:''' Hello.",
         "Transcript:Existing quest": "{{Transcript list|Player|Existing NPC}}",
+        "Transcript:Existing miniquest": "* '''Player:''' A fixture miniquest.",
         "Transcript:2025 Christmas event": (
             "{{Transcript list|Player|Cook (Blue Moon Inn)}}\n"
             "[[Transcript:Holiday dependency]]\n* '''Player:''' A fixture meal."
@@ -64,6 +67,7 @@ def test_event_transcripts_follow_real_collector_download_and_identity_paths(wik
     result = fetch.fetch()
     assert set(result) == {"Transcript:Existing NPC"}
     reference = fetch.read_cache(fetch.QUEST_CACHE)
+    assert "Transcript:Existing miniquest" in reference
     assert reference["Transcript:2025 Christmas event"]["revision"] == 17
     assert "Transcript:Holiday dependency" in reference
     assert "Transcript:Existing NPC" not in reference

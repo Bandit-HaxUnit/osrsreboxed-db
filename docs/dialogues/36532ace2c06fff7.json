@@ -1,0 +1,130 @@
+{
+  "default": null,
+  "variants": {
+    "tzrek-jad-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "wtp09H"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "Are you hungry?"
+              },
+              {
+                "npc": "Kl-Kra!"
+              },
+              {
+                "player": "Ooookay..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tzrek-jad-overhead-dialogue-when-tzrek-jad-interacts-with-a-scratching-post-built-in-the-menagerie": [
+      {
+        "type": "call",
+        "branch": "i-WQus"
+      }
+    ],
+    "tzrek-jad-overhead-dialogue-when-tzrek-jad-is-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "npc": "KlMej-Hej!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "KlJad-Rek",
+        "presentation": "overhead"
+      }
+    ],
+    "jalrek-jad-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "wtp09H"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "Are you hungry?"
+              },
+              {
+                "npc": "Kl-Kra!"
+              },
+              {
+                "player": "Ooookay..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jalrek-jad-overhead-dialogue-interacting-with-a-scratching-post-built-in-the-menagerie": [
+      {
+        "type": "call",
+        "branch": "i-WQus"
+      }
+    ],
+    "jalrek-jad-overhead-dialogue-battling-another-pet-in-the-arena-in-the-menagerie": [
+      {
+        "presentation": "overhead",
+        "npc": "KlMej-Hej!"
+      },
+      {
+        "presentation": "overhead",
+        "npc": "KlJad-Rek"
+      }
+    ]
+  },
+  "branches": {
+    "wtp09H": [
+      {
+        "player": "Do you miss your people?"
+      },
+      {
+        "npc": "Mej-TzTok-Jad Kot-Kl! (TzTok-Jad will protect us!)"
+      },
+      {
+        "player": "No.. I don't think so."
+      },
+      {
+        "npc": "Jal-ZekKl? (Foreigner hurt us?)"
+      },
+      {
+        "player": "No, no, I wouldn't hurt you."
+      }
+    ],
+    "i-WQus": [
+      {
+        "npc": "Kal-Kl!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "Kl-Zek!",
+        "presentation": "overhead"
+      },
+      {
+        "npc": "KlEk-Tal!",
+        "presentation": "overhead"
+      }
+    ]
+  }
+}

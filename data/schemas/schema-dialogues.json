@@ -29,11 +29,20 @@
         "speaker": {
           "type": "string"
         },
+        "presentation": {
+          "enum": [
+            "overhead"
+          ]
+        },
         "prompt": {
           "type": "string"
         },
         "condition": {
           "type": "string"
+        },
+        "condition_id": {
+          "type": "string",
+          "description": "Source identity of the predicate guarding a conditional menu option."
         },
         "action": {
           "type": "string"
@@ -58,7 +67,9 @@
           "items": {
             "type": "string"
           },
-          "minItems": 2
+          "minItems": 2,
+          "uniqueItems": true,
+          "description": "Exact exported shop names when a shop page has game-state versions."
         },
         "section": {
           "type": "string"

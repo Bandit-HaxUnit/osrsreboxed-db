@@ -1,7 +1,8 @@
 # NPC and quest dialogue exports
 
 Build with `python -m scripts.dialogues.update`. The collector fetches the wiki's
-**NPC dialogue**, **Quest transcript** and **Event transcript** categories, follows explicit transcript
+**NPC dialogue**, **Pet dialogue**, **Quest transcript**, **Miniquest transcript**
+and **Event transcript** categories, follows explicit transcript
 links, and fetches NPC identity pages named by transcripts. Cached revisions are
 reused; `--refresh` fetches them again. `--offline` rebuilds only from cached sources.
 A failed download does not publish a partial gameplay export. Explicitly missing
@@ -19,6 +20,7 @@ An empty event category fails collection rather than silently dropping seasonal 
 - `docs/npc-dialogues.json`: all NPC and quest/reference conversations, keyed by transcript title without `Transcript:`.
 - `docs/npc-dialogues-minified.json`: identical aggregate data without formatting whitespace or a trailing newline; Unicode stays literal UTF-8 and dialogue text is preserved.
 - `docs/npc-dialogue-index.json`: NPC ID -> candidate transcript pages and variants.
+- `docs/dialogue-types.json`: top-level Transcript source type -> sorted unique page titles, including pet and item separately. Missing or conflicting declarations are `unclassified`; this is source classification, not gameplay eligibility.
 - `data/dialogues/wiki-pages.json`, `quest-pages.json`, `npc-pages.json`: source wikitext and revision IDs.
 - `data/dialogues/corrections.json`: remaining content/capture corrections, with source commits and checked input fingerprints.
 - `data/dialogues/runtime-bindings.json`: source-node resume points, effect parameters and cache-backed NPC identity bindings; contains no copied dialogue.
@@ -170,7 +172,10 @@ preserved, rather than renaming the selected one to `standard`.
 This extends the earlier NPC-only format. Consumers must use each record's
 `default` value rather than hardcode `standard`, and support explicit speakers
 (`type: "line"`, `speaker`, `text`) in multi-NPC quest conversations. Scoped NPC
-self-speech is still `{"npc":"..."}`, player speech `{"player":"..."}`.
+self-speech is still `{"npc":"..."}`, player speech `{"player":"..."}`. Explicit
+`{{overhead|...}}` speech keeps its normal shape and may add
+`"presentation": "overhead"`; that is the only presentation value and it does not
+change the speaker, text or control flow.
 Choices/random alternatives have nested `options` and `steps`. Message, missing,
 unavailable, condition and reference nodes must not silently disappear.
 

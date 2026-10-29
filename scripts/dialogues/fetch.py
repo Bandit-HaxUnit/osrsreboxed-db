@@ -10,9 +10,18 @@ from scripts.wiki.wiki_page_text import WikiPageText
 from scripts.wiki.wiki_page_titles import WikiPageTitles
 
 API = "https://oldschool.runescape.wiki/api.php"
+DIALOGUE_CATEGORIES = (
+    "NPC dialogue",
+    "Pet dialogue",
+    "Quest transcript",
+    "Miniquest transcript",
+    "Event transcript",
+)
+TRANSCRIPT_CATEGORIES = ("Quest transcript", "Miniquest transcript", "Event transcript")
 CACHE = config.DATA_PATH / "dialogues" / "wiki-pages.json"
 QUEST_CACHE = CACHE.with_name("quest-pages.json")
 NPC_CACHE = CACHE.with_name("npc-pages.json")
+TEMPLATE_CACHE = CACHE.with_name("template-pages.json")
 
 
 def save(path, data, *, minified=False):
@@ -30,6 +39,108 @@ def save(path, data, *, minified=False):
 
 def read_cache(path):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def transcript_type(raw):
+    """Classify only an unambiguous top-level Transcript declaration."""
+    kinds = set()
+    for template in mw.parse(raw).filter_templates(recursive=False):
+        if str(template.name).strip().casefold() != "transcript":
+            continue
+        key = "type" if template.has("type") else 1
+        value = str(template.get(key).value) if template.has(key) else ""
+        kinds.add(" ".join(value.split()).casefold())
+    return next(iter(kinds)) if len(kinds) == 1 and "" not in kinds else "unclassified"
+
+
+def _identity_title(value):
+    code = mw.parse(str(value).strip())
+    links = code.filter_wikilinks(recursive=False)
+    if links:
+        if len(links) != 1 or str(code).strip() != str(links[0]):
+            raise ValueError("Ambiguous transcript identity link")
+        value = str(links[0].title)
+    title = " ".join(str(value).replace("_", " ").split("#", 1)[0].split())
+    if not title or any(mark in title for mark in ("{{", "}}", "[[", "]]", "|")):
+        raise ValueError("Invalid transcript identity link")
+    return title[:1].upper() + title[1:]
+
+
+def transcript_identity(raw, name, npc_pages=None):
+    """Use original article links, never a display-name similarity guess."""
+    declarations = [
+        template
+        for template in mw.parse(raw).filter_templates(recursive=False)
+        if str(template.name).strip().casefold() == "transcript"
+    ]
+    targets = {
+        _identity_title(template.get("link").value)
+        for template in declarations
+        if template.has("link")
+    }
+    if len(targets) > 1:
+        raise ValueError(f"Ambiguous transcript identity: {name}")
+    target = next(iter(targets), name)
+    if any(template.has("link") for template in declarations):
+        return target
+    if transcript_type(raw) != "pet" or not npc_pages:
+        return target
+    # Some Pet transcripts omit link= while their title article describes the
+    # monster. Follow only its explicit disambiguation labelled "the pet".
+    alternatives = set()
+    article = npc_pages.get(target, {}).get("wikitext", "")
+    for template in mw.parse(article).filter_templates(recursive=False):
+        if (
+            str(template.name).strip().casefold() == "otheruses"
+            and template.has(2)
+            and template.has(3)
+            and " ".join(str(template.get(2).value).split()).casefold() == "the pet"
+        ):
+            alternatives.add(_identity_title(template.get(3).value))
+    if len(alternatives) > 1:
+        raise ValueError(f"Ambiguous transcript identity: {name}")
+    return next(iter(alternatives), target)
+
+
+def trailing_template_name(raw, name):
+    """Return a standalone, non-bulleted final template named after the page."""
+    lines = [line.strip() for line in str(raw).splitlines() if line.strip()]
+    if not lines or lines[-1].startswith("*"):
+        return None
+    line = lines[-1]
+    code = mw.parse(line)
+    templates = code.filter_templates(recursive=False)
+    if (
+        len(templates) != 1
+        or str(templates[0]).strip() != line
+        or templates[0].params
+        or str(templates[0].name).strip().casefold() != name.casefold()
+    ):
+        return None
+    return str(templates[0].name).strip()
+
+
+def navigation_template(page):
+    """Classify a template as navigation from its fetched source or categories."""
+    categories = {str(value).casefold() for value in page.get("categories", [])}
+    if any("navbox" in category for category in categories):
+        return True
+    templates = mw.parse(str(page.get("wikitext", ""))).filter_templates(
+        recursive=False
+    )
+    return bool(
+        templates and str(templates[0].name).strip().casefold().startswith("navbox")
+    )
+
+
+def load_navigation_templates():
+    if not TEMPLATE_CACHE.exists():
+        raise FileNotFoundError(f"Missing dialogue template cache: {TEMPLATE_CACHE}")
+    return {
+        title.removeprefix("Template:")
+        for title, page in read_cache(TEMPLATE_CACHE).items()
+        if navigation_template(page)
+    }
 
 
 def transcript_targets(raw):
@@ -60,7 +171,7 @@ def participant_pages(raw):
     return sorted(pages)
 
 
-def download(names, path, session, refresh=False):
+def download(names, path, session, refresh=False, with_categories=False):
     pages = read_cache(path)
     missing = sorted(set(names) if refresh else set(names) - pages.keys())
     for offset in range(0, len(missing), 50):
@@ -72,7 +183,7 @@ def download(names, path, session, refresh=False):
                 "action": "query",
                 "format": "json",
                 "formatversion": 2,
-                "prop": "revisions",
+                "prop": "revisions|categories" if with_categories else "revisions",
                 "rvprop": "ids|content",
                 "rvslots": "main",
                 "redirects": 1,
@@ -95,6 +206,10 @@ def download(names, path, session, refresh=False):
                 "revision": revision["revid"],
                 "wikitext": revision["slots"]["main"]["content"],
             }
+            if with_categories:
+                fetched[page["title"]]["categories"] = [
+                    category["title"] for category in page.get("categories", [])
+                ]
         aliases = {
             item["from"]: item["to"]
             for kind in ("normalized", "redirects")
@@ -121,7 +236,7 @@ def download(names, path, session, refresh=False):
 
 def fetch(refresh=False):
     categories = {}
-    for category in ("NPC dialogue", "Quest transcript", "Event transcript"):
+    for category in DIALOGUE_CATEGORIES:
         titles = WikiPageTitles(API, [category])
         titles.extract_page_titles()
         categories[category] = {
@@ -130,16 +245,20 @@ def fetch(refresh=False):
         if not categories[category]:
             raise ValueError(f"{category} returned no transcripts")
     session = WikiPageText(API, "").session
-    npc_names = categories["NPC dialogue"]
-    reference_names = categories["Quest transcript"] | categories["Event transcript"]
-    pages = download(npc_names, CACHE, session, refresh)
-    quests = download(
-        reference_names - npc_names, QUEST_CACHE, session, refresh
+    npc_names = categories["NPC dialogue"] | categories["Pet dialogue"]
+    transcript_names = set().union(
+        *(categories[category] for category in TRANSCRIPT_CATEGORIES)
     )
+    pages = download(npc_names, CACHE, session, refresh)
+    quests = download(transcript_names - npc_names, QUEST_CACHE, session, refresh)
     if refresh:
-        quests = download(
-            set(quests) - reference_names, QUEST_CACHE, session, True
-        )
+        quests = download(set(quests) - transcript_names, QUEST_CACHE, session, True)
+    # A page previously reached only through a transcript link can later be
+    # listed as an NPC/pet. Its authoritative copy now lives in the NPC cache;
+    # keeping the old reference copy would make the exporter reject both groups.
+    if npc_names & quests.keys():
+        quests = {name: page for name, page in quests.items() if name not in npc_names}
+        save(QUEST_CACHE, quests)
     # Follow explicit dependencies to a fixed point. Cache missing pages too, so a
     # broken wiki link is reported once rather than retried forever.
     while True:
@@ -153,10 +272,40 @@ def fetch(refresh=False):
         if not missing:
             break
         quests = download(missing, QUEST_CACHE, session)
-    identity_names = {title.removeprefix("Transcript:") for title in npc_names}
+    footer_templates = set()
+    for title, page in [*pages.items(), *quests.items()]:
+        template = trailing_template_name(
+            page.get("wikitext", ""), title.removeprefix("Transcript:")
+        )
+        if template:
+            footer_templates.add("Template:" + template)
+    download(
+        footer_templates,
+        TEMPLATE_CACHE,
+        session,
+        refresh,
+        with_categories=True,
+    )
+    identity_names = {
+        transcript_identity(
+            pages[title].get("wikitext", ""), title.removeprefix("Transcript:")
+        )
+        for title in npc_names
+    }
     for page in quests.values():
         identity_names.update(participant_pages(page.get("wikitext", "")))
-    download(identity_names, NPC_CACHE, session, refresh)
+    identities = download(identity_names, NPC_CACHE, session, refresh)
+    linked_names = {
+        transcript_identity(
+            pages[title].get("wikitext", ""),
+            title.removeprefix("Transcript:"),
+            identities,
+        )
+        for title in npc_names
+    }
+    additional_names = linked_names - identity_names
+    if additional_names and (refresh or additional_names - identities.keys()):
+        download(additional_names, NPC_CACHE, session, refresh)
     save(CACHE, {name: pages[name] for name in sorted(npc_names)})
     return {name: pages[name] for name in sorted(npc_names)}
 
