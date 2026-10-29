@@ -114,7 +114,11 @@ def enrich_records(
         for group in (npcs, quests)
         for name, record in group.items()
     }
-    quest_names = {slug(name): name for name in quests}
+    quest_names = {
+        slug(name): name
+        for name, record in quests.items()
+        if record.get("activation") != "explicit"
+    }
     index = collections.defaultdict(list)
     for page, record in all_records.items():
         name = page.removeprefix("Transcript:")

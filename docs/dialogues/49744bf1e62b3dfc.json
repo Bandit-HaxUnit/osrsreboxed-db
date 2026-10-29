@@ -1,0 +1,4032 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Hello. I wonder, could you help me with a project I'm doing?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you, and what is this about?",
+            "steps": [
+              {
+                "player": "Who are you, and what is this about?"
+              },
+              {
+                "type": "condition",
+                "text": "First time:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I'm Gary Grayzag, a wizard. At least, I'm going to be a wizard. My dad's one too - Wizard Grayzag, from the Wizards' Tower south of Draynor Village."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "KTbOm3"
+                  }
+                ],
+                "id": "Kq9J2q"
+              },
+              {
+                "type": "condition",
+                "text": "If the dialogue was interrupted:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "So, yes, I was saying that Wizard Grayzag is my dad."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "OQORwN"
+                  }
+                ],
+                "id": "FdL3z7"
+              },
+              {
+                "type": "condition",
+                "text": "If Imp Catcher has been completed:",
+                "steps": [
+                  {
+                    "player": "I remember that name. I was asked to find a load of beads that Grayzag's imps stole."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "That's my dad, yes! I'm sorry about his... manners."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "b6gOR3"
+                  }
+                ],
+                "id": "pvGoH_"
+              },
+              {
+                "player": "So what do you need from me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "I'm trying to recreate a portal that my dad accidentally opened, some time ago."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "My dad was trying to invent a time travel portal, so he could go into the past and meet mighty demons of the Third Age like Thammaron, and maybe control them."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Instead, the portal led to the history of RuneScape, rather than the history of Gielinor. In the Realm of Memories, he says there are demons and dragons as they looked in older times."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Other creatures too, as they used to be, and people who've departed long ago, like Thrander, the smith who performed armour conversion services."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "So now I'd like to recreate a portal like what my dad saw, so that I can enter the Realm of Memories for myself, and prove I should be a fully qualified wizard rather than an apprentice!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I'll help make a portal to the Realm of Memories!",
+                    "steps": [
+                      {
+                        "player": "Yes, I'll help make a portal to the Realm of Memories!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Thank you so much! To open the portal to the Realm of Memories, I believe we need mementos that will invoke powerful memories of the world."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me about the mementos that we need.",
+                            "steps": [
+                              {
+                                "player": "Tell me about the mementos that we need."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Gary",
+                                "text": "The mementos must be artefacts that invoke powerful memories. And, in RuneScape, what could be more powerful than the memory of experience?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Gary",
+                                "text": "The experience people have gained, every single day, since the world was created, training their skills - imagine how intense that collective memory will be! So my ritual uses mementos of the 24 skills."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Okay, let's get on with it.",
+                                    "steps": [
+                                      {
+                                        "player": "Okay, let's get on with it."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Gary",
+                                        "text": "I've worked out where we can get suitable mementos around Varrock, and I've prepared a place upstairs in this building where we'll perform a ritual with them."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Gary",
+                                        "text": "Whenever you're ready, we'll go around Varrock together to collect the mementos."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Let's go.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "hQJLJy"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I need to go and do something else.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "c2i7vh",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-f8eec5805832468b"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I've done some training. Can you use my items?",
+                                    "steps": [
+                                      {
+                                        "player": "I've done some training. Can you use my items?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Gary",
+                                        "text": "That'd be convenient! But no, I need to obtain the items with you myself. Otherwise the memories associated with them aren't transferred to me."
+                                      },
+                                      {
+                                        "player": "Okay, let's get on with it."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Gary",
+                                        "text": "I've worked out where we can get suitable mementos around Varrock, and I've prepared a place upstairs in this building where we'll perform a ritual with them."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Gary",
+                                        "text": "Whenever you're ready, we'll go around Varrock together to collect the mementos."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Let's go.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "9HnLqu"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I need to go and do something else.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "id": "tiSTGV",
+                                                "steps": [
+                                                  {
+                                                    "type": "call",
+                                                    "branch": "jump-f8eec5805832468b"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Why don't we get souvenirs like the Gnome Child did last time?",
+                                    "condition": "If the 20th Anniversary event was completed:",
+                                    "steps": [
+                                      {
+                                        "player": "Why don't we get souvenirs like the Gnome Child did last time?"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Gary",
+                                        "text": "The gnome used them up. I think we need something fresh for my ritual now."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "other",
+                                        "id": "-3z6kF"
+                                      }
+                                    ],
+                                    "id": "cQvyxb"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, what's the Realm of Memories?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "BFw7vi",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "Dlj2ui"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, who did you say you are?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "eVotwN",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "CnvlKl"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I need to go and do something else.",
+                            "steps": [
+                              {
+                                "player": "I need to go and do something else."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Gary",
+                                "text": "Okay."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Remind me, what's the Realm of Memories?",
+                    "steps": [
+                      {
+                        "player": "Remind me, what's the Realm of Memories?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "My dad was trying to invent a time travel portal, so he could go into the past and meet mighty demons of the Third Age like Thammaron, and maybe control them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Instead, the portal led to the history of RuneScape, rather than the history of Gielinor. In the Realm of Memories, he says there are demons and dragons as they looked in older times."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Other creatures too, as they used to be, and people who've departed long ago, like Thrander, the smith who performed armour conversion services."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, I'll help make a portal to the Realm of Memories!",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "s69n7C",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-86f1b8fab6b2c8a3"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, who did you say you are?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "YIGZt0",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "CnvlKl"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Maybe another time.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "4g-4hT",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3723dbff246f8629"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Remind me, who did you say you are?",
+                    "steps": [
+                      {
+                        "player": "Remind me, who did you say you are?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player hasn't previously completed the 20th Anniversary event:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Gary",
+                            "text": "I'm Gary Grayzag, the wizard. Well, apprentice wizard. My father is Wizard Grayzag. He once accidentally created a portal to the Realm of Memories."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "brPdN-"
+                          }
+                        ],
+                        "id": "NA86LL"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has previously completed the 20th Anniversary event:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Gary",
+                            "text": "I'm Gary Grayzag, the wizard. Well, apprentice wizard. My father is Wizard Grayzag. He asked you to deal with the green Gnome Child that came through a portal from the Realm of Memories."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "1JXBAE"
+                          }
+                        ],
+                        "id": "3Wy3sT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If Imp Catcher has been completed:",
+                        "steps": [
+                          {
+                            "player": "Oh yes, and his imps stole all those beads from Wizard Mizgog."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Gary",
+                            "text": "I'm sorry about that!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "VLvdXw"
+                          }
+                        ],
+                        "id": "L7VP0C"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, I'll help make a portal to the Realm of Memories!",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "3Foh2d",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-86f1b8fab6b2c8a3"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, what's the Realm of Memories?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "6ZGnX4",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "Dlj2ui"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Maybe another time.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "F_9hT2",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3723dbff246f8629"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Maybe another time.",
+                    "steps": [
+                      {
+                        "player": "Maybe another time."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "I hope so."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm busy.",
+            "steps": [
+              {
+                "player": "Sorry, I'm busy."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Oh, I'm sorry to bother you. Perhaps another time..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-starting-off-if-the-player-had-completed-the-20th-anniversary-event": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "[player name]! You're just the person I was hoping to find!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do we know each other?",
+            "steps": [
+              {
+                "player": "Do we know each other?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "I'm Gary Grayzag. We haven't met, but my dad told me all about you. You might remember him - Wizard Grayzag, from the Wizards' Tower south of Draynor Village."
+              },
+              {
+                "player": "Yes, ages ago Grayzag wanted me to help him with a green Gnome Child who'd come through a portal. Also, I was asked to find a load of beads that his imps stole."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "That's my dad, yes! I'm sorry about his... manners. Anyway, I wanted to talk about that green Gnome Child. He'd come into this world from the Realm of Memories."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I reopened the gnome's portal and went to the Realm.",
+                    "steps": [
+                      {
+                        "player": "I reopened the gnome's portal and went to the Realm."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "That must have been amazing! My dad says it's got demons and dragons as they looked in older times, and more monsters like that, and long-departed people too!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Dad wasn't interested, though. He was trying to invent a time travel portal, so he could go into the past and meet mighty demons of the Third Age like Thammaron, and maybe control them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Instead, the portal led to the history of RuneScape, rather than the history of Gielinor. Dad's not into that sort of thing."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "So now I'd like to recreate a portal like what my dad saw, so that I can enter the Realm of Memories for myself, and prove I should be a fully qualified wizard rather than an apprentice!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, I'll help make a portal to the Realm of Memories!",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "LgHt4E",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-86f1b8fab6b2c8a3"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, what's the Realm of Memories?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "7v2CNK",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "Dlj2ui"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, who did you say you are?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "I0uxZR",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "CnvlKl"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Maybe another time.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "0tziRC",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3723dbff246f8629"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Remind me, what was that about?",
+                    "steps": [
+                      {
+                        "player": "Remind me, what was that about?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "My dad was trying to invent a time travel portal, so he could go into the past and meet mighty demons of the Third Age like Thammaron, and maybe control them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Instead, the portal led to the history of RuneScape, rather than the history of Gielinor. In the Realm of Memories, he says there are demons and dragons as they looked in older times."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Other creatures too, as they used to be, and people who've departed long ago, like Thrander, the smith who performed armour conversion services."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "So now I'd like to recreate a portal like what my dad saw, so that I can enter the Realm of Memories for myself, and prove I should be a fully qualified wizard rather than an apprentice!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, I'll help make a portal to the Realm of Memories!",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "BNQB4T",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-86f1b8fab6b2c8a3"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, what's the Realm of Memories?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "mVYxhW",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "Dlj2ui"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Remind me, who did you say you are?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "cYTo5M",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "CnvlKl"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Maybe another time.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "h8-Rxn",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-3723dbff246f8629"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I don't want strange people finding me just now.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "wNa0Ty",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-349758ca5c863e32"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I don't want strange people finding me just now.",
+            "steps": [
+              {
+                "player": "I don't want strange people finding me just now."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Oh, I'm sorry. I hope you can come back another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-gary-again-before-starting": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Will you help me recreate a portal to the Realm of Memories? Please! I'd be so grateful! It'll prove I should be a fully qualified wizard rather than an apprentice."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'll help make a portal to the Realm of Memories!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "unveWT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-86f1b8fab6b2c8a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, what's the Realm of Memories?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "bT824S",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Dlj2ui"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, who did you say you are?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "XwdkgN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "CnvlKl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Maybe another time.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "zRTmxz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3723dbff246f8629"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-gary-again-after-starting": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "To open the portal to the Realm of Memories, I believe we need mementos that will invoke powerful memories of the world."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the mementos that we need.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "H1e7K-",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-2a62fdc1cc012d01"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, what's the Realm of Memories?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "nhLvTp",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "Dlj2ui"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, who did you say you are?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "y6Ke2C",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "CnvlKl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I need to go and do something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "LcVguz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-f8eec5805832468b"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-gary-after-asking-about-the-mementos": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Are you ready to collect some mementos with me?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's go.",
+            "steps": [
+              {
+                "player": "Let's go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a pet following them:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "You've already got something following you, though."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "U4gLl5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a pet following them:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Gary equips his hat.",
+                    "id": "4lszNE"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "We can pick up a couple of combat mementos in the sword shop, just west of where you & I met."
+                  }
+                ],
+                "id": "GOPeuy"
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": [
+              {
+                "player": "Not right now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-attempting-to-telegrab-his-hat": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "You can't have my hat."
+      }
+    ],
+    "collecting-mementos-talking-to-gary-while-he-is-following-the-player": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "My dad's never going to believe it when I make this happen!"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "B5nPzx"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "I'm so excited about getting into the Realm of Memories!"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "oriHCT"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Thanks for helping me with this, [player name]!"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "Q54wbZ"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where do we need to go?",
+            "steps": [
+              {
+                "player": "Where do we need to go?"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Attack and Strength step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "We can pick up a couple of combat mementos in the sword shop, just west of where you & I met."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "TacWj0"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Cooking and Hitpoints step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I think the cook in the Blue Moon Inn can help us. The inn is just north of where you & I met."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "jHC4QM"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Agility step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "On the roof of the Blue Moon Inn, there's a man who knows all about Agility. We can get up there via a ladder on the inn's western balcony, I think."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "tnoZRD"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Firemaking step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Let's pop into the general store in the middle of Varrock, near the fountain. I think the staff there can help us."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "vCDtCC"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Ranged, Fletching and Fishing step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Lowe will have some suitable mementos. His archery store is a bit east of Varrock's central fountain."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Y3tD9W"
+              },
+              {
+                "type": "condition",
+                "text": "While on Smithing and Defence step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Let's go to Horvik's smithy. It's slightly east of Varrock's central fountain."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Bh5wPf"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Prayer step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Let's visit Father Lawrence, in the church in the north- east of Varrock. He can help us with Prayer."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JDWe0x"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Crafting step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Asyff is a tailor with a shop near the south-east of the city. He does a lot of Crafting with materials from the Hunter skill, so I expect he can help us."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "hKxO6i"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Magic, Runecraft, and Mining step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "We should visit Aubury, in his rune shop in the south- east of the city."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qXWm4a"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Thieving step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I saw a thief roaming the south-east end of the city, just east of where we met. I'm sure he'll have a memento of Thieving - but we shouldn't ask where he got it!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "eVxDtD"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Construction step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Old Man Yarlo is a retired builder. He'll be able to help us with a memento of Construction. He lives slightly north-east from where you & I met."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2dEPhG"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Herblore step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "The Apothecary would be well placed to get us a memento for Herblore. His shop's in the south-west of the city."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "aljCW_"
+              },
+              {
+                "type": "condition",
+                "text": "While on the Farming step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Just outside the city, to the south-west, Dreven the bush patch gardener should be able to help us with a Farming memento."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "R8kaiY"
+              },
+              {
+                "type": "action",
+                "text": "While on the Sailing step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Tarquin will have something helpful for us, I'm sure. He's by the riverbank, supervising the canoe station south-west of the city."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "nHNX9a"
+              },
+              {
+                "type": "action",
+                "text": "While on the Slayer and Woodcutting step:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Dr Harlow has experience of specialist combat supplies, and also of Woodcutting, I think. He's in the Blue Moon Inn, just north of where you & I met."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CwJ4vD"
+              },
+              {
+                "type": "condition",
+                "text": "After every memento has been collected:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I think we have a memento for every skill! Let's return to the building where we met, and see how the ritual grid is looking! It's upstairs."
+                  }
+                ],
+                "id": "-TqPqn"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about the mementos that we need.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "NvVvDW"
+              }
+            ]
+          },
+          {
+            "text": "Remind me, what's the Realm of Memories?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "mO5vqv"
+              }
+            ]
+          },
+          {
+            "text": "Remind me, who did you say you are?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "J3DDN6"
+              }
+            ]
+          },
+          {
+            "text": "Can you stop following me, please?",
+            "steps": [
+              {
+                "player": "Can you stop following me, please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "I'll wait back at the house in southern Varrock. We can meet there when you're ready to continue."
+              },
+              {
+                "type": "action",
+                "text": "Gary teleports back to his initial location.",
+                "id": "Yy-Obs"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-the-varrock-swordshop": [
+      {
+        "type": "line",
+        "speaker": "Shop keeper/Shop assistant",
+        "text": "Hello, bold adventurer! Can I interest you in some swords?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect mementos of some combat skills, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect mementos of some combat skills, please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Shop keeper/Shop assistant",
+                "text": "What does he want?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "player": "Um... I'll go back and fetch him, so he can tell you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4-F2Gw"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I think you can help me with mementos for Attack and Strength. I need traditional weapons that people have been able to use since time immemorial to train the skills."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Shop keeper/Shop assistant",
+                    "text": "Eh, okay. These won't get you very good DPS, but you don't sound like much of a fighter anyway."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new mementos to his ritual grid...",
+                    "id": "JRgdTh"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I think the cook in the Blue Moon Inn can help us. The inn is just north of where you & I met."
+                  }
+                ],
+                "id": "4JIBY2"
+              }
+            ]
+          },
+          {
+            "text": "Yes, please!"
+          },
+          {
+            "text": "No, I'm okay for swords right now."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-in-the-blue-moon-inn": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect mementos of some skills, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect mementos of some skills, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "Gary?"
+                  },
+                  {
+                    "player": "He's a wizard who was supposed to be following me. I'll go back and fetch him."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WP0dAp"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "As a cook, you must have prepared a lot of nourishing meals. I need a memento of the Cooking process, and one for the Hitpoints restored by the food."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "You what?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Please? Please please please? I promise I'll leave you alone afterwards!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cook",
+                    "text": "... oh, whatever. Here, take my pie dish and some food, and go away!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new mementos to his ritual grid...",
+                    "id": "zH9Bhi"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "On the roof of the Blue Moon Inn, there's a man who knows all about Agility. We can get up there via a ladder on the inn's western balcony, I think."
+                  }
+                ],
+                "id": "xLE3qM"
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me any food?"
+          },
+          {
+            "text": "Can you give me any free food?"
+          },
+          {
+            "text": "I don't want anything from this horrible kitchen."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-on-the-roof-of-the-blue-moon-inn": [
+      {
+        "type": "line",
+        "speaker": "BigRedJapan",
+        "text": "Don't stop - keep on training!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect a skill memento, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect a skill memento, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "BigRedJapan",
+                    "text": "I don't see Gary. Is he afraid of heights?"
+                  },
+                  {
+                    "player": "He must have gone back. I'll go and fetch him."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "YImch8"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I'm trying to collect a memento of every skill. For Agility, I think a Mark of Grace would be perfect - you know, the rewards people find while they train up here."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "BigRedJapan",
+                    "text": "I'm not sure that's how you're supposed to get rewards. Imagine if everyone could just choose to be given rewards instead of earning them - it'd be the end of skill-training!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "BigRedJapan",
+                    "text": "When I came up with the idea of training Agility by climbing all over the rooftops of the world, I intended people to earn rewards by doing that, not just by asking for things."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "BigRedJapan",
+                    "text": "Still... these days, maybe I'm supposed to respect people's different preferences for how to train, rather than forcing them to do it the way I wanted..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "BigRedJapan",
+                    "text": "Okay, here's a Mark of Grace for you."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new memento to his ritual grid...",
+                    "id": "H2MN42"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Let's pop into the general store in the middle of Varrock, near the fountain. I think the staff there can help us."
+                  }
+                ],
+                "id": "1huCiU"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "BigRedJapan",
+                "text": "A long time ago, I had the idea of encouraging people to train Agility by climbing all over these rooftops. Now I hang around up here to cheer them on."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "dluk8V"
+              }
+            ]
+          },
+          {
+            "text": "Okay, goodbye.",
+            "steps": [
+              {
+                "player": "Okay, goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-the-general-store": [
+      {
+        "type": "unavailable",
+        "id": "-lqMnp"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect mementos of the skills, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect mementos of the skills, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Shop keeper",
+                    "text": "Who's Gary?"
+                  },
+                  {
+                    "player": "Oh, he's gone. Whoops. I'll go back and fetch him."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "BN1Q3J"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Specifically, from you, I need a memento of Firemaking - the tool that's fundamental to that entire skill, lovingly obtained from a shop in the traditional way!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Please give me a tinderbox."
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "6vAayA"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new memento to his ritual grid...",
+                    "id": "skOysv"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Lowe will have some suitable mementos. His archery store is a bit east of Varrock's central fountain."
+                  }
+                ],
+                "id": "QIq9F3"
+              }
+            ]
+          },
+          {
+            "text": "Yes please. What are you selling?"
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-lowe-s-archery-emporium": [
+      {
+        "type": "line",
+        "speaker": "Lowe",
+        "text": "Welcome to Lowe's Archery Emporium. Do you want to see my wares?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect mementos of some skills, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect mementos of some skills, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Lowe",
+                    "text": "It'd help if he were here."
+                  },
+                  {
+                    "player": "I'll go back and fetch him then."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kXa48p"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I think you can help us cover three skills in one stop! First, I'll need a traditional shortbow as a memento of Ranged. But you also make some of your own wares, don't you?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "In free-to-play:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Lowe",
+                        "text": "That I do, yes. Fletching is a talent of mine, even here where other folks can't really do it."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "aDDjgX"
+                      }
+                    ],
+                    "id": "BTwlK0"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "In members:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Lowe",
+                        "text": "That I do, yes. Fletching is a talent of mine."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "qF6eYL"
+                      }
+                    ],
+                    "id": "lt35GN"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Yes, so can you give me a knife and some feathers too? The knife would be a fine memento of Fletching, and feathers are popular for Fishing."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Lowe",
+                    "text": "I suppose I do like to fish a bit on my day off, too. Alright, I don't really get it, but you can have the stuff."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new mementos to his ritual grid...",
+                    "id": "68OHd9"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Let's go to Horvik's smithy. It's slightly east of Varrock's central fountain."
+                  }
+                ],
+                "id": "KywJoi"
+              }
+            ]
+          },
+          {
+            "text": "Yes, please."
+          },
+          {
+            "text": "No, I prefer to bash things close up."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-horvik-s-smithy": [
+      {
+        "type": "line",
+        "speaker": "Horvik",
+        "text": "Hello, do you need any help?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect some skill mementos, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect some skill mementos, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Horvik",
+                    "text": "Is this [a favour/another small favour] you're asking? I might have a request of my own, if so..."
+                  },
+                  {
+                    "player": "No, it's not. I'll go back and fetch Gary so he can tell you about it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "TT0vwz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is with Gary and has not completed One Small Favour:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Horvik",
+                    "text": "Is this a favour you're asking? I might have a request of my own, if so..."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "NpTsiK"
+                  }
+                ],
+                "id": "iAYD-f"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is with Gary and has completed One Small Favour:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Horvik",
+                    "text": "Is this another small favour you're asking? I might have a request of my own, if so..."
+                  },
+                  {
+                    "player": "NO! It is definitely not about a favour!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "lWdetE"
+                  }
+                ],
+                "id": "nocXd-"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Don't worry - I just need to pick up a couple of mementos. You see, I need something that represents Defence, and an armourer is perfectly placed to help there."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Also, as an armourer with his own smithy, I imagine you'll have something to represent Smithing too."
+              },
+              {
+                "type": "line",
+                "speaker": "Horvik",
+                "text": "That's a bit like doing a favour, isn't it? But alright, I can sort you out some basic stuff."
+              },
+              {
+                "type": "message",
+                "text": "Gary transports the new mementos to his ritual grid...",
+                "id": "Js7L0X"
+              },
+              {
+                "player": "Where do we need to go?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Let's visit Father Lawrence, in the church in the north-east of Varrock. He can help us with Prayer."
+              }
+            ]
+          },
+          {
+            "text": "Do you want to trade?"
+          },
+          {
+            "text": "No thanks. I'm just looking around."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-the-varrock-church": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed Romeo and Juliet:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Father Lawrence",
+            "text": "Hello adventurer, do you seek a quest?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can you help Gary collect a skill memento, please?",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "3vPaJA",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-b001aa7a284d2d81"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "I am always looking for a quest."
+              },
+              {
+                "text": "No, I prefer just to kill things."
+              },
+              {
+                "text": "Can you recommend a good bar?"
+              },
+              {
+                "text": "Okay, thanks."
+              }
+            ]
+          }
+        ],
+        "id": "HltJf9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Romeo and Juliet:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Father Lawrence",
+            "text": "Oh, to be a father in the times of whiskey! I sing and I drink and I wake up in gutters."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can you help Gary collect a skill memento, please?",
+                "steps": [
+                  {
+                    "player": "Can you help Gary collect a skill memento, please?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If Gary isn't with the player:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Father Lawrence",
+                        "text": "Is Gary one of my flock?"
+                      },
+                      {
+                        "player": "He's a lost sheep, if so. I'll go back and look for him."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "36zfNN"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If Gary is with the player:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "As a holy man, you will surely be an expert on training the Prayer skill. Can you offer me a memento of your training, please?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Father Lawrence",
+                        "text": "Memento of training Prayer? I suppose it's mostly about burying bones, so... um... yes, you can take these bones I've got. That'll save me writing another funeral sermon."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Gary transports the new memento to his ritual grid...",
+                        "id": "EXkLoc"
+                      },
+                      {
+                        "player": "Where do we need to go?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Asyff is a tailor with a shop near the south-east of the city. He does a lot of Crafting with materials from the Hunter skill, so I expect he can help us."
+                      }
+                    ],
+                    "id": "5X3urk"
+                  }
+                ]
+              },
+              {
+                "text": "Good morning."
+              }
+            ]
+          }
+        ],
+        "id": "T28jpn"
+      }
+    ],
+    "collecting-mementos-at-the-fancy-clothes-store": [
+      {
+        "type": "condition",
+        "text": "In free-to-play:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Asyff",
+            "text": "Can I help you?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "pFIjDi"
+          }
+        ],
+        "id": "XD8F9h"
+      },
+      {
+        "type": "condition",
+        "text": "In members:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Asyff",
+            "text": "Now you look like someone who goes to a lot of fancy dress parties."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "FdKtDL"
+          }
+        ],
+        "id": "Q80gCd"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary get some skill mementos, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary get some skill mementos, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Asyff",
+                    "text": "I might be able to. What does he need?"
+                  },
+                  {
+                    "player": "I'll go back and fetch him so he can tell you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4EIHoG"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I believe you often create outfits, yes, so I am hoping you can help me get a memento of the Crafting skill. Also one of the Hunter skill, from the materials you use."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Asyff",
+                    "text": "Oh, yes, I've crafted outfits from all kinds of pelts from hunters. It's an odd ask, but I suppose I can spare a little stuff..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new mementos to his ritual grid...",
+                    "id": "_xQMLm"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "We should visit Aubury, in his rune shop in the south- east of the city."
+                  }
+                ],
+                "id": "Yb66Xx"
+              }
+            ]
+          },
+          {
+            "text": "Errr... what are you saying exactly?"
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-aubury-s-rune-shop": [
+      {
+        "type": "line",
+        "speaker": "Aubury",
+        "text": "Do you want to buy some runes?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect some skill mementos, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect some skill mementos, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aubury",
+                    "text": "I'm not sure. Who is Gary?"
+                  },
+                  {
+                    "player": "He's... not with me. I'll go back and fetch him."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "UwtlFp"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Aubury",
+                    "text": "Oh, he's a little wizard? Hello."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Hello! Yes, I'm working on a magical ritual for which I need mementos of some skills. Firstly Magic and Runecraft. Also, perhaps you can cover Mining too?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not completed Rune Mysteries:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Aubury",
+                        "text": "I certainly have items relating to Magic. Runecraft is still quite a mystery, but I've bought a little essence off travelling merchants for my research."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Aubury",
+                        "text": "And, as you guessed, I keep a pickaxe in the hope that one day we will be able to mine our own essence."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "YcwVHf"
+                      }
+                    ],
+                    "id": "fmZJul"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Rune Mysteries:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Aubury",
+                        "text": "I certainly have items relating to Magic. Also Runecraft, thanks to [player name] helping rediscover the essence mine - for which I also have a handy pickaxe."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "XQQDfd"
+                      }
+                    ],
+                    "id": "ceZEtb"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "This is wonderful!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new mementos to his ritual grid...",
+                    "id": "2AZBDt"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I saw a thief roaming the south-east end of the city, just east of where we met. I'm sure he'll have a memento of Thieving - but we shouldn't ask where he got it!"
+                  }
+                ],
+                "id": "hbJrGa"
+              }
+            ]
+          },
+          {
+            "text": "Yes please!"
+          },
+          {
+            "text": "Can you tell me about your cape?"
+          },
+          {
+            "text": "Can you teleport me to the Rune Essence Mine?"
+          },
+          {
+            "text": "No thank you."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-talking-to-a-thief": [
+      {
+        "type": "line",
+        "speaker": "Thief",
+        "text": "What do you want?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect a skill memento, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect a skill memento, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Thief",
+                    "text": "I don't know any Gary. Go away."
+                  },
+                  {
+                    "player": "He must be nearby. I'll go and fetch him."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "eu_Evg"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Well, I understand you're a thief..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Thief",
+                    "text": "You making assumptions about me? How's a chap supposed to make an honest living if everyone just calls him a thief before he's even done anything?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Look, I just need a little memento from you. I won't ask where you got it from, and I promise I'll never call you a thief again."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Thief",
+                    "text": "Sounds like blackmail! Now who's the thief? But alright, take this and get out of here..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new memento to his ritual grid...",
+                    "id": "B61gxx"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Old Man Yarlo is a retired builder. He'll be able to help us with a memento of Construction. He lives slightly north-east from where you & I met."
+                  }
+                ],
+                "id": "uw64w3"
+              }
+            ]
+          },
+          {
+            "text": "What do you do around here?",
+            "steps": [
+              {
+                "player": "What do you do around here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Thief",
+                "text": "I mind my own business. That way I don't get cut."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "VF2M-l"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I'll leave you alone.",
+            "steps": [
+              {
+                "player": "Actually, I'll leave you alone."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-visiting-old-man-yarlo": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed Daddy's Home:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Old Man Yarlo",
+            "text": "What brings you here, young [lady/man/one]?"
+          }
+        ],
+        "id": "UnjDd1"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Daddy's Home:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Old Man Yarlo",
+            "text": "Hello again, young [lady/man/one]. You really did wonders for my little home. I feel so much happier living here now."
+          }
+        ],
+        "id": "nRcREu"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary with a skill memento, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary with a skill memento, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Old Man Yarlo",
+                    "text": "What do you mean?"
+                  },
+                  {
+                    "player": "Oh, I didn't bring Gary. At least he's probably not far away."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "lXphcp"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "As a famously experienced builder, perhaps you could help me, please. I need a memento of Construction, something to invoke the memories of training the skill. Perhaps a saw."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Old Man Yarlo",
+                    "text": "Eh? That's a strange request, young man. But you've asked nicely, and I do like to encourage young folks when I can, even if I don't understand why."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new memento to his ritual grid...",
+                    "id": "Ule8qY"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "The Apothecary would be well placed to get us a memento for Herblore. His shop's in the south-west of the city."
+                  }
+                ],
+                "id": "xyEYKf"
+              }
+            ]
+          },
+          {
+            "text": "That's good to hear. Goodbye now."
+          },
+          {
+            "text": "Tell me about more things I can do with Construction."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-the-apothecary": [
+      {
+        "type": "line",
+        "speaker": "Apothecary",
+        "text": "I am the Apothecary. I brew potions. Do you need anything specific?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you make potions for me?"
+          },
+          {
+            "text": "Can you help Gary get a skill memento, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary get a skill memento, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Apothecary",
+                    "text": "What kind of thing does Gary want?"
+                  },
+                  {
+                    "player": "I should fetch him, so he can tell you!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "k7jXU0"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "You are widely renowned as an expert on Herblore! Would you perhaps be able to give me a potion, as a memento of that noble skill, please?"
+                  }
+                ],
+                "id": "SqDVtu"
+              },
+              {
+                "type": "line",
+                "speaker": "Apothecary",
+                "text": "A potion? Oh yes, I make lots of those. Here's one I made for my mother - you can have it, since she didn't drink it all..."
+              },
+              {
+                "type": "message",
+                "text": "Gary transports the new memento to his ritual grid...",
+                "id": "VRel01"
+              },
+              {
+                "player": "Where do we need to go?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Just outside the city, to the south-west, Dreven the bush patch gardener should be able to help us with a Farming memento."
+              }
+            ]
+          },
+          {
+            "text": "Talk about A Tail of Two Cats."
+          },
+          {
+            "text": "Talk about something else."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-the-champions-guild-gardener": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you look after my crops for me?"
+          },
+          {
+            "text": "Can you help Gary get a skill memento?",
+            "steps": [
+              {
+                "player": "Can you help Gary get a skill memento?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Dreven",
+                    "text": "I don't understand."
+                  },
+                  {
+                    "player": "I'll fetch him, so he can explain."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "RbETIh"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I need a memento of Farming, something that evokes the memory of all the training you'll have done."
+                  }
+                ],
+                "id": "rElEY4"
+              },
+              {
+                "type": "line",
+                "speaker": "Dreven",
+                "text": "Um... memory of training Farming? I suppose we usually start out by raking a patch, so I'll give you a rake."
+              },
+              {
+                "type": "message",
+                "text": "Gary transports the new memento to his ritual grid...",
+                "id": "0NNMIW"
+              },
+              {
+                "player": "Where do we need to go?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Tarquin will have something helpful for us, I'm sure. He's by the riverbank, supervising the canoe station south-west of the city."
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?"
+          },
+          {
+            "text": "I'll come back another time."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-at-the-canoe-station": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Tarquin",
+        "text": "Hello old bean. Is there something I can help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary get a skill memento, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary get a skill memento, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Tarquin",
+                    "text": "I don't quite follow you, old bean!"
+                  },
+                  {
+                    "player": "Gary can explain. I'll go back and fetch him."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ONHBTG"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I understand you are an expert on watercraft. Do you have a memento of Sailing, or anything like that? I know your canoes don't have sails, but we're miles from the sea!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Tarquin",
+                    "text": "Hah! Canoes really are not the same thing at all. Fortunately for you, as a close relative of Misthalin's royal family, I have had ample opportunity to experience the joys of a royal yacht."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Tarquin",
+                    "text": "So I do know about Sailing. It's tremendous fun, though canoes will always remain my first passion. And yes, I do have a memento of my time at sea."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new memento to his ritual grid...",
+                    "id": "aVduTd"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Dr Harlow has experience of specialist combat supplies, and also of Woodcutting, I think. He's in the Blue Moon Inn, just north of where you & I met."
+                  }
+                ],
+                "id": "FZJ5B_"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?"
+          },
+          {
+            "text": "Could you teach me about canoes?"
+          },
+          {
+            "text": "No thanks, not right now."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-back-to-the-blue-moon-inn": [
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Buy me a drrink pleassh..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help Gary collect mementos of some skills, please?",
+            "steps": [
+              {
+                "player": "Can you help Gary collect mementos of some skills, please?"
+              },
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Wha...?"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary isn't with the player:",
+                "steps": [
+                  {
+                    "player": "Oh, never mind, I'll go back and fetch him."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CibF2F"
+              },
+              {
+                "type": "condition",
+                "text": "If Gary is with the player:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I believe you are a specialist in slaying certain monsters, are you not?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Dr Harlow",
+                    "text": "Speshialist? Proper speshial, yeh, that's me."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not completed Vampyre Slayer:",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Can I have one of the special tools you use for slaying vampyres, please? Although unconventional, I think it will work as a memento of the specialist combat techniques involved in Slayer!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "0IplJ-"
+                      }
+                    ],
+                    "id": "kHLw82"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Vampyre Slayer:",
+                    "steps": [
+                      {
+                        "player": "Vampyre slaying, right?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Dr Harlow",
+                        "text": "Ohhh. Yeh. I met you before. You got me beer! Very kind."
+                      },
+                      {
+                        "player": "So can you give Gary what he needs now, please?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "I need one of your stakes, please. Although unconventional, I think it will work as a memento of the specialist combat techniques involved in Slayer!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "GOGHnY"
+                      }
+                    ],
+                    "id": "nQACO9"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "If you also give me some of the wood from which you make them, that would constitute a memento of Woodcutting too."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Dr Harlow",
+                    "text": "Eh... whatever, you take it."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Gary transports the new mementos to his ritual grid...",
+                    "id": "NozR48"
+                  },
+                  {
+                    "player": "Where do we need to go?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "I think we have a memento for every skill! Let's return to the building where we met, and see how the ritual grid is looking! It's upstairs."
+                  }
+                ],
+                "id": "xChFdh"
+              }
+            ]
+          },
+          {
+            "text": "I think you've had enough."
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-straying-too-far-outside-varrock": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "I think we're getting a bit off course."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Alright, let's go back.",
+            "steps": [
+              {
+                "player": "Alright, let's go back."
+              }
+            ]
+          },
+          {
+            "text": "I've got other things to do now. Can you leave?",
+            "steps": [
+              {
+                "player": "I've got other things to do now. Can you leave?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "I'll wait back at the house in southern Varrock. We can meet there when you're ready to continue."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-using-any-item-on-gary-while-collecting-momentos": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Thank you, but your own items will be of no use to me."
+      }
+    ],
+    "collecting-mementos-using-any-item-on-a-ritual-tile": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Please don't touch that."
+      }
+    ],
+    "collecting-mementos-back-at-the-house": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Excellent, all the skills are represented now. I can feel the power building up already!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So do I get my rewards now?",
+            "steps": [
+              {
+                "player": "So do I get my rewards now?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Imp Catcher:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Ah, the archetypal adventurer, always seeking quest rewards - no wonder Mizgog roped you into finding beads for him! Don't worry, we'll get there soon."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "GkI2IG"
+                  }
+                ],
+                "id": "p6mMCk"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Imp Catcher:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Gary",
+                    "text": "Ah, the archetypal adventurer, always seeking quest rewards! Don't worry, we'll get there soon."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "oJnVj9"
+                  }
+                ],
+                "id": "MXHH5s"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Just one more thing is needed. For the centrepiece of the grid, we need something to represent RuneScape itself. An item that has always had a uniquely iconic status since the world's earliest days:"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "A cabbage!"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "F14PlW"
+              }
+            ]
+          },
+          {
+            "text": "That's nice.",
+            "steps": [
+              {
+                "player": "That's nice."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Just one more thing is needed. For the centrepiece of the grid, we need something to represent RuneScape itself. An item that has always had a uniquely iconic status since the world's earliest days:"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "A cabbage!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not already have a cabbage:",
+                "steps": [
+                  {
+                    "player": "I suppose I'd better go find one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "LMG0rN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has a cabbage:",
+                "steps": [
+                  {
+                    "player": "I am indeed carrying a cabbage."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "IDCJt7"
+                  }
+                ],
+                "id": "eC1S8k"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "collecting-mementos-back-at-the-house-using-any-item-other-than-a-cabbage-on-gary": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "That's not really what I need."
+      }
+    ],
+    "collecting-mementos-back-at-the-house-returning-with-a-cabbage": [
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Do you have a cabbage for me?"
+      },
+      {
+        "player": "I am indeed carrying a cabbage."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Wonderful! In that case I think the ritual can begin..."
+      },
+      {
+        "type": "message",
+        "text": "Gary places your cabbage in the ritual grid.",
+        "id": "-Eqk2L"
+      },
+      {
+        "type": "message",
+        "text": "The ritual uses full screen flashing effects that may affect some players.",
+        "id": "lKYbv1"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Disable effects",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have disabled the effects. You can visit the 'Settings' menu at any time to re-enable them.",
+                "id": "1Pc3HJ"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "pKl5n7"
+              }
+            ]
+          },
+          {
+            "text": "Leave effects enabled",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The ritual will proceed with full screen flashing effects enabled.",
+                "id": "5JCXNK"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "a2AtgW"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "action",
+        "text": "A cutscene plays of Gary opening the portal to the Realm of Memories.",
+        "id": "fxjIFk"
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "I DID IT! I opened the portal! You can go on through - I'm going to call my dad and tell him!"
+      }
+    ],
+    "finishing-up": [
+      {
+        "type": "message",
+        "text": "You hear Gary following you through the portal... ... and someone else too.",
+        "id": "Gcf79g"
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Oh, [player name], it's everything I ever hoped for! The demons, the dragons, the orcs - all looking like they did in the old days! And my dad's even come too!"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Grayzag",
+        "text": "Yeah, you did good, kid. I won't pretend I'm into this kind of thing, but you did a proper good job on the magic ritual."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Thanks, dad! So, now I've proven myself, can I ditch the 'apprentice' title, please? This feat surely qualifies me for higher status, right? Pleeeeease?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Grayzag",
+        "text": "Eh... go on then. Don't forget to reward [player name] too - you know how adventurers moan when they don't feel properly rewarded! Now I'm going home."
+      },
+      {
+        "type": "message",
+        "text": "Grayzag rewards Gary, and departs.",
+        "id": "G1_28p"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Gary",
+        "text": "This has been such a great day! I'm in the Realm of Memories, and I've even finished my apprenticeship. [player name], thank you so much!"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard Gary",
+        "text": "Now, I must reward you for your time and trouble. I hope you've got some inventory space..."
+      },
+      {
+        "type": "message",
+        "text": "You've completed the Birthday event: 25 Years, 25 Mememtos",
+        "id": "14FDSe"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have enough inventory space for the rewards:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need [number] more free inventory slots to receive your Birthday event rewards.",
+            "id": "YBX0JZ"
+          }
+        ],
+        "id": "pDvMyx"
+      }
+    ],
+    "in-the-realm-of-memories-wizard-gary": [
+      {
+        "type": "line",
+        "speaker": "Wizard Gary",
+        "text": "I'm having a wonderful time exploring the Realm. I hope you are too."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Remind me, what actually is this Realm of Memories we're in?",
+            "steps": [
+              {
+                "player": "Remind me, what actually is this Realm of Memories we're in?"
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Gary",
+                "text": "My dad was trying to invent a time travel portal, so he could go into the past and meet mighty demons of the Third Age like Thammaron, and maybe control them."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Gary",
+                "text": "Instead, the portal led to the history of RuneScape, rather than the history of Gielinor. That's why we can see demons and dragons as they looked in older times."
+              },
+              {
+                "type": "line",
+                "speaker": "Wizard Gary",
+                "text": "Other creatures too, as they used to be, and people who've departed long ago. And now I've managed to open my own portal, so I can see it all too, thanks to you!"
+              }
+            ]
+          },
+          {
+            "text": "Yes, thanks.",
+            "steps": [
+              {
+                "player": "Yes, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-realm-of-memories-gnome-child": [
+      {
+        "type": "condition",
+        "text": "If the player did not complete the 20th Anniversary event:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Gnome Child",
+            "text": "Welcome to the Realm of Memories."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "Z2QByG"
+          }
+        ],
+        "id": "ONsFhC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player completed the 20th Anniversary event:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Gnome Child",
+            "text": "I am so glad you have returned to the Realm of Memories, all these years after our adventure together!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "OeoML5"
+          }
+        ],
+        "id": "LrxuMB"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are all the gnomes here green?",
+            "steps": [
+              {
+                "player": "Why are all the gnomes here green?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gnome Child",
+                "text": "In my day all gnomes were green, like our trees. Although the world has changed, and gnomes are no longer green, the Short Green Guy cocktail is so named because of this."
+              },
+              {
+                "type": "line",
+                "speaker": "Gnome Child",
+                "text": "In fact, Blurberry still instructs his apprentices not to bring him a gnome when he asks for a Short Green Guy!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "CQ9ig3"
+              }
+            ]
+          },
+          {
+            "text": "So what do you actually do here?",
+            "steps": [
+              {
+                "player": "So what do you actually do here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gnome Child",
+                "text": "The people you see here all dwelt in the world as it used to be, in various different eras. Many such people have faded away into the mists of time, but a lucky few are remembered."
+              },
+              {
+                "type": "line",
+                "speaker": "Gnome Child",
+                "text": "They would be glad to meet you, I am sure."
+              },
+              {
+                "type": "line",
+                "speaker": "Gnome Child",
+                "text": "From the Realm, we watch how the world changes. We see the happy moments, the sad times, the lucky events, the dry streaks. It is a wonderful existence."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "yCh3dA"
+              }
+            ]
+          },
+          {
+            "text": "Thank you.",
+            "steps": [
+              {
+                "player": "Thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-realm-of-memories-talking-to-chuck": [
+      {
+        "type": "unavailable",
+        "id": "_x1mW6"
+      }
+    ],
+    "in-the-realm-of-memories-talking-to-big-mo": [
+      {
+        "type": "unavailable",
+        "id": "4LZNs8"
+      }
+    ],
+    "in-the-realm-of-memories-talking-to-thrander": [
+      {
+        "type": "unavailable",
+        "id": "S28EPP"
+      }
+    ],
+    "in-the-realm-of-memories-talking-to-pious-pete": [
+      {
+        "type": "unavailable",
+        "id": "QbGoNH"
+      }
+    ],
+    "post-event-talking-to-wizard-grayzag": [
+      {
+        "type": "condition",
+        "text": "If the player has completed Imp Catcher:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Wizard Grayzag",
+            "text": "So you think finding those beads makes you clever, do you?"
+          },
+          {
+            "player": "Well yes, actually."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Grayzag",
+            "text": "Well you'd better just watch your back, because when you least expect it I'll be there. You shouldn't go sticking your nose into other people's affairs, meddler."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "mWthnP"
+          }
+        ],
+        "id": "FLPcsR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has started Imp Catcher:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Wizard Grayzag",
+            "text": "You're a fool, [player name]. Do you really think you'll find four imps out of thousands? Good luck. Ha!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "Fg8D7I"
+          }
+        ],
+        "id": "BMGRll"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not started Imp Catcher:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Wizard Grayzag",
+            "text": "Not now, I'm trying to concentrate on a very difficult spell!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "tXMBBa"
+          }
+        ],
+        "id": "MeiMtl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has started or completed the 20th Anniversary event:",
+        "steps": [
+          {
+            "player": "You were nicer to me when you had that little gnome wandering around here before."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Grayzag",
+            "text": "Well he's not bothering me anymore, is he? And you don't need to bother me either!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "BPX2Ah"
+          }
+        ],
+        "id": "OrQpGZ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed the 25th Anniversary event:",
+        "steps": [
+          {
+            "player": "You seemed like a completely different person when you were complimenting Gary on his ritual that opened the Realm of Memories."
+          },
+          {
+            "type": "line",
+            "speaker": "Wizard Grayzag",
+            "text": "My son's a smart kid who's becoming a great wizard, while you're a do-gooder who fetches & carries stuff for smarter people. I know which of you two earned my respect."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "yHdxCa"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not done either event:",
+        "steps": [],
+        "id": "ChlOo6"
+      }
+    ],
+    "post-event-using-an-item-on-one-of-the-mementos": [
+      {
+        "type": "message",
+        "text": "You feel you should leave it alone.",
+        "id": "U0PMkt"
+      }
+    ]
+  },
+  "activation": "explicit",
+  "branches": {
+    "jump-f8eec5805832468b": [
+      {
+        "player": "I need to go and do something else."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Okay."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-a0c8f302907db0a3": [
+      {
+        "player": "Remind me, what's the Realm of Memories?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "My dad was trying to invent a time travel portal, so he could go into the past and meet mighty demons of the Third Age like Thammaron, and maybe control them."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Instead, the portal led to the history of RuneScape, rather than the history of Gielinor. In the Realm of Memories, he says there are demons and dragons as they looked in older times."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Other creatures too, as they used to be, and people who've departed long ago, like Thrander, the smith who performed armour conversion services."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'll help make a portal to the Realm of Memories!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "s69n7C",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-86f1b8fab6b2c8a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, who did you say you are?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "YIGZt0",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-383c1991ea4a244c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Maybe another time.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "4g-4hT",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3723dbff246f8629"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-383c1991ea4a244c": [
+      {
+        "player": "Remind me, who did you say you are?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't previously completed the 20th Anniversary event:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Gary",
+            "text": "I'm Gary Grayzag, the wizard. Well, apprentice wizard. My father is Wizard Grayzag. He once accidentally created a portal to the Realm of Memories."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "brPdN-"
+          }
+        ],
+        "id": "NA86LL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has previously completed the 20th Anniversary event:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Gary",
+            "text": "I'm Gary Grayzag, the wizard. Well, apprentice wizard. My father is Wizard Grayzag. He asked you to deal with the green Gnome Child that came through a portal from the Realm of Memories."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "1JXBAE"
+          }
+        ],
+        "id": "3Wy3sT"
+      },
+      {
+        "type": "condition",
+        "text": "If Imp Catcher has been completed:",
+        "steps": [
+          {
+            "player": "Oh yes, and his imps stole all those beads from Wizard Mizgog."
+          },
+          {
+            "type": "line",
+            "speaker": "Gary",
+            "text": "I'm sorry about that!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "VLvdXw"
+          }
+        ],
+        "id": "L7VP0C"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'll help make a portal to the Realm of Memories!",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "3Foh2d",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-86f1b8fab6b2c8a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, what's the Realm of Memories?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "6ZGnX4",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a0c8f302907db0a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Maybe another time.",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "F_9hT2",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-3723dbff246f8629"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-86f1b8fab6b2c8a3": [
+      {
+        "player": "Yes, I'll help make a portal to the Realm of Memories!"
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Thank you so much! To open the portal to the Realm of Memories, I believe we need mementos that will invoke powerful memories of the world."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the mementos that we need.",
+            "steps": [
+              {
+                "player": "Tell me about the mementos that we need."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "The mementos must be artefacts that invoke powerful memories. And, in RuneScape, what could be more powerful than the memory of experience?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "The experience people have gained, every single day, since the world was created, training their skills - imagine how intense that collective memory will be! So my ritual uses mementos of the 24 skills."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay, let's get on with it.",
+                    "steps": [
+                      {
+                        "player": "Okay, let's get on with it."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "I've worked out where we can get suitable mementos around Varrock, and I've prepared a place upstairs in this building where we'll perform a ritual with them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Whenever you're ready, we'll go around Varrock together to collect the mementos."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Let's go.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "hQJLJy"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I need to go and do something else.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "c2i7vh",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f8eec5805832468b"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I've done some training. Can you use my items?",
+                    "steps": [
+                      {
+                        "player": "I've done some training. Can you use my items?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "That'd be convenient! But no, I need to obtain the items with you myself. Otherwise the memories associated with them aren't transferred to me."
+                      },
+                      {
+                        "player": "Okay, let's get on with it."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "I've worked out where we can get suitable mementos around Varrock, and I've prepared a place upstairs in this building where we'll perform a ritual with them."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "Whenever you're ready, we'll go around Varrock together to collect the mementos."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Let's go.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "9HnLqu"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I need to go and do something else.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "id": "tiSTGV",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-f8eec5805832468b"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why don't we get souvenirs like the Gnome Child did last time?",
+                    "condition": "If the 20th Anniversary event was completed:",
+                    "steps": [
+                      {
+                        "player": "Why don't we get souvenirs like the Gnome Child did last time?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Gary",
+                        "text": "The gnome used them up. I think we need something fresh for my ritual now."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "-3z6kF"
+                      }
+                    ],
+                    "id": "cQvyxb"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, what's the Realm of Memories?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "BFw7vi",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-a0c8f302907db0a3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me, who did you say you are?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "eVotwN",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-383c1991ea4a244c"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I need to go and do something else.",
+            "steps": [
+              {
+                "player": "I need to go and do something else."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Okay."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-3723dbff246f8629": [
+      {
+        "player": "Maybe another time."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "I hope so."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-349758ca5c863e32": [
+      {
+        "player": "I don't want strange people finding me just now."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "Oh, I'm sorry. I hope you can come back another time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-2a62fdc1cc012d01": [
+      {
+        "player": "Tell me about the mementos that we need."
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "The mementos must be artefacts that invoke powerful memories. And, in RuneScape, what could be more powerful than the memory of experience?"
+      },
+      {
+        "type": "line",
+        "speaker": "Gary",
+        "text": "The experience people have gained, every single day, since the world was created, training their skills - imagine how intense that collective memory will be! So my ritual uses mementos of the 24 skills."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, let's get on with it.",
+            "steps": [
+              {
+                "player": "Okay, let's get on with it."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "I've worked out where we can get suitable mementos around Varrock, and I've prepared a place upstairs in this building where we'll perform a ritual with them."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Whenever you're ready, we'll go around Varrock together to collect the mementos."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's go.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "hQJLJy"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I need to go and do something else.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "c2i7vh",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f8eec5805832468b"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've done some training. Can you use my items?",
+            "steps": [
+              {
+                "player": "I've done some training. Can you use my items?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "That'd be convenient! But no, I need to obtain the items with you myself. Otherwise the memories associated with them aren't transferred to me."
+              },
+              {
+                "player": "Okay, let's get on with it."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "I've worked out where we can get suitable mementos around Varrock, and I've prepared a place upstairs in this building where we'll perform a ritual with them."
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "Whenever you're ready, we'll go around Varrock together to collect the mementos."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's go.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "9HnLqu"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I need to go and do something else.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "tiSTGV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-f8eec5805832468b"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why don't we get souvenirs like the Gnome Child did last time?",
+            "condition": "If the 20th Anniversary event was completed:",
+            "steps": [
+              {
+                "player": "Why don't we get souvenirs like the Gnome Child did last time?"
+              },
+              {
+                "type": "line",
+                "speaker": "Gary",
+                "text": "The gnome used them up. I think we need something fresh for my ritual now."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "-3z6kF"
+              }
+            ],
+            "id": "cQvyxb"
+          }
+        ]
+      }
+    ],
+    "jump-b001aa7a284d2d81": [
+      {
+        "player": "Can you help Gary collect a skill memento, please?"
+      },
+      {
+        "type": "condition",
+        "text": "If Gary isn't with the player:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Father Lawrence",
+            "text": "Is Gary one of my flock?"
+          },
+          {
+            "player": "He's a lost sheep, if so. I'll go back and look for him."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "36zfNN"
+      },
+      {
+        "type": "condition",
+        "text": "If Gary is with the player:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Gary",
+            "text": "As a holy man, you will surely be an expert on training the Prayer skill. Can you offer me a memento of your training, please?"
+          },
+          {
+            "type": "line",
+            "speaker": "Father Lawrence",
+            "text": "Memento of training Prayer? I suppose it's mostly about burying bones, so... um... yes, you can take these bones I've got. That'll save me writing another funeral sermon."
+          },
+          {
+            "type": "message",
+            "text": "Gary transports the new memento to his ritual grid...",
+            "id": "EXkLoc"
+          },
+          {
+            "player": "Where do we need to go?"
+          },
+          {
+            "type": "line",
+            "speaker": "Gary",
+            "text": "Asyff is a tailor with a shop near the south-east of the city. He does a lot of Crafting with materials from the Hunter skill, so I expect he can help us."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "5X3urk"
+      }
+    ],
+    "Dlj2ui": [
+      {
+        "type": "call",
+        "branch": "jump-a0c8f302907db0a3"
+      }
+    ],
+    "CnvlKl": [
+      {
+        "type": "call",
+        "branch": "jump-383c1991ea4a244c"
+      }
+    ]
+  }
+}

@@ -520,6 +520,14 @@ def parse_npc(name, raw, nav_templates=None):
     raw = re.sub(
         r"<!--.*?-->", lambda match: "\n" * match[0].count("\n"), raw, flags=re.S
     )
+    # Seasonal pages share NPC identities, but only their activity may select
+    # them. Preserve that source policy in the compact consumer contract.
+    event_source = any(
+        str(template.name).strip().casefold() == "transcript"
+        and template.has(1)
+        and str(template.get(1).value).strip().casefold() == "event"
+        for template in mw.parse(raw).filter_templates(recursive=False)
+    )
     poem = None
     source_lines = raw.splitlines()
     last_content_line = max(
@@ -617,6 +625,7 @@ def parse_npc(name, raw, nav_templates=None):
         variants=variants,
         review_issues=issues,
         participants=participants,
+        **({"activation": "explicit"} if event_source else {}),
     )
 
 
@@ -680,6 +689,7 @@ def gameplay_npc(name, parsed):
             for key, variant in parsed["variants"].items()
             if variant.get("_omit_selected")
         ],
+        **({"activation": parsed["activation"]} if "activation" in parsed else {}),
     }
 
 
@@ -1031,7 +1041,11 @@ def main():
     apply_bindings(data, bindings)
     apply_corrections(
         data,
-        json.loads((config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")),
+        json.loads(
+            (config.DATA_PATH / "dialogues" / "corrections.json").read_text(
+                encoding="utf-8"
+            )
+        ),
     )
     dialogues = dict(sorted(data["records"].items()))
     classified = {title for titles in types.values() for title in titles}
@@ -1045,6 +1059,16 @@ def main():
     save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
     save(args.out, dialogues)
     save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
+    # Activity consumers can import this complete generated artifact without
+    # replacing a game's independently updated ordinary NPC/quest catalogue.
+    save(
+        args.out.with_name("event-dialogues.json"),
+        {
+            name: record
+            for name, record in dialogues.items()
+            if record.get("activation") == "explicit"
+        },
+    )
     save(args.out.with_name("npc-dialogue-index.json"), index)
     save(
         args.out.with_name("dialogue-types.json"),

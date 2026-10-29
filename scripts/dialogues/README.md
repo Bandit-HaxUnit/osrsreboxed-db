@@ -303,6 +303,29 @@ Export tests validate schemas, all shards, binding IDs and index references.
 Copy the aggregate and NPC index into TSPS together, and run its dialogue/quest
 checks before adopting a refreshed dump.
 
+### Activity-only event sources
+
+The source's top-level `{{Transcript|event}}` header marks its compact record
+`"activation": "explicit"`. Consumers must exclude those records from automatic
+NPC/default/alias selection. The owning activity selects a named variant only
+after checking its event window and progression. Participant IDs remain in the
+source index for explicit routing; their presence does not activate the event.
+Event titles are excluded from inferred quest-start actions and Yes/No hooks.
+
+`event-dialogues.json` is the exact generated subset with that policy. It can be
+imported as a complete separate catalogue without replacing ordinary NPC or
+quest records that a game has updated independently. Do not hand-merge records
+into either aggregate; regenerate from saved sources. Consumers must validate
+the explicit policy and reject conflicting records when combining catalogues.
+
+The saved sources include the 2025 Christmas (revision15101737), Easter
+(15284167), Halloween (15135865) and 25th Anniversary (15142456) transcripts.
+They supply dialogue, not an executable activity: prose conditions, unresolved
+navigation, gameplay effects, current-cache actor identities and seasonal state
+still need the owning game's implementation and native-path validation. The
+review report retains those source gaps; do not enable a source's first branch
+as a substitute for implementing its requirements or rewards.
+
 Source: https://oldschool.runescape.wiki/ — game dialogue copyright Jagex;
 wiki content CC BY-NC-SA 3.0, additional terms at
 https://meta.weirdgloop.org/w/Licensing. Retain `docs/npcs-dialogues.LICENSE`

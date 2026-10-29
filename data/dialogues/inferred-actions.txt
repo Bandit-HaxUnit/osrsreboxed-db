@@ -13,10 +13,10 @@ a pattern is too tight.
 Template-derived slugs (opens/opens2/receives/gives) are exact and are not
 listed here.
 
-1127 inferred steps, 3340 left as prose.
+1133 inferred steps, 3367 left as prose.
 
 
-INFERRED condition  (229 steps, 88 distinct)
+INFERRED condition  (231 steps, 90 distinct)
 ------------------------------------------------------------------------
   [ 19] If the player does not have inventory space:
         npcs:   Kragen, Marisi, Observatory Quest, +2 more
@@ -118,6 +118,10 @@ INFERRED condition  (229 steps, 88 distinct)
         npcs:   Torrell
   [  1] If the player has not unlocked the shop:
         npcs:   Uglug Nar
+  [  1] If the player has more customers to serve.
+        npcs:   2025 Christmas event
+  [  1] If the player has served all 3 customers.
+        npcs:   2025 Christmas event
   [  1] If the player incorrectly selects the five words:
         npcs:   Demon Slayer
   [  1] If the player correctly selects the five words:
@@ -195,7 +199,7 @@ INFERRED condition  (229 steps, 88 distinct)
   [  1] If the player has the letter:
         npcs:   What Lies Below
 
-INFERRED emote  (57 steps, 41 distinct)
+INFERRED emote  (58 steps, 42 distinct)
 ------------------------------------------------------------------------
   [  6] The player performs the 'Push up' emote.
         npcs:   Captain Cain
@@ -243,6 +247,8 @@ INFERRED emote  (57 steps, 41 distinct)
         npcs:   Zombie (2005 Halloween event)
   [  1] The player performs the cheer emote.
         npcs:   Zombie (2005 Halloween event)
+  [  1] The player does the Jump for Joy emote while the cook laughs.
+        npcs:   2025 Christmas event
   [  1] Larry performs the Dance emote.
         npcs:   Cold War
   [  1] Akthanakos walks away and Enakhra laughs.
@@ -291,7 +297,7 @@ INFERRED heal  (7 steps, 4 distinct)
   [  1] Sabreen heals you for 21 Hitpoints.
         npcs:   Sabreen
 
-INFERRED open_interface  (316 steps, 119 distinct)
+INFERRED open_interface  (319 steps, 119 distinct)
 ------------------------------------------------------------------------
   [ 38] (Bank space purchase interface opens.)
         target: Bank space purchase
@@ -331,6 +337,9 @@ INFERRED open_interface  (316 steps, 119 distinct)
   [  4] ("Move Cargo to Bank" interface opens.)
         target: Move Cargo to Bank
         npcs:   Cabin Boy Jenkins (ghost), Ex-Captain Siad, Jobless Jim
+  [  4] (Event complete interface opens.)
+        target: Event complete
+        npcs:   2025 Easter event, 2025 Halloween event, Easter Bunny
   [  4] Refund menu opens.
         target: Refund
         npcs:   Hagus
@@ -517,9 +526,6 @@ INFERRED open_interface  (316 steps, 119 distinct)
   [  1] Shop interface for Darkmeyer General Store opens.
         target: Shop interface for Darkmeyer General Store
         npcs:   Drasdan Ranor
-  [  1] (Event complete interface opens.)
-        target: Event complete
-        npcs:   Easter Bunny
   [  1] Opens Shellbane Gryphon Statistics
         target: Shellbane Gryphon Statistics
         npcs:   Elder Nama
@@ -1217,12 +1223,12 @@ INFERRED teleport  (307 steps, 160 distinct)
         npcs:   Witch's House
 
 
-UNMATCHED  (3340 steps, 2073 distinct) -- still prose, no action key
+UNMATCHED  (3367 steps, 2089 distinct) -- still prose, no action key
 ------------------------------------------------------------------------
   [157] Congratulations! Quest complete!
         npcs:   A Kingdom Divided, A Porcine of Interest, A Ruff Situation, +139 more
-  [ 43] The cutscene ends.
-        npcs:   A Kingdom Divided, A Night at the Theatre, A Taste of Hope, +17 more
+  [ 45] The cutscene ends.
+        npcs:   2025 Easter event, 2025 Halloween event, A Kingdom Divided, +19 more
   [ 35] Slayer Masters will now take the player's combat level into account.
         npcs:   Achtryn, Animal Magnetism, Aya, +11 more
   [ 35] Slayer Masters will no longer take the player's combat level into account.
@@ -1411,6 +1417,8 @@ UNMATCHED  (3340 steps, 2073 distinct) -- still prose, no action key
         npcs:   Doomsayer
   [  3] The screen turns to black as combat-related sound effects play
         npcs:   Duke (monkey)
+  [  3] (Rehearsal cutscene begins.)
+        npcs:   2025 Easter event, Easter Bunny
   [  3] The empty beer glass is removed from the player's inventory.
         npcs:   Emily, Kaylee, Tina
   [  3] All empty beer glasses are removed from the player's inventory.
@@ -1627,6 +1635,18 @@ UNMATCHED  (3340 steps, 2073 distinct) -- still prose, no action key
         npcs:   Doris, Recipe for Disaster/Freeing Evil Dave
   [  2] Dusuri gains a 'Trade' right-click option
         npcs:   Dusuri
+  [  2] Small cutscene ensues...
+        npcs:   2025 Easter event, Easter Bunny
+  [  2] The player bowls down 3 carrot pins.
+        npcs:   2025 Easter event, Easter Bunny
+  [  2] The Easter Bunny bowls a strike.
+        npcs:   2025 Easter event, Easter Bunny
+  [  2] The player bowls down the middle 6 pins.
+        npcs:   2025 Easter event, Easter Bunny
+  [  2] The screen fades black with the text "Some time later..."
+        npcs:   2025 Easter event, Easter Bunny
+  [  2] (Continues with Fry dialogue.)
+        npcs:   2025 Easter event, Easter Bunny
   [  2] Oziach thinks (emote)
         npcs:   Estate agent (2021 Halloween event)
   [  2] The estate agent leaves.
@@ -1761,6 +1781,8 @@ UNMATCHED  (3340 steps, 2073 distinct) -- still prose, no action key
         npcs:   Yohnus
   [  2] The players withdraws all of the coins currently in the coffer
         npcs:   Yohnus
+  [  2] (Player enters the hole.)
+        npcs:   2025 Easter event
   [  2] A cutscene begins. The player and Commander Fullore approach Kingstown, and are stopped by Tomas Lawry and Captain Ginea.
         npcs:   A Kingdom Divided
   [  2] Cutscene ends, and the player is now in front of Councillor Hughes' house.
@@ -2211,20 +2233,6 @@ UNMATCHED  (3340 steps, 2073 distinct) -- still prose, no action key
         npcs:   Don't Know What
   [  1] Player exits Weiss
         npcs:   Don't Know What
-  [  1] Small cutscene ensues...
-        npcs:   Easter Bunny
-  [  1] The player bowls down 3 carrot pins.
-        npcs:   Easter Bunny
-  [  1] The Easter Bunny bowls a strike.
-        npcs:   Easter Bunny
-  [  1] The player bowls down the middle 6 pins.
-        npcs:   Easter Bunny
-  [  1] The screen fades black with the text "Some time later..."
-        npcs:   Easter Bunny
-  [  1] (Rehearsal cutscene begins.)
-        npcs:   Easter Bunny
-  [  1] (Continues with Fry dialogue.)
-        npcs:   Easter Bunny
   [  1] The player is let into Awowogei's throne room.
         npcs:   Elder Guard
   [  1] The player is let out of Awowogei's throne room.
@@ -2775,6 +2783,36 @@ UNMATCHED  (3340 steps, 2073 distinct) -- still prose, no action key
         npcs:   Zombie (2005 Halloween event)
   [  1] The zombie splits in two, then splices the one half and the other half back together.
         npcs:   Zombie (2005 Halloween event)
+  [  1] A cutscene plays where the cook brings the player Christmas dinner to their table. Mod_Freddie can be seen outside the puffin's pillory cell in the background, doing the cry emote.
+        npcs:   2025 Christmas event
+  [  1] Cutscene starts: "After a long walk, you reach the desert."
+        npcs:   2025 Easter event
+  [  1] Cutscene: "A long while later..."
+        npcs:   2025 Easter event
+  [  1] Player is returned to the Rabbit Hole
+        npcs:   2025 Easter event
+  [  1] Rinder, Eggus Manus, Glanton, and the player arrive on the stage.
+        npcs:   2025 Easter event
+  [  1] Rinder, Eggus Manus, and Glanton leave the stage.
+        npcs:   2025 Easter event
+  [  1] Cutscene: "Dance time."
+        npcs:   2025 Easter event
+  [  1] (The order of the dialogue depends on the order chosen by the player.)
+        npcs:   2025 Easter event
+  [  1] (All previous Halloween event rewards are unlocked if not already unlocked.)
+        npcs:   2025 Halloween event
+  [  1] A cutscene begins. Death shows up to judge Fred's farm decorations.
+        npcs:   2025 Halloween event
+  [  1] Gary equips his hat.
+        npcs:   25th Anniversary event
+  [  1] While on the Sailing step:
+        npcs:   25th Anniversary event
+  [  1] While on the Slayer and Woodcutting step:
+        npcs:   25th Anniversary event
+  [  1] Gary teleports back to his initial location.
+        npcs:   25th Anniversary event
+  [  1] A cutscene plays of Gary opening the portal to the Realm of Memories.
+        npcs:   25th Anniversary event
   [  1] You do not meet all of the requirements to start the A Kingdom Divided quest.
         npcs:   A Kingdom Divided
   [  1] Tomas departs for Mount Quidamortem.
