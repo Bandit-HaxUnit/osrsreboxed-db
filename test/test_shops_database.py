@@ -288,6 +288,56 @@ def test_parse_shop_items_reads_the_bucketname():
     assert [item["id"] for item in items] == [25537]
 
 
+def test_parse_shop_removal_reads_gone_and_removal():
+    """A gone shop records its removal; a current shop, or a versioned page
+    with only some versions removed, does not."""
+    gone = """{{Gone|update=Slayer Partners}}
+{{Infobox Shop
+|name = Thessalia's Makeovers
+|removal = [[14 August]] [[2024]]
+|removalupdate = Slayer Partners
+}}"""
+    assert shops_items.parse_shop_removal(gone) == {
+        "date": "14 August 2024",
+        "update": "Slayer Partners",
+    }
+    assert shops_items.parse_shop_removal(
+        "{{Gone|update=Poll 70 Game Improvements}}\n{{Infobox Shop\n|name = X\n}}"
+    ) == {"update": "Poll 70 Game Improvements"}
+    partly = """{{Infobox Shop
+|version1 = Old
+|version2 = New
+|removal1 = [[1 May]] [[2020]]
+}}"""
+    assert shops_items.parse_shop_removal(partly) is None
+    assert shops_items.parse_shop_removal("{{Infobox Shop\n|name = Y\n}}") is None
+
+
+def test_removed_shops_are_marked_in_the_export():
+    """Thessalia's Makeovers is gone (Slayer Partners); her Fine Clothes is not,
+    and both are still exported so consumers can tell them apart."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    assert shops["Thessalia's Makeovers"]["shop_info"]["removed"] == {
+        "date": "14 August 2024",
+        "update": "Slayer Partners",
+    }
+    assert "removed" not in shops["Thessalia's Fine Clothes."]["shop_info"]
+    removed = sorted(
+        name for name, shop in shops.items() if "removed" in shop["shop_info"]
+    )
+    assert removed == [
+        "Beach Cocktails",
+        "Beach Kit",
+        "Bounty Hunter Shop (historical)",
+        "Bunbridge General Store",
+        "The Haymaker's Arms",
+        "The Nutcracker",
+        "Thessalia's Makeovers",
+        "Yrsa's Shoe Store",
+    ]
+
+
 def test_shop_exports_regenerate_from_the_committed_wiki_cache(tmp_path, monkeypatch):
     """The committed shop exports are exactly what the committed wiki cache
     produces offline, run after run.

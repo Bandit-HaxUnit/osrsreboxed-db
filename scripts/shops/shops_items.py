@@ -32,7 +32,6 @@ from osrsreboxed import items_api
 from scripts.shops import shop_owners
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 
-
 # Constants
 
 # Setup logging
@@ -232,11 +231,15 @@ def fetch() -> None:
 
         # Check if this shop has tabber structure
         tabber_sections = parse_tabber_structure(wikitext)
+        # Removal is a page fact: every substore of a gone page is gone.
+        removed = parse_shop_removal(wikitext)
 
         if tabber_sections:
             for section_name, section_content in tabber_sections.items():
                 substore_name = f"{shop_name} ({section_name})"
                 shop_info = parse_shop_info(section_content)
+                if removed is not None:
+                    shop_info["removed"] = removed
                 shop_items = parse_shop_items(substore_name, section_content)
                 if shop_items or any(shop_info.values()):
                     all_shops_data[substore_name] = {
@@ -248,6 +251,8 @@ def fetch() -> None:
                     )
         else:
             shop_info = parse_shop_info(wikitext)
+            if removed is not None:
+                shop_info["removed"] = removed
             shop_items = parse_shop_items(shop_name, wikitext)
             if shop_items or any(shop_info.values()):
                 all_shops_data[shop_name] = {
@@ -347,6 +352,68 @@ def parse_tabber_structure(wikitext: str) -> dict:
         tabber_sections[tab_name] = "\n".join(current_content)
 
     return tabber_sections
+
+
+INFOBOX_SHOP = re.compile(r"\{\{\s*Infobox Shop(.*?)\n\}\}", re.I | re.S)
+GONE = re.compile(r"\{\{\s*Gone\s*(\|[^{}]*)?\}\}", re.I)
+WIKI_LINK_TEXT = re.compile(r"\[\[(?:[^|\]]+\|)?([^\]]+)\]\]")
+
+
+def _infobox_fields(wikitext: str) -> dict:
+    """The top-level ``|key = value`` fields of a page's Infobox Shop."""
+    match = INFOBOX_SHOP.search(wikitext)
+    fields = {}
+    if match:
+        for field in re.finditer(r"^\|\s*([\w ]+?)\s*=\s*(.*)$", match.group(1), re.M):
+            fields[field.group(1).lower()] = field.group(2).strip()
+    return fields
+
+
+def _plain(value: str) -> str:
+    """Wiki markup to text: "[[14 August]] [[2024]]" -> "14 August 2024"."""
+    return re.sub(r"\s+", " ", WIKI_LINK_TEXT.sub(r"\1", value)).strip()
+
+
+def parse_shop_removal(wikitext: str):
+    """Read whether a shop page describes a shop that is gone from the game.
+
+    A page is gone when it carries ``{{Gone}}``, or when its Infobox Shop gives
+    a ``removal`` for the shop (for a versioned infobox, for every version).
+    Returns None for a current shop, else the removal ``date`` and ``update``
+    the page states (either may be absent); a versioned page reports its last.
+    A page whose infobox merely mentions a removed version stays current.
+
+    :param wikitext: The shop page's wikitext.
+    :return: None, or a dict with optional "date" and "update".
+    """
+    fields = _infobox_fields(wikitext)
+    versions = sorted(
+        int(key[len("version") :]) for key in fields if re.fullmatch(r"version\d+", key)
+    )
+    suffixes = [str(number) for number in versions] or [""]
+    dates = [
+        fields.get(f"removal{suffix}") or fields.get("removal") for suffix in suffixes
+    ]
+    gone = GONE.search(wikitext)
+    if not gone and not all(dates):
+        return None
+
+    removed = {}
+    last = suffixes[-1]
+    date = fields.get(f"removal{last}") or fields.get("removal")
+    if date:
+        removed["date"] = _plain(date)
+    update = fields.get(f"removalupdate{last}") or fields.get("removalupdate")
+    if not update and gone:
+        params = dict(
+            part.split("=", 1)
+            for part in (gone.group(1) or "").strip("|").split("|")
+            if "=" in part
+        )
+        update = params.get("update", "").replace("_", " ")
+    if update:
+        removed["update"] = _plain(update)
+    return removed
 
 
 def parse_shop_info(wikitext: str) -> dict:
