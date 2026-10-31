@@ -286,3 +286,68 @@ def test_parse_shop_items_reads_the_bucketname():
 """
     items = shops_items.parse_shop_items("Dusuri's Star Shop", wikitext)
     assert [item["id"] for item in items] == [25537]
+
+
+def test_shop_exports_regenerate_from_the_committed_wiki_cache(tmp_path, monkeypatch):
+    """The committed shop exports are exactly what the committed wiki cache
+    produces offline, run after run.
+
+    A dump made from a newer, uncommitted page cache cannot be reproduced by
+    anyone else (the 2026-10-03 dump stocked items the committed cache did not
+    list), and a hand-patched export drifts from its source. Both fail here.
+    """
+    import shutil
+
+    from scripts.shops import shops_properties
+
+    data_dir = tmp_path / "data" / "shops"
+    docs_dir = tmp_path / "docs"
+    package_dir = tmp_path / "osrsreboxed"
+    data_dir.mkdir(parents=True)
+    docs_dir.mkdir()
+    package_dir.mkdir()
+    for name in (
+        "shops-wiki-page-titles.json",
+        "shops-wiki-page-text.json",
+        "shop-owners-wiki-page-text.json",
+    ):
+        shutil.copy(config.DATA_SHOPS_PATH / name, data_dir / name)
+    shutil.copy(
+        config.DOCS_PATH / "npcs-interactions.json", docs_dir / "npcs-interactions.json"
+    )
+
+    monkeypatch.setattr(config, "DATA_SHOPS_PATH", data_dir)
+    monkeypatch.setattr(config, "DOCS_PATH", docs_dir)
+    monkeypatch.setattr(config, "PACKAGE_PATH", package_dir)
+    monkeypatch.setattr(
+        shops_properties, "TITLES_FP", data_dir / "shops-wiki-page-titles.json"
+    )
+    monkeypatch.setattr(
+        shops_properties, "TEXT_FP", data_dir / "shops-wiki-page-text.json"
+    )
+    monkeypatch.setattr(
+        shop_owners, "SHOPS_TEXT_FP", data_dir / "shops-wiki-page-text.json"
+    )
+    monkeypatch.setattr(
+        shop_owners, "OWNERS_TEXT_FP", data_dir / "shop-owners-wiki-page-text.json"
+    )
+    monkeypatch.setattr(shop_owners, "OWNERS_FP", data_dir / "shop-owners.json")
+
+    root = Path(__file__).resolve().parent.parent
+    committed = {
+        "data/shops/shop-owners.json": data_dir / "shop-owners.json",
+        "docs/shops-items-by-shop.json": docs_dir / "shops-items-by-shop.json",
+        "docs/shops-by-npc.json": docs_dir / "shops-by-npc.json",
+        "osrsreboxed/docs/shops-items-by-shop.json": package_dir
+        / "docs"
+        / "shops-items-by-shop.json",
+    }
+    for _ in range(2):
+        shops_properties.process()
+        shop_owners.process()
+        shops_items.fetch()
+        shops_items.process()
+        for name, generated in committed.items():
+            assert (
+                generated.read_bytes() == (root / name).read_bytes()
+            ), f"{name} does not regenerate from the committed wiki cache"
