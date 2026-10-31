@@ -34,7 +34,9 @@ import json
 import logging
 import re
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Set
+
+import requests
 
 import config
 from builders.run_log import begin_run
@@ -102,7 +104,11 @@ def parse_shop_owners(wikitext: str) -> List[Dict]:
         if not named:
             # A handful of shops name an owner without linking to a page.
             plain = re.sub(r"\[\[|\]\]|'{2,}", "", value).strip()
-            if plain and not plain.startswith("{{") and plain.lower() not in NO_OWNER_VALUES:
+            if (
+                plain
+                and not plain.startswith("{{")
+                and plain.lower() not in NO_OWNER_VALUES
+            ):
                 named = [{"name": plain, "wiki_page": None}]
         for owner in named:
             key = (owner["wiki_page"], owner["name"])
@@ -133,11 +139,48 @@ def _owners_by_shop() -> Dict[str, List[Dict]]:
     return owners_by_shop
 
 
+# NPC pages whose infobox links a shop with `|shop = [[...]]` (or shop1, ...).
+# A shop page's owner field often names only the keeper, while the assistants'
+# own pages say which shop they run, so both sides are read.
+SHOP_LINK_SEARCH = r'hastemplate:"Infobox NPC" insource:/shop[0-9]* *= *\[\[/'
+
+
+def shop_linking_npc_pages() -> List[str]:
+    """List the wiki NPC pages whose infobox has a ``shop`` link.
+
+    :return: Sorted page titles, from the wiki search API.
+    """
+    titles = set()
+    offset = 0
+    while offset is not None:
+        response = requests.get(
+            OSRS_WIKI_API_URL,
+            headers=config.custom_agent,
+            params={
+                "action": "query",
+                "list": "search",
+                "srsearch": SHOP_LINK_SEARCH,
+                "srnamespace": 0,
+                "srlimit": 500,
+                "sroffset": offset,
+                "srprop": "",
+                "format": "json",
+            },
+            timeout=60,
+        )
+        response.raise_for_status()
+        data = response.json()
+        titles.update(hit["title"] for hit in data["query"]["search"])
+        offset = data.get("continue", {}).get("sroffset")
+    return sorted(titles)
+
+
 def fetch() -> None:
     """Fetch the wiki page text of every shop owner.
 
-    Pages already fetched are skipped, so an interrupted run can be resumed and
-    a repeat run costs nothing.
+    Owners are the pages a shop names, and the NPC pages that name a shop in
+    their own infobox. Pages already fetched are skipped, so an interrupted run
+    can be resumed and a repeat run costs nothing.
     """
     owners_by_shop = _owners_by_shop()
     if not owners_by_shop:
@@ -150,6 +193,7 @@ def fetch() -> None:
             for owner in owners
             if owner["wiki_page"]
         }
+        | set(shop_linking_npc_pages())
     )
 
     cached = {}
@@ -200,6 +244,61 @@ def npc_ids_from_wikitext(wikitext: str) -> List[int]:
     return sorted(npc_ids)
 
 
+def npc_shops_from_wikitext(wikitext: str) -> Dict[str, Set[int]]:
+    """Read which shops an NPC page says its NPCs run.
+
+    Each NPC/Monster infobox's ``shop`` field links the shop pages; a versioned
+    infobox can give ``shop1``, ``shop2``, ... per version, in which case only
+    that version's IDs run the linked shop. Unversioned IDs fall back to the
+    plain ``shop`` field.
+
+    :param wikitext: The NPC page's wikitext.
+    :return: Mapping of linked shop page title to the NPC IDs that run it.
+    """
+    shops: Dict[str, Set[int]] = {}
+    for infobox in NPC_INFOBOXES:
+        version = 1
+        while True:
+            parser = WikitextTemplateParser(wikitext)
+            if not parser.extract_infobox(infobox, version):
+                break
+            parser.determine_infobox_versions()
+            for npc_id, npc_version in parser.extract_infobox_ids().items():
+                value = (
+                    parser.extract_infobox_value(f"shop{npc_version}")
+                    if npc_version
+                    else None
+                ) or parser.extract_infobox_value("shop")
+                for page, _ in WIKI_LINK.findall(value or ""):
+                    title = page.partition("#")[0].strip().replace("_", " ")
+                    if title:
+                        title = title[0].upper() + title[1:]
+                        shops.setdefault(title, set()).add(npc_id)
+            version += 1
+    return shops
+
+
+def _shop_title(link: str, shop_titles: Set[str]):
+    """Match a ``shop =`` link to a shop page title, or None.
+
+    Shop page titles often end in a full stop the links leave out
+    ("Varrock General Store" vs "Thessalia's Fine Clothes.").
+    """
+    for title in (link, f"{link}.", link.rstrip(".")):
+        if title in shop_titles:
+            return title
+    return None
+
+
+def _infobox_name(wikitext: str, fallback: str) -> str:
+    parser = WikitextTemplateParser(wikitext)
+    if parser.extract_infobox("infobox npc"):
+        name = parser.extract_infobox_value("name")
+        if name and "{{" not in name and "[[" not in name:
+            return name
+    return re.sub(r"\s*\([^()]*\)$", "", fallback)
+
+
 def process() -> None:
     """Resolve every shop owner to NPC IDs and export the mapping."""
     owners_by_shop = _owners_by_shop()
@@ -232,9 +331,33 @@ def process() -> None:
                     "npc_ids": npc_ids,
                 }
             )
+        export[shop_name] = shop_owners
+
+    # Owners named only on their own NPC page: the page's infobox links the shop.
+    with open(SHOPS_TEXT_FP) as shops_file:
+        shop_titles = set(json.load(shops_file))
+    for page_title in sorted(cached):
+        wikitext = cached[page_title]
+        if not isinstance(wikitext, str) or wikitext == "None":
+            continue
+        for link, npc_ids in sorted(npc_shops_from_wikitext(wikitext).items()):
+            shop_name = _shop_title(link, shop_titles)
+            if shop_name is None:
+                continue
+            owners = export.setdefault(shop_name, [])
+            if any(owner["wiki_page"] == page_title for owner in owners):
+                continue
+            owners.append(
+                {
+                    "name": _infobox_name(wikitext, page_title),
+                    "wiki_page": page_title,
+                    "npc_ids": sorted(npc_ids),
+                }
+            )
+
+    for shop_owners in export.values():
         if any(owner["npc_ids"] for owner in shop_owners):
             resolved += 1
-        export[shop_name] = shop_owners
 
     with open(OWNERS_FP, "w") as out_file:
         json.dump(export, out_file, indent=4)
@@ -313,7 +436,11 @@ def shop_option_for(
             needle = shop_name.casefold()
             for slot, text in candidates:
                 if text.strip().casefold() in needle:
-                    return {"option": text, "option_slot": slot, "option_source": "click"}
+                    return {
+                        "option": text,
+                        "option_slot": slot,
+                        "option_source": "click",
+                    }
         slot, text = candidates[0]
         return {"option": text, "option_slot": slot, "option_source": "click"}
     return {"option": None, "option_slot": None, "option_source": "dialogue"}

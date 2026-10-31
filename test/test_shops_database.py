@@ -338,6 +338,48 @@ def test_removed_shops_are_marked_in_the_export():
     ]
 
 
+def test_npc_shops_from_wikitext_reads_the_infobox_shop_link():
+    """An NPC page's own infobox names the shop it runs; a versioned infobox
+    can link a shop per version."""
+    assistant = """{{Infobox NPC
+|name = Shop assistant
+|shop = [[Varrock General Store]]
+|options = Talk-to, Trade
+|id = 2816
+}}"""
+    assert shop_owners.npc_shops_from_wikitext(assistant) == {
+        "Varrock General Store": {2816}
+    }
+    versioned = """{{Infobox NPC
+|version1 = A
+|version2 = B
+|shop1 = [[Shop A]]
+|shop2 = [[Shop B#Stock|B]]
+|id1 = 1
+|id2 = 2
+}}"""
+    assert shop_owners.npc_shops_from_wikitext(versioned) == {
+        "Shop A": {1},
+        "Shop B": {2},
+    }
+
+
+def test_shop_assistants_are_bound_from_their_own_pages():
+    """Varrock General Store names only its keeper; the assistant's page links
+    the shop, so his Trade opens it too."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    owners = shops["Varrock General Store"]["owners"]
+    assistant = [o for o in owners if o["wiki_page"] == "Shop assistant (Varrock)"]
+    assert assistant and assistant[0]["npc_ids"] == [2816]
+    assert assistant[0]["option"] == "Trade" and assistant[0]["option_slot"] == 3
+    with open(config.DOCS_PATH / "shops-by-npc.json", encoding="utf-8") as f:
+        by_npc = json.load(f)
+    assert [s["shop_name"] for s in by_npc["2816"]["shops"]] == [
+        "Varrock General Store"
+    ]
+
+
 def test_shop_exports_regenerate_from_the_committed_wiki_cache(tmp_path, monkeypatch):
     """The committed shop exports are exactly what the committed wiki cache
     produces offline, run after run.
