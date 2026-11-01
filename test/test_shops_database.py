@@ -380,6 +380,42 @@ def test_shop_assistants_are_bound_from_their_own_pages():
     ]
 
 
+def test_owner_pages_with_per_version_shops_own_only_their_versions_shop():
+    """Both baker's stalls say owner = [[Baker]], and the Baker page links each
+    version to its own stall: shop1/shop2 Ardougne (8725, 8724), shop3 Kourend
+    Castle (3208). Taking every Baker id for both stalls bound each id to two
+    shops, so neither market baker could be traded with (tsps#1706)."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+
+    def baker_ids(shop):
+        return sorted(
+            npc_id
+            for owner in shops[shop]["owners"]
+            if owner["wiki_page"] == "Baker"
+            for npc_id in owner["npc_ids"]
+        )
+
+    assert baker_ids("Ardougne Baker's Stall.") == [8724, 8725]
+    assert baker_ids("Kourend Castle Baker's Stall.") == [3208]
+    with open(config.DOCS_PATH / "shops-by-npc.json", encoding="utf-8") as f:
+        by_npc = json.load(f)
+    for npc_id, shop in (
+        ("8724", "Ardougne Baker's Stall."),
+        ("8725", "Ardougne Baker's Stall."),
+        ("3208", "Kourend Castle Baker's Stall."),
+    ):
+        assert [s["shop_name"] for s in by_npc[npc_id]["shops"]] == [shop]
+
+
+def test_owner_ids_fall_back_to_the_whole_page_when_it_links_no_shop():
+    ids = {"Baker": [1, 2, 3], "Keeper": [4, 5]}
+    linked = {"Baker": {"Stall A": {1, 2}, "Stall B": {3}}, "Keeper": {}}
+    assert shop_owners._owner_ids("Baker", "Stall A", ids, linked) == [1, 2]
+    assert shop_owners._owner_ids("Baker", "Stall B", ids, linked) == [3]
+    assert shop_owners._owner_ids("Keeper", "Stall A", ids, linked) == [4, 5]
+
+
 def test_shop_exports_regenerate_from_the_committed_wiki_cache(tmp_path, monkeypatch):
     """The committed shop exports are exactly what the committed wiki cache
     produces offline, run after run.

@@ -290,6 +290,35 @@ def _shop_title(link: str, shop_titles: Set[str]):
     return None
 
 
+def _linked_shops(wikitext: str, shop_titles: Set[str]) -> Dict[str, Set[int]]:
+    """An NPC page's shop links (npc_shops_from_wikitext), keyed by shop page title."""
+    linked: Dict[str, Set[int]] = {}
+    for link, npc_ids in npc_shops_from_wikitext(wikitext).items():
+        shop_name = _shop_title(link, shop_titles)
+        if shop_name is not None:
+            linked.setdefault(shop_name, set()).update(npc_ids)
+    return linked
+
+
+def _owner_ids(
+    page_title: str,
+    shop_name: str,
+    ids_by_page: Dict[str, List[int]],
+    shops_by_page: Dict[str, Dict[str, Set[int]]],
+) -> List[int]:
+    """The NPC IDs of an owner page that run this shop.
+
+    A shop's ``owner = [[Baker]]`` names a page with many versions, and the page
+    says per version which shop each runs (``shop1``/``shop2`` the Ardougne
+    Baker's Stall, ``shop3`` the Kourend Castle one). When the page links this
+    shop, only the versions that link it own it; otherwise every ID on the page.
+    """
+    linked = shops_by_page.get(page_title, {}).get(shop_name)
+    if linked:
+        return sorted(linked)
+    return ids_by_page.get(page_title, [])
+
+
 def _infobox_name(wikitext: str, fallback: str) -> str:
     parser = WikitextTemplateParser(wikitext)
     if parser.extract_infobox("infobox npc"):
@@ -310,11 +339,16 @@ def process() -> None:
         with open(OWNERS_TEXT_FP) as owners_file:
             cached = json.load(owners_file)
 
+    with open(SHOPS_TEXT_FP) as shops_file:
+        shop_titles = set(json.load(shops_file))
+
     # One page can own several shops, so resolve each page a single time.
     ids_by_page: Dict[str, List[int]] = {}
+    shops_by_page: Dict[str, Dict[str, Set[int]]] = {}
     for page_title, wikitext in cached.items():
         if isinstance(wikitext, str) and wikitext != "None":
             ids_by_page[page_title] = npc_ids_from_wikitext(wikitext)
+            shops_by_page[page_title] = _linked_shops(wikitext, shop_titles)
 
     export = {}
     resolved = 0
@@ -322,7 +356,9 @@ def process() -> None:
         shop_owners = []
         for owner in owners:
             npc_ids = (
-                ids_by_page.get(owner["wiki_page"], []) if owner["wiki_page"] else []
+                _owner_ids(owner["wiki_page"], shop_name, ids_by_page, shops_by_page)
+                if owner["wiki_page"]
+                else []
             )
             shop_owners.append(
                 {
@@ -334,8 +370,6 @@ def process() -> None:
         export[shop_name] = shop_owners
 
     # Owners named only on their own NPC page: the page's infobox links the shop.
-    with open(SHOPS_TEXT_FP) as shops_file:
-        shop_titles = set(json.load(shops_file))
     for page_title in sorted(cached):
         wikitext = cached[page_title]
         if not isinstance(wikitext, str) or wikitext == "None":
