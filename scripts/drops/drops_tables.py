@@ -500,6 +500,26 @@ def _finalize_main_rolls(
     return by_denominator[primary], primary, separate_rolls
 
 
+def stacked_assumed_rolls(separate_rolls: List[SeparateRoll]) -> List[SeparateRoll]:
+    """Separate rolls made of several rows the wiki gives no rate for.
+
+    A row with only a word rarity ("Common") takes an assumed denominator, which
+    rarely matches the table's own, so it becomes an independent roll; several in
+    one section all roll each kill. A goblin page cached mid-edit listed three
+    energy potions as "Common" and they dropped on a third of kills (live, they
+    are 3/128 each in the main pool). Each of these is worth checking against
+    the current page.
+
+    :param separate_rolls: A table's separate rolls.
+    :return: Those with two or more entries, all of assumed rarity.
+    """
+    return [
+        roll
+        for roll in separate_rolls
+        if len(roll.entries) > 1 and all(entry.assumed_rarity for entry in roll.entries)
+    ]
+
+
 def _exclusive_source_pool(
     pool: List[ResolvedEntry],
     subtable_accesses: List[wikitext.ParsedSubtableAccess],
@@ -648,6 +668,15 @@ def build_table_spec(
         main_entries, main_max_roll, separate_rolls = _finalize_main_rolls(
             standard_main, accesses
         )
+        for roll in stacked_assumed_rolls(separate_rolls):
+            logger.warning(
+                "%s (%s): %d rows with no published rate roll independently at 1/%d each: %s",
+                wiki_page,
+                table.drop_variant or table.table_name or "Drops",
+                len(roll.entries),
+                roll.access_denominator,
+                ", ".join(entry.name for entry in roll.entries),
+            )
     if main_max_roll is not None:
         used = sum(entry.weight or 0 for entry in main_entries) + sum(
             access.numerator for access in accesses

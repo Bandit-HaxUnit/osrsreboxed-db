@@ -486,3 +486,63 @@ def test_drop_source_loader_requires_nonempty_current_listing(tmp_path, monkeypa
     (tmp_path / "monsters-wiki-page-titles.json").write_text("{}")
     with pytest.raises(SystemExit, match="empty"):
         load_monster_wikitext()
+
+
+def test_cached_goblin_energy_potions_roll_in_the_main_pool():
+    """The goblin page was cached mid-edit, with its energy potions as "Common":
+    three independent 1/8 rolls, so a third of kills dropped one or more
+    (RSPSApp/tsps#1706). The current page has them in the 128 pool."""
+    import json
+    from pathlib import Path
+
+    pages = json.loads(
+        (
+            Path(__file__).parents[1] / "data/monsters/monsters-wiki-page-text.json"
+        ).read_text(encoding="utf-8")
+    )
+    items = drops_tables.ItemIdLookup(
+        [
+            FakeItem(3008, "Energy potion(4)"),
+            FakeItem(3010, "Energy potion(3)"),
+            FakeItem(3012, "Energy potion(2)"),
+            FakeItem(3014, "Energy potion(1)"),
+        ]
+    )
+    expected = {
+        "Drop table 1": {3010: (3, 128), 3008: (3, 128)},
+        "Drop table 2": {3012: (13, 128)},
+    }
+    tables = drops_wikitext.parse_all_drop_tables(pages["Goblin"])
+    for table in tables:
+        spec = drops_tables.build_table_spec("Goblin", table, items)
+        exported = drops_tables.build_table_json(spec)
+        potions = {
+            row["item_id"]: (row["weight"], row["out_of"])
+            for row in exported["entries"]
+            if row.get("item_id") in (3008, 3010, 3012, 3014)
+        }
+        assert potions == expected[table.table_name]
+        assert not any(
+            row.get("separate_roll")
+            for row in exported["entries"]
+            if row.get("item_id") in potions
+        )
+        assert drops_tables.stacked_assumed_rolls(spec.separate_rolls) == []
+
+
+def test_several_word_rarity_rows_in_one_section_are_flagged():
+    source = """{{Infobox Monster|id=1}}
+==Drops==
+===Other===
+{{DropsLine|name=Coins|quantity=100|rarity=100/128}}
+{{DropsLine|name=Coins|quantity=5|rarity=20/128}}
+{{DropsLine|name=Draconic visage|quantity=1|rarity=1/128}}
+{{DropsLine|name=Bones|quantity=1|rarity=Common}}
+{{DropsLine|name=Rune full helm|quantity=1|rarity=Common}}
+"""
+    table = drops_wikitext.parse_all_drop_tables(source)[0]
+    spec = drops_tables.build_table_spec("Test", table, ITEMS)
+    stacked = drops_tables.stacked_assumed_rolls(spec.separate_rolls)
+    assert [[entry.name for entry in roll.entries] for roll in stacked] == [
+        ["Bones", "Rune full helm"]
+    ]
