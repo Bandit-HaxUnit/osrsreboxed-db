@@ -26,6 +26,41 @@ import pytest
 from scripts.drops import drops_tables, drops_wikitext
 
 
+def test_source_date_epoch_keeps_full_exports_identical_across_build_days(
+    tmp_path, monkeypatch
+):
+    import json
+    from datetime import date
+
+    class BuildDate:
+        current = date(2026, 11, 1)
+
+        @classmethod
+        def today(cls):
+            return cls.current
+
+    monkeypatch.setattr(drops_tables, "date", BuildDate)
+    monkeypatch.setenv("SOURCE_DATE_EPOCH", "1793491200")
+    dump = drops_tables.NpcDropsAggregator()
+    first, second = tmp_path / "first", tmp_path / "second"
+    dump.write(first, {}, 0)
+    BuildDate.current = date(2026, 11, 2)
+    dump.write(second, {}, 0)
+    for filename in ("npc-drops.json", "subtables.json", "unresolved-items.json"):
+        assert (first / filename).read_bytes() == (second / filename).read_bytes()
+    assert (
+        json.loads((second / "npc-drops.json").read_text())["meta"]["generated"]
+        == "2026-11-01"
+    )
+
+    monkeypatch.delenv("SOURCE_DATE_EPOCH")
+    dump.write(second, {}, 0)
+    assert (
+        json.loads((second / "npc-drops.json").read_text())["meta"]["generated"]
+        == "2026-11-02"
+    )
+
+
 def test_uniform_main_roll_counts_survive_export_without_repeating_tertiaries():
     source = """
 {{Infobox Monster|id=7388}}

@@ -15,6 +15,9 @@ Usage:
     python -m scripts.drops.update
     python -m scripts.drops.update --limit 50 --out /tmp/drops
 
+Set SOURCE_DATE_EPOCH to Unix seconds to pin the generated metadata date for
+reproducible exports across build days; otherwise the current date is used.
+
 Copyright (c) 2026, Toby Wisener
 
 ###############################################################################

@@ -34,9 +34,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
 import logging
+import os
 import re
 from dataclasses import dataclass, field, replace
-from datetime import date
+from datetime import date, datetime, timezone
 from decimal import Decimal
 from fractions import Fraction
 from itertools import groupby
@@ -1046,8 +1047,14 @@ class NpcDropsAggregator:
         """
         out_dir.mkdir(parents=True, exist_ok=True)
 
+        source_epoch = os.environ.get("SOURCE_DATE_EPOCH")
+        generated = (
+            datetime.fromtimestamp(int(source_epoch), timezone.utc).date()
+            if source_epoch is not None
+            else date.today()
+        )
         meta = {
-            "generated": date.today().isoformat(),
+            "generated": generated.isoformat(),
             "source": "https://oldschool.runescape.wiki",
             "license": "CC BY-NC-SA 3.0 — content from the Old School RuneScape Wiki",
             "id_space": "osrs cache ids (item and npc ids from the osrsreboxed databases)",
