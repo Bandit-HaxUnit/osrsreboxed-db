@@ -185,6 +185,7 @@ class DropTableSpec:
     unresolved_items: List[str] = field(default_factory=list)
     reward_chain: Optional[Dict] = None
     tertiary_groups: List[Dict] = field(default_factory=list)
+    rolls: int = 1
 
     def has_drop_content(self) -> bool:
         """True when the table resolved to anything worth exporting."""
@@ -726,6 +727,7 @@ def build_table_spec(
         pre_roll_separate=pre_roll_separate,
         main=main_entries,
         main_max_roll=main_max_roll,
+        rolls=table.rolls,
         separate_rolls=separate_rolls,
         subtable_accesses=accesses,
         tertiary=tertiary,
@@ -945,6 +947,7 @@ def build_table_json(spec: DropTableSpec) -> Dict:
             "table_name": spec.table_name,
             "wiki_page": spec.wiki_page,
             "main_max_roll": spec.main_max_roll,
+            "rolls": spec.rolls if spec.rolls > 1 else None,
             "entries": entries,
             "tertiary": tertiary,
             "reward_chain": spec.reward_chain,
