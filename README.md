@@ -216,6 +216,8 @@ repository. This folder contains the publicly available database. Every file ins
 -   `shops-items-by-shop.json`: Every shop, keyed by its wiki page name, with `shop_info` pricing, the `owners` that open it, and the `items` it
     stocks. An item row carries only `id`, `stock` and `restock_time`; the item's name comes from the items database by ID, and `currency` appears on a
     row only when it differs from `shop_info.currency`. A `shop_info` percentage the wiki does not state is absent rather than null.
+    A shop that is gone from the game (`{{Gone}}`, or an infobox `removal` for every version) is still exported, with `shop_info.removed`
+    holding the removal `date` and `update` the wiki gives; skip those when binding live NPCs.
 -   `shops-by-npc.json`: The shops each shopkeeper opens, keyed by NPC ID, with the click option and 1-based menu slot that opens them. This is the
     index to use when handling an NPC click: a server already holds the NPC ID and the option slot, so it can resolve the shop with one lookup.
     `option_source` says how the shop is opened: `click` (use `option_slot`), `dialogue` (the NPC's menu has no shop option, so the shop is reached by

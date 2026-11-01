@@ -31,6 +31,16 @@
         "type": "string",
         "required": true,
         "nullable": false
+      },
+      "removed": {
+        "description": "Present only for a shop that is gone from the game: the page carries {{Gone}}, or its infobox gives a removal for every version. Holds the removal date and update the wiki states; either may be absent.",
+        "type": "dict",
+        "required": false,
+        "nullable": false,
+        "schema": {
+          "date": {"type": "string", "required": false, "nullable": false},
+          "update": {"type": "string", "required": false, "nullable": false}
+        }
       }
     }
   },

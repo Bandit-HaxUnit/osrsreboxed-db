@@ -70,9 +70,12 @@ def test_parse_shop_owners_dedupes_shared_owners():
         {"name": "Aya", "wiki_page": "Aya"},
     ]
 
+
 def test_shop_option_prefers_the_option_named_by_the_shop():
     npcs = {"7663": {"4": "Trade", "5": "Rewards"}}
-    assert shop_owners.shop_option_for(7663, npcs, "Slayer Rewards")["option"] == "Rewards"
+    assert (
+        shop_owners.shop_option_for(7663, npcs, "Slayer Rewards")["option"] == "Rewards"
+    )
     assert (
         shop_owners.shop_option_for(7663, npcs, "Slayer Equipment (shop)")["option"]
         == "Trade"
@@ -240,3 +243,203 @@ def test_no_shop_exports_a_currency_override():
         if "currency" in item
     ]
     assert not overrides, f"unexpected per-item currency: {overrides}"
+
+
+def test_shop_items_resolve_shared_names_to_the_stocked_version():
+    """Where items share a plain name, the one a shop stocks wins: the
+    tradeable or normal version, not an event or minigame variant."""
+    assert shops_items.item_id_lookup("Small fishing net") == 303
+    assert shops_items.item_id_lookup("Cake") == 1891
+    assert shops_items.item_id_lookup("Saradomin banner") == 11891
+    assert shops_items.item_id_lookup("Decorative boots (gold)") == 25171
+    assert shops_items.item_id_lookup("Ectophial") == 4252
+    # A name the database carries exactly beats the page's stock version.
+    assert shops_items.item_id_lookup("Abyssal lantern") == 26822
+    assert shops_items.item_id_lookup("Bronze spear(kp)") == 3170
+    # The wiki writes " (A, green)"; the database writes " (A) (Green)".
+    assert (
+        shops_items.item_id_lookup("Wyrmscraig villager robe top (A, green)") == 33884
+    )
+
+
+def test_shop_items_use_the_bucketname_anchor():
+    """A bucket name pins one version of a shared page, e.g. the stardust bag."""
+    assert (
+        shops_items.item_id_lookup("Bag full of gems", "Bag full of gems#Stardust")
+        == 25537
+    )
+    assert (
+        shops_items.item_id_lookup(
+            "Bag full of gems", "Bag full of gems#Golden nuggets"
+        )
+        == 19473
+    )
+    assert shops_items.item_id_lookup("Fungicide spray", "Fungicide spray#10") == 7421
+    # Without the anchor the plain name still resolves to a version.
+    assert shops_items.item_id_lookup("Bag full of gems") == 19473
+
+
+def test_parse_shop_items_reads_the_bucketname():
+    wikitext = """{{StoreTableHead|sellmultiplier=1000}}
+{{StoreLine|name=Bag full of gems|bucketname=Bag full of gems#Stardust|stock=100|restock=1}}
+{{StoreTableBottom}}
+"""
+    items = shops_items.parse_shop_items("Dusuri's Star Shop", wikitext)
+    assert [item["id"] for item in items] == [25537]
+
+
+def test_parse_shop_removal_reads_gone_and_removal():
+    """A gone shop records its removal; a current shop, or a versioned page
+    with only some versions removed, does not."""
+    gone = """{{Gone|update=Slayer Partners}}
+{{Infobox Shop
+|name = Thessalia's Makeovers
+|removal = [[14 August]] [[2024]]
+|removalupdate = Slayer Partners
+}}"""
+    assert shops_items.parse_shop_removal(gone) == {
+        "date": "14 August 2024",
+        "update": "Slayer Partners",
+    }
+    assert shops_items.parse_shop_removal(
+        "{{Gone|update=Poll 70 Game Improvements}}\n{{Infobox Shop\n|name = X\n}}"
+    ) == {"update": "Poll 70 Game Improvements"}
+    partly = """{{Infobox Shop
+|version1 = Old
+|version2 = New
+|removal1 = [[1 May]] [[2020]]
+}}"""
+    assert shops_items.parse_shop_removal(partly) is None
+    assert shops_items.parse_shop_removal("{{Infobox Shop\n|name = Y\n}}") is None
+
+
+def test_removed_shops_are_marked_in_the_export():
+    """Thessalia's Makeovers is gone (Slayer Partners); her Fine Clothes is not,
+    and both are still exported so consumers can tell them apart."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    assert shops["Thessalia's Makeovers"]["shop_info"]["removed"] == {
+        "date": "14 August 2024",
+        "update": "Slayer Partners",
+    }
+    assert "removed" not in shops["Thessalia's Fine Clothes."]["shop_info"]
+    removed = sorted(
+        name for name, shop in shops.items() if "removed" in shop["shop_info"]
+    )
+    assert removed == [
+        "Beach Cocktails",
+        "Beach Kit",
+        "Bounty Hunter Shop (historical)",
+        "Bunbridge General Store",
+        "The Haymaker's Arms",
+        "The Nutcracker",
+        "Thessalia's Makeovers",
+        "Yrsa's Shoe Store",
+    ]
+
+
+def test_npc_shops_from_wikitext_reads_the_infobox_shop_link():
+    """An NPC page's own infobox names the shop it runs; a versioned infobox
+    can link a shop per version."""
+    assistant = """{{Infobox NPC
+|name = Shop assistant
+|shop = [[Varrock General Store]]
+|options = Talk-to, Trade
+|id = 2816
+}}"""
+    assert shop_owners.npc_shops_from_wikitext(assistant) == {
+        "Varrock General Store": {2816}
+    }
+    versioned = """{{Infobox NPC
+|version1 = A
+|version2 = B
+|shop1 = [[Shop A]]
+|shop2 = [[Shop B#Stock|B]]
+|id1 = 1
+|id2 = 2
+}}"""
+    assert shop_owners.npc_shops_from_wikitext(versioned) == {
+        "Shop A": {1},
+        "Shop B": {2},
+    }
+
+
+def test_shop_assistants_are_bound_from_their_own_pages():
+    """Varrock General Store names only its keeper; the assistant's page links
+    the shop, so his Trade opens it too."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    owners = shops["Varrock General Store"]["owners"]
+    assistant = [o for o in owners if o["wiki_page"] == "Shop assistant (Varrock)"]
+    assert assistant and assistant[0]["npc_ids"] == [2816]
+    assert assistant[0]["option"] == "Trade" and assistant[0]["option_slot"] == 3
+    with open(config.DOCS_PATH / "shops-by-npc.json", encoding="utf-8") as f:
+        by_npc = json.load(f)
+    assert [s["shop_name"] for s in by_npc["2816"]["shops"]] == [
+        "Varrock General Store"
+    ]
+
+
+def test_shop_exports_regenerate_from_the_committed_wiki_cache(tmp_path, monkeypatch):
+    """The committed shop exports are exactly what the committed wiki cache
+    produces offline, run after run.
+
+    A dump made from a newer, uncommitted page cache cannot be reproduced by
+    anyone else (the 2026-10-03 dump stocked items the committed cache did not
+    list), and a hand-patched export drifts from its source. Both fail here.
+    """
+    import shutil
+
+    from scripts.shops import shops_properties
+
+    data_dir = tmp_path / "data" / "shops"
+    docs_dir = tmp_path / "docs"
+    package_dir = tmp_path / "osrsreboxed"
+    data_dir.mkdir(parents=True)
+    docs_dir.mkdir()
+    package_dir.mkdir()
+    for name in (
+        "shops-wiki-page-titles.json",
+        "shops-wiki-page-text.json",
+        "shop-owners-wiki-page-text.json",
+    ):
+        shutil.copy(config.DATA_SHOPS_PATH / name, data_dir / name)
+    shutil.copy(
+        config.DOCS_PATH / "npcs-interactions.json", docs_dir / "npcs-interactions.json"
+    )
+
+    monkeypatch.setattr(config, "DATA_SHOPS_PATH", data_dir)
+    monkeypatch.setattr(config, "DOCS_PATH", docs_dir)
+    monkeypatch.setattr(config, "PACKAGE_PATH", package_dir)
+    monkeypatch.setattr(
+        shops_properties, "TITLES_FP", data_dir / "shops-wiki-page-titles.json"
+    )
+    monkeypatch.setattr(
+        shops_properties, "TEXT_FP", data_dir / "shops-wiki-page-text.json"
+    )
+    monkeypatch.setattr(
+        shop_owners, "SHOPS_TEXT_FP", data_dir / "shops-wiki-page-text.json"
+    )
+    monkeypatch.setattr(
+        shop_owners, "OWNERS_TEXT_FP", data_dir / "shop-owners-wiki-page-text.json"
+    )
+    monkeypatch.setattr(shop_owners, "OWNERS_FP", data_dir / "shop-owners.json")
+
+    root = Path(__file__).resolve().parent.parent
+    committed = {
+        "data/shops/shop-owners.json": data_dir / "shop-owners.json",
+        "docs/shops-items-by-shop.json": docs_dir / "shops-items-by-shop.json",
+        "docs/shops-by-npc.json": docs_dir / "shops-by-npc.json",
+        "osrsreboxed/docs/shops-items-by-shop.json": package_dir
+        / "docs"
+        / "shops-items-by-shop.json",
+    }
+    for _ in range(2):
+        shops_properties.process()
+        shop_owners.process()
+        shops_items.fetch()
+        shops_items.process()
+        for name, generated in committed.items():
+            assert (
+                generated.read_bytes() == (root / name).read_bytes()
+            ), f"{name} does not regenerate from the committed wiki cache"

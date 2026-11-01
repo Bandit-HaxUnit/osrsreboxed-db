@@ -20,7 +20,7 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
   `scripts/drops/` builds `docs/drops-json/` from the monster wiki page text, keyed by NPC ID.
 - Monsters use **`elemental_weakness_*`** and split ranged defence: **`defence_ranged_light`**, **`defence_ranged_standard`**, **`defence_ranged_heavy`**.
 - **Shops** data is maintained via **`scripts/shops/`** and **`data/shops/`** (not a `builders/shops` package). `shop_owners.py` resolves each
-  shop's NPC owner and must run before `shops_items.process`, which merges the `owners` array into the export and writes the NPC-keyed
+  shop's NPC owners (the shop page's `owner` field, plus NPC pages whose own infobox `shop =` links the shop, found by wiki search at fetch time and cached with the owner pages) and must run before `shops_items.process`, which merges the `owners` array into the export and writes the NPC-keyed
   `docs/shops-by-npc.json`. `parse_shop_info` is the only reader of a shop's currency: a page whose `StoreTableHead` declares none
   sells in coins however its prose reads. A null option carries `option_source` (`dialogue` vs `unknown`) so consumers cannot read it as "option 1". The
   page text cache (`data/shops/shops-wiki-page-text.json`) is written a page at a time and is pruned to the category listing, so a
