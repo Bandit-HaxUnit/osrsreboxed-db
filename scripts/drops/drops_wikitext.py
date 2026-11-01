@@ -95,6 +95,7 @@ class ParsedDrop:
     # neighbour, or "" when the row is its own slot.
     bundle_ref: str = ""
     bundle_eligibility: List[str] = field(default_factory=list)
+    rolls: int = 1
 
 
 @dataclass
@@ -107,6 +108,7 @@ class ParsedSubtableAccess:
     subsection: str
     roll_count_weights: List[Dict[str, int]] = field(default_factory=list)
     unresolved_roll_count: bool = False
+    rolls: int = 1
 
 
 @dataclass
@@ -120,6 +122,7 @@ class ParsedDropTable:
     npc_ids: List[int]
     excluded_npc_ids: List[int] = field(default_factory=list)
     reward_policy: Optional[Dict] = None
+    rolls: int = 1
 
 
 # ---------------------------------------------------------------------------
@@ -1497,6 +1500,11 @@ def apply_perfect_kill_condition(drop: ParsedDrop) -> ParsedDrop:
     return drop
 
 
+def _roll_count(params: Dict[str, str]) -> int:
+    value = params.get("rolls", "1").strip()
+    return int(value) if re.fullmatch(r"[1-9]\d*", value) else 1
+
+
 def _parse_drop_line(
     params: Dict[str, str],
     section: str,
@@ -1532,6 +1540,7 @@ def _parse_drop_line(
             section=section,
             subsection=subsection,
             is_nothing=True,
+            rolls=_roll_count(params),
         )
 
     quantity, is_noted = parse_wiki_quantity(params.get("quantity", "").strip() or "1")
@@ -1558,6 +1567,7 @@ def _parse_drop_line(
         is_noted=is_noted,
         notes=notes.as_list(),
         clue_scroll_box=notes.has_clue_scroll_box(),
+        rolls=_roll_count(params),
         quantity_condition=quantity_condition_from_notes(
             quantity, quantity_note_values, relevant_notes
         ),
@@ -1739,7 +1749,9 @@ def _parse_subtable_accesses(body: str) -> List[ParsedSubtableAccess]:
             multi_roll_herbs = multi_roll_herbs or bool(HERB_ROLL_VARIANT.search(text))
             key = "" if multi_roll_herbs else "herb"
             accesses.append(
-                ParsedSubtableAccess(key, fraction[0], fraction[1], "Herbs")
+                ParsedSubtableAccess(
+                    key, fraction[0], fraction[1], "Herbs", rolls=_roll_count(params)
+                )
             )
 
     if not has_key("herb") and not has_key(""):
@@ -1749,7 +1761,13 @@ def _parse_subtable_accesses(body: str) -> List[ParsedSubtableAccess]:
             if fraction:
                 key = "" if _is_variable_herb_quantity(params.get("_1", "")) else "herb"
                 accesses.append(
-                    ParsedSubtableAccess(key, fraction[0], fraction[1], "Herbs")
+                    ParsedSubtableAccess(
+                        key,
+                        fraction[0],
+                        fraction[1],
+                        "Herbs",
+                        rolls=_roll_count(params),
+                    )
                 )
             break
 
@@ -1764,7 +1782,11 @@ def _parse_subtable_accesses(body: str) -> List[ParsedSubtableAccess]:
         if rdt_chance:
             accesses.append(
                 ParsedSubtableAccess(
-                    "rareDrop", rdt_chance[0], rdt_chance[1], "Rare drop table"
+                    "rareDrop",
+                    rdt_chance[0],
+                    rdt_chance[1],
+                    "Rare drop table",
+                    rolls=_roll_count(params),
                 )
             )
         # The RDT template's second argument is the gem table access.
@@ -1772,7 +1794,11 @@ def _parse_subtable_accesses(body: str) -> List[ParsedSubtableAccess]:
         if gem_chance and not has_key("gem"):
             accesses.append(
                 ParsedSubtableAccess(
-                    "gem", gem_chance[0], gem_chance[1], "Gem drop table"
+                    "gem",
+                    gem_chance[0],
+                    gem_chance[1],
+                    "Gem drop table",
+                    rolls=_roll_count(params),
                 )
             )
 
@@ -1785,7 +1811,13 @@ def _parse_subtable_accesses(body: str) -> List[ParsedSubtableAccess]:
                 fraction = _first_fraction(chance) or _first_fraction(raw)
                 if fraction:
                     accesses.append(
-                        ParsedSubtableAccess(key, fraction[0], fraction[1], subsection)
+                        ParsedSubtableAccess(
+                            key,
+                            fraction[0],
+                            fraction[1],
+                            subsection,
+                            rolls=_roll_count(params),
+                        )
                     )
                     break
             if has_key(key):
@@ -1921,12 +1953,18 @@ def parse_all_drop_tables(
             if perfect_kill_page:
                 # After rarity resolution, which can move rows between sections.
                 drops = [apply_perfect_kill_condition(drop) for drop in drops]
+            accesses = _parse_subtable_accesses(variant_body)
+            # Only uniform main rolls can be represented by a table-wide count.
+            roll_counts = {
+                drop.rolls for drop in drops if drop.section == SECTION_MAIN
+            } | {access.rolls for access in accesses}
             tables.append(
                 ParsedDropTable(
                     table_name=table_name,
                     drop_variant=variant_name,
                     drops=drops,
-                    subtable_accesses=_parse_subtable_accesses(variant_body),
+                    subtable_accesses=accesses,
+                    rolls=next(iter(roll_counts)) if len(roll_counts) == 1 else 1,
                     npc_ids=npc_ids,
                     excluded_npc_ids=excluded_npc_ids,
                     reward_policy=reward_policy if not variant_name else None,

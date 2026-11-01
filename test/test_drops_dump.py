@@ -26,6 +26,76 @@ import pytest
 from scripts.drops import drops_tables, drops_wikitext
 
 
+def test_source_date_epoch_keeps_full_exports_identical_across_build_days(
+    tmp_path, monkeypatch
+):
+    import json
+    from datetime import date
+
+    class BuildDate:
+        current = date(2026, 11, 1)
+
+        @classmethod
+        def today(cls):
+            return cls.current
+
+    monkeypatch.setattr(drops_tables, "date", BuildDate)
+    monkeypatch.setenv("SOURCE_DATE_EPOCH", "1793491200")
+    dump = drops_tables.NpcDropsAggregator()
+    first, second = tmp_path / "first", tmp_path / "second"
+    dump.write(first, {}, 0)
+    BuildDate.current = date(2026, 11, 2)
+    dump.write(second, {}, 0)
+    for filename in ("npc-drops.json", "subtables.json", "unresolved-items.json"):
+        assert (first / filename).read_bytes() == (second / filename).read_bytes()
+    assert (
+        json.loads((second / "npc-drops.json").read_text())["meta"]["generated"]
+        == "2026-11-01"
+    )
+
+    monkeypatch.delenv("SOURCE_DATE_EPOCH")
+    dump.write(second, {}, 0)
+    assert (
+        json.loads((second / "npc-drops.json").read_text())["meta"]["generated"]
+        == "2026-11-02"
+    )
+
+
+def test_uniform_main_roll_counts_survive_export_without_repeating_tertiaries():
+    source = """
+{{Infobox Monster|id=7388}}
+==Drops==
+===100%===
+{{DropsLine|name=Bones|quantity=1|rarity=Always}}
+===Other===
+{{DropsLine|name=Coins|quantity=8|rarity=24/128|rolls=3}}
+{{DropsLine|name=Nothing|rarity=102/128|rolls=3}}
+{{GemDropTable|2/128|rolls=3}}
+===Tertiary===
+{{DropsLine|name=Draconic visage|quantity=1|rarity=1/500}}
+"""
+    parsed = drops_wikitext.parse_all_drop_tables(source)[0]
+    table = drops_tables.build_table_json(
+        drops_tables.build_table_spec("Crushing hand", parsed, ITEMS)
+    )
+    assert table["rolls"] == 3
+    assert table["main_max_roll"] == 128
+    assert (
+        next(row for row in table["entries"] if row.get("shared_table"))["weight"] == 2
+    )
+    assert next(row for row in table["entries"] if row.get("always"))["quantity"] == [
+        1,
+        1,
+    ]
+    assert table["tertiary"][0]["out_of"] == 500
+
+    # A table-wide count must not repeat rows whose source says they roll once.
+    mixed = drops_wikitext.parse_all_drop_tables(source.replace("|rolls=3", "", 1))[0]
+    assert "rolls" not in drops_tables.build_table_json(
+        drops_tables.build_table_spec("Mixed", mixed, ITEMS)
+    )
+
+
 class FakeItem:
     """Stand-in for an osrsreboxed item, so the tests need no item database."""
 
