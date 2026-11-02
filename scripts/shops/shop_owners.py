@@ -81,6 +81,10 @@ SHOP_OPTION_TEXTS = {
     "collect",
 }
 SHOP_OPTION_PREFIXES = ("trade-", "trade ")
+# Options that open a shop only on an NPC without a primary one: a banker's
+# "Collect" is the Grand Exchange collection box (Fadli: Talk-to, Bank,
+# Collect, Buy), so it must not win over the "Buy" after it.
+FALLBACK_SHOP_OPTION_TEXTS = {"claim", "collect"}
 
 
 def parse_shop_owners(wikitext: str) -> List[Dict]:
@@ -475,7 +479,12 @@ def shop_option_for(
                         "option_slot": slot,
                         "option_source": "click",
                     }
-        slot, text = candidates[0]
+        primary = [
+            (slot, text)
+            for slot, text in candidates
+            if text.strip().lower() not in FALLBACK_SHOP_OPTION_TEXTS
+        ]
+        slot, text = (primary or candidates)[0]
         return {"option": text, "option_slot": slot, "option_source": "click"}
     return {"option": None, "option_slot": None, "option_source": "dialogue"}
 

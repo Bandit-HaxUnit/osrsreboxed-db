@@ -84,6 +84,19 @@ def test_shop_option_prefers_the_option_named_by_the_shop():
     assert shop_owners.shop_option_for(7663, npcs)["option"] == "Trade"
 
 
+def test_shop_option_skips_a_bankers_collect_for_a_later_buy():
+    # Fadli: "Collect" is the collection box, "Buy" opens his shop.
+    fadli = {"3340": {"1": "Talk-to", "3": "Bank", "4": "Collect", "5": "Buy"}}
+    assert shop_owners.shop_option_for(3340, fadli, "Shop of Distaste") == {
+        "option": "Buy",
+        "option_slot": 5,
+        "option_source": "click",
+    }
+    # Collect still opens a shop when the NPC has nothing better.
+    collector = {"1": {"1": "Talk-to", "4": "Collect"}}
+    assert shop_owners.shop_option_for(1, collector)["option"] == "Collect"
+
+
 def test_shops_items_by_shop_schema_validation():
     """Validate shops-items-by-shop.json against schema."""
     # Read in the shops-items-by-shop schema file
