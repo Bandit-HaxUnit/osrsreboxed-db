@@ -138,6 +138,16 @@ def test_dump_applies_corrections_before_writing(monkeypatch, tmp_path):
     assert not list(tmp_path.iterdir())
 
 
+def test_captured_ides_line_replaces_the_wiki_typo():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variant = dialogues["The Ides of Milk"]["variants"][
+        "starting-off-talking-to-gillie"
+    ]
+    text = json.dumps(variant)
+    assert "he'll be happy" in text
+    assert "he'll he happy" not in text
+
+
 def test_audited_variants_are_indexed():
     index = json.loads((config.DOCS_PATH / "npc-dialogue-index.json").read_text())
     authoring = json.loads(
