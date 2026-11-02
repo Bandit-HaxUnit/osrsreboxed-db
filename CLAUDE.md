@@ -34,6 +34,12 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
 - **Object examines** are a `scripts/` domain too (**`scripts/examines/`**, output **`docs/object-examines.json`**, minified):
   object ID -> examine text from every page's `{{Infobox Scenery}}` (listed by the `infobox_scenery` bucket), per version.
   The cache has no loc examines; OSRS sends them from the server.
+- **Weapon stats** are a `scripts/` domain (**`scripts/weapons/`**, output **`docs/weapon-stats.json`**, one item per line): item ID ->
+  the Wiki's equipment-stat row (`infobox_bonuses`, joined to IDs through `infobox_item` by page version) for the weapon and `2h`
+  slots, with bonuses named as in `items-json`. `--save-export` / `--from-export` keep and replay the raw bucket rows.
+- **Sequence (animation) names** live in **`scripts/sequences/`** → **`docs/sequence-names.json`** (+ `sequence-names.LICENSE`):
+  sequence ID -> RuneLite's gameval `AnimationID` name, read at a pinned RuneLite commit (`RUNELITE_REF`, cache revision 241). Bump
+  it with the cache revision.
 - **NPC click options** live in **`scripts/npcs/`** → **`docs/npcs-interactions.json`**, parsed from a cache NPC dump at the git-ignored
   `data/cache/dump.npc`. Option keys are the cache's **1-based** `op1`..`op5`; the RuneLite-format `ops` array in `monsters-cache-data.json` is
   0-based, so joining the two needs a `+1`.
