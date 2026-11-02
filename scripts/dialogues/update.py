@@ -31,24 +31,28 @@ from scripts.dialogues.compact import compact_record, write_split
 from scripts.dialogues.corrections import apply_corrections
 from scripts.dialogues.bindings import apply_bindings
 
+TEXT_START = ""
+
 
 def clean(raw):
     """Remove presentation markup; retain unfamiliar templates verbatim."""
-    code = mw.parse(str(raw))
+    # The wiki list marker is already gone, so a leading "*Sighs*" is speech, not a
+    # list: start the parse on a placeholder to keep strip_code from eating it.
+    code = mw.parse(TEXT_START + str(raw))
     for template in code.filter_templates(recursive=False):
         name = str(template.name).strip().lower()
         if name in ("colour", "color") and template.has(2):
             code.replace(template, clean(template.get(2).value))
         elif name == "overhead" and template.has(1):
             code.replace(template, clean(template.get(1).value))
-        elif name in ("sic", "^"):
+        elif name in ("sic", "^", "fact", "citation needed"):
             code.replace(template, "")
     # Keep unrecognised templates through strip_code rather than dropping data.
     saved = []
     for template in code.filter_templates(recursive=False):
         saved.append(str(template))
         code.replace(template, f"\ue000{len(saved)-1}\ue001")
-    text = code.strip_code().strip()
+    text = code.strip_code().replace(TEXT_START, "", 1).strip()
     for i, template in enumerate(saved):
         text = text.replace(f"\ue000{i}\ue001", template)
     return text
@@ -981,7 +985,9 @@ def main():
     pages = read_cache(CACHE) if args.offline else fetch(refresh=args.refresh)
     nav_templates = load_navigation_templates()
     bindings = json.loads(
-        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(
+            encoding="utf-8"
+        )
     )
     npcs, quests, issues = {}, {}, {}
     types = collections.defaultdict(set)

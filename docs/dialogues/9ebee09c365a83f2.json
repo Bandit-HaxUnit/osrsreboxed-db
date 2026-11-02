@@ -167,7 +167,8 @@
               }
             ]
           }
-        ]
+        ],
+        "prompt": "Start the Below Ice Mountain quest?"
       }
     ],
     "willow-the-archaeologist-talking-to-willow-again": [
@@ -292,7 +293,7 @@
       {
         "type": "line",
         "speaker": "Checkal",
-        "text": "That would be me [sir/miss]. What can I do for you?"
+        "text": "That would be me, [sir/miss]. What can I do for you?"
       },
       {
         "player": "I was told to come find you. Willow has found a new digsi..."
@@ -300,7 +301,7 @@
       {
         "type": "line",
         "speaker": "Checkal",
-        "text": "Stop right there [sir/miss]. You can tell Willow she can do the heavy lifting herself."
+        "text": "Stop right there, [sir/miss]. You can tell Willow she can do the heavy lifting herself."
       },
       {
         "player": "And why is that?"
@@ -581,7 +582,8 @@
               }
             ]
           }
-        ]
+        ],
+        "prompt": "Would you like to start your training session?"
       }
     ],
     "checkal-the-strongman-talking-to-atlas-again-if-the-player-said-no-to-training-session": [
@@ -613,7 +615,8 @@
               }
             ]
           }
-        ]
+        ],
+        "prompt": "Would you like to start your training session?"
       }
     ],
     "checkal-the-strongman-talking-to-atlas-again-after-first-training-session": [
@@ -813,7 +816,7 @@
       {
         "type": "line",
         "speaker": "Checkal",
-        "text": "My goodness, those muscles are exquisite. I will definitely help a [man/lady] who shows that much dedication to their physique."
+        "text": "My goodness, those muscles are exquisite. I will definitely help anyone who shows that much dedication to their physique."
       },
       {
         "player": "Fantastic! Willow said she'd meet you by the entrance, on the west side of Ice Mountain."
@@ -838,7 +841,8 @@
         "text": "If this was the last member the player needed to recruit:",
         "steps": [
           {
-            "player": "Well, that's everyone. I guess I should head off the entrance on the west side of Ice Mountain.{{fact}}"
+            "type": "call",
+            "branch": "wqyOMP"
           }
         ],
         "id": "RPjNZ9"
@@ -994,7 +998,7 @@
           {
             "type": "line",
             "speaker": "Burntof",
-            "text": "Whispers* We'll have the game upshtairs away from everyone."
+            "text": "*Whispers* We'll have the game upshtairs away from everyone."
           }
         ],
         "id": "L2PHG2"
@@ -1046,7 +1050,7 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-60dac3e496c9ff59"
+                    "branch": "jump-1a3d99fa2c947397"
                   }
                 ]
               }
@@ -1740,7 +1744,7 @@
       {
         "type": "line",
         "speaker": "Marley",
-        "text": "Robbery? Sorry [sir/miss], first I've heard of a robbery."
+        "text": "Robbery? Sorry, pal, first I've heard of a robbery."
       },
       {
         "player": "Look, I'm not here with the city guard, Willow sent me to find you. She needs your help."
@@ -1772,7 +1776,7 @@
         "text": "Yep... been a while since I had a nice hot meal."
       },
       {
-        "player": "Sighs*... would you like me to get you something to eat, to help jog your memory?"
+        "player": "*Sighs*... would you like me to get you something to eat, to help jog your memory?"
       },
       {
         "type": "line",
@@ -1804,7 +1808,7 @@
         "text": "Slight problem there, friend. I've been barred and the chef won't make me another one. Something about stealing from punters. I can't remember..."
       },
       {
-        "player": "Sighs*... Fine. If I go get you this sandwich, will you help Willow?"
+        "player": "*Sighs*... Fine. If I go get you this sandwich, will you help Willow?"
       },
       {
         "type": "line",
@@ -2370,7 +2374,7 @@
       {
         "type": "line",
         "speaker": "Willow",
-        "text": "Shrugs* How many archaeologists do you actually know?"
+        "text": "*Shrugs* How many archaeologists do you actually know?"
       },
       {
         "player": "Well I-"
@@ -2508,7 +2512,7 @@
               {
                 "type": "line",
                 "speaker": "Checkal",
-                "text": "Of course ma'am, I will get to work."
+                "text": "Of course madam, I will get to work."
               },
               {
                 "type": "action",
@@ -2701,7 +2705,7 @@
               {
                 "type": "line",
                 "speaker": "Burntof",
-                "text": "hic* Woops..."
+                "text": "*hic* Woops..."
               },
               {
                 "type": "line",
@@ -2781,7 +2785,8 @@
               }
             ]
           }
-        ]
+        ],
+        "prompt": "Head into the ruins?"
       }
     ],
     "the-ruins-of-camdozaal-talking-to-willow-talking-to-willow-again-if-the-player-chose-no": [
@@ -2813,7 +2818,8 @@
               }
             ]
           }
-        ]
+        ],
+        "prompt": "Head into the ruins?"
       }
     ],
     "finishing-up": [
@@ -2924,7 +2930,7 @@
         "text": "These halls once bustled with life, but that was a long time ago. I'm the only one left now. The name's Ramarno."
       },
       {
-        "player": "Well Ramarno, I'm [player name], and you have me at a loss for words! I'd have never even imagined there would be a whole city down here."
+        "player": "Well, Ramarno, I'm [player name], and you have me at a loss for words! I'd have never even imagined there would be a whole city down here."
       },
       {
         "type": "line",
@@ -3079,7 +3085,7 @@
     ]
   },
   "branches": {
-    "jump-60dac3e496c9ff59": [
+    "jump-1a3d99fa2c947397": [
       {
         "type": "line",
         "speaker": "Burntof",
@@ -3130,7 +3136,7 @@
       {
         "type": "line",
         "speaker": "Burntof",
-        "text": "Whispers* We'll have the game upshtairs away from everyone."
+        "text": "*Whispers* We'll have the game upshtairs away from everyone."
       },
       {
         "type": "end"
@@ -3143,7 +3149,7 @@
         "steps": [
           {
             "type": "call",
-            "branch": "jump-60dac3e496c9ff59"
+            "branch": "jump-1a3d99fa2c947397"
           }
         ]
       }
