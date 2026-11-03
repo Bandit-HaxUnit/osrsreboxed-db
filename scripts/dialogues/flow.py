@@ -60,11 +60,14 @@ def locations(steps, speaker=None, menu=None, option=None):
             yield from locations([alternative], speaker, node, alternative)
 
 
-def resolve_shared(npcs, quests, identities):
+def resolve_shared(npcs, quests, identities, bindings=None):
     sources = {}
+    variants = {}
     for name, record in npcs.items():
         options = {}
-        for steps in record["variants"].values():
+        variants[name] = {}
+        for variant, steps in record["variants"].items():
+            scoped = variants[name][variant] = {}
             for node, *_ in locations(steps):
                 for option in node.get("options", []):
                     if option.get("steps") and not all(
@@ -73,12 +76,31 @@ def resolve_shared(npcs, quests, identities):
                         options.setdefault(text_key(option.get("text", "")), []).append(
                             option["steps"]
                         )
+                        scoped.setdefault(text_key(option.get("text", "")), []).append(
+                            option["steps"]
+                        )
         sources[name] = options
-    for record in quests.values():
+    # Resolve reviewed NPC option references before quests borrow their bodies.
+    for quest_name, record in [*npcs.items(), *quests.items()]:
+        anchors = (bindings or {}).get(quest_name, {}).get("shared_options", {})
+        own_source = quest_name in npcs
+        if own_source and not anchors:
+            continue
+        seen = set()
         participants = record.get("participants", [])
         for steps in record["variants"].values():
             for node, _, _, speaker, _, _ in list(locations(steps)):
-                if not node.pop("_shared", False) or node.get("steps"):
+                anchor = anchors.get(node.get("text"))
+                shared = node.pop("_shared", False)
+                if not shared and not anchor:
+                    continue
+                if node.get("steps") and not (
+                    anchor
+                    and all(
+                        child.get("type") == "jump" and child.get("reference")
+                        for child in node["steps"]
+                    )
+                ):
                     continue
                 candidates = [
                     name
@@ -91,6 +113,23 @@ def resolve_shared(npcs, quests, identities):
                     for name in candidates
                     for body in sources[name].get(text_key(node.get("text", "")), [])
                 ]
+                if anchor:
+                    name = anchor["page"]
+                    scoped = variants.get(name, {}).get(anchor["variant"], {})
+                    bodies = [
+                        (name, body)
+                        for body in scoped.get(
+                            text_key(anchor.get("option", node["text"])), []
+                        )
+                    ]
+                    if (
+                        name not in candidates
+                        and not (own_source and name == quest_name)
+                    ) or not bodies:
+                        raise ValueError(
+                            f"Stale shared dialogue binding: {quest_name}.{node['text']}"
+                        )
+                    seen.add(node["text"])
                 distinct = {}
                 shop_targets = {
                     child["target"]
@@ -122,12 +161,18 @@ def resolve_shared(npcs, quests, identities):
                     ):
                         distinct[signature] = name, body
                 if len(distinct) != 1:
+                    if anchor:
+                        raise ValueError(
+                            f"Ambiguous shared dialogue binding: {quest_name}.{node['text']}"
+                        )
                     continue
                 name, body = next(iter(distinct.values()))
                 node["steps"] = copy.deepcopy(body)
                 for child, *_ in locations(node["steps"]):
-                    if "npc" in child:
+                    if "npc" in child and not own_source:
                         child.update(type="line", speaker=name, text=child.pop("npc"))
+        if seen != anchors.keys():
+            raise ValueError(f"Stale shared dialogue binding: {quest_name}")
     for record in [*npcs.values(), *quests.values()]:
         for steps in record["variants"].values():
             for node, *_ in locations(steps):
@@ -277,6 +322,41 @@ def resolve_navigation(record, anchors=None):
     named = {}
     local_continues = set()
 
+    def resumes_locally(siblings, at):
+        # A conditional body falls through its enclosing body, up to the option.
+        while True:
+            if siblings[at + 1 :]:
+                return True
+            parent = parents.get(id(siblings))
+            if parent is None:
+                return False
+            siblings = containers[id(parent)]
+            at = siblings.index(parent)
+
+    def resumes_past(after, anchor_node, steps, index, option):
+        """Whether `Continues after "X"` resumes past X rather than at it.
+
+        Usually the jumping branch has just said its own version of X, so the
+        conversation resumes after X. When its last utterance is the other
+        party's (the Player asks; X is the NPC's answer), X is still owed:
+        "after" then names the point in the other branch, and X is replayed.
+        """
+        if not after:
+            return False
+        if index:
+            before = steps[index - 1]
+            if not (
+                "npc" in before or "player" in before or before.get("type") == "line"
+            ):
+                return True
+            said_by_player = player_text(before) is not None
+        elif option is not None and steps is option.get("steps"):
+            # Selecting an option is the Player's utterance.
+            said_by_player = True
+        else:
+            return True
+        return said_by_player == (player_text(anchor_node) is not None)
+
     def guarded_continue_tail(option):
         for _, candidate, siblings, at, _, _, owner in entries:
             if (
@@ -368,9 +448,46 @@ def resolve_navigation(record, anchors=None):
                     )
                 ).startswith(key)
             ]
+            if not matches:
+                # The quote can be the tail of a longer line ("Hmm... So, say we were...").
+                # Then each branch that jumps also ends on such a line of its own, so only
+                # a line in the stated direction that does not itself hand off counts.
+                def hands_off(siblings, at):
+                    following = siblings[at + 1] if siblings[at + 1 :] else None
+                    return following is not None and bool(
+                        re.match(
+                            r"Continues?\b",
+                            following.get("text", following.get("reference", "")),
+                        )
+                    )
+
+                matches = [
+                    entry
+                    for entry in entries
+                    if (
+                        entry[1].get("type") == "line"
+                        or "npc" in entry[1]
+                        or "player" in entry[1]
+                    )
+                    and text_key(
+                        entry[1].get(
+                            "text", entry[1].get("npc", entry[1].get("player", ""))
+                        )
+                    ).endswith(key)
+                    and entry[2] is not steps
+                    and not hands_off(entry[2], entry[3])
+                    and (
+                        positions[id(entry[1])] < here
+                        if direction == "above"
+                        else positions[id(entry[1])] > here
+                    )
+                ]
             if target is None and len(matches) == 1:
-                _, _, siblings, at, *_ = matches[0]
-                target = siblings[at + (quoted[2].casefold() == "after") :]
+                _, anchor_node, siblings, at, *_ = matches[0]
+                after = quoted[2].casefold() == "after"
+                target = siblings[
+                    at + resumes_past(after, anchor_node, steps, index, option) :
+                ]
         elif target is None and reference in ("above", "below"):
             # A repeated preceding line identifies the shared tail precisely.
             previous = own(steps[index - 1]) if index else None
@@ -655,7 +772,7 @@ def resolve_navigation(record, anchors=None):
                             break
             # The final alternative often spells out the continuation shared by
             # earlier replies. Only borrow its explicit follow-up menu.
-            if target is None:
+            if target is None and not resumes_locally(steps, index):
                 alternatives = menu["options"]
                 at = alternatives.index(option)
                 for candidate in alternatives[at + 1 :]:

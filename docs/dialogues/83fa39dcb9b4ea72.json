@@ -442,13 +442,7 @@
                   {
                     "type": "jump",
                     "reference": "continues",
-                    "id": "SxRwQQ",
-                    "steps": [
-                      {
-                        "type": "call",
-                        "branch": "jump-25c08d47059ae47e"
-                      }
-                    ]
+                    "id": "SxRwQQ"
                   }
                 ],
                 "id": "nBKakv"
@@ -483,13 +477,7 @@
                   {
                     "type": "jump",
                     "reference": "continues",
-                    "id": "tf99tR",
-                    "steps": [
-                      {
-                        "type": "call",
-                        "branch": "jump-25c08d47059ae47e"
-                      }
-                    ]
+                    "id": "tf99tR"
                   }
                 ],
                 "id": "wv1mt1"
@@ -873,166 +861,6 @@
     ]
   },
   "branches": {
-    "jump-25c08d47059ae47e": [
-      {
-        "type": "choice",
-        "options": [
-          {
-            "text": "I'd like to access your tool storage.",
-            "steps": [
-              {
-                "type": "jump",
-                "id": "rp8-MK",
-                "steps": [
-                  {
-                    "type": "call",
-                    "branch": "jump-76d75b99dbc6353a"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "text": "Ask about private access.",
-            "steps": [
-              {
-                "type": "condition",
-                "text": "If the player has not unlocked private access:",
-                "steps": [
-                  {
-                    "type": "jump",
-                    "id": "5iWqiJ",
-                    "steps": [
-                      {
-                        "type": "call",
-                        "branch": "jump-3457c6037ea51388"
-                      }
-                    ]
-                  }
-                ],
-                "id": "VJI4Bh"
-              },
-              {
-                "type": "condition",
-                "text": "If the player has unlocked private access:",
-                "steps": [
-                  {
-                    "type": "condition",
-                    "text": "If the player currently has private access enabled:",
-                    "steps": [
-                      {
-                        "player": "Can I go back to looting with other people?"
-                      },
-                      {
-                        "npc": "I can remove your private access for now, if you're sure."
-                      },
-                      {
-                        "type": "choice",
-                        "prompt": "Return to normal access?",
-                        "options": [
-                          {
-                            "text": "Yes.",
-                            "steps": [
-                              {
-                                "npc": "Very well. You should now find that when you enter the Hallowed Sepulchre, your peers will join you."
-                              },
-                              {
-                                "npc": "Speak to me again if you would like this effect restored."
-                              },
-                              {
-                                "type": "end"
-                              }
-                            ]
-                          },
-                          {
-                            "text": "No.",
-                            "steps": [
-                              {
-                                "player": "On second thoughts, I've changed my mind."
-                              },
-                              {
-                                "type": "end"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "id": "dglu2z"
-                  },
-                  {
-                    "type": "condition",
-                    "text": "If the player currently has private access disabled:",
-                    "steps": [
-                      {
-                        "player": "Can I go back to looting on my own?"
-                      },
-                      {
-                        "npc": "I can restore your private access for you, if you're sure."
-                      },
-                      {
-                        "type": "choice",
-                        "prompt": "Return to private access?",
-                        "options": [
-                          {
-                            "text": "Yes.",
-                            "steps": [
-                              {
-                                "npc": "Very well. You should now find that when you enter the Hallowed Sepulchre, you will end up in different chambers to your peers."
-                              },
-                              {
-                                "npc": "Speak to me again if you would like this effect restored."
-                              },
-                              {
-                                "type": "end"
-                              }
-                            ]
-                          },
-                          {
-                            "text": "No.",
-                            "steps": [
-                              {
-                                "player": "On second thoughts, I've changed my mind."
-                              },
-                              {
-                                "type": "end"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "id": "_9MbYw"
-                  }
-                ],
-                "id": "Exi51h"
-              }
-            ]
-          },
-          {
-            "text": "Sorry, I need to go.",
-            "steps": [
-              {
-                "player": "Sorry, I need to go."
-              },
-              {
-                "type": "end"
-              }
-            ]
-          },
-          {
-            "text": "Previous options...",
-            "steps": [
-              {
-                "type": "jump",
-                "reference": "previous",
-                "id": "Q5F5V9"
-              }
-            ]
-          }
-        ]
-      }
-    ],
     "jump-3c84c1086fa8d3fa": [
       {
         "player": "Tell me about yourself."

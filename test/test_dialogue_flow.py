@@ -320,6 +320,62 @@ def test_ambiguous_shared_reply_is_not_guessed():
     assert not quest["variants"]["talking"][1]["options"][0].get("steps")
 
 
+def test_shared_reply_can_bind_an_ambiguous_option_to_its_original_source_variant():
+    npc = record(
+        "Alice",
+        "==West port==\n* {{topt|Travel.}}\n** '''Alice:''' Going east.\n==East port==\n* {{topt|Travel.}}\n** '''Alice:''' Going west.",
+    )
+    quest = record(
+        "A quest",
+        "{{Transcript list|Alice}}\n==Talking==\n* '''Alice:''' Hello.\n* {{topt|quest=no|Travel.}}",
+    )
+    binding = {
+        "A quest": {
+            "shared_options": {"Travel.": {"page": "Alice", "variant": "east-port"}}
+        }
+    }
+    enrich_records({"Alice": npc}, {"A quest": quest}, {}, update.clean, binding)
+    option = quest["variants"]["talking"][1]["options"][0]
+    assert [(line.get("speaker"), line.get("text")) for line in option["steps"]] == [
+        ("Alice", "Going west.")
+    ]
+    assert option["steps"][0]["id"].startswith("Transcript:Alice#east-port/")
+    with pytest.raises(ValueError, match="Stale shared dialogue binding"):
+        quest = record(
+            "A quest",
+            "{{Transcript list|Alice}}\n==Talking==\n* '''Alice:''' Hello.\n* {{topt|quest=no|Travel.}}",
+        )
+        binding["A quest"]["shared_options"]["Travel."]["variant"] = "missing"
+        enrich_records({"Alice": npc}, {"A quest": quest}, {}, update.clean, binding)
+
+
+def test_npc_option_anchor_resolves_a_differently_named_above_reference_before_sharing():
+    npc = record(
+        "Alice",
+        "==West port==\n* {{topt|I would like to go east.}}\n** '''Player:''' East, please.\n** '''Alice:''' Sailing east.\n==East port==\n* {{topt|Travel.}}\n** {{topt|Go east.}}\n*** {{tact|above}}",
+    )
+    quest = record(
+        "A quest",
+        "{{Transcript list|Alice}}\n==Talking==\n* '''Alice:''' Hello.\n* {{topt|quest=no|Travel.}}",
+    )
+    bindings = {
+        "Alice": {
+            "shared_options": {
+                "Go east.": {
+                    "page": "Alice",
+                    "variant": "west-port",
+                    "option": "I would like to go east.",
+                }
+            }
+        }
+    }
+    enrich_records({"Alice": npc}, {"A quest": quest}, {}, update.clean, bindings)
+    for record_, variant, at in [(npc, "east-port", 0), (quest, "talking", 1)]:
+        travel = record_["variants"][variant][at]["options"][0]
+        east = travel["steps"][0]["options"][0]
+        assert any(node.get("player") == "East, please." for node in east["steps"])
+
+
 def test_below_uses_the_matching_line_tail_and_quoted_references_use_source_text():
     value = record(
         "A quest",
@@ -347,6 +403,87 @@ def test_below_uses_the_matching_line_tail_and_quoted_references_use_source_text
     assert follow(value, options[0]["steps"])[1]["text"] == "Shared reply."
     assert follow(value, options[1]["steps"])[2]["text"] == "The final speech."
     assert follow(value, options[3]["steps"])[1]["text"] == "The final speech."
+
+
+def test_continues_after_an_npc_answer_still_owed_replays_that_answer():
+    # Shield of Arrav: the Player asks to join and the wiki says the talk
+    # "Continues after 'How unusual...'". Katrine's "How unusual..." answers
+    # that request, so it plays first (rsprox submission 1705).
+    value = record(
+        "A quest",
+        """==Talking==
+* {{tselect}}
+* {{topt|Join}}
+** '''Player:''' I want to join.
+** {{tact|Continues after "How unusual..."}}
+* {{topt|Hints}}
+** '''Player:''' Give me hints.
+** '''Other:''' Why would I?
+** '''Player:''' I could join in return?
+** '''Other:''' How unusual... Say we are who you think.
+** '''Player:''' I don't know.
+* {{topt|Ask}}
+** '''Player:''' Who are you?
+** '''Other:''' Well, what do you want?
+** {{tact|Continues after "So, what do you want with us"}}
+* {{topt|Leave}}
+** '''Player:''' Bye.
+** '''Other:''' So, what do you want with us?
+** '''Player:''' Nothing.
+""",
+    )
+    enrich_records({}, {"A quest": value}, {}, update.clean)
+    options = value["variants"]["talking"][0]["options"]
+    joined = follow(value, options[0]["steps"])
+    assert [n.get("text", n.get("player")) for n in joined] == [
+        "I want to join.",
+        "How unusual... Say we are who you think.",
+        "I don't know.",
+    ]
+    # The branch already said its own version of the anchor: resume past it.
+    asked = follow(value, options[2]["steps"])
+    assert [n.get("text", n.get("player")) for n in asked] == [
+        "Who are you?",
+        "Well, what do you want?",
+        "Nothing.",
+    ]
+
+
+def test_continues_after_a_quoted_line_tail_finds_the_branch_that_goes_on():
+    # Shield of Arrav: Katrine's "Hmm... So, say we were the Black Arm Gang..." is the
+    # anchor for "Continues above after 'Say we were...'"; the jumping branches end on
+    # their own "...say we were..." lines, which must not count as the anchor.
+    value = record(
+        "A quest",
+        """==Talking==
+* {{tselect}}
+* {{topt|Secret}}
+** '''Player:''' I won't say.
+** '''Other:''' Hmm... Fine. So, say we were them, what would you want?
+** {{tselect}}
+** {{topt|Join}}
+*** '''Player:''' I want to join.
+** {{topt|Leave}}
+*** '''Player:''' Nothing.
+* {{topt|Tramp}}
+** '''Player:''' The tramp told me.
+** '''Other:''' Anyway, say we were them, what would you want?
+** {{tact|Continues above after "Say we were them, what would you want?"}}
+* {{topt|Everyone}}
+** '''Player:''' Everyone knows.
+** '''Other:''' I see... say we were them, what would you want?
+** {{tact|Continues above after "Say we were them, what would you want?"}}
+""",
+    )
+    enrich_records({}, {"A quest": value}, {}, update.clean)
+    options = value["variants"]["talking"][0]["options"]
+    for option in options[1:]:
+        steps = follow(value, option["steps"])
+        assert steps[-1].get("type") == "choice"
+        assert [o["text"] for o in steps[-1]["options"]] == ["Join", "Leave"]
+        assert not any(
+            "Hmm... Fine." in str(n.get("text", "")) for n in steps
+        ), "the jumping branch already said its own version of the line"
 
 
 def test_named_section_navigation_keeps_menu_cycles_as_calls():
@@ -406,6 +543,95 @@ def test_repeated_speech_in_another_section_requires_a_unique_continuation():
     )
     enrich_records({}, {"A quest": value}, {}, update.clean)
     assert value["variants"]["again"][-1]["reference"] == "above"
+
+
+def test_continues_inside_conditions_resumes_the_enclosing_option():
+    value = record(
+        "A quest",
+        """==Starting==
+* {{tselect}}
+* {{topt|Anything I can help with?}}
+** {{tcond|If the player is inexperienced:}}
+*** '''Guide:''' You are new to this.
+*** {{tact|continues}}
+** {{tcond|If the player is experienced:}}
+*** '''Guide:''' You have done this before.
+*** {{tact|continues}}
+** {{tbox|Be prepared.}}
+** {{tselect|Start the quest?}}
+** {{topt|Yes.}}
+*** '''Guide:''' Good luck.
+*** {{tact|end}}
+** {{topt|No.}}
+*** {{tact|end}}
+* {{topt|What is the banner for?}}
+** '''Guide:''' It advertises our group.
+** {{tselect}}
+** {{topt|Join the group.}}
+*** {{tact|end}}
+** {{topt|No thanks.}}
+*** {{tact|end}}
+""",
+    )
+    enrich_records({}, {"A quest": value}, {}, update.clean)
+    steps = value["variants"]["starting"][0]["options"][0]["steps"]
+    for condition in steps[:2]:
+        assert condition["type"] == "condition"
+        line, continuation = condition["steps"]
+        assert line["type"] == "line"
+        assert continuation["reference"] == "continues"
+        assert "steps" not in continuation
+    assert steps[-1]["prompt"] == "Start the quest?"
+
+
+def test_continues_at_the_end_of_an_option_can_reuse_a_shared_followup_menu():
+    value = record(
+        "X",
+        """==Standard dialogue==
+* {{tselect}}
+* {{topt|First reply.}}
+** '''X:''' First introduction.
+** {{tact|continues}}
+* {{topt|Second reply.}}
+** '''X:''' Second introduction.
+** {{tselect}}
+** {{topt|A shared follow-up.}}
+*** '''X:''' The next reply.
+*** {{tact|end}}
+""",
+    )
+    enrich_records({"X": value}, {}, {}, update.clean)
+    first = value["variants"]["standard-dialogue"][0]["options"][0]
+    continued = follow(value, first["steps"])
+    assert continued[-1]["options"][0]["text"] == "A shared follow-up."
+
+
+def test_fairytale_start_continues_reach_the_source_start_prompt():
+    pages = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())
+    name = "Fairytale I - Growing Pains"
+    page = pages["Transcript:" + name]
+    value = record(name, page["wikitext"])
+    value["source"]["revision"] = page["revision"]
+    enrich_records({}, {name: value}, {}, update.clean)
+    starting = value["variants"]["starting-the-quest"]
+    help_option = next(
+        node for node in walk(starting)
+        if node.get("text") == "Anything I can help with?"
+    )
+    farming = [
+        node for node in help_option["steps"]
+        if node.get("type") == "condition" and "Farming" in node["text"]
+    ]
+    assert len(farming) == 2
+    for condition in farming:
+        line, continuation = condition["steps"]
+        assert line["type"] == "line"
+        assert continuation["reference"] == "continues"
+        assert "steps" not in continuation
+    start = next(node for node in help_option["steps"] if node.get("type") == "choice")
+    assert start["prompt"] == "Start the Fairytale I - Growing Pains quest?"
+    assert [option["text"] for option in start["options"]] == ["Yes.", "No."]
+    assert start["options"][0]["hook"] == "quest:fairytale-i-growing-pains:start"
 
 
 def test_repeated_section_conditions_share_the_explicit_continuation():
