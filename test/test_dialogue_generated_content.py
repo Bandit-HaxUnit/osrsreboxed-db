@@ -14,6 +14,46 @@ def nodes(record, steps, visiting=frozenset()):
             )
 
 
+def test_veos_shared_travel_uses_the_piscarilius_source_at_every_quest_stage():
+    data = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    record = data["Client of Kourend"]
+    for variant in [
+        "starting-off",
+        "starting-off-talking-to-veos-again",
+        "returning-to-veos",
+        "returning-to-veos-talking-to-veos-again-after-receiving-the-orb",
+        "finishing-up",
+    ]:
+        options = [
+            node
+            for node in nodes(record, record["variants"][variant])
+            if node.get("text") == "Can you take me somewhere?" and "steps" in node
+        ]
+        assert options, variant
+        for option in options:
+            travel = list(nodes(record, option["steps"]))
+            labels = {node.get("text") for node in travel}
+            assert {
+                "Travel to Port Sarim.",
+                "Travel to Land's End.",
+                "Stay where you are.",
+            } <= labels
+            assert "I'd like to travel to Port Piscarilius, please." not in labels
+            assert any(
+                node.get("text", "").startswith("As you wish, I hope")
+                for node in travel
+            )
+            for label, reply in [
+                ("Travel to Land's End.", "I'd like to travel to Land's End, please."),
+                ("Stay where you are.", "Actually I'd like to stay here."),
+            ]:
+                destination = next(node for node in travel if node.get("text") == label)
+                assert any(
+                    node.get("player") == reply
+                    for node in nodes(record, destination["steps"])
+                )
+
+
 def test_source_derived_dialogues_keep_the_audited_content():
     data = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     corrections = json.loads(

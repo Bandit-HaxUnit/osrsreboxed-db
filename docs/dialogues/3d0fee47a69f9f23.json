@@ -228,10 +228,8 @@
                     "text": "I'd like to travel to Land's End, please.",
                     "steps": [
                       {
-                        "player": "I'd like to travel to Land's End, please."
-                      },
-                      {
-                        "npc": "As you wish, I hope you don't get seasick, it is a long voyage."
+                        "type": "call",
+                        "branch": "jF5wsL"
                       }
                     ]
                   },
@@ -396,9 +394,8 @@
                     "text": "Travel to Land's End.",
                     "steps": [
                       {
-                        "type": "jump",
-                        "reference": "above",
-                        "id": "WR75kE"
+                        "type": "call",
+                        "branch": "jF5wsL"
                       }
                     ]
                   },
@@ -406,9 +403,10 @@
                     "text": "Stay where you are.",
                     "steps": [
                       {
-                        "type": "jump",
-                        "reference": "above",
-                        "id": "jJqd2w"
+                        "player": "Actually I'd like to stay here."
+                      },
+                      {
+                        "npc": "As you wish."
                       }
                     ]
                   }
@@ -905,9 +903,13 @@
             "text": "Travel to Land's End.",
             "steps": [
               {
-                "type": "jump",
-                "reference": "above",
-                "id": "WR75kE"
+                "player": "I'd like to travel to Land's End, please."
+              },
+              {
+                "npc": "As you wish, I hope you don't get seasick, it is a long voyage."
+              },
+              {
+                "type": "end"
               }
             ]
           },
@@ -915,9 +917,13 @@
             "text": "Stay where you are.",
             "steps": [
               {
-                "type": "jump",
-                "reference": "above",
-                "id": "jJqd2w"
+                "player": "Actually I'd like to stay here."
+              },
+              {
+                "npc": "As you wish."
+              },
+              {
+                "type": "end"
               }
             ]
           }
@@ -1070,6 +1076,14 @@
             ]
           }
         ]
+      }
+    ],
+    "jF5wsL": [
+      {
+        "player": "I'd like to travel to Land's End, please."
+      },
+      {
+        "npc": "As you wish, I hope you don't get seasick, it is a long voyage."
       }
     ]
   }
