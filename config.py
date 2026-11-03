@@ -50,6 +50,7 @@ DOCS_DROPS_PATH = Path(DOCS_PATH / "drops-json")
 
 # Generated object (scenery) examine dump
 DOCS_OBJECT_EXAMINES_FILE = Path(DOCS_PATH / "object-examines.json")
+DOCS_NPC_EXAMINES_FILE = Path(DOCS_PATH / "npc-examines.json")
 
 # Generated weapon equipment-stat dump
 DOCS_WEAPON_STATS_FILE = Path(DOCS_PATH / "weapon-stats.json")

@@ -1,6 +1,6 @@
 """
 Description:
-Read scenery examine text out of OSRS Wiki page wikitext.
+Read scenery and NPC examine text out of OSRS Wiki page wikitext.
 
 OSRS sends an object's examine from the server, so the cache has none of it; the
 wiki's ``{{Infobox Scenery}}`` gives it per version, with the object IDs each
@@ -26,7 +26,6 @@ from typing import Dict, List, Tuple
 
 import mwparserfromhell as mw
 
-INFOBOX_NAME = "infobox scenery"
 
 # What the wiki writes when a scenery object has no examine.
 NO_EXAMINE = {"N/A", "None"}
@@ -42,11 +41,12 @@ NUMBERED_PARAM = re.compile(r"^(?:id|examine|version)(\d+)$")
 SITUATION_LABEL = re.compile(r"^[A-Z][\w' ]{0,30}: ")
 
 
-def infoboxes(wikitext: str) -> List[Dict[str, str]]:
-    """Every ``{{Infobox Scenery}}`` on a page, as its parameters by lowercase name."""
+def infoboxes(wikitext: str, name: str = "infobox scenery") -> List[Dict[str, str]]:
+    """Every ``{{Infobox Scenery}}`` (or the infobox called ``name``, lowercase) on a page,
+    as its parameters by lowercase name."""
     boxes = []
     for template in mw.parse(wikitext).filter_templates(recursive=True):
-        if template.name.strip().lower() != INFOBOX_NAME:
+        if template.name.strip().lower() != name:
             continue
         boxes.append(
             {

@@ -1,14 +1,17 @@
 """
 Description:
-Program to generate the OSRS object (scenery) examine JSON dump.
+Program to generate the OSRS object (scenery) and NPC examine JSON dumps.
 
 Lists every scenery page from the wiki's ``infobox_scenery`` bucket, reads their
 ``{{Infobox Scenery}}`` 50 pages per request, and writes object ID -> examine text
-to ``docs/object-examines.json`` (minified). An ID given different texts by two
-pages keeps the first, and is logged.
+to ``docs/object-examines.json`` (minified). ``--kind npc`` does the same for the
+``infobox_npc`` bucket and ``{{Infobox NPC}}``, into ``docs/npc-examines.json``: the
+monster dump only has the examines of attackable NPCs, so this covers the rest.
+An ID given different texts by two pages keeps the first, and is logged.
 
 Usage:
     python -m scripts.examines.update
+    python -m scripts.examines.update --kind npc
     python -m scripts.examines.update --limit 200 --out /tmp/object-examines.json
 
 ###############################################################################
@@ -69,13 +72,20 @@ def wiki_json(session: requests.Session, params: Dict[str, str]) -> dict:
     return {}
 
 
-def scenery_pages(session: requests.Session) -> List[str]:
-    """Every page with an Infobox Scenery, from the ``infobox_scenery`` bucket."""
+# kind -> (wiki bucket, infobox name, default output file)
+KINDS = {
+    "object": ("infobox_scenery", "infobox scenery", config.DOCS_OBJECT_EXAMINES_FILE),
+    "npc": ("infobox_npc", "infobox npc", config.DOCS_NPC_EXAMINES_FILE),
+}
+
+
+def infobox_pages(session: requests.Session, bucket: str) -> List[str]:
+    """Every page with the infobox of a wiki ``bucket``."""
     pages = set()
     offset = 0
     while True:
         query = (
-            "bucket('infobox_scenery').select('page_name')"
+            f"bucket('{bucket}').select('page_name')"
             f".limit({BUCKET_PAGE}).offset({offset}).run()"
         )
         rows = wiki_json(session, {"action": "bucket", "query": query}).get("bucket", [])
@@ -105,20 +115,22 @@ def page_texts(session: requests.Session, titles: List[str]) -> Dict[str, str]:
     return texts
 
 
-def generate(out_file: Path, limit: Optional[int] = None) -> None:
-    """Read every scenery page and write the examine dump."""
+def generate(kind: str, out_file: Optional[Path] = None, limit: Optional[int] = None) -> None:
+    """Read every page of a ``kind`` ("object" or "npc") and write the examine dump."""
+    bucket, infobox, default_file = KINDS[kind]
+    out_file = out_file or default_file
     session = requests.Session()
-    pages = scenery_pages(session)
+    pages = infobox_pages(session, bucket)
     if limit is not None:
         pages = pages[:limit]
-    logger.info("Processing %d scenery wiki pages...", len(pages))
+    logger.info("Processing %d %s wiki pages...", len(pages), kind)
 
     examines: Dict[int, str] = {}
     conflicts = 0
     for start in range(0, len(pages), TITLES_PER_REQUEST):
         batch = pages[start : start + TITLES_PER_REQUEST]
         for title, wikitext in page_texts(session, batch).items():
-            for box in infoboxes(wikitext):
+            for box in infoboxes(wikitext, infobox):
                 for object_id, text in examines_of(box):
                     existing = examines.get(object_id)
                     if existing is None:
@@ -126,7 +138,7 @@ def generate(out_file: Path, limit: Optional[int] = None) -> None:
                     elif existing != text:
                         conflicts += 1
                         logger.info(
-                            "Object %d: kept %r over %r (%s)", object_id, existing, text, title
+                            "%s %d: kept %r over %r (%s)", kind, object_id, existing, text, title
                         )
         done = min(start + TITLES_PER_REQUEST, len(pages))
         if done % 1000 < TITLES_PER_REQUEST or done == len(pages):
@@ -138,8 +150,9 @@ def generate(out_file: Path, limit: Optional[int] = None) -> None:
         json.dumps(dump, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
     logger.info(
-        "Wrote %d object examines to %s (%d IDs given differing texts)",
+        "Wrote %d %s examines to %s (%d IDs given differing texts)",
         len(dump),
+        kind,
         out_file,
         conflicts,
     )
@@ -147,13 +160,14 @@ def generate(out_file: Path, limit: Optional[int] = None) -> None:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate the OSRS object examine JSON dump."
+        description="Generate the OSRS object or NPC examine JSON dump."
     )
+    parser.add_argument("--kind", choices=sorted(KINDS), default="object")
     parser.add_argument(
         "--out",
         type=Path,
-        default=config.DOCS_OBJECT_EXAMINES_FILE,
-        help="File to write the dump to.",
+        default=None,
+        help="File to write the dump to (default: the kind's file under docs/).",
     )
     parser.add_argument(
         "--limit", type=int, default=None, help="Only process this many wiki pages."
@@ -161,7 +175,7 @@ def main():
     args = parser.parse_args()
 
     begin_run("scripts_examines_update")
-    generate(out_file=args.out, limit=args.limit)
+    generate(args.kind, out_file=args.out, limit=args.limit)
 
 
 if __name__ == "__main__":

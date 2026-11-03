@@ -62,3 +62,12 @@ def test_one_examine_of_several_listed_per_line():
 def test_a_two_state_text_gives_the_lit_state():
     box = {"examine": "(Unlit) You can light a fire here.<br>(Lit) A fire burns steadily in the grate.", "id": "4618"}
     assert examines_of(box) == [(4618, "A fire burns steadily in the grate.")]
+
+
+def test_npc_infobox_pairs_ids_with_examines():
+    page = "{{Infobox NPC|version1=Normal|name1=Wise Old Man|examine1=A venerable and rich sage.|id1=3820, 3821}}"
+    assert infoboxes(page) == []
+    assert examines_of(infoboxes(page, "infobox npc")[0]) == [
+        (3820, "A venerable and rich sage."),
+        (3821, "A venerable and rich sage."),
+    ]
