@@ -403,6 +403,40 @@ def resolve_navigation(record, anchors=None):
                     )
                 ).startswith(key)
             ]
+            if not matches:
+                # The quote can be the tail of a longer line ("Hmm... So, say we were...").
+                # Then each branch that jumps also ends on such a line of its own, so only
+                # a line in the stated direction that does not itself hand off counts.
+                def hands_off(siblings, at):
+                    following = siblings[at + 1] if siblings[at + 1 :] else None
+                    return following is not None and bool(
+                        re.match(
+                            r"Continues?\b",
+                            following.get("text", following.get("reference", "")),
+                        )
+                    )
+
+                matches = [
+                    entry
+                    for entry in entries
+                    if (
+                        entry[1].get("type") == "line"
+                        or "npc" in entry[1]
+                        or "player" in entry[1]
+                    )
+                    and text_key(
+                        entry[1].get(
+                            "text", entry[1].get("npc", entry[1].get("player", ""))
+                        )
+                    ).endswith(key)
+                    and entry[2] is not steps
+                    and not hands_off(entry[2], entry[3])
+                    and (
+                        positions[id(entry[1])] < here
+                        if direction == "above"
+                        else positions[id(entry[1])] > here
+                    )
+                ]
             if target is None and len(matches) == 1:
                 _, anchor_node, siblings, at, *_ = matches[0]
                 after = quoted[2].casefold() == "after"

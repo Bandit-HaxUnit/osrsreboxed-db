@@ -393,6 +393,43 @@ def test_continues_after_an_npc_answer_still_owed_replays_that_answer():
     ]
 
 
+def test_continues_after_a_quoted_line_tail_finds_the_branch_that_goes_on():
+    # Shield of Arrav: Katrine's "Hmm... So, say we were the Black Arm Gang..." is the
+    # anchor for "Continues above after 'Say we were...'"; the jumping branches end on
+    # their own "...say we were..." lines, which must not count as the anchor.
+    value = record(
+        "A quest",
+        """==Talking==
+* {{tselect}}
+* {{topt|Secret}}
+** '''Player:''' I won't say.
+** '''Other:''' Hmm... Fine. So, say we were them, what would you want?
+** {{tselect}}
+** {{topt|Join}}
+*** '''Player:''' I want to join.
+** {{topt|Leave}}
+*** '''Player:''' Nothing.
+* {{topt|Tramp}}
+** '''Player:''' The tramp told me.
+** '''Other:''' Anyway, say we were them, what would you want?
+** {{tact|Continues above after "Say we were them, what would you want?"}}
+* {{topt|Everyone}}
+** '''Player:''' Everyone knows.
+** '''Other:''' I see... say we were them, what would you want?
+** {{tact|Continues above after "Say we were them, what would you want?"}}
+""",
+    )
+    enrich_records({}, {"A quest": value}, {}, update.clean)
+    options = value["variants"]["talking"][0]["options"]
+    for option in options[1:]:
+        steps = follow(value, option["steps"])
+        assert steps[-1].get("type") == "choice"
+        assert [o["text"] for o in steps[-1]["options"]] == ["Join", "Leave"]
+        assert not any(
+            "Hmm... Fine." in str(n.get("text", "")) for n in steps
+        ), "the jumping branch already said its own version of the line"
+
+
 def test_named_section_navigation_keeps_menu_cycles_as_calls():
     value = record(
         "X",
