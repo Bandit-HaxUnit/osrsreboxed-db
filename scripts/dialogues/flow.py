@@ -288,6 +288,30 @@ def resolve_navigation(record, anchors=None):
             siblings = containers[id(parent)]
             at = siblings.index(parent)
 
+    def resumes_past(after, anchor_node, steps, index, option):
+        """Whether `Continues after "X"` resumes past X rather than at it.
+
+        Usually the jumping branch has just said its own version of X, so the
+        conversation resumes after X. When its last utterance is the other
+        party's (the Player asks; X is the NPC's answer), X is still owed:
+        "after" then names the point in the other branch, and X is replayed.
+        """
+        if not after:
+            return False
+        if index:
+            before = steps[index - 1]
+            if not (
+                "npc" in before or "player" in before or before.get("type") == "line"
+            ):
+                return True
+            said_by_player = player_text(before) is not None
+        elif option is not None and steps is option.get("steps"):
+            # Selecting an option is the Player's utterance.
+            said_by_player = True
+        else:
+            return True
+        return said_by_player == (player_text(anchor_node) is not None)
+
     def guarded_continue_tail(option):
         for _, candidate, siblings, at, _, _, owner in entries:
             if (
@@ -380,8 +404,11 @@ def resolve_navigation(record, anchors=None):
                 ).startswith(key)
             ]
             if target is None and len(matches) == 1:
-                _, _, siblings, at, *_ = matches[0]
-                target = siblings[at + (quoted[2].casefold() == "after") :]
+                _, anchor_node, siblings, at, *_ = matches[0]
+                after = quoted[2].casefold() == "after"
+                target = siblings[
+                    at + resumes_past(after, anchor_node, steps, index, option) :
+                ]
         elif target is None and reference in ("above", "below"):
             # A repeated preceding line identifies the shared tail precisely.
             previous = own(steps[index - 1]) if index else None

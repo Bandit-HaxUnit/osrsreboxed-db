@@ -349,6 +349,50 @@ def test_below_uses_the_matching_line_tail_and_quoted_references_use_source_text
     assert follow(value, options[3]["steps"])[1]["text"] == "The final speech."
 
 
+def test_continues_after_an_npc_answer_still_owed_replays_that_answer():
+    # Shield of Arrav: the Player asks to join and the wiki says the talk
+    # "Continues after 'How unusual...'". Katrine's "How unusual..." answers
+    # that request, so it plays first (rsprox submission 1705).
+    value = record(
+        "A quest",
+        """==Talking==
+* {{tselect}}
+* {{topt|Join}}
+** '''Player:''' I want to join.
+** {{tact|Continues after "How unusual..."}}
+* {{topt|Hints}}
+** '''Player:''' Give me hints.
+** '''Other:''' Why would I?
+** '''Player:''' I could join in return?
+** '''Other:''' How unusual... Say we are who you think.
+** '''Player:''' I don't know.
+* {{topt|Ask}}
+** '''Player:''' Who are you?
+** '''Other:''' Well, what do you want?
+** {{tact|Continues after "So, what do you want with us"}}
+* {{topt|Leave}}
+** '''Player:''' Bye.
+** '''Other:''' So, what do you want with us?
+** '''Player:''' Nothing.
+""",
+    )
+    enrich_records({}, {"A quest": value}, {}, update.clean)
+    options = value["variants"]["talking"][0]["options"]
+    joined = follow(value, options[0]["steps"])
+    assert [n.get("text", n.get("player")) for n in joined] == [
+        "I want to join.",
+        "How unusual... Say we are who you think.",
+        "I don't know.",
+    ]
+    # The branch already said its own version of the anchor: resume past it.
+    asked = follow(value, options[2]["steps"])
+    assert [n.get("text", n.get("player")) for n in asked] == [
+        "Who are you?",
+        "Well, what do you want?",
+        "Nothing.",
+    ]
+
+
 def test_named_section_navigation_keeps_menu_cycles_as_calls():
     value = record(
         "X",

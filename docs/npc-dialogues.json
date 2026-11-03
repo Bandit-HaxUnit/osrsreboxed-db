@@ -101820,7 +101820,7 @@
               ]
             },
             {
-              "text": "Hello. I am in search of a quest.",
+              "text": "Hello! I'm in search of a quest.",
               "steps": [
                 {
                   "player": "Hello! I am in search of a quest."
@@ -900901,7 +900901,7 @@
                               "text": "Have you been shearing my sheep without permission!?"
                             },
                             {
-                              "player": "No! Well, maybe... They just looked a little wooly! Surely you like a shave once in a while, too?"
+                              "player": "No! Well, maybe... They just looked a little woolly! Surely you like a shave once in a while, too?"
                             },
                             {
                               "type": "line",
@@ -902238,7 +902238,7 @@
               "text": "Do you have anything to trade?"
             },
             {
-              "text": "What do you do?"
+              "text": "I'd better get going."
             }
           ]
         }
@@ -902332,11 +902332,6 @@
           "type": "line",
           "speaker": "Reldo",
           "text": "Hello there, [player name]."
-        },
-        {
-          "type": "message",
-          "text": "",
-          "id": "VXmx2H"
         },
         {
           "type": "choice",
@@ -902452,6 +902447,83 @@
               ]
             },
             {
+              "text": "Okay, here you go.",
+              "steps": [
+                {
+                  "player": "Okay, here you go."
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player has coins in their inventory:",
+                  "steps": [
+                    {
+                      "type": "action",
+                      "text": "(Player gives Charlie 1 coin.)",
+                      "id": "SPAjYU"
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Charlie the Tramp",
+                      "text": "Hey, thanks a lot!"
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "No problem.",
+                          "steps": [
+                            {
+                              "player": "No problem."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Don't I get some sort of quest hint or something now?",
+                          "steps": [
+                            {
+                              "player": "So...don't I get some sort of quest hint or something now?"
+                            },
+                            {
+                              "type": "line",
+                              "speaker": "Charlie the Tramp",
+                              "text": "Huh? What do you mean? That wasn't why I asked you for money."
+                            },
+                            {
+                              "type": "line",
+                              "speaker": "Charlie the Tramp",
+                              "text": "I just need to eat..."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "Vd68yh"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player does not have coins in their inventory:",
+                  "steps": [
+                    {
+                      "player": "Oh wait. I haven't got any, sorry."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Charlie the Tramp",
+                      "text": "Thanks anyway."
+                    }
+                  ],
+                  "id": "jyd1Up"
+                }
+              ]
+            },
+            {
               "text": "Sorry, I haven't got any.",
               "steps": [
                 {
@@ -902524,7 +902596,7 @@
                                   "steps": [
                                     {
                                       "type": "call",
-                                      "branch": "jump-c11a93ba95d40a5c"
+                                      "branch": "jump-063e054b246f622d"
                                     }
                                   ]
                                 }
@@ -903123,6 +903195,9 @@
               "type": "line",
               "speaker": "Katrine",
               "text": "It seems you're more skilled than I originally gave you credit for. Well done. Consider yourself a member of the Black Arm Gang. I'd suggest you now go and familiarise yourself with the rest of the ganghouse."
+            },
+            {
+              "player": "Will do! Thanks!"
             }
           ],
           "id": "oIS8H7"
@@ -903368,10 +903443,10 @@
                   "type": "choice",
                   "options": [
                     {
-                      "text": "Okay. Have 20 gold coins.",
+                      "text": "Okay, here's 20 coins.",
                       "steps": [
                         {
-                          "player": "Okay. Have 20 gold coins."
+                          "player": "Okay, here's 20 coins."
                         },
                         {
                           "type": "condition",
@@ -903415,7 +903490,7 @@
                       ]
                     },
                     {
-                      "text": "No, I don't like things like bribery.",
+                      "text": "No, I don't do things like bribery.",
                       "steps": [
                         {
                           "player": "No, I don't do things like bribery."
@@ -903428,7 +903503,7 @@
                       ]
                     },
                     {
-                      "text": "Yes. I'd like to be 20 coins richer too.",
+                      "text": "Yes, I'd like to be 20 coins richer too.",
                       "steps": [
                         {
                           "player": "Yes, I'd like to be 20 coins richer too."
@@ -903440,7 +903515,7 @@
               ]
             },
             {
-              "text": "Hello. I am in search of a quest."
+              "text": "Hello! I'm in search of a quest."
             }
           ]
         }
@@ -904236,7 +904311,7 @@
           "text": "This is incredible! But where's the other half?"
         },
         {
-          "player": "I obtained this half from the [Phoenix Gang/Black Arm Gang]. The [Black Arm Gang/Phoenix Gang] might have the other half."
+          "player": "I obtained this half from the [Phoenix Gang/Black Arm Gang]. I wonder if the [Black Arm Gang/Phoenix Gang] might have the other half."
         },
         {
           "type": "line",
@@ -904249,12 +904324,12 @@
         {
           "type": "line",
           "speaker": "Curator Haig Halen",
-          "text": "I'm afraid the reward is for the recovery of the full shield. However, what I'll do is write you out two half- certificates. If another adventurer returns the other shield half, I'll do the same for them."
+          "text": "I'm afraid the reward is for the recovery of the full shield. However, what I'll do is write you out two half-certificates. If another adventurer returns the other shield half, I'll do the same for them."
         },
         {
           "type": "line",
           "speaker": "Curator Haig Halen",
-          "text": "The two of you can then swap one of the half- certificates to make a full one each. Take that to the King and he will grant you your reward."
+          "text": "The two of you can then swap one of the half-certificates to make a full one each. Take that to the King and he will grant you your reward."
         },
         {
           "type": "message",
@@ -904564,7 +904639,12 @@
       ]
     },
     "branches": {
-      "jump-c11a93ba95d40a5c": [
+      "jump-063e054b246f622d": [
+        {
+          "type": "line",
+          "speaker": "Katrine",
+          "text": "How unusual... Okay, let's say we are who you believe we are. Do you think we'd be recruiting people who just waltz in here saying 'hello, I'd like to play'?"
+        },
         {
           "player": "I don't know. What would be the alternative?"
         },

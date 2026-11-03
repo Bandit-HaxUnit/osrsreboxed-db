@@ -640,12 +640,13 @@
     ]
   },
   "Sheep Shearer": {
-    "reason": "Keep the captured wool handover order and shared handover effect ID.",
+    "reason": "Keep the captured wool handover order, the captured \"woolly\" spelling and the shared handover effect ID.",
     "sources": [
-      "https://github.com/RSPSApp/tsps/commit/63c7cd9b9753b4e434fc159a2955348a5058d3ab"
+      "https://github.com/RSPSApp/tsps/commit/63c7cd9b9753b4e434fc159a2955348a5058d3ab",
+      "https://rsprox.net/database (submission 1718: the player says \"a little woolly!\")"
     ],
     "base_sha256": "8a29c2018a82ad4f42f73b608586c9332ae1c418fc64218e733d1e83860b12b0",
-    "audited_sha256": "f7da43f21c8745fe985dc26c110a72aa104d7c79bebeaa4560e231df870b5f40",
+    "audited_sha256": "d428928caef7116b2d68fb44fac148d6b6797766f220a23f342f2f92a345550a",
     "changes": [
       {
         "path": [
@@ -792,7 +793,7 @@
                         "text": "Have you been shearing my sheep without permission!?"
                       },
                       {
-                        "player": "No! Well, maybe... They just looked a little wooly! Surely you like a shave once in a while, too?"
+                        "player": "No! Well, maybe... They just looked a little woolly! Surely you like a shave once in a while, too?"
                       },
                       {
                         "type": "line",
@@ -964,13 +965,316 @@
     ]
   },
   "Shield of Arrav": {
-    "reason": "Captured museum greeting is absent from this wiki variant; recruitment navigation now comes from the dumper.",
+    "reason": "Captured museum greeting is absent from this wiki variant; recruitment navigation now comes from the dumper. Live captures also show: Reldo's \"I'd better get going.\" option (the cached revision still has \"What do you do?\"), no empty message after his greeting, Baraek's option and bribe wording, Charlie's \"Okay, here you go.\" option (its replies come from the Charlie the Tramp transcript), the player's reply after the crossbow hand-in, and the curator's wording.",
     "sources": [
-      "https://github.com/RSPSApp/tsps/commit/63c7cd9b9753b4e434fc159a2955348a5058d3ab"
+      "https://github.com/RSPSApp/tsps/commit/63c7cd9b9753b4e434fc159a2955348a5058d3ab",
+      "https://rsprox.net/database (submission 1705: Reldo's menu \"I'm in search of a quest.|Do you have anything to trade?|I'd better get going.\" and the menu right after \"Hello there, [player name].\")",
+      "https://rsprox.net/database (submission 1705: Baraek's \"Hello! I'm in search of a quest.\" and \"Okay, here's 20 coins.|No, I don't do things like bribery.|Yes, I'd like to be 20 coins richer too.\")",
+      "https://rsprox.net/database (submission 1705: Charlie's menu \"Who are you?|I'm looking for the Black Arm Gang.|Okay, here you go.|Sorry, I haven't got any.|Go get a job!\")",
+      "https://rsprox.net/database (submission 1710: the player says \"Will do! Thanks!\" after the crossbow hand-in; the curator scene as a Black Arm Gang member)",
+      "https://oldschool.runescape.wiki/w/Transcript:Charlie_the_Tramp?oldid=15017433"
     ],
-    "base_sha256": "3d15559eede473953c7aaa62b3ba51f64f3d8c8218ac5e94e01dd6ddeeaba533",
-    "audited_sha256": "63f34715b36db82da3f8bca2eec33be632b91fa1f75ef8e1f396f95c0b8bf32f",
+    "base_sha256": "c775c615e3fba63edb1f08dacef854ae7a2d5d2d29f5802c2354ad094a908571",
+    "audited_sha256": "ef3689878af61ea535344f1e314011a8e248c1ec0bc9b73d3945a2ef8f921079",
     "changes": [
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "shared-starting-talking-to-reldo",
+          2,
+          "options",
+          2,
+          "text"
+        ],
+        "expected": "92d960db00ddbea8c277a1b122aa42716ca759d6d3439a3fe1e7aae864e73f64",
+        "value": "I'd better get going."
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "shared-starting-talking-to-reldo-after-reading-the-book",
+          1
+        ],
+        "expected": "b63e87929cc1cd867944a519263a291261fc0b60d1ef34814559c72a94de6e8e"
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "phoenix-gang-talking-to-baraek",
+          0,
+          "options",
+          2,
+          "text"
+        ],
+        "expected": "542125697b0f6357870cda7954753355962d95012b3d5779163cc4999b7db86a",
+        "value": "Hello! I'm in search of a quest."
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "phoenix-gang-talking-to-baraek",
+          0,
+          "options",
+          1,
+          "steps",
+          4,
+          "options",
+          0,
+          "text"
+        ],
+        "expected": "6e0b808deff9e284e3d23477d5d87b609498acdd55c70effebbf26237cfcf63d",
+        "value": "Okay, here's 20 coins."
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "phoenix-gang-talking-to-baraek",
+          0,
+          "options",
+          1,
+          "steps",
+          4,
+          "options",
+          0,
+          "steps",
+          0,
+          "player"
+        ],
+        "expected": "6e0b808deff9e284e3d23477d5d87b609498acdd55c70effebbf26237cfcf63d",
+        "value": "Okay, here's 20 coins."
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "phoenix-gang-talking-to-baraek",
+          0,
+          "options",
+          1,
+          "steps",
+          4,
+          "options",
+          1,
+          "text"
+        ],
+        "expected": "48b7d77cd00157e7d5c6a459df2a9bf80af0d23fdcddf0918d22d116f8a726c9",
+        "value": "No, I don't do things like bribery."
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "phoenix-gang-talking-to-baraek",
+          0,
+          "options",
+          1,
+          "steps",
+          4,
+          "options",
+          2,
+          "text"
+        ],
+        "expected": "f694f973c9a77cc1a63320580e666cb20c4b0be10a397d08ca8d7ceb93f0fbc7",
+        "value": "Yes, I'd like to be 20 coins richer too."
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "black-arm-gang-talking-to-charlie-the-tramp",
+          1,
+          "options"
+        ],
+        "expected": "80106df82b7db5ec0e1f5b67d31240015d7f1b5cd5b751fe22db1962abbe56e7",
+        "value": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "BjBECD"
+              }
+            ]
+          },
+          {
+            "text": "I'm looking for the Black Arm Gang.",
+            "steps": [
+              {
+                "player": "I'm looking for the Black Arm Gang."
+              },
+              {
+                "type": "condition",
+                "text": "If asking for the first time:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Funny you should mention that... Rumour has it that they have their headquarters right down this alleyway. Though if I were you, I'd be careful about messing with them..."
+                  }
+                ],
+                "id": "gKOIL6"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Like I told you, the rumour is that they have their headquarters right down this alleyway. Though if I were you, I'd be careful about messing with them..."
+                  }
+                ],
+                "id": "YuJLUs"
+              },
+              {
+                "player": "Do you think they would let me join?"
+              },
+              {
+                "type": "line",
+                "speaker": "Charlie the Tramp",
+                "text": "You never know. You'll find a lady down there called Katrine. Speak to her. But whatever you do, don't upset her."
+              }
+            ]
+          },
+          {
+            "text": "Okay, here you go.",
+            "steps": [
+              {
+                "player": "Okay, here you go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Player gives Charlie 1 coin.)",
+                    "id": "SPAjYU"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Hey, thanks a lot!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No problem.",
+                        "steps": [
+                          {
+                            "player": "No problem."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Don't I get some sort of quest hint or something now?",
+                        "steps": [
+                          {
+                            "player": "So...don't I get some sort of quest hint or something now?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "Huh? What do you mean? That wasn't why I asked you for money."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Charlie the Tramp",
+                            "text": "I just need to eat..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Vd68yh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have coins in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh wait. I haven't got any, sorry."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Charlie the Tramp",
+                    "text": "Thanks anyway."
+                  }
+                ],
+                "id": "jyd1Up"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I haven't got any.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "mDlx17"
+              }
+            ]
+          },
+          {
+            "text": "Go get a job!",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "BRZRuQ"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Shield of Arrav",
+          "variants",
+          "black-arm-gang-talking-to-katrine-again-after-accepting-her-task",
+          3,
+          "steps"
+        ],
+        "expected": "3e3366c73951274467434c180a90e63ee0d4818291f9c32d068b1816133f41e6",
+        "value": [
+          {
+            "player": "Yes, I have."
+          },
+          {
+            "type": "message",
+            "text": "You give the crossbows to Katrine.",
+            "id": "i8Y3sS"
+          },
+          {
+            "type": "line",
+            "speaker": "Katrine",
+            "text": "It seems you're more skilled than I originally gave you credit for. Well done. Consider yourself a member of the Black Arm Gang. I'd suggest you now go and familiarise yourself with the rest of the ganghouse."
+          },
+          {
+            "player": "Will do! Thanks!"
+          }
+        ]
+      },
       {
         "path": [
           "records",
@@ -1012,7 +1316,7 @@
             "text": "This is incredible! But where's the other half?"
           },
           {
-            "player": "I obtained this half from the [Phoenix Gang/Black Arm Gang]. The [Black Arm Gang/Phoenix Gang] might have the other half."
+            "player": "I obtained this half from the [Phoenix Gang/Black Arm Gang]. I wonder if the [Black Arm Gang/Phoenix Gang] might have the other half."
           },
           {
             "type": "line",
@@ -1025,12 +1329,12 @@
           {
             "type": "line",
             "speaker": "Curator Haig Halen",
-            "text": "I'm afraid the reward is for the recovery of the full shield. However, what I'll do is write you out two half- certificates. If another adventurer returns the other shield half, I'll do the same for them."
+            "text": "I'm afraid the reward is for the recovery of the full shield. However, what I'll do is write you out two half-certificates. If another adventurer returns the other shield half, I'll do the same for them."
           },
           {
             "type": "line",
             "speaker": "Curator Haig Halen",
-            "text": "The two of you can then swap one of the half- certificates to make a full one each. Take that to the King and he will grant you your reward."
+            "text": "The two of you can then swap one of the half-certificates to make a full one each. Take that to the King and he will grant you your reward."
           },
           {
             "type": "message",
@@ -3281,6 +3585,30 @@
         ],
         "expected": "09a7bb48299ae4b9bfad88382d002e5f718d180469fcd940e7232739189d25bf",
         "value": "It would be! I'm sure he'll be happy to share some information with you."
+      }
+    ]
+  },
+  "Baraek": {
+    "reason": "Baraek's quest option label as captured live; the player's spoken reply was not captured and stays as the wiki gives it.",
+    "sources": [
+      "https://rsprox.net/database (submission 1705: Baraek's menu \"Can you sell me some furs?|Can you tell me where I can find the Phoenix Gang?|Hello! I'm in search of a quest.\")"
+    ],
+    "base_sha256": "2eab0cecc54f058cfe0c0c6a509f25c64759481e4d9152e7b261d5cfcd91aa28",
+    "audited_sha256": "ae017fa98f98e16e174c51bc895c8835411fc39b85258883b3f3dd0138a9f8c5",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Baraek",
+          "variants",
+          "standard-dialogue",
+          0,
+          "options",
+          1,
+          "text"
+        ],
+        "expected": "542125697b0f6357870cda7954753355962d95012b3d5779163cc4999b7db86a",
+        "value": "Hello! I'm in search of a quest."
       }
     ]
   }
