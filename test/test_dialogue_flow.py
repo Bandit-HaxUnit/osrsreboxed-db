@@ -408,6 +408,95 @@ def test_repeated_speech_in_another_section_requires_a_unique_continuation():
     assert value["variants"]["again"][-1]["reference"] == "above"
 
 
+def test_continues_inside_conditions_resumes_the_enclosing_option():
+    value = record(
+        "A quest",
+        """==Starting==
+* {{tselect}}
+* {{topt|Anything I can help with?}}
+** {{tcond|If the player is inexperienced:}}
+*** '''Guide:''' You are new to this.
+*** {{tact|continues}}
+** {{tcond|If the player is experienced:}}
+*** '''Guide:''' You have done this before.
+*** {{tact|continues}}
+** {{tbox|Be prepared.}}
+** {{tselect|Start the quest?}}
+** {{topt|Yes.}}
+*** '''Guide:''' Good luck.
+*** {{tact|end}}
+** {{topt|No.}}
+*** {{tact|end}}
+* {{topt|What is the banner for?}}
+** '''Guide:''' It advertises our group.
+** {{tselect}}
+** {{topt|Join the group.}}
+*** {{tact|end}}
+** {{topt|No thanks.}}
+*** {{tact|end}}
+""",
+    )
+    enrich_records({}, {"A quest": value}, {}, update.clean)
+    steps = value["variants"]["starting"][0]["options"][0]["steps"]
+    for condition in steps[:2]:
+        assert condition["type"] == "condition"
+        line, continuation = condition["steps"]
+        assert line["type"] == "line"
+        assert continuation["reference"] == "continues"
+        assert "steps" not in continuation
+    assert steps[-1]["prompt"] == "Start the quest?"
+
+
+def test_continues_at_the_end_of_an_option_can_reuse_a_shared_followup_menu():
+    value = record(
+        "X",
+        """==Standard dialogue==
+* {{tselect}}
+* {{topt|First reply.}}
+** '''X:''' First introduction.
+** {{tact|continues}}
+* {{topt|Second reply.}}
+** '''X:''' Second introduction.
+** {{tselect}}
+** {{topt|A shared follow-up.}}
+*** '''X:''' The next reply.
+*** {{tact|end}}
+""",
+    )
+    enrich_records({"X": value}, {}, {}, update.clean)
+    first = value["variants"]["standard-dialogue"][0]["options"][0]
+    continued = follow(value, first["steps"])
+    assert continued[-1]["options"][0]["text"] == "A shared follow-up."
+
+
+def test_fairytale_start_continues_reach_the_source_start_prompt():
+    pages = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())
+    name = "Fairytale I - Growing Pains"
+    page = pages["Transcript:" + name]
+    value = record(name, page["wikitext"])
+    value["source"]["revision"] = page["revision"]
+    enrich_records({}, {name: value}, {}, update.clean)
+    starting = value["variants"]["starting-the-quest"]
+    help_option = next(
+        node for node in walk(starting)
+        if node.get("text") == "Anything I can help with?"
+    )
+    farming = [
+        node for node in help_option["steps"]
+        if node.get("type") == "condition" and "Farming" in node["text"]
+    ]
+    assert len(farming) == 2
+    for condition in farming:
+        line, continuation = condition["steps"]
+        assert line["type"] == "line"
+        assert continuation["reference"] == "continues"
+        assert "steps" not in continuation
+    start = next(node for node in help_option["steps"] if node.get("type") == "choice")
+    assert start["prompt"] == "Start the Fairytale I - Growing Pains quest?"
+    assert [option["text"] for option in start["options"]] == ["Yes.", "No."]
+    assert start["options"][0]["hook"] == "quest:fairytale-i-growing-pains:start"
+
+
 def test_repeated_section_conditions_share_the_explicit_continuation():
     value = record(
         "A quest",

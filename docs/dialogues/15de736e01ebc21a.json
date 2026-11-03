@@ -7522,13 +7522,7 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "11BmnU",
-                    "steps": [
-                      {
-                        "type": "call",
-                        "branch": "jump-bb9f13f218a5b701"
-                      }
-                    ]
+                    "id": "11BmnU"
                   }
                 ],
                 "id": "VqCbWg"
@@ -7543,13 +7537,7 @@
                   {
                     "type": "jump",
                     "reference": "continue",
-                    "id": "h_XrsK",
-                    "steps": [
-                      {
-                        "type": "call",
-                        "branch": "jump-bb9f13f218a5b701"
-                      }
-                    ]
+                    "id": "h_XrsK"
                   }
                 ],
                 "id": "jFMPa7"
@@ -10375,160 +10363,6 @@
       },
       {
         "type": "end"
-      }
-    ],
-    "jump-bb9f13f218a5b701": [
-      {
-        "type": "choice",
-        "options": [
-          {
-            "text": "What will powering the city do?",
-            "steps": [
-              {
-                "player": "What will powering the city do?"
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "From what I can tell, my ancestors linked the Forge to the entire city."
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "It truly is the heart of this place. From it, I can channel any barronite you have into empowering different aspects of the city."
-              },
-              {
-                "player": "What will that do?"
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "The Sacred Forge is a strange beast, but with its arcane power, you'll see an improvement to the various activities you can do in the city."
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "Would you like to take a look?"
-              },
-              {
-                "type": "choice",
-                "options": [
-                  {
-                    "text": "Yes please.",
-                    "steps": [
-                      {
-                        "player": "Yes please."
-                      },
-                      {
-                        "type": "action",
-                        "text": "Ramarno's Shard Exchange opens.",
-                        "action": "open_shop",
-                        "action_source": "text",
-                        "target": "Ramarno's Shard Exchange",
-                        "id": "EF-caV"
-                      }
-                    ]
-                  },
-                  {
-                    "text": "No thanks.",
-                    "steps": [
-                      {
-                        "player": "No thanks."
-                      },
-                      {
-                        "type": "line",
-                        "speaker": "Ramarno",
-                        "text": "Very well. Anything else you'd like to talk about?"
-                      },
-                      {
-                        "type": "jump",
-                        "reference": "other",
-                        "id": "w4tlNj"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "text": "What is the Great Vault?",
-            "steps": [
-              {
-                "player": "What is the Great Vault?"
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "It's one of the many marvels of this city. We used it to store our greatest creations, along with our most interesting finds."
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "Of course, I have no use for those treasures myself. I'd happily give them up to keep the Sacred Forge alive."
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "Now be warned - I won't be able to channel much power into the Vault. I can't afford to waste too much barronite. You'll only have a limited amount of time in there."
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "Not only that, there's an automatic security system that activates if power to the Vault is lost. If that happens, you'll be removed. I imagine any treasures would be lost as well."
-              },
-              {
-                "player": "How much barronite do you need to power it?"
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "Hmm, for a minute, I suppose 750 barronite shards should do the trick."
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "If you do go in, I'd suggest heading to the back first. That's where the most valuable things are kept."
-              },
-              {
-                "type": "line",
-                "speaker": "Ramarno",
-                "text": "Is there anything else you wanted to talk about?"
-              },
-              {
-                "type": "jump",
-                "reference": "other",
-                "id": "2K2oFN"
-              }
-            ]
-          },
-          {
-            "text": "Let's talk about something else.",
-            "steps": [
-              {
-                "type": "jump",
-                "id": "DLIxVe",
-                "steps": [
-                  {
-                    "type": "call",
-                    "branch": "jump-2a7a513360e26c16"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "text": "I'll see you later.",
-            "steps": [
-              {
-                "player": "I'll see you later."
-              },
-              {
-                "type": "end"
-              }
-            ]
-          }
-        ]
       }
     ],
     "jump-4085a6935095beb2": [

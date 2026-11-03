@@ -277,6 +277,17 @@ def resolve_navigation(record, anchors=None):
     named = {}
     local_continues = set()
 
+    def resumes_locally(siblings, at):
+        # A conditional body falls through its enclosing body, up to the option.
+        while True:
+            if siblings[at + 1 :]:
+                return True
+            parent = parents.get(id(siblings))
+            if parent is None:
+                return False
+            siblings = containers[id(parent)]
+            at = siblings.index(parent)
+
     def guarded_continue_tail(option):
         for _, candidate, siblings, at, _, _, owner in entries:
             if (
@@ -655,7 +666,7 @@ def resolve_navigation(record, anchors=None):
                             break
             # The final alternative often spells out the continuation shared by
             # earlier replies. Only borrow its explicit follow-up menu.
-            if target is None:
+            if target is None and not resumes_locally(steps, index):
                 alternatives = menu["options"]
                 at = alternatives.index(option)
                 for candidate in alternatives[at + 1 :]:
