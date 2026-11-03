@@ -147,7 +147,7 @@ def enrich_records(
             for node in walk(steps):
                 if node.get("type") == "reference" and not node.get("target"):
                     node["target"] = page
-    resolve_shared(npcs, quests, identities)
+    resolve_shared(npcs, quests, identities, bindings)
     for page, record in all_records.items():
         binding = (bindings or {}).get(page.removeprefix("Transcript:"), {})
         resolve_navigation(record, binding.get("navigation"))

@@ -320,6 +320,62 @@ def test_ambiguous_shared_reply_is_not_guessed():
     assert not quest["variants"]["talking"][1]["options"][0].get("steps")
 
 
+def test_shared_reply_can_bind_an_ambiguous_option_to_its_original_source_variant():
+    npc = record(
+        "Alice",
+        "==West port==\n* {{topt|Travel.}}\n** '''Alice:''' Going east.\n==East port==\n* {{topt|Travel.}}\n** '''Alice:''' Going west.",
+    )
+    quest = record(
+        "A quest",
+        "{{Transcript list|Alice}}\n==Talking==\n* '''Alice:''' Hello.\n* {{topt|quest=no|Travel.}}",
+    )
+    binding = {
+        "A quest": {
+            "shared_options": {"Travel.": {"page": "Alice", "variant": "east-port"}}
+        }
+    }
+    enrich_records({"Alice": npc}, {"A quest": quest}, {}, update.clean, binding)
+    option = quest["variants"]["talking"][1]["options"][0]
+    assert [(line.get("speaker"), line.get("text")) for line in option["steps"]] == [
+        ("Alice", "Going west.")
+    ]
+    assert option["steps"][0]["id"].startswith("Transcript:Alice#east-port/")
+    with pytest.raises(ValueError, match="Stale shared dialogue binding"):
+        quest = record(
+            "A quest",
+            "{{Transcript list|Alice}}\n==Talking==\n* '''Alice:''' Hello.\n* {{topt|quest=no|Travel.}}",
+        )
+        binding["A quest"]["shared_options"]["Travel."]["variant"] = "missing"
+        enrich_records({"Alice": npc}, {"A quest": quest}, {}, update.clean, binding)
+
+
+def test_npc_option_anchor_resolves_a_differently_named_above_reference_before_sharing():
+    npc = record(
+        "Alice",
+        "==West port==\n* {{topt|I would like to go east.}}\n** '''Player:''' East, please.\n** '''Alice:''' Sailing east.\n==East port==\n* {{topt|Travel.}}\n** {{topt|Go east.}}\n*** {{tact|above}}",
+    )
+    quest = record(
+        "A quest",
+        "{{Transcript list|Alice}}\n==Talking==\n* '''Alice:''' Hello.\n* {{topt|quest=no|Travel.}}",
+    )
+    bindings = {
+        "Alice": {
+            "shared_options": {
+                "Go east.": {
+                    "page": "Alice",
+                    "variant": "west-port",
+                    "option": "I would like to go east.",
+                }
+            }
+        }
+    }
+    enrich_records({"Alice": npc}, {"A quest": quest}, {}, update.clean, bindings)
+    for record_, variant, at in [(npc, "east-port", 0), (quest, "talking", 1)]:
+        travel = record_["variants"][variant][at]["options"][0]
+        east = travel["steps"][0]["options"][0]
+        assert any(node.get("player") == "East, please." for node in east["steps"])
+
+
 def test_below_uses_the_matching_line_tail_and_quoted_references_use_source_text():
     value = record(
         "A quest",

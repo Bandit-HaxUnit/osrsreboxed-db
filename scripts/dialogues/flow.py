@@ -60,11 +60,14 @@ def locations(steps, speaker=None, menu=None, option=None):
             yield from locations([alternative], speaker, node, alternative)
 
 
-def resolve_shared(npcs, quests, identities):
+def resolve_shared(npcs, quests, identities, bindings=None):
     sources = {}
+    variants = {}
     for name, record in npcs.items():
         options = {}
-        for steps in record["variants"].values():
+        variants[name] = {}
+        for variant, steps in record["variants"].items():
+            scoped = variants[name][variant] = {}
             for node, *_ in locations(steps):
                 for option in node.get("options", []):
                     if option.get("steps") and not all(
@@ -73,12 +76,31 @@ def resolve_shared(npcs, quests, identities):
                         options.setdefault(text_key(option.get("text", "")), []).append(
                             option["steps"]
                         )
+                        scoped.setdefault(text_key(option.get("text", "")), []).append(
+                            option["steps"]
+                        )
         sources[name] = options
-    for record in quests.values():
+    # Resolve reviewed NPC option references before quests borrow their bodies.
+    for quest_name, record in [*npcs.items(), *quests.items()]:
+        anchors = (bindings or {}).get(quest_name, {}).get("shared_options", {})
+        own_source = quest_name in npcs
+        if own_source and not anchors:
+            continue
+        seen = set()
         participants = record.get("participants", [])
         for steps in record["variants"].values():
             for node, _, _, speaker, _, _ in list(locations(steps)):
-                if not node.pop("_shared", False) or node.get("steps"):
+                anchor = anchors.get(node.get("text"))
+                shared = node.pop("_shared", False)
+                if not shared and not anchor:
+                    continue
+                if node.get("steps") and not (
+                    anchor
+                    and all(
+                        child.get("type") == "jump" and child.get("reference")
+                        for child in node["steps"]
+                    )
+                ):
                     continue
                 candidates = [
                     name
@@ -91,6 +113,23 @@ def resolve_shared(npcs, quests, identities):
                     for name in candidates
                     for body in sources[name].get(text_key(node.get("text", "")), [])
                 ]
+                if anchor:
+                    name = anchor["page"]
+                    scoped = variants.get(name, {}).get(anchor["variant"], {})
+                    bodies = [
+                        (name, body)
+                        for body in scoped.get(
+                            text_key(anchor.get("option", node["text"])), []
+                        )
+                    ]
+                    if (
+                        name not in candidates
+                        and not (own_source and name == quest_name)
+                    ) or not bodies:
+                        raise ValueError(
+                            f"Stale shared dialogue binding: {quest_name}.{node['text']}"
+                        )
+                    seen.add(node["text"])
                 distinct = {}
                 shop_targets = {
                     child["target"]
@@ -122,12 +161,18 @@ def resolve_shared(npcs, quests, identities):
                     ):
                         distinct[signature] = name, body
                 if len(distinct) != 1:
+                    if anchor:
+                        raise ValueError(
+                            f"Ambiguous shared dialogue binding: {quest_name}.{node['text']}"
+                        )
                     continue
                 name, body = next(iter(distinct.values()))
                 node["steps"] = copy.deepcopy(body)
                 for child, *_ in locations(node["steps"]):
-                    if "npc" in child:
+                    if "npc" in child and not own_source:
                         child.update(type="line", speaker=name, text=child.pop("npc"))
+        if seen != anchors.keys():
+            raise ValueError(f"Stale shared dialogue binding: {quest_name}")
     for record in [*npcs.values(), *quests.values()]:
         for steps in record["variants"].values():
             for node, *_ in locations(steps):
