@@ -720,13 +720,13 @@ def process() -> None:
 
         # Only include items with type 'item' in shops_by_shop
         filtered_items = [item for item in items if item.get("type") == "item"]
-        # Substores share their parent shop's page, and so its owner
-        parent_shop_name = shop_name.split(" (")[0]
+        # Strip version suffixes only until a real parent page is found; titles can contain parentheses.
+        parent_shop_name = shop_name
+        while parent_shop_name not in owners_by_shop and " (" in parent_shop_name:
+            parent_shop_name = parent_shop_name.rsplit(" (", 1)[0]
         owners = [
             {**owner, **_owner_shop_option(owner, npc_options, shop_name)}
-            for owner in owners_by_shop.get(shop_name)
-            or owners_by_shop.get(parent_shop_name)
-            or []
+            for owner in owners_by_shop.get(parent_shop_name, [])
         ]
 
         # Exported items carry only what cannot be read off the shop: type is always
