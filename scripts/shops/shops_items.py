@@ -277,79 +277,118 @@ def parse_tabber_structure(wikitext: str) -> dict:
     """Parse tabber structure from wikitext to extract substores.
 
     :param wikitext: The wikitext content of the shop page
-    :return: Dictionary mapping tab names to their content, or empty dict if no tabber
+    Repeated labels in separate stores use their StoreTableHead namenotes. The
+    last occurrence keeps the old label so existing exported shop names stay put.
+
+    :return: Dictionary mapping distinct store names to their content, or empty
+        dict if no tabber
     """
     tabber_sections = {}
+    sections = []
+    store_head = re.compile(r"\{\{StoreTableHead\|[^}]+\}\}", re.I)
 
     # Check for tabber structure
     if "<tabber>" not in wikitext.lower() and "{{tabber" not in wikitext.lower():
         return tabber_sections
 
-    lines = wikitext.split("\n")
-    tabber_count = 0
     in_tabber = False
+    template_tabber = False
+    expecting_tab = False
     current_tab = None
     current_content = []
 
-    for line in lines:
-        line_lower = line.lower()
+    def save_section():
+        if current_tab and current_content:
+            content = "\n".join(current_content)
+            # Experience tables and other non-shop tabs must not hide a shop
+            # elsewhere on the page. fetch() already handles that page normally
+            # when no StoreTableHead-bearing tab is returned.
+            if store_head.search(content):
+                sections.append((current_tab, content))
 
-        # Check for tabber start
-        if "<tabber>" in line_lower or "{{tabber" in line_lower:
+    for line in wikitext.split("\n"):
+        opening = re.search(r"<tabber>|\{\{tabber\b", line, re.I)
+        if opening:
             in_tabber = True
-            tabber_count += 1
+            template_tabber = opening.group().startswith("{{")
+            expecting_tab = True
+            current_tab = None
+            current_content = []
+            line = line[opening.end() :]
+        if not in_tabber:
             continue
 
-        # Check for tabber end
-        elif "</tabber>" in line_lower or (in_tabber and line.strip() == "}}"):
+        closing = re.search(r"</tabber>", line, re.I)
+        if template_tabber and line.strip() == "}}":
+            save_section()
             in_tabber = False
-            # Save the last tab if we have one
-            if current_tab and current_content:
-                # Add tabber identifier based on position
-                tab_name = current_tab
-                tabber_sections[tab_name] = "\n".join(current_content)
             current_tab = None
             current_content = []
             continue
+        if closing:
+            line = line[: closing.start()]
 
-        # If we're in a tabber, parse tabs and content
-        elif in_tabber:
-            # Check if this is a tab definition (contains = and not a template parameter)
-            if (
-                "=" in line
-                and not line.startswith("|")
-                and not line.startswith("{{")
-                and not line.strip().startswith("*")
+        stripped = line.strip()
+        if stripped.startswith("|-|"):
+            save_section()
+            current_tab = None
+            current_content = []
+            expecting_tab = True
+            line = stripped[3:]
+            stripped = line.strip()
+
+        if expecting_tab:
+            # Only a first label or explicit tab separator starts a tab. An
+            # equals sign in a wikitable's ! rowspan/colspan cell is content.
+            if "=" in stripped and not stripped.startswith(
+                ("|", "!", "{", "*", "<", "}")
             ):
-
-                # Save previous tab if we have one
-                if current_tab and current_content:
-                    # Add tabber identifier based on position
-                    tab_name = current_tab
-
-                    tabber_sections[tab_name] = "\n".join(current_content)
-
-                # Start new tab
-                tab_name = line.split("=")[0].strip()
-                # Clean up tab name (remove any formatting)
-                if len(tab_name) < 50 and "{" not in tab_name:
+                tab_name, remaining_content = stripped.split("=", 1)
+                tab_name = tab_name.strip()
+                if tab_name and len(tab_name) < 50 and "{" not in tab_name:
                     current_tab = tab_name
                     current_content = []
-                    # Add the content after the = sign
-                    remaining_content = "=".join(line.split("=")[1:]).strip()
-                    if remaining_content:
-                        current_content.append(remaining_content)
-            else:
-                # Add to current tab content
-                if current_tab is not None:
-                    current_content.append(line)
+                    expecting_tab = False
+                    if remaining_content.strip():
+                        current_content.append(remaining_content.strip())
+        elif current_tab is not None and (not closing or line.strip()):
+            current_content.append(line)
 
-    # Handle case where tabber doesn't close properly
-    if current_tab and current_content:
-        # Add tabber identifier based on position
-        tab_name = current_tab
+        if closing:
+            save_section()
+            in_tabber = False
+            current_tab = None
+            current_content = []
 
-        tabber_sections[tab_name] = "\n".join(current_content)
+    # Keep the existing tolerance of an unclosed tabber's final section.
+    if in_tabber:
+        save_section()
+
+    # A page can have several independent tabbers with the same labels. Keeping
+    # only the last silently discarded the earlier store (e.g. food vs items).
+    last_section = {name: index for index, (name, _) in enumerate(sections)}
+    for index, (name, content) in enumerate(sections):
+        if index != last_section[name]:
+            head = re.search(r"\{\{StoreTableHead\|([^}]+)\}\}", content, re.I)
+            qualified_name = ""
+            if head:
+                for parameter in head.group(1).split("|"):
+                    key, separator, value = parameter.partition("=")
+                    if separator and key.strip().lower() == "namenotes":
+                        qualified_name = value.strip()
+                        if qualified_name.startswith("(") and qualified_name.endswith(
+                            ")"
+                        ):
+                            qualified_name = qualified_name[1:-1].strip()
+                        break
+            if not qualified_name or qualified_name in last_section:
+                raise ValueError(
+                    f"Repeated shop tab {name!r} needs distinct StoreTableHead namenotes"
+                )
+            name = qualified_name
+        if name in tabber_sections:
+            raise ValueError(f"Repeated shop store name {name!r}")
+        tabber_sections[name] = content
 
     return tabber_sections
 

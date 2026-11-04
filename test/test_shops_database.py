@@ -63,6 +63,135 @@ def test_parenthesized_shop_titles_keep_their_owner_for_each_version():
         assert entry["option_slot"] == 3
 
 
+def test_repeated_chest_tabs_keep_food_and_existing_equipment_names():
+    """The committed page has two stores whose eleven tab labels all repeat."""
+    with open(
+        config.DATA_SHOPS_PATH / "shops-wiki-page-text.json", encoding="utf-8"
+    ) as source_file:
+        wikitext = json.load(source_file)["Culinaromancer's Chest"]
+    sections = shops_items.parse_tabber_structure(wikitext)
+    food = [
+        "food, full",
+        "food, full, diary",
+        "food, 0 Subquests",
+        "food, 1 Subquest",
+        *[f"food, {rescues} Subquests" for rescues in range(2, 9)],
+    ]
+    equipment = [
+        "Full",
+        "Elite Diary",
+        "0 Subquests",
+        "1 Subquest",
+        *[f"{rescues} Subquests" for rescues in range(2, 9)],
+    ]
+    assert list(sections) == food + equipment
+    for name in food:
+        assert sections[name].count("{{StoreLine|") == 21, name
+        assert "{{StoreLine|name=Hardleather gloves|" not in sections[name], name
+    for name, count in zip(equipment, [20, 20, 2, 4, 6, 8, 10, 12, 14, 16, 18]):
+        assert sections[name].count("{{StoreLine|") == count, name
+        assert "{{StoreLine|name=Bucket of milk|" not in sections[name], name
+    assert "{{StoreLine|name=Bucket of milk|stock=1|restock=100}}" in sections[
+        "food, 0 Subquests"
+    ]
+    assert "{{StoreLine|name=Bucket of milk|stock=50|restock=100}}" in sections[
+        "food, full"
+    ]
+    assert "{{StoreLine|name=Pot of flour|stock=6|restock=300}}" in sections[
+        "food, 6 Subquests"
+    ]
+    assert shops_items.parse_shop_info(sections["food, full"]) == {
+        "sells_at": 1300,
+        "buys_at": 400,
+        "change_per": 20,
+        "currency": "coins",
+    }
+    assert (
+        shops_items.parse_shop_info(sections["food, full, diary"])["sells_at"] == 1040
+    )
+
+def test_unique_tab_labels_keep_their_names():
+    """An unambiguous existing key must not change to its namenotes."""
+    wikitext = """<tabber>
+Default=
+{{StoreTableHead|sellmultiplier=1000|namenotes=(other name)}}
+{{StoreTableBottom}}
+|-|
+Members=
+{{StoreTableHead|sellmultiplier=1000|namenotes=(another name)}}
+{{StoreTableBottom}}
+</tabber>"""
+    assert list(shops_items.parse_tabber_structure(wikitext)) == ["Default", "Members"]
+
+def test_repeated_tab_labels_require_unambiguous_namenotes():
+    """Missing, reserved or reused identities must not silently discard stock."""
+    for notes in ["", "|namenotes=(Full)"]:
+        wikitext = f"""<tabber>
+Full=
+{{{{StoreTableHead|sellmultiplier=1000{notes}}}}}
+{{{{StoreTableBottom}}}}
+</tabber>
+<tabber>
+Full=
+{{{{StoreTableHead|sellmultiplier=1000}}}}
+{{{{StoreTableBottom}}}}
+</tabber>"""
+        try:
+            shops_items.parse_tabber_structure(wikitext)
+        except ValueError as error:
+            assert "needs distinct StoreTableHead namenotes" in str(error)
+        else:
+            raise AssertionError("ambiguous repeated tab was accepted")
+    repeated = """<tabber>
+Full=
+{{StoreTableHead|sellmultiplier=1000|namenotes=(supplies, full)}}
+{{StoreTableBottom}}
+</tabber>
+"""
+    try:
+        shops_items.parse_tabber_structure(repeated * 3)
+    except ValueError as error:
+        assert "Repeated shop store name" in str(error)
+    else:
+        raise AssertionError("reused qualified store name was accepted")
+
+
+def test_experience_tabs_do_not_hide_the_real_void_shop():
+    """The cached experience tabber precedes the actual, untabbed shop."""
+    with open(
+        config.DATA_SHOPS_PATH / "shops-wiki-page-text.json", encoding="utf-8"
+    ) as source_file:
+        wikitext = json.load(source_file)["Void Knights' Reward Options"]
+    assert shops_items.parse_tabber_structure(wikitext) == {}
+    assert wikitext.index("</tabber>") < wikitext.index("{{StoreTableHead|")
+    assert shops_items.parse_shop_info(wikitext) == {
+        "sells_at": None,
+        "buys_at": None,
+        "change_per": None,
+        "currency": "Void Knight commendation points",
+    }
+
+
+def test_explicit_tab_separators_keep_table_attributes_as_content():
+    wikitext = """<tabber>
+|-|Default=
+{{StoreTableHead|sellmultiplier=1000}}
+{| class="wikitable"
+! rowspan="2" |Level
+! colspan="3" |Experience
+|}
+{{StoreTableBottom}}
+|-|Members=
+{{StoreTableHead|sellmultiplier=1200}}
+{{StoreTableBottom}}
+</tabber>"""
+    sections = shops_items.parse_tabber_structure(wikitext)
+    assert list(sections) == ["Default", "Members"]
+    assert '! rowspan="2" |Level' in sections["Default"]
+    assert '! colspan="3" |Experience' in sections["Default"]
+    assert shops_items.parse_shop_info(sections["Members"])["sells_at"] == 1200
+
+
 def test_parse_shop_owners_reads_versioned_fields():
     """A versioned infobox names one owner per version; all of them are read."""
     wikitext = "\n".join(
