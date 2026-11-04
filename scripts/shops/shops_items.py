@@ -277,9 +277,14 @@ def parse_tabber_structure(wikitext: str) -> dict:
     """Parse tabber structure from wikitext to extract substores.
 
     :param wikitext: The wikitext content of the shop page
-    :return: Dictionary mapping tab names to their content, or empty dict if no tabber
+    Repeated labels in separate stores use their StoreTableHead namenotes. The
+    last occurrence keeps the old label so existing exported shop names stay put.
+
+    :return: Dictionary mapping distinct store names to their content, or empty
+        dict if no tabber
     """
     tabber_sections = {}
+    sections = []
 
     # Check for tabber structure
     if "<tabber>" not in wikitext.lower() and "{{tabber" not in wikitext.lower():
@@ -307,7 +312,7 @@ def parse_tabber_structure(wikitext: str) -> dict:
             if current_tab and current_content:
                 # Add tabber identifier based on position
                 tab_name = current_tab
-                tabber_sections[tab_name] = "\n".join(current_content)
+                sections.append((tab_name, "\n".join(current_content)))
             current_tab = None
             current_content = []
             continue
@@ -327,7 +332,7 @@ def parse_tabber_structure(wikitext: str) -> dict:
                     # Add tabber identifier based on position
                     tab_name = current_tab
 
-                    tabber_sections[tab_name] = "\n".join(current_content)
+                    sections.append((tab_name, "\n".join(current_content)))
 
                 # Start new tab
                 tab_name = line.split("=")[0].strip()
@@ -349,7 +354,33 @@ def parse_tabber_structure(wikitext: str) -> dict:
         # Add tabber identifier based on position
         tab_name = current_tab
 
-        tabber_sections[tab_name] = "\n".join(current_content)
+        sections.append((tab_name, "\n".join(current_content)))
+
+    # A page can have several independent tabbers with the same labels. Keeping
+    # only the last silently discarded the earlier store (e.g. food vs items).
+    last_section = {name: index for index, (name, _) in enumerate(sections)}
+    for index, (name, content) in enumerate(sections):
+        if index != last_section[name]:
+            head = re.search(r"\{\{StoreTableHead\|([^}]+)\}\}", content, re.I)
+            qualified_name = ""
+            if head:
+                for parameter in head.group(1).split("|"):
+                    key, separator, value = parameter.partition("=")
+                    if separator and key.strip().lower() == "namenotes":
+                        qualified_name = value.strip()
+                        if qualified_name.startswith("(") and qualified_name.endswith(
+                            ")"
+                        ):
+                            qualified_name = qualified_name[1:-1].strip()
+                        break
+            if not qualified_name or qualified_name in last_section:
+                raise ValueError(
+                    f"Repeated shop tab {name!r} needs distinct StoreTableHead namenotes"
+                )
+            name = qualified_name
+        if name in tabber_sections:
+            raise ValueError(f"Repeated shop store name {name!r}")
+        tabber_sections[name] = content
 
     return tabber_sections
 
