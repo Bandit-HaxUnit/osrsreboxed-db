@@ -58,6 +58,14 @@ OWNERS_FP = Path(config.DATA_SHOPS_PATH / "shop-owners.json")
 # The owner field of an {{Infobox Shop}} template. Versioned infoboxes use
 # owner1, owner2, ... (one per shop version), so read every field, not just `owner`.
 OWNER_FIELD = re.compile(r"\|\s*owner\d*\s*=\s*(.+)", re.I)
+# Some shops are run by a group rather than named NPCs. Farming Supplies, for
+# example, says "Any Group of Advanced Gardeners member" in its location field.
+LOCATION_FIELD = re.compile(r"^\|\s*location\d*\s*=\s*(.+)$", re.I | re.M)
+ANY_GROUP_MEMBER = re.compile(
+    r"\bany\s+\[\[([^|\]]+)(?:\|[^\]]+)?\]\]\s+members?\b", re.I
+)
+# Group pages list NPCs using chat links in their matching navigation template.
+CHAT_LINK_TEMPLATE = re.compile(r"\{\{\s*chatl\s*\|\s*([^|{}]+)", re.I)
 # Wiki links, keeping the page title and the display text separately.
 WIKI_LINK = re.compile(r"\[\[([^|\]]+)(?:\|([^\]]+))?\]\]")
 # Infoboxes that carry NPC identities.
@@ -122,6 +130,58 @@ def parse_shop_owners(wikitext: str) -> List[Dict]:
     return owners
 
 
+def shop_owner_groups(wikitext: str) -> List[str]:
+    """Read group pages named as the shop's owners in its location field."""
+    groups = set()
+    for match in LOCATION_FIELD.finditer(wikitext):
+        groups.update(
+            title.strip().replace("_", " ")
+            for title in ANY_GROUP_MEMBER.findall(match.group(1))
+        )
+    return sorted(groups)
+
+
+def group_template_page(group_page: str) -> str:
+    """The group's navigation template lists its members as chat links."""
+    title = group_page.strip().replace("_", " ")
+    return title if title.casefold().startswith("template:") else f"Template:{title}"
+
+
+def group_member_pages(wikitext: str) -> List[str]:
+    """Read NPC page titles from a group's ``{{chatl}}`` member entries."""
+    pages = set()
+    for match in CHAT_LINK_TEMPLATE.finditer(wikitext):
+        value = match.group(1).strip()
+        linked = WIKI_LINK.search(value)
+        page = (linked.group(1) if linked else value).strip().replace("_", " ")
+        if page and not page.startswith(("#", "{{")):
+            pages.add(page)
+    return sorted(pages)
+
+
+def _group_members_for_shop(wikitext: str, owner_pages: Dict[str, str]) -> Set[str]:
+    members = set()
+    for group in shop_owner_groups(wikitext):
+        members.update(
+            group_member_pages(owner_pages.get(group_template_page(group), ""))
+        )
+    return members
+
+
+def _shop_owner_groups() -> Dict[str, List[str]]:
+    """Map shop titles to the groups whose members the shop page says sell there."""
+    if not SHOPS_TEXT_FP.exists():
+        return {}
+    with open(SHOPS_TEXT_FP) as shops_file:
+        all_wikitext = json.load(shops_file)
+    return {
+        shop_name: groups
+        for shop_name, wikitext in all_wikitext.items()
+        if isinstance(wikitext, str)
+        and (groups := shop_owner_groups(wikitext))
+    }
+
+
 def _owners_by_shop() -> Dict[str, List[Dict]]:
     """Map every shop page title to the owners named on it."""
     if not SHOPS_TEXT_FP.exists():
@@ -132,12 +192,26 @@ def _owners_by_shop() -> Dict[str, List[Dict]]:
 
     with open(SHOPS_TEXT_FP) as shops_file:
         all_wikitext = json.load(shops_file)
+    owner_pages = {}
+    if OWNERS_TEXT_FP.exists():
+        with open(OWNERS_TEXT_FP) as owners_file:
+            owner_pages = json.load(owners_file)
 
     owners_by_shop = {}
     for page_title, wikitext in all_wikitext.items():
         if not isinstance(wikitext, str):
             continue
         owners = parse_shop_owners(wikitext)
+        owners.extend(
+            {"name": page, "wiki_page": page}
+            for page in sorted(_group_members_for_shop(wikitext, owner_pages))
+        )
+        owners = list(
+            {
+                (owner["wiki_page"], owner["name"]): owner
+                for owner in owners
+            }.values()
+        )
         if owners:
             owners_by_shop[page_title] = owners
     return owners_by_shop
@@ -182,12 +256,14 @@ def shop_linking_npc_pages() -> List[str]:
 def fetch() -> None:
     """Fetch the wiki page text of every shop owner.
 
-    Owners are the pages a shop names, and the NPC pages that name a shop in
-    their own infobox. Pages already fetched are skipped, so an interrupted run
-    can be resumed and a repeat run costs nothing.
+    Owners are the pages a shop names, group-member pages from its location,
+    and NPC pages that name a shop in their own infobox. Pages already fetched
+    are skipped, so an interrupted run can be resumed and a repeat run costs
+    nothing.
     """
     owners_by_shop = _owners_by_shop()
-    if not owners_by_shop:
+    groups_by_shop = _shop_owner_groups()
+    if not owners_by_shop and not groups_by_shop:
         return
 
     wanted = sorted(
@@ -197,6 +273,11 @@ def fetch() -> None:
             for owner in owners
             if owner["wiki_page"]
         }
+        | {
+            group_template_page(group)
+            for groups in groups_by_shop.values()
+            for group in groups
+        }
         | set(shop_linking_npc_pages())
     )
 
@@ -205,18 +286,32 @@ def fetch() -> None:
         with open(OWNERS_TEXT_FP) as owners_file:
             cached = json.load(owners_file)
 
-    missing = [page for page in wanted if page not in cached]
-    logger.info(
-        f"Shop owner pages: {len(wanted)} total, {len(wanted) - len(missing)} cached, "
-        f"{len(missing)} to fetch..."
-    )
+    def fetch_missing(pages: List[str]) -> None:
+        missing = [page for page in pages if page not in cached]
+        logger.info(
+            f"Shop owner pages: {len(pages)} total, "
+            f"{len(pages) - len(missing)} cached, {len(missing)} to fetch..."
+        )
+        for count, page_title in enumerate(missing, start=1):
+            if count % 50 == 0:
+                logger.info(f"Progress: {count:4d} of {len(missing):4d} owner pages")
+            page = WikiPageText(OSRS_WIKI_API_URL, page_title)
+            page.extract_page_wiki_text()
+            page.export_wiki_text_to_json(str(OWNERS_TEXT_FP))
+            cached[page_title] = str(page.wiki_text)
 
-    for count, page_title in enumerate(missing, start=1):
-        if count % 50 == 0:
-            logger.info(f"Progress: {count:4d} of {len(missing):4d} owner pages")
-        page = WikiPageText(OSRS_WIKI_API_URL, page_title)
-        page.extract_page_wiki_text()
-        page.export_wiki_text_to_json(str(OWNERS_TEXT_FP))
+    fetch_missing(wanted)
+    member_pages = sorted(
+        {
+            page
+            for groups in groups_by_shop.values()
+            for group in groups
+            for page in group_member_pages(
+                cached.get(group_template_page(group), "")
+            )
+        }
+    )
+    fetch_missing(member_pages)
 
     logger.info("Fetched shop owner page text.")
 
@@ -344,7 +439,15 @@ def process() -> None:
             cached = json.load(owners_file)
 
     with open(SHOPS_TEXT_FP) as shops_file:
-        shop_titles = set(json.load(shops_file))
+        all_shop_wikitext = json.load(shops_file)
+    shop_titles = set(all_shop_wikitext)
+    group_members_by_shop = {
+        shop_name: _group_members_for_shop(wikitext, cached)
+        for shop_name, wikitext in all_shop_wikitext.items()
+        if isinstance(wikitext, str)
+    }
+    cache_ids_by_name = load_npc_ids_by_name()
+    npc_options = load_npc_options()
 
     # One page can own several shops, so resolve each page a single time.
     ids_by_page: Dict[str, List[int]] = {}
@@ -364,6 +467,21 @@ def process() -> None:
                 if owner["wiki_page"]
                 else []
             )
+            if owner["wiki_page"] in group_members_by_shop.get(shop_name, set()):
+                npc_name = _infobox_name(
+                    cached.get(owner["wiki_page"], ""), owner["name"]
+                )
+                npc_ids = sorted(
+                    set(npc_ids)
+                    | {
+                        npc_id
+                        for npc_id in cache_ids_by_name.get(npc_name.casefold(), [])
+                        if shop_option_for(npc_id, npc_options, shop_name)[
+                            "option_source"
+                        ]
+                        == "click"
+                    }
+                )
             shop_owners.append(
                 {
                     "name": owner["name"],
@@ -433,6 +551,25 @@ def load_npc_options() -> Dict[str, Dict[str, str]]:
         npc_id: npc.get("options", {})
         for npc_id, npc in interactions.get("npcs", {}).items()
     }
+
+
+def load_npc_ids_by_name() -> Dict[str, List[int]]:
+    """Load cache NPC IDs grouped by their displayed name."""
+    interactions_fp = Path(config.DOCS_PATH / "npcs-interactions.json")
+    if not interactions_fp.exists():
+        return {}
+    with open(interactions_fp) as interactions_file:
+        interactions = json.load(interactions_file)
+    ids_by_name: Dict[str, Set[int]] = {}
+    for npc_id, npc in interactions.get("npcs", {}).items():
+        name = npc.get("name")
+        try:
+            numeric_id = int(npc_id)
+        except (TypeError, ValueError):
+            continue
+        if name:
+            ids_by_name.setdefault(name.casefold(), set()).add(numeric_id)
+    return {name: sorted(npc_ids) for name, npc_ids in ids_by_name.items()}
 
 
 def shop_option_for(
