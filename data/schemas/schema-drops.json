@@ -238,12 +238,34 @@
           "required": false,
           "nullable": false
         },
+        "roll_group": {
+          "description": "Conditional weighted group this entry belongs to; one access roll, then one weighted item.",
+          "type": "string",
+          "required": false,
+          "nullable": false
+        },
+        "group_access_weight": {
+          "description": "Numerator of the group access chance, e.g. 1 in group_access_out_of.",
+          "type": "integer",
+          "required": false,
+          "nullable": false,
+          "min": 1
+        },
+        "group_access_out_of": {
+          "description": "Denominator of the group access chance.",
+          "type": "integer",
+          "required": false,
+          "nullable": false,
+          "min": 1
+        },
         "weight_basis": {
           "description": "'conditional_pool' conditions relative resource weights on guaranteed fallback; 'remainder' when the weight is the slots the pool's other rows and shared table accesses leave, because the published rate also counts those tables' coins.",
           "type": "string",
           "allowed": [
             "remainder",
             "conditional_pool"
+          ,
+          "conditional_group"
           ],
           "required": false,
           "nullable": false
@@ -580,12 +602,34 @@
                     "required": false,
                     "nullable": false
                   },
+                  "roll_group": {
+                    "description": "Conditional weighted group this entry belongs to; one access roll, then one weighted item.",
+                    "type": "string",
+                    "required": false,
+                    "nullable": false
+                  },
+                  "group_access_weight": {
+                    "description": "Numerator of the group access chance, e.g. 1 in group_access_out_of.",
+                    "type": "integer",
+                    "required": false,
+                    "nullable": false,
+                    "min": 1
+                  },
+                  "group_access_out_of": {
+                    "description": "Denominator of the group access chance.",
+                    "type": "integer",
+                    "required": false,
+                    "nullable": false,
+                    "min": 1
+                  },
                   "weight_basis": {
                     "description": "'conditional_pool' conditions relative resource weights on guaranteed fallback; 'remainder' when the weight is the slots the pool's other rows and shared table accesses leave, because the published rate also counts those tables' coins.",
                     "type": "string",
                     "allowed": [
                       "remainder",
                       "conditional_pool"
+                    ,
+                    "conditional_group"
                     ],
                     "required": false,
                     "nullable": false
@@ -1005,12 +1049,34 @@
                 "required": false,
                 "nullable": false
               },
+              "roll_group": {
+                "description": "Conditional weighted group this entry belongs to; one access roll, then one weighted item.",
+                "type": "string",
+                "required": false,
+                "nullable": false
+              },
+              "group_access_weight": {
+                "description": "Numerator of the group access chance, e.g. 1 in group_access_out_of.",
+                "type": "integer",
+                "required": false,
+                "nullable": false,
+                "min": 1
+              },
+              "group_access_out_of": {
+                "description": "Denominator of the group access chance.",
+                "type": "integer",
+                "required": false,
+                "nullable": false,
+                "min": 1
+              },
               "weight_basis": {
                 "description": "'conditional_pool' conditions relative resource weights on guaranteed fallback; 'remainder' when the weight is the slots the pool's other rows and shared table accesses leave, because the published rate also counts those tables' coins.",
                 "type": "string",
                 "allowed": [
                   "remainder",
                   "conditional_pool"
+                ,
+                "conditional_group"
                 ],
                 "required": false,
                 "nullable": false
