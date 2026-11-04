@@ -156,6 +156,42 @@ Full=
         raise AssertionError("reused qualified store name was accepted")
 
 
+def test_experience_tabs_do_not_hide_the_real_void_shop():
+    """The cached experience tabber precedes the actual, untabbed shop."""
+    with open(
+        config.DATA_SHOPS_PATH / "shops-wiki-page-text.json", encoding="utf-8"
+    ) as source_file:
+        wikitext = json.load(source_file)["Void Knights' Reward Options"]
+    assert shops_items.parse_tabber_structure(wikitext) == {}
+    assert wikitext.index("</tabber>") < wikitext.index("{{StoreTableHead|")
+    assert shops_items.parse_shop_info(wikitext) == {
+        "sells_at": None,
+        "buys_at": None,
+        "change_per": None,
+        "currency": "Void Knight commendation points",
+    }
+
+
+def test_explicit_tab_separators_keep_table_attributes_as_content():
+    wikitext = """<tabber>
+|-|Default=
+{{StoreTableHead|sellmultiplier=1000}}
+{| class="wikitable"
+! rowspan="2" |Level
+! colspan="3" |Experience
+|}
+{{StoreTableBottom}}
+|-|Members=
+{{StoreTableHead|sellmultiplier=1200}}
+{{StoreTableBottom}}
+</tabber>"""
+    sections = shops_items.parse_tabber_structure(wikitext)
+    assert list(sections) == ["Default", "Members"]
+    assert '! rowspan="2" |Level' in sections["Default"]
+    assert '! colspan="3" |Experience' in sections["Default"]
+    assert shops_items.parse_shop_info(sections["Members"])["sells_at"] == 1200
+
+
 def test_parse_shop_owners_reads_versioned_fields():
     """A versioned infobox names one owner per version; all of them are read."""
     wikitext = "\n".join(
