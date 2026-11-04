@@ -148,6 +148,51 @@ def test_captured_ides_line_replaces_the_wiki_typo():
     assert "he'll he happy" not in text
 
 
+def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    source = json.loads(
+        (config.DATA_PATH / "dialogues/quest-pages.json").read_text()
+    )["Transcript:Shadow of the Storm"]["wikitext"]
+    variant = dialogues["Shadow of the Storm"]["variants"][
+        "performing-the-ritual-talking-to-the-golem-after-reprogramming"
+    ]
+
+    def spoken(node):
+        return node.get("text") or node.get("player") or node.get("npc") or ""
+
+    def texts(steps):
+        for node in steps:
+            yield spoken(node)
+            yield from texts(node.get("steps", []))
+            for option in node.get("options", []):
+                yield from texts(option.get("steps", []))
+
+    exchange = [
+        "I sensed a great darkness, as of a demon revelling in its moment of triumph.",
+        "And now this sandstorm appears, the likes of which I have not seen in three thousand years. What can it mean?",
+        "Denath was Agrith-Naar all along! We've accidentally helped him get back to his own dimension!",
+        "It is a terrible thing for a demon to be victorious. I wish there was something I could do to rectify the situation.",
+        "You could help me summon the demon again so I could kill him!",
+        "What are we waiting for? What do I need to do?",
+    ]
+    assert [spoken(node) for node in variant[:6]] == exchange
+    assert [node.get("text") for node in variant[6:]] == [
+        "While having a demonic sigil:",
+        "Without a demonic sigil:",
+    ]
+    played = list(texts(variant))
+    for line in exchange + ["I need to get you a demonic sigil.", "I will wait."]:
+        assert played.count(line) == 1, line
+    assert [text for text in texts(variant[6]["steps"]) if text] == [
+        "Take this demonic sigil and go through the portal."
+    ]
+    assert [text for text in texts(variant[7]["steps"]) if text] == [
+        "I need to get you a demonic sigil.",
+        "I will wait.",
+    ]
+    assert all(text in source for text in played if text)
+
+
 def test_audited_variants_are_indexed():
     index = json.loads((config.DOCS_PATH / "npc-dialogue-index.json").read_text())
     authoring = json.loads(
