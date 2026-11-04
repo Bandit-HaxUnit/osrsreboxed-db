@@ -42,6 +42,27 @@ def test_shops_docs_json_exists_and_valid():
     assert isinstance(data_shop, dict)
 
 
+def test_parenthesized_shop_titles_keep_their_owner_for_each_version():
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    with open(config.DOCS_PATH / "shops-by-npc.json", encoding="utf-8") as f:
+        by_npc = json.load(f)
+    names = [
+        "Ned's Handmade Rope (100% Wool) (Default)",
+        "Ned's Handmade Rope (100% Wool) (Fremennik Isles)",
+    ]
+    for name in names:
+        owners = shops[name]["owners"]
+        assert any(
+            owner["name"] == "Ned" and 4280 in owner["npc_ids"] for owner in owners
+        )
+        entry = next(
+            shop for shop in by_npc["4280"]["shops"] if shop["shop_name"] == name
+        )
+        assert entry["option"] == "Trade"
+        assert entry["option_slot"] == 3
+
+
 def test_parse_shop_owners_reads_versioned_fields():
     """A versioned infobox names one owner per version; all of them are read."""
     wikitext = "\n".join(
