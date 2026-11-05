@@ -525,11 +525,13 @@ def parse_npc(name, raw, nav_templates=None):
         r"<!--.*?-->", lambda match: "\n" * match[0].count("\n"), raw, flags=re.S
     )
     # Seasonal pages share NPC identities, but only their activity may select
-    # them. Preserve that source policy in the compact consumer contract.
+    # them. Item transcripts are played by their item's option, even when they
+    # list NPC participants (Secret santa present's deliveries). Preserve that
+    # source policy in the compact consumer contract.
     event_source = any(
         str(template.name).strip().casefold() == "transcript"
         and template.has(1)
-        and str(template.get(1).value).strip().casefold() == "event"
+        and str(template.get(1).value).strip().casefold() in ("event", "item")
         for template in mw.parse(raw).filter_templates(recursive=False)
     )
     poem = None
