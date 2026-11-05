@@ -101,6 +101,7 @@ def test_exported_event_catalogue_is_the_exact_opt_in_subset():
     assert {
         "2025 Christmas event",
         "2025 Easter event",
+        "2026 Easter event",
         "2025 Halloween event",
         "25th Anniversary event",
     } <= catalogue.keys()
