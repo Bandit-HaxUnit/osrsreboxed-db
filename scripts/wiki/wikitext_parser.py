@@ -134,6 +134,11 @@ class WikitextIDParser:
         with open(self.wikitext_file_path) as wikitext_file:
             wikitext_dump = json.load(wikitext_file)
 
+        # Historical IDs only fill gaps: a current ID always wins when an old ID
+        # happens to have been reused by another page (Varrock/Edgeville guards
+        # share IDs in the wiki's history, to say nothing of event NPCs).
+        pending_historical = []
+
         # Loop all items in the OSRS Wiki data dump
         for name, wikitext in wikitext_dump.items():
             # Loop the list of proivided infobox template names
@@ -154,6 +159,24 @@ class WikitextIDParser:
                         self.item_id_to_template_number[id] = template_number + 1
                         self.item_id_to_wikitext[id] = wikitext
                         self.item_id_to_wiki_name[id] = name
+
+                    historical_ids = infobox_parser.extract_infobox_ids(
+                        include_historical=True
+                    )
+                    for id, version_number in historical_ids.items():
+                        if id in versioned_ids:
+                            continue
+                        pending_historical.append(
+                            (id, version_number, template_number + 1, wikitext, name)
+                        )
+
+        for id, version_number, template_number, wikitext, name in pending_historical:
+            if id in self.item_id_to_version_number:
+                continue
+            self.item_id_to_version_number[id] = version_number
+            self.item_id_to_template_number[id] = template_number
+            self.item_id_to_wikitext[id] = wikitext
+            self.item_id_to_wiki_name[id] = name
 
 
 class WikitextTemplateParser:
@@ -312,12 +335,17 @@ class WikitextTemplateParser:
             id_list.append(id_string)
         return id_list
 
-    def extract_infobox_ids(self) -> Dict:
+    def extract_infobox_ids(self, include_historical: bool = False) -> Dict:
         """Extracts the item ID from a versione, or un-versioned Infobox.
 
         This method extracts item IDs from a versined, or un-versioned, infobox
         template from the OSRS Wiki data. The data returned is a dictionary mapping:
         item_id -> version_number
+
+        The Wiki marks IDs that no longer exist in the current cache as ``histNNNN``
+        (for example ``id9 = 11947,hist3272``). With ``include_historical`` those
+        old IDs are included under their numeric value, so a cache that still uses
+        the old ID resolves the same infobox version as the current one.
 
         Versioned example: the Kalphite princess pet item has two versions, crawling
         or airbourne. This method parses an already extracted `infobox pet` template
@@ -346,8 +374,14 @@ class WikitextTemplateParser:
             id = self.extract_infobox_id(identifier)  # Pass empty string, not versioned
             if id:
                 ids = self.split_infobox_id_string(id)
-                for id in ids:
-                    id = self.try_int_cast(id)
+                for raw_id in ids:
+                    id = self.try_int_cast(raw_id)
+                    if (
+                        id is None
+                        and include_historical
+                        and raw_id.strip().startswith("hist")
+                    ):
+                        id = self.try_int_cast(raw_id.strip()[4:])
                     if id is not None:
                         item_id_to_version_number[id] = ""
 
@@ -366,8 +400,14 @@ class WikitextTemplateParser:
                 )  # Pass versioned string
                 if id:
                     ids = self.split_infobox_id_string(id)
-                    for id in ids:
-                        id = self.try_int_cast(id)
+                    for raw_id in ids:
+                        id = self.try_int_cast(raw_id)
+                        if (
+                            id is None
+                            and include_historical
+                            and raw_id.strip().startswith("hist")
+                        ):
+                            id = self.try_int_cast(raw_id.strip()[4:])
                         if id is not None:
                             item_id_to_version_number[id] = i
 

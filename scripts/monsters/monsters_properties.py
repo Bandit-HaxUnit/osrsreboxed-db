@@ -22,9 +22,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
 
+import json
 from pathlib import Path
+
 import config
 from scripts.wiki.wiki_properties import WikiProperties
+from scripts.wiki.wikitext_parser import WikitextTemplateParser
+from scripts.monsters import supplemental_pages
 
 
 def fetch():
@@ -57,6 +61,40 @@ def process():
         ),
     )
     wiki_props.process()
+    _add_supplemental_pages()
+
+
+def _add_supplemental_pages():
+    """Map captured {{Infobox NPC}} monster pages into the processed dump."""
+    pages = supplemental_pages.load_pages()
+    if not pages:
+        return
+
+    processed_filepath = Path(
+        config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json"
+    )
+    with open(processed_filepath) as f:
+        export = json.load(f)
+    with open(
+        Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text.json")
+    ) as f:
+        wikitext_dump = json.load(f)
+
+    for page_name in pages:
+        wikitext = wikitext_dump.get(page_name)
+        if not wikitext:
+            raise RuntimeError(f"Supplemental page {page_name!r} has no captured text")
+        parser = WikitextTemplateParser(wikitext)
+        if not parser.extract_infobox("infobox npc"):
+            raise RuntimeError(f"Supplemental page {page_name!r} has no Infobox NPC")
+        parser.determine_infobox_versions()
+        for monster_id, version_number in parser.extract_infobox_ids(
+            include_historical=True
+        ).items():
+            export[str(monster_id)] = [page_name, version_number, 1, wikitext]
+
+    with open(processed_filepath, "w") as f:
+        json.dump(export, f, indent=4)
 
 
 if __name__ == "__main__":
