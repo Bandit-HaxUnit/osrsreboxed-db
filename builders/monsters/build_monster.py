@@ -44,6 +44,10 @@ logger = logging.getLogger(__name__)
 
 
 class BuildMonster:
+    # Default until preprocessing selects the actual template family. Also keeps
+    # lightweight fixture instances (BuildMonster.__new__) usable.
+    infobox_template_type = "infobox monster"
+
     def __init__(self, **kwargs):
         # ID number to process
         self.monster_id = kwargs["monster_id"]
@@ -61,6 +65,10 @@ class BuildMonster:
         self.known_monsters = kwargs["known_monsters"]
         # Specify verbosity
         self.verbose = kwargs["verbose"]
+        # Reviewed supplemental cache-monster pages (page title -> captured metadata)
+        self.supplemental_pages = kwargs.get("supplemental_pages", {})
+        # Default until preprocessing selects the actual template family.
+        self.infobox_template_type = "infobox monster"
 
         # For this monster instance, create dictionary for property storage
         self.monster_dict = {}
@@ -125,10 +133,19 @@ class BuildMonster:
         else:
             infobox_version = 1
 
-        # Try extract infobox for monster
+        # Try extract the monster infobox. Some attackable cache monsters (for
+        # example the Doom of Mokhaiotl larvae) are written with {{Infobox NPC}}
+        # because the Wiki files them as non-player characters; use the same
+        # versioned template fields rather than inventing a monster infobox.
+        self.infobox_template_type = "infobox monster"
         self.has_infobox = infobox_parser.extract_infobox(
             "infobox monster", infobox_version
         )
+        if not self.has_infobox:
+            self.has_infobox = infobox_parser.extract_infobox(
+                "infobox npc", infobox_version
+            )
+            self.infobox_template_type = "infobox npc"
 
         if not self.has_infobox:
             if self.verbose:
@@ -141,12 +158,19 @@ class BuildMonster:
             )
 
         self.is_versioned = infobox_parser.determine_infobox_versions()
-        self.versioned_ids = infobox_parser.extract_infobox_ids()
+        # Historical IDs still resolve their infobox version: cache NPC 3272 is
+        # the Wiki's ``11947,hist3272`` Falador longbow guard, not the first
+        # (Edgeville) infobox on the page.
+        self.versioned_ids = infobox_parser.extract_infobox_ids(
+            include_historical=True
+        )
 
         # Set the infobox version number, default to empty string (no version number)
 
         # overide dt2 boss version due to overlapping wiki infobox versions
-        version_overrides = {12204: 1, 12192: 1, 12214: 1, 12215: 2, 12223: 1, 12224: 2}
+        # Cache 12215/12224 are the DT2 quest variants (wiki version 3), not
+        # the shared post-quest/awakened IDs whose infobox order differs.
+        version_overrides = {12204: 1, 12192: 1, 12214: 1, 12223: 1}
 
         try:
             if self.monster_id_int in version_overrides.keys():
@@ -217,10 +241,17 @@ class BuildMonster:
         else:
             wiki_name = wiki_page_name
 
+        if self.infobox_template_type == "infobox npc":
+            # The NPC infobox's version label describes the variant, while the
+            # cache name already is the canonical page variant name.
+            wiki_name = self.monster_name
+
         self.monster_dict["wiki_name"] = wiki_name
 
         # Set the wiki_url property
-        if wiki_versioned_name is not None:
+        if self.infobox_template_type == "infobox npc":
+            wiki_url = wiki_page_name
+        elif wiki_versioned_name is not None:
             wiki_url = wiki_page_name + "#" + wiki_versioned_name
         else:
             wiki_url = wiki_page_name
@@ -269,10 +300,33 @@ class BuildMonster:
                 if value is not None:
                     break
 
+            # NPC infoboxes do not carry combat hitpoints; the cache stat block is
+            # the native source for them (index 3 is hitpoints).
+            if value is None and proj_name == "hitpoints":
+                stats = (getattr(self, "monster_cache_data", None) or {}).get(
+                    "stats"
+                ) or []
+                if len(stats) > 3 and isinstance(stats[3], int):
+                    value = stats[3]
+
             self.monster_dict[proj_name] = infobox_cleaner.caller(value, proj_name)
 
             if value is None:
                 self.monster_dict["incomplete"] = True
+
+        # NPC infoboxes do not carry the monster attribute list. The captured
+        # Wiki page categories are the native source (for example Category:Demons).
+        if (
+            self.infobox_template_type == "infobox npc"
+            and not self.monster_dict.get("attributes")
+        ):
+            page_name = self.monster_wikitext[0]
+            categories = (getattr(self, "supplemental_pages", None) or {}).get(
+                page_name, {}
+            ).get("categories", [])
+            self.monster_dict["attributes"] = infobox_cleaner.categories_to_attributes(
+                categories
+            )
 
         # Set slayer level to one, if slayer xp is given and
         # slayer level is None
@@ -343,6 +397,27 @@ class BuildMonster:
                 value = self.extract_infobox_value(self.template, property_name)
             if value is not None:
                 self.monster_dict[database_name] = infobox_cleaner.stats(value)
+            elif self.infobox_template_type == "infobox npc":
+                # An NPC infobox has no combat block; the native cache stats are
+                # authoritative for those levels, and the absent bonuses are 0.
+                cache_stats = (getattr(self, "monster_cache_data", None) or {}).get(
+                    "stats"
+                ) or []
+                cache_index = {
+                    "attack_level": 0,
+                    "strength_level": 1,
+                    "defence_level": 2,
+                    "magic_level": 4,
+                    "ranged_level": 5,
+                }.get(database_name)
+                if database_name == "combat_level":
+                    self.monster_dict[database_name] = (
+                        getattr(self, "monster_cache_data", None) or {}
+                    ).get("combatLevel", 0)
+                elif cache_index is not None and len(cache_stats) > cache_index:
+                    self.monster_dict[database_name] = cache_stats[cache_index]
+                else:
+                    self.monster_dict[database_name] = 0
             else:
                 self.monster_dict[database_name] = 0
                 self.monster_dict["incomplete"] = True

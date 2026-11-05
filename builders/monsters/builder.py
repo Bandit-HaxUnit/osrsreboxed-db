@@ -67,6 +67,11 @@ class Builder(BaseBuilder):
         with open(Path(config.DATA_SCHEMAS_PATH / "schema-monsters.json")) as f:
             self.schema_data = json.load(f)
 
+        # Reviewed supplemental page captures ({{Infobox NPC}} cache monsters)
+        from scripts.monsters import supplemental_pages
+
+        self.supplemental_pages = supplemental_pages.load_pages()
+
         # Initialize a list of known monsters
         self.known_monsters = []
 
@@ -90,6 +95,7 @@ class Builder(BaseBuilder):
             schema_data=self.schema_data,
             known_monsters=self.known_monsters,
             verbose=self.verbose,
+            supplemental_pages=self.supplemental_pages,
         )
 
     def _process_built_entity(self, builder, monster_id):
