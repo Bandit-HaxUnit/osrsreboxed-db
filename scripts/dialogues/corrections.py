@@ -44,9 +44,16 @@ def apply_corrections(data, corrections):
                 ) from None
             if expected != change["expected"]:
                 raise ValueError(f"Stale dialogue correction: {name} at {path}")
+            if "insert" in change and not (
+                isinstance(parent, list) and isinstance(key, int) and key <= len(parent)
+            ):
+                raise ValueError(f"Stale dialogue correction: {name} at {path}")
             targets.append((parent, key, change))
     for parent, key, change in targets:
-        if "value" in change:
+        if "insert" in change:
+            # `expected` anchors the node currently at the index (null at the end); it moves down.
+            parent.insert(key, copy.deepcopy(change["insert"]))
+        elif "value" in change:
             parent[key] = copy.deepcopy(change["value"])
         else:
             del parent[key]

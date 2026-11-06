@@ -22,7 +22,7 @@ An empty event category fails collection rather than silently dropping seasonal 
 - `docs/npc-dialogue-index.json`: NPC ID -> candidate transcript pages and variants.
 - `docs/dialogue-types.json`: top-level Transcript source type -> sorted unique page titles, including pet and item separately. Missing or conflicting declarations are `unclassified`; this is source classification, not gameplay eligibility.
 - `data/dialogues/wiki-pages.json`, `quest-pages.json`, `npc-pages.json`: source wikitext and revision IDs.
-- `data/dialogues/corrections.json`: remaining content/capture corrections, with source commits and checked input fingerprints.
+- `data/dialogues/corrections.json`: remaining content/capture corrections, with source commits and checked input fingerprints. A change sets `value` at a path, deletes it when `value` is absent, or adds `insert` before the node now at that list index (`expected` fingerprints that anchor node, or is null at the list end). Changes apply in the order listed, so give a list's highest index last.
 - `data/dialogues/runtime-bindings.json`: source-node resume points, effect parameters and cache-backed NPC identity bindings; contains no copied dialogue.
 - `data/dialogues/authoring-index.json`: source revisions, participant identities and section descriptions, keyed by transcript page.
 - `docs/dialogue-manifest.json`: transcript page -> one independently loadable file under `docs/dialogues/`.

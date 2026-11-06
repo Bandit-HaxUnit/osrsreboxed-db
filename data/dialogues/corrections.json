@@ -3789,5 +3789,167 @@
         }
       }
     ]
+  },
+  "Dragon Slayer I": {
+    "reason": "Align Dragon Slayer I with the revision 242 capture: reworded lines, the merged Klarense offer, and the full-inventory Melzar key branch.",
+    "sources": [
+      "RSProx capture 20261106T101002-5ab63b4 (revision 242, SHA-256 7ab95f958f587c8a1ff61bc3762aae4a2c1fea95d2b52212ef553115b0a5fd1b): the Guildmaster, Duke Horacio and Klarense lines as spoken, and the Guildmaster's full-inventory reply when asked about Melzar's map piece"
+    ],
+    "base_sha256": "5bcbca56220d0236a1f2e723141677684f6e6f579f0f52aaa7520dcfc65118fd",
+    "audited_sha256": "405b82a3310095f86efc18a164e1b36f635cf536e88ab2fca380fa4956878802",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "a-quest-for-the-rune-platebody-talking-to-the-guildmaster-after-talking-to-oziach",
+          1,
+          "options",
+          1,
+          "steps",
+          17,
+          "options",
+          0,
+          "steps",
+          2,
+          "text"
+        ],
+        "expected": "d702d591d6a70e06da380a000b0788c2ff9c47aa319ad90cd8bc3ef96cbae2bc",
+        "value": "However, the three apparently split the map into three pieces, with each of them taking one piece."
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "branches",
+          "jump-539ac0e492576873",
+          2,
+          "text"
+        ],
+        "expected": "d702d591d6a70e06da380a000b0788c2ff9c47aa319ad90cd8bc3ef96cbae2bc",
+        "value": "However, the three apparently split the map into three pieces, with each of them taking one piece."
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "protection-from-a-dragon-s-breath-talking-to-duke-horacio",
+          1,
+          "options",
+          0,
+          "steps",
+          2,
+          "options",
+          0,
+          "steps",
+          2,
+          "options",
+          0,
+          "steps",
+          1,
+          "text"
+        ],
+        "expected": "22ac0da1bd155b94cfe9d3dec0727403a539c56a4e8cc817867627588737d799",
+        "value": "Well, you're braver than I!"
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "an-old-crandorian-ship-talking-to-klarense",
+          7,
+          "options",
+          0,
+          "steps",
+          1,
+          "text"
+        ],
+        "expected": "452bd248ad425c4bdce794ecf9be44117bc53340b58a014d27f1ce3187153e45",
+        "value": "Of course! How does 2,000 coins sound? I'll even throw in my cabin boy, Jenkins, for free! He'll swab the decks and splice the mainsails for you!"
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "an-old-crandorian-ship-talking-to-klarense",
+          7,
+          "options",
+          0,
+          "steps",
+          2
+        ],
+        "expected": "6b2c09688f2705a1e1615e759040c98f303264eff002135c3c5ded0ecd1c5481"
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "a-quest-for-the-rune-platebody-talking-to-the-guildmaster-after-talking-to-oziach",
+          1,
+          "options",
+          1,
+          "steps",
+          17,
+          "options",
+          0,
+          "steps",
+          3,
+          "options",
+          0,
+          "steps",
+          4
+        ],
+        "expected": "92b73360d54b7eba247c5cc4f22e84eb70ac3ffbcc0459e8077d6472447a4a68",
+        "insert": {
+          "type": "condition",
+          "text": "If the player does not have enough free inventory space:",
+          "steps": [
+            {
+              "type": "line",
+              "speaker": "Guildmaster",
+              "text": "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
+            },
+            {
+              "type": "end"
+            }
+          ],
+          "id": "dragon-slayer-i:melzar-key-no-space"
+        }
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "branches",
+          "jump-539ac0e492576873",
+          3,
+          "options",
+          0,
+          "steps",
+          4
+        ],
+        "expected": "92b73360d54b7eba247c5cc4f22e84eb70ac3ffbcc0459e8077d6472447a4a68",
+        "insert": {
+          "type": "condition",
+          "text": "If the player does not have enough free inventory space:",
+          "steps": [
+            {
+              "type": "line",
+              "speaker": "Guildmaster",
+              "text": "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
+            },
+            {
+              "type": "end"
+            }
+          ],
+          "id": "dragon-slayer-i:melzar-key-no-space"
+        }
+      }
+    ]
   }
 }

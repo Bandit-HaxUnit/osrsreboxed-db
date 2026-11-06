@@ -225,3 +225,66 @@ def test_cache_bound_shared_npc_variants_are_indexed():
             "variants": ["pre-release-dialogue", "starting-out"],
         }
     ]
+
+
+def test_correction_inserts_a_node_before_its_anchor_and_rejects_a_stale_anchor():
+    steps = [{"npc": "One."}, {"type": "message", "text": "Two.", "id": "keep"}]
+    data = {"records": {"X": {"steps": copy.deepcopy(steps)}}}
+    branch = {"type": "condition", "text": "If asked:", "steps": [], "id": "x:new"}
+    correction = {
+        "base_sha256": fingerprint(data["records"]["X"]),
+        "changes": [
+            {
+                "path": ["records", "X", "steps", 1],
+                "expected": fingerprint(steps[1]),
+                "insert": branch,
+            }
+        ],
+    }
+    apply_corrections(data, {"X": correction})
+    assert [s.get("id") for s in data["records"]["X"]["steps"]] == [None, "x:new", "keep"]
+    branch["id"] = "mutated"
+    assert data["records"]["X"]["steps"][1]["id"] == "x:new"
+
+    fresh = {"records": {"X": {"steps": copy.deepcopy(steps)}}}
+    fresh["records"]["X"]["steps"][1]["text"] = "Changed upstream."
+    correction["base_sha256"] = fingerprint(fresh["records"]["X"])
+    with pytest.raises(ValueError, match="Stale dialogue correction: X"):
+        apply_corrections(fresh, {"X": correction})
+    off_end = {"records": {"X": {"steps": copy.deepcopy(steps)}}}
+    correction["base_sha256"] = fingerprint(off_end["records"]["X"])
+    correction["changes"][0]["path"] = ["records", "X", "steps", 5]
+    correction["changes"][0]["expected"] = None
+    with pytest.raises(ValueError, match="Stale dialogue correction: X"):
+        apply_corrections(off_end, {"X": correction})
+
+
+def test_dragon_slayer_i_follows_the_revision_242_capture():
+    path = config.DOCS_PATH / "npc-dialogues.json"
+    record = json.loads(path.read_text(encoding="utf-8"))["Dragon Slayer I"]
+    text = json.dumps(record, ensure_ascii=False)
+    assert "with each of them taking one piece" in text
+    assert "which each of them taking" not in text
+    assert "Well, you're braver than I!" in text
+    assert "a braver man than I" not in text
+    assert "Of course! How does 2,000 coins sound?" in text
+    assert "I'm sure the work needed to do on it" not in text
+    needle = "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
+    key_nodes = []
+
+    def walk(node):
+        if isinstance(node, dict):
+            if node.get("id") == "dragon-slayer-i:melzar-key-no-space":
+                key_nodes.append(node)
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    walk(record)
+    assert len(key_nodes) == 2  # the variant and the shared branch
+    for node in key_nodes:
+        assert node["type"] == "condition"
+        assert node["steps"][0]["text"] == needle
+        assert node["steps"][-1] == {"type": "end"}
