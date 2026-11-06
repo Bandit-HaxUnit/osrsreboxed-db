@@ -3796,7 +3796,7 @@
       "RSProx capture 20261106T101002-5ab63b4 (revision 242, SHA-256 7ab95f958f587c8a1ff61bc3762aae4a2c1fea95d2b52212ef553115b0a5fd1b): the Guildmaster, Duke Horacio and Klarense lines as spoken, and the Guildmaster's full-inventory reply when asked about Melzar's map piece"
     ],
     "base_sha256": "5bcbca56220d0236a1f2e723141677684f6e6f579f0f52aaa7520dcfc65118fd",
-    "audited_sha256": "405b82a3310095f86efc18a164e1b36f635cf536e88ab2fca380fa4956878802",
+    "audited_sha256": "7b643abf2d66e9a6e2d24ca46442d1dda47be452eea346e193c40b2048f965ec",
     "changes": [
       {
         "path": [
@@ -3915,7 +3915,9 @@
               "text": "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
             },
             {
-              "type": "end"
+              "type": "jump",
+              "reference": "other",
+              "id": "dragon-slayer-i:melzar-key-no-space-menu"
             }
           ],
           "id": "dragon-slayer-i:melzar-key-no-space"
@@ -3944,7 +3946,9 @@
               "text": "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
             },
             {
-              "type": "end"
+              "type": "jump",
+              "reference": "other",
+              "id": "dragon-slayer-i:melzar-key-no-space-menu"
             }
           ],
           "id": "dragon-slayer-i:melzar-key-no-space"
