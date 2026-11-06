@@ -117,6 +117,59 @@ def test_exported_event_catalogue_is_the_exact_opt_in_subset():
         assert model(**record).activation == "explicit"
 
 
+def test_halloween_2025_above_jumps_and_lost_picture_play_their_source_branches():
+    """The 2025 Halloween transcript's "above" jumps point back at whole branches on
+    other sections (navigation anchors in runtime-bindings.json), and Seth's
+    replacement picture is not nested under the all-decorations message
+    (corrections.json). A consumer must be able to play the export as published."""
+    root = Path(__file__).resolve().parents[1]
+    event = json.loads((root / "docs/event-dialogues.json").read_text(encoding="utf8"))[
+        "2025 Halloween event"
+    ]
+
+    def find(steps, wanted):
+        for node in walk(steps):
+            if node.get("id") == wanted:
+                return node
+        return None
+
+    def ids(steps):
+        return [node.get("id") for node in walk(steps) if node.get("id")]
+
+    def jump_body(variant, jump_id):
+        jump = find(event["variants"][variant], jump_id)
+        assert jump is not None and jump["type"] == "jump"
+        assert [step["type"] for step in jump["steps"]] == ["call"]
+        return event["branches"][jump["steps"][0]["branch"]]
+
+    # Diango's second visit continues as his first: the wearing check hands out the lantern.
+    diango = jump_body("spooky-pumpkin-lantern-talking-to-diango-again", "Kg0hmG")
+    assert [step.get("id") for step in diango] == ["9NWeHn", "_MxZad"]
+    assert "BSrsl1" in ids(diango)
+    # Fred's "I'm ready for the judgement!" continues into the judging and its rewards.
+    fred = jump_body(
+        "the-spook-a-thon-contest-talking-to-fred-again-before-finishing-the-cutscene",
+        "kzB_xv",
+    )
+    assert [step.get("id") for step in fred] == ["4Sjcyo", "H4FTU9"]
+    assert "5shIok" in ids(fred)
+
+    lost = find(
+        event["variants"][
+            "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time"
+        ],
+        "1Glkal",
+    )
+    tail = [step.get("id") for step in lost["steps"][2:]]
+    assert tail == ["UBDVQJ", "pMyO2X", "Nkt5y6"]
+    assert lost["steps"][2]["steps"][-1] == {"type": "end"}
+    assert ids(lost["steps"][3]["steps"]) == ["tdDfyd"]
+    assert not any(
+        node.get("type") == "jump" and not node.get("steps")
+        for node in walk(lost["steps"])
+    )
+
+
 def test_holiday_item_transcripts_export_as_item_option_conversations():
     root = Path(__file__).resolve().parents[1]
     aggregate = json.loads(

@@ -3702,5 +3702,92 @@
         "expected": "75cba2688f1b4b8ed545c4901468898f6115621850b89b2992c18a0559871647"
       }
     ]
+  },
+  "2025 Halloween event": {
+    "reason": "The Wiki source indents Seth's replacement picture under \"If the player has all the other decorations\" and ends both branches with targetless \"continues\"; its own comment says only the decorations message is conditional. Check for space first (Seth's hold-on line ends the conversation), then give the replacement, with the decorations message only when it applies.",
+    "sources": [
+      "https://oldschool.runescape.wiki/w/Transcript:2025_Halloween_event#Talking_to_Seth_again_after_receiving_the_picture_for_the_first_time"
+    ],
+    "base_sha256": "4d813d60d38da446b770a652cd3e1781dc9d5b0eac98acf7bb6462f3f0760e60",
+    "audited_sha256": "f6abe03b69dd8a023d90d1bb1764bd77af60ffad3089afe6b9c7de6205030078",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "2025 Halloween event",
+          "variants",
+          "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time",
+          0,
+          "options",
+          0,
+          "steps",
+          0,
+          "steps",
+          2
+        ],
+        "expected": "f2219e722cb0bf9f198fa945209c4372f6ab2832eba0fac31c3d91409da5d341",
+        "value": {
+          "type": "condition",
+          "text": "If the player has no inventory space:",
+          "id": "UBDVQJ",
+          "steps": [
+            {
+              "type": "line",
+              "speaker": "Seth Groats",
+              "text": "Oh, looks like you've got no space for it. I'll hold onto it until you do."
+            },
+            {
+              "type": "end"
+            }
+          ]
+        }
+      },
+      {
+        "path": [
+          "records",
+          "2025 Halloween event",
+          "variants",
+          "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time",
+          0,
+          "options",
+          0,
+          "steps",
+          0,
+          "steps",
+          3,
+          "steps"
+        ],
+        "expected": "f93367b4e7ddd04c5357d9fe4a5bf1324f8e754f3d2b790b22599a5209827034",
+        "value": [
+          {
+            "type": "message",
+            "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+            "id": "tdDfyd"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "2025 Halloween event",
+          "variants",
+          "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time",
+          0,
+          "options",
+          0,
+          "steps",
+          0,
+          "steps",
+          4
+        ],
+        "expected": "7617d68db61188ca5a55b7e449c3022b48465bb662710826032996e2f1f721eb",
+        "value": {
+          "type": "action",
+          "action": "receive",
+          "text": "a Spooky picture",
+          "id": "Nkt5y6"
+        }
+      }
+    ]
   }
 }
