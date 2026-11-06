@@ -495,6 +495,65 @@ def test_shop_items_resolve_shared_names_to_the_stocked_version():
     )
 
 
+def test_shop_items_prefer_the_banked_copy_over_an_unbanked_duplicate():
+    """A shop stocks the item its wiki page declares, not the interface copy
+    the item builder kept as the non-duplicate.
+
+    The committed item infoboxes give 12019/12020 for the closed coal and gem
+    bags, 6664 for fishing explosives and 6720 for slayer gloves; the 764/766/
+    6660/6708 copies were only matched by name and are not the items sold.
+    """
+    assert shops_items.item_id_lookup("Coal bag", "Coal bag#Closed") == 12019
+    assert shops_items.item_id_lookup("Gem bag", "Gem bag#Closed") == 12020
+    assert shops_items.item_id_lookup("Fishing explosive") == 6664
+    assert shops_items.item_id_lookup("Slayer gloves") == 6720
+    # Controls: a page that declares its only id keeps it, and a name-matched
+    # kept item stays when the declared copy is not bankable.
+    assert shops_items.item_id_lookup("Sulphurous fertiliser") == 13419
+    assert shops_items.item_id_lookup("Red disk") == 3715
+
+
+def test_prefer_declared_copies_only_replaces_name_matched_kept_items():
+    """The wiki lookup, not the duplicate flag, decides.
+
+    A kept item the page declares by ID stays, an unbankable item with no
+    declared bankable twin stays, and only a kept item matched by name is
+    replaced.
+    """
+    from types import SimpleNamespace
+
+    def item(item_id, name, lookup, placeholder=None, duplicate=False):
+        return SimpleNamespace(
+            id=item_id,
+            name=name,
+            wiki_name=f"{name} (Closed)",
+            tradeable_on_ge=False,
+            duplicate=duplicate,
+            wikitext_lookup=lookup,
+            linked_id_placeholder=placeholder,
+        )
+
+    kept = [
+        item(1, "Bag", "name"),
+        item(2, "Rope", "id", placeholder=20),
+        item(3, "Quest trinket", "name"),
+    ]
+    declared = [item(4, "Bag", "id", placeholder=40, duplicate=True)]
+    wiki_names, pages, names = shops_items._prefer_declared_copies(
+        shops_items._build_item_maps(kept), kept, declared
+    )
+    assert wiki_names["bag (closed)"] == 4
+    assert pages["bag"] == 4
+    assert names["bag"] == 4
+    # Declared by the page: keeps its own id even though a copy exists.
+    assert wiki_names["rope (closed)"] == 2
+    assert pages["rope"] == 2
+    # Not declared and no declared bankable twin: preserved.
+    assert wiki_names["quest trinket (closed)"] == 3
+    assert pages["quest trinket"] == 3
+    assert names["quest trinket"] == 3
+
+
 def test_shop_items_use_the_bucketname_anchor():
     """A bucket name pins one version of a shared page, e.g. the stardust bag."""
     assert (
