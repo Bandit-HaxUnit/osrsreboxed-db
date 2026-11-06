@@ -18,6 +18,14 @@ DIALOGUE_CATEGORIES = (
     "Event transcript",
 )
 TRANSCRIPT_CATEGORIES = ("Quest transcript", "Miniquest transcript", "Event transcript")
+# Item transcripts are not collected by category (most describe quest notes that a
+# quest transcript already links). These are the item options a game plays from data:
+# holiday reward items whose conversation has no NPC to start it.
+ITEM_TRANSCRIPTS = (
+    "Transcript:Haunted wine bottle",
+    "Transcript:Magic egg ball",
+    "Transcript:Secret santa present",
+)
 CACHE = config.DATA_PATH / "dialogues" / "wiki-pages.json"
 QUEST_CACHE = CACHE.with_name("quest-pages.json")
 NPC_CACHE = CACHE.with_name("npc-pages.json")
@@ -247,7 +255,8 @@ def fetch(refresh=False):
     session = WikiPageText(API, "").session
     npc_names = categories["NPC dialogue"] | categories["Pet dialogue"]
     transcript_names = set().union(
-        *(categories[category] for category in TRANSCRIPT_CATEGORIES)
+        *(categories[category] for category in TRANSCRIPT_CATEGORIES),
+        ITEM_TRANSCRIPTS,
     )
     pages = download(npc_names, CACHE, session, refresh)
     quests = download(transcript_names - npc_names, QUEST_CACHE, session, refresh)

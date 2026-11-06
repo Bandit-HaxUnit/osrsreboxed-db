@@ -168,3 +168,36 @@ def test_halloween_2025_above_jumps_and_lost_picture_play_their_source_branches(
         node.get("type") == "jump" and not node.get("steps")
         for node in walk(lost["steps"])
     )
+
+
+def test_holiday_item_transcripts_export_as_item_option_conversations():
+    root = Path(__file__).resolve().parents[1]
+    aggregate = json.loads(
+        (root / "docs/npc-dialogues.json").read_text(encoding="utf8")
+    )
+    types = json.loads((root / "docs/dialogue-types.json").read_text(encoding="utf8"))
+    index = json.loads(
+        (root / "docs/npc-dialogue-index.json").read_text(encoding="utf8")
+    )
+    for name in ("Haunted wine bottle", "Magic egg ball", "Secret santa present"):
+        # Played by the item's option, never chosen for an NPC's Talk-to.
+        assert aggregate[name]["activation"] == "explicit"
+        assert "Transcript:" + name in types["item"]
+    bottle = aggregate["Haunted wine bottle"]["variants"]
+    assert [step for step in bottle["talking-to-the-bottle-without-a-ghostspeak-amulet"]
+            if "player" in step] == [{"player": "Hello...?"}]
+    egg = aggregate["Magic egg ball"]
+    pets = next(option for option in egg["steps"][0]["options"]
+                if option["text"] == "Will I get a pet today?")
+    # The pet question's {{tact|above}} shares the rare-item question's answers.
+    call = pets["steps"][-1]["steps"][0]
+    assert call["type"] == "call" and call["branch"] in egg["branches"]
+    santa = aggregate["Secret santa present"]["variants"]
+    assert santa["unlocking-blue-read-tag"][0]["text"].startswith("I sell tools that chop.")
+    # Deliveries stay indexed to their NPCs as explicit candidates (Bob, Aggie...).
+    assert any(
+        entry["page"] == "Transcript:Secret santa present"
+        and entry["variants"] == ["unlocking-blue-talking-to-bob"]
+        for entries in index.values()
+        for entry in entries
+    )
