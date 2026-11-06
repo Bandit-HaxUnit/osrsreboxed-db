@@ -1,0 +1,358 @@
+{
+  "default": null,
+  "variants": {
+    "change-colour-option-on-the-present": [
+      {
+        "type": "condition",
+        "text": "If no other colours are unlocked:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Deliver the present to the residents of Gielinor to unlock more colours. Check the name tag!",
+            "id": "ZTu7nJ"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "41tHv-"
+      },
+      {
+        "type": "condition",
+        "text": "If at least one colour is unlocked:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Red",
+                "steps": []
+              },
+              {
+                "text": "Blue",
+                "condition": "If blue unlocked:",
+                "steps": [],
+                "id": "18M1Fk"
+              },
+              {
+                "text": "Green",
+                "condition": "If green unlocked:",
+                "steps": [],
+                "id": "gd9T3P"
+              },
+              {
+                "text": "Black",
+                "condition": "If black unlocked:",
+                "steps": [],
+                "id": "Bz_Sxq"
+              },
+              {
+                "text": "Gold",
+                "condition": "If gold unlocked:",
+                "steps": [],
+                "id": "sMkbBA"
+              },
+              {
+                "text": "I want to unlock more colours!",
+                "condition": "If at least one colour still locked:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Deliver the present to the residents of Gielinor to unlock more colours. Check the name tag!",
+                    "id": "wWy_5-"
+                  }
+                ],
+                "id": "cjRkuv"
+              }
+            ]
+          }
+        ],
+        "id": "o0MOoj"
+      }
+    ],
+    "unlocking-blue-read-tag": [
+      {
+        "type": "message",
+        "text": "I sell tools that chop. Near where adventures begin. Come visit my shop.",
+        "id": "SkLL-S"
+      }
+    ],
+    "unlocking-blue-talking-to-bob": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a present for you!",
+            "steps": [
+              {
+                "player": "I have a present for you!"
+              },
+              {
+                "type": "line",
+                "speaker": "Bob",
+                "text": "Lovely! I've been waiting for you to turn up!"
+              },
+              {
+                "player": "You've been waiting for me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Bob",
+                "text": "Yes! Didn't anybody tell you? This present is actually for you!"
+              },
+              {
+                "player": "For me?"
+              },
+              {
+                "type": "line",
+                "speaker": "Bob",
+                "text": "All for you. Every time you deliver it, you'll unlock a new colour of wrapping paper for it."
+              },
+              {
+                "type": "line",
+                "speaker": "Bob",
+                "text": "It's a pretty magical present!"
+              },
+              {
+                "player": "That sounds pretty cool! So I can change its colour?"
+              },
+              {
+                "type": "line",
+                "speaker": "Bob",
+                "text": "Yep. Look, you can change its wrapping paper to blue now."
+              },
+              {
+                "type": "action",
+                "text": "Bob performs an enchant animation and unlocks the new colour.",
+                "id": "_AS9KU"
+              },
+              {
+                "type": "message",
+                "text": "You've unlocked blue wrapping paper for your present.",
+                "id": "MmpiHG"
+              },
+              {
+                "player": "That's so cool! Who do I deliver it to next?"
+              },
+              {
+                "type": "line",
+                "speaker": "Bob",
+                "text": "You'll have to figure that out for yourself, that's the fun. Check the name tag!"
+              },
+              {
+                "type": "line",
+                "speaker": "Bob",
+                "text": "I'm going to get back to work, good luck."
+              }
+            ]
+          },
+          {
+            "text": "Talk about other things."
+          }
+        ]
+      }
+    ],
+    "unlocking-green-read-tag": [
+      {
+        "type": "message",
+        "text": "Red, yellow and blue. Onion, woad, redberries. All will do. Witch one will you choose?",
+        "id": "lJKifI"
+      }
+    ],
+    "unlocking-green-talking-to-aggie": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a present for you!",
+            "steps": [
+              {
+                "player": "I have a present for you!"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "Hello [player name]. You've found me, well done."
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "Let me unlock the next colour for you."
+              },
+              {
+                "type": "action",
+                "text": "Aggie performs an enchant animation and unlocks the new colour.",
+                "id": "rFjI5F"
+              },
+              {
+                "type": "message",
+                "text": "You've unlocked green wrapping paper for your present.",
+                "id": "qrR4nb"
+              },
+              {
+                "player": "Thank you, Aggie!"
+              },
+              {
+                "type": "line",
+                "speaker": "Aggie",
+                "text": "Good luck with the next one!"
+              }
+            ]
+          },
+          {
+            "text": "Talk about other things."
+          }
+        ]
+      }
+    ],
+    "unlocking-black-read-tag": [
+      {
+        "type": "message",
+        "text": "I sell news each day. 'Read all about it' I say. A low price to pay.",
+        "id": "4sa67g"
+      }
+    ],
+    "unlocking-black-talking-to-benny": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a present for you!",
+            "steps": [
+              {
+                "player": "I have a present for you!"
+              },
+              {
+                "type": "line",
+                "speaker": "Benny",
+                "text": "Hi [player name]. I didn't think you'd find me!"
+              },
+              {
+                "player": "Who else sells newspapers!"
+              },
+              {
+                "type": "line",
+                "speaker": "Benny",
+                "text": "I suppose I should have made the clue harder."
+              },
+              {
+                "type": "line",
+                "speaker": "Benny",
+                "text": "I'll unlock the next colour for you."
+              },
+              {
+                "type": "action",
+                "text": "Benny performs an enchant animation and unlocks the new colour.",
+                "id": "aD5kAc"
+              },
+              {
+                "type": "message",
+                "text": "You've unlocked black wrapping paper for your present.",
+                "id": "_XvIdM"
+              },
+              {
+                "player": "Thank you, Benny!"
+              },
+              {
+                "type": "line",
+                "speaker": "Benny",
+                "text": "It's no problem. Good luck with the last one!"
+              }
+            ]
+          },
+          {
+            "text": "Talk about other things."
+          }
+        ]
+      }
+    ],
+    "unlocking-gold-read-tag": [
+      {
+        "type": "message",
+        "text": "I summon the dead. Skeletons, Zombies and Ghosts. Land, Flame, Wind and Sea.",
+        "id": "tFV7Gc"
+      }
+    ],
+    "unlocking-gold-talking-to-malignius-mortifer": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a present for you!",
+            "steps": [
+              {
+                "player": "I have a present for you!"
+              },
+              {
+                "type": "line",
+                "speaker": "Malignius Mortifer",
+                "text": "I see. Let's do this quickly, I am quite busy."
+              },
+              {
+                "type": "action",
+                "text": "Malignius Mortifer performs an enchant animation and unlocks the new colour.",
+                "id": "AqyfoW"
+              },
+              {
+                "type": "message",
+                "text": "You've unlocked gold wrapping paper for your present.",
+                "id": "SyvI60"
+              },
+              {
+                "player": "Thank you!"
+              },
+              {
+                "type": "line",
+                "speaker": "Malignius Mortifer",
+                "text": "You've completed your tasks, well done."
+              },
+              {
+                "player": "You were the last one?"
+              },
+              {
+                "type": "line",
+                "speaker": "Malignius Mortifer",
+                "text": "Yes. Always save the best until last."
+              },
+              {
+                "player": "You're the best?"
+              },
+              {
+                "type": "line",
+                "speaker": "Malignius Mortifer",
+                "text": "Obviously, I am Malignius Mortifer."
+              },
+              {
+                "player": "Ah yes, the great Malignius Mortifer..."
+              },
+              {
+                "type": "line",
+                "speaker": "Malignius Mortifer",
+                "text": "You don't think I'm great?"
+              },
+              {
+                "player": "I do! Of course I do."
+              },
+              {
+                "type": "line",
+                "speaker": "Malignius Mortifer",
+                "text": "Good, now begone."
+              }
+            ]
+          },
+          {
+            "text": "Talk about other things."
+          }
+        ]
+      }
+    ],
+    "read-tag-after-unlocking-all-colours": [
+      {
+        "type": "message",
+        "text": "You've already delivered the present to everyone and unlocked all the colours of wrapping paper.",
+        "id": "hyfBez"
+      }
+    ]
+  },
+  "activation": "explicit"
+}
