@@ -30,6 +30,18 @@ from scripts.shops import shop_owners
 from scripts.shops import shops_items
 
 
+def test_shop_general_store_policy_comes_from_infobox_specialty():
+    for specialty in ["General store", "[[General store]]", "[[General store|General supplies]]"]:
+        text = "{{Infobox Shop\n|special = " + specialty + "\n}}\n{{StoreTableHead|sellmultiplier=1000|buymultiplier=600|delta=20}}"
+        info = shops_items.parse_shop_info(text)
+        assert info.get("general_store") is True
+        assert (info["sells_at"], info["buys_at"], info["change_per"]) == (1000, 600, 20)
+    for specialty in ["Yes", "No", "[[Thieving]]"]:
+        info = shops_items.parse_shop_info("{{Infobox Shop\n|special = " + specialty + "\n}}")
+        assert info.get("general_store") is False
+    assert "general_store" not in shops_items.parse_shop_info("{{StoreTableHead|buymultiplier=600}}")
+
+
 def test_shops_docs_json_exists_and_valid():
     """Ensure shops-items-by-shop is copied into docs."""
     shops_by_shop = Path(config.DOCS_PATH / "shops-items-by-shop.json")
@@ -169,6 +181,7 @@ def test_experience_tabs_do_not_hide_the_real_void_shop():
         "buys_at": None,
         "change_per": None,
         "currency": "Void Knight commendation points",
+        "general_store": False,
     }
 
 

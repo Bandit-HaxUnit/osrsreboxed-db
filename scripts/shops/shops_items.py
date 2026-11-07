@@ -282,6 +282,9 @@ def fetch() -> None:
             for section_name, section_content in tabber_sections.items():
                 substore_name = f"{shop_name} ({section_name})"
                 shop_info = parse_shop_info(section_content)
+                parent_info = parse_shop_info(wikitext)
+                if "general_store" in parent_info:
+                    shop_info["general_store"] = parent_info["general_store"]
                 if removed is not None:
                     shop_info["removed"] = removed
                 shop_items = parse_shop_items(substore_name, section_content)
@@ -511,6 +514,14 @@ def parse_shop_info(wikitext: str) -> dict:
         "change_per": None,
         "currency": "coins",  # Default to coins
     }
+
+    infobox = WikitextTemplateParser(wikitext)
+    if infobox.extract_infobox("infobox shop") and infobox.template.has("special"):
+        specialty = str(infobox.template.get("special").value).strip()
+        # Resolve the link target, not its display label or the minimap icon.
+        linked = re.fullmatch(r"\[\[([^|\]]+)(?:\|[^\]]+)?\]\]", specialty)
+        specialty = linked.group(1) if linked else specialty
+        shop_info["general_store"] = specialty.strip().casefold() == "general store"
 
     # Look for StoreTableHead template
     pattern = r"\{\{StoreTableHead\|([^}]+)\}\}"
