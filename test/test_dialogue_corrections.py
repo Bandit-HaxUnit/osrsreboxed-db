@@ -148,6 +148,60 @@ def test_captured_ides_line_replaces_the_wiki_typo():
     assert "he'll he happy" not in text
 
 
+def test_prince_ali_rescue_plays_the_revision_242_capture():
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
+        "Prince Ali Rescue"
+    ]["variants"]
+    aggie = json.dumps(variants["preparations-for-rescue-talking-to-aggie"])
+    assert (
+        "Yes, I can. I see you already have the ingredients - the water, flour,"
+        " ashes and redberries. Would you like me to mix some for you now?"
+    ) in aggie
+    assert "Yes I can. I see you already have the ingredients." not in aggie
+
+    leela = variants["starting-out-talking-to-leela"]
+    assert [step.get("player") or step.get("text") for step in leela[:2]] == [
+        "You must be Leela. Your father sent me to help rescue Prince Ali.",
+        "Yes, he sent word ahead that you'd be coming. Are you aware of the plan?",
+    ]
+    prepared = leela[2]
+    assert prepared["type"] == "condition"
+    assert prepared["text"] == "If the player has the disguise, the key and a rope:"
+    assert [step.get("player") or step.get("text") for step in prepared["steps"]] == [
+        "Yes. In fact, I already have everything we need.",
+        "Good work. Now, before breaking the Prince out, you'll need to find a way"
+        " to deal with his personal guard. He's talkative, so try to find a"
+        " weakness. Remember, we don't want any unneeded violence.",
+        "Alright. I'll go have a chat to this guard.",
+        None,
+    ]
+    assert prepared["steps"][-1] == {"type": "end"}
+    # The unprepared first visit still explains the plan.
+    assert leela[3]["player"].startswith("I need to obtain a copy of the key")
+
+    # Live, Joe takes the second and third beers straight after the first; the
+    # "Not too drunk?" question leads only into his one-beer reply.
+    record = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
+        "Prince Ali Rescue"
+    ]
+    for steps in [
+        record["variants"]["executing-the-rescue-talking-to-joe"][2]["options"][0][
+            "steps"
+        ],
+        record["branches"]["jump-c2dcd1ef49d2a376"],
+    ]:
+        assert steps[4]["text"] == "That was perfect! I can't thank you enough."
+        fewer, more = steps[5], steps[6]
+        assert fewer["text"] == "If the player has less than three beers:"
+        assert fewer["steps"][0] == {
+            "player": "How are you? Still okay? Not too drunk?"
+        }
+        assert more["text"] == "If the player has two more beers:"
+        assert more["steps"][0] == {
+            "player": "Would you care for another beer, my friend?"
+        }
+
+
 def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     source = json.loads(
