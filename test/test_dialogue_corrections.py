@@ -279,3 +279,157 @@ def test_cache_bound_shared_npc_variants_are_indexed():
             "variants": ["pre-release-dialogue", "starting-out"],
         }
     ]
+
+
+def test_correction_inserts_a_node_before_its_anchor_and_rejects_a_stale_anchor():
+    steps = [{"npc": "One."}, {"type": "message", "text": "Two.", "id": "keep"}]
+    data = {"records": {"X": {"steps": copy.deepcopy(steps)}}}
+    branch = {"type": "condition", "text": "If asked:", "steps": [], "id": "x:new"}
+    correction = {
+        "base_sha256": fingerprint(data["records"]["X"]),
+        "changes": [
+            {
+                "path": ["records", "X", "steps", 1],
+                "expected": fingerprint(steps[1]),
+                "insert": branch,
+            }
+        ],
+    }
+    apply_corrections(data, {"X": correction})
+    assert [s.get("id") for s in data["records"]["X"]["steps"]] == [
+        None,
+        "x:new",
+        "keep",
+    ]
+    branch["id"] = "mutated"
+    assert data["records"]["X"]["steps"][1]["id"] == "x:new"
+
+    fresh = {"records": {"X": {"steps": copy.deepcopy(steps)}}}
+    fresh["records"]["X"]["steps"][1]["text"] = "Changed upstream."
+    correction["base_sha256"] = fingerprint(fresh["records"]["X"])
+    with pytest.raises(ValueError, match="Stale dialogue correction: X"):
+        apply_corrections(fresh, {"X": correction})
+    off_end = {"records": {"X": {"steps": copy.deepcopy(steps)}}}
+    correction["base_sha256"] = fingerprint(off_end["records"]["X"])
+    correction["changes"][0]["path"] = ["records", "X", "steps", 5]
+    correction["changes"][0]["expected"] = None
+    with pytest.raises(ValueError, match="Stale dialogue correction: X"):
+        apply_corrections(off_end, {"X": correction})
+
+
+def test_dragon_slayer_i_follows_the_revision_242_capture():
+    path = config.DOCS_PATH / "npc-dialogues.json"
+    record = json.loads(path.read_text(encoding="utf-8"))["Dragon Slayer I"]
+    text = json.dumps(record, ensure_ascii=False)
+    assert "with each of them taking one piece" in text
+    assert "which each of them taking" not in text
+    assert "Well, you're braver than I!" in text
+    assert "a braver man than I" not in text
+    assert "Of course! How does 2,000 coins sound?" in text
+    assert "I'm sure the work needed to do on it" not in text
+    needle = "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
+    key_nodes = []
+
+    def walk(node):
+        if isinstance(node, dict):
+            if node.get("id") == "dragon-slayer-i:melzar-key-no-space":
+                key_nodes.append(node)
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    walk(record)
+    assert len(key_nodes) == 2  # the variant and the shared branch
+    for node in key_nodes:
+        assert node["type"] == "condition"
+        assert node["steps"][0]["text"] == needle
+        # dragon.txt:23987: after the reply the Guildmaster's follow-up menu opens again.
+        assert node["steps"][-1] == {
+            "type": "jump",
+            "reference": "other",
+            "id": "dragon-slayer-i:melzar-key-no-space-menu",
+        }
+
+
+def _list_correction(items, changes):
+    data = {"records": {"X": {"steps": list(items)}}}
+    return data, {
+        "X": {"base_sha256": fingerprint(data["records"]["X"]), "changes": changes}
+    }
+
+
+def _at(index, anchor, **change):
+    expected = None if anchor is None else fingerprint(anchor)
+    return {"path": ["records", "X", "steps", index], "expected": expected, **change}
+
+
+def test_correction_indices_name_the_record_before_any_change_in_any_order():
+    items = ["a", "b", "c"]
+    for changes in (
+        [_at(1, "b", insert="NEW"), _at(2, "c", value="C")],
+        [_at(2, "c", value="C"), _at(1, "b", insert="NEW")],
+    ):
+        data, corrections = _list_correction(items, changes)
+        apply_corrections(data, corrections)
+        assert data["records"]["X"]["steps"] == ["a", "NEW", "b", "C"]
+    for changes in ([_at(1, "b"), _at(2, "c")], [_at(2, "c"), _at(1, "b")]):
+        data, corrections = _list_correction(items, changes)
+        apply_corrections(data, corrections)
+        assert data["records"]["X"]["steps"] == ["a"]
+    data, corrections = _list_correction(items, [_at(0, "a"), _at(2, "c", value="C")])
+    apply_corrections(data, corrections)
+    assert data["records"]["X"]["steps"] == ["b", "C"]
+    # A node's own edit goes before inserts at its index; inserts there keep their listed order.
+    data, corrections = _list_correction(
+        items, [_at(1, "b", insert="X1"), _at(1, "b"), _at(1, "b", insert="X2")]
+    )
+    apply_corrections(data, corrections)
+    assert data["records"]["X"]["steps"] == ["a", "X1", "X2", "c"]
+    data, corrections = _list_correction(items, [_at(3, None, insert="END")])
+    apply_corrections(data, corrections)
+    assert data["records"]["X"]["steps"] == ["a", "b", "c", "END"]
+
+
+@pytest.mark.parametrize(
+    "changes, message",
+    [
+        ([_at(-1, None, insert="NEW")], "Stale"),
+        ([_at(-1, "c", value="C")], "Stale"),
+        ([_at(3, None, value="D")], "Stale"),
+        ([_at(3, None)], "Stale"),
+        ([_at(1, "b", insert="NEW", value="B")], "Stale"),
+        ([_at(1, "b", value="B"), _at(1, "b")], "Conflicting"),
+    ],
+)
+def test_correction_rejects_unanchored_or_conflicting_list_changes(changes, message):
+    data, corrections = _list_correction(["a", "b", "c"], changes)
+    before = copy.deepcopy(data)
+    with pytest.raises(ValueError, match=f"{message} dialogue correction: X"):
+        apply_corrections(data, corrections)
+    assert data == before
+
+
+def test_correction_rejects_an_edit_inside_a_replaced_node():
+    data = {"records": {"X": {"steps": [{"text": "a"}]}}}
+    node = data["records"]["X"]["steps"][0]
+    corrections = {
+        "X": {
+            "base_sha256": fingerprint(data["records"]["X"]),
+            "changes": [
+                {
+                    "path": ["records", "X", "steps", 0],
+                    "expected": fingerprint(node),
+                    "value": {"text": "b"},
+                },
+                {
+                    "path": ["records", "X", "steps", 0, "text"],
+                    "expected": fingerprint("a"),
+                    "value": "c",
+                },
+            ],
+        }
+    }
+    with pytest.raises(ValueError, match="Conflicting dialogue correction: X"):
+        apply_corrections(data, corrections)
