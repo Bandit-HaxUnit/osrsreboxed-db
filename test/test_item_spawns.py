@@ -93,6 +93,57 @@ class ItemSpawnExportTests(unittest.TestCase):
         self.assertEqual((row["id"], row["infobox_respawn_ticks"]), (125, 200))
         self.assertEqual(row["unresolved_reasons"], [])
 
+    def test_repeated_positional_keys_preserve_both_raw_arguments(self):
+        rows = parse_pages(
+            {"Fire rune": page("{{ItemSpawnLine|name=Fire rune|1=1,2|1=3,4}}")}
+        )
+        self.assertEqual([(r["x"], r["y"]) for r in rows], [(1, 2), (3, 4)])
+        self.assertNotEqual(rows[0]["argument_index"], rows[1]["argument_index"])
+        for row in rows:
+            self.assertIn("duplicate-coordinate-argument", row["unresolved_reasons"])
+
+    def test_same_name_unknown_version_never_becomes_single_valid_id(self):
+        text = (
+            "{{Infobox Item|name1=Fire rune|name2=Fire rune|id1=554|id2=unknown|respawn=100}}"
+            "{{ItemSpawnLine|name=Fire rune|1,2}}"
+        )
+        row = parse_pages({"Fire rune": text})[0]
+        self.assertIsNone(row["id"])
+        self.assertIn("unresolved-item-version-selector", row["unresolved_reasons"])
+        self.assertEqual(row["item_versions"][1]["id_raw"], "unknown")
+
+    def test_duplicate_qualifier_cannot_hide_variable_quantity(self):
+        row = parse_pages(
+            {"Fire rune": page("{{ItemSpawnLine|name=Fire rune|1,2,qty:1-5,qty:2}}")}
+        )[0]
+        self.assertIsNone(row["quantity"])
+        self.assertEqual(
+            [q["value"] for q in row["coordinate_qualifier_arguments"]], ["1-5", "2"]
+        )
+        self.assertIn("duplicate-coordinate-qualifier", row["unresolved_reasons"])
+
+    def test_contradictory_row_and_infobox_selectors_stay_unresolved(self):
+        row = parse_pages(
+            {
+                "Fire rune": page(
+                    "{{ItemSpawnLine|name=Fire rune|members=Yes|members=No|1,2}}"
+                )
+            }
+        )[0]
+        self.assertIsNone(row["members"])
+        self.assertEqual(
+            [p["value"] for p in row["row_parameters"] if p["name"] == "members"],
+            ["Yes", "No"],
+        )
+        self.assertIn("duplicate-row-parameter", row["unresolved_reasons"])
+        text = (
+            "{{Infobox Item|name=Fire rune|id=554|id=555|respawn=100}}"
+            "{{ItemSpawnLine|name=Fire rune|1,2}}"
+        )
+        row = parse_pages({"Fire rune": text})[0]
+        self.assertIsNone(row["id"])
+        self.assertIn("unresolved-item-version-selector", row["unresolved_reasons"])
+
     def test_deterministic_export_and_exact_raw_page_identity(self):
         raw = json.dumps(
             {"Fire rune": page("{{ItemSpawnLine|name=Fire rune|1,2}}")}

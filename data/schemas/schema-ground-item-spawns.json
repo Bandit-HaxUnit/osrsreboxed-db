@@ -123,10 +123,81 @@
           "required": true
         },
         "row_parameters": {
-          "type": "dict",
-          "valuesrules": {
-            "type": "string",
-            "nullable": true
+          "type": "list",
+          "schema": {
+            "type": "dict",
+            "schema": {
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "value": {
+                "type": "string",
+                "nullable": true,
+                "required": true
+              }
+            }
+          },
+          "required": true
+        },
+        "coordinate_qualifier_arguments": {
+          "type": "list",
+          "schema": {
+            "type": "dict",
+            "schema": {
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "value": {
+                "type": "string",
+                "nullable": true,
+                "required": true
+              }
+            }
+          },
+          "required": true
+        },
+        "argument_index": {
+          "type": "integer",
+          "min": 0,
+          "required": true
+        },
+        "item_versions": {
+          "type": "list",
+          "schema": {
+            "type": "dict",
+            "schema": {
+              "id": {
+                "type": "integer",
+                "nullable": true,
+                "min": 0,
+                "required": true
+              },
+              "id_raw": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "respawn_raw": {
+                "type": "string",
+                "required": true
+              },
+              "version": {
+                "type": "string",
+                "required": true
+              },
+              "duplicate_selectors": {
+                "type": "list",
+                "schema": {
+                  "type": "string"
+                },
+                "required": true
+              }
+            }
           },
           "required": true
         }

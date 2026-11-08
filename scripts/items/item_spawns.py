@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 from scripts.wiki.wikitext_parser import extract_wikitext_template
@@ -37,6 +38,12 @@ def _positive_integer(value):
 def _versions(text, title):
     versions = []
     for box in extract_wikitext_template(text, "infobox item"):
+        selector_counts = Counter(str(p.name).strip() for p in box.params)
+        duplicates = sorted(
+            key
+            for key, count in selector_counts.items()
+            if count > 1 and re.fullmatch(r"(?:id|name|respawn)[0-9]*", key)
+        )
         for param in box.params:
             key = str(param.name).strip()
             match = re.fullmatch(r"id([0-9]*)", key)
@@ -47,6 +54,8 @@ def _versions(text, title):
             versions.append(
                 {
                     "id": int(raw_id) if re.fullmatch(r"[0-9]+", raw_id) else None,
+                    "id_raw": raw_id,
+                    "duplicate_selectors": duplicates,
                     "name": _value(box, "name" + suffix, _value(box, "name", title)),
                     "respawn_raw": _value(
                         box, "respawn" + suffix, _value(box, "respawn")
@@ -58,7 +67,7 @@ def _versions(text, title):
 
 
 def parse_pages(pages):
-    """All positional spawn arguments survive, including malformed/unresolved ones."""
+    """All positional spawn arguments survive, including repeated/malformed ones."""
     rows = []
     for title, text in sorted(pages.items()):
         if not isinstance(text, str):
@@ -69,53 +78,91 @@ def parse_pages(pages):
         for index, template in enumerate(
             extract_wikitext_template(text, "itemspawnline")
         ):
-            raw_parameters = {
-                str(p.name).strip(): str(p.value).strip() for p in template.params
-            }
+            raw_parameters = [
+                (str(p.name).strip(), str(p.value).strip()) for p in template.params
+            ]
+            counts = Counter(key for key, _ in raw_parameters)
+            duplicate_named = sorted(
+                key for key, count in counts.items() if count > 1 and not key.isdigit()
+            )
             row_name = _value(template, "name", title)
             matching = [v for v in versions if v["name"] == row_name]
             candidates = matching or (versions if row_name == title else [])
             ids = sorted({v["id"] for v in candidates if v["id"] is not None})
-            item_id = ids[0] if len(ids) == 1 else None
-            defaults = sorted(
-                {v["respawn_raw"] for v in candidates if v["id"] == item_id}
+            unresolved_version = any(
+                v["id"] is None or v["duplicate_selectors"] for v in candidates
+            )
+            item_id = (
+                ids[0]
+                if len(ids) == 1
+                and not unresolved_version
+                and "name" not in duplicate_named
+                else None
+            )
+            defaults = (
+                sorted({v["respawn_raw"] for v in candidates if v["id"] == item_id})
+                if item_id is not None
+                else []
             )
             default_raw = defaults[0] if len(defaults) == 1 else ""
             page_ticks = _positive_integer(default_raw)
             member_raw = _value(template, "members", "No")
-            members = {"yes": True, "no": False}.get(member_raw.lower())
+            members = (
+                {"yes": True, "no": False}.get(member_raw.lower())
+                if "members" not in duplicate_named
+                else None
+            )
             plane_raw = _value(template, "plane", "0")
             unknown_parameters = sorted(
-                k
-                for k in raw_parameters
-                if not k.isdigit() and k not in KNOWN_ROW_PARAMETERS
+                key
+                for key, _ in raw_parameters
+                if not key.isdigit() and key not in KNOWN_ROW_PARAMETERS
             )
-            for argument, raw in raw_parameters.items():
+            for argument_index, (argument, raw) in enumerate(raw_parameters):
                 if not argument.isdigit():
                     continue
                 reasons = []
+                if counts[argument] > 1:
+                    reasons.append("duplicate-coordinate-argument")
+                if duplicate_named:
+                    reasons.append("duplicate-row-parameter")
+                if unresolved_version:
+                    reasons.append("unresolved-item-version-selector")
                 coordinate = re.fullmatch(r"([0-9]+)\s*,\s*([0-9]+)(.*)", raw)
-                qualifiers = {}
+                qualifier_arguments = []
                 if coordinate:
                     for part in coordinate[3].strip(",").split(","):
                         if part.strip():
                             key, separator, value = part.partition(":")
-                            qualifiers[key.strip()] = (
-                                value.strip() if separator else None
+                            qualifier_arguments.append(
+                                {
+                                    "name": key.strip(),
+                                    "value": value.strip() if separator else None,
+                                }
                             )
                 else:
                     reasons.append("unparsed-coordinate")
+                qualifier_counts = Counter(q["name"] for q in qualifier_arguments)
+                qualifiers = {q["name"]: q["value"] for q in qualifier_arguments}
+                duplicate_qualifiers = sorted(
+                    key for key, count in qualifier_counts.items() if count > 1
+                )
+                if duplicate_qualifiers:
+                    reasons.append("duplicate-coordinate-qualifier")
                 actual_plane = qualifiers.get("plane", plane_raw)
                 plane = (
                     int(actual_plane)
                     if isinstance(actual_plane, str)
                     and actual_plane in {"0", "1", "2", "3"}
+                    and "plane" not in duplicate_named
+                    and "plane" not in duplicate_qualifiers
                     else None
                 )
                 quantity_raw = qualifiers.get("qty", "1")
                 quantity = (
                     _positive_integer(quantity_raw)
                     if isinstance(quantity_raw, str)
+                    and "qty" not in duplicate_qualifiers
                     else None
                 )
                 if item_id is None:
@@ -140,9 +187,11 @@ def parse_pages(pages):
                         "page_sha256": hashlib.sha256(text.encode()).hexdigest(),
                         "row_index": index,
                         "argument": argument,
+                        "argument_index": argument_index,
                         "name": row_name,
                         "id": item_id,
                         "candidate_ids": ids,
+                        "item_versions": candidates,
                         "location": _value(template, "location"),
                         "x": int(coordinate[1]) if coordinate else None,
                         "y": int(coordinate[2]) if coordinate else None,
@@ -154,9 +203,12 @@ def parse_pages(pages):
                         "tile_respawn_raw": qualifiers.get("respawn"),
                         "coordinate_raw": raw,
                         "coordinate_qualifiers": qualifiers,
-                        "row_parameters": {
-                            k: v for k, v in raw_parameters.items() if not k.isdigit()
-                        },
+                        "coordinate_qualifier_arguments": qualifier_arguments,
+                        "row_parameters": [
+                            {"name": key, "value": value}
+                            for key, value in raw_parameters
+                            if not key.isdigit()
+                        ],
                         "unresolved_reasons": sorted(reasons),
                     }
                 )
