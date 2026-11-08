@@ -70,6 +70,12 @@ def generate_item_alch_file():
     item_alch = {}
 
     for item in all_db_items:
+        # An item with neither value cannot be alchemised (build_item clears both for the
+        # unalchable ones): it is written with nulls, so a consumer that layers these values over
+        # others (the cache's) knows to clear them rather than keep its own.
+        if item.highalch is None and item.lowalch is None:
+            item_alch[item.id] = {"id": item.id, "highalch": None, "lowalch": None}
+            continue
         if not isinstance(item.highalch, int) or not isinstance(item.lowalch, int):
             continue
         item_alch[item.id] = {

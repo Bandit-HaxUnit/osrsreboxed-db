@@ -68,7 +68,8 @@ def test_item_alch_export():
             "lowalch": item["lowalch"],
         }
         for item_id, item in items.items()
-        if isinstance(item["highalch"], int) and isinstance(item["lowalch"], int)
+        if (isinstance(item["highalch"], int) and isinstance(item["lowalch"], int))
+        or (item["highalch"] is None and item["lowalch"] is None)
     }
 
     assert item_alch == expected
@@ -82,13 +83,17 @@ def test_item_alch_versioned_unalchables():
     """
     with open(config.DOCS_PATH / "item-alch.json", encoding="utf-8") as f:
         item_alch = json.load(f)
-    # Dragon defender, Fire cape, Rune pouch, Fighter torso: "alchable = No" on every version.
+    def unalchable(item_id):
+        return item_alch[item_id]["highalch"] is None and item_alch[item_id]["lowalch"] is None
+
+    # Dragon defender, Fire cape, Rune pouch, Fighter torso: "alchable = No" on every version,
+    # written with null values so a consumer clears its own.
     for item_id in ("12954", "6570", "12791", "10551"):
-        assert item_id not in item_alch, item_id
+        assert unalchable(item_id), item_id
     # Mining helmet: Unlit (5014) is alchable, Lit (5013) is not. Iban's staff (broken) alchs.
-    assert "5014" in item_alch
-    assert "5013" not in item_alch
-    assert "1410" in item_alch
+    assert not unalchable("5014")
+    assert unalchable("5013")
+    assert item_alch["1410"]["highalch"] == 12
 
 
 def test_unalchable_rule():
