@@ -60,6 +60,12 @@ def test_item_alch_export():
         items = json.load(f)
     with open(config.DOCS_PATH / "item-alch.json", encoding="utf-8") as f:
         item_alch = json.load(f)
+    from builders.items.unalchable import WikiUnalchable
+
+    with open(config.DATA_ITEMS_PATH / "items-unalchable.json", encoding="utf-8") as f:
+        unalchable = json.load(f)
+    with open(config.DATA_ITEMS_PATH / "items-wiki-page-text.json", encoding="utf-8") as f:
+        is_unalchable = WikiUnalchable(unalchable, json.load(f))
 
     expected = {
         item_id: {
@@ -69,7 +75,7 @@ def test_item_alch_export():
         }
         for item_id, item in items.items()
         if (isinstance(item["highalch"], int) and isinstance(item["lowalch"], int))
-        or (item["highalch"] is None and item["lowalch"] is None)
+        or (item["highalch"] is None and item["lowalch"] is None and is_unalchable(item["wiki_name"], item["wiki_url"]))
     }
 
     assert item_alch == expected
@@ -94,6 +100,10 @@ def test_item_alch_versioned_unalchables():
     assert not unalchable("5014")
     assert unalchable("5013")
     assert item_alch["1410"]["highalch"] == 12
+    # No alch values in the item files, but nothing says they can't be alchemised: left out of the export,
+    # not written as null (bird nests with red/green/blue eggs, the soft clay and essence packs).
+    for item_id in ("5070", "5071", "5072", "25533", "25535"):
+        assert item_id not in item_alch, item_id
 
 
 def test_unalchable_rule():

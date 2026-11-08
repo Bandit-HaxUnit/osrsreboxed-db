@@ -50,3 +50,42 @@ def version_from_url(wiki_url: Optional[str]) -> Optional[str]:
     if not wiki_url or "#" not in wiki_url:
         return None
     return unquote(wiki_url.split("#", 1)[1]).replace("_", " ")
+
+
+def infobox_params(page_text) -> dict:
+    """The page's Infobox Item parameters as {name: value}, or {} when it has none."""
+    if not isinstance(page_text, str):
+        return {}
+    import mwparserfromhell
+
+    for template in mwparserfromhell.parse(page_text).filter_templates():
+        if str(template.name).strip().lower().startswith("infobox item"):
+            return {str(param.name).strip(): str(param.value).strip() for param in template.params}
+    return {}
+
+
+def alchable_for(params: dict, version: Optional[str]) -> Optional[bool]:
+    """The infobox's alchable answer for this version (alchableN, else alchable), or None."""
+    if version:
+        for key, value in params.items():
+            if key.startswith("version") and key[7:].isdigit() and value == version:
+                answer = infobox_alchable(params.get("alchable" + key[7:]))
+                if answer is not None:
+                    return answer
+    return infobox_alchable(params.get("alchable"))
+
+
+class WikiUnalchable:
+    """The unalchable rule for an exported item (its wiki_name and wiki_url), from the category list and page text."""
+
+    def __init__(self, unalchable, page_text: dict):
+        self.unalchable = unalchable
+        self.page_text = page_text
+        self._infoboxes = {}
+
+    def __call__(self, wiki_name: Optional[str], wiki_url: Optional[str]) -> bool:
+        page = page_name_from_url(wiki_url)
+        if page not in self._infoboxes:
+            self._infoboxes[page] = infobox_params(self.page_text.get(page))
+        alchable = alchable_for(self._infoboxes[page], version_from_url(wiki_url))
+        return is_unalchable(self.unalchable, wiki_name, page, alchable=alchable)

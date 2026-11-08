@@ -15,34 +15,11 @@ import json
 import logging
 from pathlib import Path
 
-import mwparserfromhell
-
 import config
-from builders.items.unalchable import infobox_alchable, is_unalchable, page_name_from_url, version_from_url
+from builders.items.unalchable import WikiUnalchable
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
-
-
-def infobox(page_text):
-    """The page's Infobox Item parameters as {name: value}, or {} when it has none."""
-    if not isinstance(page_text, str):
-        return {}
-    for template in mwparserfromhell.parse(page_text).filter_templates():
-        if str(template.name).strip().lower().startswith("infobox item"):
-            return {str(param.name).strip(): str(param.value).strip() for param in template.params}
-    return {}
-
-
-def alchable_for(params, version):
-    """The infobox's alchable answer for this version (alchableN, else alchable), or None."""
-    if version:
-        for key, value in params.items():
-            if key.startswith("version") and key[7:].isdigit() and value == version:
-                answer = infobox_alchable(params.get("alchable" + key[7:]))
-                if answer is not None:
-                    return answer
-    return infobox_alchable(params.get("alchable"))
 
 
 def main():
@@ -50,18 +27,14 @@ def main():
         unalchable = json.load(f)
     with open(Path(config.DATA_ITEMS_PATH / "items-wiki-page-text.json"), encoding="utf-8") as f:
         page_text = json.load(f)
-    infoboxes = {}
+    rule = WikiUnalchable(unalchable, page_text)
     changed = 0
     for path in sorted(Path(config.DOCS_PATH / "items-json").glob("*.json")):
         raw = path.read_text(encoding="utf-8", newline="")
         item = json.loads(raw)
         if item.get("highalch") is None and item.get("lowalch") is None:
             continue
-        page = page_name_from_url(item.get("wiki_url"))
-        if page not in infoboxes:
-            infoboxes[page] = infobox(page_text.get(page))
-        alchable = alchable_for(infoboxes[page], version_from_url(item.get("wiki_url")))
-        if not is_unalchable(unalchable, item.get("wiki_name"), page, alchable=alchable):
+        if not rule(item.get("wiki_name"), item.get("wiki_url")):
             continue
         item["highalch"] = None
         item["lowalch"] = None
