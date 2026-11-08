@@ -28,6 +28,7 @@ import collections
 from pathlib import Path
 
 import config
+from builders.items.unalchable import WikiUnalchable
 from osrsreboxed import items_api
 from osrsreboxed import monsters_api
 from osrsreboxed import prayers_api
@@ -68,8 +69,21 @@ def generate_item_alch_file():
     all_db_items = items_api.all_items.AllItems(path_to_items_json)
 
     item_alch = {}
+    with open(Path(config.DATA_ITEMS_PATH / "items-unalchable.json"), encoding="utf-8") as f:
+        unalchable = json.load(f)
+    with open(Path(config.DATA_ITEMS_PATH / "items-wiki-page-text.json"), encoding="utf-8") as f:
+        page_text = json.load(f)
+    is_unalchable = WikiUnalchable(unalchable, page_text)
 
     for item in all_db_items:
+        # An item the wiki says cannot be alchemised (build_item clears both values for it) is
+        # written with nulls, so a consumer that layers these values over others (the cache's)
+        # knows to clear them rather than keep its own. An item with no values for any other
+        # reason (bird nests with eggs, the soft clay and essence packs) is left out, as before.
+        if item.highalch is None and item.lowalch is None:
+            if is_unalchable(item.wiki_name, item.wiki_url):
+                item_alch[item.id] = {"id": item.id, "highalch": None, "lowalch": None}
+            continue
         if not isinstance(item.highalch, int) or not isinstance(item.lowalch, int):
             continue
         item_alch[item.id] = {

@@ -60,6 +60,12 @@ def test_item_alch_export():
         items = json.load(f)
     with open(config.DOCS_PATH / "item-alch.json", encoding="utf-8") as f:
         item_alch = json.load(f)
+    from builders.items.unalchable import WikiUnalchable
+
+    with open(config.DATA_ITEMS_PATH / "items-unalchable.json", encoding="utf-8") as f:
+        unalchable = json.load(f)
+    with open(config.DATA_ITEMS_PATH / "items-wiki-page-text.json", encoding="utf-8") as f:
+        is_unalchable = WikiUnalchable(unalchable, json.load(f))
 
     expected = {
         item_id: {
@@ -68,10 +74,50 @@ def test_item_alch_export():
             "lowalch": item["lowalch"],
         }
         for item_id, item in items.items()
-        if isinstance(item["highalch"], int) and isinstance(item["lowalch"], int)
+        if (isinstance(item["highalch"], int) and isinstance(item["lowalch"], int))
+        or (item["highalch"] is None and item["lowalch"] is None and is_unalchable(item["wiki_name"], item["wiki_url"]))
     }
 
     assert item_alch == expected
+
+
+def test_item_alch_versioned_unalchables():
+    """Versioned untradeables the wiki marks unalchable are left out of the alchemy export.
+
+    Their wiki_name ("Dragon defender (Normal)") is not a page title in the unalchable
+    category, so the page name and the infobox's per-version "alchable" decide.
+    """
+    with open(config.DOCS_PATH / "item-alch.json", encoding="utf-8") as f:
+        item_alch = json.load(f)
+    def unalchable(item_id):
+        return item_alch[item_id]["highalch"] is None and item_alch[item_id]["lowalch"] is None
+
+    # Dragon defender, Fire cape, Rune pouch, Fighter torso: "alchable = No" on every version,
+    # written with null values so a consumer clears its own.
+    for item_id in ("12954", "6570", "12791", "10551"):
+        assert unalchable(item_id), item_id
+    # Mining helmet: Unlit (5014) is alchable, Lit (5013) is not. Iban's staff (broken) alchs.
+    assert not unalchable("5014")
+    assert unalchable("5013")
+    assert item_alch["1410"]["highalch"] == 12
+    # No alch values in the item files, but nothing says they can't be alchemised: left out of the export,
+    # not written as null (bird nests with red/green/blue eggs, the soft clay and essence packs).
+    for item_id in ("5070", "5071", "5072", "25533", "25535"):
+        assert item_id not in item_alch, item_id
+
+
+def test_unalchable_rule():
+    """The infobox answer wins; the category is matched by wiki name, page name or version."""
+    from builders.items.unalchable import is_unalchable, page_name_from_url, version_from_url
+
+    category = {"Dragon defender", "Mining helmet"}
+    url = "https://oldschool.runescape.wiki/w/Dragon_defender#Normal"
+    assert page_name_from_url(url) == "Dragon defender"
+    assert version_from_url(url) == "Normal"
+    assert is_unalchable(category, "Dragon defender (Normal)", "Dragon defender")
+    assert not is_unalchable(category, "Mining helmet (Unlit)", "Mining helmet", alchable=True)
+    assert is_unalchable(set(), "Anything", alchable=False)
+    assert not is_unalchable(category, "Abyssal whip", "Abyssal whip")
 
 
 def test_items_cache_data_noteable_key():
