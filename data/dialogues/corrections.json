@@ -4303,5 +4303,103 @@
         }
       }
     ]
+  },
+  "Witch's House": {
+    "reason": "Match the live rev 242 capture: the Boy says \"Thanks, mister!\" (tick 97); the locked back door sends the game message \"The door is locked.\" and the player says \"It's locked. That's strange - I can't see any kind of lock or handle to open it...\" (tick 295); the gate shock reads \"As your hands touch the gate you feel a shock.\" (tick 204); the first form's message starts with a capital T (tick 712).",
+    "sources": [
+      "RSProx capture 20261108T030409 (rev 242, Witch's House start to finish)"
+    ],
+    "base_sha256": "523a2dc20b37b950226829e5302b7e5bf20ee35b1dc18f6b798d00050f24fffe",
+    "audited_sha256": "246a275b0245d51e1356e17e634a83c1a389bdd8f77c5d929a560d7bee5b4aa5",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Witch's House",
+          "variants",
+          "getting-started",
+          2,
+          "options",
+          0,
+          "steps",
+          3,
+          "options",
+          0,
+          "steps",
+          1,
+          "text"
+        ],
+        "expected": "ce284bab126762cd8196a982617f0d3dd12102bdcefa5e22071ae8ab329d0fef",
+        "value": "Thanks, mister!"
+      },
+      {
+        "path": [
+          "records",
+          "Witch's House",
+          "variants",
+          "the-witch-s-house-attempting-to-open-the-garden-door-without-unlocking-it"
+        ],
+        "expected": "ae7b438544831369b4eefb9e8ec15b07f8a64145647cf8cc9d206e39e162548c",
+        "value": [
+          {
+            "player": "It's locked. That's strange - I can't see any kind of lock or handle to open it..."
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Witch's House",
+          "variants",
+          "the-witch-s-house-attempting-to-open-the-gate-without-correct-gloves",
+          0,
+          "text"
+        ],
+        "expected": "68e9d7c5b7c6e56fc23ad2b3f215843aee895ef5030081bd6c264224ad146aba",
+        "value": "As your hands touch the gate you feel a shock."
+      },
+      {
+        "path": [
+          "records",
+          "Witch's House",
+          "variants",
+          "the-ball-killing-the-first-form",
+          0,
+          "text"
+        ],
+        "expected": "b8bfae7a76d9c35055156b63b6a5be6abbc9aba4647728a85cacc01e9973b982",
+        "value": "The shapeshifters' body begins to deform!"
+      }
+    ]
+  },
+  "Boy": {
+    "reason": "Match the live rev 242 capture: the Boy says \"Thanks, mister!\" when the quest starts (tick 97).",
+    "sources": [
+      "RSProx capture 20261108T030409 (rev 242, Witch's House start to finish)"
+    ],
+    "base_sha256": "f35320fcf4ac0cec2cca844abced464f5f2d2e9dc95c8947c65840b9fcadc43a",
+    "audited_sha256": "b1b3812ca2c2c9474a5d16291d6212028b740606823bbbcef1d60bf47aacc554",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Boy",
+          "variants",
+          "before-witch-s-house",
+          2,
+          "options",
+          0,
+          "steps",
+          2,
+          "options",
+          0,
+          "steps",
+          1,
+          "npc"
+        ],
+        "expected": "ce284bab126762cd8196a982617f0d3dd12102bdcefa5e22071ae8ab329d0fef",
+        "value": "Thanks, mister!"
+      }
+    ]
   }
 }

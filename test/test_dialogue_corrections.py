@@ -202,6 +202,31 @@ def test_prince_ali_rescue_plays_the_revision_242_capture():
         }
 
 
+def test_witchs_house_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Witch's House"]["variants"]
+    start = variants["getting-started"][2]["options"][0]["steps"][3]["options"][0]
+    assert start["steps"][1]["text"] == "Thanks, mister!"
+    boy = dialogues["Boy"]["variants"]["before-witch-s-house"]
+    assert boy[2]["options"][0]["steps"][2]["options"][0]["steps"][1] == {
+        "npc": "Thanks, mister!"
+    }
+    # The locked back door is a game message the plugin sends; the transcript is the
+    # player's live line alone.
+    assert variants[
+        "the-witch-s-house-attempting-to-open-the-garden-door-without-unlocking-it"
+    ] == [
+        {
+            "player": "It's locked. That's strange - I can't see any kind of lock"
+            " or handle to open it..."
+        }
+    ]
+    gate = variants["the-witch-s-house-attempting-to-open-the-gate-without-correct-gloves"]
+    assert gate[0]["text"] == "As your hands touch the gate you feel a shock."
+    form = variants["the-ball-killing-the-first-form"]
+    assert form[0]["text"] == "The shapeshifters' body begins to deform!"
+
+
 def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     source = json.loads(
