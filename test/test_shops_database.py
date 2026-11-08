@@ -30,6 +30,18 @@ from scripts.shops import shop_owners
 from scripts.shops import shops_items
 
 
+def test_shop_general_store_policy_comes_from_infobox_specialty():
+    for specialty in ["General store", "[[General store]]", "[[General store|General supplies]]"]:
+        text = "{{Infobox Shop\n|special = " + specialty + "\n}}\n{{StoreTableHead|sellmultiplier=1000|buymultiplier=600|delta=20}}"
+        info = shops_items.parse_shop_info(text)
+        assert info.get("general_store") is True
+        assert (info["sells_at"], info["buys_at"], info["change_per"]) == (1000, 600, 20)
+    for specialty in ["Yes", "No", "[[Thieving]]"]:
+        info = shops_items.parse_shop_info("{{Infobox Shop\n|special = " + specialty + "\n}}")
+        assert info.get("general_store") is False
+    assert "general_store" not in shops_items.parse_shop_info("{{StoreTableHead|buymultiplier=600}}")
+
+
 def test_shops_docs_json_exists_and_valid():
     """Ensure shops-items-by-shop is copied into docs."""
     shops_by_shop = Path(config.DOCS_PATH / "shops-items-by-shop.json")
@@ -169,6 +181,7 @@ def test_experience_tabs_do_not_hide_the_real_void_shop():
         "buys_at": None,
         "change_per": None,
         "currency": "Void Knight commendation points",
+        "general_store": False,
     }
 
 
@@ -219,6 +232,76 @@ def test_parse_shop_owners_dedupes_shared_owners():
         {"name": "Turael", "wiki_page": "Turael"},
         {"name": "Aya", "wiki_page": "Aya"},
     ]
+
+
+def test_shop_owner_groups_and_member_templates_resolve_group_shops(
+    tmp_path, monkeypatch
+):
+    shop = """{{Infobox Shop
+|location = Any [[Group of Advanced Gardeners]] member
+|owner = No
+}}"""
+    members = "{{Group of Advanced Gardeners}}\n{{chatl|Ayesha}}\n{{chatl|Elstan}}"
+    shops_fp = tmp_path / "shops-wiki-page-text.json"
+    owners_fp = tmp_path / "shop-owners-wiki-page-text.json"
+    shops_fp.write_text(json.dumps({"Farming Supplies": shop}), encoding="utf-8")
+    owners_fp.write_text(
+        json.dumps({"Template:Group of Advanced Gardeners": members}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(shop_owners, "SHOPS_TEXT_FP", shops_fp)
+    monkeypatch.setattr(shop_owners, "OWNERS_TEXT_FP", owners_fp)
+
+    assert shop_owners.shop_owner_groups(shop) == ["Group of Advanced Gardeners"]
+    assert shop_owners.group_member_pages(members) == ["Ayesha", "Elstan"]
+    assert shop_owners._owners_by_shop()["Farming Supplies"] == [
+        {"name": "Ayesha", "wiki_page": "Ayesha"},
+        {"name": "Elstan", "wiki_page": "Elstan"},
+    ]
+
+
+def test_fetch_downloads_group_template_then_its_member_pages(tmp_path, monkeypatch):
+    shop = """{{Infobox Shop
+|location = Any [[Group of Advanced Gardeners]] member
+|owner = No
+}}"""
+    shops_fp = tmp_path / "shops-wiki-page-text.json"
+    owners_fp = tmp_path / "shop-owners-wiki-page-text.json"
+    shops_fp.write_text(json.dumps({"Farming Supplies": shop}), encoding="utf-8")
+    monkeypatch.setattr(shop_owners, "SHOPS_TEXT_FP", shops_fp)
+    monkeypatch.setattr(shop_owners, "OWNERS_TEXT_FP", owners_fp)
+    monkeypatch.setattr(shop_owners, "shop_linking_npc_pages", lambda: [])
+
+    page_text = {
+        "Template:Group of Advanced Gardeners": "{{chatl|Ayesha}}",
+        "Ayesha": "{{Infobox NPC|name=Ayesha|id=310}}",
+    }
+
+    class FakeWikiPageText:
+        def __init__(self, _base_url, page_title):
+            self.page_title = page_title
+            self.wiki_text = None
+
+        def extract_page_wiki_text(self):
+            self.wiki_text = page_text[self.page_title]
+
+        def export_wiki_text_to_json(self, file_name):
+            saved = (
+                json.loads(Path(file_name).read_text(encoding="utf-8"))
+                if Path(file_name).exists()
+                else {}
+            )
+            saved[self.page_title] = self.wiki_text
+            Path(file_name).write_text(json.dumps(saved), encoding="utf-8")
+
+    monkeypatch.setattr(shop_owners, "WikiPageText", FakeWikiPageText)
+    shop_owners.fetch()
+
+    cached = json.loads(owners_fp.read_text(encoding="utf-8"))
+    assert cached["Template:Group of Advanced Gardeners"] == page_text[
+        "Template:Group of Advanced Gardeners"
+    ]
+    assert cached["Ayesha"] == page_text["Ayesha"]
 
 
 def test_shop_option_prefers_the_option_named_by_the_shop():
@@ -425,6 +508,65 @@ def test_shop_items_resolve_shared_names_to_the_stocked_version():
     )
 
 
+def test_shop_items_prefer_the_banked_copy_over_an_unbanked_duplicate():
+    """A shop stocks the item its wiki page declares, not the interface copy
+    the item builder kept as the non-duplicate.
+
+    The committed item infoboxes give 12019/12020 for the closed coal and gem
+    bags, 6664 for fishing explosives and 6720 for slayer gloves; the 764/766/
+    6660/6708 copies were only matched by name and are not the items sold.
+    """
+    assert shops_items.item_id_lookup("Coal bag", "Coal bag#Closed") == 12019
+    assert shops_items.item_id_lookup("Gem bag", "Gem bag#Closed") == 12020
+    assert shops_items.item_id_lookup("Fishing explosive") == 6664
+    assert shops_items.item_id_lookup("Slayer gloves") == 6720
+    # Controls: a page that declares its only id keeps it, and a name-matched
+    # kept item stays when the declared copy is not bankable.
+    assert shops_items.item_id_lookup("Sulphurous fertiliser") == 13419
+    assert shops_items.item_id_lookup("Red disk") == 3715
+
+
+def test_prefer_declared_copies_only_replaces_name_matched_kept_items():
+    """The wiki lookup, not the duplicate flag, decides.
+
+    A kept item the page declares by ID stays, an unbankable item with no
+    declared bankable twin stays, and only a kept item matched by name is
+    replaced.
+    """
+    from types import SimpleNamespace
+
+    def item(item_id, name, lookup, placeholder=None, duplicate=False):
+        return SimpleNamespace(
+            id=item_id,
+            name=name,
+            wiki_name=f"{name} (Closed)",
+            tradeable_on_ge=False,
+            duplicate=duplicate,
+            wikitext_lookup=lookup,
+            linked_id_placeholder=placeholder,
+        )
+
+    kept = [
+        item(1, "Bag", "name"),
+        item(2, "Rope", "id", placeholder=20),
+        item(3, "Quest trinket", "name"),
+    ]
+    declared = [item(4, "Bag", "id", placeholder=40, duplicate=True)]
+    wiki_names, pages, names = shops_items._prefer_declared_copies(
+        shops_items._build_item_maps(kept), kept, declared
+    )
+    assert wiki_names["bag (closed)"] == 4
+    assert pages["bag"] == 4
+    assert names["bag"] == 4
+    # Declared by the page: keeps its own id even though a copy exists.
+    assert wiki_names["rope (closed)"] == 2
+    assert pages["rope"] == 2
+    # Not declared and no declared bankable twin: preserved.
+    assert wiki_names["quest trinket (closed)"] == 3
+    assert pages["quest trinket"] == 3
+    assert names["quest trinket"] == 3
+
+
 def test_shop_items_use_the_bucketname_anchor():
     """A bucket name pins one version of a shared page, e.g. the stardust bag."""
     assert (
@@ -541,6 +683,29 @@ def test_shop_assistants_are_bound_from_their_own_pages():
     assert [s["shop_name"] for s in by_npc["2816"]["shops"]] == [
         "Varrock General Store"
     ]
+
+
+def test_group_shop_export_includes_cache_variants_with_a_trade_option():
+    """Wiki lists Treznor as 11957; the cache has another active Trade ID 2680.
+    Cutscene variants without a shop option must not be included.
+    """
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    treznor = next(
+        owner
+        for owner in shops["Farming Supplies"]["owners"]
+        if owner["wiki_page"] == "Treznor"
+    )
+    assert treznor["npc_ids"] == [2680, 11957]
+    with open(config.DOCS_PATH / "shops-by-npc.json", encoding="utf-8") as f:
+        by_npc = json.load(f)
+    for npc_id in ("2680", "11957"):
+        shop = next(
+            entry
+            for entry in by_npc[npc_id]["shops"]
+            if entry["shop_name"] == "Farming Supplies"
+        )
+        assert shop["option_source"] == "click" and shop["option_slot"] == 5
 
 
 def test_owner_pages_with_per_version_shops_own_only_their_versions_shop():

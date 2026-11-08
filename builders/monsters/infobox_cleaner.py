@@ -116,8 +116,18 @@ def hitpoints(value: str) -> int:
         return None
 
 
+def _numbers(value: str) -> list:
+    return [int(number) for number in re.findall(r"\d+", value)]
+
+
 def max_hit(value: str) -> int:
     """Convert the max_hit entry to an integer.
+
+    The Wiki documents this field as "the monster's maximum hit, comma
+    separated list". The export has one integer, so the established contract is
+    the first listed value (the primary/auto attack). ``{{plainlist}}`` may
+    label the entries; prefer the explicit auto attack, otherwise the highest
+    listed value, which is the monster's actual maximum across mixed styles.
 
     :param value: Template value extracted from raw wikitext.
     :return value: A cleaned max_hit value as an integer.
@@ -125,10 +135,30 @@ def max_hit(value: str) -> int:
     if not value:
         return None
 
-    value = re.split("[ ,]", value)[0]
+    if "plainlist" in value.lower():
+        bullets = [
+            line.strip()[1:].strip()
+            for line in value.splitlines()
+            if line.strip().startswith("*")
+        ]
+        auto = next((bullet for bullet in bullets if "auto" in bullet.lower()), None)
+        if auto is not None:
+            numbers = _numbers(auto)
+            return numbers[0] if numbers else None
+        numbers = [number for bullet in bullets for number in _numbers(bullet)]
+        return max(numbers) if numbers else None
+
+    # Keep the existing "first token" contract: alternatives are separated by a
+    # comma or space. A leading damage range contributes its maximum, but a
+    # decreasing range is not a valid maximum and stays unset.
+    token = re.split("[ ,]", value)[0]
+    range_match = re.fullmatch(r"(\d+)[-\u2013\u2014](\d+)", token)
+    if range_match:
+        low, high = int(range_match.group(1)), int(range_match.group(2))
+        return high if high > low else None
 
     try:
-        return int(value)
+        return int(token)
     except ValueError:
         return None
 
@@ -146,6 +176,10 @@ def attack_type(value: str) -> list:
 
     value = value.lower()
     value = value.replace("[", "").replace("]", "")
+
+    # The Wiki uses "All" for a monster that attacks with every style.
+    if value.strip() == "all":
+        return ["melee", "ranged", "magic"]
 
     # Check for specific attack type strings...
     if "melee" in value:
@@ -309,6 +343,11 @@ def attributes(value: str) -> str:
     return attributes_list
 
 
+def categories_to_attributes(categories) -> list:
+    """Map captured Wiki page categories to the monster attribute list."""
+    return attributes(" ".join(categories))
+
+
 def category(value: str) -> str:
     """Convert the category text entry from an OSRS Wiki infobox.
 
@@ -438,7 +477,13 @@ def stats(value: str) -> int:
     if value in elemental_map:
         return elemental_map[value]
 
+    # Some current Wiki infoboxes give a scaling range (for example
+    # ``210-<br />280``); the first value is the canonical base level.
+    range_match = re.match(r"\s*(\d+)\s*-\s*<br", value)
+    if range_match:
+        return int(range_match.group(1))
+
     try:
-        return int(value)
+        return int(value.strip())
     except ValueError:
         return 0

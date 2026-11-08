@@ -222,12 +222,13 @@
     ]
   },
   "Prince Ali Rescue": {
-    "reason": "Retain the working rope branch while shared NPC responses remain ambiguous between quest-state variants.",
+    "reason": "Retain the working rope branch while shared NPC responses remain ambiguous between quest-state variants; play the captured revision 242 lines for Aggie's skin paste, for meeting Leela with every item, and for Joe taking all three beers.",
     "sources": [
-      "https://github.com/RSPSApp/tsps/commit/062768d56aac9c98e726f582bf8e90411644b1d3"
+      "https://github.com/RSPSApp/tsps/commit/062768d56aac9c98e726f582bf8e90411644b1d3",
+      "RSProx capture of live OSRS, revision 242.1, world 360, 2026-11-06 (20261106T225358-5ab63b4.bin, sha256 63491fb1fe6f160446a0e7a811c706cf3154f478ffbcb825177757f5023e08d1)"
     ],
     "base_sha256": "33d60bf078c286369f74a15535378a2a69015708d7dfbe0846a0453273b3446d",
-    "audited_sha256": "ee4bfafd2f2d4c0abe527e77267242bd7fdc77a8fb9b2501b362d3ab50c77c1a",
+    "audited_sha256": "8fd12278402a892b1e90ea6bc18573b62a4952f260d14e0b76fefb12360fad07",
     "changes": [
       {
         "path": [
@@ -445,6 +446,353 @@
                   }
                 ],
                 "id": "B-1eaJ"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Prince Ali Rescue",
+          "variants",
+          "preparations-for-rescue-talking-to-aggie",
+          1,
+          "options",
+          1,
+          "steps",
+          2,
+          "steps",
+          0,
+          "text"
+        ],
+        "expected": "45f236cb228051eafe17fc962aab139bd74491e28fc7736b9484e403857c55a4",
+        "value": "Yes, I can. I see you already have the ingredients - the water, flour, ashes and redberries. Would you like me to mix some for you now?"
+      },
+      {
+        "path": [
+          "records",
+          "Prince Ali Rescue",
+          "variants",
+          "executing-the-rescue-talking-to-joe",
+          2,
+          "options",
+          0,
+          "steps"
+        ],
+        "expected": "ad7d2e28a766d433e575e48e332f87614f47b019b2d74c0b33ce609ba369413b",
+        "value": [
+          {
+            "player": "I have some beer here. Fancy one?"
+          },
+          {
+            "type": "line",
+            "speaker": "Joe",
+            "text": "Ah, that would be lovely. Only one though, just to wet my throat."
+          },
+          {
+            "player": "Of course. It must be tough being here without a drink."
+          },
+          {
+            "type": "message",
+            "text": "You hand a beer to the guard. He drinks it in seconds.",
+            "id": "TDhBVe"
+          },
+          {
+            "type": "line",
+            "speaker": "Joe",
+            "text": "That was perfect! I can't thank you enough."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has less than three beers:",
+            "steps": [
+              {
+                "player": "How are you? Still okay? Not too drunk?"
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "No, I don't get drunk from only one drink. I reckon I'd need at least two more for that. Still, thanks for the beer."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "r4ecpN"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has two more beers:",
+            "steps": [
+              {
+                "player": "Would you care for another beer, my friend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "I'd better not. I don't want to be drunk on duty."
+              },
+              {
+                "player": "Here, just keep these for later. I hate to see a thirsty guard."
+              },
+              {
+                "type": "message",
+                "text": "You hand two more beers to the guard. He takes a sip of one, and then he quickly drinks them both.",
+                "id": "KxLvNg"
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "Franksh! That wash jusht what I need to shtay on guard. No more beersh, I don't want to get drunk."
+              }
+            ],
+            "id": "gBt7V2"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Prince Ali Rescue",
+          "branches",
+          "jump-c2dcd1ef49d2a376"
+        ],
+        "expected": "182b12a3728d4dedd15f07c971610fe743171dc1893fa9d896a2919ac6e5c3c3",
+        "value": [
+          {
+            "player": "I have some beer here. Fancy one?"
+          },
+          {
+            "type": "line",
+            "speaker": "Joe",
+            "text": "Ah, that would be lovely. Only one though, just to wet my throat."
+          },
+          {
+            "player": "Of course. It must be tough being here without a drink."
+          },
+          {
+            "type": "message",
+            "text": "You hand a beer to the guard. He drinks it in seconds.",
+            "id": "TDhBVe"
+          },
+          {
+            "type": "line",
+            "speaker": "Joe",
+            "text": "That was perfect! I can't thank you enough."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has less than three beers:",
+            "steps": [
+              {
+                "player": "How are you? Still okay? Not too drunk?"
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "No, I don't get drunk from only one drink. I reckon I'd need at least two more for that. Still, thanks for the beer."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "r4ecpN"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has two more beers:",
+            "steps": [
+              {
+                "player": "Would you care for another beer, my friend?"
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "I'd better not. I don't want to be drunk on duty."
+              },
+              {
+                "player": "Here, just keep these for later. I hate to see a thirsty guard."
+              },
+              {
+                "type": "message",
+                "text": "You hand two more beers to the guard. He takes a sip of one, and then he quickly drinks them both.",
+                "id": "KxLvNg"
+              },
+              {
+                "type": "line",
+                "speaker": "Joe",
+                "text": "Franksh! That wash jusht what I need to shtay on guard. No more beersh, I don't want to get drunk."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "gBt7V2"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "Prince Ali Rescue",
+          "variants",
+          "starting-out-talking-to-leela"
+        ],
+        "expected": "6e2256fdbe249554e3619664676935e81c73d2ef14a30b24eb625f8ac86dcc96",
+        "value": [
+          {
+            "player": "You must be Leela. Your father sent me to help rescue Prince Ali."
+          },
+          {
+            "type": "line",
+            "speaker": "Leela",
+            "text": "Yes, he sent word ahead that you'd be coming. Are you aware of the plan?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has the disguise, the key and a rope:",
+            "steps": [
+              {
+                "player": "Yes. In fact, I already have everything we need."
+              },
+              {
+                "type": "line",
+                "speaker": "Leela",
+                "text": "Good work. Now, before breaking the Prince out, you'll need to find a way to deal with his personal guard. He's talkative, so try to find a weakness. Remember, we don't want any unneeded violence."
+              },
+              {
+                "player": "Alright. I'll go have a chat to this guard."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "player": "I need to obtain a copy of the key to the Prince's cell, create a disguise for him that makes him look like Keli and then break him out of the jail."
+          },
+          {
+            "type": "line",
+            "speaker": "Leela",
+            "text": "I'd say that's a good summary. Now, do you have any questions for me about any part of the plan?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Any ideas for the key?",
+                "steps": [
+                  {
+                    "player": "Any ideas for the key?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Leela",
+                    "text": "Keli keeps it on her at all times, on a chain around her neck. If you can convince her to show it to you, you might be able to use some soft clay to take an imprint."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player hasn't obtained the key print yet:",
+                    "steps": [
+                      {
+                        "player": "That doesn't sound easy."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Leela",
+                        "text": "My suggestion is that you pretend to be interested in joining her bandits. From there, you should be able to steer the conversation towards the key."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Leela",
+                        "text": "Once you have the imprint, take it to my father along with a bronze bar. He'll then be able to make us a copy."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "SjRwiH"
+                      }
+                    ],
+                    "id": "g2bqmO"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has the key print in their inventory:",
+                    "steps": [
+                      {
+                        "player": "I already have the imprint!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Leela",
+                        "text": "Then you should take it to my father along with a bronze bar. He'll then be able to make us a copy."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "kdDJrs"
+                      }
+                    ],
+                    "id": "c8dmuQ"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Leela",
+                    "text": "Do you have any other questions about the plan?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "OX4KbT"
+                  }
+                ]
+              },
+              {
+                "text": "Any ideas for the disguise?",
+                "steps": [
+                  {
+                    "player": "Any ideas for the disguise?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Leela",
+                    "text": "To make the Prince look like Keli, you'll need a blonde wig and a pink skirt. You'll also want some skin paste to hide the black eye he got when they captured him."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Leela",
+                    "text": "There's an old sailor in the village who makes rope. Perhaps he could make you a wig. Don't forget to dye it once you have one."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Leela",
+                    "text": "For the skin paste, there's a local witch who's apparently an expert on all sorts of potions. I'm sure she could make you some. I hear she also sells dye, if you need some for the wig."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Leela",
+                    "text": "Finally there's the skirt. I imagine you could just buy one from any clothes shop. Thessalia's Fine Clothes in Varrock is probably the closest."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Leela",
+                    "text": "Do you have any other questions about the plan?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "r95P3r"
+                  }
+                ]
+              },
+              {
+                "text": "Don't think so. I'll go and prepare.",
+                "steps": [
+                  {
+                    "player": "Don't think so. I'll go and prepare."
+                  }
+                ]
               }
             ]
           }
@@ -3700,6 +4048,259 @@
           0
         ],
         "expected": "75cba2688f1b4b8ed545c4901468898f6115621850b89b2992c18a0559871647"
+      }
+    ]
+  },
+  "2025 Halloween event": {
+    "reason": "The Wiki source indents Seth's replacement picture under \"If the player has all the other decorations\" and ends both branches with targetless \"continues\"; its own comment says only the decorations message is conditional. Check for space first (Seth's hold-on line ends the conversation), then give the replacement, with the decorations message only when it applies.",
+    "sources": [
+      "https://oldschool.runescape.wiki/w/Transcript:2025_Halloween_event#Talking_to_Seth_again_after_receiving_the_picture_for_the_first_time"
+    ],
+    "base_sha256": "4d813d60d38da446b770a652cd3e1781dc9d5b0eac98acf7bb6462f3f0760e60",
+    "audited_sha256": "f6abe03b69dd8a023d90d1bb1764bd77af60ffad3089afe6b9c7de6205030078",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "2025 Halloween event",
+          "variants",
+          "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time",
+          0,
+          "options",
+          0,
+          "steps",
+          0,
+          "steps",
+          2
+        ],
+        "expected": "f2219e722cb0bf9f198fa945209c4372f6ab2832eba0fac31c3d91409da5d341",
+        "value": {
+          "type": "condition",
+          "text": "If the player has no inventory space:",
+          "id": "UBDVQJ",
+          "steps": [
+            {
+              "type": "line",
+              "speaker": "Seth Groats",
+              "text": "Oh, looks like you've got no space for it. I'll hold onto it until you do."
+            },
+            {
+              "type": "end"
+            }
+          ]
+        }
+      },
+      {
+        "path": [
+          "records",
+          "2025 Halloween event",
+          "variants",
+          "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time",
+          0,
+          "options",
+          0,
+          "steps",
+          0,
+          "steps",
+          3,
+          "steps"
+        ],
+        "expected": "f93367b4e7ddd04c5357d9fe4a5bf1324f8e754f3d2b790b22599a5209827034",
+        "value": [
+          {
+            "type": "message",
+            "text": "You have acquired a spooky picture, a chair, scarecrow and wall lamp. You should return to Fred in Lumbridge.",
+            "id": "tdDfyd"
+          }
+        ]
+      },
+      {
+        "path": [
+          "records",
+          "2025 Halloween event",
+          "variants",
+          "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time",
+          0,
+          "options",
+          0,
+          "steps",
+          0,
+          "steps",
+          4
+        ],
+        "expected": "7617d68db61188ca5a55b7e449c3022b48465bb662710826032996e2f1f721eb",
+        "value": {
+          "type": "action",
+          "action": "receive",
+          "text": "a Spooky picture",
+          "id": "Nkt5y6"
+        }
+      }
+    ]
+  },
+  "Dragon Slayer I": {
+    "reason": "Align Dragon Slayer I with the revision 242 capture: reworded lines, the merged Klarense offer, and the full-inventory Melzar key branch.",
+    "sources": [
+      "RSProx capture 20261106T101002-5ab63b4 (revision 242, SHA-256 7ab95f958f587c8a1ff61bc3762aae4a2c1fea95d2b52212ef553115b0a5fd1b): the Guildmaster, Duke Horacio and Klarense lines as spoken, and the Guildmaster's full-inventory reply when asked about Melzar's map piece"
+    ],
+    "base_sha256": "5bcbca56220d0236a1f2e723141677684f6e6f579f0f52aaa7520dcfc65118fd",
+    "audited_sha256": "7b643abf2d66e9a6e2d24ca46442d1dda47be452eea346e193c40b2048f965ec",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "a-quest-for-the-rune-platebody-talking-to-the-guildmaster-after-talking-to-oziach",
+          1,
+          "options",
+          1,
+          "steps",
+          17,
+          "options",
+          0,
+          "steps",
+          2,
+          "text"
+        ],
+        "expected": "d702d591d6a70e06da380a000b0788c2ff9c47aa319ad90cd8bc3ef96cbae2bc",
+        "value": "However, the three apparently split the map into three pieces, with each of them taking one piece."
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "branches",
+          "jump-539ac0e492576873",
+          2,
+          "text"
+        ],
+        "expected": "d702d591d6a70e06da380a000b0788c2ff9c47aa319ad90cd8bc3ef96cbae2bc",
+        "value": "However, the three apparently split the map into three pieces, with each of them taking one piece."
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "protection-from-a-dragon-s-breath-talking-to-duke-horacio",
+          1,
+          "options",
+          0,
+          "steps",
+          2,
+          "options",
+          0,
+          "steps",
+          2,
+          "options",
+          0,
+          "steps",
+          1,
+          "text"
+        ],
+        "expected": "22ac0da1bd155b94cfe9d3dec0727403a539c56a4e8cc817867627588737d799",
+        "value": "Well, you're braver than I!"
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "an-old-crandorian-ship-talking-to-klarense",
+          7,
+          "options",
+          0,
+          "steps",
+          1,
+          "text"
+        ],
+        "expected": "452bd248ad425c4bdce794ecf9be44117bc53340b58a014d27f1ce3187153e45",
+        "value": "Of course! How does 2,000 coins sound? I'll even throw in my cabin boy, Jenkins, for free! He'll swab the decks and splice the mainsails for you!"
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "an-old-crandorian-ship-talking-to-klarense",
+          7,
+          "options",
+          0,
+          "steps",
+          2
+        ],
+        "expected": "6b2c09688f2705a1e1615e759040c98f303264eff002135c3c5ded0ecd1c5481"
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "variants",
+          "a-quest-for-the-rune-platebody-talking-to-the-guildmaster-after-talking-to-oziach",
+          1,
+          "options",
+          1,
+          "steps",
+          17,
+          "options",
+          0,
+          "steps",
+          3,
+          "options",
+          0,
+          "steps",
+          4
+        ],
+        "expected": "92b73360d54b7eba247c5cc4f22e84eb70ac3ffbcc0459e8077d6472447a4a68",
+        "insert": {
+          "type": "condition",
+          "text": "If the player does not have enough free inventory space:",
+          "steps": [
+            {
+              "type": "line",
+              "speaker": "Guildmaster",
+              "text": "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "dragon-slayer-i:melzar-key-no-space-menu"
+            }
+          ],
+          "id": "dragon-slayer-i:melzar-key-no-space"
+        }
+      },
+      {
+        "path": [
+          "records",
+          "Dragon Slayer I",
+          "branches",
+          "jump-539ac0e492576873",
+          3,
+          "options",
+          0,
+          "steps",
+          4
+        ],
+        "expected": "92b73360d54b7eba247c5cc4f22e84eb70ac3ffbcc0459e8077d6472447a4a68",
+        "insert": {
+          "type": "condition",
+          "text": "If the player does not have enough free inventory space:",
+          "steps": [
+            {
+              "type": "line",
+              "speaker": "Guildmaster",
+              "text": "Ask me about Melzar's map piece again when you have enough free inventory space for the key."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "dragon-slayer-i:melzar-key-no-space-menu"
+            }
+          ],
+          "id": "dragon-slayer-i:melzar-key-no-space"
+        }
       }
     ]
   }

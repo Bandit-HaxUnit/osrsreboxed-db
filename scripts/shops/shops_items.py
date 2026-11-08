@@ -56,6 +56,10 @@ SHOP_VERSIONS = (
 )
 _VERSION_RANK = {version.lower(): rank for rank, version in enumerate(SHOP_VERSIONS)}
 
+# How the item builder found an item's wiki page. A page declares its own item
+# IDs, so these lookups identify a real item; "name" is only a fallback.
+WIKI_DECLARED_LOOKUPS = ("id", "linked_id")
+
 
 def normalize_item_name(name: str) -> str:
     """Lower-case, collapse whitespace, and match both qualifier styles.
@@ -118,15 +122,55 @@ def _build_item_maps(items):
     return wiki_names, pages, names
 
 
-ITEMS = [
+def _prefer_declared_copies(indexes, items, duplicates):
+    """Prefer the real item a wiki page declares over a same-name interface copy.
+
+    The item builder falls back to the page's raw name when an item's own ID is
+    not in the infobox. An interface or display copy can then share a name and
+    wiki name with the real item and be kept as the non-duplicate, while the
+    builder marks the real item as the duplicate. ``wikitext_lookup`` records
+    that fallback (``"name"``); a real item is found by its own ID (``"id"``) or
+    by its noted/placeholder link (``"linked_id"``).
+
+    Only a kept item the page did not declare by ID is replaced, and only by a
+    duplicate that is both declared by ID and bankable (has a placeholder link).
+    So an item the page declares keeps its ID, and a legitimate unbankable item
+    with no bankable twin is left alone.
+
+    :param indexes: The (wiki name, page, plain name) indexes from _build_item_maps.
+    :param items: The non-duplicate items those indexes were built from.
+    :param duplicates: Duplicate items declared by ID that have a placeholder.
+    :return: The indexes, with an undeclared kept entry replaced.
+    """
+    by_id = {item.id: item for item in items}
+    copies = _build_item_maps(duplicates)
+    for index, declared in zip(indexes, copies):
+        for key, item_id in index.items():
+            if (
+                by_id[item_id].wikitext_lookup not in WIKI_DECLARED_LOOKUPS
+                and key in declared
+            ):
+                index[key] = declared[key]
+    return indexes
+
+
+ALL_ITEMS = [
     item
     for item in items_api.load()
-    if not item.duplicate
-    and not item.noted
-    and not item.placeholder
-    and not item.stacked
+    if not item.noted and not item.placeholder and not item.stacked
 ]
-ITEM_WIKI_NAMES, ITEM_PAGES, ITEM_NAMES = _build_item_maps(ITEMS)
+ITEMS = [item for item in ALL_ITEMS if not item.duplicate]
+ITEM_WIKI_NAMES, ITEM_PAGES, ITEM_NAMES = _prefer_declared_copies(
+    _build_item_maps(ITEMS),
+    ITEMS,
+    [
+        item
+        for item in ALL_ITEMS
+        if item.duplicate
+        and item.linked_id_placeholder is not None
+        and item.wikitext_lookup in WIKI_DECLARED_LOOKUPS
+    ],
+)
 
 
 def item_id_lookup(name: str, bucketname: str = None):
@@ -238,6 +282,9 @@ def fetch() -> None:
             for section_name, section_content in tabber_sections.items():
                 substore_name = f"{shop_name} ({section_name})"
                 shop_info = parse_shop_info(section_content)
+                parent_info = parse_shop_info(wikitext)
+                if "general_store" in parent_info:
+                    shop_info["general_store"] = parent_info["general_store"]
                 if removed is not None:
                     shop_info["removed"] = removed
                 shop_items = parse_shop_items(substore_name, section_content)
@@ -467,6 +514,14 @@ def parse_shop_info(wikitext: str) -> dict:
         "change_per": None,
         "currency": "coins",  # Default to coins
     }
+
+    infobox = WikitextTemplateParser(wikitext)
+    if infobox.extract_infobox("infobox shop") and infobox.template.has("special"):
+        specialty = str(infobox.template.get("special").value).strip()
+        # Resolve the link target, not its display label or the minimap icon.
+        linked = re.fullmatch(r"\[\[([^|\]]+)(?:\|[^\]]+)?\]\]", specialty)
+        specialty = linked.group(1) if linked else specialty
+        shop_info["general_store"] = specialty.strip().casefold() == "general store"
 
     # Look for StoreTableHead template
     pattern = r"\{\{StoreTableHead\|([^}]+)\}\}"

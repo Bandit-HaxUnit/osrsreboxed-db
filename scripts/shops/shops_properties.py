@@ -163,6 +163,22 @@ def fetch():
                 json.dump(pruned, text_file, indent=4)
 
 
+def is_generic_shop_page(page_title: str) -> bool:
+    """True for category/index pages that are not one shop.
+
+    Only the plural "shops" ending identifies the Wiki's generic shop-type pages
+    ("Axe shops", "Magic shops"). A singular page ending in "shop" can be a real
+    shop ("Candle Shop", "Pie Shop"), so it is not skipped here; the later
+    Infobox Shop check drops pages that are not shops.
+    """
+    title = page_title.lower()
+    if any(skip in title for skip in ["category:", "template:", "user:", "file:"]):
+        return True
+    if title.endswith("shops"):
+        return True
+    return page_title in ["Shop", "Unused shops", "General store"]
+
+
 def process():
     logger.info("Starting wiki page text processing...")
 
@@ -195,24 +211,7 @@ def process():
 
     # Process each shop page, using the page title as the identifier
     for page_title, wikitext in raw_wiki_data.items():
-        # Skip pages that are not actual shops (category pages, etc.)
-        if any(
-            skip in page_title.lower()
-            for skip in ["category:", "template:", "user:", "file:"]
-        ):
-            continue
-
-        # Skip general shop type pages (like "Axe shops", "Magic shops", etc.)
-        if (
-            page_title.lower().endswith("shops")
-            or page_title.lower().endswith("shop")
-            and len(page_title.split()) <= 2
-        ):
-            continue
-
-        # Skip other non-shop pages
-        skip_pages = ["Shop", "Unused shops", "General store"]
-        if page_title in skip_pages:
+        if is_generic_shop_page(page_title):
             continue
 
         # Skip cached pages the shops category no longer lists.

@@ -101,6 +101,7 @@ def test_exported_event_catalogue_is_the_exact_opt_in_subset():
     assert {
         "2025 Christmas event",
         "2025 Easter event",
+        "2026 Easter event",
         "2025 Halloween event",
         "25th Anniversary event",
     } <= catalogue.keys()
@@ -114,3 +115,89 @@ def test_exported_event_catalogue_is_the_exact_opt_in_subset():
     for record in catalogue.values():
         model = FlatDialogueRecord if "steps" in record else DialogueRecord
         assert model(**record).activation == "explicit"
+
+
+def test_halloween_2025_above_jumps_and_lost_picture_play_their_source_branches():
+    """The 2025 Halloween transcript's "above" jumps point back at whole branches on
+    other sections (navigation anchors in runtime-bindings.json), and Seth's
+    replacement picture is not nested under the all-decorations message
+    (corrections.json). A consumer must be able to play the export as published."""
+    root = Path(__file__).resolve().parents[1]
+    event = json.loads((root / "docs/event-dialogues.json").read_text(encoding="utf8"))[
+        "2025 Halloween event"
+    ]
+
+    def find(steps, wanted):
+        for node in walk(steps):
+            if node.get("id") == wanted:
+                return node
+        return None
+
+    def ids(steps):
+        return [node.get("id") for node in walk(steps) if node.get("id")]
+
+    def jump_body(variant, jump_id):
+        jump = find(event["variants"][variant], jump_id)
+        assert jump is not None and jump["type"] == "jump"
+        assert [step["type"] for step in jump["steps"]] == ["call"]
+        return event["branches"][jump["steps"][0]["branch"]]
+
+    # Diango's second visit continues as his first: the wearing check hands out the lantern.
+    diango = jump_body("spooky-pumpkin-lantern-talking-to-diango-again", "Kg0hmG")
+    assert [step.get("id") for step in diango] == ["9NWeHn", "_MxZad"]
+    assert "BSrsl1" in ids(diango)
+    # Fred's "I'm ready for the judgement!" continues into the judging and its rewards.
+    fred = jump_body(
+        "the-spook-a-thon-contest-talking-to-fred-again-before-finishing-the-cutscene",
+        "kzB_xv",
+    )
+    assert [step.get("id") for step in fred] == ["4Sjcyo", "H4FTU9"]
+    assert "5shIok" in ids(fred)
+
+    lost = find(
+        event["variants"][
+            "starting-off-talking-to-seth-again-after-receiving-the-picture-for-the-first-time"
+        ],
+        "1Glkal",
+    )
+    tail = [step.get("id") for step in lost["steps"][2:]]
+    assert tail == ["UBDVQJ", "pMyO2X", "Nkt5y6"]
+    assert lost["steps"][2]["steps"][-1] == {"type": "end"}
+    assert ids(lost["steps"][3]["steps"]) == ["tdDfyd"]
+    assert not any(
+        node.get("type") == "jump" and not node.get("steps")
+        for node in walk(lost["steps"])
+    )
+
+
+def test_holiday_item_transcripts_export_as_item_option_conversations():
+    root = Path(__file__).resolve().parents[1]
+    aggregate = json.loads(
+        (root / "docs/npc-dialogues.json").read_text(encoding="utf8")
+    )
+    types = json.loads((root / "docs/dialogue-types.json").read_text(encoding="utf8"))
+    index = json.loads(
+        (root / "docs/npc-dialogue-index.json").read_text(encoding="utf8")
+    )
+    for name in ("Haunted wine bottle", "Magic egg ball", "Secret santa present"):
+        # Played by the item's option, never chosen for an NPC's Talk-to.
+        assert aggregate[name]["activation"] == "explicit"
+        assert "Transcript:" + name in types["item"]
+    bottle = aggregate["Haunted wine bottle"]["variants"]
+    assert [step for step in bottle["talking-to-the-bottle-without-a-ghostspeak-amulet"]
+            if "player" in step] == [{"player": "Hello...?"}]
+    egg = aggregate["Magic egg ball"]
+    pets = next(option for option in egg["steps"][0]["options"]
+                if option["text"] == "Will I get a pet today?")
+    # The pet question's {{tact|above}} shares the rare-item question's answers.
+    call = pets["steps"][-1]["steps"][0]
+    assert call["type"] == "call" and call["branch"] in egg["branches"]
+    santa = aggregate["Secret santa present"]["variants"]
+    assert santa["unlocking-blue-read-tag"][0]["text"].startswith("I sell tools that chop.")
+    # Deliveries stay indexed to their NPCs as explicit candidates (Bob, Aggie...).
+    assert any(
+        entry["page"] == "Transcript:Secret santa present"
+        and entry["variants"] == ["unlocking-blue-talking-to-bob"]
+        for entries in index.values()
+        for entry in entries
+    )
