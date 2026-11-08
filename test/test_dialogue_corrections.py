@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 
 import pytest
@@ -6,6 +7,7 @@ import pytest
 import config
 from scripts.dialogues.corrections import apply_corrections, fingerprint
 from scripts.dialogues import update
+from scripts.dialogues.update import apply_capture_lines
 
 
 def test_corrections_preserve_ids_additions_deletions_and_indexes():
@@ -234,6 +236,31 @@ def test_witchs_house_follows_the_revision_242_capture():
         for change in corrections[name]["changes"]:
             assert len(change["path"]) > 4, change["path"]
             assert not isinstance(change.get("value"), (list, dict)), change["path"]
+
+    # The back door is a source input applied to the cached Wiki revision before
+    # parsing, not a post-parse edit of the generated variant.
+    assert not any(
+        "garden-door-without-unlocking-it" in str(key)
+        for change in corrections["Witch's House"]["changes"]
+        for key in change["path"]
+    )
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Witch's House"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Witch's House"
+    ]
+    assert source["revision"] == page["revision"]
+    lines = page["wikitext"].splitlines()
+    for fix in source["lines"]:
+        assert hashlib.sha256(lines[fix["line"] - 1].encode()).hexdigest() == fix["sha256"]
+    raw = apply_capture_lines("Witch's House", page["wikitext"], source, page["revision"])
+    assert "This door is locked." not in raw
+    assert "It's locked. That's strange" in raw
+    # Applying it twice from the same inputs is identical; a moved revision stops the dump.
+    assert raw == apply_capture_lines("Witch's House", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Witch's House", page["wikitext"], source, page["revision"] + 1)
 
 
 def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
