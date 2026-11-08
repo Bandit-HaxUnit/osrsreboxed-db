@@ -1,0 +1,208 @@
+{
+  "schema": {
+    "type": "integer",
+    "allowed": [
+      1
+    ],
+    "required": true
+  },
+  "input_sha256": {
+    "type": "string",
+    "regex": "[a-f0-9]{64}",
+    "required": true
+  },
+  "timer_policy": {
+    "type": "string",
+    "required": true
+  },
+  "rows": {
+    "type": "list",
+    "schema": {
+      "type": "dict",
+      "schema": {
+        "page": {
+          "type": "string",
+          "required": true
+        },
+        "page_sha256": {
+          "type": "string",
+          "required": true
+        },
+        "argument": {
+          "type": "string",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "location": {
+          "type": "string",
+          "required": true
+        },
+        "infobox_respawn_raw": {
+          "type": "string",
+          "required": true
+        },
+        "coordinate_raw": {
+          "type": "string",
+          "required": true
+        },
+        "row_index": {
+          "type": "integer",
+          "min": 0,
+          "required": true
+        },
+        "id": {
+          "type": "integer",
+          "nullable": true,
+          "min": 0,
+          "required": true
+        },
+        "x": {
+          "type": "integer",
+          "nullable": true,
+          "min": 0,
+          "required": true
+        },
+        "y": {
+          "type": "integer",
+          "nullable": true,
+          "min": 0,
+          "required": true
+        },
+        "plane": {
+          "type": "integer",
+          "nullable": true,
+          "min": 0,
+          "required": true
+        },
+        "quantity": {
+          "type": "integer",
+          "nullable": true,
+          "min": 1,
+          "required": true
+        },
+        "infobox_respawn_ticks": {
+          "type": "integer",
+          "nullable": true,
+          "min": 1,
+          "required": true
+        },
+        "members": {
+          "type": "boolean",
+          "nullable": true,
+          "required": true
+        },
+        "tile_respawn_raw": {
+          "type": "string",
+          "nullable": true,
+          "required": true
+        },
+        "candidate_ids": {
+          "type": "list",
+          "schema": {
+            "type": "integer",
+            "min": 0
+          },
+          "required": true
+        },
+        "unresolved_reasons": {
+          "type": "list",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        },
+        "coordinate_qualifiers": {
+          "type": "dict",
+          "valuesrules": {
+            "type": "string",
+            "nullable": true
+          },
+          "required": true
+        },
+        "row_parameters": {
+          "type": "list",
+          "schema": {
+            "type": "dict",
+            "schema": {
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "value": {
+                "type": "string",
+                "nullable": true,
+                "required": true
+              }
+            }
+          },
+          "required": true
+        },
+        "coordinate_qualifier_arguments": {
+          "type": "list",
+          "schema": {
+            "type": "dict",
+            "schema": {
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "value": {
+                "type": "string",
+                "nullable": true,
+                "required": true
+              }
+            }
+          },
+          "required": true
+        },
+        "argument_index": {
+          "type": "integer",
+          "min": 0,
+          "required": true
+        },
+        "item_versions": {
+          "type": "list",
+          "schema": {
+            "type": "dict",
+            "schema": {
+              "id": {
+                "type": "integer",
+                "nullable": true,
+                "min": 0,
+                "required": true
+              },
+              "id_raw": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "respawn_raw": {
+                "type": "string",
+                "required": true
+              },
+              "version": {
+                "type": "string",
+                "required": true
+              },
+              "duplicate_selectors": {
+                "type": "list",
+                "schema": {
+                  "type": "string"
+                },
+                "required": true
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "required": true
+  }
+}
