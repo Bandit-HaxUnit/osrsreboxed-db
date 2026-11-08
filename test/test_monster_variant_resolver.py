@@ -129,6 +129,67 @@ def test_no_stats_match_leaves_the_npc_unresolved():
     assert "no variant matches" in reason
 
 
+OTHER_PAGE = """{{Infobox Monster
+|name = Goblin (Other)
+|combat = 0
+|hitpoints = 5
+|id = 900
+}}"""
+
+TIE = """{{Infobox Monster
+|version1 = Upstairs
+|version2 = Basement
+|name = Gargoyle
+|id1 = 901
+|id2 = 901
+|combat = 111
+|hitpoints = 105
+}}"""
+
+
+def test_single_listing_on_another_page_with_other_stats_is_not_used():
+    # Like Dusk 15621: its only listing is on a page with a different name, and the cache disagrees.
+    raw = {"Goblin (Realm)": OTHER_PAGE.replace("Goblin (Other)", "Goblin (Realm)")}
+    index = vr.build_index(raw)
+    cache = {"combatLevel": 1, "stats": [1, 1, 1, 1, 1, 1]}
+    variant, reason = vr.resolve(900, "Dusk", vr.cache_stats(cache), index, raw)
+    assert variant is None
+    assert "not named after the NPC" in reason
+
+
+def test_single_listing_on_another_page_with_matching_stats_is_used():
+    raw = {"Goblin (Realm)": OTHER_PAGE.replace("Goblin (Other)", "Goblin (Realm)")}
+    index = vr.build_index(raw)
+    cache = {"combatLevel": 0, "stats": [1, 1, 1, 5, 1, 1]}
+    variant, _ = vr.resolve(900, "Dusk", vr.cache_stats(cache), index, raw)
+    assert variant is not None and variant.page_name == "Goblin (Realm)"
+
+
+def test_single_listing_on_a_page_named_after_the_npc_is_used_even_if_stats_differ():
+    raw = {"Goblin": OTHER_PAGE.replace("Goblin (Other)", "Goblin")}
+    index = vr.build_index(raw)
+    cache = {"combatLevel": 99, "stats": [1, 1, 1, 99, 1, 1]}
+    variant, _ = vr.resolve(900, "Goblin", vr.cache_stats(cache), index, raw)
+    assert variant is not None and variant.page_name == "Goblin"
+
+
+def test_identical_tie_keeps_the_previous_choice():
+    raw = {"Gargoyle": TIE}
+    index = vr.build_index(raw)
+    cache = {"combatLevel": 111, "stats": [1, 1, 1, 105, 1, 1]}
+    game = vr.cache_stats(cache)
+    basement, reason = vr.resolve(
+        901, "Gargoyle", game, index, raw, previous=("Gargoyle", "2")
+    )
+    assert basement is not None and basement.version_number == "2"
+    assert "previous choice is kept" in reason
+    first, reason = vr.resolve(
+        901, "Gargoyle", game, index, raw, previous=("Gargoyle", "9")
+    )
+    assert first is not None and first.version_number == "1"
+    assert "the first one is used" in reason
+
+
 def test_committed_output_uses_the_level_25_wolf_for_116():
     # Regression on the regenerated output: 116 was built from the Level 11 wolf before the fix.
     entry = json.loads(

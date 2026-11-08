@@ -196,12 +196,25 @@ class BuildMonster:
             self.variant_index is not None
             and self.monster_id_int not in version_overrides
         ):
+            # The choice the builder would have made without the resolver. It only breaks
+            # ties between variants with identical stats.
+            previous_page = (
+                self.monster_wikitext[0]
+                if self.wikitext_found_using == "id"
+                else self.monster_name
+            )
+            previous = (
+                (previous_page, str(self.infobox_version_number))
+                if self.infobox_version_number is not None
+                else None
+            )
             variant, self.variant_reason = variant_resolver.resolve(
                 self.monster_id_int,
                 self.monster_name,
                 variant_resolver.cache_stats(self.monster_cache_data),
                 self.variant_index,
                 self.all_wikitext_raw,
+                previous=previous,
             )
             if variant is not None:
                 self.resolved_page_name = variant.page_name

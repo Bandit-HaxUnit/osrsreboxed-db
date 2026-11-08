@@ -170,10 +170,15 @@ def resolve(
     game_stats: Tuple[Optional[float], ...],
     index: Dict[int, List[Variant]],
     raw_pages: Dict[str, str],
+    previous: Optional[Tuple[str, str]] = None,
 ) -> Tuple[Optional[Variant], str]:
     """Pick the wiki variant for one NPC id, or return None with the reason it could not.
 
-    1. One variant lists the id: use it.
+    ``previous`` is the (page name, version number) the builder would have used without the
+    resolver. It only breaks ties between variants with identical stats.
+
+    1. One variant lists the id: use it if its page is named after the NPC or its stats match
+       the cache. Otherwise return None, so the previous choice stands.
     2. Several variants list the id: keep those whose stats match the cache; if that leaves
        one, use it. If it leaves several, keep the one on the page named after the NPC.
        With no stats match, use the one on the page named after the NPC if there is exactly one.
@@ -182,7 +187,15 @@ def resolve(
     """
     occurrences = index.get(npc_id, [])
     if len(occurrences) == 1:
-        return occurrences[0], "one infobox lists this id"
+        only = occurrences[0]
+        if _normal_title(only.page_name) == _normal_title(npc_name) or stats_match(
+            only.stats, game_stats
+        ):
+            return only, "one infobox lists this id"
+        return None, (
+            f"one infobox lists this id, on page {only.page_name!r} which is not named after "
+            "the NPC, and its stats do not match the cache"
+        )
 
     if occurrences:
         pool = occurrences
@@ -209,7 +222,19 @@ def resolve(
             return narrowed[0], f"{origin}; cache stats match and page name matches"
         if all(variant.stats == matches[0].stats for variant in matches):
             # Identical stats across variants (e.g. "Level 24, 1" to "Level 24, 9"): the cache
-            # pins the stats, not the variant name, so the first is used and the name is ambiguous.
+            # pins the stats, not the variant name. Keep the previous choice when it is one of
+            # them, otherwise the first is used. Either way the name is ambiguous.
+            kept = [
+                variant
+                for variant in matches
+                if previous is not None
+                and (variant.page_name, variant.version_number) == previous
+            ]
+            if len(kept) == 1:
+                return kept[0], (
+                    f"ambiguous: {origin}; {len(matches)} variants share the cache stats, "
+                    "the previous choice is kept"
+                )
             return matches[0], (
                 f"ambiguous: {origin}; {len(matches)} variants share the cache stats, "
                 "the first one is used"
