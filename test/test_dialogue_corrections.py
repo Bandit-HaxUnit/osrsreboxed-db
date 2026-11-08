@@ -226,6 +226,15 @@ def test_witchs_house_follows_the_revision_242_capture():
     form = variants["the-ball-killing-the-first-form"]
     assert form[0]["text"] == "The shapeshifters' body begins to deform!"
 
+    # Node-level edits only: no generated variant or branch is supplied whole.
+    corrections = json.loads(
+        (config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")
+    )
+    for name in ("Witch's House", "Boy"):
+        for change in corrections[name]["changes"]:
+            assert len(change["path"]) > 4, change["path"]
+            assert not isinstance(change.get("value"), (list, dict)), change["path"]
+
 
 def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
