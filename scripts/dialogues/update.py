@@ -513,6 +513,40 @@ def apply_structure_annotations(name, raw, structure=None, revision=None):
     return "".join(lines)
 
 
+def apply_capture_lines(name, raw, source, revision=None):
+    """Replace cached wiki lines with the wording a validated live capture sends.
+
+    The capture-backed text is an authored source input (data/dialogues/
+    capture-sources.json) layered over the cached Wiki revision *before*
+    parsing, so the parser, compaction and export see the corrected transcript
+    like any other. Each entry names the revision, the exact source line and its
+    hash, so a refreshed revision or a changed line stops the dump for review.
+    An empty replacement drops the line. Everything else stays as cached.
+    """
+    if not source:
+        return raw
+    if revision is not None and source.get("revision") != revision:
+        raise ValueError(f"Stale dialogue capture source: {name}")
+    lines = raw.splitlines(keepends=True)
+    for fix in source.get("lines", []):
+        number = fix["line"]
+        if not isinstance(number, int) or not 0 < number <= len(lines):
+            raise ValueError(f"Stale dialogue capture source: {name} line {number}")
+        line = lines[number - 1]
+        body, ending = line, ""
+        for terminator in ("\r\n", "\r", "\n"):
+            if line.endswith(terminator):
+                body, ending = line[: -len(terminator)], terminator
+                break
+        if hashlib.sha256(body.encode()).hexdigest() != fix["sha256"]:
+            raise ValueError(f"Stale dialogue capture source: {name} line {number}")
+        text = fix["text"]
+        if not isinstance(text, str) or "\n" in text or "\r" in text:
+            raise ValueError(f"Invalid dialogue capture source: {name} line {number}")
+        lines[number - 1] = text + ending
+    return "".join(lines)
+
+
 def parse_npc(name, raw, nav_templates=None):
     if nav_templates is None:
         nav_templates = load_navigation_templates()
@@ -991,6 +1025,11 @@ def main():
             encoding="utf-8"
         )
     )
+    capture_sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(
+            encoding="utf-8"
+        )
+    )
     npcs, quests, issues = {}, {}, {}
     types = collections.defaultdict(set)
     for sources, output in ((pages, npcs), (read_cache(QUEST_CACHE), quests)):
@@ -1003,6 +1042,9 @@ def main():
             structure = bindings.get(name, {}).get("structure")
             raw = apply_structure_annotations(
                 name, page["wikitext"], structure, page["revision"]
+            )
+            raw = apply_capture_lines(
+                name, raw, capture_sources.get(name), page["revision"]
             )
             parsed = parse_npc(name, raw, nav_templates)
             output[name] = gameplay_npc(name, parsed)

@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 
 import pytest
@@ -6,6 +7,7 @@ import pytest
 import config
 from scripts.dialogues.corrections import apply_corrections, fingerprint
 from scripts.dialogues import update
+from scripts.dialogues.update import apply_capture_lines
 
 
 def test_corrections_preserve_ids_additions_deletions_and_indexes():
@@ -200,6 +202,65 @@ def test_prince_ali_rescue_plays_the_revision_242_capture():
         assert more["steps"][0] == {
             "player": "Would you care for another beer, my friend?"
         }
+
+
+def test_witchs_house_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Witch's House"]["variants"]
+    start = variants["getting-started"][2]["options"][0]["steps"][3]["options"][0]
+    assert start["steps"][1]["text"] == "Thanks, mister!"
+    boy = dialogues["Boy"]["variants"]["before-witch-s-house"]
+    assert boy[2]["options"][0]["steps"][2]["options"][0]["steps"][1] == {
+        "npc": "Thanks, mister!"
+    }
+    # The locked back door is a game message the plugin sends; the transcript is the
+    # player's live line alone.
+    assert variants[
+        "the-witch-s-house-attempting-to-open-the-garden-door-without-unlocking-it"
+    ] == [
+        {
+            "player": "It's locked. That's strange - I can't see any kind of lock"
+            " or handle to open it..."
+        }
+    ]
+    gate = variants["the-witch-s-house-attempting-to-open-the-gate-without-correct-gloves"]
+    assert gate[0]["text"] == "As your hands touch the gate you feel a shock."
+    form = variants["the-ball-killing-the-first-form"]
+    assert form[0]["text"] == "The shapeshifters' body begins to deform!"
+
+    # Node-level edits only: no generated variant or branch is supplied whole.
+    corrections = json.loads(
+        (config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")
+    )
+    for name in ("Witch's House", "Boy"):
+        for change in corrections[name]["changes"]:
+            assert len(change["path"]) > 4, change["path"]
+            assert not isinstance(change.get("value"), (list, dict)), change["path"]
+
+    # The back door is a source input applied to the cached Wiki revision before
+    # parsing, not a post-parse edit of the generated variant.
+    assert not any(
+        "garden-door-without-unlocking-it" in str(key)
+        for change in corrections["Witch's House"]["changes"]
+        for key in change["path"]
+    )
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Witch's House"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Witch's House"
+    ]
+    assert source["revision"] == page["revision"]
+    lines = page["wikitext"].splitlines()
+    for fix in source["lines"]:
+        assert hashlib.sha256(lines[fix["line"] - 1].encode()).hexdigest() == fix["sha256"]
+    raw = apply_capture_lines("Witch's House", page["wikitext"], source, page["revision"])
+    assert "This door is locked." not in raw
+    assert "It's locked. That's strange" in raw
+    # Applying it twice from the same inputs is identical; a moved revision stops the dump.
+    assert raw == apply_capture_lines("Witch's House", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Witch's House", page["wikitext"], source, page["revision"] + 1)
 
 
 def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
