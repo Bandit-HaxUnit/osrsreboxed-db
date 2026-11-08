@@ -33,6 +33,7 @@ from deepdiff import DeepDiff
 import config
 import validator
 from builders.items import infobox_cleaner
+from builders.items.unalchable import infobox_alchable, is_unalchable
 from builders.items import wiki_equipment_requirements
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 from osrsreboxed.items_api.item_properties import ItemProperties
@@ -319,14 +320,20 @@ class BuildItem:
         wiki_url = wiki_url.replace(" ", "_")
         self.item_dict["wiki_url"] = "https://oldschool.runescape.wiki/w/" + wiki_url
 
-        # Check if item is not actually able to be alched
-        if wiki_name:
-            if wiki_name in self.unalchable:
-                self.item_dict["lowalch"] = None
-                self.item_dict["highalch"] = None
-            elif wiki_versioned_name in self.unalchable:
-                self.item_dict["lowalch"] = None
-                self.item_dict["highalch"] = None
+        # Check if item is not actually able to be alched: the infobox's per-version "alchable",
+        # else the wiki category "Items that cannot be alchemised", matched by page name too
+        # (builders/items/unalchable.py).
+        alchable = None
+        if self.infobox_version_number is not None:
+            alchable = infobox_alchable(self.extract_infobox_value(
+                self.template, "alchable" + str(self.infobox_version_number)))
+        if alchable is None:
+            alchable = infobox_alchable(self.extract_infobox_value(self.template, "alchable"))
+        if wiki_name and is_unalchable(
+            self.unalchable, wiki_name, wiki_page_name, wiki_versioned_name, alchable
+        ):
+            self.item_dict["lowalch"] = None
+            self.item_dict["highalch"] = None
 
         # STAGE TWO: Extract and set item properties from the infobox template
 

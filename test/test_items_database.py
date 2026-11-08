@@ -74,6 +74,37 @@ def test_item_alch_export():
     assert item_alch == expected
 
 
+def test_item_alch_versioned_unalchables():
+    """Versioned untradeables the wiki marks unalchable are left out of the alchemy export.
+
+    Their wiki_name ("Dragon defender (Normal)") is not a page title in the unalchable
+    category, so the page name and the infobox's per-version "alchable" decide.
+    """
+    with open(config.DOCS_PATH / "item-alch.json", encoding="utf-8") as f:
+        item_alch = json.load(f)
+    # Dragon defender, Fire cape, Rune pouch, Fighter torso: "alchable = No" on every version.
+    for item_id in ("12954", "6570", "12791", "10551"):
+        assert item_id not in item_alch, item_id
+    # Mining helmet: Unlit (5014) is alchable, Lit (5013) is not. Iban's staff (broken) alchs.
+    assert "5014" in item_alch
+    assert "5013" not in item_alch
+    assert "1410" in item_alch
+
+
+def test_unalchable_rule():
+    """The infobox answer wins; the category is matched by wiki name, page name or version."""
+    from builders.items.unalchable import is_unalchable, page_name_from_url, version_from_url
+
+    category = {"Dragon defender", "Mining helmet"}
+    url = "https://oldschool.runescape.wiki/w/Dragon_defender#Normal"
+    assert page_name_from_url(url) == "Dragon defender"
+    assert version_from_url(url) == "Normal"
+    assert is_unalchable(category, "Dragon defender (Normal)", "Dragon defender")
+    assert not is_unalchable(category, "Mining helmet (Unlit)", "Mining helmet", alchable=True)
+    assert is_unalchable(set(), "Anything", alchable=False)
+    assert not is_unalchable(category, "Abyssal whip", "Abyssal whip")
+
+
 def test_items_cache_data_noteable_key():
     """Ensure item cache data includes noteable for every item."""
     path_to_cache = Path(config.DATA_ITEMS_PATH / "items-cache-data.json")
