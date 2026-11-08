@@ -33,6 +33,7 @@ from deepdiff import DeepDiff
 import config
 import validator
 from builders.monsters import infobox_cleaner
+from builders.monsters import variant_resolver
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 from osrsreboxed.monsters_api.monster_properties import MonsterProperties
 
@@ -65,6 +66,11 @@ class BuildMonster:
         self.known_monsters = kwargs["known_monsters"]
         # Specify verbosity
         self.verbose = kwargs["verbose"]
+        # Every infobox variant per NPC id (variant_resolver.build_index); None skips the resolver
+        self.variant_index = kwargs.get("variant_index")
+        # The wiki page and variant the cache resolved this NPC to, if the resolver found one
+        self.resolved_page_name = None
+        self.variant_reason = None
         # Reviewed supplemental cache-monster pages (page title -> captured metadata)
         self.supplemental_pages = kwargs.get("supplemental_pages", {})
         # Default until preprocessing selects the actual template family.
@@ -183,6 +189,41 @@ class BuildMonster:
             else:
                 self.infobox_version_number = ""
 
+        # Resolve the variant against every infobox that lists this id, not only the first
+        # infobox or the first variant. Manual overrides above keep priority, and an NPC the
+        # resolver cannot place keeps the version chosen above (logged by the builder).
+        if (
+            self.variant_index is not None
+            and self.monster_id_int not in version_overrides
+        ):
+            # The choice the builder would have made without the resolver. It only breaks
+            # ties between variants with identical stats.
+            previous_page = (
+                self.monster_wikitext[0]
+                if self.wikitext_found_using == "id"
+                else self.monster_name
+            )
+            previous = (
+                (previous_page, str(self.infobox_version_number))
+                if self.infobox_version_number is not None
+                else None
+            )
+            variant, self.variant_reason = variant_resolver.resolve(
+                self.monster_id_int,
+                self.monster_name,
+                variant_resolver.cache_stats(self.monster_cache_data),
+                self.variant_index,
+                self.all_wikitext_raw,
+                previous=previous,
+            )
+            if variant is not None:
+                self.resolved_page_name = variant.page_name
+                self.infobox_version_number = variant.version_number
+                infobox_parser.template = variant.template
+                # The resolver only reads Infobox Monster templates, so an NPC infobox
+                # chosen by the fallback above must not stay in force for this variant.
+                self.infobox_template_type = "infobox monster"
+
         # Set the template
         self.template = infobox_parser.template
 
@@ -214,7 +255,10 @@ class BuildMonster:
         # STAGE ONE: Determine then set the wiki_name and wiki_url
 
         # Manually set OSRS Wiki name
-        if self.wikitext_found_using not in ["id"]:
+        if getattr(self, "resolved_page_name", None) is not None:
+            # The variant resolver chose the page the NPC's infobox was found on
+            wiki_page_name = self.resolved_page_name
+        elif self.wikitext_found_using not in ["id"]:
             # Monster found in wiki by ID, cache name is the best option
             wiki_page_name = self.monster_name
         else:
