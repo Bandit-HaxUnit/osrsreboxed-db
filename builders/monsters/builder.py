@@ -30,6 +30,7 @@ from pathlib import Path
 import config
 from builders.base_builder import BaseBuilder
 from builders.monsters import build_monster
+from builders.monsters import variant_resolver
 
 logger = logging.getLogger(__name__)
 
@@ -63,6 +64,9 @@ class Builder(BaseBuilder):
         ) as f:
             self.all_wikitext_processed = json.load(f)
 
+        # Every infobox variant that lists each NPC id, for the variant resolver
+        self.variant_index = variant_resolver.build_index(self.all_wikitext_raw)
+
         # Load schema data
         with open(Path(config.DATA_SCHEMAS_PATH / "schema-monsters.json")) as f:
             self.schema_data = json.load(f)
@@ -90,12 +94,25 @@ class Builder(BaseBuilder):
             schema_data=self.schema_data,
             known_monsters=self.known_monsters,
             verbose=self.verbose,
+            variant_index=self.variant_index,
         )
 
     def _process_built_entity(self, builder, monster_id):
         """Process a built monster."""
         status, message = builder.preprocessing()
         if status:
+            ambiguous = "ambiguous" in (builder.variant_reason or "")
+            if builder.variant_reason and (
+                builder.resolved_page_name is None or ambiguous
+            ):
+                # Unresolved NPCs keep the version chosen before the resolver ran; ambiguous
+                # ones use the first variant with the cache's stats. Both are logged.
+                logger.info(
+                    "Variant not resolved for monster %s (%s): %s",
+                    monster_id,
+                    builder.monster_name,
+                    builder.variant_reason,
+                )
             builder.populate_monster()
             known_monster = builder.check_duplicate_monster()
             self.known_monsters.append(known_monster)
