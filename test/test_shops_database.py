@@ -643,6 +643,40 @@ def test_removed_shops_are_marked_in_the_export():
     ]
 
 
+def test_death_sells_escape_crystals_from_his_shop_option():
+    """Death's Office (revision 242, Hardcore Worlds): Death runs "Death (shop)"
+    from the cache's op4 "Shop", not op3 "Collect", his retrieval."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    death = shops["Death (shop)"]
+    assert death["items"] == [{"id": 22517, "stock": 9500, "restock_time": 1}]
+    assert death["shop_info"]["currency"] == "coins"
+    assert [(o["npc_ids"], o["option"], o["option_slot"]) for o in death["owners"]] == [
+        ([9855], "Shop", 4)
+    ]
+
+
+def test_renamed_shortswords_stay_in_their_shops():
+    """Revision 242 renamed the swords to shortswords ("Bronze sword" is
+    "Bronze shortsword", 1277). The Wiki's store lines use the new names, so
+    they resolve only against an item database of the same revision; against an
+    older one the rows were silently dropped."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+
+    def stocks(shop):
+        return {item["id"] for item in shops[shop]["items"]}
+
+    bronze_to_adamant = {1277, 1279, 1281, 1283, 1285, 1287}
+    assert bronze_to_adamant <= stocks("Varrock Swordshop")
+    assert bronze_to_adamant <= stocks("Warrior Guild Armoury")
+    assert {1285, 1287} <= stocks("Quality Weapons Shop")
+    assert 1289 in stocks("Scavvo's Rune Store.")
+    assert {1277, 1279} <= stocks("Lumbridge Blacksmith")
+    for tier in ("Novice", "Peon", "Page", "Noble", "Adept", "Master"):
+        assert 6605 in stocks(f"White Knight Armoury ({tier})"), tier
+
+
 def test_npc_shops_from_wikitext_reads_the_infobox_shop_link():
     """An NPC page's own infobox names the shop it runs; a versioned infobox
     can link a shop per version."""

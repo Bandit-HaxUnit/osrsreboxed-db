@@ -555,3 +555,39 @@ def test_shop_index_preserves_an_exact_unsplit_shop_beside_versioned_names(tmp_p
     assert index["Supply Shop"] == {"target": "Supply Shop"}
     assert index["supply shop"] == {"target": "Supply Shop"}
     assert index["Supply Shop (Quest)"] == {"target": "Supply Shop (Quest)"}
+
+
+def test_a_shop_link_follows_the_wiki_redirect_to_a_moved_shop():
+    # Revision 242 moved "Armour Shop (Jatizso)" to "Armour Shop"; Raum
+    # Urda-Stein's transcript still links the old title, which redirects.
+    index = {"Armour Shop": {"target": "Armour Shop"}, "death": {"target": "Death (shop)"}}
+    redirects = {
+        "Armour Shop (Jatizso)": "Armour Shop",
+        "Death Animations": "Death",
+    }
+    shop_for = dialogues_update.shop_for
+    assert shop_for("Armour Shop (Jatizso)", index, redirects) == {"target": "Armour Shop"}
+    assert shop_for("Armour Shop (Jatizso)", index) is None, "no redirects, no shop"
+    # A redirect lands on a page, not on a shop spelling: "Death" is the NPC's
+    # page, which the loose spellings would fold onto "Death (shop)".
+    assert shop_for("Death Animations", index, redirects) is None
+
+
+def test_moved_shops_resolve_in_the_export():
+    shops = json.loads((config.DOCS_PATH / dialogues_update.SHOPS).read_text())
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    targets = set()
+
+    def walk(node):
+        if isinstance(node, dict):
+            if node.get("action") == "open_shop":
+                targets.add(node["target"])
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for item in node:
+                walk(item)
+
+    walk(dialogues["Raum Urda-Stein"])
+    assert targets == {"Armour Shop"}
+    assert "Armour Shop" in shops

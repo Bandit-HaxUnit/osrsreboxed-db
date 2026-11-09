@@ -1,6 +1,9 @@
 """Export NPC and quest conversations with stable plugin hook points.
 
 Run with --offline to rebuild from data/dialogues/wiki-pages.json without fetching.
+A shop link that names no shop page follows the wiki's redirect for it (a shop page
+that moved); online runs, or --offline --shop-redirects, look those up and save them
+to data/dialogues/shop-redirects.json, which --offline reads.
 """
 
 import argparse
@@ -18,7 +21,9 @@ from scripts.dialogues.fetch import (
     QUEST_CACHE,
     NPC_CACHE,
     TEMPLATE_CACHE,
+    SHOP_REDIRECT_CACHE,
     fetch,
+    fetch_redirects,
     load_navigation_templates,
     participant_pages,
     read_cache,
@@ -800,7 +805,41 @@ def shop_index():
     return index
 
 
-def resolve_shops(npcs, index):
+def shop_for(target, index, redirects=None):
+    """The shop a dialogue's link opens: by its own title, else where the wiki
+    redirects it (a shop page that moved since the transcript was written).
+
+    A redirect has to land on a shop's exact title. The looser spellings are for
+    a transcript's own wording; a redirect goes to whatever page the link now
+    means ("Death Animations" goes to the "Death" page, which those spellings
+    would fold onto "Death (shop)")."""
+    shop = next((index[key] for key in shop_keys(target or "") if key in index), None)
+    if shop:
+        return shop
+    moved = (redirects or {}).get(target)
+    return index.get(moved) if moved else None
+
+
+def unmatched_shop_links(npcs, index):
+    """Interface links that name no shop, as the wiki titles to look redirects up for."""
+    links = set()
+
+    def walk(node):
+        if isinstance(node, dict):
+            target = node.get("target") if node.get("action") == "open_interface" else None
+            if target and not shop_for(target, index):
+                links.add(target)
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for item in node:
+                walk(item)
+
+    walk(npcs)
+    return sorted(links)
+
+
+def resolve_shops(npcs, index, redirects=None):
     """Retag interfaces naming a known shop so consumers can join on the shops dump."""
     resolved = 0
 
@@ -810,9 +849,7 @@ def resolve_shops(npcs, index):
             target = (
                 node.get("target") if node.get("action") == "open_interface" else None
             )
-            shop = next(
-                (index[key] for key in shop_keys(target or "") if key in index), None
-            )
+            shop = shop_for(target, index, redirects)
             if shop:
                 node["action"] = "open_shop"
                 node.update(shop)
@@ -1013,6 +1050,11 @@ def main():
     parser.add_argument(
         "--refresh", action="store_true", help="Refresh cached wiki revisions"
     )
+    parser.add_argument(
+        "--shop-redirects",
+        action="store_true",
+        help="With --offline, still ask the wiki where shop links that name no shop redirect",
+    )
     args = parser.parse_args()
     if args.offline and args.refresh:
         parser.error("--refresh cannot be combined with --offline")
@@ -1064,7 +1106,15 @@ def main():
     index = enrich_records(
         npcs, quests, read_cache(NPC_CACHE), clean, bindings, transcript_pages=pages
     )
-    resolved = resolve_shops(npcs, shop_index())
+    shops = shop_index()
+    if args.offline and not args.shop_redirects:
+        redirects = read_cache(SHOP_REDIRECT_CACHE)
+    else:
+        import requests
+
+        redirects = fetch_redirects(unmatched_shop_links(npcs, shops), requests.Session())
+        save(SHOP_REDIRECT_CACHE, redirects)
+    resolved = resolve_shops(npcs, shops, redirects)
     # Shared quest replies retain their NPC source IDs, including inferred shops.
     source_shops = {
         node["id"]: {key: node[key] for key in ("target", "shops") if key in node}
