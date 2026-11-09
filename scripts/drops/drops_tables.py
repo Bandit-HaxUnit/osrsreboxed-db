@@ -699,6 +699,54 @@ def _exclusive_source_pool(
     return entries, pool_size, accesses
 
 
+def _apply_currency_replacements(
+    entries: List[ResolvedEntry],
+) -> Tuple[List[ResolvedEntry], int]:
+    """Use the same pool slots for coins and source-stated location replacements."""
+    replacements = []
+    for index, entry in enumerate(entries):
+        for note in entry.notes:
+            match = wikitext.COIN_REPLACEMENT_NOTE.fullmatch(note)
+            if match:
+                replacements.append((index, match[1]))
+                break
+    if not replacements:
+        return entries, 0
+
+    entries = list(entries)
+    replaced = set()
+    replacement_weight = 0
+    for index, place in replacements:
+        entry = entries[index]
+        matches = [
+            i
+            for i, coin in enumerate(entries)
+            if coin.name == "Coins"
+            and coin.quantity == entry.quantity
+            and coin.roll_denominator == entry.roll_denominator
+        ]
+        if len(matches) != 1 or matches[0] in replaced:
+            raise ValueError(
+                f"Ambiguous coin replacement: {entry.name} x {entry.quantity}"
+            )
+        coin_index = matches[0]
+        coin = entries[coin_index]
+        replaced.add(coin_index)
+        entries[coin_index] = replace(
+            coin,
+            notes=[*coin.notes, f"Only dropped by monsters not on {place}."],
+        )
+        # A substitution uses the corresponding members-world coin slot.
+        # Retain the published replacement rarity if the two source rows differ.
+        entries[index] = replace(
+            entry,
+            weight=coin.weight,
+            published_rarity=entry.rarity_raw if entry.weight != coin.weight else "",
+        )
+        replacement_weight += coin.weight or 0
+    return entries, replacement_weight
+
+
 def build_table_spec(
     wiki_page: str, table: ParsedDropTable, items: ItemIdLookup
 ) -> DropTableSpec:
@@ -796,8 +844,11 @@ def build_table_spec(
                 ", ".join(entry.name for entry in roll.entries),
             )
     if main_max_roll is not None:
-        used = sum(entry.weight or 0 for entry in main_entries) + sum(
-            access.numerator for access in accesses
+        main_entries, replacement_weight = _apply_currency_replacements(main_entries)
+        used = (
+            sum(entry.weight or 0 for entry in main_entries)
+            + sum(access.numerator for access in accesses)
+            - replacement_weight
         )
         main_max_roll = max(main_max_roll, used)
 
