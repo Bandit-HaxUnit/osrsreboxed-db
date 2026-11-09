@@ -643,6 +643,19 @@ def test_removed_shops_are_marked_in_the_export():
     ]
 
 
+def test_death_sells_escape_crystals_from_his_shop_option():
+    """Death's Office (revision 242, Hardcore Worlds): Death runs "Death (shop)"
+    from the cache's op4 "Shop", not op3 "Collect", his retrieval."""
+    with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
+        shops = json.load(f)
+    death = shops["Death (shop)"]
+    assert death["items"] == [{"id": 22517, "stock": 9500, "restock_time": 1}]
+    assert death["shop_info"]["currency"] == "coins"
+    assert [(o["npc_ids"], o["option"], o["option_slot"]) for o in death["owners"]] == [
+        ([9855], "Shop", 4)
+    ]
+
+
 def test_renamed_shortswords_stay_in_their_shops():
     """Revision 242 renamed the swords to shortswords ("Bronze sword" is
     "Bronze shortsword", 1277). The Wiki's store lines use the new names, so
