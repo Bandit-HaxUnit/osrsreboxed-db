@@ -521,7 +521,9 @@ def apply_capture_lines(name, raw, source, revision=None):
     parsing, so the parser, compaction and export see the corrected transcript
     like any other. Each entry names the revision, the exact source line and its
     hash, so a refreshed revision or a changed line stops the dump for review.
-    An empty replacement drops the line. Everything else stays as cached.
+    An empty replacement drops the line; `insert_before` adds lines the capture
+    sends that the Wiki lacks, ahead of the (hash-checked) anchor line. Everything
+    else stays as cached.
     """
     if not source:
         return raw
@@ -540,10 +542,16 @@ def apply_capture_lines(name, raw, source, revision=None):
                 break
         if hashlib.sha256(body.encode()).hexdigest() != fix["sha256"]:
             raise ValueError(f"Stale dialogue capture source: {name} line {number}")
-        text = fix["text"]
-        if not isinstance(text, str) or "\n" in text or "\r" in text:
+        text = fix.get("text", body)
+        inserted = fix.get("insert_before", [])
+        if not isinstance(inserted, list) or not all(isinstance(item, str) for item in inserted):
             raise ValueError(f"Invalid dialogue capture source: {name} line {number}")
-        lines[number - 1] = text + ending
+        if any(not isinstance(item, str) or "\n" in item or "\r" in item for item in [text, *inserted]):
+            raise ValueError(f"Invalid dialogue capture source: {name} line {number}")
+        if "text" not in fix and not inserted:
+            raise ValueError(f"Invalid dialogue capture source: {name} line {number}")
+        newline = ending or "\n"
+        lines[number - 1] = "".join(item + newline for item in inserted) + text + ending
     return "".join(lines)
 
 

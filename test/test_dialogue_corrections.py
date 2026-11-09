@@ -494,3 +494,34 @@ def test_correction_rejects_an_edit_inside_a_replaced_node():
     }
     with pytest.raises(ValueError, match="Conflicting dialogue correction: X"):
         apply_corrections(data, corrections)
+
+
+def test_crab_quest_capture_lines_insert_and_reword_before_parsing():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Crab Quest"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Crab Quest"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Crab Quest", page["wikitext"], source, page["revision"])
+    lines = raw.splitlines()
+    # The inserted line lands ahead of its anchor, which is kept unchanged.
+    tune = lines.index("* '''Crab:''' We can make a great tune with this!")
+    assert lines[tune + 1].startswith("* '''Crab:''' Oh no... I can't easily play 13 different shells")
+    assert len(lines) == len(page["wikitext"].splitlines()) + 1
+    assert "how the practice is going." in raw and "how the practise is going." not in raw
+    assert "But anyway, we are done here." in raw and "anyways" not in raw
+    assert raw == apply_capture_lines("Crab Quest", page["wikitext"], source, page["revision"])
+    # An anchor whose line moved stops the dump, inserts included.
+    moved = "\n" + page["wikitext"]
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Crab Quest", moved, source, page["revision"])
+    with pytest.raises(ValueError, match="Invalid dialogue capture source"):
+        apply_capture_lines(
+            "Crab Quest", page["wikitext"],
+            {**source, "lines": [{**source["lines"][0], "insert_before": ["a\nb"]}]},
+            page["revision"],
+        )
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    assert "We can make a great tune with this!" in json.dumps(exported["Crab Quest"])
