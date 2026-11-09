@@ -30,6 +30,10 @@ CACHE = config.DATA_PATH / "dialogues" / "wiki-pages.json"
 QUEST_CACHE = CACHE.with_name("quest-pages.json")
 NPC_CACHE = CACHE.with_name("npc-pages.json")
 TEMPLATE_CACHE = CACHE.with_name("template-pages.json")
+# Where the wiki redirects a dialogue's shop link that names no shop page: a shop
+# page moved ("Armour Shop (Jatizso)" is "Armour Shop" since revision 242) while
+# the transcripts still link its old title.
+SHOP_REDIRECT_CACHE = CACHE.with_name("shop-redirects.json")
 
 
 def save(path, data, *, minified=False):
@@ -177,6 +181,47 @@ def participant_pages(raw):
             if page.casefold() not in ("player", "noplayer", ""):
                 pages.add(page.strip())
     return sorted(pages)
+
+
+def fetch_redirects(titles, session):
+    """Ask the wiki where each title redirects; titles that aren't redirects are left out.
+
+    :param titles: Page titles as a transcript links them.
+    :param session: A requests session for the wiki API.
+    :return: ``{title: final redirect target}``, sorted by title.
+    """
+    titles = sorted(set(titles))
+    redirects = {}
+    for offset in range(0, len(titles), 50):
+        batch = titles[offset : offset + 50]
+        response = session.get(
+            API,
+            headers=config.custom_agent,
+            params={
+                "action": "query",
+                "format": "json",
+                "formatversion": 2,
+                "redirects": 1,
+                "titles": "|".join(batch),
+            },
+            timeout=60,
+        )
+        response.raise_for_status()
+        result = response.json()
+        if "error" in result:
+            raise ValueError(result["error"])
+        query = result.get("query", {})
+        normalized = {n["from"]: n["to"] for n in query.get("normalized", [])}
+        moved = {r["from"]: r["to"] for r in query.get("redirects", [])}
+        for title in batch:
+            target, seen = normalized.get(title, title), set()
+            while target in moved and target not in seen:
+                seen.add(target)
+                target = moved[target]
+            if seen:
+                redirects[title] = target
+        time.sleep(1)
+    return dict(sorted(redirects.items()))
 
 
 def download(names, path, session, refresh=False, with_categories=False):
