@@ -276,7 +276,8 @@ def test_variant_tables_export_from_their_own_page(shared_pages, real_items):
         "gwdMegaRare": [],
     }
     names = {e.get("name") for e in subtables["gwdRareDrop"]["entries"]}
-    assert "Rune sword" in names and "Runite bar" not in names
+    # Revision 242 renamed the Rune sword to the Rune shortsword.
+    assert "Rune shortsword" in names and "Runite bar" not in names
     # The regular tables still come from the shared Drop table page.
     assert subtables["rareDrop"]["wiki_page"] == drops_tables.SHARED_TABLE_PAGE
     assert "Runite bar" in {e.get("name") for e in subtables["rareDrop"]["entries"]}
