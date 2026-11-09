@@ -61,6 +61,42 @@ def test_source_date_epoch_keeps_full_exports_identical_across_build_days(
     )
 
 
+def test_hobgoblin_roots_keep_published_rolls_and_currency_is_location_exclusive():
+    from osrsreboxed import items_api
+
+    text = update.load_monster_wikitext()["Hobgoblin"]
+    items = drops_tables.ItemIdLookup(items_api.load())
+    unarmed, armed = (
+        drops_tables.build_table_json(
+            drops_tables.build_table_spec("Hobgoblin", table, items)
+        )
+        for table in drops_wikitext.parse_all_drop_tables(text)
+    )
+    for table, weight in [(unarmed, 22), (armed, 21)]:
+        assert table["main_max_roll"] == 128
+        root = next(row for row in table["entries"] if row.get("item_id") == 225)
+        assert (root["quantity"], root["weight"], root["out_of"]) == (
+            [1, 1],
+            weight,
+            128,
+        )
+
+    rows = unarmed["entries"]
+    coins = [row for row in rows if row.get("item_id") == 995]
+    sticks = [row for row in rows if row.get("item_id") == 6306]
+    assert len(coins) == len(sticks) == 6
+    assert all(any("not on Karamja" in note for note in row["notes"]) for row in coins)
+    assert all(
+        any("on Karamja, in place" in note for note in row["notes"]) for row in sticks
+    )
+    assert {tuple(row["quantity"]): row["weight"] for row in coins} == {
+        tuple(row["quantity"]): row["weight"] for row in sticks
+    }
+    assert sum(row.get("weight", 0) for row in rows if row not in sticks) == 128
+    empty = next(row for row in armed["entries"] if row.get("nothing"))
+    assert (empty["weight"], empty["out_of"]) == (1, 128)
+
+
 def test_uniform_main_roll_counts_survive_export_without_repeating_tertiaries():
     source = """
 {{Infobox Monster|id=7388}}

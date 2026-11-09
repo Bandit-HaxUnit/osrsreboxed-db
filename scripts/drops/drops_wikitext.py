@@ -1512,6 +1512,17 @@ def _roll_count(params: Dict[str, str]) -> int:
     return int(value) if re.fullmatch(r"[1-9]\d*", value) else 1
 
 
+# This export targets members worlds. Use the explicit alternate rate only
+# when the source identifies it as the members-world rate.
+MEMBERS_RATE_NOTE = re.compile(
+    r"Drop rate is (?:decreased|increased) to (\d+/\d+) in members worlds[.]",
+    re.I,
+)
+COIN_REPLACEMENT_NOTE = re.compile(
+    r"Only dropped by .+? on ([A-Z][A-Za-z ]*), in place of the regular coin drops[.]"
+)
+
+
 def _parse_drop_line(
     params: Dict[str, str],
     section: str,
@@ -1536,8 +1547,15 @@ def _parse_drop_line(
     if _should_skip_f2p_drop(params, attached_notes):
         return None
 
+    rarity = params.get("rarity", "").strip() or rarity_notes
+    alternate = params.get("altrarity", "").strip()
+    if alternate and any(
+        (rate := MEMBERS_RATE_NOTE.fullmatch(note)) and rate[1] == alternate
+        for note in attached_notes
+    ):
+        rarity = alternate
+
     if name.lower() == "nothing":
-        rarity = params.get("rarity", "").strip() or rarity_notes
         if not rarity.strip():
             return None
         return ParsedDrop(
@@ -1551,7 +1569,6 @@ def _parse_drop_line(
         )
 
     quantity, is_noted = parse_wiki_quantity(params.get("quantity", "").strip() or "1")
-    rarity = params.get("rarity", "").strip() or rarity_notes
     if not rarity.strip():
         return None
 
@@ -1664,6 +1681,13 @@ def _parse_drops_from_body(
                 ]
                 drop.bundle_eligibility = sorted(
                     set(source_notes) - {bundle_refs.get(drop.bundle_ref, "")}
+                )
+                # The shared footnote applies to each replacement outcome,
+                # even though it names the creature and coins, not the new item.
+                drop.notes.extend(
+                    note
+                    for note in dict.fromkeys(source_notes)
+                    if COIN_REPLACEMENT_NOTE.fullmatch(note) and note not in drop.notes
                 )
                 section_drops.append(drop)
 
