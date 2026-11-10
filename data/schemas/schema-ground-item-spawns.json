@@ -114,6 +114,20 @@
           },
           "required": true
         },
+        "pickup_replacement": {
+          "type": "dict",
+          "schema": {
+            "id": {
+              "type": "integer",
+              "min": 0,
+              "required": true
+            },
+            "telegrab_denial": {
+              "type": "string",
+              "empty": false
+            }
+          }
+        },
         "coordinate_qualifiers": {
           "type": "dict",
           "valuesrules": {
