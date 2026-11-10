@@ -525,3 +525,41 @@ def test_crab_quest_capture_lines_insert_and_reword_before_parsing():
         )
     exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     assert "We can make a great tune with this!" in json.dumps(exported["Crab Quest"])
+
+
+def test_twilights_promise_capture_lines_add_the_requirements_ending():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Twilight's Promise"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Twilight's Promise"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Twilight's Promise", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Twilight's Promise", page["wikitext"], source, page["revision"])
+    # The captured comma after "Well", and the capitalised Colosseum.
+    assert "'''Player:''' Well, this doesn't sound totally orthodox" in raw
+    assert "Well this doesn't sound totally orthodox" not in raw
+    assert "Where can I find the colosseum?" not in raw
+    # Lines the capture doesn't play stay as cached.
+    assert "Well rules are rules, I'm afraid." in raw
+    # The unmet-requirements ending goes ahead of the Wiki's, which moves one level down.
+    lines = raw.splitlines()
+    unmet = lines.index(
+        "* {{tcond|If the player does not meet all of the requirements to start The Heart of Darkness:}}"
+    )
+    assert lines[unmet + 3] == (
+        "** '''Prince Itzla Arkan:''' Thank you, iknami. Timoiva for now, and may the sun light your way."
+    )
+    assert lines[unmet + 7].startswith("** '''Prince Itzla Arkan:''' Word has been sent to mother")
+    assert len(lines) == len(page["wikitext"].splitlines()) + 7
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    ending = exported["Twilight's Promise"]["variants"][
+        "the-twilight-emissaries-after-defeating-the-cultists"
+    ]
+    conditions = [step for step in ending if step.get("type") == "condition"]
+    assert [c["text"].startswith("If the player does not meet") for c in conditions] == [True, False]
+    assert conditions[0]["steps"][-2] == {
+        "type": "action", "text": "Congratulations! Quest complete!", "id": conditions[0]["steps"][-2]["id"],
+    }
+    assert conditions[1]["steps"][-1]["type"] == "choice"
