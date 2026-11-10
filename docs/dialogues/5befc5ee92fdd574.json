@@ -146,9 +146,16 @@
                         "id": "qeSx96"
                       },
                       {
-                        "type": "message",
-                        "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 50. One or more of your skill levels are also lower than recommended.",
-                        "id": "YlG6-4"
+                        "type": "condition",
+                        "text": "If the player's combat level is lower than 50:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 50. One or more of your skill levels are also lower than recommended.",
+                            "id": "i_bts5"
+                          }
+                        ],
+                        "id": "5OInfd"
                       },
                       {
                         "type": "choice",
@@ -252,7 +259,7 @@
                                 "steps": [
                                   {
                                     "type": "call",
-                                    "branch": "jump-074a841585585eeb"
+                                    "branch": "jump-bce03843f3d115cc"
                                   }
                                 ]
                               }
@@ -1687,7 +1694,7 @@
     ]
   },
   "branches": {
-    "jump-074a841585585eeb": [
+    "jump-bce03843f3d115cc": [
       {
         "type": "line",
         "speaker": "Martin the Master Gardener",
@@ -1759,9 +1766,16 @@
         "id": "qeSx96"
       },
       {
-        "type": "message",
-        "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 50. One or more of your skill levels are also lower than recommended.",
-        "id": "YlG6-4"
+        "type": "condition",
+        "text": "If the player's combat level is lower than 50:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 50. One or more of your skill levels are also lower than recommended.",
+            "id": "i_bts5"
+          }
+        ],
+        "id": "5OInfd"
       },
       {
         "type": "choice",

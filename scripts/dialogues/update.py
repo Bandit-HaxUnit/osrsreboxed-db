@@ -560,6 +560,55 @@ def apply_capture_lines(name, raw, source, revision=None):
     return "".join(lines)
 
 
+QUEST_WARNING_GUARDS = (
+    (
+        re.compile(
+            r"Before starting this quest,? be aware that your combat level is "
+            r"lower than the recommended level of (\d+)",
+            re.I,
+        ),
+        lambda match: f"If the player's combat level is lower than {match[1]}:",
+    ),
+    (
+        re.compile(
+            r"Before starting this quest,? be aware that one or more of your "
+            r"skill levels are lower than what is required",
+            re.I,
+        ),
+        lambda match: "If the player's skill levels are lower than the quest requirements:",
+    ),
+)
+
+
+def guard_quest_warnings(steps, guarded=False):
+    """Wrap a bare "recommended level" warning in the condition it implies.
+
+    The Wiki transcribes the warning as a plain {{tbox}} on some pages, so the
+    dump would show it to every player. The warning only appears when the player
+    is under the recommended level (or lacks the skills), exactly as the pages
+    that do carry a {{tcond}} say. Warnings already under a condition are left as
+    they are.
+    """
+    for index, node in enumerate(steps):
+        if not guarded and node.get("type") == "message":
+            for pattern, condition in QUEST_WARNING_GUARDS:
+                match = pattern.match(node.get("text", ""))
+                if match:
+                    steps[index] = dict(
+                        type="condition", text=condition(match), steps=[node]
+                    )
+                    break
+            else:
+                guard_quest_warnings(node.get("steps", []), guarded)
+            continue
+        inner = guarded or node.get("type") == "condition" or "condition" in node
+        guard_quest_warnings(node.get("steps", []), inner)
+        for option in node.get("options", []):
+            guard_quest_warnings(
+                option.get("steps", []), inner or "condition" in option
+            )
+
+
 def parse_npc(name, raw, nav_templates=None):
     if nav_templates is None:
         nav_templates = load_navigation_templates()
@@ -669,6 +718,7 @@ def parse_npc(name, raw, nav_templates=None):
         ]
         variant["steps"] = group_options(variant["steps"], random_options=is_oracle)
         normalize_terminal_completion(variant["steps"])
+        guard_quest_warnings(variant["steps"])
         if is_oracle:
             variant["notes"] = [
                 "Curated: numbered alternatives are random dialogue, not player choices; probabilities unknown."
