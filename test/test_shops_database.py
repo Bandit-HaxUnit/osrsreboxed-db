@@ -317,6 +317,25 @@ def test_shop_option_prefers_the_option_named_by_the_shop():
     assert shop_owners.shop_option_for(7663, npcs)["option"] == "Trade"
 
 
+def test_shop_option_matches_a_trade_option_by_its_words():
+    # Razmire Keelgan runs two shops, each behind its own Trade-* option; neither
+    # option text is a substring of its shop name.
+    razmire = {"1290": {"1": "Talk-to", "3": "Trade-General-Store", "4": "Trade-Builders-Store"}}
+    assert shop_owners.shop_option_for(1290, razmire, "Razmire General Store.") == {
+        "option": "Trade-General-Store",
+        "option_slot": 3,
+        "option_source": "click",
+    }
+    assert shop_owners.shop_option_for(1290, razmire, "Razmire Builders Merchants.") == {
+        "option": "Trade-Builders-Store",
+        "option_slot": 4,
+        "option_source": "click",
+    }
+    # Generic words alone ("Trade", "Store") match nothing; the first option still wins.
+    shopkeeper = {"1": {"1": "Talk-to", "3": "Trade"}}
+    assert shop_owners.shop_option_for(1, shopkeeper, "Varrock General Store.")["option_slot"] == 3
+
+
 def test_shop_option_skips_a_bankers_collect_for_a_later_buy():
     # Fadli: "Collect" is the collection box, "Buy" opens his shop.
     fadli = {"3340": {"1": "Talk-to", "3": "Bank", "4": "Collect", "5": "Buy"}}
