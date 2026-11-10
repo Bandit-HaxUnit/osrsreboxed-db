@@ -70,9 +70,16 @@
                         "text": "Very good. Well, it has been some days since last I heard from Drezel, the priest who lives there. Be a sport and go check in on the silly old codger for me, would you?"
                       },
                       {
-                        "type": "message",
-                        "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 15.",
-                        "id": "0cBLcT"
+                        "type": "condition",
+                        "text": "If the player's combat level is lower than 15:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 15.",
+                            "id": "gtY6Dq"
+                          }
+                        ],
+                        "id": "2c4iPI"
                       },
                       {
                         "type": "choice",
