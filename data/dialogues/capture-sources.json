@@ -354,5 +354,58 @@
         "text": "*** {{tact|end}}"
       }
     ]
+  },
+  "Plague City": {
+    "revision": 15321974,
+    "reason": "Jethick and the clerk as the revision 242 capture plays them: Jethick's first talk with the picture opens with the king conversation of his no-picture talk (ticks 372-380); talking to him again before the book is delivered, he still offers the book (ticks 397-405); the clerk's menu after 'Rather you than me!' also offers 'This is urgent though! Someone's been kidnapped!' (ticks 597-602).",
+    "sources": [
+      "RSProx capture 20261110T113734-5ab63b4 (revision 242, ca4560efdf95fffaa803b8a37a98b5cecd1ea6bad8b4dc9c7d5c2d2951f99587-256 ca4560efdf95fffaa803b8a37a98b5cecd1ea6bad8b4dc9c7d5c2d2951f99587)",
+      "Transcript:Plague City revision 15321974 as cached; the inserted lines are the Wiki's own lines from its other sections, all other lines are parsed unchanged"
+    ],
+    "lines": [
+      {
+        "line": 451,
+        "sha256": "357e01e02949acfb0593460b108b2e9e24be5d6c10d8b0509ad2eda8f4fbc79d",
+        "insert_before": [
+          "** '''Player:''' How come?",
+          "** '''Jethick:''' The plague of course. Not many people want to come to a place like this and the few that do normally get stopped by the mourners.",
+          "** '''Jethick:''' All you'll find here now are the dead and the dying. Even our own king has abandoned us.",
+          "** '''Player:''' Your king?",
+          "** '''Jethick:''' Yes, King Tyras of West Ardougne. He's the brother of King Lathas, the ruler of East Ardougne.",
+          "** '''Player:''' So where is the king?",
+          "** '''Jethick:''' Well he's always been a bit of an explorer. He's led multiple expeditions into the uncharted lands to the west.",
+          "** '''Jethick:''' The plague first started when he came back from one of these expeditions. More than a few suspect that some of his men caught it out there and brought it back with them.",
+          "** '''Jethick:''' The king didn't care though. He just left on another expedition to the west. He hasn't been seen since. He left the city warder Bravek in charge but he's no better.",
+          "** '''Jethick:''' Anyway, you clearly didn't come here to talk about kings. So tell me, what brings you to West Ardougne?"
+        ]
+      },
+      {
+        "line": 476,
+        "sha256": "be2dde9d39be26a80672febb9987788fbaf125212de06923ed889e42d04bad9d",
+        "insert_before": [
+          "* '''Jethick:''' I don't suppose you could run me a little errand while you're over there? I borrowed this book from them, can you return it?",
+          "* {{tselect|Select an Option}}",
+          "* {{topt|Yes, I'll return it for you.}}",
+          "** '''Player:''' Yes, I'll return it for you.",
+          "** {{tcond|If the player has no inventory space:}}",
+          "*** {{tbox|pic=Book (Plague City) detail.png|Jethick shows you the book, but you don't have room to take it.}}",
+          "*** {{tact|end}}",
+          "** {{tbox|pic=Book (Plague City) detail.png|Jethick gives you a book.}}",
+          "** {{tact|end}}",
+          "* {{topt|No, I don't have time for that.}}",
+          "** '''Player:''' No, I don't have time for that.",
+          "** {{tact|end}}"
+        ],
+        "text": ""
+      },
+      {
+        "line": 626,
+        "sha256": "7a487c680c7595ad20e7863cfa1648fa8dce43472e3cf4893ad6f097c4bf30e5",
+        "insert_before": [
+          "** {{topt|This is urgent though! Someone's been kidnapped!}}",
+          "*** {{tact|below}}"
+        ]
+      }
+    ]
   }
 }
