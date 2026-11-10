@@ -598,3 +598,52 @@ def test_sea_slug_capture_lines_box_the_torch_and_drop_the_repeat():
         "Not one.",
     ]
     assert clear["steps"][3]["text"] == "How will I get downstairs?"
+
+
+def test_observatory_quest_follows_the_revision_242_capture():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Observatory Quest"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Observatory Quest"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Observatory Quest", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Observatory Quest", page["wikitext"], source, page["revision"])
+    assert "Just a plain stove. Nothing there." in raw and "Nothing here." not in raw
+    lines = raw.splitlines()
+    # Two lines are emptied and one is inserted, so the transcript is a line longer.
+    assert len(lines) == len(page["wikitext"].splitlines()) + 1
+    # Handing over the mould starts at the professor's question (capture tick 1013).
+    mould = lines.index("==Returning with the lens mould==")
+    assert lines[mould + 4 : mould + 7] == ["", "", "** '''Observatory professor:''' Did you bring me the mould?"]
+    # The molten-glass hand-in keeps its own two lines.
+    glass = lines.index("==Returning with molten glass==")
+    assert lines[glass + 4] == "** '''Observatory professor:''' How are you getting on finding me some molten glass?"
+    # The professor asks for the lens before it is handed over (tick 1038).
+    lens = lines.index("==Returning with the observatory lens==")
+    assert lines[lens + 4] == "** '''Observatory professor:''' Is the lens finished?"
+    assert lines[lens + 5] == "** '''Player:''' Yes, here it is. You may as well take this mould too."
+    # The hand-over sits under its menu option, so Treasure Trails is the menu's other option.
+    assert lines[lens + 13] == "*** {{tact|end}}"
+    assert lines[lens + 14] == "* {{topt|quest=no|Talk about Treasure Trails.}}"
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Observatory Quest", "\n" + page["wikitext"], source, page["revision"])
+
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = exported["Observatory Quest"]["variants"]
+    returning = json.dumps(variants["returning-with-the-lens-mould"])
+    assert "How are you getting on finding me some molten glass?" not in returning
+    assert "Did you bring me the mould?" in returning
+    lens_variant = variants["returning-with-the-observatory-lens"]
+    assert "Is the lens finished?" in json.dumps(lens_variant)
+    menu = next(step for step in lens_variant if step.get("type") == "choice")
+    assert [option["text"] for option in menu["options"]] == [
+        "Talk about the Observatory quest.", "Talk about Treasure Trails."
+    ]
+    assert variants["inspecting-the-goblin-stove"][0]["text"] == "Just a plain stove. Nothing there."
+    # The step ids TSPS binds.
+    text = json.dumps(variants)
+    # The lens hand-over and the closing box sit one level deeper, so their ids moved (HgpGGr, vj7Nry).
+    for step_id in ("JH15Z2", "URgSXm", "HgpGGr", "vj7Nry", "Y5Z4-D", "Lmq76H"):
+        assert f'"{step_id}"' in text
