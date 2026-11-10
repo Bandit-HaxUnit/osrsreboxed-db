@@ -263,6 +263,56 @@ def test_witchs_house_follows_the_revision_242_capture():
         apply_capture_lines("Witch's House", page["wikitext"], source, page["revision"] + 1)
 
 
+def test_biohazard_follows_the_revision_242_capture():
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
+        "Biohazard"
+    ]["variants"]
+    # Before the wall is crossed, Elena points back to Jerico (capture tick 29).
+    assert variants["getting-started-talking-to-elena-again"] == [
+        {"player": "Hello Elena."},
+        {"type": "line", "speaker": "Elena", "text": "Hello friend. Any luck finding my distillator?"},
+        {"player": "No, I'm afraid not."},
+        {
+            "type": "line",
+            "speaker": "Elena",
+            "text": "Speak to Jerico, he might be able to help you cross the wall. He lives"
+            " in a house south east of here, north of the chapel.",
+        },
+    ]
+    # The mud patch stays under the first conversation with Elena.
+    assert "getting-started-talking-to-elena-trying-to-dig-in-the-mud-patch" in variants
+    assert variants["getting-started-talking-to-jerico-again"][:2] == [
+        {"player": "Hello Jerico."},
+        {"type": "line", "speaker": "Jerico", "text": "Hello again. Have you spoken to Omart yet?"},
+    ]
+    # Talking to Jerico after Omart already opened with the greeting; it gains no second one.
+    after_omart = variants["getting-started-talking-to-jerico-after-talking-to-omart"]
+    assert [step.get("player") for step in after_omart[:2]] == ["Hello Jerico.", None]
+    assert variants["visiting-south-east-varrock-talking-to-asyff"][1] == {
+        "player": "Errr... what are you saying exactly?"
+    }
+
+    # Source inputs over the cached revision, not edits of the generated record.
+    corrections = json.loads(
+        (config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")
+    )
+    assert "Biohazard" not in corrections
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Biohazard"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Biohazard"
+    ]
+    assert source["revision"] == page["revision"]
+    lines = page["wikitext"].splitlines()
+    for fix in source["lines"]:
+        assert hashlib.sha256(lines[fix["line"] - 1].encode()).hexdigest() == fix["sha256"]
+    raw = apply_capture_lines("Biohazard", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Biohazard", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Biohazard", page["wikitext"], source, page["revision"] + 1)
+
+
 def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     source = json.loads(
