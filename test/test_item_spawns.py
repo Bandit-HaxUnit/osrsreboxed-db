@@ -16,6 +16,33 @@ def page(extra="", item_id="554", respawn="100"):
 
 
 class ItemSpawnExportTests(unittest.TestCase):
+    def test_illegal_item_can_explicitly_award_a_different_item_on_pickup(self):
+        display = (
+            "{{Illegal Item}}"
+            "{{Infobox Item|name=White apron|id=7957|respawn=10}}"
+            "If the player picks it up, they will be given a regular [[white apron]] instead. "
+            "Trying to obtain the white apron via [[telekinetic grab]] does not work, "
+            "with a message stating \"''It seems to be firmly on the hook. I cannot get that this way.''\"."
+            "{{ItemSpawnLine|name=White apron|3016,3229}}"
+        )
+        real = "{{Infobox Item|name=White apron|id=1005|respawn=100}}"
+        [row] = parse_pages({"White apron": real, "White apron (hanging)": display})
+        self.assertEqual((row["id"], row["infobox_respawn_ticks"]), (7957, 10))
+        self.assertEqual(
+            row["pickup_replacement"],
+            {
+                "id": 1005,
+                "telegrab_denial": "It seems to be firmly on the hook. I cannot get that this way.",
+            },
+        )
+        [ambiguous] = parse_pages(
+            {
+                "White apron": real.replace("|id=1005", "|id=1005|id2=123"),
+                "White apron (hanging)": display,
+            }
+        )
+        self.assertNotIn("pickup_replacement", ambiguous)
+
     def test_quantity_plane_members_and_separate_timer_sources(self):
         rows = parse_pages(
             {

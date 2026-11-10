@@ -66,6 +66,38 @@ def _versions(text, title):
     return versions
 
 
+def _pickup_replacement(text, pages):
+    """An Illegal Item page can explicitly name the real item awarded on Take."""
+    if not re.search(r"\{\{\s*Illegal Item\s*\}\}", text, re.I):
+        return None
+    match = re.search(
+        r"If the player picks it up, they will be given a regular \[\[([^\[\]|]+)\]\] instead\.",
+        text,
+    )
+    if not match:
+        return None
+    title = match[1][0].upper() + match[1][1:]
+    target_text = pages.get(title)
+    if not isinstance(target_text, str):
+        return None
+    versions = _versions(target_text, title)
+    if (
+        len(versions) != 1
+        or versions[0]["id"] is None
+        or versions[0]["duplicate_selectors"]
+    ):
+        return None
+    replacement = {"id": versions[0]["id"]}
+    denial = re.search(
+        r"""via \[\[telekinetic grab\]\] does not work, with a message stating "''([^"\n]+)''(?:")""",
+        text,
+        re.I,
+    )
+    if denial:
+        replacement["telegrab_denial"] = denial[1]
+    return replacement
+
+
 def parse_pages(pages):
     """All positional spawn arguments survive, including repeated/malformed ones."""
     rows = []
@@ -75,6 +107,7 @@ def parse_pages(pages):
         versions = (
             _versions(text, title) if re.search("ItemSpawnLine", text, re.I) else []
         )
+        replacement = _pickup_replacement(text, pages) if versions else None
         for index, template in enumerate(
             extract_wikitext_template(text, "itemspawnline")
         ):
@@ -210,6 +243,13 @@ def parse_pages(pages):
                             if not key.isdigit()
                         ],
                         "unresolved_reasons": sorted(reasons),
+                        **(
+                            {"pickup_replacement": replacement}
+                            if replacement
+                            and item_id is not None
+                            and item_id != replacement["id"]
+                            else {}
+                        ),
                     }
                 )
     return rows
