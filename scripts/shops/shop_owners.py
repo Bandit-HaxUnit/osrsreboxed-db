@@ -93,6 +93,10 @@ SHOP_OPTION_PREFIXES = ("trade-", "trade ")
 # "Collect" is the Grand Exchange collection box (Fadli: Talk-to, Bank,
 # Collect, Buy), so it must not win over the "Buy" after it.
 FALLBACK_SHOP_OPTION_TEXTS = {"claim", "collect"}
+# Words of a shop option that say "open a shop" rather than which one, ignored
+# when an option is matched to a shop name word by word.
+GENERIC_OPTION_WORDS = {"trade", "shop", "store", "buy", "items"}
+WORD = re.compile(r"[a-z0-9]+")
 
 
 def parse_shop_owners(wikitext: str) -> List[Dict]:
@@ -611,6 +615,19 @@ def shop_option_for(
             needle = shop_name.casefold()
             for slot, text in candidates:
                 if text.strip().casefold() in needle:
+                    return {
+                        "option": text,
+                        "option_slot": slot,
+                        "option_source": "click",
+                    }
+            # A Trade-* option can name its shop in other words: Razmire Keelgan's
+            # "Trade-General-Store" and "Trade-Builders-Store" open "Razmire General
+            # Store." and "Razmire Builders Merchants.". Match the option's own words,
+            # less the shop-opening verb and generic nouns, against the shop name.
+            shop_words = set(WORD.findall(needle))
+            for slot, text in candidates:
+                words = set(WORD.findall(text.casefold())) - GENERIC_OPTION_WORDS
+                if words and words <= shop_words:
                     return {
                         "option": text,
                         "option_slot": slot,
