@@ -563,3 +563,38 @@ def test_twilights_promise_capture_lines_add_the_requirements_ending():
         "type": "action", "text": "Congratulations! Quest complete!", "id": conditions[0]["steps"][-2]["id"],
     }
     assert conditions[1]["steps"][-1]["type"] == "choice"
+
+
+def test_sea_slug_capture_lines_box_the_torch_and_drop_the_repeat():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Sea Slug"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Sea Slug"
+    ]
+    assert source["revision"] == int(page["revision"])
+    raw = apply_capture_lines("Sea Slug", page["wikitext"], source, int(page["revision"]))
+    assert raw == apply_capture_lines("Sea Slug", page["wikitext"], source, int(page["revision"]))
+    lines = raw.splitlines()
+    # Kennith's after-the-wall exchange plays once (the Wiki repeats its first three lines).
+    assert sum("Kennith, I've made an opening in the wall." in line for line in lines) == 1
+    # The free-space branch gets the torch box the no-space branch already had, ahead of the hand-out.
+    free = lines.index("* {{tcond|If the player has one free space in their in their inventory:}}")
+    assert lines[free + 1] == "** {{tbox|pic=Unlit torch detail.png|Bailey gives you a torch.}}"
+    assert lines[free + 2] == "** {{tact|receives=an unlit torch}}"
+    assert "** {{mes|I need to get closer to use that.}}" in lines
+    assert "I need to get closer to that." not in raw
+    # The dropped repeat leaves three blank lines; the box adds one.
+    assert len(lines) == len(page["wikitext"].splitlines()) + 1
+    moved = "\n" + page["wikitext"]
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Sea Slug", moved, source, int(page["revision"]))
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Sea Slug"]
+    after_wall = exported["variants"]["freeing-kennith-talking-to-kennith-after-making-a-hole-in-the-wall"]
+    clear = next(step for step in after_wall if step.get("text") == "If there are no sea slugs or fishermen nearby:")
+    assert [step.get("player") or step.get("text") for step in clear["steps"]][:3] == [
+        "Kennith, I've made an opening in the wall. You can come out through there.",
+        "Are there any sea slugs on the other side?",
+        "Not one.",
+    ]
+    assert clear["steps"][3]["text"] == "How will I get downstairs?"
