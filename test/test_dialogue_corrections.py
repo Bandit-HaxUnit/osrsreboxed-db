@@ -647,3 +647,48 @@ def test_observatory_quest_follows_the_revision_242_capture():
     # The lens hand-over and the closing box sit one level deeper, so their ids moved (HgpGGr, vj7Nry).
     for step_id in ("JH15Z2", "URgSXm", "HgpGGr", "vj7Nry", "Y5Z4-D", "Lmq76H"):
         assert f'"{step_id}"' in text
+
+
+def test_plague_city_capture_lines_add_jethick_and_the_clerk():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Plague City"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Plague City"
+    ]
+    assert source["revision"] == int(page["revision"])
+    raw = apply_capture_lines("Plague City", page["wikitext"], source, int(page["revision"]))
+    assert raw == apply_capture_lines("Plague City", page["wikitext"], source, int(page["revision"]))
+    lines = raw.splitlines()
+    # The inserts are the Wiki's own lines from its other sections; nothing new is worded.
+    cached = set(page["wikitext"].splitlines())
+    for fix in source["lines"]:
+        for line in fix.get("insert_before", []):
+            assert line.lstrip("*") in {other.lstrip("*") for other in cached} or "{{t" in line
+    # 10 intro lines, the 12-line book offer (the section's end becomes a blank line), the clerk's
+    # option and its jump.
+    assert len(lines) == len(page["wikitext"].splitlines()) + 10 + 12 + 2
+    moved = "\n" + page["wikitext"]
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Plague City", moved, source, int(page["revision"]))
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Plague City"]["variants"]
+    # Jethick's first talk with the picture (capture ticks 372-380) opens with the king conversation.
+    first = exported["finding-elena-talking-to-jethick-after-getting-elena-s-picture"][0]
+    assert [step.get("player") for step in first["steps"]][1] == "How come?"
+    assert first["steps"][-1]["text"].startswith("Anyway, you clearly didn't come here to talk about kings.")
+    # Again before delivering the book (397-405), he still offers it.
+    again = exported[
+        "finding-elena-talking-to-jethick-after-getting-elena-s-picture-talking-to-jethick-again-before-delivering-the-book"
+    ]
+    assert again[-2]["text"].startswith("I don't suppose you could run me a little errand")
+    assert [option["text"] for option in again[-1]["options"]] == [
+        "Yes, I'll return it for you.", "No, I don't have time for that.",
+    ]
+    # The clerk's menu after "Rather you than me!" has the third option (597-602).
+    clerk = exported["finding-elena-talking-to-the-clerk-before-getting-permission-to-speak-to-bravek"]
+    menu = clerk[1]["options"][0]["steps"][2]
+    assert [option["text"] for option in menu["options"]] == [
+        "I'll try asking them then.",
+        "Surely you don't let them run everything for you?",
+        "This is urgent though! Someone's been kidnapped!",
+    ]
