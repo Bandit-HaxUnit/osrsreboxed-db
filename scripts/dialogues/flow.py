@@ -732,6 +732,15 @@ def resolve_navigation(record, anchors=None):
                     if direction == "above"
                     else alternatives[at + 1 :]
                 )
+                # When every later option also ends "below", the last one included, they
+                # share what follows the menu: none of them continues into a sibling's body
+                # (Making History's "three people" answers return to the menu after them).
+                if direction == "below" and candidates and all(
+                    candidate.get("steps")
+                    and candidate["steps"][-1].get("reference") == "below"
+                    for candidate in candidates
+                ):
+                    candidates = []
                 for candidate in candidates:
                     body = candidate.get("steps", [])
                     if candidate.get("text") != option.get("text") and (
