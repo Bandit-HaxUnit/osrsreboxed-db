@@ -301,6 +301,27 @@ def immune_venom(value: str) -> bool:
     )
 
 
+def freeze_resistance(value: str) -> int:
+    """Convert the freeze_resistance property to a whole percentage.
+
+    The Wiki's ``freezeresistance`` reduces the duration of freezes (bind, snare,
+    entangle and ice spells): 33 means a third shorter, 100 means the monster
+    is never frozen (Wiki: Freeze). A missing or unreadable value is no resistance.
+
+    :param value: Template value extracted from raw wikitext.
+    :return value: A cleaned freeze_resistance value, from 0 to 100.
+    """
+    if not value:
+        return 0
+    value = value.strip().lower()
+    if value in ["true", "yes"]:
+        return 100
+    match = re.match(r"^(\d+)\s*%?$", value)
+    if not match:
+        return 0
+    return min(int(match.group(1)), 100)
+
+
 def attributes(value: str) -> str:
     """Convert the attributes text entry to a list.
 
