@@ -358,6 +358,22 @@ class BuildMonster:
             if value is None:
                 self.monster_dict["incomplete"] = True
 
+        # FREEZE RESISTANCE: read like the resistances above (the version's own value first), kept
+        # off monster_dict so the complete combat-stat exports stay byte-identical; the dedicated
+        # status export publishes it. A page without the field has no resistance, not an incomplete one.
+        freeze_value = None
+        for suffix in (
+            (str(self.infobox_version_number), "")
+            if self.infobox_version_number is not None
+            else ("",)
+        ):
+            freeze_value = self.extract_infobox_value(
+                self.template, "freezeresistance" + suffix
+            )
+            if freeze_value is not None:
+                break
+        self.freeze_resistance = infobox_cleaner.freeze_resistance(freeze_value)
+
         # NPC infoboxes do not carry the monster attribute list. The captured
         # Wiki page categories are the native source (for example Category:Demons).
         if (

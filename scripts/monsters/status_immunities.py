@@ -1,4 +1,4 @@
-"""Export NPC status immunities directly from the canonical monster builder.
+"""Export NPC status immunities and freeze resistance directly from the canonical monster builder.
 
 This contract is independent of combat stats: consumers can refresh status rules
 without replacing a combat-stat snapshot from a different source revision.
@@ -26,6 +26,8 @@ def build_status_immunities(builder=None):
             "name": row["name"],
             "immune_poison": row["immune_poison"],
             "immune_venom": row["immune_venom"],
+            # Percentage by which a freeze is shortened; 100 means never frozen (Wiki: Freeze).
+            "freeze_resistance": getattr(monster, "freeze_resistance", 0),
         }
     return {"schema_version": 1, "npcs": result}
 
