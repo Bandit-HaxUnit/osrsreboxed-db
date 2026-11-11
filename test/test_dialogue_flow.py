@@ -805,3 +805,40 @@ def test_runtime_resume_bindings_use_source_suffixes_and_update_indexes():
                 }
             },
         )
+
+
+def test_below_shared_by_every_later_option_continues_after_the_menu():
+    # Making History: each of Jorral's "three people" answers ends {{tact|below}},
+    # the last one included, and live then shows the menu that follows them
+    # (RSProx capture 20261111T015053-5ab63b4, ticks 189-195), not the next answer.
+    value = record(
+        "A quest",
+        """==Talking==
+* '''Jorral:''' There are three people that may be able to help:
+* {{tselect|Select an option}}
+* {{topt|A trader in Ardougne}}
+** '''Jorral:''' A silver trader.
+** '''Player:''' OK, I'll see what he has to say.
+** {{tact|below}}
+* {{topt|A ghost in Port Phasmatys}}
+** '''Jorral:''' A ghost.
+** '''Player:''' I'll track him down.
+** {{tact|below}}
+* {{topt|A warrior in Rellekka}}
+** '''Jorral:''' A warrior.
+** '''Player:''' That sounds simple enough.
+** {{tact|below}}
+* {{tselect|Select an option}}
+* {{topt|What's the story so far?}}
+** '''Player:''' What's the story so far?
+* {{topt|Got to go, bye!}}
+** '''Player:''' Got to go, bye!
+""",
+    )
+    enrich_records({}, {"A quest": value}, {}, update.clean)
+    options = value["variants"]["talking"][1]["options"]
+    for option in options:
+        spoken = [node.get("text", node.get("npc", node.get("player"))) for node in follow(value, option["steps"])]
+        others = [other["steps"][0]["text"] for other in options if other is not option]
+        assert not set(spoken) & set(others), (option["text"], spoken)
+        assert option["steps"][-1].get("reference") == "below"
