@@ -742,3 +742,73 @@ def test_plague_city_capture_lines_add_jethick_and_the_clerk():
         "Surely you don't let them run everything for you?",
         "This is urgent though! Someone's been kidnapped!",
     ]
+
+
+def test_historian_minas_reports_follow_the_captures():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Historian Minas"]
+    page = json.loads((config.DATA_PATH / "dialogues/wiki-pages.json").read_text())[
+        "Transcript:Historian Minas"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Historian Minas", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Historian Minas", page["wikitext"], source, page["revision"])
+    lines = raw.splitlines()
+    # Curse of the Empty Lord gains its three lamp lines; every other fix replaces a line.
+    assert len(lines) == len(page["wikitext"].splitlines()) + 3
+    # The Wiki writes these narration boxes as bare prose, which parsed as unavailable markers.
+    assert lines.count("*** {{tbox|You receive an old lamp.}}") == 3
+    assert (
+        "*** {{tbox|The historian pulls out his writing implements and listens while you explain the whole story....}}"
+        in lines
+    )
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Historian Minas", "\n" + page["wikitext"], source, page["revision"])
+
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Historian Minas"]
+
+    def find(steps, step_id):
+        for step in steps or []:
+            if step.get("id") == step_id:
+                return step
+            found = find(step.get("steps"), step_id)
+            for option in step.get("options") or []:
+                found = found or find(option.get("steps"), step_id)
+            if found:
+                return found
+        return None
+
+    def flow(step_id):
+        return [
+            step.get("player") and ("player", step["player"])
+            or step.get("npc") and ("npc", step["npc"])
+            or (step["type"], step.get("text"))
+            for step in find(exported["steps"], step_id)["steps"]
+        ]
+
+    # Hazeel Cult: the box comes before Minas's closing line, so the report reaches it.
+    hazeel = flow("9_Sehd")
+    assert hazeel[-2] == (
+        "message",
+        "The historian pulls out his writing implements and listens while you explain the whole story....",
+    )
+    assert hazeel[-1] == ("npc", "How exciting, I'll get a display put up immediately. Display number 7, 5th Age, year 7.")
+    assert "Zamorakian lord" in hazeel[-3][1]
+    # Shield of Arrav and Merlin's Crystal end on the lamp box, like Defender of Varrock.
+    for step_id in ("QqHvp-", "RaNFxc", "jeha67"):
+        assert flow(step_id)[-1] == ("message", "You receive an old lamp.")
+    assert flow("QqHvp-")[2] == ("player", "Erm, yes... Anyway, I managed to get half the Shield of Arrav back.")
+    # The two Salve reports as the captures play them.
+    assert flow("3q8-VQ")[0] == (
+        "player", "I discovered some disturbing yet heroic information about the vampyres of Morytania."
+    )
+    assert flow("dHMXRQ")[-1] == ("npc", "How fascinating. I'll have the display updated. Number 23, 4th Age, year 1100-1200.")
+    assert flow("0sSqOl")[-1] == ("npc", "You're welcome!")
+    assert flow("IqnOid")[2] == ("player", "Don't worry. I put a stop to their plots.")
+    # No report closes on an unavailable marker any more.
+    reports = find(exported["steps"], "S57fCr")
+    assert reports is not None
+    for step_id in ("S57fCr", "QqHvp-", "oGD9-i", "GpIr8R", "RaNFxc", "EZzFyt", "3q8-VQ", "dHMXRQ",
+                    "Yq_0tv", "4Ij9Rt", "SJoct1", "0sSqOl", "9_Sehd", "IqnOid", "jeha67"):
+        assert '"unavailable"' not in json.dumps(find(exported["steps"], step_id))
