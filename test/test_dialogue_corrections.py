@@ -755,10 +755,11 @@ def test_historian_minas_reports_follow_the_captures():
     raw = apply_capture_lines("Historian Minas", page["wikitext"], source, page["revision"])
     assert raw == apply_capture_lines("Historian Minas", page["wikitext"], source, page["revision"])
     lines = raw.splitlines()
-    # Curse of the Empty Lord gains its three lamp lines; every other fix replaces a line.
-    assert len(lines) == len(page["wikitext"].splitlines()) + 3
+    # Curse of the Empty Lord gains its three lamp lines and Making History those three and its
+    # lamp box; every other fix replaces a line.
+    assert len(lines) == len(page["wikitext"].splitlines()) + 7
     # The Wiki writes these narration boxes as bare prose, which parsed as unavailable markers.
-    assert lines.count("*** {{tbox|You receive an old lamp.}}") == 3
+    assert lines.count("*** {{tbox|You receive an old lamp.}}") == 4
     assert (
         "*** {{tbox|The historian pulls out his writing implements and listens while you explain the whole story....}}"
         in lines
@@ -795,8 +796,8 @@ def test_historian_minas_reports_follow_the_captures():
     )
     assert hazeel[-1] == ("npc", "How exciting, I'll get a display put up immediately. Display number 7, 5th Age, year 7.")
     assert "Zamorakian lord" in hazeel[-3][1]
-    # Shield of Arrav and Merlin's Crystal end on the lamp box, like Defender of Varrock.
-    for step_id in ("QqHvp-", "RaNFxc", "jeha67"):
+    # Shield of Arrav, Merlin's Crystal and Making History end on the lamp box, like Defender of Varrock.
+    for step_id in ("QqHvp-", "RaNFxc", "4Ij9Rt", "jeha67"):
         assert flow(step_id)[-1] == ("message", "You receive an old lamp.")
     assert flow("QqHvp-")[2] == ("player", "Erm, yes... Anyway, I managed to get half the Shield of Arrav back.")
     # The two Salve reports as the captures play them.
