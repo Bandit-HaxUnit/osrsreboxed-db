@@ -26,6 +26,17 @@ import pytest
 from scripts.drops import drops_tables, drops_wikitext, update
 
 
+def test_cyclops_floor_headings_split_the_published_drop_versions():
+    text = update.load_monster_wikitext()["Cyclops"]
+    top, basement = drops_wikitext.parse_all_drop_tables(text)
+    assert top.npc_ids == [2463, 2464, 2465, 2466, 2467, 2468]
+    assert basement.npc_ids == [2137, 2138, 2139, 2140, 2141, 2142]
+    assert sum(drop.name == "Big bones" for drop in top.drops) == 1
+    assert sum(drop.name == "Big bones" for drop in basement.drops) == 1
+    assert "Dragon defender" not in {drop.name for drop in top.drops}
+    assert "Dragon defender" in {drop.name for drop in basement.drops}
+
+
 def test_source_date_epoch_keeps_full_exports_identical_across_build_days(
     tmp_path, monkeypatch
 ):
