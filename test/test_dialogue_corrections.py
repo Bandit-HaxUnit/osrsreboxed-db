@@ -313,6 +313,34 @@ def test_biohazard_follows_the_revision_242_capture():
         apply_capture_lines("Biohazard", page["wikitext"], source, page["revision"] + 1)
 
 
+def test_goblin_diplomacy_peace_answer_returns_to_the_captured_menu():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    record = dialogues["Goblin Diplomacy"]
+    branches = record["branches"]
+    first = record["variants"]["starting-off-talking-to-general-wartface-or-general-bentnoze"][0]
+    why = first["options"][0]["steps"][8]["options"][0]["steps"][3]["options"][0]["steps"]
+    answers = [
+        why[5]["options"][1]["steps"],
+        branches["jump-0e7d80c33faa9aaa"][5]["options"][1]["steps"],
+        branches["jump-eb18bfb27195d785"],
+    ]
+    # Every copy of the answer ends in the menu live shows, without the question just
+    # asked (revision 242 capture, ticks 126 and 138).
+    for peace in answers:
+        assert peace[0] == {"player": "Wouldn't you prefer peace?"}
+        menu = peace[-1]
+        assert menu["type"] == "choice"
+        assert [option["text"] for option in menu["options"]] == [
+            "Why are you arguing about the colour of your armour?",
+            "Do you want me to pick an armour colour for you?",
+            "I'll leave you to it.",
+        ]
+        for option in menu["options"]:
+            (call,) = option["steps"]
+            assert call["type"] == "call" and call["branch"] in branches
+            assert branches[call["branch"]][0] == {"player": option["text"]}
+
+
 def test_shadow_of_the_storm_golem_exchange_plays_once_with_both_sigil_branches():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     source = json.loads(

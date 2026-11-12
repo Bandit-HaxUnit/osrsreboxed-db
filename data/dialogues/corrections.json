@@ -4389,5 +4389,161 @@
         "value": "Thanks, mister!"
       }
     ]
+  },
+  "Goblin Diplomacy": {
+    "reason": "After \"Wouldn't you prefer peace?\" live shows the menu without that question: \"Why are you arguing about the colour of your armour?\" / \"Do you want me to pick an armour colour for you?\" / \"I'll leave you to it.\" (RSProx capture 20261112T150929-5ab63b4, revision 242, ticks 124-126 and 135-138). Each copy of the answer jumped back to the previous menu, which repeats it.",
+    "sources": [
+      "https://github.com/RSPSApp/tsps/commit/e8f784daaefb92ba2cd45082a0b23888b5c9ae01"
+    ],
+    "base_sha256": "d58194d8832a9440a3280e94b7fa9de5083f330f5442df2d9ad733a962583100",
+    "audited_sha256": "267f7496901f903809d0f429e44809bcfafcf5c39c0b681ec1b3db2c3957ced3",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Goblin Diplomacy",
+          "branches",
+          "jump-eb18bfb27195d785",
+          3
+        ],
+        "expected": "d08a1611583e98834033fb9a4a01ada0fa2e1f13286c52200941b4db9a330855",
+        "value": {
+          "type": "choice",
+          "options": [
+            {
+              "text": "Why are you arguing about the colour of your armour?",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-0e7d80c33faa9aaa"
+                }
+              ]
+            },
+            {
+              "text": "Do you want me to pick an armour colour for you?",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-f8a9ac04bf855df0"
+                }
+              ]
+            },
+            {
+              "text": "I'll leave you to it.",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-aff70d22fc752ac8"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "path": [
+          "records",
+          "Goblin Diplomacy",
+          "variants",
+          "starting-off-talking-to-general-wartface-or-general-bentnoze",
+          0,
+          "options",
+          0,
+          "steps",
+          8,
+          "options",
+          0,
+          "steps",
+          3,
+          "options",
+          0,
+          "steps",
+          5,
+          "options",
+          1,
+          "steps",
+          3
+        ],
+        "expected": "d08a1611583e98834033fb9a4a01ada0fa2e1f13286c52200941b4db9a330855",
+        "value": {
+          "type": "choice",
+          "options": [
+            {
+              "text": "Why are you arguing about the colour of your armour?",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-0e7d80c33faa9aaa"
+                }
+              ]
+            },
+            {
+              "text": "Do you want me to pick an armour colour for you?",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-f8a9ac04bf855df0"
+                }
+              ]
+            },
+            {
+              "text": "I'll leave you to it.",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-aff70d22fc752ac8"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "path": [
+          "records",
+          "Goblin Diplomacy",
+          "branches",
+          "jump-0e7d80c33faa9aaa",
+          5,
+          "options",
+          1,
+          "steps",
+          3
+        ],
+        "expected": "d08a1611583e98834033fb9a4a01ada0fa2e1f13286c52200941b4db9a330855",
+        "value": {
+          "type": "choice",
+          "options": [
+            {
+              "text": "Why are you arguing about the colour of your armour?",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-0e7d80c33faa9aaa"
+                }
+              ]
+            },
+            {
+              "text": "Do you want me to pick an armour colour for you?",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-f8a9ac04bf855df0"
+                }
+              ]
+            },
+            {
+              "text": "I'll leave you to it.",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "jump-aff70d22fc752ac8"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }
