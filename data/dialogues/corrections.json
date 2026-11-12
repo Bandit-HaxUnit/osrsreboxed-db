@@ -4595,5 +4595,42 @@
         }
       }
     ]
+  },
+  "Recruitment Drive": {
+    "reason": "Sir Tiffy's first greeting as the revision 242 capture plays it: \"a top-notch adventurer\", then \"So, are you ready to begin testing?\" before the menu.",
+    "sources": [
+      "rsprox capture RecruitmentDrive.bin (revision 242.1, the user's whole-quest run), ticks 169-174 and 325-330"
+    ],
+    "base_sha256": "2be363174d9a2606221ce112b4079a4fec65e78cf2943143bf354eefe3ad1c7d",
+    "audited_sha256": "2890358b663d5bed1c311e03e668b4c3df3c4b0707b440a3c97ae08d0686bc67",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Recruitment Drive",
+          "variants",
+          "starting-out-talking-to-sir-tiffy-cashien-after-starting-the-quest",
+          3,
+          "text"
+        ],
+        "expected": "3cbcd0787119afd819387c296b83d325dce930bb282f1094df0a54417894eb3a",
+        "value": "Well, a top-notch adventurer like yourself is just the right sort we've been seeking for our organisation."
+      },
+      {
+        "path": [
+          "records",
+          "Recruitment Drive",
+          "variants",
+          "starting-out-talking-to-sir-tiffy-cashien-after-starting-the-quest",
+          4
+        ],
+        "expected": "f2a819b0fabbad02443b35dcf3c7b72da619af002abb8c247dc1426a783b2d7f",
+        "insert": {
+          "type": "line",
+          "speaker": "Sir Tiffy Cashien",
+          "text": "So, are you ready to begin testing?"
+        }
+      }
+    ]
   }
 }
