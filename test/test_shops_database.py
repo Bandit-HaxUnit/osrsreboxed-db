@@ -462,7 +462,7 @@ def test_by_shop_items_carry_no_derivable_fields():
     for shop_name, shop in by_shop.items():
         assert None not in shop["shop_info"].values(), shop_name
         for item in shop["items"]:
-            assert set(item) <= {"id", "stock", "restock_time", "currency"}, shop_name
+            assert set(item) <= {"id", "stock", "restock_time", "currency", "sell"}, shop_name
             # currency is an override, so it must never restate the shop's own
             assert item.get("currency") != shop["shop_info"].get("currency"), shop_name
 
@@ -860,3 +860,137 @@ def test_shop_exports_regenerate_from_the_committed_wiki_cache(tmp_path, monkeyp
             assert (
                 generated.read_bytes() == (root / name).read_bytes()
             ), f"{name} does not regenerate from the committed wiki cache"
+
+
+def test_storeline_sell_values_preserve_explicit_text_and_currency():
+    wikitext = """{{StoreTableHead|currency=Tokkul}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=0}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=N/A|currency=coins}}
+{{StoreLine|name=Raw karambwan|stock=10}}
+{{StoreLine|name=Raw karambwan|stock=10|sell={{Coins|10}}}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=   }}
+{{StoreTableBottom}}"""
+    rows = shops_items.parse_shop_items("Test shop", wikitext)
+    assert [row.get("sell") for row in rows] == [
+        "0",
+        "N/A",
+        None,
+        "{{Coins|10}}",
+        None,
+        None,
+    ], "StoreLine sell values must be retained"
+    assert [row["currency"] for row in rows] == [
+        "Tokkul",
+        "coins",
+        "Tokkul",
+        "Tokkul",
+        "Tokkul",
+        "Tokkul",
+    ]
+    assert all("sell" not in rows[i] for i in (2, 4, 5))
+
+
+def test_petes_vessel_export_retains_wiki_sell_price():
+    with open(
+        Path(config.DOCS_PATH / "shops-items-by-shop.json"), encoding="utf-8"
+    ) as f:
+        shops = json.load(f)
+    row = next(
+        item
+        for item in shops["Petrified Pete's Ore Shop"]["items"]
+        if item["id"] == 21539
+    )
+    assert (
+        "sell" in row
+    ), "Pete's exported vessel row must retain its StoreLine sell value"
+    assert row["sell"] == "10000"
+
+
+def test_process_exports_raw_sell_and_row_currency(tmp_path, monkeypatch):
+    data = tmp_path / "data"
+    docs = tmp_path / "docs"
+    package = tmp_path / "package"
+    data.mkdir()
+    docs.mkdir()
+    package.mkdir()
+    rows = [
+        {
+            "type": "item",
+            "id": 1,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "Tokkul",
+            "sell": "0",
+        },
+        {
+            "type": "item",
+            "id": 2,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "coins",
+            "sell": "N/A",
+        },
+        {
+            "type": "item",
+            "id": 3,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "Tokkul",
+        },
+        {
+            "type": "item",
+            "id": 4,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "Tokkul",
+            "sell": "{{Coins|10}}",
+        },
+    ]
+    rows.extend(
+        [
+            {
+                "type": "item",
+                "id": 5,
+                "stock": 1,
+                "restock_time": None,
+                "currency": "Tokkul",
+                "sell": "",
+            },
+            {
+                "type": "item",
+                "id": 6,
+                "stock": 1,
+                "restock_time": None,
+                "currency": "Tokkul",
+                "sell": "   ",
+            },
+        ]
+    )
+    (data / "shops-raw.json").write_text(
+        json.dumps({"Test shop": {"shop_info": {"currency": "Tokkul"}, "items": rows}}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(config, "DATA_SHOPS_PATH", data)
+    monkeypatch.setattr(config, "DOCS_PATH", docs)
+    monkeypatch.setattr(config, "PACKAGE_PATH", package)
+    monkeypatch.setattr(shop_owners, "load", lambda: {})
+    monkeypatch.setattr(shop_owners, "load_npc_options", lambda: {})
+    shops_items.process()
+    result = json.loads(
+        (docs / "shops-items-by-shop.json").read_text(encoding="utf-8")
+    )["Test shop"]["items"]
+    assert [item.get("sell") for item in result] == [
+        "0",
+        "N/A",
+        None,
+        "{{Coins|10}}",
+        None,
+        None,
+    ]
+    assert result[1]["currency"] == "coins"
+    assert all("currency" not in result[i] for i in (0, 2, 3, 4, 5))
+    assert all("sell" not in result[i] for i in (2, 4, 5))
+    assert (package / "docs" / "shops-items-by-shop.json").read_bytes() == (
+        docs / "shops-items-by-shop.json"
+    ).read_bytes()

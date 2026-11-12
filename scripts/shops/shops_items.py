@@ -647,6 +647,11 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                     "stock": stock,
                     "restock_time": restock_time,
                     "currency": currency,
+                    **(
+                        {"sell": item_data["sell"]}
+                        if item_data.get("sell", "").strip()
+                        else {}
+                    ),
                 }
                 items.append(item_info)
             else:
@@ -832,6 +837,7 @@ def process() -> None:
                 "id": item["id"],
                 "stock": item.get("stock"),
                 "restock_time": item.get("restock_time"),
+                **({"sell": item["sell"]} if item.get("sell", "").strip() else {}),
                 **(
                     {"currency": item["currency"]}
                     if item.get("currency") != shop_currency
