@@ -958,3 +958,16 @@ def test_ghosts_ahoy_follows_the_revision_242_capture():
     crone = json.dumps(exported["Old crone"]["variants"])
     assert "Alice and Malcolm can communicate again." in crone
     assert "Alice and her husband" not in crone
+
+
+def test_recruitment_drive_tiffy_greeting_plays_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    steps = dialogues["Recruitment Drive"]["variants"][
+        "starting-out-talking-to-sir-tiffy-cashien-after-starting-the-quest"
+    ]
+    assert [step.get("text") for step in steps[3:5]] == [
+        "Well, a top-notch adventurer like yourself is just the right sort we've"
+        " been seeking for our organisation.",
+        "So, are you ready to begin testing?",
+    ]
+    assert steps[5]["type"] == "choice"
