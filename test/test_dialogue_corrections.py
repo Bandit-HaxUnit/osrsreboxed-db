@@ -971,3 +971,41 @@ def test_recruitment_drive_tiffy_greeting_plays_the_revision_242_capture():
         "So, are you ready to begin testing?",
     ]
     assert steps[5]["type"] == "choice"
+
+def test_wanted_follows_the_revision_242_capture():
+    # A whole revision 242 run (RSProx capture "Wanted!", 2026-11-12). Sir Amik's squire offer is one
+    # menu whose entail talk returns to Yes/No (ticks 608-631); the rest is captured wording: the
+    # 'Boss' hyphen (658), "deputised" (836), Tiffy's "old boy" (977), "was in the vicinity" (2550),
+    # "all-clear" without a comma (2827) and the Dorgeshuun reply's hyphen (3815).
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Wanted!"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())["Transcript:Wanted!"]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Wanted!", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Wanted!", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Wanted!", "\n" + page["wikitext"], source, page["revision"])
+
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Wanted!"]["variants"]
+    offer = next(
+        step for step in variants["falador-castle-first-visit-to-sir-amik"]
+        if step.get("type") == "choice" and any(o["text"].startswith("What does being") for o in step["options"])
+    )
+    assert [option["text"] for option in offer["options"]] == [
+        "What does being a Squire entail?", "Yes please!", "No, not right now...",
+    ]
+    entail = json.dumps(offer["options"][0]["steps"])
+    assert "So what exactly does being a squire consist of, then?" in entail
+    text = json.dumps(variants, ensure_ascii=False)
+    for live in (
+        "That is 'Sir Amik' or 'My Liege' - not 'Boss'.",
+        "you will be deputised to act as a White Knight",
+        "Well old [boy/gal/bean], we will need to equip you for the task",
+        "an object that was in the vicinity rather than something he was carrying",
+        "Results are all-clear [player name]. Savant out.",
+        "Okay, I'm on my way - and Solus had better watch out",
+    ):
+        assert live in text, live
+    for wiki in ("\u2013 not 'Boss'", "deputized", "Well old bean, we will", "object that as in", "all-clear, [player name]", "way \u2013 and Solus"):
+        assert wiki not in text, wiki
