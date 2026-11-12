@@ -52,6 +52,9 @@ def clean(raw):
             code.replace(template, clean(template.get(1).value))
         elif name in ("sic", "^", "fact", "citation needed"):
             code.replace(template, "")
+    # A <ref> is an editor's footnote, never speech: strip_code would keep its body.
+    for tag in code.filter_tags(recursive=False, matches=lambda node: str(node.tag).strip().lower() == "ref"):
+        code.remove(tag)
     # Keep unrecognised templates through strip_code rather than dropping data.
     saved = []
     for template in code.filter_templates(recursive=False):

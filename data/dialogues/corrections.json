@@ -3800,11 +3800,12 @@
     "audited_sha256": "1679b4f438e0228a917a17fde07d30bbfe6584923a600d4368030611962ec644"
   },
   "Black Knights' Fortress": {
-    "reason": "Fortress guard wording, the player's missing line at the sturdy door, and a typo, from a live capture of the post-quest fortress.",
+    "reason": "Fortress guard wording, the player's missing line at the sturdy door, and a typo, from a live capture of the post-quest fortress; the grill's \"mention\" and \"Mithtreth\", Sir Amik's reminder while the dossier is still held, and the reward with no coins box, from a revision 242 capture of the whole quest.",
     "sources": [
-      "https://rsprox.net/download/469"
+      "https://rsprox.net/download/469",
+      "RSProx capture BlackKnightsFortress.bin (revision 242.1, SHA-256 1d7c44c5f919546287f011892d8a295b4e03fa89a6b1b7a8ac4d0b9d68106b2e, whole quest, varp 130 0 -> 4): Sir Amik tick 186, grill ticks 774 and 785, reward ticks 1111 -> 1113"
     ],
-    "base_sha256": "7382b7d80d048f9990d26bdc9715e1f4b82dbf864284307cb119cbb240743caf",
+    "base_sha256": "e104c20ad773b0acbfb0a5954eb9adc91348cd8e495aef994f847fb47db549fa",
     "changes": [
       {
         "path": [
@@ -3904,9 +3905,58 @@
         ],
         "expected": "bc0c744b9a615d7db6df5a3467c70ae25d559417e7fd888b867a60de76d08edf",
         "value": "No need to... get upset... you're scaring the cat."
+      },
+      {
+        "path": [
+          "records",
+          "Black Knights' Fortress",
+          "variants",
+          "listen-at-grill",
+          6,
+          "text"
+        ],
+        "expected": "df8e5b1f863e4e0c89a1b9a6815a482d059837a9b8411ccb4b84225a02238c5e",
+        "value": "...not to mention the trees!"
+      },
+      {
+        "path": [
+          "records",
+          "Black Knights' Fortress",
+          "variants",
+          "listen-at-grill",
+          8,
+          "text"
+        ],
+        "expected": "1aef0d506417ba894ede7533644a287e9c59ca84b7244ac26385f5f43063f464",
+        "value": "Yeth, Mithtreth."
+      },
+      {
+        "path": [
+          "records",
+          "Black Knights' Fortress",
+          "variants",
+          "starting-out-speaking-to-sir-amik-varze-again",
+          4
+        ],
+        "expected": null,
+        "insert": {
+          "type": "line",
+          "speaker": "Sir Amik Varze",
+          "text": "Don't forget to read that dossier of information I gave you."
+        }
+      },
+      {
+        "path": [
+          "records",
+          "Black Knights' Fortress",
+          "variants",
+          "returning-to-sir-amik-varze",
+          4
+        ],
+        "expected": "f28feea3bedd4e0bda4e0884668b91a1eaa233eb900e756f09259d2249422872"
       }
     ],
-    "audited_sha256": "502f65aa1249d4475b7331b4b3dc849ede476b70a521ef8c69401d8918a72017"
+    "audited_sha256": "4784a67957fa3790c853327b7bd92ca69855a4ff52dc909de247bed8c893cdc0"
   },
   "The Ides of Milk": {
     "reason": "Capture 4153 says Gillie promises Seth will be happy to share information; the wiki transcript has a typo.",

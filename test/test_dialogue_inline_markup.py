@@ -26,6 +26,16 @@ def test_citation_templates_are_not_spoken():
     assert clean("Unknown {{mystery}}") == "Unknown {{mystery}}"
 
 
+def test_footnotes_are_not_spoken():
+    # Black Knights' Fortress's cat: "Meow!" in every capture, with the Wiki's catspeak note.
+    assert (
+        clean('Meow!<ref name="catspeak">No special dialogue with catspeak amulet equipped</ref>')
+        == "Meow!"
+    )
+    assert clean('Purrr....<ref name="catspeak"/>') == "Purrr...."
+    assert clean("Hello.<ref>A [[note]].</ref> Bye.") == "Hello. Bye."
+
+
 def speech(node, found):
     if isinstance(node, dict):
         for key, value in node.items():
@@ -68,3 +78,13 @@ def test_captured_wording_is_exported():
     assert "No need to... get upset... you're scaring the cat." in speech(
         fortress, set()
     )
+    # The revision 242 capture of the whole quest.
+    grill = fortress["listen-at-grill"]
+    assert grill[6]["text"] == "...not to mention the trees!"
+    assert grill[8] == {"type": "line", "speaker": "Greldo", "text": "Yeth, Mithtreth."}
+    assert fortress["starting-out-speaking-to-sir-amik-varze-again"][-1]["text"] == (
+        "Don't forget to read that dossier of information I gave you."
+    )
+    assert "Meow!" in speech(fortress, set())
+    assert not [text for text in speech(fortress, set()) if "catspeak" in text]
+    assert "Sir Amik hands you 2500 coins." not in speech(fortress, set())
