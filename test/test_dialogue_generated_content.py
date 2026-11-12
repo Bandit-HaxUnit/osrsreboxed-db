@@ -66,7 +66,6 @@ def test_source_derived_dialogues_keep_the_audited_content():
         "Misthalin Mystery",
         "Murder Mystery",
         "Tai Bwo Wannai Trio",
-        "The Ides of Milk",
         "Vampyre Slayer",
         "Rug Merchant",
         "Shantay",
@@ -145,6 +144,11 @@ def test_source_derived_dialogues_keep_the_audited_content():
     ]
     assert milk[0]["speaker"] == "Cassius"
     assert any(node.get("id") == "gAirRb" for node in milk)
+    # The Wiki transcript's "he'll he happy" is corrected from capture 4153 (corrections.json).
+    gillie = data["The Ides of Milk"]["variants"]["starting-off-talking-to-gillie"]
+    assert gillie[1]["options"][2]["steps"][7]["steps"][1]["text"] == (
+        "It would be! I'm sure he'll be happy to share some information with you."
+    )
     assert data["Shantay"]["variants"]["arrested"][0]["npc"].startswith(
         "You'll have to stay in there"
     )
