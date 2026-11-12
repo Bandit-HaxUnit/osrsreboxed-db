@@ -161,8 +161,13 @@ def first_link(value):
 
 
 def number_range(value):
-    match = re.search(r"(\d+)\s*[–-]\s*(\d+)", clean(value))
-    return [int(match.group(1)), int(match.group(2))] if match else None
+    text = clean(value)
+    match = re.search(r"(\d+)\s*[–-]\s*(\d+)", text)
+    if match:
+        return [int(match.group(1)), int(match.group(2))]
+    # A fixed amount is a single number (Konar's Ankou: 50, Nechryael: 110).
+    single = re.fullmatch(r"\d+", text.replace(",", ""))
+    return [int(single.group()), int(single.group())] if single else None
 
 
 def levels(row):

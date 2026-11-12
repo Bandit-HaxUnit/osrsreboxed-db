@@ -23,3 +23,16 @@ def test_slayer_tasks_dump():
     )
     assert all(task["npc_names"] for entry in dump.values() for task in entry["tasks"])
     assert any("locations" in task for task in dump["8623"]["tasks"])
+
+
+def test_fixed_amount_tasks_are_kept():
+    # Konar assigns Ankou (50) and Nechryael (110) as a single amount, not a range.
+    from scripts.slayer.update import number_range
+
+    assert number_range("50") == [50, 50]
+    assert number_range("120-170") == [120, 170]
+    assert number_range("N/A") is None
+    dump = json.loads((ROOT / "docs/slayer-tasks.json").read_text(encoding="utf-8"))
+    konar = {task["slug"]: task for task in dump["8623"]["tasks"]}
+    assert konar["ankou"]["quantity"] == [50, 50]
+    assert konar["nechryael"]["quantity"] == [110, 110]
