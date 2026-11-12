@@ -14,6 +14,7 @@
             "options": [
               {
                 "text": "I would like to enter Port Phasmatys - here's 2 Ectotokens.",
+                "condition": "If the player has at least 2 Ectotokens:",
                 "steps": [
                   {
                     "player": "I would like to enter Port Phasmatys - here's 2 Ectotokens."
@@ -21,7 +22,7 @@
                   {
                     "type": "action",
                     "text": "Player pays 2 ecto-tokens.",
-                    "id": "s_ymV_"
+                    "id": "XeyqNB"
                   },
                   {
                     "type": "end"
@@ -29,12 +30,14 @@
                   {
                     "type": "action",
                     "text": "Player goes through the gate.",
-                    "id": "ckKoYZ"
+                    "id": "4mgRym"
                   }
-                ]
+                ],
+                "id": "hFAul2"
               },
               {
                 "text": "I'm not paying you Ectotokens just to go through a gate.",
+                "condition": "If the player has at least 2 Ectotokens:",
                 "steps": [
                   {
                     "player": "I'm not paying you Ectotokens just to go through a gate."
@@ -45,7 +48,24 @@
                   {
                     "type": "end"
                   }
-                ]
+                ],
+                "id": "dQ6WYp"
+              },
+              {
+                "text": "I don't have that many Ectotokens.",
+                "condition": "If the player has fewer than 2 Ectotokens:",
+                "steps": [
+                  {
+                    "player": "I don't have that many Ectotokens."
+                  },
+                  {
+                    "npc": "In that case, you need to go to the Temple and earn some. Talk to the disciples - they will tell you how."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZBMVXZ"
               },
               {
                 "text": "Where can I get Ectotokens?",
