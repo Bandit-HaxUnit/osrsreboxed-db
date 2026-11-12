@@ -1,7 +1,12 @@
+import hashlib
 import json
+import sys
+import tempfile
 import unittest
+from pathlib import Path
+from unittest import mock
 
-from scripts.items.item_spawns import build_export, parse_pages
+from scripts.items.item_spawns import ROOT, build_export, main, parse_pages
 
 
 def page(extra="", item_id="554", respawn="100"):
@@ -177,6 +182,34 @@ class ItemSpawnExportTests(unittest.TestCase):
         ).encode()
         self.assertEqual(build_export(raw), build_export(raw))
         self.assertEqual(len(build_export(raw)["rows"][0]["page_sha256"]), 64)
+
+
+
+class CommittedSpawnExportTests(unittest.TestCase):
+    def test_committed_export_is_built_from_the_committed_wiki_text(self):
+        # The export records the sha256 of the item page text it was built from. A data update
+        # that replaces the text must regenerate the export too (RSPSApp/osrsreboxed-db#59 didn't).
+        # A Windows checkout may hold the text with CRLF; git stores it with LF.
+        raw = (ROOT / "data/items/items-wiki-page-text.json").read_bytes().replace(b"\r\n", b"\n")
+        export = json.loads((ROOT / "docs/ground-item-spawns.json").read_text(encoding="utf-8"))
+        self.assertEqual(export["input_sha256"], hashlib.sha256(raw).hexdigest())
+
+    def test_main_writes_utf8_whatever_the_platform_encoding(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "pages.json"
+            target = Path(tmp) / "spawns.json"
+            source.write_bytes(
+                json.dumps(
+                    {"Café rune": page("{{ItemSpawnLine|name=Café rune|1,2}}")},
+                    ensure_ascii=False,
+                ).encode("utf-8")
+            )
+            argv = ["item_spawns", "--input", str(source), "--output", str(target)]
+            with mock.patch.object(sys, "argv", argv), mock.patch("builtins.print"):
+                main()
+            text = target.read_bytes().decode("utf-8")
+            self.assertIn("Café rune", text)
+            self.assertNotIn("\r\n", text)
 
 
 if __name__ == "__main__":
