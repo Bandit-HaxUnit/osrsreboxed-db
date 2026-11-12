@@ -10,7 +10,7 @@ from unittest import mock
 from fractions import Fraction
 from pathlib import Path
 
-from scripts.drops.reward_caskets import SOURCE, build_beginner, generate, load_item_ids
+from scripts.drops.reward_caskets import ROOT, SOURCE, build_beginner, generate, load_item_ids
 
 
 class RewardCasketTests(unittest.TestCase):
@@ -133,6 +133,17 @@ class RewardCasketTests(unittest.TestCase):
             table["restrictions"]["unique_minimum_account_age_seconds"], 36000
         )
         self.assertNotIn(30902, [row["item_id"] for row in table["entries"]])
+
+
+class RealItemDatabaseTests(unittest.TestCase):
+    def test_every_reward_resolves_against_the_committed_item_database(self):
+        # The fixture ids above accept any name. The real export resolves names against
+        # docs/items-complete.json, where item 1283 is "Black shortsword" (the Wiki name too).
+        with (ROOT / "docs/items-complete.json").open(encoding="utf-8") as stream:
+            ids = load_item_ids(json.load(stream))
+        table = build_beginner(SOURCE, ids)
+        self.assertEqual(len(table["entries"]), 74)
+        self.assertIn(1283, [row["item_id"] for row in table["entries"]])
 
 
 if __name__ == "__main__":
