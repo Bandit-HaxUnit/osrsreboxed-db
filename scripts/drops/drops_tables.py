@@ -159,6 +159,8 @@ class ResolvedEntry:
     group_access_denominator: int = 0
     group_weight_numerator: int = 0
     group_weight_denominator: int = 0
+    # The row's own `rolls` parameter on the Wiki (1 when it has none).
+    rolls: int = 1
 
 
 @dataclass
@@ -394,6 +396,7 @@ def _resolve_entry(drop: ParsedDrop, items: ItemIdLookup) -> Optional[ResolvedEn
             roll_denominator=roll_denominator,
             subsection=drop.subsection,
             is_nothing=True,
+            rolls=drop.rolls,
         )
 
     if not wikitext.has_known_drop_rate(drop.rarity):
@@ -408,6 +411,7 @@ def _resolve_entry(drop: ParsedDrop, items: ItemIdLookup) -> Optional[ResolvedEn
         name=drop.name,
         quantity=drop.quantity,
         subsection=drop.subsection,
+        rolls=drop.rolls,
         rarity_raw=drop.rarity,
         assumed_rarity=drop.assumed_rarity,
         is_noted=drop.is_noted,
@@ -1036,6 +1040,13 @@ def _pre_roll_json(entry: ResolvedEntry, separate: bool = False) -> Optional[Dic
     return _entry_json(entry, out_of=out_of, pre_roll=True, separate=separate)
 
 
+def _once_per_kill(row: Optional[Dict], entry: ResolvedEntry, spec: DropTableSpec) -> Optional[Dict]:
+    """Flag a pre-roll row that the Wiki rolls once although its table repeats: its own rolls is 1."""
+    if row and spec.rolls > 1 and entry.rolls == 1:
+        row["once_per_kill"] = True
+    return row
+
+
 def _conditional_entry_json(
     entry: ResolvedEntry, out_of: int, group: ConditionalGroup
 ) -> Optional[Dict]:
@@ -1064,7 +1075,7 @@ def build_table_json(spec: DropTableSpec) -> Dict:
         if row:
             entries.append(row)
     for entry in spec.pre_roll:
-        row = _pre_roll_json(entry)
+        row = _once_per_kill(_pre_roll_json(entry), entry, spec)
         if row:
             entries.append(row)
     for group in spec.conditional_groups:
@@ -1102,7 +1113,7 @@ def build_table_json(spec: DropTableSpec) -> Dict:
         for roll in rolls:
             for entry in roll.entries:
                 row = (
-                    _pre_roll_json(entry, separate=True)
+                    _once_per_kill(_pre_roll_json(entry, separate=True), entry, spec)
                     if is_pre_roll
                     else _entry_json(
                         entry,
