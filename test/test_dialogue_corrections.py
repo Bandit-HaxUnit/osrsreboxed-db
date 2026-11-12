@@ -813,3 +813,82 @@ def test_historian_minas_reports_follow_the_captures():
     for step_id in ("S57fCr", "QqHvp-", "oGD9-i", "GpIr8R", "RaNFxc", "EZzFyt", "3q8-VQ", "dHMXRQ",
                     "Yq_0tv", "4Ij9Rt", "SJoct1", "0sSqOl", "9_Sehd", "IqnOid", "jeha67"):
         assert '"unavailable"' not in json.dumps(find(exported["steps"], step_id))
+
+
+def test_ghosts_ahoy_follows_the_revision_242_capture():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    bindings = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
+    )
+    quest = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Ghosts Ahoy"
+    ]
+    wiki = json.loads((config.DATA_PATH / "dialogues/wiki-pages.json").read_text())
+    structure = bindings["Ghosts Ahoy"]["structure"]
+    structured = update.apply_structure_annotations(
+        "Ghosts Ahoy", quest["wikitext"], structure, quest["revision"]
+    )
+    raw = apply_capture_lines("Ghosts Ahoy", structured, sources["Ghosts Ahoy"], quest["revision"])
+    assert raw == apply_capture_lines(
+        "Ghosts Ahoy", structured, sources["Ghosts Ahoy"], quest["revision"]
+    )
+    # Robin's coin checks move up a level so they follow either opening (with or without the bow).
+    assert all(fix["depth"] >= 1 for fix in structure["lines"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(
+            "Ghosts Ahoy", "\n" + structured, sources["Ghosts Ahoy"], quest["revision"]
+        )
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(
+            "Ghosts Ahoy", structured, sources["Ghosts Ahoy"], quest["revision"] + 1
+        )
+    for name in ("Ghost guard", "Old crone"):
+        page = wiki["Transcript:" + name]
+        assert sources[name]["revision"] == page["revision"]
+        apply_capture_lines(name, page["wikitext"], sources[name], page["revision"])
+
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = exported["Ghosts Ahoy"]["variants"]
+    # Velorina's vision (capture tick 265) and her completion line (1968).
+    vision = json.dumps(variants["returning-to-velorina-after-talking-to-necrovarus"])
+    assert "that there looms castles to the west" in vision
+    assert "[player name]- I sensed" in variants["talking-to-velorina-2"][0]["text"]
+    # The crone's first materials speech asks for the translation before her menu (452-453).
+    milky = next(
+        step for step in variants["talking-to-the-old-crone"] if step.get("id") == "pnTKEw"
+    )["steps"]
+    menu = next(index for index, step in enumerate(milky) if step.get("type") == "choice")
+    assert milky[menu - 1]["text"].startswith("I cannot read the strange letters")
+    # Robin with the bow asks for the autograph first (1227-1230); the coin checks follow either way.
+    robin = variants["something-to-translate-the-book-of-haricanto-talking-to-robin"]
+    assert robin[0]["text"] == "If the player has an oak longbow in their inventory:"
+    assert robin[0]["steps"][0]["player"] == "Would you sign this oak longbow for me?"
+    assert [step.get("text") for step in robin[2:4]] == [
+        "If the player does not have 25 coins:",
+        "If the player has at least 25 coins:",
+    ]
+    loses = next(
+        step
+        for step in robin[3]["steps"][0]["options"][0]["steps"]
+        if step.get("text") == "If the player loses:"
+    )["steps"]
+    owed_nothing = loses[1]
+    assert owed_nothing["text"] == "If Robin does not owe the player any coins:"
+    assert owed_nothing["steps"][0]["player"] == "Well done, you beat me."
+    assert [option["text"] for option in owed_nothing["steps"][2]["options"]][-1] == (
+        "No, that doesn't sound fun."
+    )
+    # A villager's refusal (1538).
+    villager = json.dumps(variants["robes-of-necrovarus-talking-to-the-ghost-villagers"])
+    assert "My answer is no." in villager
+    # Without 2 Ectotokens the guard offers only the two captured options (106-108).
+    guard = exported["Ghost guard"]["variants"]["standard-dialogue-before-or-during-ghosts-ahoy"]
+    options = guard[0]["steps"][1]["options"]
+    poor = [o["text"] for o in options if o.get("condition") != "If the player has at least 2 Ectotokens:"]
+    assert poor == ["I don't have that many Ectotokens.", "Where can I get Ectotokens?"]
+    # The farmers' thanks names Malcolm (349).
+    crone = json.dumps(exported["Old crone"]["variants"])
+    assert "Alice and Malcolm can communicate again." in crone
+    assert "Alice and her husband" not in crone
