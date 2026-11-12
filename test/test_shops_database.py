@@ -868,12 +868,27 @@ def test_storeline_sell_values_preserve_explicit_text_and_currency():
 {{StoreLine|name=Raw karambwan|stock=10|sell=N/A|currency=coins}}
 {{StoreLine|name=Raw karambwan|stock=10}}
 {{StoreLine|name=Raw karambwan|stock=10|sell={{Coins|10}}}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=   }}
 {{StoreTableBottom}}"""
     rows = shops_items.parse_shop_items("Test shop", wikitext)
-    assert [row.get("sell") for row in rows] == ["0", "N/A", None, "{{Coins|10}}"], (
-        "StoreLine sell values must be retained"
-    )
-    assert [row["currency"] for row in rows] == ["Tokkul", "coins", "Tokkul", "Tokkul"]
+    assert [row.get("sell") for row in rows] == [
+        "0",
+        "N/A",
+        None,
+        "{{Coins|10}}",
+        None,
+        None,
+    ], "StoreLine sell values must be retained"
+    assert [row["currency"] for row in rows] == [
+        "Tokkul",
+        "coins",
+        "Tokkul",
+        "Tokkul",
+        "Tokkul",
+        "Tokkul",
+    ]
+    assert all("sell" not in rows[i] for i in (2, 4, 5))
 
 
 def test_petes_vessel_export_retains_wiki_sell_price():
@@ -882,9 +897,13 @@ def test_petes_vessel_export_retains_wiki_sell_price():
     ) as f:
         shops = json.load(f)
     row = next(
-        item for item in shops["Petrified Pete's Ore Shop"]["items"] if item["id"] == 21539
+        item
+        for item in shops["Petrified Pete's Ore Shop"]["items"]
+        if item["id"] == 21539
     )
-    assert "sell" in row, "Pete's exported vessel row must retain its StoreLine sell value"
+    assert (
+        "sell" in row
+    ), "Pete's exported vessel row must retain its StoreLine sell value"
     assert row["sell"] == "10000"
 
 
@@ -897,19 +916,57 @@ def test_process_exports_raw_sell_and_row_currency(tmp_path, monkeypatch):
     package.mkdir()
     rows = [
         {
-            "type": "item", "id": 1, "stock": 1, "restock_time": None,
-            "currency": "Tokkul", "sell": "0",
+            "type": "item",
+            "id": 1,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "Tokkul",
+            "sell": "0",
         },
         {
-            "type": "item", "id": 2, "stock": 1, "restock_time": None,
-            "currency": "coins", "sell": "N/A",
+            "type": "item",
+            "id": 2,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "coins",
+            "sell": "N/A",
         },
-        {"type": "item", "id": 3, "stock": 1, "restock_time": None, "currency": "Tokkul"},
         {
-            "type": "item", "id": 4, "stock": 1, "restock_time": None,
-            "currency": "Tokkul", "sell": "{{Coins|10}}",
+            "type": "item",
+            "id": 3,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "Tokkul",
+        },
+        {
+            "type": "item",
+            "id": 4,
+            "stock": 1,
+            "restock_time": None,
+            "currency": "Tokkul",
+            "sell": "{{Coins|10}}",
         },
     ]
+    rows.extend(
+        [
+            {
+                "type": "item",
+                "id": 5,
+                "stock": 1,
+                "restock_time": None,
+                "currency": "Tokkul",
+                "sell": "",
+            },
+            {
+                "type": "item",
+                "id": 6,
+                "stock": 1,
+                "restock_time": None,
+                "currency": "Tokkul",
+                "sell": "   ",
+            },
+        ]
+    )
     (data / "shops-raw.json").write_text(
         json.dumps({"Test shop": {"shop_info": {"currency": "Tokkul"}, "items": rows}}),
         encoding="utf-8",
@@ -920,12 +977,20 @@ def test_process_exports_raw_sell_and_row_currency(tmp_path, monkeypatch):
     monkeypatch.setattr(shop_owners, "load", lambda: {})
     monkeypatch.setattr(shop_owners, "load_npc_options", lambda: {})
     shops_items.process()
-    result = json.loads((docs / "shops-items-by-shop.json").read_text(encoding="utf-8"))[
-        "Test shop"
-    ]["items"]
-    assert [item.get("sell") for item in result] == ["0", "N/A", None, "{{Coins|10}}"]
+    result = json.loads(
+        (docs / "shops-items-by-shop.json").read_text(encoding="utf-8")
+    )["Test shop"]["items"]
+    assert [item.get("sell") for item in result] == [
+        "0",
+        "N/A",
+        None,
+        "{{Coins|10}}",
+        None,
+        None,
+    ]
     assert result[1]["currency"] == "coins"
-    assert all("currency" not in result[i] for i in (0, 2, 3))
+    assert all("currency" not in result[i] for i in (0, 2, 3, 4, 5))
+    assert all("sell" not in result[i] for i in (2, 4, 5))
     assert (package / "docs" / "shops-items-by-shop.json").read_bytes() == (
         docs / "shops-items-by-shop.json"
     ).read_bytes()
