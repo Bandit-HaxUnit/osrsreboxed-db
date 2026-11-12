@@ -595,7 +595,7 @@
   },
   "Ghosts Ahoy": {
     "revision": 15297814,
-    "reason": "Ghosts Ahoy as the revision 242 capture sends it: Velorina's 'there looms castles' and no space before her '- I sensed', the crone's translation page in her first materials speech, Robin's sign request when the player has the oak longbow, the shorter loss lines and 'No, that doesn't sound fun.' while Robin owes nothing, and the villager refusal 'My answer is no.'.",
+    "reason": "Ghosts Ahoy as the revision 242 capture sends it: Velorina's 'there looms castles' and no space before her '- I sensed', the crone's translation page in her first materials speech, Robin's sign request when the player has the oak longbow, the shorter loss lines and 'No, that doesn't sound fun.' while Robin owes nothing, the villager refusal 'My answer is no.', and Robin's rematch options anchored to the game and the rules they repeat.",
     "sources": [
       "RSProx capture 20261112T092603-5ab63b4 (revision 242, SHA-256 37e5c260c1eb3e3d05e12ab303c84ad2a0036f04af95b39df0d70f9ad1cbe6c9)",
       "Transcript:Ghosts Ahoy revision 15297814 as cached; all other lines are parsed unchanged"
@@ -632,14 +632,44 @@
           "***** '''Robin:''' How about another game?",
           "***** {{tselect|Select an option}}",
           "***** {{topt|Yes, I'll give you a game.}}",
-          "****** {{tact|above}}",
+          "****** {{tact|above|runedraw-game}}",
           "***** {{topt|How do you play Runedraw?}}",
-          "****** {{tact|above}}",
+          "****** {{tact|above|runedraw-rules}}",
           "***** {{topt|No, that doesn't sound fun.}}",
           "****** '''Player:''' No, that doesn't sound fun.",
           "****** {{tact|end}}",
           "**** {{tcond|If Robin owes the player coins:}}"
         ]
+      },
+      {
+        "line": 504,
+        "sha256": "c9dd4902685e0bd9d7e796088e24b695d9408a8943ca192895d8254fd0775254",
+        "text": "** {{anchor|runedraw-game}}{{topt|Yes, I'll give you a game.}}"
+      },
+      {
+        "line": 515,
+        "sha256": "5db6ec9382af4233a4dc4f5a5dba847ef8001dd2d8b71e632c1962c8eea7bc0d",
+        "text": "***** {{tact|above|runedraw-game}}"
+      },
+      {
+        "line": 517,
+        "sha256": "5db6ec9382af4233a4dc4f5a5dba847ef8001dd2d8b71e632c1962c8eea7bc0d",
+        "text": "***** {{tact|above|runedraw-rules}}"
+      },
+      {
+        "line": 527,
+        "sha256": "d64a41111e877d2d80654c8155c182e56b95879f59d1f6e8a75deccb26604634",
+        "text": "****** {{tact|above|runedraw-game}}"
+      },
+      {
+        "line": 529,
+        "sha256": "d64a41111e877d2d80654c8155c182e56b95879f59d1f6e8a75deccb26604634",
+        "text": "****** {{tact|above|runedraw-rules}}"
+      },
+      {
+        "line": 540,
+        "sha256": "306e9568ff743f46a4adc3123ba3148f935044f4e07a5b67754bc89cf8b73861",
+        "text": "** {{anchor|runedraw-rules}}{{topt|How do you play Runedraw?}}"
       },
       {
         "line": 771,

@@ -880,6 +880,44 @@ def test_ghosts_ahoy_follows_the_revision_242_capture():
     assert [option["text"] for option in owed_nothing["steps"][2]["options"]][-1] == (
         "No, that doesn't sound fun."
     )
+    # Robin's rematch options name what they repeat: every "Yes, I'll give you a game." calls the
+    # game (its open and results), every "How do you play Runedraw?" the rules (ticks 1269-1390).
+    branches = exported["Ghosts Ahoy"]["branches"]
+
+    def calls(steps):
+        for step in steps:
+            if step.get("type") == "jump":
+                yield from (call["branch"] for call in step.get("steps", []) if call.get("type") == "call")
+            yield from calls(step.get("steps", []))
+            for option in step.get("options", []):
+                yield from ((option["text"], branch) for branch in calls(option.get("steps", [])))
+
+    def option_calls(steps, text):
+        found = []
+        for step in steps:
+            for option in step.get("options", []):
+                if option["text"] == text:
+                    found.extend(
+                        call["branch"]
+                        for jump in option.get("steps", [])
+                        if jump.get("type") == "jump"
+                        for call in jump.get("steps", [])
+                    )
+                found.extend(option_calls(option.get("steps", []), text))
+            found.extend(option_calls(step.get("steps", []), text))
+        return found
+
+    games = option_calls(robin, "Yes, I'll give you a game.")
+    rules = option_calls(robin, "How do you play Runedraw?")
+    assert len(games) == 3 and len(set(games)) == 1
+    assert len(rules) == 3 and len(set(rules)) == 1
+    game = branches[games[0]]
+    assert game[0]["player"] == "Yes, I'll give you a game."
+    assert game[1]["action"] == "open_interface"
+    assert [step.get("text") for step in game[2:]] == [
+        "If the player wins:", "If the player loses:", "If the player wins 100 coins:",
+    ]
+    assert branches[rules[0]][0]["player"] == "How do you play Runedraw?"
     # A villager's refusal (1538).
     villager = json.dumps(variants["robes-of-necrovarus-talking-to-the-ghost-villagers"])
     assert "My answer is no." in villager
