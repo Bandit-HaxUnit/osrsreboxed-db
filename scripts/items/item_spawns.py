@@ -276,9 +276,13 @@ def main():
     args = parser.parse_args()
     result = build_export(args.input.read_bytes())
     args.output.parent.mkdir(parents=True, exist_ok=True)
+    # UTF-8 and LF on every platform: the export holds non-ASCII text, and a default Windows
+    # write is cp1252, which UTF-8 readers then reject.
     args.output.write_text(
         json.dumps(result, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-        + "\n"
+        + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     print(
         f"Exported {len(result['rows'])} spawn arguments from {result['input_sha256']}"
