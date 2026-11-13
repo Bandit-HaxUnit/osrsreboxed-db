@@ -150,10 +150,11 @@ def test_captured_ides_line_replaces_the_wiki_typo():
     assert "he'll he happy" not in text
 
 
-def test_prince_ali_rescue_plays_the_revision_242_capture():
-    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
+def test_prince_ali_rescue_keeps_the_captured_paste_line_and_the_wiki_flow():
+    record = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
         "Prince Ali Rescue"
-    ]["variants"]
+    ]
+    variants = record["variants"]
     aggie = json.dumps(variants["preparations-for-rescue-talking-to-aggie"])
     assert (
         "Yes, I can. I see you already have the ingredients - the water, flour,"
@@ -161,43 +162,37 @@ def test_prince_ali_rescue_plays_the_revision_242_capture():
     ) in aggie
     assert "Yes I can. I see you already have the ingredients." not in aggie
 
+    # The Wiki's first visit to Leela always explains the plan; a visit with every
+    # item is the separate "after having all the required items" variant.
     leela = variants["starting-out-talking-to-leela"]
-    assert [step.get("player") or step.get("text") for step in leela[:2]] == [
+    assert [step.get("player") or step.get("text") for step in leela[:3]] == [
         "You must be Leela. Your father sent me to help rescue Prince Ali.",
         "Yes, he sent word ahead that you'd be coming. Are you aware of the plan?",
+        "I need to obtain a copy of the key to the Prince's cell, create a disguise"
+        " for him that makes him look like Keli and then break him out of the jail.",
     ]
-    prepared = leela[2]
-    assert prepared["type"] == "condition"
-    assert prepared["text"] == "If the player has the disguise, the key and a rope:"
-    assert [step.get("player") or step.get("text") for step in prepared["steps"]] == [
-        "Yes. In fact, I already have everything we need.",
-        "Good work. Now, before breaking the Prince out, you'll need to find a way"
-        " to deal with his personal guard. He's talkative, so try to find a"
-        " weakness. Remember, we don't want any unneeded violence.",
-        "Alright. I'll go have a chat to this guard.",
-        None,
+    assert "I already have everything we need." not in json.dumps(leela)
+    prepared = variants[
+        "preparations-for-rescue-talking-to-leela-after-having-all-the-required-items"
     ]
-    assert prepared["steps"][-1] == {"type": "end"}
-    # The unprepared first visit still explains the plan.
-    assert leela[3]["player"].startswith("I need to obtain a copy of the key")
+    assert [step.get("player") or step.get("text") for step in prepared[:2]] == [
+        "You're back. Do you have everything needed yet?",
+        "I do indeed.",
+    ]
 
-    # Live, Joe takes the second and third beers straight after the first; the
-    # "Not too drunk?" question leads only into his one-beer reply.
-    record = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
-        "Prince Ali Rescue"
-    ]
+    # The Wiki asks "Not too drunk?" after every first beer, before branching on
+    # the beers still held.
     for steps in [
-        record["variants"]["executing-the-rescue-talking-to-joe"][2]["options"][0][
-            "steps"
-        ],
+        variants["executing-the-rescue-talking-to-joe"][2]["options"][0]["steps"],
         record["branches"]["jump-c2dcd1ef49d2a376"],
     ]:
         assert steps[4]["text"] == "That was perfect! I can't thank you enough."
-        fewer, more = steps[5], steps[6]
+        assert steps[5] == {"player": "How are you? Still okay? Not too drunk?"}
+        fewer, more = steps[6], steps[7]
         assert fewer["text"] == "If the player has less than three beers:"
-        assert fewer["steps"][0] == {
-            "player": "How are you? Still okay? Not too drunk?"
-        }
+        assert fewer["steps"][0]["text"].startswith(
+            "No, I don't get drunk from only one drink."
+        )
         assert more["text"] == "If the player has two more beers:"
         assert more["steps"][0] == {
             "player": "Would you care for another beer, my friend?"
