@@ -332,7 +332,6 @@ def parse_tabber_structure(wikitext: str) -> dict:
     """
     tabber_sections = {}
     sections = []
-    store_head = re.compile(r"\{\{StoreTableHead\|[^}]+\}\}", re.I)
 
     # Check for tabber structure
     if "<tabber>" not in wikitext.lower() and "{{tabber" not in wikitext.lower():
@@ -350,7 +349,7 @@ def parse_tabber_structure(wikitext: str) -> dict:
             # Experience tables and other non-shop tabs must not hide a shop
             # elsewhere on the page. fetch() already handles that page normally
             # when no StoreTableHead-bearing tab is returned.
-            if store_head.search(content):
+            if find_store_table_head(content):
                 sections.append((current_tab, content))
 
     for line in wikitext.split("\n"):
@@ -416,18 +415,9 @@ def parse_tabber_structure(wikitext: str) -> dict:
     last_section = {name: index for index, (name, _) in enumerate(sections)}
     for index, (name, content) in enumerate(sections):
         if index != last_section[name]:
-            head = re.search(r"\{\{StoreTableHead\|([^}]+)\}\}", content, re.I)
-            qualified_name = ""
-            if head:
-                for parameter in head.group(1).split("|"):
-                    key, separator, value = parameter.partition("=")
-                    if separator and key.strip().lower() == "namenotes":
-                        qualified_name = value.strip()
-                        if qualified_name.startswith("(") and qualified_name.endswith(
-                            ")"
-                        ):
-                            qualified_name = qualified_name[1:-1].strip()
-                        break
+            qualified_name = store_table_head_params(content).get("namenotes", "")
+            if qualified_name.startswith("(") and qualified_name.endswith(")"):
+                qualified_name = qualified_name[1:-1].strip()
             if not qualified_name or qualified_name in last_section:
                 raise ValueError(
                     f"Repeated shop tab {name!r} needs distinct StoreTableHead namenotes"
@@ -502,6 +492,44 @@ def parse_shop_removal(wikitext: str):
     return removed
 
 
+_STORE_TABLE_HEAD_OPEN = re.compile(r"\{\{StoreTableHead\|", re.IGNORECASE)
+
+
+def find_store_table_head(text: str):
+    """The first whole ``{{StoreTableHead|...}}`` in ``text``, nested templates included.
+
+    A head can hold templates of its own (Worm Tongue's Wares:
+    ``column1={{plinkp|Coins}}/{{plinkp|Termites}}``). Stopping at the first ``}}`` cut the head
+    short, so its leftover ``{{plinkp|Termites}}`` was read as a stock row and any parameter after
+    the nested template was lost.
+
+    :return: ``(start, end, params)`` with ``end`` just past the closing braces, or None
+    """
+    match = _STORE_TABLE_HEAD_OPEN.search(text)
+    if not match:
+        return None
+    depth = 2
+    i = match.end()
+    while i < len(text):
+        if text.startswith("{{", i):
+            depth += 2
+            i += 2
+        elif text.startswith("}}", i):
+            depth -= 2
+            i += 2
+            if depth == 0:
+                return match.start(), i, text[match.end() : i - 2]
+        else:
+            i += 1
+    return None
+
+
+def store_table_head_params(text: str) -> dict:
+    """The first StoreTableHead's parameters (lower-cased keys), split outside nested templates."""
+    head = find_store_table_head(text)
+    return parse_storeline_params(head[2]) if head else {}
+
+
 def parse_shop_info(wikitext: str) -> dict:
     """Parse shop information from StoreTableHead template.
 
@@ -523,29 +551,16 @@ def parse_shop_info(wikitext: str) -> dict:
         specialty = linked.group(1) if linked else specialty
         shop_info["general_store"] = specialty.strip().casefold() == "general store"
 
-    # Look for StoreTableHead template
-    pattern = r"\{\{StoreTableHead\|([^}]+)\}\}"
-    matches = re.findall(pattern, wikitext, re.IGNORECASE)
-
-    if matches:
-        params_str = matches[0]
-
-        # Parse parameters
-        parts = params_str.split("|")
-        for part in parts:
-            if "=" in part:
-                key, value = part.split("=", 1)
-                key = key.strip().lower()
-                value = value.strip()
-
-                if key == "sellmultiplier" and value.isdigit():
-                    shop_info["sells_at"] = int(value)
-                elif key == "buymultiplier" and value.isdigit():
-                    shop_info["buys_at"] = int(value)
-                elif key == "delta" and value.isdigit():
-                    shop_info["change_per"] = int(value)
-                elif key == "currency":
-                    shop_info["currency"] = value
+    # The StoreTableHead's parameters, read whole (find_store_table_head).
+    for key, value in store_table_head_params(wikitext).items():
+        if key == "sellmultiplier" and value.isdigit():
+            shop_info["sells_at"] = int(value)
+        elif key == "buymultiplier" and value.isdigit():
+            shop_info["buys_at"] = int(value)
+        elif key == "delta" and value.isdigit():
+            shop_info["change_per"] = int(value)
+        elif key == "currency":
+            shop_info["currency"] = value
 
     return shop_info
 
@@ -560,15 +575,15 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
     items = []
 
     # Extract the section between StoreTableHead and StoreTableBottom
-    head_match = re.search(r"\{\{StoreTableHead\|[^}]+\}\}", wikitext, re.IGNORECASE)
+    head = find_store_table_head(wikitext)
     bottom_match = re.search(r"\{\{StoreTableBottom\}\}", wikitext, re.IGNORECASE)
 
-    if not head_match or not bottom_match:
+    if not head or not bottom_match:
         logger.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
         logger.warning("No StoreTableHead or StoreTableBottom found in %s", shop_name)
         return items
 
-    section = wikitext[head_match.end() : bottom_match.start()]
+    section = wikitext[head[1] : bottom_match.start()]
 
     # Find all templates in this section robustly (including nested/multiline)
     # This regex matches {{TemplateName|...}} blocks, including nested braces
