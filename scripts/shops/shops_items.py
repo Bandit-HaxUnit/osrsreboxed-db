@@ -737,6 +737,11 @@ def parse_storeline_params(params_str: str) -> dict:
         if char == "{":
             brace_count += 1
         elif char == "}":
+            if brace_count == 0:
+                # A lone "}" closes nothing: MediaWiki shows it as text and still splits on the next "|". It is a
+                # wiki typo (Worm Tongue's Wares: "Buy=N/A}|column1=..."), so it is dropped from the value rather
+                # than letting the depth go negative, which glued every later parameter onto this one.
+                continue
             brace_count -= 1
         elif char == "|" and brace_count == 0:
             parts.append(current_part.strip())

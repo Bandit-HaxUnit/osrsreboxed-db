@@ -1020,3 +1020,19 @@ def test_process_exports_raw_sell_and_row_currency(tmp_path, monkeypatch):
     assert (package / "docs" / "shops-items-by-shop.json").read_bytes() == (
         docs / "shops-items-by-shop.json"
     ).read_bytes()
+
+
+def test_a_stray_closing_brace_does_not_swallow_the_next_parameter():
+    """Worm Tongue's Wares writes "Buy=N/A}|column1=..." (one "}" too many). MediaWiki still splits on the "|", so the
+    row buys nothing like its neighbours and column1 is its own parameter; the stray brace is dropped."""
+    params = shops_items.parse_storeline_params(
+        "Name=Colossal wyrm teleport scroll|Stock=inf|Sell=40|Buy=N/A}"
+        "|column1={{Coins|{{GEP|Colossal wyrm teleport scroll|1}}/40 round 0}}"
+    )
+    assert params["buy"] == "N/A"
+    assert params["column1"] == "{{Coins|{{GEP|Colossal wyrm teleport scroll|1}}/40 round 0}}"
+    assert params["sell"] == "40"
+    with open(Path(config.DOCS_PATH / "shops-items-by-shop.json"), encoding="utf-8") as f:
+        shops = json.load(f)
+    buys = [row["buy"] for row in shops["Worm Tongue's Wares"]["items"] if "buy" in row]
+    assert buys and set(buys) == {"N/A"}, "every StoreLine buys nothing"
