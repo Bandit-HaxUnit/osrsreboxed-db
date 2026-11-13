@@ -1041,7 +1041,7 @@ def _pre_roll_json(entry: ResolvedEntry, separate: bool = False) -> Optional[Dic
 
 
 def _once_per_kill(row: Optional[Dict], entry: ResolvedEntry, spec: DropTableSpec) -> Optional[Dict]:
-    """Flag a pre-roll row that the Wiki rolls once although its table repeats: its own rolls is 1."""
+    """Flag a pre-roll or independent row that the Wiki rolls once although its table repeats: its own rolls is 1."""
     if row and spec.rolls > 1 and entry.rolls == 1:
         row["once_per_kill"] = True
     return row
@@ -1115,10 +1115,14 @@ def build_table_json(spec: DropTableSpec) -> Dict:
                 row = (
                     _once_per_kill(_pre_roll_json(entry, separate=True), entry, spec)
                     if is_pre_roll
-                    else _entry_json(
+                    else _once_per_kill(
+                        _entry_json(
+                            entry,
+                            out_of=entry.out_of or roll.access_denominator,
+                            separate=True,
+                        ),
                         entry,
-                        out_of=entry.out_of or roll.access_denominator,
-                        separate=True,
+                        spec,
                     )
                 )
                 if row:
