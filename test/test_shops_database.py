@@ -994,3 +994,34 @@ def test_process_exports_raw_sell_and_row_currency(tmp_path, monkeypatch):
     assert (package / "docs" / "shops-items-by-shop.json").read_bytes() == (
         docs / "shops-items-by-shop.json"
     ).read_bytes()
+
+
+def test_a_store_table_head_with_nested_templates_is_read_whole():
+    """Worm Tongue's Wares' head holds "{{plinkp|Coins}}/{{plinkp|Termites}}". Stopping at its first "}}" left
+    "{{plinkp|Termites}}" in the stock section, read as a Termites row, and lost any parameter after it."""
+    page = (
+        "{{StoreTableHead|hidebuy=y|currency=Termites|column1={{plinkp|Coins}}/{{plinkp|Termites}}|buymultiplier=40}}\n"
+        "{{StoreLine|Name=Amylase pack|Stock=inf|Sell=100}}\n"
+        "{{StoreTableBottom}}"
+    )
+    start, end, params = shops_items.find_store_table_head(page)
+    assert page[start:end].endswith("{{plinkp|Termites}}|buymultiplier=40}}")
+    assert params.endswith("|buymultiplier=40")
+    info = shops_items.parse_shop_info(page)
+    assert info["currency"] == "Termites"
+    assert info["buys_at"] == 40, "a parameter after a nested template still counts"
+
+
+def test_no_exported_shop_row_is_a_stray_template():
+    """Every exported row is a StoreLine: a row with no stock, no restock and no sell came from a template the head
+    parse left behind (Termites, Tokkul, Coins, tickets, Marks of Grace)."""
+    with open(Path(config.DOCS_PATH / "shops-items-by-shop.json"), encoding="utf-8") as f:
+        shops = json.load(f)
+    empty = [
+        (name, row["id"])
+        for name, shop in shops.items()
+        for row in shop["items"]
+        if row.get("stock") is None and row.get("restock_time") is None and "sell" not in row
+    ]
+    assert empty == []
+    assert 30038 not in [row["id"] for row in shops["Worm Tongue's Wares"]["items"]], "no Termites row"
