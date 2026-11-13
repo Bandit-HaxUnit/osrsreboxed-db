@@ -652,6 +652,13 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                         if item_data.get("sell", "").strip()
                         else {}
                     ),
+                    # "N/A" on every row (with hidebuy) is how the wiki marks a shop that
+                    # buys nothing (Farming Supplies, the inns); kept raw, like sell.
+                    **(
+                        {"buy": item_data["buy"]}
+                        if item_data.get("buy", "").strip()
+                        else {}
+                    ),
                 }
                 items.append(item_info)
             else:
@@ -730,6 +737,11 @@ def parse_storeline_params(params_str: str) -> dict:
         if char == "{":
             brace_count += 1
         elif char == "}":
+            if brace_count == 0:
+                # A lone "}" closes nothing: MediaWiki shows it as text and still splits on the next "|". It is a
+                # wiki typo (Worm Tongue's Wares: "Buy=N/A}|column1=..."), so it is dropped from the value rather
+                # than letting the depth go negative, which glued every later parameter onto this one.
+                continue
             brace_count -= 1
         elif char == "|" and brace_count == 0:
             parts.append(current_part.strip())
@@ -838,6 +850,7 @@ def process() -> None:
                 "stock": item.get("stock"),
                 "restock_time": item.get("restock_time"),
                 **({"sell": item["sell"]} if item.get("sell", "").strip() else {}),
+                **({"buy": item["buy"]} if item.get("buy", "").strip() else {}),
                 **(
                     {"currency": item["currency"]}
                     if item.get("currency") != shop_currency
