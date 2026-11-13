@@ -1004,3 +1004,76 @@ def test_wanted_follows_the_revision_242_capture():
         assert live in text, live
     for wiki in ("\u2013 not 'Boss'", "deputized", "Well old bean, we will", "object that as in", "all-clear, [player name]", "way \u2013 and Solus"):
         assert wiki not in text, wiki
+
+
+def test_slug_menace_follows_the_revision_242_capture():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    quest_pages = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())
+    npc_pages = json.loads((config.DATA_PATH / "dialogues/wiki-pages.json").read_text())
+    for name, pages in (
+        ("The Slug Menace", quest_pages),
+        ("Witchaven villager", npc_pages),
+        ("Sir Tiffy Cashien", npc_pages),
+    ):
+        page = pages[f"Transcript:{name}"]
+        assert sources[name]["revision"] == page["revision"]
+        raw = apply_capture_lines(name, page["wikitext"], sources[name], page["revision"])
+        assert raw == apply_capture_lines(name, page["wikitext"], sources[name], page["revision"])
+        with pytest.raises(ValueError, match="Stale dialogue capture source"):
+            apply_capture_lines(name, "\n" + page["wikitext"], sources[name], page["revision"])
+
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = exported["The Slug Menace"]["variants"]
+    # After the quest starts Tiffy offers his own menu, not the start prompt again (tick 241).
+    start = variants["starting-off-talking-to-sir-tiffy-cashien-to-start-the-quest"]
+    yes = start[2]["options"][0]["steps"][-1]["options"][0]
+    assert yes["steps"][-2]["text"] == "Now, is there anything else I can do for you?"
+    assert [o["text"] for o in yes["steps"][-1]["options"]] == [
+        "Can you explain the Gaze of Saradomin to me?", "Can I buy some armour?",
+        "Can I switch respawns, please?", "Goodbye.",
+    ]
+    assert "Nonsense, [old boy/my gal]," in json.dumps(yes["steps"])
+    # "Something else." reaches Tiffy's standard menu (tick 271).
+    started = variants["starting-off-talking-to-sir-tiffy-cashien-after-starting-the-quest"]
+    other = started[2]["options"][1]
+    assert other["text"] == "Something else."
+    assert [o["text"] for o in other["steps"][0]["options"]] == [
+        "Do you have any jobs for me yet?", "Can you explain the Gaze of Saradomin to me?",
+        "Can I buy some armour?", "Can I switch respawns please?", "Goodbye.",
+    ]
+    # Sections the Wiki lacks.
+    assert variants["witchaven-savant-asking-to-scan-the-mayor"][-1]["player"] == "Sure thing, one moment."
+    assert variants["witchaven-scanning-the-mayor"][-1]["text"] == "Savant Out."
+    assert variants["witchaven-contacting-the-commorb-while-investigating-witchaven"][0]["player"] == (
+        "So, Savant, what do you think?"
+    )
+    assert variants["the-shrine-picking-up-the-dead-sea-slug"][1]["text"] == (
+        "I've detected a sea slug on you. Is everything okay?"
+    )
+    assert variants["the-pages-mayor-hobb-leaving-the-church"] == [{
+        "type": "line", "speaker": "Mayor Hobb", "text": "Welcome to the family, Brother Maledict.",
+        "presentation": "overhead",
+    }]
+    assert variants["witchaven-talking-to-jeb-before-holgart-mentions-the-boat"][0]["text"] == "Hello there."
+    # Jorral goes straight to the translation (tick 2099).
+    assert variants["the-pages-talking-to-jorral"][0] == {"player": "Excuse me?"}
+    # The glyph question plays before the transcript is added (tick 1854).
+    scan = json.dumps(variants["the-shrine-scanning-commorb-near-the-door"])
+    assert scan.index("So how am I supposed to show him the glyphs?") < scan.index("If the player has no inventory space")
+    assert variants["the-pages-opening-maledict-s-desk"][0]["text"] == (
+        "You open the locked drawer and find a page of Maledict's holy book."
+    )
+    assert variants["crafting-the-runes-enchanting-the-water-rune"][0]["text"] == (
+        "You manage to empower the required water rune."
+    )
+    hobb = next(s for s in variants["witchaven-talking-to-mayor-hobb-2"] if s.get("type") == "choice")
+    fish = next(o for o in hobb["options"] if o["text"] == "I'm here to fish.")
+    assert fish["steps"][0] == {"player": "I'm here to fish."}
+    villager = exported["Witchaven villager"]["variants"]
+    normal = json.dumps(villager["pre-quest-dialogue"])
+    possessed = json.dumps(villager["post-quest-dialogue"])
+    assert "Hoorah, me boys, we're homeward bound." in normal and "pre-occupied" in normal
+    assert "What is happening to the people in this town?" in normal
+    assert "Can you see it?" in possessed and "She is close now... so close" in possessed
