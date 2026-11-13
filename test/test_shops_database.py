@@ -462,7 +462,7 @@ def test_by_shop_items_carry_no_derivable_fields():
     for shop_name, shop in by_shop.items():
         assert None not in shop["shop_info"].values(), shop_name
         for item in shop["items"]:
-            assert set(item) <= {"id", "stock", "restock_time", "currency", "sell"}, shop_name
+            assert set(item) <= {"id", "stock", "restock_time", "currency", "sell", "buy"}, shop_name
             # currency is an override, so it must never restate the shop's own
             assert item.get("currency") != shop["shop_info"].get("currency"), shop_name
 
@@ -668,7 +668,7 @@ def test_death_sells_escape_crystals_from_his_shop_option():
     with open(config.DOCS_PATH / "shops-items-by-shop.json", encoding="utf-8") as f:
         shops = json.load(f)
     death = shops["Death (shop)"]
-    assert death["items"] == [{"id": 22517, "stock": 9500, "restock_time": 1}]
+    assert death["items"] == [{"id": 22517, "stock": 9500, "restock_time": 1, "buy": "N/A"}]
     assert death["shop_info"]["currency"] == "coins"
     assert [(o["npc_ids"], o["option"], o["option_slot"]) for o in death["owners"]] == [
         ([9855], "Shop", 4)
@@ -889,6 +889,32 @@ def test_storeline_sell_values_preserve_explicit_text_and_currency():
         "Tokkul",
     ]
     assert all("sell" not in rows[i] for i in (2, 4, 5))
+
+
+def test_storeline_buy_values_are_kept_raw():
+    wikitext = """{{StoreTableHead|hidebuy=y}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=40|buy=N/A}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=40|buy=12}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=40}}
+{{StoreLine|name=Raw karambwan|stock=10|sell=40|buy=   }}
+{{StoreTableBottom}}"""
+    rows = shops_items.parse_shop_items("Test shop", wikitext)
+    assert [row.get("buy") for row in rows] == ["N/A", "12", None, None]
+    assert all("buy" not in rows[i] for i in (2, 3))
+
+
+def test_shops_that_buy_nothing_export_buy_na_on_every_row():
+    """The wiki marks a shop that buys nothing with buy=N/A on every StoreLine; the
+    recordings show Farming Supplies refusing a sale (rsprox 231/03030, "You cannot
+    sell to this shop."). The export keeps that so consumers can tell."""
+    with open(
+        Path(config.DOCS_PATH / "shops-items-by-shop.json"), encoding="utf-8"
+    ) as f:
+        shops = json.load(f)
+    for name in ("Farming Supplies", "Blue Moon Inn"):
+        rows = shops[name]["items"]
+        assert rows and all(row.get("buy") == "N/A" for row in rows), name
+    assert all("buy" not in row for row in shops["Rok's Chocs Box."]["items"])
 
 
 def test_petes_vessel_export_retains_wiki_sell_price():
