@@ -1010,7 +1010,8 @@ def test_a_plain_row_without_rolls_still_leaves_the_table_unexported():
         ),
         ("Marble gargoyle", 3, []),
         ("Chasm Crawler", 3, []),
-        ("King kurask", 1, []),
+        # The page states "will always roll 3 additional items"; its stray Limpwurt seed row inherits the 3.
+        ("King kurask", 3, []),
     ],
 )
 def test_cached_pages_split_repeated_rows_from_once_pre_rolls(page, rolls, once_rows):
@@ -1030,6 +1031,32 @@ def test_cached_pages_split_repeated_rows_from_once_pre_rolls(page, rolls, once_
             for d in table.drops
             if d.section == "Main" and d.rolls == 1
         )
-    else:
-        # King kurask: the one stray plain row (Limpwurt seed, no rolls) keeps the count unexported.
-        assert ones == ["Limpwurt seed"]
+
+
+SUPERIOR_SOURCE = PRE_ROLL_ONCE_SOURCE.replace(
+    "==Drops==\n",
+    "==Drops==\n''In addition to 100% drops and tertiary drops, superior slayer monsters will always roll 3 additional items, "
+    "of which only 1 roll may be from the superior unique table.''\n",
+).replace(
+    "{{DropsLine|name=Nothing|rarity=102/128|rolls=3}}",
+    "{{DropsLine|name=Nothing|rarity=102/128|rolls=3}}\n{{DropsLine|name=Bones|quantity=1|rarity=3/128}}",
+)
+
+
+def test_a_superior_page_that_states_its_roll_count_repeats_a_row_that_omitted_rolls():
+    table = _export(SUPERIOR_SOURCE)
+    assert table["rolls"] == 3
+    seed = next(row for row in table["entries"] if row.get("name") == "Bones" and not row.get("pre_roll") and row.get("rarity") != "Always")
+    assert not seed.get("once_per_kill")
+    # The Pre-roll row stays once per kill.
+    assert next(row for row in table["entries"] if row.get("pre_roll"))["once_per_kill"] is True
+
+
+def test_the_statement_is_ignored_when_the_explicit_counts_disagree_with_it():
+    source = SUPERIOR_SOURCE.replace("roll 3 additional", "roll 2 additional")
+    assert "rolls" not in _export(source)
+
+
+def test_without_the_statement_a_plain_row_still_leaves_the_count_unexported():
+    source = SUPERIOR_SOURCE.replace("superior slayer monsters will always roll 3 additional items", "monsters drop items")
+    assert "rolls" not in _export(source)
