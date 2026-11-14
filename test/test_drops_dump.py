@@ -1288,3 +1288,37 @@ def test_an_independent_row_that_carries_the_tables_rolls_is_repeated_not_flagge
     table = _export(source)
     nest = next(row for row in table["entries"] if row.get("name") == "Bird nest")
     assert nest["separate_roll"] is True and not nest.get("once_per_kill")
+
+
+def test_herb_roll_counts_are_read_from_the_wikis_roll_once_or_twice_wording():
+    """Smoke devil and Turoth state their herb roll distribution as "N/M chance to roll
+    once ... twice ... three times"; the numerators are the variant weights."""
+    smoke = drops_wikitext._parse_subtable_accesses(
+        "{{HerbDropTableInfo|override=There is an 18/128 chance to access the [[herb drop table]]. "
+        "This is followed by a 2/3 chance to roll once and a 1/3 chance to roll twice, for an "
+        "average of 1.33 rolls.}}{{HerbDropLines|18/128|rolls=1.33}}"
+    )
+    assert [a.roll_count_weights for a in smoke if a.table_key == "herb"] == [
+        [{"rolls": 1, "weight": 2}, {"rolls": 2, "weight": 1}]
+    ]
+    turoth = drops_wikitext._parse_subtable_accesses(
+        "{{HerbDropTableInfo|override=There is a 31/129 chance to access the [[herb drop table]]. "
+        "If accessed, it is rolled an average of 1.7 times &ndash; 15/31 chance to roll once, "
+        "10/31 to roll twice, and 6/31 to roll three times.}}{{HerbDropLines|31/129|rolls=1.7}}"
+    )
+    assert [a.roll_count_weights for a in turoth if a.table_key == "herb"] == [
+        [
+            {"rolls": 1, "weight": 15},
+            {"rolls": 2, "weight": 10},
+            {"rolls": 3, "weight": 6},
+        ]
+    ]
+
+    # Dark beast words two separate accesses ("19/128 chance to roll once", "5/128 chance
+    # to roll twice"), which is not a distribution after one access.
+    dark_beast = drops_wikitext._parse_subtable_accesses(
+        "{{HerbDropTableInfo|override=There is a 19/128 chance to roll once on the [[herb drop table]].}}"
+        "{{HerbDropTableInfo|override=There is also a separate 5/128 chance to roll twice on the "
+        "[[herb drop table]].}}{{HerbDropLines|19/128}}"
+    )
+    assert all(not a.roll_count_weights for a in dark_beast)
