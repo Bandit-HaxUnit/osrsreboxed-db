@@ -4317,5 +4317,73 @@
         }
       }
     ]
+  },
+  "Rocky": {
+    "reason": "Rocky's Talk-to conversations 1 and 4: the Wiki writes three narration lines as bare prose (\"You slip your hand into Rocky's pocket.\", \"Rocky jumps into your backpack...\", \"Rocky flicks the coin back into your backpack\"), which parsed as unavailable markers and ended the chat before the rest of the conversation. They keep the Wiki's text as prose actions, the form other transcripts' stage directions take, so the conversation plays to its end. No capture records these lines, so no message box is asserted.",
+    "sources": [
+      "Transcript:Rocky as cached (Standard dialogue, Dialogue 1 and Dialogue 4)",
+      "https://github.com/RSPSApp/tsps/pull/4231#pullrequestreview-5848008281"
+    ],
+    "base_sha256": "0d93e3f791cc8d881f505a73965314c5ccb85cb0b620a84e1de0fa38d6c6f898",
+    "audited_sha256": "c2633795b1586ed1749e05bda13fa4b6f5abb747cc9709ffdd50743cbd114555",
+    "changes": [
+      {
+        "path": [
+          "records",
+          "Rocky",
+          "variants",
+          "standard-dialogue",
+          0,
+          "options",
+          0,
+          "steps",
+          1
+        ],
+        "expected": "ecdde53762846ed8ff58dd1c27c43c4403ae5e84cc4861770cb9ae5bffdf9a8b",
+        "value": {
+          "type": "action",
+          "text": "You slip your hand into Rocky's pocket.",
+          "id": "B65XlG"
+        }
+      },
+      {
+        "path": [
+          "records",
+          "Rocky",
+          "variants",
+          "standard-dialogue",
+          0,
+          "options",
+          3,
+          "steps",
+          2
+        ],
+        "expected": "cfa811875f4ba310fa634e9a5602f67a9a9d4e19e42672de74329a44e23345e9",
+        "value": {
+          "type": "action",
+          "text": "Rocky jumps into your backpack...",
+          "id": "JL_pBJ"
+        }
+      },
+      {
+        "path": [
+          "records",
+          "Rocky",
+          "variants",
+          "standard-dialogue",
+          0,
+          "options",
+          3,
+          "steps",
+          4
+        ],
+        "expected": "2f1f735f43ad98dce37a78b704802655f0e52f7a473c2664d4dd5d2071cf7435",
+        "value": {
+          "type": "action",
+          "text": "Rocky flicks the coin back into your backpack",
+          "id": "BJK-M1"
+        }
+      }
+    ]
   }
 }

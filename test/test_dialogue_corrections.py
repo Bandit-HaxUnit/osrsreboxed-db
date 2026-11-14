@@ -140,6 +140,19 @@ def test_dump_applies_corrections_before_writing(monkeypatch, tmp_path):
     assert not list(tmp_path.iterdir())
 
 
+def test_rocky_narration_lines_continue_the_conversation():
+    # The Wiki writes these as bare prose, which parsed as unavailable markers and ended the chat.
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    options = dialogues["Rocky"]["variants"]["standard-dialogue"][0]["options"]
+    first, fourth = options[0]["steps"], options[3]["steps"]
+    assert first[1] == {"type": "action", "text": "You slip your hand into Rocky's pocket.", "id": "B65XlG"}
+    assert first[2]["npc"].startswith("OY!! You're going to have to do better than that!")
+    assert fourth[2] == {"type": "action", "text": "Rocky jumps into your backpack...", "id": "JL_pBJ"}
+    assert fourth[4] == {"type": "action", "text": "Rocky flicks the coin back into your backpack", "id": "BJK-M1"}
+    assert fourth[5] == {"player": "I better keep my eyes on you..."}
+    assert "unavailable" not in json.dumps(dialogues["Rocky"]["variants"]["standard-dialogue"])
+
+
 def test_captured_ides_line_replaces_the_wiki_typo():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     variant = dialogues["The Ides of Milk"]["variants"][
