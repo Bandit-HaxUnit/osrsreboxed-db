@@ -354,6 +354,10 @@ class BuildMonster:
                     value = stats[3]
 
             self.monster_dict[proj_name] = infobox_cleaner.caller(value, proj_name)
+            if proj_name == "max_hit":
+                # Every listed max hit with its label, kept off monster_dict so the combat-stat
+                # exports stay byte-identical; scripts/monsters/max_hits.py publishes it.
+                self.max_hits = infobox_cleaner.max_hits(value)
 
             if value is None:
                 self.monster_dict["incomplete"] = True
