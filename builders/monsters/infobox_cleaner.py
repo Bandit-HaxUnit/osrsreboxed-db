@@ -200,11 +200,12 @@ def max_hits(value: str) -> list:
         ]
     else:
         # Entries are separated by commas, <br> tags or line breaks (Frost dragon:
-        # "16 ([[Stab]])<br/>50 ([[Dragonfire]])"); only outside parentheses, so a
-        # label may hold its own commas.
+        # "16 ([[Stab]])<br/>50 ([[Dragonfire]])"), or only by a space after a closing
+        # label (Dusk: "15 (melee) 33 (special attack)"); only outside parentheses, so
+        # a label may hold its own commas.
         value = re.sub(r"<br\s*/?>", "\n", value, flags=re.I)
         parts, depth, current = [], 0, ""
-        for char in value:
+        for index, char in enumerate(value):
             if char == "(":
                 depth += 1
             elif char == ")" and depth > 0:
@@ -212,8 +213,11 @@ def max_hits(value: str) -> list:
             if char in ",\n" and depth == 0:
                 parts.append(current)
                 current = ""
-            else:
-                current += char
+                continue
+            current += char
+            if char == ")" and depth == 0 and re.match(r"\s+~?\d", value[index + 1 :]):
+                parts.append(current)
+                current = ""
         parts.append(current)
 
     entries = []
@@ -229,7 +233,8 @@ def max_hits(value: str) -> list:
                     label = part[index + 1 : -1].strip() or None
                     part = part[:index].strip()
                     break
-        if not re.match(r"\d", part):
+        # An approximate hit ("~85 (dash)") keeps its text and gets no number.
+        if not re.match(r"~?\d", part):
             continue
         if label is None:
             # An unbracketed label after the number (TzHaar-Mej: "13 [[Magic]], 9 [[Melee]]").

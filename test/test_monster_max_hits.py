@@ -117,6 +117,38 @@ def test_builder_keeps_the_list_off_the_combat_export():
                 {"value": "9", "label": "Melee", "max_hit": 9},
             ],
         ),
+        # Approximate hits keep their text with no number (Phosani's Nightmare, Maggot King).
+        (
+            "73 (melee), 80 (magic/ranged), ~85 (dash)",
+            [
+                {"value": "73", "label": "melee", "max_hit": 73},
+                {"value": "80", "label": "magic/ranged", "max_hit": 80},
+                {"value": "~85", "label": "dash", "max_hit": None},
+            ],
+        ),
+        (
+            "46 (Magic / Ranged),~55 (Melee lunge)",
+            [
+                {"value": "46", "label": "Magic / Ranged", "max_hit": 46},
+                {"value": "~55", "label": "Melee lunge", "max_hit": None},
+            ],
+        ),
+        # Entries separated only by a space after a label (Dusk, Kalphite Queen (Echo)).
+        (
+            "15 (melee) 33 (special attack)",
+            [
+                {"value": "15", "label": "melee", "max_hit": 15},
+                {"value": "33", "label": "special attack", "max_hit": 33},
+            ],
+        ),
+        (
+            "38 (melee) 35 (ranged), 49 (magic)",
+            [
+                {"value": "38", "label": "melee", "max_hit": 38},
+                {"value": "35", "label": "ranged", "max_hit": 35},
+                {"value": "49", "label": "magic", "max_hit": 49},
+            ],
+        ),
         ("Varies", []),
     ],
 )
