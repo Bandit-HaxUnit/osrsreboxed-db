@@ -249,7 +249,51 @@ def resolve_navigation(record, anchors=None):
             del nodes[index + 1 : end + 1]
             index += 1
 
+    def lift_anchored_condition_tails(nodes):
+        """Move a condition run's shared tail out of its last condition.
+
+        Sibling conditions that each end `{{tact|continue|X}}` resume at the
+        `{{Anchor|X}}` they name. Transcripts often write that shared tail one
+        level too deep, straight after the last condition's own continue
+        (Lucia's "Do you want me to point you in the right direction?"). Left
+        there, it would play only after the last condition. Only an anchor that
+        immediately follows the last condition's continue, named by another
+        condition of the same run, is lifted to just after the run.
+        """
+        for node in nodes:
+            lift_anchored_condition_tails(node.get("steps", []))
+            for option in node.get("options", []):
+                lift_anchored_condition_tails(option.get("steps", []))
+        index = 0
+        while index < len(nodes):
+            if nodes[index].get("type") != "condition":
+                index += 1
+                continue
+            end = index
+            while end < len(nodes) and nodes[end].get("type") == "condition":
+                end += 1
+            body = nodes[end - 1].get("steps", [])
+            for at, step in enumerate(body[:-1]):
+                name = step.get("_continue_to")
+                if (
+                    step.get("type") == "jump"
+                    and name
+                    and name in body[at + 1].get("_anchors", [])
+                    and any(
+                        condition.get("steps")
+                        and condition["steps"][-1].get("_continue_to") == name
+                        for condition in nodes[index : end - 1]
+                    )
+                ):
+                    tail = body[at + 1 :]
+                    del body[at + 1 :]
+                    nodes[end:end] = tail
+                    end += len(tail)
+                    break
+            index = end
+
     for steps in record["variants"].values():
+        lift_anchored_condition_tails(steps)
         normalize_guarded_options(steps)
 
     option_paths = {}
@@ -295,8 +339,13 @@ def resolve_navigation(record, anchors=None):
     anchored = {}
     for source, anchor in (anchors or {}).items():
         jumps = [entry for entry in entries if entry[1].get("id") == source]
+        # "after" resumes past the named node; "at" starts at it (a branch whose
+        # first node is the destination has no earlier node to resume after).
+        if ("after" in anchor) == ("at" in anchor):
+            raise ValueError(f"Invalid dialogue navigation anchor: {source}")
+        destination = anchor.get("after", anchor.get("at"))
         destinations = [
-            entry for entry in entries if entry[1].get("id") == anchor["after"]
+            entry for entry in entries if entry[1].get("id") == destination
         ]
         if (
             len(jumps) != 1
@@ -306,9 +355,10 @@ def resolve_navigation(record, anchors=None):
         ):
             raise ValueError(f"Stale dialogue navigation anchor: {source}")
         _, _, siblings, at, *_ = destinations[0]
-        if not siblings[at + 1 :]:
+        start = at + 1 if "after" in anchor else at
+        if not siblings[start:]:
             raise ValueError(f"Empty dialogue navigation anchor: {source}")
-        anchored[id(jumps[0][1])] = siblings[at + 1 :]
+        anchored[id(jumps[0][1])] = siblings[start:]
 
     def condition_template(variant, condition):
         label = re.sub(r"\s*\([^)]*\)", "", record["sections"][variant][-1])
@@ -803,6 +853,7 @@ def resolve_navigation(record, anchors=None):
     for _, node, *_ in entries:
         node.pop("_anchor", None)
         node.pop("_anchors", None)
+        node.pop("_continue_to", None)
 
     from scripts.dialogues.hooks import token
 

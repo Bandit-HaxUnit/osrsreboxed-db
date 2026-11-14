@@ -268,7 +268,12 @@ def parse_step(raw, issues, line):
                 issues.append(
                     dict(line=line, reason="Unresolved dialogue reference", raw=raw)
                 )
-                return dict(type="jump", target=None, reference=text)
+                node = dict(type="jump", target=None, reference=text)
+                # `{{tact|continue|X}}` can name an `{{Anchor|X}}` that marks
+                # where a run of conditions continues (see flow.py).
+                if anchor and text in ("continue", "continues"):
+                    node["_continue_to"] = anchor
+                return node
             # opens2 is the unlinked spelling of opens; the two never co-occur.
             if "opens" in args or "opens2" in args:
                 return dict(
@@ -739,6 +744,9 @@ def gameplay_step(node, name):
     """Drop editorial/source data while retaining dialogue flow and gameplay requirements."""
     if node.get("type") == "line" and node.get("speaker") in (name, "Player"):
         result = {"npc" if node["speaker"] == name else "player": node["text"]}
+        # An {{Anchor}} on speech is a navigation target like any other.
+        if node.get("_anchors"):
+            result["_anchors"] = node["_anchors"]
     elif node.get("type") == "unparsed":
         result = {"type": "unavailable"}
     else:
@@ -763,6 +771,7 @@ def gameplay_step(node, name):
                 "_identity",
                 "_anchors",
                 "_anchor",
+                "_continue_to",
             )
             and value is not None
         }

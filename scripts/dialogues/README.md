@@ -255,6 +255,17 @@ anchors. The Restless Ghost has one: its bare `above` after "Nope. I just know..
 resumes after "Well, to be honest... I'm not sure." in the same transcript.
 The source does not uniquely identify that target, so this remains an explicit,
 reviewed interpretation rather than an automatic parser inference.
+An annotation names exactly one of `after` (resume past that node) or `at` (start
+at it, for a destination that is the first node of its branch). The Fortis House
+Robbery urchins use `at`: live captures (rsprox.net 1105) show "Sounds good.",
+the free first-time information and "Yes, don't ask me again." all continue into
+the paid information flow, which the Wiki's bare `below`/`continue`/`above` do not
+identify uniquely.
+
+`{{tact|continue|X}}` keeps the name X. When conditions of one run continue to an
+`{{Anchor|X}}` that the Wiki writes straight after the run's last condition's own
+continue, one level too deep, that tail is moved to just after the run so every
+condition reaches it (Lucia's "Do you want me to point you in the right direction?").
 
 The normal command applies runtime bindings and the remaining corrections after compaction
 and before publishing aggregates, shards, indexes or diagnostics. A corrected
