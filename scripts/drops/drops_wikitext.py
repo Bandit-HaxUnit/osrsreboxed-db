@@ -1772,6 +1772,14 @@ HERB_TABLE_ACCESS = re.compile(
 HERB_ROLL_VARIANT = re.compile(
     r"(\d+)\s*/\s*(\d+)\s+chance of dropping (\d+) herbs?", re.I
 )
+# The wiki's newer wording of the same fact: "2/3 chance to roll once and a 1/3 chance to
+# roll twice" (Smoke devil), "15/31 chance to roll once, 10/31 to roll twice, and 6/31 to
+# roll three times" (Turoth). The numerators are the variant weights.
+HERB_ROLL_TIMES = re.compile(
+    r"(\d+)\s*/\s*(\d+)\s+(?:chance\s+)?to roll (once|twice|three times|four times)", re.I
+)
+HERB_ACCESS_SENTENCE = re.compile(r"chance to access the \[\[herb drop table\]\]", re.I)
+HERB_ROLL_TIMES_COUNT = {"once": 1, "twice": 2, "three times": 3, "four times": 4}
 HERB_QUANTITY_RANGE = re.compile(r"^(\d+)\s*-\s*(\d+)$")
 
 
@@ -1918,6 +1926,13 @@ def _parse_subtable_accesses(body: str) -> List[ParsedSubtableAccess]:
     herb_quantity = next((p.get("_1", "1") for _, p in herb_lines), "1")
     variants = HERB_ROLL_VARIANT.findall(body)
     weights = [{"rolls": int(n), "weight": int(w)} for w, _, n in variants]
+    if not weights and HERB_ACCESS_SENTENCE.search(body):
+        # Only a distribution that follows the access chance: Dark beast's two separate
+        # "19/128 chance to roll once" / "5/128 chance to roll twice" are two accesses.
+        weights = [
+            {"rolls": HERB_ROLL_TIMES_COUNT[times.lower()], "weight": int(w)}
+            for w, _, times in HERB_ROLL_TIMES.findall(body)
+        ]
     if not weights:
         word_counts = {"one": 1, "two": 2, "three": 3, "four": 4}
         chances = re.findall(
