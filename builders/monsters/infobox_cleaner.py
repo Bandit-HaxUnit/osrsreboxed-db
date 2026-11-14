@@ -199,14 +199,17 @@ def max_hits(value: str) -> list:
             if line.strip().startswith("*")
         ]
     else:
-        # Split on commas outside parentheses, so a label may hold its own commas.
+        # Entries are separated by commas, <br> tags or line breaks (Frost dragon:
+        # "16 ([[Stab]])<br/>50 ([[Dragonfire]])"); only outside parentheses, so a
+        # label may hold its own commas.
+        value = re.sub(r"<br\s*/?>", "\n", value, flags=re.I)
         parts, depth, current = [], 0, ""
         for char in value:
             if char == "(":
                 depth += 1
             elif char == ")" and depth > 0:
                 depth -= 1
-            if char == "," and depth == 0:
+            if char in ",\n" and depth == 0:
                 parts.append(current)
                 current = ""
             else:
@@ -228,6 +231,13 @@ def max_hits(value: str) -> list:
                     break
         if not re.match(r"\d", part):
             continue
+        if label is None:
+            # An unbracketed label after the number (TzHaar-Mej: "13 [[Magic]], 9 [[Melee]]").
+            bare = re.fullmatch(
+                r"(\d+(?:\s*[-\u2013\u2014]\s*\d+)?)\s+([A-Za-z].*)", part
+            )
+            if bare:
+                part, label = bare.group(1), bare.group(2).strip()
         number = None
         if re.fullmatch(r"\d+", part):
             number = int(part)

@@ -85,6 +85,38 @@ def test_builder_keeps_the_list_off_the_combat_export():
             "50/60 ([[Melee]]), Increased by 20% if praying wrongly",
             [{"value": "50/60", "label": "Melee", "max_hit": None}],
         ),
+        # Entries separated by <br> tags (Frost dragon, Araxxor, Great Olm).
+        (
+            "16 ([[Stab]])<br/>50 ([[Dragonfire]])",
+            [
+                {"value": "16", "label": "Stab", "max_hit": 16},
+                {"value": "50", "label": "Dragonfire", "max_hit": 50},
+            ],
+        ),
+        (
+            "38 (melee) <br/> 21 (magic) <br/> 34 (ranged)",
+            [
+                {"value": "38", "label": "melee", "max_hit": 38},
+                {"value": "21", "label": "magic", "max_hit": 21},
+                {"value": "34", "label": "ranged", "max_hit": 34},
+            ],
+        ),
+        (
+            "27 <br/> 28 <br> 29 (phase 4)",
+            [
+                {"value": "27", "label": None, "max_hit": 27},
+                {"value": "28", "label": None, "max_hit": 28},
+                {"value": "29", "label": "phase 4", "max_hit": 29},
+            ],
+        ),
+        # An unbracketed label after the number (TzHaar-Mej).
+        (
+            "13 [[Magic]], 9 [[Melee]]",
+            [
+                {"value": "13", "label": "Magic", "max_hit": 13},
+                {"value": "9", "label": "Melee", "max_hit": 9},
+            ],
+        ),
         ("Varies", []),
     ],
 )
