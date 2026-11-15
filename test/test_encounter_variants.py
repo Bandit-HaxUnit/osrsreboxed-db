@@ -55,6 +55,17 @@ def test_repeat_generation_is_byte_identical(data):
     assert render(data) == render(build_encounter_variants())
 
 
+def test_blank_wiki_values_stay_unresolved_instead_of_zero_or_empty(data):
+    # Hespori (Echo) leaves |size blank and King Black Dragon (Echo) |id: neither is invented.
+    assert data["bosses"]["hespori"]["profiles"]["boss"]["size"] is None
+    assert data["bosses"]["king-black-dragon"]["profiles"]["boss"]["source_id"] is None
+    pages = json.loads(PAGES.read_text(encoding="utf-8"))
+    blank = pages["Hespori (Echo)"]
+    assert "|size = \n" in blank, "the regression needs the page's blank size field"
+    filled = blank.replace("|size = \n", "|size = 3\n", 1)
+    assert profile_from_page("Hespori (Echo)", filled)["size"] == 3, "a given size still parses"
+
+
 def test_live_source_changes_reach_the_export_without_stat_overrides():
     pages = json.loads(PAGES.read_text(encoding="utf-8"))
     changed = pages["Cerberus (Echo)"].replace("|hitpoints = 1620", "|hitpoints = 1621")

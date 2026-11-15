@@ -45,13 +45,19 @@ def profile_from_page(page, text, version=None):
         return (builder.extract_infobox_value(builder.template, name + suffix)
                 or builder.extract_infobox_value(builder.template, name))
 
+    def present(name):
+        """A field's text, or None when the Wiki leaves it blank or out (never a stand-in 0 or "")."""
+        raw = value(name)
+        return raw.strip() if isinstance(raw, str) and raw.strip() else None
+
     row["name"] = infobox_cleaner.clean_wikitext(value("name") or page)
-    row["size"] = infobox_cleaner.stats(value("size"))
+    size = present("size")
+    row["size"] = infobox_cleaner.stats(size) if size is not None else None
     row["freeze_resistance"] = builder.freeze_resistance
     row["max_hits"] = builder.max_hits
     row["source_page"] = page
     row["source_version"] = version
-    row["source_id"] = value("id")
+    row["source_id"] = present("id")
     if not isinstance(row.get("hitpoints"), int) or row["hitpoints"] <= 0:
         raise ValueError("Missing positive hitpoints: " + page)
     if not isinstance(row.get("attack_speed"), int) or row["attack_speed"] <= 0:
