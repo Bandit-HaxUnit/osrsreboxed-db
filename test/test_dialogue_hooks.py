@@ -6,6 +6,7 @@ from scripts.dialogues.hooks import (
     annotate_speaker_ids,
     enrich_records,
     npc_identities,
+    speaker_ids,
     walk,
 )
 
@@ -454,7 +455,6 @@ def test_short_speaker_labels_resolve_to_listed_participants_only():
         "Honour guard": "{{Infobox NPC|name=Honour guard|id=1889}}",
         "HRH Hrafn": "{{Infobox NPC|name=HRH Hrafn|id=1898}}",
         "King Gjuki Sorvott IV": "{{Infobox NPC|name=King Gjuki Sorvott IV|id=1900}}",
-        # Two listed pages with the same base name: the label cannot choose.
         "Mord": "{{Infobox NPC|name=Mord|id=11}}",
     }
     identity = {name: {"wikitext": text} for name, text in pages.items()}
@@ -496,3 +496,43 @@ def test_speaker_ids_do_not_change_node_ids():
     assert resolved["speaker_ids"] == [1898]
     assert "speaker_ids" not in unlisted["variants"]["meeting"][0]
     assert resolved["id"] == unlisted["variants"]["meeting"][0]["id"]
+
+
+def _identities(**pages):
+    return npc_identities(
+        {
+            name: {"wikitext": "{{Infobox NPC|name=%s|id=%s}}" % (name, ids)}
+            for name, ids in pages.items()
+        },
+        update.clean,
+    )
+
+
+def test_a_label_that_is_part_of_a_longer_title_resolves_nothing():
+    # Each page lists only the longer NPC; the speaker may be another NPC it does not list.
+    cases = {
+        "Hazeel": ("Hazeel Cultist", "1207"),
+        "Banker": ("Banker tutor", "3227"),
+        "Man": ("Wise Old Man", "2501"),
+        "Veliaf": ("Veliaf Hurtz", "1700"),
+        "Guard": ("H.A.M. Guard", "2100"),
+    }
+    for label, (title, ids) in cases.items():
+        assert speaker_ids(label, [title], _identities(**{title: ids})) == [], label
+
+
+def test_honorifics_and_omitted_middle_names_still_resolve():
+    identity = _identities(**{"HRH Hrafn": "1898", "Queen Ellamaria": "9", "King Gjuki Sorvott IV": "1897"})
+    pages = list(identity)
+    assert speaker_ids("Hrafn", pages, identity) == [1898]
+    assert speaker_ids("Ellamaria", pages, identity) == [9]
+    assert speaker_ids("King Sorvott IV", pages, identity) == [1897]
+    # Two words that merely share the first word do not match: the last word must too.
+    assert speaker_ids("King Gjuki", pages, identity) == []
+
+
+def test_two_listed_pages_with_one_base_name_resolve_nothing():
+    identity = _identities(**{"Guard (A)": "10", "Guard (B)": "20"})
+    assert speaker_ids("Guard", list(identity), identity) == []
+    # The title with its disambiguation still names exactly one of them.
+    assert speaker_ids("Guard (A)", list(identity), identity) == [10]

@@ -67,16 +67,39 @@ def _is_subsequence(needle, haystack):
     return all(word in remaining for word in needle)
 
 
+# Words a transcript may leave off the front of a title ("Hrafn" for "HRH Hrafn",
+# "Ellamaria" for "Queen Ellamaria"). A reviewed list, not a guess: dropping any
+# other word would let a generic label ("Man", "Banker", "Hazeel") name a longer
+# title ("Wise Old Man", "Banker tutor", "Hazeel Cultist") that is not its speaker.
+HONORIFICS = frozenset(
+    {
+        "the", "hrh", "king", "queen", "prince", "princess", "lord", "lady", "sir", "dame",
+        "captain", "chancellor", "justiciar", "father", "brother", "sister", "saint",
+        "sergeant", "general", "commander", "doctor", "dr", "professor", "mayor", "duke",
+    }
+)
+
+
+def _without_honorifics(words):
+    start = 0
+    while start < len(words) - 1 and words[start] in HONORIFICS:
+        start += 1
+    return words[start:]
+
+
 def speaker_ids(speaker, participants, identities):
     """NPC ids for a spoken label, read only from the page's own participants.
 
     Transcripts label a speaker with a short name ("Hrafn", "King Sorvott IV",
     "Guard") while the Transcript list names the NPC page ("HRH Hrafn", "King
     Gjuki Sorvott IV", "Guard (Jatizso)"). The strictest rule that finds exactly
-    one participant wins: a full name or infobox name, then the page title
-    without its disambiguation, then the label's words in order within a
-    participant's name. A tie at any rule resolves nothing, and no rule looks
-    outside the participant list, so NPCs sharing a short name are never merged.
+    one participant wins: a full name or infobox name; the page title without its
+    disambiguation; the title without leading honorifics; a label of two or more
+    words that keeps the title's first and last word and omits some between them.
+    A tie at any rule resolves nothing, and no rule looks outside the participant
+    list, so NPCs sharing a short name are never merged. A label that is only part
+    of a longer title ("Hazeel" for "Hazeel Cultist", "Man" for "Wise Old Man")
+    resolves nothing: it may well be another NPC the page does not list.
     """
     label = speaker.strip()
     if not label or "/" in label or label.casefold() == "player":
@@ -88,7 +111,12 @@ def speaker_ids(speaker, participants, identities):
         lambda page, names: folded == _base_name(page)
         or folded in {_base_name(n) for n in names},
         lambda page, names: bool(wanted)
-        and _is_subsequence(wanted, _words(_base_name(page))),
+        and wanted == _without_honorifics(_words(_base_name(page))),
+        lambda page, names: len(wanted) >= 2
+        and (title := _words(_base_name(page)))
+        and wanted[0] == title[0]
+        and wanted[-1] == title[-1]
+        and _is_subsequence(wanted, title),
     )
     for rule in rules:
         found = [
