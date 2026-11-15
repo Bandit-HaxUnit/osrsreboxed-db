@@ -31,7 +31,12 @@ from scripts.dialogues.fetch import (
     trailing_template_name,
     transcript_type,
 )
-from scripts.dialogues.hooks import enrich_records, walk as dialogue_nodes
+from scripts.dialogues.hooks import (
+    annotate_speaker_ids,
+    enrich_records,
+    npc_identities,
+    walk as dialogue_nodes,
+)
 from scripts.dialogues.compact import compact_record, write_split
 from scripts.dialogues.corrections import apply_corrections
 from scripts.dialogues.bindings import apply_bindings
@@ -1247,6 +1252,14 @@ def main():
             )
         ),
     )
+    # After corrections: their fingerprints cover the record without this field.
+    identities = npc_identities(read_cache(NPC_CACHE), clean)
+    for name, record in data["records"].items():
+        annotate_speaker_ids(
+            record,
+            data["authoring"].get("Transcript:" + name, {}).get("participants", []),
+            identities,
+        )
     dialogues = dict(sorted(data["records"].items()))
     classified = {title for titles in types.values() for title in titles}
     for name in dialogues:

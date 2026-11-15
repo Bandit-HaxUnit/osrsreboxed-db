@@ -281,9 +281,11 @@ def test_witchs_house_follows_the_revision_242_capture():
 
 
 def test_biohazard_follows_the_revision_242_capture():
-    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
-        "Biohazard"
-    ]["variants"]
+    # speaker_ids is derived identity metadata, not part of the captured wording.
+    variants = json.loads(
+        (config.DOCS_PATH / "npc-dialogues.json").read_text(),
+        object_hook=lambda node: {k: v for k, v in node.items() if k != "speaker_ids"},
+    )["Biohazard"]["variants"]
     # Before the wall is crossed, Elena points back to Jerico (capture tick 29).
     assert variants["getting-started-talking-to-elena-again"] == [
         {"player": "Hello Elena."},
@@ -1046,7 +1048,10 @@ def test_slug_menace_follows_the_revision_242_capture():
         with pytest.raises(ValueError, match="Stale dialogue capture source"):
             apply_capture_lines(name, "\n" + page["wikitext"], sources[name], page["revision"])
 
-    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    exported = json.loads(
+        (config.DOCS_PATH / "npc-dialogues.json").read_text(),
+        object_hook=lambda node: {k: v for k, v in node.items() if k != "speaker_ids"},
+    )
     variants = exported["The Slug Menace"]["variants"]
     # After the quest starts Tiffy offers his own menu, not the start prompt again (tick 241).
     start = variants["starting-off-talking-to-sir-tiffy-cashien-to-start-the-quest"]

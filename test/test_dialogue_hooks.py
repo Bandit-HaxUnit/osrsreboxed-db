@@ -2,7 +2,13 @@ import json
 from pathlib import Path
 
 from scripts.dialogues import update
-from scripts.dialogues.hooks import enrich_records, walk
+from scripts.dialogues.hooks import (
+    annotate_speaker_ids,
+    enrich_records,
+    npc_identities,
+    speaker_ids,
+    walk,
+)
 
 
 def variants(value):
@@ -197,7 +203,12 @@ def test_generated_exports():
             if "id" in n
         ]
         if name in corrections:
-            assert fingerprint(value) == corrections[name]["audited_sha256"], name
+            # speaker_ids is derived from the participants, so it is not audited content.
+            audited = json.loads(
+                json.dumps(value),
+                object_hook=lambda node: {k: v for k, v in node.items() if k != "speaker_ids"},
+            )
+            assert fingerprint(audited) == corrections[name]["audited_sha256"], name
         else:
             bindings = {}
             for node in nodes:
@@ -424,3 +435,104 @@ def test_flatten_only_selected_single_standard_variant():
             assert "variants" not in value and "default" not in value
         else:
             assert value["default"] is None
+
+
+def test_short_speaker_labels_resolve_to_listed_participants_only():
+    raw = """{{Transcript|quest}}
+{{Transcript list|Guard (Jatizso)|Honour guard|HRH Hrafn|King Gjuki Sorvott IV|Mord}}
+==Meeting==
+* '''King Sorvott IV:''' Guard, who is this?
+* '''Hrafn:''' Meeow?
+* '''Guard:''' An outlander.
+* '''Honour guard:''' Halt.
+* '''Mord:''' Hello.
+* '''Stranger:''' Who goes there?
+* '''Hrafn/Guard:''' Together.
+"""
+    quest = record("Cat Quest", raw)
+    pages = {
+        "Guard (Jatizso)": "{{Infobox NPC|name=Guard|id=1949,1950}}",
+        "Honour guard": "{{Infobox NPC|name=Honour guard|id=1889}}",
+        "HRH Hrafn": "{{Infobox NPC|name=HRH Hrafn|id=1898}}",
+        "King Gjuki Sorvott IV": "{{Infobox NPC|name=King Gjuki Sorvott IV|id=1900}}",
+        "Mord": "{{Infobox NPC|name=Mord|id=11}}",
+    }
+    identity = {name: {"wikitext": text} for name, text in pages.items()}
+    enrich_records({}, {"Cat Quest": quest}, identity, update.clean)
+    annotate_speaker_ids(quest, quest["participants"], npc_identities(identity, update.clean))
+    lines = {
+        n["speaker"]: n
+        for n in walk(quest["variants"]["meeting"])
+        if n.get("type") == "line"
+    }
+    assert lines["King Sorvott IV"]["speaker_ids"] == [1900]
+    assert lines["Hrafn"]["speaker_ids"] == [1898]
+    # "Guard" is the Jatizso guard by its page title, not the Honour guard.
+    assert lines["Guard"]["speaker_ids"] == [1949, 1950]
+    assert lines["Honour guard"]["speaker_ids"] == [1889]
+    assert lines["Mord"]["speaker_ids"] == [11]
+    # Not on the Transcript list, or several people at once: left unresolved.
+    assert "speaker_ids" not in lines["Stranger"]
+    assert "speaker_ids" not in lines["Hrafn/Guard"]
+
+
+def test_speaker_ids_do_not_change_node_ids():
+    raw = """{{Transcript|quest}}
+{{Transcript list|HRH Hrafn}}
+==Meeting==
+* '''Hrafn:''' Meeow?
+"""
+    identity = {"HRH Hrafn": {"wikitext": "{{Infobox NPC|name=HRH Hrafn|id=1898}}"}}
+    listed = record("Cat Quest", raw)
+    unlisted = record("Cat Quest", raw.replace("|HRH Hrafn}}", "|Someone}}"))
+    enrich_records({}, {"Cat Quest": listed}, identity, update.clean)
+    enrich_records({}, {"Cat Quest": unlisted}, identity, update.clean)
+    ids = npc_identities(identity, update.clean)
+    before = listed["variants"]["meeting"][0]["id"]
+    for each in (listed, unlisted):
+        annotate_speaker_ids(each, each["participants"], ids)
+    assert listed["variants"]["meeting"][0]["id"] == before
+    resolved = listed["variants"]["meeting"][0]
+    assert resolved["speaker_ids"] == [1898]
+    assert "speaker_ids" not in unlisted["variants"]["meeting"][0]
+    assert resolved["id"] == unlisted["variants"]["meeting"][0]["id"]
+
+
+def _identities(**pages):
+    return npc_identities(
+        {
+            name: {"wikitext": "{{Infobox NPC|name=%s|id=%s}}" % (name, ids)}
+            for name, ids in pages.items()
+        },
+        update.clean,
+    )
+
+
+def test_a_label_that_is_part_of_a_longer_title_resolves_nothing():
+    # Each page lists only the longer NPC; the speaker may be another NPC it does not list.
+    cases = {
+        "Hazeel": ("Hazeel Cultist", "1207"),
+        "Banker": ("Banker tutor", "3227"),
+        "Man": ("Wise Old Man", "2501"),
+        "Veliaf": ("Veliaf Hurtz", "1700"),
+        "Guard": ("H.A.M. Guard", "2100"),
+    }
+    for label, (title, ids) in cases.items():
+        assert speaker_ids(label, [title], _identities(**{title: ids})) == [], label
+
+
+def test_honorifics_and_omitted_middle_names_still_resolve():
+    identity = _identities(**{"HRH Hrafn": "1898", "Queen Ellamaria": "9", "King Gjuki Sorvott IV": "1897"})
+    pages = list(identity)
+    assert speaker_ids("Hrafn", pages, identity) == [1898]
+    assert speaker_ids("Ellamaria", pages, identity) == [9]
+    assert speaker_ids("King Sorvott IV", pages, identity) == [1897]
+    # Two words that merely share the first word do not match: the last word must too.
+    assert speaker_ids("King Gjuki", pages, identity) == []
+
+
+def test_two_listed_pages_with_one_base_name_resolve_nothing():
+    identity = _identities(**{"Guard (A)": "10", "Guard (B)": "20"})
+    assert speaker_ids("Guard", list(identity), identity) == []
+    # The title with its disambiguation still names exactly one of them.
+    assert speaker_ids("Guard (A)", list(identity), identity) == [10]
