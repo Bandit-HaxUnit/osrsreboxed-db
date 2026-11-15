@@ -189,6 +189,21 @@ class BuildMonster:
             else:
                 self.infobox_version_number = ""
 
+        # A versioned infobox that lists one shared ``|id = 7551,7554`` names one id per
+        # version by position (Great Olm, Chambers of Xeric Challenge Mode NPCs). The id
+        # lookup above maps such ids to "" (unversioned, as the parser only counts ``idN`` and
+        # ``nameN`` as versions), which read version 1's stats.
+        if (
+            self.infobox_version_number == ""
+            and self.monster_id_int not in version_overrides
+        ):
+            params = variant_resolver.template_params(infobox_parser.template)
+            by_position = variant_resolver.positional_ids(
+                params, variant_resolver.template_version_numbers(params)
+            )
+            if self.monster_id_int in by_position:
+                self.infobox_version_number = by_position[self.monster_id_int]
+
         # Resolve the variant against every infobox that lists this id, not only the first
         # infobox or the first variant. Manual overrides above keep priority, and an NPC the
         # resolver cannot place keeps the version chosen above (logged by the builder).

@@ -62,6 +62,47 @@ def _as_ids(value: Optional[str]) -> Tuple[int, ...]:
     return tuple(sorted(found))
 
 
+def positional_ids(params: Dict[str, str], numbers) -> Dict[int, str]:
+    """Map each id of a shared ``id`` list to its version, by position.
+
+    Some versioned infoboxes give every version one ``|id = 7551,7554`` instead of
+    ``id1``/``id2`` (Great Olm, the Chambers of Xeric Normal/Challenge Mode pairs). When the
+    list holds exactly one plain id per version and no version has its own ``idN``, the Nth
+    id is version N's, the Wiki's order for these lists. Anything else returns ``{}`` so the
+    shared list keeps applying to every version.
+    """
+    numbers = sorted(numbers)
+    if len(numbers) < 2 or "id" not in params:
+        return {}
+    if any(f"id{number}" in params for number in numbers):
+        return {}
+    text = re.sub(r"<!--.*?-->", "", params["id"], flags=re.S)
+    parts = [part.strip() for part in text.split(",") if part.strip()]
+    if len(parts) != len(numbers) or not all(part.isdigit() for part in parts):
+        return {}
+    if len(set(parts)) != len(parts):
+        return {}
+    return {int(part): str(number) for part, number in zip(parts, numbers)}
+
+
+def template_params(template) -> Dict[str, str]:
+    """An infobox template's parameters, keyed by lower-case name."""
+    return {
+        str(param.name).strip().lower(): str(param.value).strip()
+        for param in template.params
+    }
+
+
+def template_version_numbers(params: Dict[str, str]) -> set:
+    """The numbered version suffixes an infobox's keys use (``att2`` gives 2)."""
+    numbers = set()
+    for key in params:
+        match = _TRAILING_NUMBER.match(key)
+        if match:
+            numbers.add(int(match.group(2)))
+    return numbers
+
+
 def _normal_title(title: str) -> str:
     return re.sub(r"\s+", " ", title.replace("_", " ")).strip().lower()
 
@@ -94,15 +135,8 @@ def page_variants(page_name: str, wikitext: str) -> List[Variant]:
     ]
     variants = []
     for block_index, template in enumerate(templates, start=1):
-        params = {
-            str(param.name).strip().lower(): str(param.value).strip()
-            for param in template.params
-        }
-        numbers = set()
-        for key in params:
-            match = _TRAILING_NUMBER.match(key)
-            if match:
-                numbers.add(int(match.group(2)))
+        params = template_params(template)
+        numbers = template_version_numbers(params)
         if not numbers:
             variants.append(
                 Variant(
@@ -116,12 +150,19 @@ def page_variants(page_name: str, wikitext: str) -> List[Variant]:
                 )
             )
             continue
+        by_position = positional_ids(params, numbers)
         for number in sorted(numbers):
             stats = []
             for name in STAT_NAMES:
                 value = params.get(f"{name}{number}", params.get(name))
                 stats.append(_as_number(value))
             ids_value = params.get(f"id{number}", params.get("id"))
+            if by_position:
+                ids = tuple(
+                    sorted(i for i, own in by_position.items() if own == str(number))
+                )
+            else:
+                ids = _as_ids(ids_value)
             variants.append(
                 Variant(
                     page_name=page_name,
@@ -129,7 +170,7 @@ def page_variants(page_name: str, wikitext: str) -> List[Variant]:
                     version_number=str(number),
                     version_name=params.get(f"version{number}"),
                     stats=tuple(stats),
-                    ids=_as_ids(ids_value),
+                    ids=ids,
                     template=template,
                 )
             )
