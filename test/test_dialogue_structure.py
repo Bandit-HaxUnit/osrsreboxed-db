@@ -349,3 +349,117 @@ def test_reviewed_source_anchor_reuses_the_tail_and_rejects_stale_inputs():
             changed["variants"]["talk"].append(copy.deepcopy(nodes[destination]))
         with pytest.raises(ValueError, match="Stale dialogue navigation anchor"):
             resolve_navigation(changed, anchors)
+
+
+URCHIN = """==Standard dialogue==
+===Subsequent dialogue===
+* {{tcond|If the player has not met the leader:}}
+** '''Lucia:''' Go chat to them!
+** {{tact|continue|below}}
+* {{tcond|If the player has met the leader:}}
+** '''Lucia:''' A fine day for stealing.
+** {{tact|continue|below}}
+* {{tselect|Select an Option}}
+* {{topt|I could do with some information on houses.}}
+** {{tselect|Pay 15 valuables for information?}}
+** {{topt|Yes.}}
+*** {{tcond|If the homeowner is about to leave:}}
+**** '''Lucia:''' I hear that [Caius] might be leaving soon.
+**** {{tact|continue|below}}
+*** {{tcond|If this is the first time:}}
+**** '''Lucia:''' Looks like [Caius] isn't home right now. Go quickly!
+**** {{tact|continue|below}}
+*** {{tcond|If the player already received intel:}}
+**** '''Lucia:''' Already forgotten?
+**** {{tact|continue|below}}
+**** '''Lucia:''' Do you want me to point you in the right direction? {{Anchor|below}}
+***** {{tselect|Select an Option}}
+***** {{topt|Yes please.}}
+****** '''Player:''' Yes please.
+****** {{tact|end}}
+***** {{topt|I'll find my own way.}}
+****** '''Player:''' I'll find my own way.
+****** {{tact|end}}
+** {{topt|No.}}
+*** '''Lucia:''' Suit yourself.
+*** {{tact|end}}
+* {{topt|I'd better get going.}}
+** {{tact|end}}
+"""
+
+
+def test_condition_run_continue_resumes_at_the_anchored_tail_after_the_run():
+    """Lucia: `{{tact|continue|below}}` names the `{{Anchor|below}}` that the
+    Wiki nests under the last condition; the tail belongs after the whole run."""
+    value = record("Lucia", URCHIN)
+    resolve_navigation(value)
+    steps = value["variants"]["standard-dialogue-subsequent-dialogue"]
+    yes = steps[2]["options"][0]["steps"][0]["options"][0]["steps"]
+    assert [node.get("type") for node in yes] == [
+        "condition",
+        "condition",
+        "condition",
+        None,
+    ]
+    assert yes[3]["npc"] == "Do you want me to point you in the right direction?"
+    assert [option["text"] for option in yes[3]["steps"][0]["options"]] == [
+        "Yes please.",
+        "I'll find my own way.",
+    ]
+    for condition in yes[:3]:
+        assert condition["steps"][-1]["reference"] == "continue"
+        assert not any("npc" in node and "point you" in node["npc"] for node in condition["steps"])
+    # A run whose last condition has no anchored tail is left as written: the
+    # page's only anchor sits in a later menu, not in that run.
+    assert [node.get("type") for node in steps] == ["condition", "condition", "choice"]
+    assert steps[1]["steps"][-1]["reference"] == "continue"
+    assert "_continue_to" not in str(value) and "_anchors" not in str(value)
+
+
+def test_condition_run_keeps_a_tail_no_sibling_continue_names():
+    value = record(
+        "Lucia",
+        URCHIN.replace(
+            "**** '''Lucia:''' I hear that [Caius] might be leaving soon.\n**** {{tact|continue|below}}",
+            "**** '''Lucia:''' I hear that [Caius] might be leaving soon.\n**** {{tact|end}}",
+        ).replace(
+            "**** '''Lucia:''' Looks like [Caius] isn't home right now. Go quickly!\n**** {{tact|continue|below}}",
+            "**** '''Lucia:''' Looks like [Caius] isn't home right now. Go quickly!\n**** {{tact|continue|elsewhere}}",
+        ),
+    )
+    resolve_navigation(value)
+    steps = value["variants"]["standard-dialogue-subsequent-dialogue"]
+    yes = steps[2]["options"][0]["steps"][0]["options"][0]["steps"]
+    assert len(yes) == 3
+    assert yes[2]["steps"][-1]["npc"].startswith("Do you want me to point you")
+
+
+def test_reviewed_source_anchor_can_start_at_a_branch_first_node():
+    """`at` starts at the named node: a branch's first node has nothing to resume after."""
+    value = record(
+        "Lucia",
+        """==Talk==
+* {{tselect}}
+* {{topt|Yes.}}
+** {{tcond|If the homeowner is about to leave:}}
+*** '''Lucia:''' I hear that [Caius] might be leaving soon.
+** {{tcond|If this is the first time:}}
+*** '''Lucia:''' Looks like [Caius] isn't home right now.
+* {{topt|Yes, don't ask me again.}}
+** {{tact|above}}
+""",
+    )
+    annotate(value["variants"]["talk"], "Transcript:Lucia#talk", {})
+    menu = value["variants"]["talk"][0]
+    destination = menu["options"][0]["steps"][0]["id"]
+    source = menu["options"][1]["steps"][0]["id"]
+    resolved = copy.deepcopy(value)
+    resolve_navigation(resolved, {source: {"expected": "above", "at": destination}})
+    expanded = follow(resolved, resolved["variants"]["talk"][0]["options"][1]["steps"])
+    assert [node["text"] for node in expanded] == [
+        "If the homeowner is about to leave:",
+        "If this is the first time:",
+    ]
+    for invalid in ({"expected": "above"}, {"expected": "above", "at": destination, "after": destination}):
+        with pytest.raises(ValueError, match="Invalid dialogue navigation anchor"):
+            resolve_navigation(copy.deepcopy(value), {source: invalid})
