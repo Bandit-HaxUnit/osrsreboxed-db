@@ -150,6 +150,16 @@ def speaker_label(raw):
     return None
 
 
+RANDOM_DRAW = re.compile(
+    r"A random dialogue is selected, (one|two|three|four|five|six|\d+) times?, "
+    r"non-repeating, from the following:"
+)
+DRAW_COUNTS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6}
+AFTER_DRAW = re.compile(
+    r"After the (?:first|second|third|fourth|fifth|sixth) question is answered:"
+)
+
+
 def parse_step(raw, issues, line):
     code = mw.parse(str(raw))
     anchors = []
@@ -256,6 +266,21 @@ def parse_step(raw, issues, line):
             # A free-to-play branch stops here; the conversation is members-only.
             if text == "members":
                 return dict(type="end", reason="members")
+            # "A random dialogue is selected, three times, non-repeating, from the
+            # following:" opens a random set drawn N times without repeats. Only this
+            # exact wording is read (the other "random" notes describe different shapes).
+            drawn = RANDOM_DRAW.fullmatch(text)
+            if drawn:
+                return dict(
+                    type="random_marker",
+                    count=DRAW_COUNTS.get(drawn[1].casefold()) or int(drawn[1]),
+                    non_repeating=True,
+                )
+            # "After the first question is answered:" heads the lines played after that
+            # draw. It is a guard on the draw, not an action, so it must not be absorbed
+            # into the last random alternative.
+            if AFTER_DRAW.fullmatch(text):
+                return dict(type="condition", text=text)
             if re.fullmatch(r"above|below|previous\d*|initial|other|continues?", text):
                 anchor = args.get("2", "").strip()
                 if anchor and text in ("above", "below"):
@@ -314,6 +339,9 @@ def group_options(nodes, random_options=False):
                 else "choice"
             )
             group = dict(type=kind, options=[])
+            if node["type"] == "random_marker" and node.get("count"):
+                group["count"] = node["count"]
+                group["non_repeating"] = bool(node.get("non_repeating"))
             option_nodes = []
             if node["type"] == "option":
                 option_nodes.append(node)
@@ -767,6 +795,8 @@ def gameplay_step(node, name):
                 "reason",
                 "action_source",
                 "prompt",
+                "count",
+                "non_repeating",
                 "_shared",
                 "_identity",
                 "_anchors",
