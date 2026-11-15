@@ -54,6 +54,87 @@ def identity(name, page, clean):
     return ids, names
 
 
+def _base_name(text):
+    return re.sub(r"\s*\([^)]*\)\s*$", "", text).strip().casefold()
+
+
+def _words(text):
+    return re.findall(r"[a-z0-9']+", text.casefold())
+
+
+def _is_subsequence(needle, haystack):
+    remaining = iter(haystack)
+    return all(word in remaining for word in needle)
+
+
+def speaker_ids(speaker, participants, identities):
+    """NPC ids for a spoken label, read only from the page's own participants.
+
+    Transcripts label a speaker with a short name ("Hrafn", "King Sorvott IV",
+    "Guard") while the Transcript list names the NPC page ("HRH Hrafn", "King
+    Gjuki Sorvott IV", "Guard (Jatizso)"). The strictest rule that finds exactly
+    one participant wins: a full name or infobox name, then the page title
+    without its disambiguation, then the label's words in order within a
+    participant's name. A tie at any rule resolves nothing, and no rule looks
+    outside the participant list, so NPCs sharing a short name are never merged.
+    """
+    label = speaker.strip()
+    if not label or "/" in label or label.casefold() == "player":
+        return []
+    folded = label.casefold()
+    wanted = _words(label)
+    rules = (
+        lambda page, names: folded in {n.casefold() for n in names},
+        lambda page, names: folded == _base_name(page)
+        or folded in {_base_name(n) for n in names},
+        lambda page, names: bool(wanted)
+        and _is_subsequence(wanted, _words(_base_name(page))),
+    )
+    for rule in rules:
+        found = [
+            page
+            for page in participants
+            if rule(page, identities.get(page, ([], {page}))[1] | {page})
+        ]
+        if len(found) == 1:
+            return sorted(set(identities.get(found[0], ([], set()))[0]))
+        if found:
+            return []
+    return []
+
+
+def annotate_speaker_ids(record, participants, identities):
+    """Add `speaker_ids` to lines spoken by a listed participant.
+
+    Runs on the exported record after corrections: their fingerprints cover the
+    record as compacted, so the field must not exist before they are checked.
+    Node ids are untouched.
+    """
+    if not participants:
+        return
+    steps_lists = (
+        [record["steps"]]
+        if "steps" in record
+        else list(record.get("variants", {}).values())
+    )
+    steps_lists += list(record.get("branches", {}).values())
+    cache = {}
+    for steps in steps_lists:
+        for node in walk(steps):
+            speaker = node.get("speaker")
+            if node.get("type") != "line" or not speaker:
+                continue
+            if speaker not in cache:
+                cache[speaker] = speaker_ids(speaker, participants, identities)
+            if cache[speaker]:
+                node["speaker_ids"] = list(cache[speaker])
+
+
+def npc_identities(npc_pages, clean):
+    """NPC page title -> (infobox ids, names the wiki calls that NPC)."""
+    return {name: identity(name, page, clean) for name, page in npc_pages.items()}
+
+
 def annotate(nodes, parent, quest_names):
     counts = collections.Counter()
     for node in nodes:
@@ -108,7 +189,7 @@ def annotate(nodes, parent, quest_names):
 def enrich_records(
     npcs, quests, npc_pages, clean, bindings=None, transcript_pages=None
 ):
-    identities = {name: identity(name, page, clean) for name, page in npc_pages.items()}
+    identities = npc_identities(npc_pages, clean)
     all_records = {
         "Transcript:" + name: record
         for group in (npcs, quests)

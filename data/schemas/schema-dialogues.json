@@ -29,6 +29,15 @@
         "speaker": {
           "type": "string"
         },
+        "speaker_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "NPC ids of the participant the speaker label names, resolved only within the page's Transcript list."
+        },
         "presentation": {
           "enum": [
             "overhead"

@@ -36,6 +36,16 @@ explicit participant pages. NPCs sharing a short name are never globally merged.
 An absent ID mapping is unresolved identity, not permission to guess a name match.
 The index lists candidates, not a quest-state-aware routing decision.
 
+Lines whose `speaker` is a short label ("Hrafn", "King Sorvott IV", "Guard") carry
+`speaker_ids`: the NPC ids of the one participant on the page's own Transcript list that the
+label names, so a consumer can show that NPC's chathead instead of the one being talked to.
+The label is matched against the participant's page title and infobox names, then the title
+without its disambiguation ("Guard (Jatizso)"), then the label's words in order within the
+title ("King Sorvott IV" in "King Gjuki Sorvott IV"); the first rule that finds exactly one
+participant wins and a tie resolves nothing. Labels naming several people ("A/B"), the player,
+and speakers not on the list have no `speaker_ids`. It is added after corrections are applied,
+so correction fingerprints and node ids do not include it.
+
 ## Record shapes and natural endings
 
 When the only variant is `standard-dialogue` and it is the selected default,

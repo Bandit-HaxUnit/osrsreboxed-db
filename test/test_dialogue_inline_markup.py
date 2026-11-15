@@ -52,8 +52,10 @@ def speech(node, found):
 
 
 def test_captured_wording_is_exported():
+    # speaker_ids is derived identity metadata, not part of the captured wording.
     data = json.loads(
-        (config.DOCS_PATH / "npc-dialogues.json").read_text(encoding="utf-8")
+        (config.DOCS_PATH / "npc-dialogues.json").read_text(encoding="utf-8"),
+        object_hook=lambda node: {k: v for k, v in node.items() if k != "speaker_ids"},
     )
     below_ice = speech(data["Below Ice Mountain"], set())
     assert {
