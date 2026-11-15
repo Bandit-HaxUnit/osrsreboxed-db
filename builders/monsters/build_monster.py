@@ -189,8 +189,9 @@ class BuildMonster:
             else:
                 self.infobox_version_number = ""
 
-        # A versioned infobox that lists one shared ``|id = 7551,7554`` names one id per
-        # version by position (Great Olm, Chambers of Xeric Challenge Mode NPCs). The id
+        # A versioned infobox of appearance variants that lists one shared
+        # ``|id = 14407,14408`` names one id per version by position (Emissary Archer; see
+        # variant_resolver.positional_ids for why Great Olm's shared list does not). The id
         # lookup above maps such ids to "" (unversioned, as the parser only counts ``idN`` and
         # ``nameN`` as versions), which read version 1's stats.
         if (

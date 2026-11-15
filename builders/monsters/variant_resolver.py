@@ -23,6 +23,8 @@ from typing import Dict, List, Optional, Tuple
 # Order of the stat tuples below. Wiki keys: combat, hitpoints, att, def, str, range, mage.
 STAT_NAMES = ("combat", "hitpoints", "att", "def", "str", "range", "mage")
 _TRAILING_NUMBER = re.compile(r"^(.*?)\s*(\d+)$")
+# Numbered keys versions may differ in while a shared id list still maps to them by position.
+_APPEARANCE_KEYS = ("version", "image")
 
 
 @dataclass(frozen=True)
@@ -65,17 +67,27 @@ def _as_ids(value: Optional[str]) -> Tuple[int, ...]:
 def positional_ids(params: Dict[str, str], numbers) -> Dict[int, str]:
     """Map each id of a shared ``id`` list to its version, by position.
 
-    Some versioned infoboxes give every version one ``|id = 7551,7554`` instead of
-    ``id1``/``id2`` (Great Olm, the Chambers of Xeric Normal/Challenge Mode pairs). When the
-    list holds exactly one plain id per version and no version has its own ``idN``, the Nth
-    id is version N's, the Wiki's order for these lists. Anything else returns ``{}`` so the
-    shared list keeps applying to every version.
+    Some versioned infoboxes give every version one shared ``|id = 14407,14408`` instead of
+    ``id1``/``id2`` (Emissary Archer, Emissary Acolyte). When the versions differ only in
+    their name and image (appearance variants, one cache id each), the list holds exactly one
+    plain id per version and no version has its own ``idN``, the Nth id is version N's.
+
+    A shared list on versions whose stats differ is not one id per version. On Great Olm and
+    the Chambers of Xeric Normal/Challenge Mode pages the ids are two forms of one NPC
+    (``olm_head_spawning`` 7551 and ``olm_head`` 7554, ``raids_vasanistirio_walking`` and
+    ``_healing``), and both forms are used in both modes: Challenge Mode scales the same ids
+    at runtime. Anything else returns ``{}`` so the shared list keeps applying to every
+    version.
     """
     numbers = sorted(numbers)
     if len(numbers) < 2 or "id" not in params:
         return {}
     if any(f"id{number}" in params for number in numbers):
         return {}
+    for key in params:
+        match = _TRAILING_NUMBER.match(key)
+        if match and match.group(1).strip() not in _APPEARANCE_KEYS:
+            return {}
     text = re.sub(r"<!--.*?-->", "", params["id"], flags=re.S)
     parts = [part.strip() for part in text.split(",") if part.strip()]
     if len(parts) != len(numbers) or not all(part.isdigit() for part in parts):
