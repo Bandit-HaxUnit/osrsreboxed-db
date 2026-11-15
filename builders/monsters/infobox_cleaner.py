@@ -163,6 +163,97 @@ def max_hit(value: str) -> int:
         return None
 
 
+def _plain_label(text: str) -> str:
+    # [[Target|Shown]] -> Shown, [[Target]] -> Target; drop template braces and spare spaces.
+    text = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", text)
+    text = re.sub(r"\{\{|\}\}", "", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def max_hits(value: str) -> list:
+    """Every max hit the infobox lists, with its label.
+
+    ``max_hit`` keeps one integer for the combat export; this keeps the whole
+    list for consumers that need each style's maximum, for example Killerwatt's
+    "8 ([[Ranged]]), 6 ([[Melee]]), 15 ([[Ranged]]/[[Melee]]; without
+    [[insulated boots]])". Each entry is ``{"value": str, "label": str or None,
+    "max_hit": int or None}``: ``value`` is the Wiki's text before the label
+    ("50+", "17x2", "50/60"), ``label`` the last parenthesised part, and
+    ``max_hit`` the number only when ``value`` is a plain number or a rising
+    range (its top), since the other forms need the Wiki's own reading. Notes
+    that do not start with a number are skipped; footnotes are dropped.
+
+    :param value: Template value extracted from raw wikitext.
+    :return value: A list of max hit entries, in the Wiki's order.
+    """
+    if not value:
+        return []
+
+    value = str(value)
+    value = re.sub(r"\{\{\s*efn[^{}]*\}\}", "", value, flags=re.I)
+    value = re.sub(r"<ref[^>]*/>|<ref[^>]*>.*?</ref>", "", value, flags=re.S | re.I)
+    if "plainlist" in value.lower():
+        parts = [
+            line.strip()[1:].strip()
+            for line in value.splitlines()
+            if line.strip().startswith("*")
+        ]
+    else:
+        # Entries are separated by commas, <br> tags or line breaks (Frost dragon:
+        # "16 ([[Stab]])<br/>50 ([[Dragonfire]])"), or only by a space after a closing
+        # label (Dusk: "15 (melee) 33 (special attack)"); only outside parentheses, so
+        # a label may hold its own commas.
+        value = re.sub(r"<br\s*/?>", "\n", value, flags=re.I)
+        parts, depth, current = [], 0, ""
+        for index, char in enumerate(value):
+            if char == "(":
+                depth += 1
+            elif char == ")" and depth > 0:
+                depth -= 1
+            if char in ",\n" and depth == 0:
+                parts.append(current)
+                current = ""
+                continue
+            current += char
+            if char == ")" and depth == 0 and re.match(r"\s+~?\d", value[index + 1 :]):
+                parts.append(current)
+                current = ""
+        parts.append(current)
+
+    entries = []
+    for part in parts:
+        part = _plain_label(part)
+        label = None
+        if part.endswith(")"):
+            depth = 0
+            for index in range(len(part) - 1, -1, -1):
+                depth += part[index] == ")"
+                depth -= part[index] == "("
+                if depth == 0:
+                    label = part[index + 1 : -1].strip() or None
+                    part = part[:index].strip()
+                    break
+        # An approximate hit ("~85 (dash)") keeps its text and gets no number.
+        if not re.match(r"~?\d", part):
+            continue
+        if label is None:
+            # An unbracketed label after the number (TzHaar-Mej: "13 [[Magic]], 9 [[Melee]]").
+            bare = re.fullmatch(
+                r"(\d+(?:\s*[-\u2013\u2014]\s*\d+)?)\s+([A-Za-z].*)", part
+            )
+            if bare:
+                part, label = bare.group(1), bare.group(2).strip()
+        number = None
+        if re.fullmatch(r"\d+", part):
+            number = int(part)
+        else:
+            span = re.fullmatch(r"(\d+)\s*[-\u2013\u2014]\s*(\d+)", part)
+            if span and int(span.group(2)) > int(span.group(1)):
+                number = int(span.group(2))
+        entries.append({"value": part, "label": label, "max_hit": number})
+    return entries
+
+
 def attack_type(value: str) -> list:
     """Convert the attack type entry to a list of strings.
 
