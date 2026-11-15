@@ -842,3 +842,96 @@ def test_below_shared_by_every_later_option_continues_after_the_menu():
         others = [other["steps"][0]["text"] for other in options if other is not option]
         assert not set(spoken) & set(others), (option["text"], spoken)
         assert option["steps"][-1].get("reference") == "below"
+
+
+def test_random_draw_wording_becomes_a_counted_random_and_keeps_its_followups_apart():
+    value = record(
+        "X",
+        """==Standard dialogue==
+* {{tselect|Select an option}}
+* {{topt|Start}}
+** '''X:''' Intro.
+** {{tact|A random dialogue is selected, three times, non-repeating, from the following:}}
+** {{topt|Dialogue 1}}
+*** '''X:''' Question one.
+** {{topt|Dialogue 2}}
+*** '''X:''' Question two.
+** {{tact|After the first question is answered:}}
+*** '''X:''' That was the first.
+** {{tact|After the third question is answered:}}
+*** '''X:''' That was the third.
+* {{topt|Leave}}
+** '''X:''' Bye.
+""",
+    )
+    menu = value["variants"]["standard-dialogue"][0]
+    assert [option["text"] for option in menu["options"]] == ["Start", "Leave"]
+    steps = menu["options"][0]["steps"]
+    assert steps[0] == {"npc": "Intro."}
+    draw = steps[1]
+    assert draw["type"] == "random"
+    assert (draw["count"], draw["non_repeating"]) == (3, True)
+    assert [option["text"] for option in draw["options"]] == ["Dialogue 1", "Dialogue 2"]
+    # The follow-ups are siblings after the draw, not the last alternative's body.
+    assert all(option["steps"] == [{"npc": text}] for option, text in zip(
+        draw["options"], ["Question one.", "Question two."]
+    ))
+    assert [(step["type"], step["text"]) for step in steps[2:]] == [
+        ("condition", "After the first question is answered:"),
+        ("condition", "After the third question is answered:"),
+    ]
+
+
+def test_other_random_wording_is_not_read_as_a_counted_draw():
+    value = record(
+        "X",
+        """==Standard dialogue==
+* {{tselect|Select an option}}
+* {{topt|Start}}
+** {{tact|A random dialogue is selected from the following:}}
+** {{topt|One}}
+*** '''X:''' One.
+""",
+    )
+    steps = value["variants"]["standard-dialogue"][0]["options"][0]["steps"]
+    assert all("count" not in step for step in steps)
+
+
+def test_myreque_curpile_quiz_is_three_random_questions_and_refusal_is_a_menu_option():
+    page = json.loads(
+        (config.DATA_PATH / "dialogues" / "quest-pages.json").read_text(encoding="utf-8")
+    )["Transcript:In Search of the Myreque"]
+    bindings = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
+    )["In Search of the Myreque"]["structure"]
+    raw = update.apply_structure_annotations(
+        "In Search of the Myreque", page["wikitext"], bindings, page["revision"]
+    )
+    variant = update.parse_npc("In Search of the Myreque", raw)["variants"][
+        "convincing-curpile-fyod-talking-to-curpile-fyod"
+    ]
+    menu = next(step for step in variant["steps"] if step["type"] == "choice")
+    # void's Curpile menu: the refusal is option 2 of the initial menu, not a question.
+    assert [option["text"] for option in menu["options"]] == [
+        "I've come to help the Myreque. I've brought weapons.",
+        "I don't have to answer to you!",
+        "No reason!",
+        "I'm lost. Can you show me the way out?",
+        "I have to go.",
+    ]
+    steps = menu["options"][0]["steps"]
+    draw = next(step for step in steps if step["type"] == "random")
+    assert (draw["count"], draw["non_repeating"]) == (3, True)
+    assert [option["text"] for option in draw["options"]] == [f"Dialogue {n}" for n in range(1, 7)]
+    assert all(option["steps"][-1]["type"] == "choice" for option in draw["options"])
+    after = [step for step in steps if step["type"] == "condition" and "question is answered" in step["text"]]
+    assert [step["text"] for step in after] == [
+        "After the first question is answered:",
+        "After the second question is answered:",
+        "After the third question is answered:",
+    ]
+    results = [step["text"] for step in after[2]["steps"] if step["type"] == "condition"]
+    assert len(results) == 4 and "three out of three" in results[3]
+    # The refusal branch keeps its own lines and the punch note.
+    refusal = menu["options"][1]["steps"]
+    assert [step.get("text") for step in refusal if step["type"] == "line"][-1].startswith("You do if")
