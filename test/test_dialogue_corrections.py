@@ -1480,3 +1480,34 @@ def test_shilo_village_follows_the_revision_242_capture():
     assert "Yanni won't sell you items that you've already got stored elsewhere." in yanni
     vigroy = json.dumps(dialogues["Vigroy"])
     assert "The player is transported to Brimhaven" in vigroy
+
+
+def test_tree_gnome_village_capture_source_is_pinned():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())[
+        "Transcript:Tree Gnome Village"
+    ]
+    source = sources["Tree Gnome Village"]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Tree Gnome Village", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Tree Gnome Village", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Tree Gnome Village", "\n" + page["wikitext"], source, page["revision"])
+
+
+def test_tree_gnome_village_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Tree Gnome Village"]["variants"]
+    # Bolren's guide-out line ends with a full stop (local 1001802 tick 931).
+    start = json.dumps(variants["tree-gnome-king"])
+    assert "try your best to return the orb.\"" in start
+    # Montai's menu lists the wood first (tick 1056).
+    menu = next(step for step in variants["battlefield-commander-montai"] if step.get("type") == "choice")
+    assert [option["text"] for option in menu["options"]] == [
+        "Ok, I'll gather some wood.", "Sorry, I no longer want to be involved.",
+    ]
+    # The chest's box (tick 1567).
+    chest = json.dumps(variants["into-the-stronghold-upon-opening-the-chest-containing-the-orb-of-protection"])
+    assert "Inside you find the gnomes' stolen orb of protection." in chest
