@@ -1120,12 +1120,31 @@ def parse_npc_ids_by_drop_table(
 
 
 def parse_drop_version_names(wikitext: str) -> List[str]:
-    """List the ``dropversionN`` names declared in a page's infobox."""
-    return [
+    """List the drop version names declared in a page's infoboxes.
+
+    Numbered ``dropversionN`` fields always count. A Multi Infobox page may
+    instead give each of its monster infoboxes one unnumbered ``dropversion``
+    (Outlaw (Mudfoot's Big Adventure): Ranger, Mage, Warrior); those count
+    only when the page declares at least two distinct versions, so a single
+    infobox's lone ``dropversion`` keeps the page's drops unsplit.
+    """
+    names = [
         match.group(2).strip()
         for match in DROP_VERSION_FIELD.finditer(wikitext)
         if match.group(2).strip()
     ]
+    unnumbered = []
+    for template in mwparserfromhell.parse(
+        _npc_infobox_source(wikitext)
+    ).filter_templates():
+        if str(template.name).strip().lower() not in ("infobox monster", "infobox npc"):
+            continue
+        name = template_params(template).get("dropversion", "").strip()
+        if name and name not in names and name not in unnumbered:
+            unnumbered.append(name)
+    if len({name.lower() for name in names + unnumbered}) >= 2:
+        names.extend(unnumbered)
+    return names
 
 
 # ---------------------------------------------------------------------------
