@@ -2461,5 +2461,406 @@
         "text": "* '''Trufitus:''' You should deliver the good news to Bwana Timfraku, Chief of Tai Bwo Wannai."
       }
     ]
+  },
+  "Shilo Village": {
+    "revision": 15314818,
+    "reason": "Shilo Village as the revision 242 capture plays it: the broken cart's Search and the village gate before the quest, Mosol Rei asking after the Wampum belt, Trufitus's Talk-to greeting with the belt and without it, the extra minions line, 'Trufitus goes back to his studies.', the fissure's 'Climb into the fissure?', the lit torch on the fissure, the loose rocks and gallows searched again, 'Leave no stone unturned', the keys-and-kin answer, 'Congratulations Bwana. Show me' and its two-option menu, the palm trees searched again, the rocks back up, the third bone's order, Nazastarool's first words, the curse's chat lines before its boxes, the dolmen after the remains, the tomb exit without the beads line, 'Rashiliyia's remains' and her disappearance.",
+    "sources": [
+      "RSProx capture ShiloVillage (revision 242.1, SHA-256 9e84bd713f2105e1b48fd59e8041b45a6969d1c620856c9311a48ac263c46c44, ticks 671-773, 1460-1498, 1643-1930, 2107-2118, 2480-2513, 2648, 2755-2758, 3034-3099, 3268-3272, 3803-3839, 3984, 4037-4054, 4591-4594, 4612-4614, 4837-4854, 4891-4911, 5245-5257)",
+      "Transcript:Shilo Village revision 15314818 as cached; all other lines are parsed unchanged"
+    ],
+    "lines": [
+      {
+        "line": 130,
+        "sha256": "6fce4dec1933cca88dc978194a9c5be3373ae98a7b79fe2436473e3379b4c5b8",
+        "insert_before": [
+          "===Look-at Broken cart===",
+          "* {{tbox|You see a broken cart has been placed here. You suspect it's intended to keep people out.}}",
+          "* {{tact|end}}",
+          "",
+          "===Search Broken cart===",
+          "* {{tbox|You think you could climb over the cart, but you see undead creatures gathered by the gates. A note attached to the cart reads: {{Colour|red|Danger: Deadly green mist!}} {{Colour|red|DO NOT ENTER IF YOU VALUE YOUR LIFE!}}}}",
+          "* {{trandom}}",
+          "* {{topt|Dialogue 1}}",
+          "** '''Mosol Rei:''' Hey, move away from the cart please! It's unsafe to go in there.",
+          "** {{tact|continues}}",
+          "* {{topt|Dialogue 2}}",
+          "** '''Mosol Rei:''' You must be a maniac to go in there! The whole place is swarming with zombies!",
+          "** {{tact|continues}}",
+          "* {{tselect|Select an Option}}",
+          "* {{topt|I'm climbing over the cart anyway!}}",
+          "** '''Player:''' I'm climbing over the cart anyway!",
+          "** {{tact|end}}",
+          "* {{topt|I'm climbing in anyway. Don't warn me again.}}",
+          "** '''Player:''' I'm climbing in anyway. Don't warn me again.",
+          "** {{tact|end}}",
+          "* {{topt|Actually, I'll stay out here.}}",
+          "** '''Player:''' Actually, I'll stay out here. I'd probably have just scraped my knees up.",
+          "** {{tact|end}}",
+          "",
+          "===Open Metal gate===",
+          "* {{tbox|The gate feels very cold to your touch! Are you sure you want to go through?}}",
+          "* {{tselect|Select an Option}}",
+          "* {{topt|Yes, I am fearless!}}",
+          "** {{tact|end}}",
+          "* {{topt|No, actually, I have a bad feeling about this!}}",
+          "** {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 131,
+        "sha256": "cf311f2a1a849215a9230628aa5430b9d6f413763c3d0d59108409ab17e87af5",
+        "text": "* {{anchor|mosol-why-undead}}'''Player:''' Why are the undead here?",
+        "insert_before": [
+          "* '''Mosol Rei:''' Hey there Bwana, have you delivered that Wampum Belt to Trufitus yet?",
+          "* {{tselect|Select an Option}}",
+          "* {{topt|Yes, of course!}}",
+          "** '''Player:''' Yes, of course!",
+          "** '''Mosol Rei:''' Well hopefully Trufitus will come up with some good ideas on how to resolve this problem with Rashiliyia. You should talk to him if you really want to help.",
+          "** {{topt|Ok. Thanks for your help.}}",
+          "*** '''Player:''' Ok. Thanks for your help.",
+          "*** '''Mosol Rei:''' You're welcome Bwana, good luck.",
+          "*** {{tact|end}}",
+          "** {{topt|Why are the undead here?}}",
+          "*** {{tact|above|mosol-why-undead}}",
+          "* {{topt|Not yet, I've been busy.}}",
+          "** '''Player:''' Not yet, I've been busy.",
+          "** '''Mosol Rei:''' If you can take it to him quickly, it would help me out a lot. If not, please can you give it back to me so that I can send a scout to deliver it.",
+          "** {{topt|Ok. Thanks for your help.}}",
+          "*** '''Player:''' Ok. Thanks for your help.",
+          "*** '''Mosol Rei:''' You're welcome Bwana, good luck.",
+          "*** {{tact|end}}",
+          "** {{topt|Why are the undead here?}}",
+          "*** {{tact|above|mosol-why-undead}}"
+        ]
+      },
+      {
+        "line": 169,
+        "sha256": "d384ece05f3bb22555dd38f73b86f529ca15af5760b087667f6e08d7533807a7",
+        "text": "* {{anchor|trufitus-rashiliyia}}{{topt|What do you know about Rashiliyia?}}"
+      },
+      {
+        "line": 185,
+        "sha256": "bcb75ba4ca4c00b7f75afb3265f87a3476b28655ee5d87a0248263d718795e30",
+        "text": "**** {{anchor|trufitus-legend}}{{topt|Mosol Rei said something about a legend?}}"
+      },
+      {
+        "line": 231,
+        "sha256": "c717382c9e49a9b09a6802c82e489b4699073ad7d3d268432d548f13956bfd11",
+        "insert_before": [
+          "********** {{mes|Trufitus goes back to his studies.}}"
+        ]
+      },
+      {
+        "line": 262,
+        "sha256": "e466aea971ef701828ce55a747e64719b461e23c4abfc05611dd3920fb42a858",
+        "insert_before": [
+          "******* '''Trufitus:''' Usually a strong creature of some sort will be guarding her remains. And of course, she is a very powerful spell caster herself. Not to be tackled lightly."
+        ]
+      },
+      {
+        "line": 294,
+        "sha256": "0df9a09795af3e76b770bbbebd649902298f889c5de34cb9bef1498225d30e35",
+        "insert_before": [
+          "===Talking to Trufitus with the Wampum belt===",
+          "* '''Player:''' Greetings.",
+          "* '''Trufitus:''' Greetings Bwana! You look like you have some serious news.",
+          "* '''Player:''' Well, I think I may have. I have just spoken to Mosol Rei and he says that Rashiliyia has returned...",
+          "* '''Trufitus:''' Oh dear, it is more serious than I have imagined.",
+          "* {{tselect|Select an Option}}",
+          "* {{topt|What do you know about Rashiliyia?}}",
+          "** {{tact|above|trufitus-rashiliyia}}",
+          "* {{topt|What do you know about Mosol Rei?}}",
+          "** '''Player:''' What do you know about Mosol Rei?",
+          "** '''Trufitus:''' I know he is a brave warrior, he lives in a village south of here. Your journeys have taken you far!",
+          "** {{topt|What do you know about Rashiliyia?}}",
+          "*** {{tact|above|trufitus-rashiliyia}}",
+          "** {{topt|Do you trust him?}}",
+          "*** '''Player:''' Do you trust him?",
+          "*** '''Trufitus:''' He is a little headstrong, but for the right reasons. I think he is generally to be trusted.",
+          "*** {{topt|What do you know about Rashiliyia?}}",
+          "**** {{tact|above|trufitus-rashiliyia}}",
+          "*** {{topt|Mosol Rei said something about a legend?}}",
+          "**** {{tact|above|trufitus-legend}}",
+          "* {{topt|Mosol gave me something to show you.}}",
+          "** '''Player:''' Mosol gave me something to show you.",
+          "** '''Trufitus:''' Oh yes, let me see it then.",
+          "** {{tbox|pic=Wampum belt detail.png|You show Trufitus the Wampum belt, he studies it for a long time.}}",
+          "** '''Trufitus:''' Yes, things do look very bad indeed.",
+          "** {{topt|What do you know about Rashiliyia?}}",
+          "*** {{tact|above|trufitus-rashiliyia}}",
+          "** {{topt|Mosol Rei said something about a legend?}}",
+          "*** {{tact|above|trufitus-legend}}",
+          "",
+          "===Talking to Trufitus without the Wampum belt===",
+          "* '''Trufitus:''' Greetings once again Bwana,",
+          "* '''Trufitus:''' I have no more news since we last spoke.",
+          "* {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 344,
+        "sha256": "8b0db19c6b7ca633216ac494451a904d21597104da7ff3577d276e707f3991e4",
+        "insert_before": [
+          "* {{tselect|Climb into the fissure?}}"
+        ]
+      },
+      {
+        "line": 370,
+        "sha256": "d08d296ef0852535fdaf1b9d366df1ef54a35334f8f5fe2d55f882134143ca19",
+        "insert_before": [
+          "===Use lit torch on Fissure===",
+          "* {{tselect|Are you sure? You won't get that item back.}}",
+          "* {{topt|Yes}}",
+          "** {{tbox|pic=Lit torch detail.png|You drop the torch into the fissure and see that there is quite a large drop after you get through the hole. There is a good anchor point nearby onto which you could tie a rope.}}",
+          "** {{tbox|The torch burns out.}}",
+          "** {{tbox|Some rope might help here.}}",
+          "** {{tact|end}}",
+          "* {{topt|No}}",
+          "** {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 412,
+        "sha256": "4da12537a6c69e66520157611da4f0a1671e6ad50482171b9585e06541bf81ce",
+        "insert_before": [
+          "===Search Loose rocks after taking the scroll===",
+          "* {{tbox|You see nothing here but an empty bookcase behind some rocks.}}",
+          "* {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 452,
+        "sha256": "66a02a55d0763e5ddc1b9580b4758db29dce88b591d6947b84677daa209c881a",
+        "insert_before": [
+          "===Search Ancient gallows after taking the corpse===",
+          "* {{mes|You search the gallows...}}",
+          "* {{tbox|The gallows look pretty eerie. You search but find nothing.}}",
+          "* {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 548,
+        "sha256": "a16409e5de99c635def0b0d505435b602e00ef55746f3ff52b1404101eacd4a6",
+        "text": "** '''Trufitus:''' Look for something that can identify the place. Leave no stone unturned."
+      },
+      {
+        "line": 578,
+        "sha256": "a16409e5de99c635def0b0d505435b602e00ef55746f3ff52b1404101eacd4a6",
+        "text": "** '''Trufitus:''' Look for something that can identify the place. Leave no stone unturned."
+      },
+      {
+        "line": 707,
+        "sha256": "51a0618dcfab5fb67ae7448e88dd14f2ec3703d460ac09238cfa5415428d21ba",
+        "text": "**** '''Trufitus:''' But I think we must take Zadimus' clue literally and get some item that belonged to Bervirius as it may be the only way to approach Rashiliyia. Perhaps something like this exists in his tomb?",
+        "insert_before": [
+          "**** '''Trufitus:''' Rashiliyia's only kin was a son, 'Bervirius'. His remains were entombed on a small island which lies to the South West. I will do some research into this to see if I can find any other details."
+        ]
+      },
+      {
+        "line": 822,
+        "sha256": "29cc28db75a9cd0b92362001ba8797555919cba2f756b475e341f9550f7b1896",
+        "text": "** '''Trufitus:''' Congratulations Bwana. Show me any items you have found though. I may be able to help."
+      },
+      {
+        "line": 843,
+        "sha256": "40b651ccfbc430de37704df14217e43101ba4d5bd22704cd245a76aba3c24ea7",
+        "text": ""
+      },
+      {
+        "line": 844,
+        "sha256": "d3a62d18c5a51f716dfc4f86e1c7651e7127cf4f066e30a7d48609d5a89e97bb",
+        "text": ""
+      },
+      {
+        "line": 942,
+        "sha256": "d722c7c98966b4e00fbe5072af55c45b9293c7a4fcc56bec4bbbb3740a224197",
+        "insert_before": [
+          "===Search Palm tree after revealing the doors===",
+          "* {{mes|The trees are already pulled apart revealing some doors.}}",
+          "* {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 986,
+        "sha256": "dd0096902382f1fd57c0c5f80285f0c7f4a6b2fc7d640d58fa099f5642853507",
+        "insert_before": [
+          "===Climb Rocks back up===",
+          "* {{mes|You carefully pick your way through the rocks.}}",
+          "* {{mes|You manage to carefully clamber up.}}",
+          ""
+        ]
+      },
+      {
+        "line": 1014,
+        "sha256": "8c0593ece8871762a2833ae1422636b579090399b0d5d6a31fb585da2f7fa118",
+        "text": "** {{tbox|pic=Bones detail.png|You place the bone into the last recess on the skeletal door and it fits. All the recesses are filled...}}"
+      },
+      {
+        "line": 1015,
+        "sha256": "6553ca9c32e9e8fb11327046e849ac628905a8ed923d0638bdfe7f3710e2ef44",
+        "text": "** {{mes|You fit the last bone into the recess.}}"
+      },
+      {
+        "line": 1022,
+        "sha256": "b66903401d3d4414dd77410cccfa829c3f3cac63922db03aea9ff65886d01fee",
+        "insert_before": [
+          "* '''Nazastarool:''' {{overhead|Who dares disturb Rashiliyia's rest?}}"
+        ]
+      },
+      {
+        "line": 1034,
+        "sha256": "08c3226c5abc705bf2e615ef8dcb57ad8708790b79fe111cfcf986ced95f80e8",
+        "text": "* {{mes|You see something appear on the dolmen.}}"
+      },
+      {
+        "line": 1035,
+        "sha256": "04d730101b872d3d51107252ed5aa206d98e703790ffc912a9bf6ad4bd5ec524",
+        "text": "* {{mes|Nazastarool: May you perish in the fires of Zamorak's furnace! Rashiliyia's}}"
+      },
+      {
+        "line": 1036,
+        "sha256": "b00838aecce144650281d003e03f3ce6669cd3529b09f39239538e5c5deb4882",
+        "text": "* {{mes|Nazastarool: curse is upon you!}}"
+      },
+      {
+        "line": 1037,
+        "sha256": "2521c73477b70268589b929268be10584b99ed2c73e306ff405178787546f818",
+        "text": "* {{tbox|You hear a disembodied voice fading away into the distance, 'May you perish in the fires of Zamorak's furnace! Rashiliyia's curse is upon you!'}}"
+      },
+      {
+        "line": 1038,
+        "sha256": "be2dde9d39be26a80672febb9987788fbaf125212de06923ed889e42d04bad9d",
+        "insert_before": [
+          "* {{tbox|You see something appear on the dolmen.}}"
+        ]
+      },
+      {
+        "line": 1040,
+        "sha256": "4784dc5d7f9f7da1d2632227b44435e06c3144dce01bbfed1fa1eea4a445b5b0",
+        "insert_before": [
+          "===Look-at or Search Tomb dolmen after taking Rashiliyia's remains===",
+          "* {{mes|You find nothing new on the dolmen.}}",
+          "* {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 1047,
+        "sha256": "185f1b2df317261830748011a4aed062e61f7cca43122fdb95319d8b913b4c8f",
+        "text": ""
+      },
+      {
+        "line": 1048,
+        "sha256": "8dd5719a0fe2527b01e803e07e59f9c60cbff37f06db48f487923f01c34265e7",
+        "text": ""
+      },
+      {
+        "line": 1139,
+        "sha256": "3af956f31435d136a607501f3c828b5e58df873291b3bfb247e4a8464836953b",
+        "text": "* {{tbox|You carefully place Rashiliyia's remains on the dolmen. You feel a strange vibration in the air.}}"
+      },
+      {
+        "line": 1142,
+        "sha256": "be2dde9d39be26a80672febb9987788fbaf125212de06923ed889e42d04bad9d",
+        "insert_before": [
+          "* {{mes|Without warning the spirit of Rashiliyia disappears.}}"
+        ]
+      }
+    ]
+  },
+  "Mosol Rei": {
+    "revision": 15079258,
+    "reason": "Mosol Rei after Shilo Village as the revision 242 capture plays 'Yes, Ok, I'll go into the village!': one message box, 'Mosol leads you into the village and walks back out into the jungle.', not two lines.",
+    "sources": [
+      "RSProx capture ShiloVillage (revision 242.1, SHA-256 9e84bd713f2105e1b48fd59e8041b45a6969d1c620856c9311a48ac263c46c44, ticks 5382-5397, 5430-5433)",
+      "Transcript:Mosol Rei revision 15079258 as cached; all other lines are parsed unchanged"
+    ],
+    "lines": [
+      {
+        "line": 13,
+        "sha256": "ae8fc483cf3eacbd7110ad1e222bb005b45296e3963af2bf00b709bccfc0dac3",
+        "text": "** {{tbox|Mosol leads you into the village and walks back out into the jungle.}}"
+      },
+      {
+        "line": 14,
+        "sha256": "b791656df79bf3cf6d67124b58c27fbab9bbab45248bf734a1a16ae7ee069553",
+        "text": ""
+      }
+    ]
+  },
+  "Yanni Salika": {
+    "revision": 15314630,
+    "reason": "Yanni Salika as the revision 242 capture plays him: the antiques line split before 'give you a quote?', the 'Yanni looks through your items...' box before his quote, the items-for-sale and not-interested options after the quote question, and 'Yanni won't sell you items that you've already got stored elsewhere.' before his refusal.",
+    "sources": [
+      "RSProx capture ShiloVillage (revision 242.1, SHA-256 9e84bd713f2105e1b48fd59e8041b45a6969d1c620856c9311a48ac263c46c44, ticks 5497-5560)",
+      "Transcript:Yanni Salika revision 15314630 as cached; all other lines are parsed unchanged"
+    ],
+    "lines": [
+      {
+        "line": 9,
+        "sha256": "8f142da0d3fd38f3a2a129dc8e64a7bed76c43c5db7c054b2bcd4ec960741f1b",
+        "text": "** '''Yanni Salika:''' I buy antiques and other interesting items. If you have any interesting items that you might want to sell me, please let me see them and I'll offer you a fair price. Would you like me to have a look at your items and"
+      },
+      {
+        "line": 10,
+        "sha256": "30e20144581effc0ce6b3338d08286bea432f492d63632ec8149d86380440c6a",
+        "text": "** '''Yanni Salika:''' give you a quote?"
+      },
+      {
+        "line": 13,
+        "sha256": "c29e1172103047de652210df60386f265bdb77c8b469ca370b7288a35e6ca83b",
+        "insert_before": [
+          "*** {{tbox|Yanni looks through your items...}}"
+        ]
+      },
+      {
+        "line": 37,
+        "sha256": "f773d75900617919d4e44b98b69eca4cb2fe6161ff79ca552d04012e1c6b8faa",
+        "text": "* {{anchor|yanni-for-sale}}{{topt|Do you have any interesting items for sale?}}",
+        "insert_before": [
+          "** {{topt|Do you have any interesting items for sale?}}",
+          "*** {{tact|above|yanni-for-sale}}",
+          "** {{topt|Hmm, sorry, not interested.}}",
+          "*** {{tact|above|yanni-not-interested}}"
+        ]
+      },
+      {
+        "line": 40,
+        "sha256": "3e8ed93e823e8fd62c693db121bb093351ad030dd9ee04c0576d2a41cbd0a1fa",
+        "insert_before": [
+          "*** {{mes|Yanni won't sell you items that you've already got stored elsewhere.}}"
+        ]
+      },
+      {
+        "line": 44,
+        "sha256": "bb95b4998a5dce3f7c35517e78ca150bbdc792e82fd694e6811389fd62c35ee0",
+        "text": "* {{anchor|yanni-not-interested}}{{topt|Hmm, sorry, not interested.}}"
+      }
+    ]
+  },
+  "Vigroy": {
+    "revision": 14658919,
+    "reason": "Vigroy's ride as the revision 242 capture plays it: the short message box as the cart sets off, the ride, then the box with 'You feel tired from the journey...', as Hajedy's page has it.",
+    "sources": [
+      "RSProx capture ShiloVillage (revision 242.1, SHA-256 9e84bd713f2105e1b48fd59e8041b45a6969d1c620856c9311a48ac263c46c44, ticks 5687-5698)",
+      "Transcript:Vigroy revision 14658919 as cached; all other lines are parsed unchanged"
+    ],
+    "lines": [
+      {
+        "line": 10,
+        "sha256": "8243f109dc646a2b3d25334d8f0b74cc17d294ed1b9d0339dff5d24137644bee",
+        "insert_before": [
+          "*** {{tbox|You hop into the cart and the driver urges the horses on. You take a taxing journey through the jungle to Brimhaven.}}",
+          "*** {{qact|The player is transported to Brimhaven}}"
+        ]
+      }
+    ]
   }
 }
