@@ -177,6 +177,43 @@
                             ]
                           },
                           {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Now that I think about it, you're right!",
+                                "steps": [
+                                  {
+                                    "player": "Now that I think about it, you're right!"
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Martin the Master Gardener",
+                                    "text": "I know I am. Depressing isn't it?",
+                                    "speaker_ids": [
+                                      5832
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No, can't say that I have.",
+                                "steps": [
+                                  {
+                                    "player": "No, can't say that I have."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Martin the Master Gardener",
+                                    "text": "That's not very observant of you.",
+                                    "speaker_ids": [
+                                      5832
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
                             "type": "jump",
                             "reference": "continues",
                             "id": "oi_oLn"
@@ -766,6 +803,9 @@
                 "player": "I've been told that it's the lack of rain, plagues of insects and recently I was told that the entire order of seasons is confused!"
               },
               {
+                "player": "I have no idea what to do about any of it. I'm an adventurer, not a weather controller!"
+              },
+              {
                 "type": "line",
                 "speaker": "[Gardener #5]",
                 "text": "Did you ever consider that all those theories might be correct?"
@@ -792,6 +832,11 @@
                 "text": "Think it through. There are fairies who control everything natural from the weather to the seasons."
               },
               {
+                "type": "line",
+                "speaker": "[Gardener #5]",
+                "text": "Surely if all of those things have been mentioned as catalysts to our problems it stands to reason that the fairies are actually the cause?"
+              },
+              {
                 "player": "Right, well thanks for your input. I'll think over what you said."
               }
             ]
@@ -813,9 +858,42 @@
     ],
     "talking-to-the-gardeners-if-the-player-has-already-talked-to-them": [
       {
-        "type": "line",
-        "speaker": "[Gardener]",
-        "text": "I've already told you everything I suspect."
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you a member of the Group of Advanced Gardeners?",
+            "steps": [
+              {
+                "player": "Are you a member of the Group of Advanced Gardeners?"
+              },
+              {
+                "type": "line",
+                "speaker": "[Gardener]",
+                "text": "Why, yes I am. Why do you ask?"
+              },
+              {
+                "player": "Martin has asked me to investigate why all the crops are failing."
+              },
+              {
+                "type": "line",
+                "speaker": "[Gardener]",
+                "text": "I've already told you everything I suspect."
+              }
+            ]
+          },
+          {
+            "text": "Would you look after my crops for me?"
+          },
+          {
+            "text": "Can you give me any farming advice?"
+          },
+          {
+            "text": "Can you sell me something?"
+          },
+          {
+            "text": "I'll come back another time."
+          }
+        ]
       }
     ],
     "talking-to-the-gardeners-talking-to-other-gardeners-after-having-already-asked-five": [
@@ -1058,6 +1136,15 @@
                 ]
               },
               {
+                "type": "line",
+                "speaker": "Fairy Godfather",
+                "text": "She is-a being cared for by-a Fairy Nuff, who lives-a just north of-a da bank.",
+                "speaker_ids": [
+                  1840,
+                  5837
+                ]
+              },
+              {
                 "player": "Thanks, I'll go see her then. Goodbye."
               },
               {
@@ -1075,7 +1162,7 @@
               {
                 "type": "line",
                 "speaker": "Fairy Godfather",
-                "text": "A word-a of advice. You be-a careful not to cause da trouble for da folk while you are Zanaris. Ciao.",
+                "text": "A word-a of advice. You be-a careful not to cause da trouble for da folk while you are in Zanaris. Ciao.",
                 "speaker_ids": [
                   1840,
                   5837
@@ -1129,7 +1216,7 @@
               {
                 "type": "line",
                 "speaker": "Fairy Godfather",
-                "text": "An eenteresting place to start... I am-a here, ze Queen Bee iz not. So my chair - eet iz-a here, her throne - eet iz- a not. Eez there anytheeng else? I ama a bizy fairy.",
+                "text": "An eenteresting place to start... I am-a here, ze Queen Bee iz not. So my chair - eet iz-a here, her throne - eet iz-a not. Eez there anytheeng else? I ama a bizy fairy.",
                 "speaker_ids": [
                   1840,
                   5837
@@ -1156,6 +1243,9 @@
                   1840,
                   5837
                 ]
+              },
+              {
+                "player": "Right. Thanks again."
               }
             ]
           }
@@ -1165,10 +1255,10 @@
     "entering-zanaris-trying-to-talk-to-the-fairy-godfather-again": [
       {
         "type": "line",
-        "speaker": "Fat Rocco",
+        "speaker": "Slim Louie",
         "text": "Da Boss is a busy fairy! He don' have time to talk to yous humans. Vamoose!",
         "speaker_ids": [
-          5839
+          5838
         ]
       }
     ],
@@ -1204,7 +1294,16 @@
         ]
       },
       {
-        "player": "Actually it's more a case of what I can help you with? I told the Fairy Godfather that I would help you find a cure for the Queen."
+        "type": "line",
+        "speaker": "Fairy Nuff",
+        "text": "What can I help you with then?",
+        "speaker_ids": [
+          1841,
+          5836
+        ]
+      },
+      {
+        "player": "Actually it's more a case of what can I help you with? I told the Fairy Godfather that I would help you find a cure for the Queen."
       },
       {
         "type": "line",
@@ -1344,7 +1443,25 @@
       {
         "type": "line",
         "speaker": "Fairy Nuff",
+        "text": "Here, I've written down a list of her symptoms.",
+        "speaker_ids": [
+          1841,
+          5836
+        ]
+      },
+      {
+        "type": "line",
+        "speaker": "Fairy Nuff",
         "text": "When the Queen got back here, she was clearly weakening fast. It appears as if the magic force that is her life essence is slowly unravelling.",
+        "speaker_ids": [
+          1841,
+          5836
+        ]
+      },
+      {
+        "type": "line",
+        "speaker": "Fairy Nuff",
+        "text": "I have put her in a state of tempus fugit, that will slow time down for her, and thus prolong the amount of time that she remains alive.",
         "speaker_ids": [
           1841,
           5836
@@ -1365,7 +1482,7 @@
       {
         "type": "line",
         "speaker": "Fairy Nuff",
-        "text": "I believe he now resides in the Dark Wizard's tower near Falador, and [player name], please hurry. I fear the Queen doesn't have much time left!",
+        "text": "I believe he now resides in the Dark Wizards' tower near Falador, and [player name], please hurry. I fear the Queen doesn't have much time left!",
         "speaker_ids": [
           1841,
           5836
@@ -1419,6 +1536,14 @@
         ]
       },
       {
+        "type": "line",
+        "speaker": "Zandar Horfyre",
+        "text": "How is she? I owe her a great deal, she saved me from a mortal injury I sustained when I was investigating the nature of Otherworldly beings. So, how can I help?",
+        "speaker_ids": [
+          5841
+        ]
+      },
+      {
         "player": "The Fairy Queen is extremely ill. She was in a battle with a Tanglefoot and her injuries have resulted in her being in a coma."
       },
       {
@@ -1432,7 +1557,15 @@
       {
         "type": "line",
         "speaker": "Zandar Horfyre",
-        "text": "You think the Tanglefoot is responsible? I don't see how that could be. A Tanglefoot will normally kill its victim outright...unless...hmmmm...I wonder...",
+        "text": "You think the Tanglefoot is responsible? I don't see how that could be. A Tanglefoot will normally kill its victim outright...unless...hmmm...I wonder...",
+        "speaker_ids": [
+          5841
+        ]
+      },
+      {
+        "type": "line",
+        "speaker": "Zandar Horfyre",
+        "text": "I don't suppose you could give me more details about the Fairy Queen's condition, could you?",
         "speaker_ids": [
           5841
         ]
@@ -1447,7 +1580,7 @@
           {
             "type": "line",
             "speaker": "Zandar Horfyre",
-            "text": "Hmm...yes...slow discorporation of ethreal body, eh? Hmm...I think I know what the problem might be.",
+            "text": "Hmm...yes...slow discorporation of ethereal body, eh? Hmm...I think I know what the problem might be.",
             "speaker_ids": [
               5841
             ]
@@ -1496,32 +1629,13 @@
           {
             "type": "line",
             "speaker": "Zandar Horfyre",
-            "text": "Yes, but if I were you I would seek out a necromancer by the name of Malignus Mortifer. I believe that he once fought a Tanglefoot, many years ago.",
+            "text": "Yes, but if I were you I would seek Malignus Mortifer, the necromancer. He's been seen near Port Sarim with his followers recently. I believe he once fought a Tanglefoot.",
             "speaker_ids": [
               5841
             ]
           },
           {
-            "type": "line",
-            "speaker": "Zandar Horfyre",
-            "text": "You should probably ask him for advice on how to combat it.",
-            "speaker_ids": [
-              5841
-            ]
-          },
-          {
-            "player": "Malignus Mortifer. Any idea where I can find him?"
-          },
-          {
-            "type": "line",
-            "speaker": "Zandar Horfyre",
-            "text": "He's rumoured to have been seen near Port Sarim with his followers recently. Rumour has it that he's working on a spell that has something to do with fungus!",
-            "speaker_ids": [
-              5841
-            ]
-          },
-          {
-            "player": "Ok, thanks very much."
+            "player": "Malignus Mortifer. Okay, thanks very much."
           },
           {
             "type": "line",
@@ -1559,6 +1673,7 @@
     "talking-to-malignius-mortifer": [
       {
         "type": "choice",
+        "prompt": "What would you like to say?",
         "options": [
           {
             "text": "Who are you and what are you doing here?"
@@ -1697,7 +1812,7 @@
                     "type": "end"
                   }
                 ],
-                "id": "k3Tam3"
+                "id": "KevL3M"
               },
               {
                 "type": "condition",
@@ -1715,7 +1830,7 @@
                     ]
                   }
                 ],
-                "id": "9eMl-y"
+                "id": "SqWtrh"
               }
             ]
           },
@@ -1728,6 +1843,7 @@
     "talking-to-malignius-mortifer-talking-to-malignius-again-before-getting-the-skull": [
       {
         "type": "choice",
+        "prompt": "What would you like to say?",
         "options": [
           {
             "text": "Who are you and what are you doing here?"
@@ -1747,15 +1863,84 @@
                 ]
               },
               {
-                "player": "No, not yet."
+                "type": "condition",
+                "text": "If the player has brought the skull:",
+                "steps": [
+                  {
+                    "player": "Yes, I have it right here."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Malignius Mortifer",
+                    "text": "Right then, to business. A Tanglefoot can not be harmed by might nor magic. The only weapon that can damage them are a pair of enchanted secateurs!",
+                    "speaker_ids": [
+                      1783
+                    ]
+                  },
+                  {
+                    "player": "Where can I get a pair of these enchanted secateurs?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Malignius Mortifer",
+                    "text": "You will have to make them... listen carefully and I'll tell you how.",
+                    "speaker_ids": [
+                      1783
+                    ]
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Malignius Mortifer",
+                    "text": "Obviously you will need a pair of secateurs, you will also need to gather [item 1], [item 2] and [item 3].",
+                    "speaker_ids": [
+                      1783
+                    ]
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Malignius Mortifer",
+                    "text": "Take them to the Nature Spirit and ask him to perform the ceremony of Phasma Phasmatis Natura.",
+                    "speaker_ids": [
+                      1783
+                    ]
+                  },
+                  {
+                    "player": "Phasma Phasmatis Natura. Got it! Is that all?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Malignius Mortifer",
+                    "text": "Yes, that's all. You'll be able to use those secateurs to kill the monster.",
+                    "speaker_ids": [
+                      1783
+                    ]
+                  },
+                  {
+                    "player": "Great, thanks very much."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "203tWF"
               },
               {
-                "type": "line",
-                "speaker": "Malignius Mortifer",
-                "text": "Well come and talk to me once you have it.",
-                "speaker_ids": [
-                  1783
-                ]
+                "type": "condition",
+                "text": "If the player has not brought the skull:",
+                "steps": [
+                  {
+                    "player": "No, not yet."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Malignius Mortifer",
+                    "text": "Well come and talk to me once you have it.",
+                    "speaker_ids": [
+                      1783
+                    ]
+                  }
+                ],
+                "id": "L-7k8Q"
               }
             ]
           },
@@ -1768,6 +1953,7 @@
     "talking-to-malignius-mortifer-talking-to-malignius-again-after-learning-how-to-kill-the-tanglefoot": [
       {
         "type": "choice",
+        "prompt": "What would you like to say?",
         "options": [
           {
             "text": "Who are you and what are you doing here?"
@@ -1798,7 +1984,15 @@
                       {
                         "type": "line",
                         "speaker": "Malignius Mortifer",
-                        "text": "I guess so. Forgot to take notes did you? Well, listen carefully this time. You will need to enchant a pair of secateurs. Only these can harm a Tanglefoot.",
+                        "text": "I guess so, forgot to take notes did you? Well, listen carefully this time.",
+                        "speaker_ids": [
+                          1783
+                        ]
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Malignius Mortifer",
+                        "text": "You will need to enchant a pair of secateurs. Only these can harm a Tanglefoot.",
                         "speaker_ids": [
                           1783
                         ]
@@ -1817,7 +2011,7 @@
                       {
                         "type": "line",
                         "speaker": "Malignius Mortifer",
-                        "text": "You will need a pair of secateurs. You will also need to gather [item 1], [item 2] and [item 3].",
+                        "text": "You will need a pair of secateurs, you will also need to gather [item 1], [item 2] and [item 3].",
                         "speaker_ids": [
                           1783
                         ]
@@ -1975,21 +2169,60 @@
         ]
       },
       {
-        "player": "I'm glad you're here. I'm afraid I've lost the secateurs you enchanted for me."
-      },
-      {
-        "type": "line",
-        "speaker": "Nature Spirit",
-        "text": "That's alright; if you bring me the components for the spell, I'll enchant another pair for you. Would you happen to have all of the required items for the ceremony with you now?",
-        "speaker_ids": [
-          943,
-          944
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm afraid I've lost the secateurs you enchanted.",
+            "steps": [
+              {
+                "player": "I'm afraid I've lost the secateurs you enchanted."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the magic secateurs:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Nature Spirit",
+                    "text": "You should not lie to me, my friend. I can see that you have them with you.",
+                    "speaker_ids": [
+                      943,
+                      944
+                    ]
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "87Aohk"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the magic secateurs:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Nature Spirit",
+                    "text": "That's alright; if you bring me the components for the spell, I'll enchant another pair for you. Would you happen to have all of the required items for the ceremony with you now?",
+                    "speaker_ids": [
+                      943,
+                      944
+                    ]
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "iOvN8Q"
+                  }
+                ],
+                "id": "JAksPk"
+              }
+            ]
+          },
+          {
+            "text": "No reason, really."
+          }
         ]
-      },
-      {
-        "type": "jump",
-        "reference": "above",
-        "id": "zCItMt"
       }
     ],
     "shady-grove": [
@@ -2055,7 +2288,7 @@
       {
         "type": "line",
         "speaker": "Fairy Nuff",
-        "text": "That's fantastic! You'd better take them to the Fairy Godfather though; he'd be cross if he knew you brought them to me first. But, come back to me once the queen has had a chance to recover. I'm sure she'll want to thank you personally.",
+        "text": "That's fantastic! You'd better take them to the Fairy Godfather though, he'd be cross if he knew you brought them to me first, but come back to me once the queen has had a chance to recover. I'm sure she'll want to thank you personally.",
         "speaker_ids": [
           1841,
           5836
@@ -2078,7 +2311,7 @@
       {
         "type": "line",
         "speaker": "Fairy Godfather",
-        "text": "Ben fatto, my friend! Da folk-a dey owe yous a great-a deal! So did-a youss getta back da Queen Bee's magic power?",
+        "text": "Ben fatto, my friend! Da folk-a dey owe yous a great-a deal! So did-a yous getta back da Queen Bee's magic power?",
         "speaker_ids": [
           1840,
           5837
@@ -2189,6 +2422,43 @@
             "text": "You've done some farming, haven't you noticed a decrease in the amount of produce you are getting lately?",
             "speaker_ids": [
               5832
+            ]
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Now that I think about it, you're right!",
+                "steps": [
+                  {
+                    "player": "Now that I think about it, you're right!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Martin the Master Gardener",
+                    "text": "I know I am. Depressing isn't it?",
+                    "speaker_ids": [
+                      5832
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "No, can't say that I have.",
+                "steps": [
+                  {
+                    "player": "No, can't say that I have."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Martin the Master Gardener",
+                    "text": "That's not very observant of you.",
+                    "speaker_ids": [
+                      5832
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {

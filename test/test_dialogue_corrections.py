@@ -1203,3 +1203,91 @@ def test_fremennik_trials_follows_the_revision_241_242_captures():
     assert "The death was your own!" in text and "THAT is bravery." in text
     # The unicorn head when its disk is already taken (t3145, t3163).
     assert "It's unusual because you removed it already!" in text
+
+
+@pytest.mark.parametrize(
+    "name, cache",
+    [
+        ("Fairytale I - Growing Pains", "quest-pages.json"),
+        ("Fairy Nuff", "wiki-pages.json"),
+        ("Martin the Master Gardener", "wiki-pages.json"),
+        ("Fairytale II - Cure a Queen", "quest-pages.json"),
+    ],
+)
+def test_fairytale_i_capture_sources_are_pinned(name, cache):
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / cache).read_text())[f"Transcript:{name}"]
+    source = sources[name]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+
+
+def test_fairytale_i_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Fairytale I - Growing Pains"]["variants"]
+    text = json.dumps(variants)
+    # Martin's "have you noticed" menu before his offer (ticks 126-133, 157-164).
+    start = json.dumps(variants["starting-the-quest"])
+    assert '"text": "Now that I think about it, you\'re right!"' in start
+    assert "That's not very observant of you." in start and "I know I am. Depressing isn't it?" in start
+    # Dreven, the fifth gardener (785, 794).
+    assert "I'm an adventurer, not a weather controller!" in text
+    assert "catalysts to our problems" in text
+    # A gardener asked again keeps the menu (277-281).
+    again = variants["talking-to-the-gardeners-if-the-player-has-already-talked-to-them"][0]
+    assert again["type"] == "choice" and len(again["options"]) == 5
+    assert again["options"][0]["steps"][-1]["text"] == "I've already told you everything I suspect."
+    # The Godfather and Slim Louie (1335, 1340, 1358, 1364, 1374).
+    assert "She is-a being cared for by-a Fairy Nuff, who lives-a just north of-a da bank." in text
+    assert "while you are in Zanaris. Ciao." in text and "eet iz-a not." in text
+    assert '{"player": "Right. Thanks again."}' in text
+    assert variants["entering-zanaris-trying-to-talk-to-the-fairy-godfather-again"][0]["speaker"] == "Slim Louie"
+    # Fairy Nuff (1459-1534).
+    assert "What can I help you with then?" in text and "what can I help you with?" in text
+    assert "Here, I've written down a list of her symptoms." in text and "tempus fugit" in text
+    assert "Dark Wizards' tower near Falador" in text and "Dark Wizard's tower" not in text
+    # Zandar (1724-1751).
+    assert "she saved me from a mortal injury" in text and "more details about the Fairy Queen's condition" in text
+    assert "ethereal body" in text and "ethreal" not in text and "hmmmm" not in text
+    assert "Malignus{{sic}} Mortifer. Okay, thanks very much." not in text
+    assert "Malignus Mortifer. Okay, thanks very much." in text
+    assert "seek out a necromancer" not in text and "fungus!" not in text
+    # Malignius: his menu title and the skull from the "asked again" menu (2097-2421).
+    again = variants["talking-to-malignius-mortifer-talking-to-malignius-again-before-getting-the-skull"][0]
+    assert again["prompt"] == "What would you like to say?"
+    skull = again["options"][1]["steps"]
+    assert [step.get("text") for step in skull if step.get("type") == "condition"] == [
+        "If the player has brought the skull:", "If the player has not brought the skull:",
+    ]
+    assert skull[2]["steps"][0] == {"player": "Yes, I have it right here."}
+    assert "I guess so, forgot to take notes did you? Well, listen carefully this time." in text
+    assert "You will need a pair of secateurs, you will also need to gather" in text
+    # The Nature Spirit's menu after the blessing (1001455 ticks 2520-2525).
+    lost = variants["in-the-nature-grotto-talking-to-the-nature-spirit-after-losing-the-secateurs"]
+    assert [option["text"] for option in lost[1]["options"]] == [
+        "I'm afraid I've lost the secateurs you enchanted.", "No reason, really.",
+    ]
+    assert "You should not lie to me, my friend." in json.dumps(lost)
+    # After the fight (4108, 4175).
+    assert "he'd be cross if he knew you brought them to me first, but come back" in text
+    assert "So did-a yous getta back" in text
+
+    nuff = dialogues["Fairy Nuff"]["variants"]
+    first = nuff["initial-dialogue-before-fairytale-part-1"]
+    assert first[0] == {"npc": "Hello, can I help you at all?"}
+    assert [option["text"] for option in first[1]["options"]] == [
+        "What do you do around here?", "Yes, please. I need healing.", "No thanks. Just looking around.",
+    ]
+    healing = json.dumps(nuff["initial-dialogue-before-fairytale-part-1-subsequent-dialogue"])
+    assert healing.index("11 Hitpoints.") < healing.index("That will cost you 1 diamond.")
+    assert "Not too well, the Godfather" in json.dumps(nuff["after-fairytale-part-1"])
+
+    martin = json.dumps(dialogues["Martin the Master Gardener"])
+    assert "Can you tell me about your skillcape?" in martin
+    ft2 = json.dumps(dialogues["Fairytale II - Cure a Queen"])
+    assert "in an enchanted sleep, because" in ft2 and "enchanted deep sleep" not in ft2
