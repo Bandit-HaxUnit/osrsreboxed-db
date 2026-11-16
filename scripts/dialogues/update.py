@@ -433,6 +433,46 @@ def group_options(nodes, random_options=False):
     return result
 
 
+# A paged menu's back option: "Prev", "Previous...", "Previous options...", "~ previous ~".
+BACK_OPTION = re.compile(
+    r"(?:~\s*)?prev(?:ious)?(?:\s+options?)?\s*(?:\.\.\.|…|~)?", re.I
+)
+
+
+def resolve_back_options(steps, issues, paged=False):
+    """Give a paged menu's empty back option its `{{tact|previous}}`.
+
+    A menu that opens straight from another menu's option ("More...", "Next") is a
+    later page of that menu, and its "Previous..." returns to it. The wiki writes
+    `{{tact|previous}}` under most of them but leaves some bare (Lunar Diplomacy's
+    "Prev" before "The trousers", Freeing Sir Amik Varze's "Previous...", The
+    Fremennik Isles' "Previous options..."); bare, they ended the conversation.
+    Only an option with no body is filled, and only on a page reached from a menu.
+    """
+    for index, node in enumerate(steps):
+        if node.get("type") == "choice":
+            for option in node["options"]:
+                if (
+                    paged
+                    and index == 0
+                    and not option.get("steps")
+                    and BACK_OPTION.fullmatch(str(option.get("text", "")).strip())
+                ):
+                    option["steps"] = [
+                        dict(type="jump", target=None, reference="previous")
+                    ]
+                    issues.append(
+                        dict(
+                            reason="Inferred paged menu back option",
+                            text=option["text"],
+                        )
+                    )
+                else:
+                    resolve_back_options(option.get("steps", []), issues, True)
+        else:
+            resolve_back_options(node.get("steps", []), issues)
+
+
 def select_default(variants):
     """Choose a baseline conversation by headings, never by NPC name."""
     ordinary = {
@@ -758,6 +798,7 @@ def parse_npc(name, raw, nav_templates=None):
             "Standard dialogue"
         ]
         variant["steps"] = group_options(variant["steps"], random_options=is_oracle)
+        resolve_back_options(variant["steps"], issues)
         normalize_terminal_completion(variant["steps"])
         guard_quest_warnings(variant["steps"])
         if is_oracle:
