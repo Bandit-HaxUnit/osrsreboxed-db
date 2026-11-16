@@ -1310,6 +1310,28 @@ def test_jungle_potion_capture_sources_are_pinned(name, cache):
         apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
 
 
+@pytest.mark.parametrize(
+    "name, cache",
+    [
+        ("Shilo Village", "quest-pages.json"),
+        ("Mosol Rei", "wiki-pages.json"),
+        ("Yanni Salika", "wiki-pages.json"),
+        ("Vigroy", "wiki-pages.json"),
+    ],
+)
+def test_shilo_village_capture_sources_are_pinned(name, cache):
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / cache).read_text())[f"Transcript:{name}"]
+    source = sources[name]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+
+
 def test_jungle_potion_follows_the_revision_242_capture():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     for name, variant in (("Jungle Potion", "starting-off"), ("Trufitus", "before-jungle-potion")):
@@ -1373,3 +1395,88 @@ def test_fairytale_ii_follows_the_revision_242_capture():
     # The Queen's reward lines as live splits them (2524, 2530).
     wake = json.dumps(variants["curing-the-queen-after-using-the-magic-essence-potion-on-the-fairy-queen"])
     assert "I'm afraid you find" in wake and '"us in trying times, but please accept this magic lamp' in wake
+
+
+def test_shilo_village_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Shilo Village"]["variants"]
+    text = json.dumps(variants)
+    # The broken cart and the village gate before the quest (ticks 671-773, 692-710).
+    cart = variants["starting-out-search-broken-cart"]
+    assert cart[1]["type"] == "random" and len(cart[1]["options"]) == 2
+    assert [o["text"] for o in cart[2]["options"]] == [
+        "I'm climbing over the cart anyway!", "I'm climbing in anyway. Don't warn me again.",
+        "Actually, I'll stay out here.",
+    ]
+    gate = variants["starting-out-open-metal-gate"]
+    assert gate[0]["text"].startswith("The gate feels very cold to your touch!")
+    assert [o["text"] for o in gate[1]["options"]] == [
+        "Yes, I am fearless!", "No, actually, I have a bad feeling about this!",
+    ]
+    # Mosol Rei asks after the belt first (1460-1498).
+    belt = variants["starting-out-talking-to-mosol-rei-after-getting-the-wampum-belt"]
+    assert belt[0]["text"] == "Hey there Bwana, have you delivered that Wampum Belt to Trufitus yet?"
+    assert [o["text"] for o in belt[1]["options"]] == ["Yes, of course!", "Not yet, I've been busy."]
+    assert [o["text"] for o in belt[1]["options"][0]["steps"][-1]["options"]] == [
+        "Ok. Thanks for your help.", "Why are the undead here?",
+    ]
+    # Trufitus's Talk-to with the belt, and without it (1643-1772).
+    greeting = variants["starting-out-talking-to-trufitus-with-the-wampum-belt"]
+    assert greeting[0] == {"player": "Greetings."}
+    assert [o["text"] for o in greeting[4]["options"]] == [
+        "What do you know about Rashiliyia?", "What do you know about Mosol Rei?",
+        "Mosol gave me something to show you.",
+    ]
+    assert variants["starting-out-talking-to-trufitus-without-the-wampum-belt"][1]["text"] == (
+        "I have no more news since we last spoke."
+    )
+    assert "Usually a strong creature of some sort will be guarding her remains." in text
+    assert "Trufitus goes back to his studies." in text
+    # Ah Za Rhoon (2483, 2508-2513, 2648, 2758).
+    assert variants["visiting-ah-za-rhoon-search-fissure"][1]["prompt"] == "Climb into the fissure?"
+    torch = json.dumps(variants["visiting-ah-za-rhoon-use-lit-torch-on-fissure"])
+    assert "You drop the torch into the fissure" in torch and "Some rope might help here." in torch
+    assert "You see nothing here but an empty bookcase behind some rocks." in text
+    assert "The gallows look pretty eerie. You search but find nothing." in text
+    # Trufitus after Ah Za Rhoon and Bervirius' tomb (3050, 3270-3272, 3804-3805).
+    assert "Leave no stone unturned." in text and "We need to identify that the place" not in text
+    assert "If you found anything at Ah Za Rhoon that you're not sure of" not in text
+    tomb = variants["visiting-the-tomb-of-bervirius-talking-to-trufitus-after-visiting-bervirius-tomb"]
+    found = tomb[2]["options"][0]["steps"]
+    assert found[1]["text"].startswith("Congratulations Bwana. Show me any items")
+    assert [o["text"] for o in found[2]["options"]] == [
+        "I actually need help with something else.", "I didn't find anything in the tomb.",
+    ]
+    # Rashiliyia's tomb (3984, 4592-4594, 4612, 4837-4854, 4891-4897, 4905, 5245-5257).
+    assert "The trees are already pulled apart revealing some doors." in text
+    up = variants["visiting-the-tomb-of-rashiliyia-climb-rocks-back-up"]
+    assert [s["text"] for s in up] == [
+        "You carefully pick your way through the rocks.", "You manage to carefully clamber up.",
+    ]
+    third = variants["visiting-the-tomb-of-rashiliyia-using-bones-on-tomb-doors"][2]["steps"]
+    assert [s["text"][:30] for s in third] == [
+        "You carefully place another bo", "You place the bone into the la",
+        "You fit the last bone into the", "The door seems to change sligh",
+    ]
+    dolmen = variants["visiting-the-tomb-of-rashiliyia-look-at-or-search-tomb-dolmen"]
+    assert dolmen[2]["text"] == "Who dares disturb Rashiliyia's rest?"
+    assert [s.get("text", "")[:26] for s in dolmen[-5:]] == [
+        "You see something appear o", "Nazastarool: May you peris", "Nazastarool: curse is upon",
+        "You hear a disembodied voi", "You see something appear o",
+    ]
+    assert "You find nothing new on the dolmen." in text
+    assert "The Beads of the Dead start to glow" not in json.dumps(
+        variants["visiting-the-tomb-of-rashiliyia-open-tomb-exit"]
+    )
+    rest = variants["visiting-the-tomb-of-rashiliyia-using-rashiliyias-remains-on-the-dolmen"]
+    assert rest[0]["text"].startswith("You carefully place Rashiliyia's remains")
+    assert rest[3]["text"] == "Without warning the spirit of Rashiliyia disappears."
+    # Mosol Rei, Yanni Salika and Vigroy (5392, 5502-5535, 5695-5698).
+    mosol = json.dumps(dialogues["Mosol Rei"])
+    assert "Mosol leads you into the village and walks back out into the jungle." in mosol
+    assert "Mosol leaves you by the gate" not in mosol
+    yanni = json.dumps(dialogues["Yanni Salika"])
+    assert "Yanni looks through your items..." in yanni and '{"npc": "give you a quote?"}' in yanni
+    assert "Yanni won't sell you items that you've already got stored elsewhere." in yanni
+    vigroy = json.dumps(dialogues["Vigroy"])
+    assert "The player is transported to Brimhaven" in vigroy

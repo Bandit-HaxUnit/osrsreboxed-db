@@ -18,10 +18,10 @@
                 "player": "Tell me about this antiques business."
               },
               {
-                "npc": "I buy antiques and other interesting items. If you have any interesting items that you might want to sell me, please let me see them and I'll offer you a fair price."
+                "npc": "I buy antiques and other interesting items. If you have any interesting items that you might want to sell me, please let me see them and I'll offer you a fair price. Would you like me to have a look at your items and"
               },
               {
-                "npc": "Would you like me to have a look at your items and give you a quote?"
+                "npc": "give you a quote?"
               },
               {
                 "type": "choice",
@@ -31,6 +31,11 @@
                     "steps": [
                       {
                         "player": "Yes please!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Yanni looks through your items...",
+                        "id": "MvXNEn"
                       },
                       {
                         "type": "condition",
@@ -137,6 +142,36 @@
                         "npc": "Sure thing. Have a nice day Bwana."
                       }
                     ]
+                  },
+                  {
+                    "text": "Do you have any interesting items for sale?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "7FiT6E",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-335f4c14a55532c0"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hmm, sorry, not interested.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "id": "ZBsS_V",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-97b971b36ecf4ccb"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -152,6 +187,11 @@
                 "type": "condition",
                 "text": "If the player already has the Beads of the Dead in their inventory or bank:",
                 "steps": [
+                  {
+                    "type": "message",
+                    "text": "Yanni won't sell you items that you've already got stored elsewhere.",
+                    "id": "xBApfy"
+                  },
                   {
                     "npc": "Sorry, [Sir/Madam], I have nothing that you need."
                   },
@@ -257,6 +297,53 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "branches": {
+    "jump-335f4c14a55532c0": [
+      {
+        "player": "Do you have any interesting items for sale?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has the Beads of the Dead in their inventory or bank:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Yanni won't sell you items that you've already got stored elsewhere.",
+            "id": "xBApfy"
+          },
+          {
+            "npc": "Sorry, [Sir/Madam], I have nothing that you need."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "kSiXKD"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the Beads of the Dead:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "Mamylg"
+          }
+        ],
+        "id": "3vmwZH"
+      }
+    ],
+    "jump-97b971b36ecf4ccb": [
+      {
+        "player": "Hmm, sorry, not interested."
+      },
+      {
+        "npc": "Fair enough, come back if you change your mind."
+      },
+      {
+        "type": "end"
       }
     ]
   }
