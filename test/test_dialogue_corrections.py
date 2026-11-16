@@ -1291,3 +1291,38 @@ def test_fairytale_i_follows_the_revision_242_capture():
     assert "Can you tell me about your skillcape?" in martin
     ft2 = json.dumps(dialogues["Fairytale II - Cure a Queen"])
     assert "in an enchanted sleep, because" in ft2 and "enchanted deep sleep" not in ft2
+
+
+@pytest.mark.parametrize(
+    "name, cache",
+    [("Jungle Potion", "quest-pages.json"), ("Trufitus", "wiki-pages.json")],
+)
+def test_jungle_potion_capture_sources_are_pinned(name, cache):
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / cache).read_text())[f"Transcript:{name}"]
+    source = sources[name]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+
+
+def test_jungle_potion_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    for name, variant in (("Jungle Potion", "starting-off"), ("Trufitus", "before-jungle-potion")):
+        record = dialogues[name]
+        text = json.dumps({"variants": record["variants"], "branches": record.get("branches", {})})
+        # Trufitus's offer and the snake weed clue (ticks 107-162).
+        assert "bring it to me. I will then give you details of where to find the next herb." in text
+        assert "bring to me. I will give you" not in text
+        assert "It grows near vines in an area to the south west where" in text
+        assert "It grows near the vines" not in text
+        assert "Hmm, sounds difficult, I don't know if I am ready for the challenge." in text
+        assert "Hmmm, sounds difficult" not in text
+        assert variant in record["variants"]
+    # His post-quest line ends at the chief's title (tick 1130).
+    after = dialogues["Trufitus"]["variants"]["after-jungle-potion"]
+    assert after[-1]["npc"] == "You should deliver the good news to Bwana Timfraku, Chief of Tai Bwo Wannai."
