@@ -520,3 +520,22 @@ def test_back_option_is_filled_only_when_empty_and_on_a_page_opened_by_a_menu():
     assert not after_line["options"][0].get("steps")
     with_body = menu["options"][1]["steps"][0]
     assert with_body["options"][0]["steps"] == [{"player": "Go back."}]
+
+
+def test_previous_is_a_back_option_only_on_a_page_a_paging_option_opened():
+    """A topic submenu's "Previous..." is not a later page; "Return to previous menu" is a way back."""
+    value = record(
+        "Daero",
+        """==Briefing==
+* {{tselect|Select an Option}}
+* {{topt|Talk about the journey...}}
+** {{tselect|Select an Option}}
+** {{topt|Previous...}}
+** {{topt|Return to previous menu}}
+* {{topt|Leave...}}
+""",
+    )
+    submenu = value["variants"]["briefing"][0]["options"][0]["steps"][0]
+    previous, back = submenu["options"]
+    assert not previous.get("steps"), "opened by a topic, not a paging option"
+    assert back["steps"] == [{"type": "jump", "reference": "previous"}]

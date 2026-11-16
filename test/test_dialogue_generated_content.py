@@ -249,6 +249,7 @@ def test_paged_menu_back_options_return_to_the_previous_page():
         "Recipe for Disaster/Freeing Sir Amik Varze": ("Previous...", 2),
         "The Fremennik Isles": ("Previous options...", 1),
         "Observatory Quest": ("~ previous ~", 3),
+        "Monkey Madness I": ("Return to previous menu", 3),
     }
     for name, (label, count) in expected.items():
         record = data[name]
