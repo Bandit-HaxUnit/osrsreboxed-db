@@ -463,3 +463,79 @@ def test_reviewed_source_anchor_can_start_at_a_branch_first_node():
     for invalid in ({"expected": "above"}, {"expected": "above", "at": destination, "after": destination}):
         with pytest.raises(ValueError, match="Invalid dialogue navigation anchor"):
             resolve_navigation(copy.deepcopy(value), {source: invalid})
+
+
+def test_bare_back_option_on_a_later_menu_page_returns_to_the_previous_page():
+    """Lunar Diplomacy's "Prev" before "The trousers" has no `{{tact|previous}}` on the wiki."""
+    value = record(
+        "Oneiromancer",
+        """==Lunar clothing==
+* {{tselect|Select an Option}}
+* {{topt|The cape}}
+** '''Player:''' The cape.
+* {{topt|Next}}
+** {{tselect|Select an Option}}
+** {{topt|Prev}}
+*** {{tact|previous}}
+** {{topt|Next}}
+*** {{tselect|Select an Option}}
+*** {{topt|Prev}}
+*** {{topt|The ring}}
+**** '''Player:''' The ring.
+*** {{topt|Exit}}
+* {{topt|Previous options...}}
+""",
+    )
+    first = value["variants"]["lunar-clothing"][0]
+    second = first["options"][1]["steps"][0]
+    third = second["options"][1]["steps"][0]
+    previous = [{"type": "jump", "reference": "previous"}]
+    assert second["options"][0]["steps"] == previous, "the wiki's own back jump"
+    labels = [option["text"] for option in third["options"]]
+    assert labels == ["Prev", "The ring", "Exit"]
+    assert third["options"][0]["steps"] == previous, "the bare one gets the same"
+    assert not third["options"][2].get("steps"), "not every empty option"
+    assert not first["options"][2].get("steps"), "a first page has none"
+
+
+def test_back_option_is_filled_only_when_empty_and_on_a_page_opened_by_a_menu():
+    value = record(
+        "Banker",
+        """==Talk==
+* '''Banker:''' Hello.
+* {{topt|More options...}}
+** '''Banker:''' More?
+** {{tselect|Select an Option}}
+** {{topt|Previous...}}
+** {{topt|Don't mind me.}}
+* {{topt|Bank}}
+** {{tselect|Select an Option}}
+** {{topt|Previous options...}}
+*** '''Player:''' Go back.
+""",
+    )
+    menu = value["variants"]["talk"][1]
+    after_line = menu["options"][0]["steps"][1]
+    # A menu after a line is not a page of the menu above.
+    assert not after_line["options"][0].get("steps")
+    with_body = menu["options"][1]["steps"][0]
+    assert with_body["options"][0]["steps"] == [{"player": "Go back."}]
+
+
+def test_previous_is_a_back_option_only_on_a_page_a_paging_option_opened():
+    """A topic submenu's "Previous..." is not a later page; "Return to previous menu" is a way back."""
+    value = record(
+        "Daero",
+        """==Briefing==
+* {{tselect|Select an Option}}
+* {{topt|Talk about the journey...}}
+** {{tselect|Select an Option}}
+** {{topt|Previous...}}
+** {{topt|Return to previous menu}}
+* {{topt|Leave...}}
+""",
+    )
+    submenu = value["variants"]["briefing"][0]["options"][0]["steps"][0]
+    previous, back = submenu["options"]
+    assert not previous.get("steps"), "opened by a topic, not a paging option"
+    assert back["steps"] == [{"type": "jump", "reference": "previous"}]

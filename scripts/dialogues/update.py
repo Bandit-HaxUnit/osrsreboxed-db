@@ -433,6 +433,58 @@ def group_options(nodes, random_options=False):
     return result
 
 
+# A later page's back option: "Prev", "Previous...", "Previous options...", "~ previous ~".
+BACK_OPTION = re.compile(
+    r"(?:~\s*)?prev(?:ious)?(?:\s+options?)?\s*(?:\.\.\.|\u2026|~)?", re.I
+)
+# The option that turns to a menu's next page: "More...", "More options...", "Next", "~ next ~".
+PAGING_OPTION = re.compile(
+    r"(?:~\s*)?(?:more(?:\s+options?)?|next)\s*(?:\.\.\.|\u2026|~)?", re.I
+)
+# A submenu's way back, whatever opened it: Monkey Madness I's "Return to previous menu".
+MENU_BACK_OPTION = re.compile(r"return to (?:the )?previous menu\.?", re.I)
+
+
+def resolve_back_options(steps, issues, opened_by=None):
+    """Give a submenu's empty back option its `{{tact|previous}}`.
+
+    `opened_by` is the text of the option whose body starts with this menu. When
+    that option turns the page ("More...", "More options...", "Next", "~ next ~"),
+    the menu is a later page and its "Prev"/"Previous..."/"Previous options..."/
+    "~ previous ~" returns to the page before. "Return to previous menu" says so
+    itself, so it returns from a submenu any option opened ("Talk about Caranock").
+    The wiki writes `{{tact|previous}}` under most of them but leaves some bare
+    (Lunar Diplomacy's "Prev" before "The trousers", Freeing Sir Amik Varze's
+    "Previous...", The Fremennik Isles' "Previous options...", Monkey Madness I's
+    "Return to previous menu"); bare, they ended the conversation. Only an option
+    with no body is filled.
+    """
+    for index, node in enumerate(steps):
+        if node.get("type") == "choice":
+            parent = opened_by if index == 0 else None
+            paged = parent is not None and PAGING_OPTION.fullmatch(parent)
+            for option in node["options"]:
+                text = str(option.get("text", "")).strip()
+                if (
+                    parent is not None
+                    and not option.get("steps")
+                    and (
+                        (paged and BACK_OPTION.fullmatch(text))
+                        or MENU_BACK_OPTION.fullmatch(text)
+                    )
+                ):
+                    option["steps"] = [
+                        dict(type="jump", target=None, reference="previous")
+                    ]
+                    issues.append(
+                        dict(reason="Inferred submenu back option", text=text)
+                    )
+                else:
+                    resolve_back_options(option.get("steps", []), issues, text)
+        else:
+            resolve_back_options(node.get("steps", []), issues)
+
+
 def select_default(variants):
     """Choose a baseline conversation by headings, never by NPC name."""
     ordinary = {
@@ -758,6 +810,7 @@ def parse_npc(name, raw, nav_templates=None):
             "Standard dialogue"
         ]
         variant["steps"] = group_options(variant["steps"], random_options=is_oracle)
+        resolve_back_options(variant["steps"], issues)
         normalize_terminal_completion(variant["steps"])
         guard_quest_warnings(variant["steps"])
         if is_oracle:
