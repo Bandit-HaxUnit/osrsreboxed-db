@@ -1326,3 +1326,50 @@ def test_jungle_potion_follows_the_revision_242_capture():
     # His post-quest line ends at the chief's title (tick 1130).
     after = dialogues["Trufitus"]["variants"]["after-jungle-potion"]
     assert after[-1]["npc"] == "You should deliver the good news to Bwana Timfraku, Chief of Tai Bwo Wannai."
+
+
+def test_fairytale_ii_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Fairytale II - Cure a Queen"]["variants"]
+    text = json.dumps(variants)
+    # Martin (FairyTale2 ticks 52, 56, 76).
+    assert "Yeah, sure, whatever." in text and "Yah, sure" not in text
+    ready = json.dumps(variants["starting-off-talking-to-martin-after-5-minutes-have-passed"])
+    assert '"prompt": "Start the Fairytale II - Cure a Queen quest?"' in ready
+    # The Godfather's first menu carries the certificate as its third option (420, 431).
+    menu = variants["starting-off-talking-to-the-fairy-godfather"][0]
+    assert menu["type"] == "choice"
+    assert [option["text"] for option in menu["options"]] == [
+        "Where is the Fairy Queen?", "Where have all the fairies gone?", "Show the Godfather the Certificate!",
+    ]
+    assert menu["options"][2]["condition"] == "With Fairy Nuff's certificate:"
+    assert len(variants["starting-off-talking-to-the-fairy-godfather"]) == 1
+    assert "datta da Queen Bee" in text and "explain- a to you" in text
+    # The contract scroll route (507) and the refusal's reply (487).
+    assert "I'm not signing this!" in text and "I am not signing" not in text
+    assert "Come and talk-a to me when yous do." in text and "me me yous do" not in text
+    # The co-ordinator's certificate box and answer (637, 639).
+    assert "You show the certificate to the co-ordinator." in text and "Fairy Coordinator" not in text
+    assert "maybe somebody else will recognise them." in text
+    # The hideout fairies before Fairy Very Wise's news (877-941), then the Wiki's seven (1016-1020).
+    fairies = variants["in-the-hideout-talking-to-the-fairies"]
+    assert fairies[0]["type"] == "condition" and fairies[0]["text"] == "Before Fairy Very Wise brings her news:"
+    assert [option["steps"][0]["text"] for option in fairies[0]["steps"][0]["options"]] == [
+        "How could everything have gone so wrong, so quickly?",
+        "What is that evil fairy doing to our beautiful kingdom?",
+        "The Queen is the true ruler of Zanaris, not that wicked Godfather!",
+        "I hope that the Queen wakes up soon, I want to go back home.",
+        "The Godfather's henchmen tried to pull off my wings!",
+    ]
+    assert fairies[1]["type"] == "random" and len(fairies[1]["options"]) == 7
+    # Fairy Nuff's recap by the planes visited (1910-1914, 2364-2370).
+    recap = variants["curing-the-queen-talking-to-fairy-nuff-after-visiting-the-cosmic-plane-and-gorak-plane"]
+    assert [step.get("text") for step in recap if step.get("type") == "condition"] == [
+        "After visiting the Gorak Plane but not the Cosmic Plane:", "Before visiting the Gorak Plane:",
+    ]
+    assert recap[3]["steps"][0] == {
+        "player": "Thanks for the lecture, I've seen a Gorak, but where do I get one of these Star Flowers from?"}
+    assert recap[-1] == {"player": "Yes, I'm on my way."}
+    # The Queen's reward lines as live splits them (2524, 2530).
+    wake = json.dumps(variants["curing-the-queen-after-using-the-magic-essence-potion-on-the-fairy-queen"])
+    assert "I'm afraid you find" in wake and '"us in trying times, but please accept this magic lamp' in wake
