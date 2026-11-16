@@ -449,6 +449,131 @@ def test_multi_infobox_pages_merge_bare_and_versioned_ids():
     assert tables[0].npc_ids == [100, 101, 102]
 
 
+OUTLAW_MULTI_INFOBOX = """{{Multi Infobox
+|text1 = Ranger
+|item1 =
+{{Infobox Monster
+|version1 = Before confrontation
+|version2 = During confrontation
+|name = Outlaw
+|dropversion = Ranger
+|id1 = 16835,16836
+|id2 = 16837
+}}
+|text2 = Mage
+|item2 =
+{{Infobox Monster
+|version1 = Before confrontation
+|version2 = During confrontation
+|name = Outlaw
+|dropversion = Mage
+|id1 = 16839
+|id2 = 16840
+}}
+|text3 = Warrior
+|item3 =
+{{Infobox Monster
+|version1 = Before confrontation
+|version2 = During confrontation
+|name = Outlaw
+|dropversion = Warrior
+|id1 = 16842
+|id2 = 16843
+}}
+}}
+==Fight overview==
+===The ranger===
+The ranger is weak to stab attacks.
+
+==Drops==
+===The ranger===
+{{DropsTableHead|dropversion=Ranger}}
+{{DropsLine|name=Bones|quantity=1|rarity=Always}}
+{{DropsLine|name=Shortbow|quantity=1|rarity=Always}}
+{{DropsLine|name=Bronze arrow|quantity=80|rarity=Always}}
+{{DropsTableBottom}}
+
+===The mage===
+{{DropsTableHead|dropversion=Mage}}
+{{DropsLine|name=Bones|quantity=1|rarity=Always}}
+{{DropsLine|name=Staff|quantity=1|rarity=Always}}
+{{DropsLine|name=Air rune|quantity=80|rarity=Always}}
+{{DropsLine|name=Mind rune|quantity=80|rarity=Always}}
+{{DropsTableBottom}}
+
+===The warrior===
+{{DropsTableHead|dropversion=Warrior}}
+{{DropsLine|name=Bones|quantity=1|rarity=Always}}
+{{DropsLine|name=Iron kiteshield|quantity=1|rarity=Always}}
+{{DropsLine|name=Iron scimitar|quantity=1|rarity=Always}}
+{{DropsTableBottom}}
+
+==Dialogue==
+"""
+
+
+def test_multi_infobox_unnumbered_dropversions_split_the_drops():
+    """Each infobox's unnumbered ``dropversion`` is a declared drop version.
+
+    Trimmed from Outlaw (Mudfoot's Big Adventure): three monster infoboxes
+    each give one ``dropversion`` and their own ``id1``/``id2``, and the drops
+    section has one subsection per outlaw.
+    """
+    assert drops_wikitext.parse_drop_version_names(OUTLAW_MULTI_INFOBOX) == [
+        "Ranger",
+        "Mage",
+        "Warrior",
+    ]
+    tables = drops_wikitext.parse_all_drop_tables(OUTLAW_MULTI_INFOBOX)
+    assert [
+        (table.drop_variant, table.npc_ids, [drop.name for drop in table.drops])
+        for table in tables
+    ] == [
+        ("The ranger", [16835, 16836, 16837], ["Bones", "Shortbow", "Bronze arrow"]),
+        ("The mage", [16839, 16840], ["Bones", "Staff", "Air rune", "Mind rune"]),
+        (
+            "The warrior",
+            [16842, 16843],
+            ["Bones", "Iron kiteshield", "Iron scimitar"],
+        ),
+    ]
+
+    dump = drops_tables.NpcDropsAggregator()
+    for table in tables:
+        dump.add(drops_tables.build_table_spec("Outlaw", table, ITEMS))
+    bindings = {npc_id: dump.npcs[npc_id]["tables"] for npc_id in sorted(dump.npcs)}
+    ranger, mage, warrior = (
+        ["outlaw_drop_table_the_ranger"],
+        ["outlaw_drop_table_the_mage"],
+        ["outlaw_drop_table_the_warrior"],
+    )
+    assert bindings == {
+        16835: ranger,
+        16836: ranger,
+        16837: ranger,
+        16839: mage,
+        16840: mage,
+        16842: warrior,
+        16843: warrior,
+    }
+
+
+def test_single_infobox_unnumbered_dropversion_keeps_the_drops_whole():
+    """A lone unnumbered ``dropversion`` declares no variants to split on."""
+    wikitext = (
+        "{{Infobox Monster|dropversion=Ranger|id1=1|id2=2}}\n"
+        "==Drops==\n"
+        "===The ranger===\n"
+        "{{DropsLine|name=Bones|quantity=1|rarity=Always}}\n"
+        "===Ranger tertiary===\n"
+        "{{DropsLine|name=Shortbow|quantity=1|rarity=1/128}}\n"
+    )
+    assert drops_wikitext.parse_drop_version_names(wikitext) == []
+    tables = drops_wikitext.parse_all_drop_tables(wikitext)
+    assert len(tables) == 1
+    assert tables[0].npc_ids == [1, 2]
+
+
 def test_table_identity():
     """Table naming follows the wiki page, not the npc."""
     table = _table()

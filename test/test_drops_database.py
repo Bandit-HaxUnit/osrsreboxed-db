@@ -136,7 +136,9 @@ def test_generated_quantities_keep_source_conditions_and_discrete_alternatives()
 def test_quantity_export_preserves_npc_mappings_and_unrelated_reward_paths():
     dump = _load("npc-drops.json")
     # Keep restored bare-ID variants, excluding stale category-unlisted pages.
-    assert len(dump["tables"]) == 1112
+    # Jelly and Outlaw (Mudfoot's Big Adventure) split on their Multi Infobox
+    # pages' unnumbered dropversions (2 and 3 tables instead of 1 each).
+    assert len(dump["tables"]) == 1115
     assert len(dump["npcs"]) == 3226
     # TzKal-Zuk's lead-in rows now export as their own table (new in this export).
     assert dump["npcs"]["7706"]["tables"] == ["tz_kal_zuk"]
