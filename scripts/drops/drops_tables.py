@@ -1326,7 +1326,18 @@ def export_shared_subtables(
             quantity = params.get("quantity", "")
             rarity = params.get("rarity", "")
             nested = NESTED_TABLE_REFS.get(name.strip().lower())
-            if nested and nested != key:
+            if key == "gem" and name.strip().lower() == "talisman":
+                # Chaos/Nature depends on the source monster's location; this
+                # bare label is not the separate Waterbirth talisman table.
+                entries.append(
+                    {
+                        "location_talisman": True,
+                        "name": name,
+                        "quantity_raw": quantity,
+                        "rarity_raw": rarity,
+                    }
+                )
+            elif nested and nested != key:
                 entries.append(
                     {"shared_table": nested, "name": name, "rarity_raw": rarity}
                 )

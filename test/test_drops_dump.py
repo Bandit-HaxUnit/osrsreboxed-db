@@ -26,6 +26,35 @@ import pytest
 from scripts.drops import drops_tables, drops_wikitext, update
 
 
+def test_gem_talisman_is_location_dependent_not_waterbirth_table():
+    pages = update.load_shared_table_wikitext()
+    items = drops_tables.ItemIdLookup(update.items_api.load())
+    tables = drops_tables.export_shared_subtables(pages, items)
+    talisman = next(
+        row for row in tables["gem"]["entries"] if row.get("name") == "Talisman"
+    )
+    assert talisman == {
+        "location_talisman": True,
+        "name": "Talisman",
+        "quantity_raw": "1",
+        "rarity_raw": "3/128",
+    }
+    assert len(tables["talisman"]["entries"]) == 9
+    assert {
+        row["rarity_raw"].split("/")[1] for row in tables["talisman"]["entries"]
+    } == {"70"}
+    explicit = {
+        "Drop table": "==Gem drop table==\n"
+        "{{DropsLine|name=Talisman drop table|quantity=1|rarity=3/128}}"
+    }
+    assert (
+        drops_tables.export_shared_subtables(explicit, items)["gem"]["entries"][0][
+            "shared_table"
+        ]
+        == "talisman"
+    )
+
+
 def test_cyclops_floor_headings_split_the_published_drop_versions():
     text = update.load_monster_wikitext()["Cyclops"]
     top, basement = drops_wikitext.parse_all_drop_tables(text)
