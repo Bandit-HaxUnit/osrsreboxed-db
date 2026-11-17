@@ -1547,3 +1547,57 @@ def test_the_corsair_curse_capture_lines_add_what_the_wiki_lacks():
     start = exported["variants"]["the-cursed-crew-talking-to-captain-tock"]
     assert start[0]["text"] == "Ahoy, young [lad/lass]."
     assert start[2]["options"][1]["steps"][4]["prompt"] == "Start The Corsair Curse quest?"
+
+
+def test_tai_bwo_wannai_trio_follows_the_captures():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Tai Bwo Wannai Trio"]
+    structure = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
+    )["Tai Bwo Wannai Trio"]["structure"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Tai Bwo Wannai Trio"
+    ]
+    assert source["revision"] == structure["revision"] == page["revision"]
+    structured = update.apply_structure_annotations(
+        "Tai Bwo Wannai Trio", page["wikitext"], structure, page["revision"]
+    )
+    raw = apply_capture_lines("Tai Bwo Wannai Trio", structured, source, page["revision"])
+    assert raw == apply_capture_lines("Tai Bwo Wannai Trio", structured, source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Tai Bwo Wannai Trio", "\n" + structured, source, page["revision"])
+    # Lubufu's four topics are one menu, as live shows it (local 1001562 tick 5658).
+    assert "* {{topt|Talk about Karambwan...}}" in raw.splitlines()
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Tai Bwo Wannai Trio"]
+    variants, branches = exported["variants"], exported["branches"]
+    again = variants["talking-to-lubufu-talking-to-lubufu-again"]
+    assert [option["text"] for option in again[3]["options"]] == [
+        "Talk about him...", "Talk about Karambwan...", "Talk about something else...", "Leave",
+    ]
+    # Timfraku's first menu: "Trufitus sent me." and "Ask about Village." only once Jungle Potion is done.
+    first = next(step for step in branches["jump-68ca096f234c6328"] if step.get("type") == "choice")
+    assert [option["text"] for option in first["options"]] == [
+        "Why should I leave?", "Right, I'm going then.", "Trufitus sent me.", "Ask about Village.",
+    ]
+    assert [option.get("condition") for option in first["options"]][2:] == [
+        "If the player has completed Jungle Potion:", "If the player has completed Jungle Potion:",
+    ]
+    news = json.dumps(first["options"][2]["steps"])
+    assert news.index("Then it must be true.") < news.index("Timfraku appears to concentrate very deeply.")
+    again = variants["starting-off-talking-to-timfraku-again-before-jungle-potion"]
+    assert again[0]["text"] == "You again! Only a fool would ignore my instructions."
+    # Lubufu: the player's question, the bait offer's condition and the third ask (ticks 5624, 5705, 5855).
+    assert variants["talking-to-lubufu"][1]["options"][2]["steps"][0] == {"player": "Who are you?"}
+    assert "If the player has asked Lubufu what he does with his Karambwan:" in json.dumps(variants)
+    delivered = json.dumps(variants["talking-to-lubufu-talking-to-lubufu-after-delivering-raw-karambwanji"])
+    assert delivered.index("fewer than three times") < delivered.index("My, you're keen") < delivered.index(
+        "Lubufu appears to think for a moment."
+    ) < delivered.index("How would you feel about becoming my apprentice?")
+    # Tiadeche: his attempt message, and his talk once he has trapped one (ticks 6234, 6700).
+    assert "Tiadeche attempts to use the Karambwan vessel." in json.dumps(variants["talking-to-tiadeche-talking-to-tiadeche-again"])
+    trapped = variants["talking-to-tiadeche-talking-to-tiadeche-after-he-traps-a-karambwan"]
+    assert trapped[0] == {"player": "Can we return to the village now?"}
+    # The Wiki's wording stays where the captures word a line differently.
+    assert "Roving adventurer, please accept my eternal gratitude!" in json.dumps(exported)
+    assert json.dumps(exported).count("Well, hand it here then.") >= 2
