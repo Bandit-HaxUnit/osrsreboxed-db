@@ -2680,13 +2680,8 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "id": "O-Q3Ds",
-                        "steps": [
-                          {
-                            "type": "call",
-                            "branch": "jump-b7876fab1147d7ee"
-                          }
-                        ]
+                        "reference": "below",
+                        "id": "O-Q3Ds"
                       }
                     ]
                   },
@@ -2847,13 +2842,8 @@
                     "steps": [
                       {
                         "type": "jump",
-                        "id": "POn4DW",
-                        "steps": [
-                          {
-                            "type": "call",
-                            "branch": "jump-b7876fab1147d7ee"
-                          }
-                        ]
+                        "reference": "below",
+                        "id": "POn4DW"
                       }
                     ]
                   },
@@ -3181,7 +3171,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-58e841771310be7e"
+                            "branch": "jump-f580811b5f1325cf"
                           }
                         ]
                       }
@@ -3348,7 +3338,7 @@
                         "steps": [
                           {
                             "type": "call",
-                            "branch": "jump-58e841771310be7e"
+                            "branch": "jump-f580811b5f1325cf"
                           }
                         ]
                       }
@@ -3369,6 +3359,9 @@
           {
             "text": "Let's talk about your client...",
             "steps": [
+              {
+                "player": "Let's talk about your client..."
+              },
               {
                 "player": "Veos, enough is enough! I've suffered through enough. Exploding orbs and burning quills..."
               },
@@ -3674,7 +3667,7 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-58e841771310be7e"
+                    "branch": "jump-f580811b5f1325cf"
                   }
                 ]
               }
@@ -3806,7 +3799,7 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-58e841771310be7e"
+                    "branch": "jump-f580811b5f1325cf"
                   }
                 ]
               }
@@ -3825,54 +3818,10 @@
         ]
       }
     ],
-    "jump-b7876fab1147d7ee": [
+    "jump-f580811b5f1325cf": [
       {
-        "type": "choice",
-        "options": [
-          {
-            "text": "So what exactly is it your client now wants me to do?",
-            "steps": [
-              {
-                "player": "So what exactly is it your client now wants me to do?"
-              },
-              {
-                "type": "condition",
-                "text": "If the player has lost the mysterious orb:",
-                "steps": [
-                  {
-                    "type": "message",
-                    "text": "Veos hands you an enchanted orb.",
-                    "id": "jTrDuG"
-                  },
-                  {
-                    "type": "line",
-                    "speaker": "Veos",
-                    "text": "Take this orb.",
-                    "speaker_ids": [
-                      2850,
-                      8484,
-                      8630,
-                      10723,
-                      10724,
-                      10726,
-                      10727,
-                      10949
-                    ]
-                  }
-                ],
-                "id": "LXZxal"
-              },
-              {
-                "type": "action",
-                "text": "(Same as above from \"My client requires...\")",
-                "id": "R1UtTW"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "jump-58e841771310be7e": [
+        "player": "Let's talk about your client..."
+      },
       {
         "player": "Veos, enough is enough! I've suffered through enough. Exploding orbs and burning quills..."
       },

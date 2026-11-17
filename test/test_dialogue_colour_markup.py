@@ -55,3 +55,14 @@ def test_client_of_kourend_exports_the_possessed_veos_colour_and_the_store_menus
     ):
         references = [s["reference"] for s in walk(record["variants"][variant]) if s.get("type") == "jump"]
         assert "other" in references and "previous" not in references, variant
+
+
+def test_client_of_kourend_finishing_up_repeats_the_chosen_option_as_live():
+    data = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text(encoding="utf-8"))
+    steps = data["Client of Kourend"]["variants"]["finishing-up"]
+    option = next(o for s in steps for o in s.get("options", []) if o["text"] == "Let's talk about your client...")
+    # local 1001998 tick 2079: the option is said before "Veos, enough is enough!".
+    assert [s.get("player") for s in option["steps"][:2]] == [
+        "Let's talk about your client...",
+        "Veos, enough is enough! I've suffered through enough. Exploding orbs and burning quills...",
+    ]
