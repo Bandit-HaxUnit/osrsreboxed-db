@@ -60,6 +60,13 @@ def test_checkout_line_endings_do_not_change_source_digest_or_output():
     assert export_source_bytes(source) == export_source_bytes(source.replace(b"\n", b"\r\n"))
 
 
+def test_leading_zero_version_suffix_is_rejected_without_losing_its_explicit_no():
+    pages = {"Version": "{{Infobox Item|name=Version|id01=520|tradeable=Yes|tradeable01=No}}"}
+    result = build_export(pages, "f" * 64)
+    assert result["rows"] == []
+    assert result["diagnostics"][0]["reason"] == "noncanonical-version"
+
+
 def test_case_only_page_aliases_are_consistent_but_policy_conflicts_remain_unknown():
     pages = {
         "A": "{{Infobox Item|name=Third Age|id=1|tradeable=Yes}}",

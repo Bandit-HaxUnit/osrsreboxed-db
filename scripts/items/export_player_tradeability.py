@@ -68,6 +68,16 @@ def build_export(pages, input_sha256):
                 match = re.fullmatch(r"(?:id|itemid)(\d*)", key)
                 if not match:
                     continue
+                if match.group(1).startswith("0"):
+                    diagnostics.append(
+                        {
+                            "page": page,
+                            "template": ordinal,
+                            "reason": "noncanonical-version",
+                            "field": key,
+                        }
+                    )
+                    continue
                 version = int(match.group(1)) if match.group(1) else None
                 suffix = str(version) if version is not None else ""
                 # strip_code removes comments, never turns free text into a guessed ID.
