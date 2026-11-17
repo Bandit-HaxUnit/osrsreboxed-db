@@ -814,6 +814,60 @@ def _owner_shop_option(owner: dict, npc_options: dict, shop_name: str = None) ->
     return {"option": None, "option_slot": None, "option_source": "unknown"}
 
 
+def load_display_names(shop_keys) -> dict:
+    """Read recorded interface strings without replacing Wiki page identities."""
+    path = Path(config.DATA_SHOPS_PATH / "shop-display-names.json")
+    if not path.exists():
+        return {}
+
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"Duplicate recorded shop title field: {key}")
+            result[key] = value
+        return result
+
+    with path.open(encoding="utf-8") as source:
+        entries = json.load(source, object_pairs_hook=unique_object)
+    if not isinstance(entries, dict):
+        raise ValueError("Recorded shop titles must be keyed by Wiki page")
+    titles = {}
+    shop_keys = set(shop_keys)
+    identities = {key: key for key in shop_keys}
+    for key, entry in entries.items():
+        if key not in shop_keys or not isinstance(entry, dict):
+            raise ValueError(f"Unknown recorded shop title source: {key}")
+        title = entry.get("display_name")
+        sources = entry.get("sources")
+        if (
+            set(entry) != {"display_name", "sources"}
+            or not isinstance(title, str)
+            or not title.strip()
+            or title != title.strip()
+            or not isinstance(sources, list)
+            or not sources
+        ):
+            raise ValueError(f"Invalid recorded shop title: {key}")
+        for source in sources:
+            if (
+                not isinstance(source, dict)
+                or set(source) != {"recording", "line", "inventory"}
+                or not isinstance(source["recording"], str)
+                or not re.fullmatch(r"[0-9]{3}/[0-9]{5,6}", source["recording"])
+                or type(source["line"]) is not int
+                or source["line"] <= 0
+                or not isinstance(source["inventory"], str)
+                or not re.fullmatch(r"[a-z][a-z0-9_]*", source["inventory"])
+            ):
+                raise ValueError(f"Invalid recorded shop title provenance: {key}")
+        if title in identities and identities[title] != key:
+            raise ValueError(f"Ambiguous recorded shop title: {title}")
+        identities[title] = key
+        titles[key] = title
+    return titles
+
+
 def process() -> None:
     """Process the raw shop data into a more structured format."""
     # Load the raw shop data
@@ -826,6 +880,8 @@ def process() -> None:
 
     with open(raw_file) as f:
         raw_shop_data = json.load(f)
+
+    display_names = load_display_names(raw_shop_data)
 
     # The NPC that runs each shop, resolved by scripts.shops.shop_owners,
     # and the click options of every NPC, so the shop-opening one can be named
@@ -876,6 +932,11 @@ def process() -> None:
         ]
 
         shops_by_shop[shop_name] = {
+            **(
+                {"display_name": display_names[shop_name]}
+                if shop_name in display_names
+                else {}
+            ),
             # A null percentage is an absent one; do not export the key.
             "shop_info": {
                 key: value for key, value in shop_info.items() if value is not None

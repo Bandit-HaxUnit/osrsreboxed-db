@@ -819,6 +819,7 @@ def test_shop_exports_regenerate_from_the_committed_wiki_cache(tmp_path, monkeyp
         "shops-wiki-page-titles.json",
         "shops-wiki-page-text.json",
         "shop-owners-wiki-page-text.json",
+        "shop-display-names.json",
     ):
         shutil.copy(config.DATA_SHOPS_PATH / name, data_dir / name)
     shutil.copy(
