@@ -3003,5 +3003,202 @@
         ]
       }
     ]
+  },
+  "Tai Bwo Wannai Trio": {
+    "revision": 15302415,
+    "reason": "Tai Bwo Wannai Trio as whole runs of the quest on live play it: Timfraku's 'Trufitus sent me.' and 'Ask about Village.' options only once Jungle Potion is done, his 'You again!' talk before then, his 'concentrate' message after 'Then it must be true.' and the village menu after the reward; Lubufu's player 'Who are you?', the menu after 'What do you do?' (whose bait offer shows once he has said what he does with his Karambwan), the third 'What do you use to catch Karambwan?' before his apprentice offer and his 'think' message; Tiadeche's 'attempts to use the Karambwan vessel' message and his talk once he has trapped one. The Wiki's own wording is kept everywhere else, including where the captures word a line differently, and the copied menus are the Wiki's own.",
+    "sources": [
+      "RSProx capture local 1001562 (revision 241, a whole run of the quest: ticks 5471-5561, 5616-5946, 6182-6257, 6699-6730, 8073-8105)",
+      "RSProx capture 75 (revision 227, a whole run of the quest: ticks 3068-3106, 3251-3369, 3660-3769, 5043-5066)",
+      "RSProx capture JunglePotion (revision 242.1, Timfraku before and after Jungle Potion: ticks 534-575, 1429-1469)",
+      "Transcript:Tai Bwo Wannai Trio revision 15302415 as cached; all other lines are parsed unchanged"
+    ],
+    "lines": [
+      {
+        "line": 51,
+        "sha256": "e85686ca42867d242166223779fb1796cdbd240a8950eb443c0df82dc63b751d",
+        "text": "*** '''Timfraku:''' Then it must be true."
+      },
+      {
+        "line": 52,
+        "sha256": "b37f228006268c54823d1ba2eaf7ea27df6f9b7f7b7cb19e23f3d878559e9440",
+        "text": "*** {{mes|Timfraku appears to concentrate very deeply.}}"
+      },
+      {
+        "line": 98,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "insert_before": [
+          "** {{topt|cond=If the player has completed Jungle Potion:|Ask about Village.}}",
+          "*** {{tselect|Select an option}}",
+          "*** {{topt|What do you do here?}}",
+          "**** '''Player:''' What do you do here?",
+          "**** '''Timfraku:''' It should be clear to anyone that I am the chief of Tai Bwo Wannai. I ensure that things run smoothly in this village.",
+          "*** {{topt|Is there anything interesting to do here?}}",
+          "**** '''Player:''' Is there anything interesting to do here?",
+          "**** '''Timfraku:''' Yes Bwana, plenty of interesting things to do. Firstly you could make an effort to tidy the place up a little. Equip yourself with a machete and start cutting down the jungle that seems to be growing all around here.",
+          "**** '''Timfraku:''' Go and have a chat with Murcaily for information, he's tending the hardwood grove to the east of here.",
+          "**** {{tact|initial}}",
+          "*** {{topt|I've been doing some work around the village.}}",
+          "**** '''Player:''' I've been doing some work around the village.",
+          "**** {{tcond|If the player has not been doing the [[Tai Bwo Wannai Cleanup]] tasks:}}",
+          "***** '''Timfraku:''' That's good Bwana, I would hate to think that you were just being lazy while you're in my kingdom!",
+          "***** {{tact|initial}}",
+          "**** {{tcond|If the player has completed at least one task from the Tai Bwo Wannai Cleanup task list:}}",
+          "***** {{tmissing}}",
+          "*** {{topt|Ok, thanks.}}",
+          "**** '''Player:''' Ok, thanks.",
+          "**** {{tact|end}}"
+        ]
+      },
+      {
+        "line": 45,
+        "sha256": "189340584d05b544dd81a470ac3c5484e9c69e204fefc6457750f99669a1b7ad",
+        "text": "** {{topt|cond=If the player has completed Jungle Potion:|Trufitus sent me.}}"
+      },
+      {
+        "line": 99,
+        "sha256": "b057db0e91782b24d57842690334abdae7d52dc756476f5fb4f6f115804e20bf",
+        "insert_before": [
+          "===Talking to Timfraku again before Jungle Potion===",
+          "* '''Timfraku:''' You again! Only a fool would ignore my instructions.",
+          "* {{tselect|Select an option}}",
+          "* {{topt|Well there's a simple explanation for that...}}",
+          "** '''Player:''' Well there's a simple explanation for that...",
+          "** '''Timfraku:''' I said: begone!",
+          "** {{tact|end}}",
+          "* {{topt|Not so much ignore as disregard...}}",
+          "** '''Player:''' Not so much ignore as disregard...",
+          "** '''Timfraku:''' I said: begone!",
+          "** {{tact|end}}",
+          "* {{topt|What instructions??}}",
+          "** '''Player:''' What instructions??",
+          "** '''Timfraku:''' I said: begone!",
+          "** {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 220,
+        "sha256": "ebedcf70f72854232c36d7f5ef3d873133fb5e9cf7b10768d8d71c70a7cfd663",
+        "insert_before": [
+          "** {{mes|Tiadeche attempts to use the Karambwan vessel.}}"
+        ]
+      },
+      {
+        "line": 245,
+        "sha256": "38287480d1bc4ae454009d59dfad2ac90676096a3a4d4ed2a38dac99eee78392",
+        "insert_before": [
+          "===Talking to Tiadeche after he traps a Karambwan===",
+          "* '''Player:''' Can we return to the village now?",
+          "* '''Tiadeche:''' I cannot return just yet. We witness the change of a turning tide. The secrets of the Karambwan are to be unlocked!",
+          "* '''Player:''' ...",
+          "* '''Tiadeche:''' Before I return, I must ask you to do one thing.",
+          "* '''Player:''' And that is?",
+          "* '''Tiadeche:''' Take a Karambwan vessel to my brother Tinsay. He is the academic amongst us. Tell him I have asked him to study it so that we may craft more of its type.",
+          "* '''Player:''' Can I have the vessel back then?",
+          "* '''Tiadeche:''' I need this to practice with. Why don't you craft another one?",
+          "* '''Player:''' I ... never mind.",
+          "* {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 418,
+        "sha256": "f66ab968f3ee88fdb9c9314917fb55afbe61579fdf7ce0dde44c2fe36961982f",
+        "insert_before": [
+          "** '''Player:''' Who are you?"
+        ]
+      },
+      {
+        "line": 465,
+        "sha256": "a224c33405da12f1d5e7187b1f359e5c8504c4fbe73b5c27e66de1c9cf5d981d",
+        "insert_before": [
+          "*** {{tselect|Select an option}}",
+          "*** {{topt|What do you do with your Karambwan?}}",
+          "**** '''Player:''' What do you do with your Karambwan?",
+          "**** '''Lubufu:''' I eat what I need and sell the rest to the Shrimp and Parrot restaurant.",
+          "**** '''Player:''' Where is the Shrimp and Parrot?",
+          "**** '''Lubufu:''' You don't know anything do you? Just north of here, in Brimhaven!",
+          "**** {{tact|initial}}",
+          "*** {{topt|How old are you?}}",
+          "**** {{tact|above}}",
+          "*** {{topt|What do you use for bait?}}",
+          "**** '''Player:''' What do you use for bait?",
+          "**** '''Lubufu:''' That is part of the secret! Why would I tell you?",
+          "**** {{tact|initial}}",
+          "*** {{topt|cond=If the player has asked Lubufu what he does with his Karambwan:|I could help collect the bait.}}",
+          "**** '''Player:''' I could help collect the bait.",
+          "**** '''Lubufu:''' And why would you help me?",
+          "**** {{tselect|Select an option}}",
+          "**** {{topt|You sound like you could do with the help.}}",
+          "***** '''Player:''' You sound like you could do with the help.",
+          "***** '''Lubufu:''' Well perhaps you're right. It's nigh time I could do with some help after all.",
+          "***** '''Lubufu:''' I have a fair amount of bait left over since last time I collected some, but I will be needing more shortly.",
+          "***** '''Player:''' Ok. Where can I find the bait? I don't even know what it is!",
+          "***** '''Lubufu:''' Patience. I have kept the nature of the Karambwan a closely guarded secret. There is nobody alive who knows more about them than I do. Furthermore, there is nobody alive who even knows how they feed.",
+          "***** '''Lubufu:''' You must therefore understand that what I am about to tell you is given in complete trust, and that you are to tell nobody else.",
+          "***** '''Player:''' I understand.",
+          "***** '''Lubufu:''' Very well. The Karambwan are a form of octopus native to our island of Karamja. They feed solely on Karambwanji, a brightly coloured fish which also inhabits the coastal waters surrounding the island.",
+          "***** '''Lubufu:''' Karambwanji congregate in coastal shoals near the Holy Lake. You will find it easiest to fish for them there.",
+          "***** '''Player:''' Where is the Holy Lake?",
+          "***** '''Lubufu:''' Just to the south of Tai Bwo Wannai Village. I'm sure you've met the locals already.",
+          "***** '''Player:''' And what do I use to fish for the bait?",
+          "***** '''Lubufu:''' Any small net will do. Return here as soon as you have caught 20 Karambwanji.",
+          "***** {{tact|end}}",
+          "**** {{topt|You sound like you need help.}}",
+          "***** '''Player:''' You sound like you need help.",
+          "***** '''Lubufu:''' How dare you say such a thing! Be off with you!",
+          "***** {{tact|end}}",
+          "**** {{topt|I enjoy collecting meaningless items for people.}}",
+          "***** '''Player:''' I enjoy collecting meaningless items for people.",
+          "***** '''Lubufu:''' Meaningless? You know nothing of the Karambwan! Now leave!",
+          "***** {{tact|end}}",
+          "**** {{topt|You're right. I don't want to help.}}",
+          "***** '''Player:''' You're right. I don't want to help.",
+          "***** '''Lubufu:''' I didn't for one moment think you did."
+        ],
+        "text": "***** {{tact|initial}}"
+      },
+      {
+        "line": 592,
+        "sha256": "bbe84b6131e6c146e820b1f5b90f38ddd3bf7844194b1ed36eb94f18a451b8d0",
+        "insert_before": [
+          "** {{tcond|If the player has asked Lubufu what he uses to catch Karambwan fewer than three times:}}",
+          "*** {{tact|end}}"
+        ]
+      },
+      {
+        "line": 593,
+        "sha256": "59b0ea5da1a705e04bc2d80fda2b764d3a9cab10615fd8a09e06d0a4a1222e17",
+        "insert_before": [
+          "** {{mes|Lubufu appears to think for a moment.}}"
+        ]
+      },
+      {
+        "line": 1072,
+        "sha256": "bd1834889e432e6cfd3a10fe9b4fd4f9e7fa8e8c45ac08aa641c0cd4eeb5777f",
+        "insert_before": [
+          "* {{tselect|Select an option}}",
+          "* {{topt|What do you do here?}}",
+          "** '''Player:''' What do you do here?",
+          "** '''Timfraku:''' It should be clear to anyone that I am the chief of Tai Bwo Wannai. I ensure that things run smoothly in this village.",
+          "* {{topt|Is there anything interesting to do here?}}",
+          "** '''Player:''' Is there anything interesting to do here?",
+          "** '''Timfraku:''' Yes Bwana, plenty of interesting things to do. Firstly you could make an effort to tidy the place up a little. Equip yourself with a machete and start cutting down the jungle that seems to be growing all around here.",
+          "** '''Timfraku:''' Go and have a chat with Murcaily for information, he's tending the hardwood grove to the east of here.",
+          "** {{tact|initial}}",
+          "* {{topt|I've been doing some work around the village.}}",
+          "** '''Player:''' I've been doing some work around the village.",
+          "** {{tcond|If the player has not been doing the [[Tai Bwo Wannai Cleanup]] tasks:}}",
+          "*** '''Timfraku:''' That's good Bwana, I would hate to think that you were just being lazy while you're in my kingdom!",
+          "*** {{tact|initial}}",
+          "** {{tcond|If the player has completed at least one task from the Tai Bwo Wannai Cleanup task list:}}",
+          "*** {{tmissing}}",
+          "* {{topt|Ok, thanks.}}",
+          "** '''Player:''' Ok, thanks.",
+          "** {{tact|end}}"
+        ]
+      }
+    ]
   }
 }
