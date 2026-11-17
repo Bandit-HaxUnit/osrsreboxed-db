@@ -1121,7 +1121,8 @@ def test_nature_spirit_follows_the_revision_242_capture():
         apply_capture_lines("Nature Spirit", "\n" + page["wikitext"], source, page["revision"])
 
     variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Nature Spirit"]["variants"]
-    text = json.dumps(variants)
+    # The plain wording: a coloured line's `styled` copy would count it twice.
+    text = json.dumps(json.loads(json.dumps(variants), object_hook=lambda node: {k: v for k, v in node.items() if k != "styled"}))
     # Wording as live sends it (ticks 56, 553, 558, 1120, 1257).
     assert '"prompt": "Start the Nature Spirit quest?"' in text
     assert "rude or anything" in text and "rude or something" not in text
