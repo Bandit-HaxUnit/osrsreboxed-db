@@ -190,7 +190,9 @@ change the speaker, text or control flow.
 Speech and message boxes whose Wiki text has a hex `{{Colour|#rrggbb|...}}` also carry
 `"styled"`: the same text with that colour as the client's `<col=rrggbb>...</col>` tag
 (Client of Kourend's possessed Veos, `<col=000080>` as live sends it). `text` stays plain,
-so matching, ids and identity hashes are unchanged; a named colour (`red`) adds nothing.
+so matching and step ids are unchanged (`styled` is left out of a step's identity). A shared
+branch's key hashes its whole content, so a branch with coloured lines gets a new key; nothing
+should name those keys. A named colour (`red`) adds nothing.
 Choices/random alternatives have nested `options` and `steps`. Message, missing,
 unavailable, condition and reference nodes must not silently disappear.
 
