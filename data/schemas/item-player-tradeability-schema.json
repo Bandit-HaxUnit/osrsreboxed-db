@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Explicit exact-ID Wiki player tradeability",
+  "type": "object",
+  "required": ["schema", "input_sha256", "rows", "diagnostics"],
+  "properties": {
+    "schema": {"const": 1},
+    "input_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "rows": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "name", "playerTradeable", "noteable", "sourcePage", "sourceVersion"],
+      "properties": {
+        "id": {"type": "integer", "minimum": 0},
+        "name": {"type": "string", "minLength": 1},
+        "playerTradeable": {"type": "boolean"},
+        "noteable": {"type": ["boolean", "null"]},
+        "sourcePage": {"type": "string", "minLength": 1},
+        "sourceVersion": {"anyOf": [{"type": "null"}, {"type": "integer", "minimum": 1}]}
+      }}},
+    "diagnostics": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false
+}
