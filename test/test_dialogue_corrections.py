@@ -1512,3 +1512,38 @@ def test_tree_gnome_village_follows_the_revision_242_capture():
     # The chest's box (tick 1567).
     chest = json.dumps(variants["into-the-stronghold-upon-opening-the-chest-containing-the-orb-of-protection"])
     assert "Inside you find the gnomes' stolen orb of protection." in chest
+
+
+def test_the_corsair_curse_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["The Corsair Curse"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:The Corsair Curse"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("The Corsair Curse", page["wikitext"], source, page["revision"])
+    lines = raw.splitlines()
+    # Four lines the capture sends are added; the Wiki's own lines are all kept.
+    assert len(lines) == len(page["wikitext"].splitlines()) + 4
+    greeting = lines.index("* '''Captain Tock:''' Ahoy, young [lad/lass].")
+    assert lines[greeting + 1].startswith("* '''Captain Tock:''' Ahoy, young [lad/lass]. Might ye")
+    # The apology is the player's, after Tess's question, as the capture has it (ticks 5653-5655).
+    tess = lines.index(
+        "** '''Chief Tess:''' He skinny man who climb down vine the other day, yah? He big fool. You see what he stole?"
+    )
+    assert lines[tess + 1] == "** '''Player:''' Arsen says he's very sorry for stealing from you. Here it is..."
+    assert "** '''Chief Tess:''' Arsen says he's very sorry" not in raw
+    colin = lines.index("* '''Cabin Boy Colin:''' What?")
+    assert lines[colin - 1].endswith("That was a wet ogre.")
+    besides = next(i for i, line in enumerate(lines) if line.startswith("** '''Ithoi the Navigator:''' Besides,"))
+    assert lines[besides + 1] == "** {{topt|Maybe because the Captain's thinking of firing you.}}"
+    # The Wiki's wording stays where the capture words it differently (Tock's "good [lad/lass]").
+    assert "ye've found my ship - good [lad/lass]." in raw
+    assert raw == apply_capture_lines("The Corsair Curse", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("The Corsair Curse", "\n" + page["wikitext"], source, page["revision"])
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["The Corsair Curse"]
+    start = exported["variants"]["the-cursed-crew-talking-to-captain-tock"]
+    assert start[0]["text"] == "Ahoy, young [lad/lass]."
+    assert start[2]["options"][1]["steps"][4]["prompt"] == "Start The Corsair Curse quest?"
