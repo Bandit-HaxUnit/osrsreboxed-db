@@ -13,7 +13,8 @@
             "condition": "If the player does not have a commission:",
             "steps": [
               {
-                "npc": "Make [sword style] sword."
+                "npc": "Make [sword style] sword.",
+                "styled": "Make <col=ef1020>[sword style]</col> sword."
               }
             ],
             "id": "Hponlh"
@@ -26,7 +27,8 @@
                 "player": "What's my current commission?"
               },
               {
-                "npc": "Go make [sword style] sword."
+                "npc": "Go make [sword style] sword.",
+                "styled": "Go make <col=ef1020>[sword style]</col> sword."
               }
             ],
             "id": "JVpUXP"
@@ -258,10 +260,8 @@
                 "text": "Yes.",
                 "steps": [
                   {
-                    "npc": "Make [sword style] sword."
-                  },
-                  {
-                    "type": "end"
+                    "type": "call",
+                    "branch": "OmIubZ"
                   }
                 ]
               },
@@ -283,7 +283,8 @@
         "text": "If the player has a commission, but no preform:",
         "steps": [
           {
-            "npc": "You no sword to hand over. Kovac give commission already. Go make me [sword style] sword."
+            "npc": "You no sword to hand over. Kovac give commission already. Go make me [sword style] sword.",
+            "styled": "You no sword to hand over. Kovac give commission already. Go make me <col=ef1020>[sword style]</col> sword."
           },
           {
             "type": "end"
@@ -324,10 +325,8 @@
                 "text": "Yes.",
                 "steps": [
                   {
-                    "npc": "Make [sword style] sword."
-                  },
-                  {
-                    "type": "end"
+                    "type": "call",
+                    "branch": "OmIubZ"
                   }
                 ]
               },
@@ -375,10 +374,8 @@
         "text": "If the player does not have a commission:",
         "steps": [
           {
-            "npc": "Make [sword style] sword."
-          },
-          {
-            "type": "end"
+            "type": "call",
+            "branch": "OmIubZ"
           }
         ],
         "id": "JMwr15"
@@ -388,7 +385,8 @@
         "text": "If the player has a commission:",
         "steps": [
           {
-            "npc": "Kovac give commission already. Go make me [sword style] sword."
+            "npc": "Kovac give commission already. Go make me [sword style] sword.",
+            "styled": "Kovac give commission already. Go make me <col=ef1020>[sword style]</col> sword."
           }
         ],
         "id": "t-tRJd"
@@ -622,6 +620,17 @@
     "using-items-on-kovac-anything-else": [
       {
         "npc": "You keep that."
+      }
+    ]
+  },
+  "branches": {
+    "OmIubZ": [
+      {
+        "npc": "Make [sword style] sword.",
+        "styled": "Make <col=ef1020>[sword style]</col> sword."
+      },
+      {
+        "type": "end"
       }
     ]
   }

@@ -44,17 +44,32 @@ from scripts.dialogues.bindings import apply_bindings
 TEXT_START = ""
 
 
-def clean(raw):
-    """Remove presentation markup; retain unfamiliar templates verbatim."""
+COLOUR_HEX = re.compile(r"#?([0-9a-fA-F]{6})")
+
+
+def colour_tag(template):
+    """The client colour tag of a {{Colour|#rrggbb|...}} template, or None for a named colour."""
+    match = COLOUR_HEX.fullmatch(str(template.get(1).value).strip()) if template.has(1) else None
+    return f"<col={match[1].lower()}>" if match else None
+
+
+def clean(raw, colours=False):
+    """Remove presentation markup; retain unfamiliar templates verbatim.
+
+    With `colours`, a {{Colour}} with a hex value keeps its colour as the client's
+    <col=rrggbb>...</col> tag (the `styled` text a consumer shows) instead of losing it.
+    """
     # The wiki list marker is already gone, so a leading "*Sighs*" is speech, not a
     # list: start the parse on a placeholder to keep strip_code from eating it.
     code = mw.parse(TEXT_START + str(raw))
     for template in code.filter_templates(recursive=False):
         name = str(template.name).strip().lower()
         if name in ("colour", "color") and template.has(2):
-            code.replace(template, clean(template.get(2).value))
+            inner = clean(template.get(2).value, colours)
+            tag = colour_tag(template) if colours else None
+            code.replace(template, f"{tag}{inner}</col>" if tag and inner else inner)
         elif name == "overhead" and template.has(1):
-            code.replace(template, clean(template.get(1).value))
+            code.replace(template, clean(template.get(1).value, colours))
         elif name in ("sic", "^", "fact", "citation needed"):
             code.replace(template, "")
     # A <ref> is an editor's footnote, never speech: strip_code would keep its body.
@@ -185,6 +200,9 @@ def parse_step(raw, issues, line):
     if speaker is not None:
         text = clean(speech[2])
         node = dict(type="line", speaker=speaker, text=text)
+        styled = clean(speech[2], colours=True)
+        if styled != text:
+            node["styled"] = styled
         if "{{overhead" in raw.lower():
             node["display"] = "overhead"
         if "{{" in text:
@@ -257,6 +275,10 @@ def parse_step(raw, issues, line):
             )
             if "pic" in args:
                 node["image"] = args["pic"]
+            if node["type"] == "message" and t.has(1):
+                styled = clean(t.get(1).value, colours=True)
+                if styled != text:
+                    node["styled"] = styled
             if node["type"] == "action":
                 node.update(infer_action(text))
             return node
@@ -830,6 +852,8 @@ def gameplay_step(node, name):
     """Drop editorial/source data while retaining dialogue flow and gameplay requirements."""
     if node.get("type") == "line" and node.get("speaker") in (name, "Player"):
         result = {"npc" if node["speaker"] == name else "player": node["text"]}
+        if node.get("styled"):
+            result["styled"] = node["styled"]
         # An {{Anchor}} on speech is a navigation target like any other.
         if node.get("_anchors"):
             result["_anchors"] = node["_anchors"]
@@ -844,6 +868,7 @@ def gameplay_step(node, name):
                 "type",
                 "speaker",
                 "text",
+                "styled",
                 "condition",
                 "condition_id",
                 "action",

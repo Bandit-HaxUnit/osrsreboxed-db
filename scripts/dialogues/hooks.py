@@ -171,7 +171,7 @@ def annotate(nodes, parent, quest_names):
         own = {
             k: v
             for k, v in node.items()
-            if k not in ("steps", "options", "presentation") and not k.startswith("_")
+            if k not in ("steps", "options", "presentation", "styled") and not k.startswith("_")
         }
         own = node.pop("_identity", own)
         key = token([parent, own])
