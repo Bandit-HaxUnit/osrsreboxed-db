@@ -3200,5 +3200,82 @@
         ]
       }
     ]
+  },
+  "Zogre Flesh Eaters": {
+    "revision": 15301503,
+    "reason": "Zogre Flesh Eaters lines the Wiki lacks, as the revision 242 capture plays them: Grish's second answer to 'What are Zogres?', Zavistic's answer and guild menu for 'I want to ask about the Magic Guild.' (the Wiki lists the option with no body), the black prism sale to Zavistic once Sithik has had the potion (the Zavistic page marks it incomplete; the Yanni branch was not chosen in the capture, so it only ends), and Uglug Nar's refusal of a balm before the player has learned the cure. The Wiki's own wording is kept everywhere else, including where the capture words a line differently.",
+    "sources": [
+      "RSProx capture ZogreFleshEaters (revision 242.1, SHA-256 92cb2ee034db1afdb1aba3f35273af713b59aec9b7c4ffb422f84c8b1eea139c, a whole run of the quest: ticks 120-122, 996-1025, 1750-1760, 765-771)",
+      "Transcript:Zogre Flesh Eaters revision 15301503 as cached; all other lines are parsed unchanged"
+    ],
+    "lines": [
+      {
+        "line": 27,
+        "sha256": "2043a4d7de258dc23ac81aff77739efc1eae0200f833beb283c6a3fa2a22b7b5",
+        "insert_before": [
+          "*** '''Grish:''' Dem zogries commin from da under dirt and us is lost for da Jiggie jig place."
+        ]
+      },
+      {
+        "line": 334,
+        "sha256": "14c8dce46559707a5872e17767334000516bccf2fa4c7a23265c4c1e032ebbfe",
+        "insert_before": [
+          "===Use the black prism on Zavistic Rarve after giving Sithik the potion===",
+          "* {{tbox|pic=Black prism detail.png|You show the black prism to Zavistic.}}",
+          "* '''Zavistic Rarve:''' Ah yes, I remember saying something about a reward didn't I? Well, I can offer you 2000 coins for it as it stands, but I know that Yanni Salika in Shilo Village would offer you more than twice as much.",
+          "* '''Zavistic Rarve:''' What would you like to do?",
+          "* {{tselect|Who would you like to sell the prism to?}}",
+          "* {{topt|Sell it to Zavistic for 2000}}",
+          "** '''Player:''' I'll sell it to you for 2000 coins!",
+          "** '''Zavistic Rarve:''' Very well my friend.",
+          "** {{tbox|pic=Coins 1000 detail.png|pic2=Black prism detail.png|You sell the black prism for 2000 coins.}}",
+          "** {{tact|end}}",
+          "* {{topt|Take it to Yanni for a greater reward.}}",
+          "** {{tact|end}}",
+          ""
+        ]
+      },
+      {
+        "line": 607,
+        "sha256": "897f0703eacf8baa0047b3526c21abc3d75c85281c5e4ec02c615296d54c3f59",
+        "text": "** {{topt|I want to ask about the Magic Guild.}}"
+      },
+      {
+        "line": 608,
+        "sha256": "08718199fa2ef0dd8b89f72aec19bcfe8ad636d023d8a200796c47f90a94cb8b",
+        "insert_before": [
+          "*** '''Player:''' I want to ask about the Magic Guild.",
+          "*** '''Zavistic Rarve:''' Sure, go ahead, ask away.",
+          "*** {{tselect|Select an Option}}",
+          "*** {{topt|What is there to do in the Wizards' Guild?}}",
+          "**** '''Player:''' What is there to do in the Wizards' Guild?",
+          "**** '''Zavistic Rarve:''' This is the finest wizards' establishment in the land. We have magic portals to the other towers of wizardry around Gielinor. We have a particularly wide collection of runes in our rune shop. We sell some of the finest",
+          "**** '''Zavistic Rarve:''' mage robes in the land and we have a training area full of zombies for you to practice your magic on.",
+          "**** {{tact|previous}}",
+          "*** {{topt|What are the requirements to get in the Wizards' Guild?}}",
+          "**** '''Player:''' What are the requirements to get in the Wizards' Guild?",
+          "**** '''Zavistic Rarve:''' You need a magic level of 66, the high magic energy level is too dangerous for anyone below that level.",
+          "**** {{tact|previous}}",
+          "*** {{topt|What do you do in the Guild?}}",
+          "**** '''Player:''' What do you do in the Guild?",
+          "**** '''Zavistic Rarve:''' I'm the Grand Secretary for the Wizards' Guild, I have lots of correspondence to keep up with, as well as attending to the discipline of the more problematic guild members.",
+          "**** {{tact|previous}}",
+          "*** {{topt|Ok, thanks.}}",
+          "**** '''Player:''' Ok, thanks.",
+          "**** {{tact|end}}"
+        ]
+      },
+      {
+        "line": 755,
+        "sha256": "0f0432e84b9e41a89b65dded72b7082bba1f960dcbba6e8955691a669378c7c6",
+        "insert_before": [
+          "* {{tcond|If the player has not learned how to cure the disease:}}",
+          "** '''Uglug Nar:''' Where you's get dis from creatures...it's not sniffing big fresh? Did's yous creatures makes dis?",
+          "** '''Player:''' Well, not exactly...no.",
+          "** '''Uglug Nar:''' Mee's not taking da risky wiv dis un, yous make me's da right glug glug when yous found out to make it.",
+          "** {{tact|end}}"
+        ]
+      }
+    ]
   }
 }

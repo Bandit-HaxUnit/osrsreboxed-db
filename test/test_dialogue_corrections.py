@@ -1601,3 +1601,37 @@ def test_tai_bwo_wannai_trio_follows_the_captures():
     # The Wiki's wording stays where the captures word a line differently.
     assert "Roving adventurer, please accept my eternal gratitude!" in json.dumps(exported)
     assert json.dumps(exported).count("Well, hand it here then.") >= 2
+
+
+def test_zogre_flesh_eaters_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Zogre Flesh Eaters"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Zogre Flesh Eaters"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Zogre Flesh Eaters", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Zogre Flesh Eaters", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Zogre Flesh Eaters", "\n" + page["wikitext"], source, page["revision"])
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Zogre Flesh Eaters"]
+    variants = exported["variants"]
+    # Grish answers "What are Zogres?" with two lines (capture ticks 121-122).
+    zogres = json.dumps(variants["getting-started-talking-to-grish"])
+    assert zogres.index("Da Zogres are da bigun nasties") < zogres.index("Dem zogries commin from da under dirt")
+    # The prism sale once Sithik has had the potion (ticks 1750-1760).
+    sale = variants["investigating-b-vahn-use-the-black-prism-on-zavistic-rarve-after-giving-sithik-the-potion"]
+    assert sale[0]["text"] == "You show the black prism to Zavistic."
+    assert [option["text"] for option in sale[3]["options"]] == [
+        "Sell it to Zavistic for 2000", "Take it to Yanni for a greater reward.",
+    ]
+    assert sale[3]["options"][0]["steps"][-1]["text"] == "You sell the black prism for 2000 coins."
+    # Zavistic's Magic Guild option has a body (ticks 1009-1025).
+    evidence = json.dumps(variants["investigating-b-vahn-talking-to-zavistic-rarve-after-gathering-evidence"])
+    assert "Sure, go ahead, ask away." in evidence
+    # Uglug Nar refuses a balm before the cure is known (ticks 765-771).
+    balm = variants["defeating-the-zogres-use-relicym-s-balm-on-uglug-nar"]
+    assert balm[2]["text"] == "If the player has not learned how to cure the disease:"
+    assert balm[2]["steps"][-1] == {"type": "end"}
+    assert balm[-1]["text"] == "You sell the potion and get 650 coins in return."
