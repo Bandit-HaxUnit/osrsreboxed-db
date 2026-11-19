@@ -1675,3 +1675,17 @@ def test_rum_deal_capture_lines_add_what_the_wiki_lacks():
     assert "ingredients! Yer not" not in sluglings
     # The Wiki's own wording stays where the capture words a line differently.
     assert "beseiged" in meeting
+
+
+def test_pirate_pete_dock_lift_continues_into_the_lift_menu():
+    # The dock branch's "{{tact|continue}}" carries on into the lift menu the island branch holds
+    # (runtime-bindings navigation anchor); without it the dock offer ended at "Interested?".
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Pirate Pete"]
+    dock = next(step for step in exported["variants"]["standard-dialogue"]
+                if step.get("type") == "condition" and "dock north of Port Phasmatys" in step.get("text", ""))
+    jump = dock["steps"][-1]
+    assert jump["type"] == "jump" and jump["reference"] == "continue"
+    branch = exported["branches"][jump["steps"][0]["branch"]]
+    menu = branch[0]
+    assert menu["type"] == "choice"
+    assert [option["text"] for option in menu["options"]][:2] == ["Okay!", "Not now"]
