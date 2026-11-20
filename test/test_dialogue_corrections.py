@@ -1635,3 +1635,57 @@ def test_zogre_flesh_eaters_capture_lines_add_what_the_wiki_lacks():
     assert balm[2]["text"] == "If the player has not learned how to cure the disease:"
     assert balm[2]["steps"][-1] == {"type": "end"}
     assert balm[-1]["text"] == "You sell the potion and get 650 coins in return."
+
+
+def test_rum_deal_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Rum Deal"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Rum Deal"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Rum Deal", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Rum Deal", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Rum Deal", "\n" + page["wikitext"], source, page["revision"])
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Rum Deal"]["variants"]
+    # The start prompt (the Pirate Pete page's, capture ticks 153 and 173).
+    start = variants["setting-out-talking-to-pirate-pete"]
+    menu = next(step for step in start if step.get("type") == "choice")
+    assert menu["prompt"] == "Start the Rum Deal quest?"
+    assert [option["text"] for option in menu["options"]] == ["Yes.", "No."]
+    text = json.dumps(start)
+    assert text.index("Err...Barrelor!") < text.index("Yes, the mighty, fearsome, tall, deadly, oaken, round demon Barrelor the Destroyer.")
+    assert text.index("Trapped Pit of Barrelor.") < text.index("Wanna give it a shot?")
+    # The meeting's three lines the Wiki lacks (ticks 388, 396, 447).
+    meeting = json.dumps(variants["setting-out-meeting-captain-braindeath"])
+    for line in ("When ye arrived ye took a nasty knock to the head", "Well, fer a price, at any rate.",
+                 "Seems they lost their fightin' spirit after the first few days."):
+        assert line in meeting
+    # The stagnant water used on Braindeath (ticks 1629-1633).
+    used = variants[
+        "stagnant-water-talking-to-captain-braindeath-before-pouring-in-the-stagnant-in-the-hopper"
+        "-using-the-bucket-of-stagnant-water-on-captain-braindeath"
+    ]
+    assert used[0] == {"player": "What exactly do you want me to do with this?"}
+    # The sluglings line the Wiki joins is two boxes (ticks 1709-1710).
+    sluglings = json.dumps(variants["sluglings-talking-to-captain-braindeath-after-using-the-water-on-the-hopper"])
+    assert "super-secret ingredients!\", " in sluglings or "super-secret ingredients!\"" in sluglings
+    assert "ingredients! Yer not" not in sluglings
+    # The Wiki's own wording stays where the capture words a line differently.
+    assert "beseiged" in meeting
+
+
+def test_pirate_pete_dock_lift_continues_into_the_lift_menu():
+    # The dock branch's "{{tact|continue}}" carries on into the lift menu the island branch holds
+    # (runtime-bindings navigation anchor); without it the dock offer ended at "Interested?".
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Pirate Pete"]
+    dock = next(step for step in exported["variants"]["standard-dialogue"]
+                if step.get("type") == "condition" and "dock north of Port Phasmatys" in step.get("text", ""))
+    jump = dock["steps"][-1]
+    assert jump["type"] == "jump" and jump["reference"] == "continue"
+    branch = exported["branches"][jump["steps"][0]["branch"]]
+    menu = branch[0]
+    assert menu["type"] == "choice"
+    assert [option["text"] for option in menu["options"]][:2] == ["Okay!", "Not now"]
