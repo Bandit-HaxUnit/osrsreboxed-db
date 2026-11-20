@@ -180,18 +180,15 @@
                 "npc": "Certainly, what would you like me to make?"
               },
               {
-                "type": "choice",
-                "options": [
+                "type": "condition",
+                "text": "If the player is on a non-members world:",
+                "steps": [
                   {
-                    "text": "If the player is on a non-members world:",
-                    "steps": [
-                      {
-                        "type": "call",
-                        "branch": "OLcdCz"
-                      }
-                    ]
+                    "type": "call",
+                    "branch": "OLcdCz"
                   }
-                ]
+                ],
+                "id": "XWbB_O"
               },
               {
                 "type": "action",
