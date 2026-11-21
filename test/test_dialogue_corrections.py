@@ -1774,3 +1774,64 @@ def test_pirate_pete_dock_lift_continues_into_the_lift_menu():
     menu = branch[0]
     assert menu["type"] == "choice"
     assert [option["text"] for option in menu["options"]][:2] == ["Okay!", "Not now"]
+
+
+def test_murder_mystery_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Murder Mystery"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Murder Mystery"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Murder Mystery", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Murder Mystery", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Murder Mystery", "\n" + page["wikitext"], source, page["revision"])
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Murder Mystery"]["variants"]
+    # The accusation menus: the guard asks again, then the box before "Great work." (capture ticks 233-560).
+    guard = json.dumps(variants["getting-started-talking-to-the-guard-after-starting-the-quest"])
+    assert guard.count("Oh really? Which one?") == 6
+    assert guard.count("You tell the guard who you suspect of the crime.") == 12
+    assert guard.index("You tell the guard who you suspect") < guard.index("Great work.")
+    # The Wiki's own Hobbes branch stays.
+    assert "Hobbes the butler. The butler ALWAYS did it." in guard
+    # The thread question needs the thread, except Frank's (tick 575: Bob's menu without it).
+    for name in ("anna", "bob", "carol", "david", "elizabeth"):
+        menu = variants[f"questioning-the-inhabitants-talking-to-{name}"][2]["options"]
+        assert menu[2]["condition"] == "If the player has the criminal's thread:"
+    frank = variants["questioning-the-inhabitants-talking-to-frank"]
+    assert "condition" not in frank[3]["options"][2]
+    # Elizabeth and Frank on the blue thread (ticks 1036, 1331-1333).
+    elizabeth = json.dumps(variants["questioning-the-inhabitants-talking-to-elizabeth"])
+    assert "If the criminal's thread is blue:" in elizabeth and "If the criminal's thread isn't blue:" in elizabeth
+    assert elizabeth.index("Looks like Blue thread to me.") < elizabeth.index("I suppose it does. So what?")
+    assert "You're not very good at this whole investigation thing are you?" in elizabeth
+    assert "same colour anyway." in json.dumps(frank)
+    # Gossip's three hints are one random pick (ticks 819, 826; the Wiki's own is the first).
+    gossip = variants["questioning-the-inhabitants-talking-to-gossip"][2]["options"][3]["steps"]
+    assert gossip[-1]["type"] == "random" and len(gossip[-1]["options"]) == 3
+    assert gossip[-1]["options"][0]["steps"][0]["text"].startswith("Well, I don't know if it's related")
+    # Declining the flypaper (tick 1420).
+    sacks = variants["gathering-suspect-evidence-searching-the-sacks"][1]["options"][1]["steps"]
+    assert sacks[0]["text"] == "You leave the paper in the sack."
+    # The salesman straight to his menu once he has named the buyers (ticks 1895-1906), every option resolved.
+    for variant in (
+        "visiting-the-poison-salesman-talking-to-the-poison-salesman-after-learning-who-bought-the-poison",
+        "visiting-the-poison-salesman-talking-to-the-poison-salesman-after-learning-who-bought-the-poison-if-the-player-also-has-progress-in-fremennik-trials",
+    ):
+        text = json.dumps(variants[variant])
+        assert text.count('"type": "call"') == 4 and '"reference"' not in text
+    # The thread box before the servants' clothes (ticks 1076, 1369).
+    some = json.dumps(variants["presenting-the-evidence-talking-to-the-guard-with-some-but-not-all-evidence"])
+    assert some.index("You show the guard the thread you found on the window.") < some.index(
+        "All the servants dress in black"
+    )
+    # Him for a son, her for a daughter (recordings 1001551, 1001958: David; 1001930: Carol).
+    hand_in = json.dumps(variants["presenting-the-evidence-talking-to-the-guard-with-all-evidence"])
+    assert "If Bob, David or Frank is the murderer:" in hand_in and "hold him here" in hand_in
+    assert "If Anna, Carol or Elizabeth is the murderer:" in hand_in and "hold her here" in hand_in
+    # The courtyard guard after the quest (tick 2383).
+    outside = json.dumps(variants["post-quest-talking-to-the-guard-outside-the-mansion-after-the-quest"])
+    assert "Seems awfully quiet up at the house" in outside
+    assert "Nothing right now, we have it all under control." in outside
