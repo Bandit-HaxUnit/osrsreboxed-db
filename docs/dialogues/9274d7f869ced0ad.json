@@ -36,12 +36,15 @@
             "text": "Sounds good.",
             "steps": [
               {
+                "player": "Sounds good."
+              },
+              {
                 "type": "jump",
                 "id": "51M-Fu",
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "jump-bb0e710491c4037a"
+                    "branch": "jump-74e4f741e8d2964a"
                   }
                 ]
               }
@@ -117,6 +120,9 @@
             "text": "I could do with some information on houses.",
             "steps": [
               {
+                "player": "I could do with some information on houses."
+              },
+              {
                 "type": "condition",
                 "text": "If the player doesn't have any house keys in their inventory:",
                 "steps": [
@@ -169,7 +175,13 @@
                       {
                         "type": "jump",
                         "reference": "continue",
-                        "id": "uaOYDz"
+                        "id": "uaOYDz",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-e5f35bb61bad089e"
+                          }
+                        ]
                       }
                     ],
                     "id": "XVbpXD"
@@ -222,73 +234,73 @@
                                 "type": "jump",
                                 "reference": "continue",
                                 "id": "fvJSMV"
-                              },
+                              }
+                            ],
+                            "id": "nhd0lS"
+                          },
+                          {
+                            "npc": "Do you want me to point you in the right direction?",
+                            "steps": [
                               {
-                                "npc": "Do you want me to point you in the right direction?",
-                                "steps": [
+                                "type": "choice",
+                                "options": [
                                   {
-                                    "type": "choice",
-                                    "options": [
+                                    "text": "Yes please.",
+                                    "steps": [
                                       {
-                                        "text": "Yes please.",
+                                        "player": "Yes please.",
                                         "steps": [
                                           {
-                                            "player": "Yes please.",
+                                            "type": "condition",
+                                            "text": "If Caius's house is available for thieving:",
                                             "steps": [
                                               {
-                                                "type": "condition",
-                                                "text": "If Caius's house is available for thieving:",
-                                                "steps": [
-                                                  {
-                                                    "npc": "His house is north west of here."
-                                                  },
-                                                  {
-                                                    "type": "end"
-                                                  }
-                                                ],
-                                                "id": "1ur2_C"
+                                                "npc": "His house is north west of here."
                                               },
                                               {
-                                                "type": "condition",
-                                                "text": "If Victor's house is available for thieving:",
-                                                "steps": [
-                                                  {
-                                                    "npc": "His house is west of here."
-                                                  },
-                                                  {
-                                                    "type": "end"
-                                                  }
-                                                ],
-                                                "id": "Jm1nfB"
-                                              },
-                                              {
-                                                "type": "condition",
-                                                "text": "If Lavinia's house is available for thieving:",
-                                                "steps": [
-                                                  {
-                                                    "npc": "Her house is south east of here."
-                                                  }
-                                                ],
-                                                "id": "-nTThl"
+                                                "type": "end"
                                               }
-                                            ]
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "text": "I'll find my own way.",
-                                        "steps": [
+                                            ],
+                                            "id": "1ur2_C"
+                                          },
                                           {
-                                            "player": "I'll find my own way."
+                                            "type": "condition",
+                                            "text": "If Victor's house is available for thieving:",
+                                            "steps": [
+                                              {
+                                                "npc": "His house is west of here."
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ],
+                                            "id": "Jm1nfB"
+                                          },
+                                          {
+                                            "type": "condition",
+                                            "text": "If Lavinia's house is available for thieving:",
+                                            "steps": [
+                                              {
+                                                "npc": "Her house is south east of here."
+                                              }
+                                            ],
+                                            "id": "-nTThl"
                                           }
                                         ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'll find my own way.",
+                                    "steps": [
+                                      {
+                                        "player": "I'll find my own way."
                                       }
                                     ]
                                   }
                                 ]
                               }
-                            ],
-                            "id": "nhd0lS"
+                            ]
                           }
                         ]
                       },
@@ -297,8 +309,13 @@
                         "steps": [
                           {
                             "type": "jump",
-                            "reference": "above",
-                            "id": "x1NI86"
+                            "id": "x1NI86",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "jump-e5f35bb61bad089e"
+                              }
+                            ]
                           }
                         ]
                       },
@@ -327,6 +344,20 @@
         ]
       }
     ],
+    "standard-dialogue-without-50-thieving": [
+      {
+        "npc": "I'm rather busy here, and you don't seem like the thieving type. Beat it!"
+      },
+      {
+        "player": "Rude."
+      },
+      {
+        "type": "message",
+        "text": "You need 50 Thieving to take part in House Robbery.",
+        "styled": "You need <col=990000>50 Thieving</col> to take part in House Robbery.",
+        "id": "fEbPG0"
+      }
+    ],
     "overhead-dialogue-when-a-wealthy-citizen-is-about-to-re-enter-their-house": [
       {
         "npc": "whistle*",
@@ -351,12 +382,345 @@
     ]
   },
   "branches": {
-    "jump-bb0e710491c4037a": [
+    "jump-74e4f741e8d2964a": [
       {
-        "npc": "Suit yourself."
+        "type": "condition",
+        "text": "If the player doesn't have any house keys in their inventory:",
+        "steps": [
+          {
+            "npc": "You don't have any house keys, do you? You won't find yourself getting very far without any. Maybe come back later?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "jzNjjQ"
       },
       {
-        "type": "end"
+        "type": "condition",
+        "text": "If the player has at least one house key but less than 15 valuables in their inventory:",
+        "steps": [
+          {
+            "npc": "You don't have any valuables worth my time. Come back when you do!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xFkB8X"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one house key and at least 15 valuables in their inventory but there is no house available for thieving:",
+        "steps": [
+          {
+            "npc": "Looks like [Caius/Lavinia/Victor] is returning to [his/her] house. You'll have to wait a moment until we get word of the next house."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "s0-XhW"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one house key and at least 15 valuables in their inventory and a house is or will soon be available for thieving:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If it is the player's first time asking (does not require 15 valuables in inventory):",
+            "steps": [
+              {
+                "npc": "You're new around here. Normally I'd charge 15 valuables for information, but I'm feeling generous."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "uaOYDz",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-e5f35bb61bad089e"
+                  }
+                ]
+              }
+            ],
+            "id": "XVbpXD"
+          },
+          {
+            "type": "choice",
+            "prompt": "Pay 15 valuables for information?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the homeowner is about to leave:",
+                    "steps": [
+                      {
+                        "npc": "I hear that [Caius/Lavinia/Victor] might be leaving [his/her] house soon."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "036HKX"
+                      }
+                    ],
+                    "id": "rTaPI-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If this is the first time the player is receiving intel on the current targeted house:",
+                    "steps": [
+                      {
+                        "npc": "Looks like [Caius/Lavinia/Victor] isn't home right now. Go quickly!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "t5au-1"
+                      }
+                    ],
+                    "id": "vLkvS6"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has already received intel on the current targeted hosue:",
+                    "steps": [
+                      {
+                        "npc": "Already forgotten? Head over to [Caius/Lavinia/Victor]'s house."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "fvJSMV"
+                      }
+                    ],
+                    "id": "nhd0lS"
+                  },
+                  {
+                    "npc": "Do you want me to point you in the right direction?",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes please.",
+                            "steps": [
+                              {
+                                "player": "Yes please.",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "If Caius's house is available for thieving:",
+                                    "steps": [
+                                      {
+                                        "npc": "His house is north west of here."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "1ur2_C"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If Victor's house is available for thieving:",
+                                    "steps": [
+                                      {
+                                        "npc": "His house is west of here."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "Jm1nfB"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If Lavinia's house is available for thieving:",
+                                    "steps": [
+                                      {
+                                        "npc": "Her house is south east of here."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "-nTThl"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'll find my own way.",
+                            "steps": [
+                              {
+                                "player": "I'll find my own way."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Yes, don't ask me again.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "id": "x1NI86",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "jump-e5f35bb61bad089e"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "I'll pass for now."
+                  },
+                  {
+                    "npc": "Suit yourself."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "5YRTdk"
+      }
+    ],
+    "jump-e5f35bb61bad089e": [
+      {
+        "type": "condition",
+        "text": "If the homeowner is about to leave:",
+        "steps": [
+          {
+            "npc": "I hear that [Caius/Lavinia/Victor] might be leaving [his/her] house soon."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "036HKX"
+          }
+        ],
+        "id": "rTaPI-"
+      },
+      {
+        "type": "condition",
+        "text": "If this is the first time the player is receiving intel on the current targeted house:",
+        "steps": [
+          {
+            "npc": "Looks like [Caius/Lavinia/Victor] isn't home right now. Go quickly!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "t5au-1"
+          }
+        ],
+        "id": "vLkvS6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already received intel on the current targeted hosue:",
+        "steps": [
+          {
+            "npc": "Already forgotten? Head over to [Caius/Lavinia/Victor]'s house."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "fvJSMV"
+          }
+        ],
+        "id": "nhd0lS"
+      },
+      {
+        "npc": "Do you want me to point you in the right direction?",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes please.",
+                "steps": [
+                  {
+                    "player": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If Caius's house is available for thieving:",
+                        "steps": [
+                          {
+                            "npc": "His house is north west of here."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "1ur2_C"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If Victor's house is available for thieving:",
+                        "steps": [
+                          {
+                            "npc": "His house is west of here."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "Jm1nfB"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If Lavinia's house is available for thieving:",
+                        "steps": [
+                          {
+                            "npc": "Her house is south east of here."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "-nTThl"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "I'll find my own way.",
+                "steps": [
+                  {
+                    "player": "I'll find my own way."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

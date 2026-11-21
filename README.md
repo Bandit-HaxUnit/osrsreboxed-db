@@ -19,6 +19,8 @@ This fork updates the JSON data only. The other APIs in the upstream project are
 | NPC dialogue transcripts, with gameplay steps slugged | [`docs/npc-dialogues.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npc-dialogues.json) | `python -m scripts.dialogues.update` |
 | Slayer-master tasks, keyed by Slayer-master NPC ID | [`docs/slayer-tasks.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/slayer-tasks.json) | `python -m scripts.slayer.update` |
 | NPC poison/venom immunities and freeze resistance, independent of combat-stat snapshots | [`docs/npc-status-immunities.json`](docs/npc-status-immunities.json) | `python -m scripts.monsters.status_immunities` |
+| Every max hit an NPC's infobox lists with its label (style or condition), for NPCs that list more than one | [`docs/npc-max-hits.json`](docs/npc-max-hits.json) | `python -m scripts.monsters.max_hits` |
+| Named encounter variants (the Leagues VI Echo bosses): each role's Wiki combat profile and the encounter's unique table, keyed by encounter and role rather than NPC ID | [`docs/npc-encounter-variants.json`](docs/npc-encounter-variants.json) | `python -m scripts.monsters.encounter_variants` |
 | Wiki equipment stats of weapons (bonuses, attack speed and range, slot, combat style), keyed by item ID | [`docs/weapon-stats.json`](docs/weapon-stats.json) | `python -m scripts.weapons.update` |
 | Animation (sequence) names from RuneLite's gameval, keyed by sequence ID | [`docs/sequence-names.json`](docs/sequence-names.json) | `python -m scripts.sequences.update` |
 

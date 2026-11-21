@@ -26,6 +26,35 @@ import pytest
 from scripts.drops import drops_tables, drops_wikitext, update
 
 
+def test_gem_talisman_is_location_dependent_not_waterbirth_table():
+    pages = update.load_shared_table_wikitext()
+    items = drops_tables.ItemIdLookup(update.items_api.load())
+    tables = drops_tables.export_shared_subtables(pages, items)
+    talisman = next(
+        row for row in tables["gem"]["entries"] if row.get("name") == "Talisman"
+    )
+    assert talisman == {
+        "location_talisman": True,
+        "name": "Talisman",
+        "quantity_raw": "1",
+        "rarity_raw": "3/128",
+    }
+    assert len(tables["talisman"]["entries"]) == 9
+    assert {
+        row["rarity_raw"].split("/")[1] for row in tables["talisman"]["entries"]
+    } == {"70"}
+    explicit = {
+        "Drop table": "==Gem drop table==\n"
+        "{{DropsLine|name=Talisman drop table|quantity=1|rarity=3/128}}"
+    }
+    assert (
+        drops_tables.export_shared_subtables(explicit, items)["gem"]["entries"][0][
+            "shared_table"
+        ]
+        == "talisman"
+    )
+
+
 def test_cyclops_floor_headings_split_the_published_drop_versions():
     text = update.load_monster_wikitext()["Cyclops"]
     top, basement = drops_wikitext.parse_all_drop_tables(text)
@@ -319,6 +348,38 @@ def test_pre_roll_exports_exact_source_ratio_without_reducing_pool_slots(
     assert row["pre_roll"] is True
 
 
+@pytest.mark.parametrize(
+    "rate, expected",
+    [("1/181.1", [10, 1811]), ("4/540", [4, 540]), ("1/0", None), ("351/350", None)],
+)
+def test_mixed_denominator_pre_rolls_keep_exact_and_invalid_source_rates(
+    rate, expected
+):
+    source = (
+        "{{Infobox Monster|id=1}}\n==Drops==\n===Pre-roll===\n"
+        "{{DropsLine|name=Rune full helm|quantity=1|rarity=1/100}}\n"
+        "{{DropsLine|name=Draconic visage|quantity=1|rarity=1/100}}\n"
+        "{{DropsLine|name=Coins|quantity=17|rarity=" + rate + "}}"
+    )
+    parsed = drops_wikitext.parse_all_drop_tables(source)[0]
+    row = next(
+        row
+        for row in drops_tables.build_table_json(
+            drops_tables.build_table_spec("Test", parsed, ITEMS)
+        )["entries"]
+        if row.get("name") == "Coins"
+    )
+    assert row["pre_roll"] is True
+    assert row["separate_roll"] is True
+    assert row["quantity"] == [17, 17]
+    if expected is not None:
+        assert [row["weight"], row["out_of"]] == expected
+    else:
+        assert row["rarity_raw"] == rate
+        assert "out_of" not in row
+        assert "rarity" not in row
+
+
 @pytest.mark.parametrize("rate", ["1/0", "351/350"])
 def test_invalid_pre_roll_probability_stays_raw_and_unexecutable(rate):
     source = (
@@ -415,6 +476,131 @@ def test_multi_infobox_pages_merge_bare_and_versioned_ids():
     )
     tables = drops_wikitext.parse_all_drop_tables(wikitext)
     assert tables[0].npc_ids == [100, 101, 102]
+
+
+OUTLAW_MULTI_INFOBOX = """{{Multi Infobox
+|text1 = Ranger
+|item1 =
+{{Infobox Monster
+|version1 = Before confrontation
+|version2 = During confrontation
+|name = Outlaw
+|dropversion = Ranger
+|id1 = 16835,16836
+|id2 = 16837
+}}
+|text2 = Mage
+|item2 =
+{{Infobox Monster
+|version1 = Before confrontation
+|version2 = During confrontation
+|name = Outlaw
+|dropversion = Mage
+|id1 = 16839
+|id2 = 16840
+}}
+|text3 = Warrior
+|item3 =
+{{Infobox Monster
+|version1 = Before confrontation
+|version2 = During confrontation
+|name = Outlaw
+|dropversion = Warrior
+|id1 = 16842
+|id2 = 16843
+}}
+}}
+==Fight overview==
+===The ranger===
+The ranger is weak to stab attacks.
+
+==Drops==
+===The ranger===
+{{DropsTableHead|dropversion=Ranger}}
+{{DropsLine|name=Bones|quantity=1|rarity=Always}}
+{{DropsLine|name=Shortbow|quantity=1|rarity=Always}}
+{{DropsLine|name=Bronze arrow|quantity=80|rarity=Always}}
+{{DropsTableBottom}}
+
+===The mage===
+{{DropsTableHead|dropversion=Mage}}
+{{DropsLine|name=Bones|quantity=1|rarity=Always}}
+{{DropsLine|name=Staff|quantity=1|rarity=Always}}
+{{DropsLine|name=Air rune|quantity=80|rarity=Always}}
+{{DropsLine|name=Mind rune|quantity=80|rarity=Always}}
+{{DropsTableBottom}}
+
+===The warrior===
+{{DropsTableHead|dropversion=Warrior}}
+{{DropsLine|name=Bones|quantity=1|rarity=Always}}
+{{DropsLine|name=Iron kiteshield|quantity=1|rarity=Always}}
+{{DropsLine|name=Iron scimitar|quantity=1|rarity=Always}}
+{{DropsTableBottom}}
+
+==Dialogue==
+"""
+
+
+def test_multi_infobox_unnumbered_dropversions_split_the_drops():
+    """Each infobox's unnumbered ``dropversion`` is a declared drop version.
+
+    Trimmed from Outlaw (Mudfoot's Big Adventure): three monster infoboxes
+    each give one ``dropversion`` and their own ``id1``/``id2``, and the drops
+    section has one subsection per outlaw.
+    """
+    assert drops_wikitext.parse_drop_version_names(OUTLAW_MULTI_INFOBOX) == [
+        "Ranger",
+        "Mage",
+        "Warrior",
+    ]
+    tables = drops_wikitext.parse_all_drop_tables(OUTLAW_MULTI_INFOBOX)
+    assert [
+        (table.drop_variant, table.npc_ids, [drop.name for drop in table.drops])
+        for table in tables
+    ] == [
+        ("The ranger", [16835, 16836, 16837], ["Bones", "Shortbow", "Bronze arrow"]),
+        ("The mage", [16839, 16840], ["Bones", "Staff", "Air rune", "Mind rune"]),
+        (
+            "The warrior",
+            [16842, 16843],
+            ["Bones", "Iron kiteshield", "Iron scimitar"],
+        ),
+    ]
+
+    dump = drops_tables.NpcDropsAggregator()
+    for table in tables:
+        dump.add(drops_tables.build_table_spec("Outlaw", table, ITEMS))
+    bindings = {npc_id: dump.npcs[npc_id]["tables"] for npc_id in sorted(dump.npcs)}
+    ranger, mage, warrior = (
+        ["outlaw_drop_table_the_ranger"],
+        ["outlaw_drop_table_the_mage"],
+        ["outlaw_drop_table_the_warrior"],
+    )
+    assert bindings == {
+        16835: ranger,
+        16836: ranger,
+        16837: ranger,
+        16839: mage,
+        16840: mage,
+        16842: warrior,
+        16843: warrior,
+    }
+
+
+def test_single_infobox_unnumbered_dropversion_keeps_the_drops_whole():
+    """A lone unnumbered ``dropversion`` declares no variants to split on."""
+    wikitext = (
+        "{{Infobox Monster|dropversion=Ranger|id1=1|id2=2}}\n"
+        "==Drops==\n"
+        "===The ranger===\n"
+        "{{DropsLine|name=Bones|quantity=1|rarity=Always}}\n"
+        "===Ranger tertiary===\n"
+        "{{DropsLine|name=Shortbow|quantity=1|rarity=1/128}}\n"
+    )
+    assert drops_wikitext.parse_drop_version_names(wikitext) == []
+    tables = drops_wikitext.parse_all_drop_tables(wikitext)
+    assert len(tables) == 1
+    assert tables[0].npc_ids == [1, 2]
 
 
 def test_table_identity():
@@ -710,6 +896,181 @@ def test_several_word_rarity_rows_in_one_section_are_flagged():
     assert [[entry.name for entry in roll.entries] for roll in stacked] == [
         ["Bones", "Rune full helm"]
     ]
+
+
+def _cached_page_tables(page, items=None):
+    import json
+    from pathlib import Path
+
+    pages = json.loads(
+        (
+            Path(__file__).parents[1] / "data/monsters/monsters-wiki-page-text.json"
+        ).read_text(encoding="utf-8")
+    )
+    return [
+        drops_tables.build_table_json(
+            drops_tables.build_table_spec(page, table, items or ITEMS)
+        )
+        for table in drops_wikitext.parse_all_drop_tables(pages[page])
+    ]
+
+
+def test_cached_lizardmen_roll_the_uncommon_seed_table():
+    """{{UncommonSeedDropLines}} was dropped without a warning, so a lizardman
+    killed six times dropping only bones was likely (RSPSApp/tsps#1952). The
+    Wiki's level 53, level 62 and brute tables roll it at 15/87, 15/78, 15/67."""
+    accesses = {
+        (table["label"], row["weight"], row["out_of"])
+        for page in ("Lizardman", "Lizardman brute")
+        for table in _cached_page_tables(page)
+        for row in table["entries"]
+        if row.get("shared_table") == "uncommonSeed"
+    }
+    assert accesses == {
+        ("Level 53 drops", 15, 87),
+        ("Level 62 drops", 15, 78),
+        ("Drops", 15, 67),
+    }
+
+
+def test_uncommon_seed_table_lines_are_a_shared_access_not_rows():
+    wikitext = """{{Infobox Monster\n|id1 = 1\n}}\n==Drops==\n"""
+    wikitext += "===Seeds===\n{{UncommonSeedDropTableInfo|35/128}}\n"
+    wikitext += "{{UncommonSeedDropLines|35/128|f2p=yes}}\n"
+    table = drops_wikitext.parse_all_drop_tables(wikitext)[0]
+    exported = drops_tables.build_table_json(
+        drops_tables.build_table_spec("Test_monster", table, ITEMS)
+    )
+    assert [
+        (e.get("shared_table"), e.get("weight"), e.get("out_of"))
+        for e in exported["entries"]
+    ] == [("uncommonSeed", 35, 128)]
+
+
+def test_uncommon_seed_table_is_exported_from_the_drop_table_page():
+    from scripts.drops.update import load_shared_table_wikitext
+
+    shared = drops_tables.export_shared_subtables(load_shared_table_wikitext(), ITEMS)
+    seeds = shared["uncommonSeed"]
+    assert seeds["wiki_label"] == "uncommon seed drop table"
+    assert seeds["entries"][0]["rarity_raw"] == "137/1048"
+
+
+def test_members_world_rate_replaces_the_free_to_play_rate():
+    """The dump describes members worlds: "Drop rate is decreased to 8/128 in
+    [[members]] worlds" with altrarity=8/128 rolls 8/128. The moss giant's
+    table, its seed roll restored, now fills exactly 128 slots."""
+    line = drops_wikitext._parse_drop_line(
+        {
+            "name": "Coins",
+            "quantity": "2",
+            "rarity": "11/128",
+            "altrarity": "8/128",
+            "raritynotes": '<ref group="d">Drop rate is decreased to 8/128 in [[members]] worlds.</ref>',
+        },
+        "Main",
+        "Coins",
+        {},
+    )
+    assert line.rarity == "8/128"
+    skeleton = drops_wikitext._parse_drop_line(
+        {
+            "name": "Coins",
+            "quantity": "2",
+            "rarity": "29/128",
+            "altrarity": "24/128",
+            "raritynotes": "<ref group=d>The drop rate decreases to 24/128 on a [[members]] world.</ref>",
+        },
+        "Main",
+        "Coins",
+        {},
+    )
+    assert skeleton.rarity == "24/128"
+    unrelated = drops_wikitext._parse_drop_line(
+        {
+            "name": "Coins",
+            "quantity": "2",
+            "rarity": "11/128",
+            "altrarity": "Never",
+            "raritynotes": "<ref group=d>Not dropped in the Forgotten Cemetery.</ref>",
+        },
+        "Main",
+        "Coins",
+        {},
+    )
+    assert unrelated.rarity == "11/128"
+    from osrsreboxed import items_api
+
+    (moss_giant,) = [
+        t
+        for t in _cached_page_tables(
+            "Moss giant", drops_tables.ItemIdLookup(items_api.load())
+        )
+        if t["label"] == "Drops"
+    ]
+    assert moss_giant["main_max_roll"] == 128
+    assert sum(
+        e["weight"]
+        for e in moss_giant["entries"]
+        if "weight" in e and not e.get("separate_roll")
+    ) == 128
+
+
+def test_cached_manta_ray_keeps_its_other_seed_pools():
+    """The manta ray's Seeds section has {{UncommonSeedDropLines}} beside its own
+    rare and tree-herb seed rows. The uncommon access must not swallow those rows:
+    Yew, Magic and Redwood tree seeds come only from them (RSPSApp/tsps#1982)."""
+    from osrsreboxed import items_api
+
+    (manta,) = _cached_page_tables(
+        "Manta ray (monster)", drops_tables.ItemIdLookup(items_api.load())
+    )
+    names = {row.get("name") for row in manta["entries"]}
+    assert {"Yew seed", "Magic seed", "Redwood tree seed"} <= names
+    assert [
+        (row["weight"], row["out_of"])
+        for row in manta["entries"]
+        if row.get("shared_table") == "uncommonSeed"
+    ] == [(30, 99)]
+    seeds = [row for row in manta["entries"] if row.get("section") == "Seeds" and row.get("item_id")]
+    assert len(seeds) == 28
+
+
+def test_explicit_named_location_notes_apply_to_every_referencing_row():
+    """HTML refs, Refn and NamedRef preserve conditions without repeating an item name."""
+    text = """
+{{Infobox Monster|id=123}}
+==Drops==
+===Other===
+{{DropsLine|name=Trading sticks|quantity=1|rarity=1/128|raritynotes=<ref group="d" name="karamja">Only dropped by Hobgoblins on [[Karamja]], in place of the regular coin drops.</ref>}}
+{{DropsLine|name=Trading sticks|quantity=5|rarity=12/128|raritynotes=<ref group="d" name="karamja"/>}}
+{{DropsLine|name=Iron med helm|quantity=1|rarity=5/128|raritynotes={{Refn|group=d|name=giant|Only dropped by giants on the Giants' Plateau.}}}}
+{{DropsLine|name=Steel scimitar|quantity=1|rarity=2/128|raritynotes={{Refn|group=d|name=giant}}}}
+{{DropsLine|name=Pyrophosphite|quantity=1|rarity=18/118|raritynotes={{Refn|Only dropped by ancient zygomites on Fossil Island.|group=d|name=island}}}}
+{{DropsLine|name=Volcanic ash|quantity=2|rarity=16/590|raritynotes={{NamedRef|island|group=d}}}}
+{{DropsLine|name=Coins|quantity=1|rarity=1/128}}
+"""
+    rows = drops_wikitext.parse_all_drop_tables(text)[0].drops
+    assert len(rows) == 7
+    for first, reference in ((0, 1), (2, 3), (4, 5)):
+        assert rows[first].notes
+        assert rows[reference].notes == rows[first].notes
+    assert rows[-1].notes == []
+
+
+def test_cached_zalcano_death_runes_keep_current_source_range():
+    from scripts.drops import update
+
+    pages = update.load_monster_wikitext()
+    items = drops_tables.ItemIdLookup([FakeItem(560, "Death rune")])
+    parsed = drops_wikitext.parse_all_drop_tables(pages["Zalcano"])[0]
+    table = drops_tables.build_table_json(
+        drops_tables.build_table_spec("Zalcano", parsed, items)
+    )
+    row = next(row for row in table["entries"] if row.get("item_id") == 560)
+    assert row["quantity"] == [201, 1046]
+    assert row["weight"] == 1
+    assert row["out_of"] == table["main_max_roll"] == 36
 
 
 def _cached_unique_templates(*names):
@@ -1009,8 +1370,10 @@ def test_a_plain_row_without_rolls_still_leaves_the_table_unexported():
             ["Dragon shortsword", "Dragon harpoon", "Dragon knife", "Dragon thrownaxe"],
         ),
         ("Marble gargoyle", 3, []),
+        # The page states "will always roll 3 additional items", so King kurask's Limpwurt seed, which omits rolls, does
+        # not make the table mixed: it is a pool row, repeated with the table, and keeps its own count of 1.
         ("Chasm Crawler", 3, []),
-        ("King kurask", 1, []),
+        ("King kurask", 3, ["Limpwurt seed"]),
     ],
 )
 def test_cached_pages_split_repeated_rows_from_once_pre_rolls(page, rolls, once_rows):
@@ -1021,15 +1384,95 @@ def test_cached_pages_split_repeated_rows_from_once_pre_rolls(page, rolls, once_
     tables = drops_wikitext.parse_all_drop_tables(pages[page], unique_templates=unique)
     assert [t.rolls for t in tables] == [rolls] * len(tables)
     table = tables[0]
-    # The rows the table-wide count does not repeat are exactly the Pre-roll rows named here.
+    # The rows the table-wide count does not repeat are exactly the ones named here: Pre-roll rows, and on a page that
+    # states its roll count the plain rows beside rows that carry it.
     ones = [d.name for d in table.drops if d.section == "Main" and d.rolls == 1]
-    if rolls > 1:
-        assert ones == once_rows
-        assert all(
-            d.subsection.lower() == "pre-roll"
-            for d in table.drops
-            if d.section == "Main" and d.rolls == 1
-        )
-    else:
-        # King kurask: the one stray plain row (Limpwurt seed, no rolls) keeps the count unexported.
-        assert ones == ["Limpwurt seed"]
+    assert ones == once_rows
+    plain = [d.name for d in table.drops if d.section == "Main" and d.rolls == 1 and d.subsection.lower() != "pre-roll"]
+    assert plain == {"King kurask": ["Limpwurt seed"]}.get(page, [])
+
+
+SUPERIOR_SOURCE = PRE_ROLL_ONCE_SOURCE.replace(
+    "==Drops==\n",
+    "==Drops==\n''In addition to 100% drops and tertiary drops, superior slayer monsters will always roll 3 additional items, "
+    "of which only 1 roll may be from the superior unique table.''\n",
+).replace(
+    "{{DropsLine|name=Nothing|rarity=102/128|rolls=3}}",
+    "{{DropsLine|name=Nothing|rarity=102/128|rolls=3}}\n{{DropsLine|name=Bones|quantity=1|rarity=3/128}}",
+)
+
+
+def test_a_superior_page_that_states_its_roll_count_repeats_a_row_that_omitted_rolls():
+    table = _export(SUPERIOR_SOURCE)
+    assert table["rolls"] == 3
+    seed = next(row for row in table["entries"] if row.get("name") == "Bones" and not row.get("pre_roll") and row.get("rarity") != "Always")
+    assert not seed.get("once_per_kill")
+    # The Pre-roll row stays once per kill.
+    assert next(row for row in table["entries"] if row.get("pre_roll"))["once_per_kill"] is True
+
+
+def test_the_statement_is_ignored_when_the_explicit_counts_disagree_with_it():
+    source = SUPERIOR_SOURCE.replace("roll 3 additional", "roll 2 additional")
+    assert "rolls" not in _export(source)
+
+
+def test_without_the_statement_a_plain_row_still_leaves_the_count_unexported():
+    source = SUPERIOR_SOURCE.replace("superior slayer monsters will always roll 3 additional items", "monsters drop items")
+    assert "rolls" not in _export(source)
+
+
+SUPERIOR_INDEPENDENT_SOURCE = SUPERIOR_SOURCE.replace(
+    "{{DropsLine|name=Bones|quantity=1|rarity=3/128}}",
+    "{{DropsLine|name=Bones|quantity=1|rarity=3/128}}\n{{DropsLine|name=Bird nest|quantity=1|rarity=1/729}}",
+)
+
+
+def test_an_independent_row_without_rolls_beside_repeated_rows_is_rolled_once():
+    # Chasm crawler's moon key tooth half: its own 1/729 roll, no rolls= while its table repeats three times.
+    table = _export(SUPERIOR_INDEPENDENT_SOURCE)
+    assert table["rolls"] == 3
+    nest = next(row for row in table["entries"] if row.get("name") == "Bird nest")
+    assert nest["separate_roll"] is True and nest["once_per_kill"] is True
+    bones = next(row for row in table["entries"] if row.get("name") == "Bones" and not row.get("pre_roll") and row.get("rarity") != "Always")
+    assert not bones.get("once_per_kill") and not bones.get("separate_roll"), "a pool row is repeated with the table"
+
+
+def test_an_independent_row_that_carries_the_tables_rolls_is_repeated_not_flagged():
+    source = SUPERIOR_INDEPENDENT_SOURCE.replace("rarity=1/729}}", "rarity=1/729|rolls=3}}")
+    table = _export(source)
+    nest = next(row for row in table["entries"] if row.get("name") == "Bird nest")
+    assert nest["separate_roll"] is True and not nest.get("once_per_kill")
+
+
+def test_herb_roll_counts_are_read_from_the_wikis_roll_once_or_twice_wording():
+    """Smoke devil and Turoth state their herb roll distribution as "N/M chance to roll
+    once ... twice ... three times"; the numerators are the variant weights."""
+    smoke = drops_wikitext._parse_subtable_accesses(
+        "{{HerbDropTableInfo|override=There is an 18/128 chance to access the [[herb drop table]]. "
+        "This is followed by a 2/3 chance to roll once and a 1/3 chance to roll twice, for an "
+        "average of 1.33 rolls.}}{{HerbDropLines|18/128|rolls=1.33}}"
+    )
+    assert [a.roll_count_weights for a in smoke if a.table_key == "herb"] == [
+        [{"rolls": 1, "weight": 2}, {"rolls": 2, "weight": 1}]
+    ]
+    turoth = drops_wikitext._parse_subtable_accesses(
+        "{{HerbDropTableInfo|override=There is a 31/129 chance to access the [[herb drop table]]. "
+        "If accessed, it is rolled an average of 1.7 times &ndash; 15/31 chance to roll once, "
+        "10/31 to roll twice, and 6/31 to roll three times.}}{{HerbDropLines|31/129|rolls=1.7}}"
+    )
+    assert [a.roll_count_weights for a in turoth if a.table_key == "herb"] == [
+        [
+            {"rolls": 1, "weight": 15},
+            {"rolls": 2, "weight": 10},
+            {"rolls": 3, "weight": 6},
+        ]
+    ]
+
+    # Dark beast words two separate accesses ("19/128 chance to roll once", "5/128 chance
+    # to roll twice"), which is not a distribution after one access.
+    dark_beast = drops_wikitext._parse_subtable_accesses(
+        "{{HerbDropTableInfo|override=There is a 19/128 chance to roll once on the [[herb drop table]].}}"
+        "{{HerbDropTableInfo|override=There is also a separate 5/128 chance to roll twice on the "
+        "[[herb drop table]].}}{{HerbDropLines|19/128}}"
+    )
+    assert all(not a.roll_count_weights for a in dark_beast)

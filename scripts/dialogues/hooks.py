@@ -54,6 +54,115 @@ def identity(name, page, clean):
     return ids, names
 
 
+def _base_name(text):
+    return re.sub(r"\s*\([^)]*\)\s*$", "", text).strip().casefold()
+
+
+def _words(text):
+    return re.findall(r"[a-z0-9']+", text.casefold())
+
+
+def _is_subsequence(needle, haystack):
+    remaining = iter(haystack)
+    return all(word in remaining for word in needle)
+
+
+# Words a transcript may leave off the front of a title ("Hrafn" for "HRH Hrafn",
+# "Ellamaria" for "Queen Ellamaria"). A reviewed list, not a guess: dropping any
+# other word would let a generic label ("Man", "Banker", "Hazeel") name a longer
+# title ("Wise Old Man", "Banker tutor", "Hazeel Cultist") that is not its speaker.
+HONORIFICS = frozenset(
+    {
+        "the", "hrh", "king", "queen", "prince", "princess", "lord", "lady", "sir", "dame",
+        "captain", "chancellor", "justiciar", "father", "brother", "sister", "saint",
+        "sergeant", "general", "commander", "doctor", "dr", "professor", "mayor", "duke",
+    }
+)
+
+
+def _without_honorifics(words):
+    start = 0
+    while start < len(words) - 1 and words[start] in HONORIFICS:
+        start += 1
+    return words[start:]
+
+
+def speaker_ids(speaker, participants, identities):
+    """NPC ids for a spoken label, read only from the page's own participants.
+
+    Transcripts label a speaker with a short name ("Hrafn", "King Sorvott IV",
+    "Guard") while the Transcript list names the NPC page ("HRH Hrafn", "King
+    Gjuki Sorvott IV", "Guard (Jatizso)"). The strictest rule that finds exactly
+    one participant wins: a full name or infobox name; the page title without its
+    disambiguation; the title without leading honorifics; a label of two or more
+    words that keeps the title's first and last word and omits some between them.
+    A tie at any rule resolves nothing, and no rule looks outside the participant
+    list, so NPCs sharing a short name are never merged. A label that is only part
+    of a longer title ("Hazeel" for "Hazeel Cultist", "Man" for "Wise Old Man")
+    resolves nothing: it may well be another NPC the page does not list.
+    """
+    label = speaker.strip()
+    if not label or "/" in label or label.casefold() == "player":
+        return []
+    folded = label.casefold()
+    wanted = _words(label)
+    rules = (
+        lambda page, names: folded in {n.casefold() for n in names},
+        lambda page, names: folded == _base_name(page)
+        or folded in {_base_name(n) for n in names},
+        lambda page, names: bool(wanted)
+        and wanted == _without_honorifics(_words(_base_name(page))),
+        lambda page, names: len(wanted) >= 2
+        and (title := _words(_base_name(page)))
+        and wanted[0] == title[0]
+        and wanted[-1] == title[-1]
+        and _is_subsequence(wanted, title),
+    )
+    for rule in rules:
+        found = [
+            page
+            for page in participants
+            if rule(page, identities.get(page, ([], {page}))[1] | {page})
+        ]
+        if len(found) == 1:
+            return sorted(set(identities.get(found[0], ([], set()))[0]))
+        if found:
+            return []
+    return []
+
+
+def annotate_speaker_ids(record, participants, identities):
+    """Add `speaker_ids` to lines spoken by a listed participant.
+
+    Runs on the exported record after corrections: their fingerprints cover the
+    record as compacted, so the field must not exist before they are checked.
+    Node ids are untouched.
+    """
+    if not participants:
+        return
+    steps_lists = (
+        [record["steps"]]
+        if "steps" in record
+        else list(record.get("variants", {}).values())
+    )
+    steps_lists += list(record.get("branches", {}).values())
+    cache = {}
+    for steps in steps_lists:
+        for node in walk(steps):
+            speaker = node.get("speaker")
+            if node.get("type") != "line" or not speaker:
+                continue
+            if speaker not in cache:
+                cache[speaker] = speaker_ids(speaker, participants, identities)
+            if cache[speaker]:
+                node["speaker_ids"] = list(cache[speaker])
+
+
+def npc_identities(npc_pages, clean):
+    """NPC page title -> (infobox ids, names the wiki calls that NPC)."""
+    return {name: identity(name, page, clean) for name, page in npc_pages.items()}
+
+
 def annotate(nodes, parent, quest_names):
     counts = collections.Counter()
     for node in nodes:
@@ -62,7 +171,7 @@ def annotate(nodes, parent, quest_names):
         own = {
             k: v
             for k, v in node.items()
-            if k not in ("steps", "options", "presentation") and not k.startswith("_")
+            if k not in ("steps", "options", "presentation", "styled") and not k.startswith("_")
         }
         own = node.pop("_identity", own)
         key = token([parent, own])
@@ -108,7 +217,7 @@ def annotate(nodes, parent, quest_names):
 def enrich_records(
     npcs, quests, npc_pages, clean, bindings=None, transcript_pages=None
 ):
-    identities = {name: identity(name, page, clean) for name, page in npc_pages.items()}
+    identities = npc_identities(npc_pages, clean)
     all_records = {
         "Transcript:" + name: record
         for group in (npcs, quests)

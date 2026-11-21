@@ -31,7 +31,12 @@ from scripts.dialogues.fetch import (
     trailing_template_name,
     transcript_type,
 )
-from scripts.dialogues.hooks import enrich_records, walk as dialogue_nodes
+from scripts.dialogues.hooks import (
+    annotate_speaker_ids,
+    enrich_records,
+    npc_identities,
+    walk as dialogue_nodes,
+)
 from scripts.dialogues.compact import compact_record, write_split
 from scripts.dialogues.corrections import apply_corrections
 from scripts.dialogues.bindings import apply_bindings
@@ -39,17 +44,32 @@ from scripts.dialogues.bindings import apply_bindings
 TEXT_START = ""
 
 
-def clean(raw):
-    """Remove presentation markup; retain unfamiliar templates verbatim."""
+COLOUR_HEX = re.compile(r"#?([0-9a-fA-F]{6})")
+
+
+def colour_tag(template):
+    """The client colour tag of a {{Colour|#rrggbb|...}} template, or None for a named colour."""
+    match = COLOUR_HEX.fullmatch(str(template.get(1).value).strip()) if template.has(1) else None
+    return f"<col={match[1].lower()}>" if match else None
+
+
+def clean(raw, colours=False):
+    """Remove presentation markup; retain unfamiliar templates verbatim.
+
+    With `colours`, a {{Colour}} with a hex value keeps its colour as the client's
+    <col=rrggbb>...</col> tag (the `styled` text a consumer shows) instead of losing it.
+    """
     # The wiki list marker is already gone, so a leading "*Sighs*" is speech, not a
     # list: start the parse on a placeholder to keep strip_code from eating it.
     code = mw.parse(TEXT_START + str(raw))
     for template in code.filter_templates(recursive=False):
         name = str(template.name).strip().lower()
         if name in ("colour", "color") and template.has(2):
-            code.replace(template, clean(template.get(2).value))
+            inner = clean(template.get(2).value, colours)
+            tag = colour_tag(template) if colours else None
+            code.replace(template, f"{tag}{inner}</col>" if tag and inner else inner)
         elif name == "overhead" and template.has(1):
-            code.replace(template, clean(template.get(1).value))
+            code.replace(template, clean(template.get(1).value, colours))
         elif name in ("sic", "^", "fact", "citation needed"):
             code.replace(template, "")
     # A <ref> is an editor's footnote, never speech: strip_code would keep its body.
@@ -150,6 +170,16 @@ def speaker_label(raw):
     return None
 
 
+RANDOM_DRAW = re.compile(
+    r"A random dialogue is selected, (one|two|three|four|five|six|\d+) times?, "
+    r"non-repeating, from the following:"
+)
+DRAW_COUNTS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6}
+AFTER_DRAW = re.compile(
+    r"After the (?:first|second|third|fourth|fifth|sixth) question is answered:"
+)
+
+
 def parse_step(raw, issues, line):
     code = mw.parse(str(raw))
     anchors = []
@@ -170,6 +200,9 @@ def parse_step(raw, issues, line):
     if speaker is not None:
         text = clean(speech[2])
         node = dict(type="line", speaker=speaker, text=text)
+        styled = clean(speech[2], colours=True)
+        if styled != text:
+            node["styled"] = styled
         if "{{overhead" in raw.lower():
             node["display"] = "overhead"
         if "{{" in text:
@@ -242,6 +275,10 @@ def parse_step(raw, issues, line):
             )
             if "pic" in args:
                 node["image"] = args["pic"]
+            if node["type"] == "message" and t.has(1):
+                styled = clean(t.get(1).value, colours=True)
+                if styled != text:
+                    node["styled"] = styled
             if node["type"] == "action":
                 node.update(infer_action(text))
             return node
@@ -256,6 +293,21 @@ def parse_step(raw, issues, line):
             # A free-to-play branch stops here; the conversation is members-only.
             if text == "members":
                 return dict(type="end", reason="members")
+            # "A random dialogue is selected, three times, non-repeating, from the
+            # following:" opens a random set drawn N times without repeats. Only this
+            # exact wording is read (the other "random" notes describe different shapes).
+            drawn = RANDOM_DRAW.fullmatch(text)
+            if drawn:
+                return dict(
+                    type="random_marker",
+                    count=DRAW_COUNTS.get(drawn[1].casefold()) or int(drawn[1]),
+                    non_repeating=True,
+                )
+            # "After the first question is answered:" heads the lines played after that
+            # draw. It is a guard on the draw, not an action, so it must not be absorbed
+            # into the last random alternative.
+            if AFTER_DRAW.fullmatch(text):
+                return dict(type="condition", text=text)
             if re.fullmatch(r"above|below|previous\d*|initial|other|continues?", text):
                 anchor = args.get("2", "").strip()
                 if anchor and text in ("above", "below"):
@@ -268,7 +320,12 @@ def parse_step(raw, issues, line):
                 issues.append(
                     dict(line=line, reason="Unresolved dialogue reference", raw=raw)
                 )
-                return dict(type="jump", target=None, reference=text)
+                node = dict(type="jump", target=None, reference=text)
+                # `{{tact|continue|X}}` can name an `{{Anchor|X}}` that marks
+                # where a run of conditions continues (see flow.py).
+                if anchor and text in ("continue", "continues"):
+                    node["_continue_to"] = anchor
+                return node
             # opens2 is the unlinked spelling of opens; the two never co-occur.
             if "opens" in args or "opens2" in args:
                 return dict(
@@ -290,6 +347,27 @@ def parse_step(raw, issues, line):
     return dict(type="unparsed", raw=raw)
 
 
+# Condition prose about the player ("If the player is on a non-members world:").
+# Options a player picks never read this way; "If you insist..." and the like do.
+PLAYER_CONDITION = re.compile(r"^\(?If\s+the\s+player\b", re.I)
+
+
+def lone_condition_option(option_nodes):
+    """A lone `{{topt}}` (no `{{tselect}}`, no other options) whose text is a condition.
+
+    Wizard Jalarast's "Can you make me some armour please?" writes its non-members
+    branch as `{{topt|If the player is on a non-members world:}}` where its shop
+    dialogue uses `{{tcond}}` for the same branch. Inside a real menu or a random
+    set the option stays an option.
+    """
+    if len(option_nodes) != 1:
+        return False
+    option = option_nodes[0]
+    if set(option) - {"type", "text", "steps", "_anchors"}:
+        return False
+    return bool(PLAYER_CONDITION.match(str(option.get("text", ""))))
+
+
 def group_options(nodes, random_options=False):
     """Group menu alternatives.
 
@@ -309,6 +387,9 @@ def group_options(nodes, random_options=False):
                 else "choice"
             )
             group = dict(type=kind, options=[])
+            if node["type"] == "random_marker" and node.get("count"):
+                group["count"] = node["count"]
+                group["non_repeating"] = bool(node.get("non_repeating"))
             option_nodes = []
             if node["type"] == "option":
                 option_nodes.append(node)
@@ -380,6 +461,18 @@ def group_options(nodes, random_options=False):
                         if i < len(nodes) and nodes[i]["type"] == "option":
                             continue
                     break
+            if (
+                node["type"] == "option"
+                and not random_options
+                and lone_condition_option(option_nodes)
+            ):
+                # A condition the page wrote with `{{topt}}`: a menu of one option
+                # would show the condition's prose to the player as a choice.
+                condition = {k: v for k, v in option_nodes[0].items() if k != "steps"}
+                condition["type"] = "condition"
+                condition["steps"] = group_options(option_nodes[0].get("steps", []))
+                result.append(condition)
+                continue
             for option in option_nodes:
                 group["options"].append(
                     {k: v for k, v in option.items() if k != "type"}
@@ -393,6 +486,58 @@ def group_options(nodes, random_options=False):
             result.append(node)
             i += 1
     return result
+
+
+# A later page's back option: "Prev", "Previous...", "Previous options...", "~ previous ~".
+BACK_OPTION = re.compile(
+    r"(?:~\s*)?prev(?:ious)?(?:\s+options?)?\s*(?:\.\.\.|\u2026|~)?", re.I
+)
+# The option that turns to a menu's next page: "More...", "More options...", "Next", "~ next ~".
+PAGING_OPTION = re.compile(
+    r"(?:~\s*)?(?:more(?:\s+options?)?|next)\s*(?:\.\.\.|\u2026|~)?", re.I
+)
+# A submenu's way back, whatever opened it: Monkey Madness I's "Return to previous menu".
+MENU_BACK_OPTION = re.compile(r"return to (?:the )?previous menu\.?", re.I)
+
+
+def resolve_back_options(steps, issues, opened_by=None):
+    """Give a submenu's empty back option its `{{tact|previous}}`.
+
+    `opened_by` is the text of the option whose body starts with this menu. When
+    that option turns the page ("More...", "More options...", "Next", "~ next ~"),
+    the menu is a later page and its "Prev"/"Previous..."/"Previous options..."/
+    "~ previous ~" returns to the page before. "Return to previous menu" says so
+    itself, so it returns from a submenu any option opened ("Talk about Caranock").
+    The wiki writes `{{tact|previous}}` under most of them but leaves some bare
+    (Lunar Diplomacy's "Prev" before "The trousers", Freeing Sir Amik Varze's
+    "Previous...", The Fremennik Isles' "Previous options...", Monkey Madness I's
+    "Return to previous menu"); bare, they ended the conversation. Only an option
+    with no body is filled.
+    """
+    for index, node in enumerate(steps):
+        if node.get("type") == "choice":
+            parent = opened_by if index == 0 else None
+            paged = parent is not None and PAGING_OPTION.fullmatch(parent)
+            for option in node["options"]:
+                text = str(option.get("text", "")).strip()
+                if (
+                    parent is not None
+                    and not option.get("steps")
+                    and (
+                        (paged and BACK_OPTION.fullmatch(text))
+                        or MENU_BACK_OPTION.fullmatch(text)
+                    )
+                ):
+                    option["steps"] = [
+                        dict(type="jump", target=None, reference="previous")
+                    ]
+                    issues.append(
+                        dict(reason="Inferred submenu back option", text=text)
+                    )
+                else:
+                    resolve_back_options(option.get("steps", []), issues, text)
+        else:
+            resolve_back_options(node.get("steps", []), issues)
 
 
 def select_default(variants):
@@ -720,6 +865,7 @@ def parse_npc(name, raw, nav_templates=None):
             "Standard dialogue"
         ]
         variant["steps"] = group_options(variant["steps"], random_options=is_oracle)
+        resolve_back_options(variant["steps"], issues)
         normalize_terminal_completion(variant["steps"])
         guard_quest_warnings(variant["steps"])
         if is_oracle:
@@ -739,6 +885,11 @@ def gameplay_step(node, name):
     """Drop editorial/source data while retaining dialogue flow and gameplay requirements."""
     if node.get("type") == "line" and node.get("speaker") in (name, "Player"):
         result = {"npc" if node["speaker"] == name else "player": node["text"]}
+        if node.get("styled"):
+            result["styled"] = node["styled"]
+        # An {{Anchor}} on speech is a navigation target like any other.
+        if node.get("_anchors"):
+            result["_anchors"] = node["_anchors"]
     elif node.get("type") == "unparsed":
         result = {"type": "unavailable"}
     else:
@@ -750,6 +901,7 @@ def gameplay_step(node, name):
                 "type",
                 "speaker",
                 "text",
+                "styled",
                 "condition",
                 "condition_id",
                 "action",
@@ -759,10 +911,13 @@ def gameplay_step(node, name):
                 "reason",
                 "action_source",
                 "prompt",
+                "count",
+                "non_repeating",
                 "_shared",
                 "_identity",
                 "_anchors",
                 "_anchor",
+                "_continue_to",
             )
             and value is not None
         }
@@ -1208,6 +1363,14 @@ def main():
             )
         ),
     )
+    # After corrections: their fingerprints cover the record without this field.
+    identities = npc_identities(read_cache(NPC_CACHE), clean)
+    for name, record in data["records"].items():
+        annotate_speaker_ids(
+            record,
+            data["authoring"].get("Transcript:" + name, {}).get("participants", []),
+            identities,
+        )
     dialogues = dict(sorted(data["records"].items()))
     classified = {title for titles in types.values() for title in titles}
     for name in dialogues:

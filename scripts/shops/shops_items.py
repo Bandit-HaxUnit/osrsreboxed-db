@@ -332,7 +332,6 @@ def parse_tabber_structure(wikitext: str) -> dict:
     """
     tabber_sections = {}
     sections = []
-    store_head = re.compile(r"\{\{StoreTableHead\|[^}]+\}\}", re.I)
 
     # Check for tabber structure
     if "<tabber>" not in wikitext.lower() and "{{tabber" not in wikitext.lower():
@@ -350,7 +349,7 @@ def parse_tabber_structure(wikitext: str) -> dict:
             # Experience tables and other non-shop tabs must not hide a shop
             # elsewhere on the page. fetch() already handles that page normally
             # when no StoreTableHead-bearing tab is returned.
-            if store_head.search(content):
+            if find_store_table_head(content):
                 sections.append((current_tab, content))
 
     for line in wikitext.split("\n"):
@@ -416,18 +415,9 @@ def parse_tabber_structure(wikitext: str) -> dict:
     last_section = {name: index for index, (name, _) in enumerate(sections)}
     for index, (name, content) in enumerate(sections):
         if index != last_section[name]:
-            head = re.search(r"\{\{StoreTableHead\|([^}]+)\}\}", content, re.I)
-            qualified_name = ""
-            if head:
-                for parameter in head.group(1).split("|"):
-                    key, separator, value = parameter.partition("=")
-                    if separator and key.strip().lower() == "namenotes":
-                        qualified_name = value.strip()
-                        if qualified_name.startswith("(") and qualified_name.endswith(
-                            ")"
-                        ):
-                            qualified_name = qualified_name[1:-1].strip()
-                        break
+            qualified_name = store_table_head_params(content).get("namenotes", "")
+            if qualified_name.startswith("(") and qualified_name.endswith(")"):
+                qualified_name = qualified_name[1:-1].strip()
             if not qualified_name or qualified_name in last_section:
                 raise ValueError(
                     f"Repeated shop tab {name!r} needs distinct StoreTableHead namenotes"
@@ -502,6 +492,44 @@ def parse_shop_removal(wikitext: str):
     return removed
 
 
+_STORE_TABLE_HEAD_OPEN = re.compile(r"\{\{StoreTableHead\|", re.IGNORECASE)
+
+
+def find_store_table_head(text: str):
+    """The first whole ``{{StoreTableHead|...}}`` in ``text``, nested templates included.
+
+    A head can hold templates of its own (Worm Tongue's Wares:
+    ``column1={{plinkp|Coins}}/{{plinkp|Termites}}``). Stopping at the first ``}}`` cut the head
+    short, so its leftover ``{{plinkp|Termites}}`` was read as a stock row and any parameter after
+    the nested template was lost.
+
+    :return: ``(start, end, params)`` with ``end`` just past the closing braces, or None
+    """
+    match = _STORE_TABLE_HEAD_OPEN.search(text)
+    if not match:
+        return None
+    depth = 2
+    i = match.end()
+    while i < len(text):
+        if text.startswith("{{", i):
+            depth += 2
+            i += 2
+        elif text.startswith("}}", i):
+            depth -= 2
+            i += 2
+            if depth == 0:
+                return match.start(), i, text[match.end() : i - 2]
+        else:
+            i += 1
+    return None
+
+
+def store_table_head_params(text: str) -> dict:
+    """The first StoreTableHead's parameters (lower-cased keys), split outside nested templates."""
+    head = find_store_table_head(text)
+    return parse_storeline_params(head[2]) if head else {}
+
+
 def parse_shop_info(wikitext: str) -> dict:
     """Parse shop information from StoreTableHead template.
 
@@ -523,29 +551,16 @@ def parse_shop_info(wikitext: str) -> dict:
         specialty = linked.group(1) if linked else specialty
         shop_info["general_store"] = specialty.strip().casefold() == "general store"
 
-    # Look for StoreTableHead template
-    pattern = r"\{\{StoreTableHead\|([^}]+)\}\}"
-    matches = re.findall(pattern, wikitext, re.IGNORECASE)
-
-    if matches:
-        params_str = matches[0]
-
-        # Parse parameters
-        parts = params_str.split("|")
-        for part in parts:
-            if "=" in part:
-                key, value = part.split("=", 1)
-                key = key.strip().lower()
-                value = value.strip()
-
-                if key == "sellmultiplier" and value.isdigit():
-                    shop_info["sells_at"] = int(value)
-                elif key == "buymultiplier" and value.isdigit():
-                    shop_info["buys_at"] = int(value)
-                elif key == "delta" and value.isdigit():
-                    shop_info["change_per"] = int(value)
-                elif key == "currency":
-                    shop_info["currency"] = value
+    # The StoreTableHead's parameters, read whole (find_store_table_head).
+    for key, value in store_table_head_params(wikitext).items():
+        if key == "sellmultiplier" and value.isdigit():
+            shop_info["sells_at"] = int(value)
+        elif key == "buymultiplier" and value.isdigit():
+            shop_info["buys_at"] = int(value)
+        elif key == "delta" and value.isdigit():
+            shop_info["change_per"] = int(value)
+        elif key == "currency":
+            shop_info["currency"] = value
 
     return shop_info
 
@@ -585,18 +600,25 @@ def store_table_sections(wikitext: str) -> list:
 
     The first table is the shop's own stock. Later tables join it only when
     their section says completion of a quest or miniquest adds the items.
+    Heads are read whole, so nested templates in a StoreTableHead stay inside it.
     """
     sections = []
-    heads = list(re.finditer(r"\{\{StoreTableHead\|[^}]+\}\}", wikitext, re.IGNORECASE))
-    for index, head in enumerate(heads):
-        bottom = re.search(r"\{\{StoreTableBottom\}\}", wikitext[head.end() :], re.IGNORECASE)
+    offset = 0
+    index = 0
+    while True:
+        head = find_store_table_head(wikitext[offset:])
+        if not head:
+            break
+        start, end = offset + head[0], offset + head[1]
+        bottom = re.search(r"\{\{StoreTableBottom\}\}", wikitext[end:], re.IGNORECASE)
         if not bottom:
-            continue
-        if index > 0 and not _adds_stock_after_requirement(
-            _section_prose(wikitext, head.start())
+            break
+        if index == 0 or _adds_stock_after_requirement(
+            _section_prose(wikitext, start)
         ):
-            continue
-        sections.append((index > 0, wikitext[head.end() : head.end() + bottom.start()]))
+            sections.append((index > 0, wikitext[end : end + bottom.start()]))
+        offset = end + bottom.end()
+        index += 1
     return sections
 
 
@@ -854,6 +876,60 @@ def _owner_shop_option(owner: dict, npc_options: dict, shop_name: str = None) ->
     return {"option": None, "option_slot": None, "option_source": "unknown"}
 
 
+def load_display_names(shop_keys) -> dict:
+    """Read recorded interface strings without replacing Wiki page identities."""
+    path = Path(config.DATA_SHOPS_PATH / "shop-display-names.json")
+    if not path.exists():
+        return {}
+
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"Duplicate recorded shop title field: {key}")
+            result[key] = value
+        return result
+
+    with path.open(encoding="utf-8") as source:
+        entries = json.load(source, object_pairs_hook=unique_object)
+    if not isinstance(entries, dict):
+        raise ValueError("Recorded shop titles must be keyed by Wiki page")
+    titles = {}
+    shop_keys = set(shop_keys)
+    identities = {key: key for key in shop_keys}
+    for key, entry in entries.items():
+        if key not in shop_keys or not isinstance(entry, dict):
+            raise ValueError(f"Unknown recorded shop title source: {key}")
+        title = entry.get("display_name")
+        sources = entry.get("sources")
+        if (
+            set(entry) != {"display_name", "sources"}
+            or not isinstance(title, str)
+            or not title.strip()
+            or title != title.strip()
+            or not isinstance(sources, list)
+            or not sources
+        ):
+            raise ValueError(f"Invalid recorded shop title: {key}")
+        for source in sources:
+            if (
+                not isinstance(source, dict)
+                or set(source) != {"recording", "line", "inventory"}
+                or not isinstance(source["recording"], str)
+                or not re.fullmatch(r"[0-9]{3}/[0-9]{5,6}", source["recording"])
+                or type(source["line"]) is not int
+                or source["line"] <= 0
+                or not isinstance(source["inventory"], str)
+                or not re.fullmatch(r"[a-z][a-z0-9_]*", source["inventory"])
+            ):
+                raise ValueError(f"Invalid recorded shop title provenance: {key}")
+        if title in identities and identities[title] != key:
+            raise ValueError(f"Ambiguous recorded shop title: {title}")
+        identities[title] = key
+        titles[key] = title
+    return titles
+
+
 def process() -> None:
     """Process the raw shop data into a more structured format."""
     # Load the raw shop data
@@ -866,6 +942,8 @@ def process() -> None:
 
     with open(raw_file) as f:
         raw_shop_data = json.load(f)
+
+    display_names = load_display_names(raw_shop_data)
 
     # The NPC that runs each shop, resolved by scripts.shops.shop_owners,
     # and the click options of every NPC, so the shop-opening one can be named
@@ -916,6 +994,11 @@ def process() -> None:
         ]
 
         shops_by_shop[shop_name] = {
+            **(
+                {"display_name": display_names[shop_name]}
+                if shop_name in display_names
+                else {}
+            ),
             # A null percentage is an absent one; do not export the key.
             "shop_info": {
                 key: value for key, value in shop_info.items() if value is not None

@@ -29,6 +29,19 @@
         "speaker": {
           "type": "string"
         },
+        "styled": {
+          "type": "string",
+          "description": "The line or message box text with the Wiki's hex {{Colour}} kept as the client's <col=rrggbb>...</col> tags; present only when it differs from the plain text, which stays the matching and identity key."
+        },
+        "speaker_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "NPC ids of the participant the speaker label names, resolved only within the page's Transcript list."
+        },
         "presentation": {
           "enum": [
             "overhead"
@@ -98,6 +111,15 @@
             "$ref": "#/$defs/step"
           }
         },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "On a random node: how many alternatives are drawn, one after another."
+        },
+        "non_repeating": {
+          "type": "boolean",
+          "description": "On a random node with a count: an alternative already drawn is not drawn again."
+        },
         "branch": {
           "type": "string",
           "pattern": "^[A-Za-z0-9_:-]+$"
@@ -131,7 +153,9 @@
       "type": "object",
       "properties": {
         "activation": {
-          "enum": ["explicit"],
+          "enum": [
+            "explicit"
+          ],
           "description": "Only an owning activity may select this transcript; never use it as an NPC default."
         },
         "default": {

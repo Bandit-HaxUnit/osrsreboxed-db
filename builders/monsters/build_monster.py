@@ -189,6 +189,22 @@ class BuildMonster:
             else:
                 self.infobox_version_number = ""
 
+        # A versioned infobox of appearance variants that lists one shared
+        # ``|id = 14407,14408`` names one id per version by position (Emissary Archer; see
+        # variant_resolver.positional_ids for why Great Olm's shared list does not). The id
+        # lookup above maps such ids to "" (unversioned, as the parser only counts ``idN`` and
+        # ``nameN`` as versions), which read version 1's stats.
+        if (
+            self.infobox_version_number == ""
+            and self.monster_id_int not in version_overrides
+        ):
+            params = variant_resolver.template_params(infobox_parser.template)
+            by_position = variant_resolver.positional_ids(
+                params, variant_resolver.template_version_numbers(params)
+            )
+            if self.monster_id_int in by_position:
+                self.infobox_version_number = by_position[self.monster_id_int]
+
         # Resolve the variant against every infobox that lists this id, not only the first
         # infobox or the first variant. Manual overrides above keep priority, and an NPC the
         # resolver cannot place keeps the version chosen above (logged by the builder).
@@ -354,6 +370,10 @@ class BuildMonster:
                     value = stats[3]
 
             self.monster_dict[proj_name] = infobox_cleaner.caller(value, proj_name)
+            if proj_name == "max_hit":
+                # Every listed max hit with its label, kept off monster_dict so the combat-stat
+                # exports stay byte-identical; scripts/monsters/max_hits.py publishes it.
+                self.max_hits = infobox_cleaner.max_hits(value)
 
             if value is None:
                 self.monster_dict["incomplete"] = True

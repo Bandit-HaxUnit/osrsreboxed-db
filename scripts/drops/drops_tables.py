@@ -73,6 +73,7 @@ SHARED_TABLE_SECTIONS = [
     ("combatHerb", "Combat herb drop table", "combat herb drop table"),
     ("seed", "General seed drop table", "general seed drop table"),
     ("rareSeed", "Rare seed drop table", "rare seed drop table"),
+    ("uncommonSeed", "Uncommon seed drop table", "uncommon seed drop table"),
     # Referenced from the gem table; monsters never roll it directly.
     ("talisman", "Talisman drop table", "talisman drop table"),
     (
@@ -110,6 +111,7 @@ NESTED_TABLE_REFS = {
     "seed drop table": "seed",
     "general seed drop table": "seed",
     "rare seed drop table": "rareSeed",
+    "uncommon seed drop table": "uncommonSeed",
     "talisman": "talisman",
     "talisman drop table": "talisman",
     "god wars dungeon-variant gem drop table": "gwdGem",
@@ -204,9 +206,9 @@ class DropTableSpec:
     subtable_accesses: List[wikitext.ParsedSubtableAccess] = field(default_factory=list)
     tertiary: List[ResolvedEntry] = field(default_factory=list)
     unresolved_items: List[str] = field(default_factory=list)
+    rolls: int = 1
     reward_chain: Optional[Dict] = None
     tertiary_groups: List[Dict] = field(default_factory=list)
-    rolls: int = 1
 
     def has_drop_content(self) -> bool:
         """True when the table resolved to anything worth exporting."""
@@ -768,7 +770,10 @@ def build_table_spec(
     unresolved_pool: List[str] = []
 
     # Seed drops are listed individually and as a shared table access on some
-    # pages; the access wins so the seeds are not counted twice.
+    # pages; the access wins so the seeds are not counted twice. Not for the
+    # uncommon seed table: {{UncommonSeedDropLines}} is that pool's own listing,
+    # so a page's DropsLine seeds beside it are other pools (the manta ray's
+    # rare and tree-herb seed rolls) and are kept.
     has_seed_access = any(
         access.table_key in ("seed", "rareSeed") for access in table.subtable_accesses
     )
@@ -1041,7 +1046,7 @@ def _pre_roll_json(entry: ResolvedEntry, separate: bool = False) -> Optional[Dic
 
 
 def _once_per_kill(row: Optional[Dict], entry: ResolvedEntry, spec: DropTableSpec) -> Optional[Dict]:
-    """Flag a pre-roll row that the Wiki rolls once although its table repeats: its own rolls is 1."""
+    """Flag a pre-roll or independent row that the Wiki rolls once although its table repeats: its own rolls is 1."""
     if row and spec.rolls > 1 and entry.rolls == 1:
         row["once_per_kill"] = True
     return row
@@ -1115,10 +1120,14 @@ def build_table_json(spec: DropTableSpec) -> Dict:
                 row = (
                     _once_per_kill(_pre_roll_json(entry, separate=True), entry, spec)
                     if is_pre_roll
-                    else _entry_json(
+                    else _once_per_kill(
+                        _entry_json(
+                            entry,
+                            out_of=entry.out_of or roll.access_denominator,
+                            separate=True,
+                        ),
                         entry,
-                        out_of=entry.out_of or roll.access_denominator,
-                        separate=True,
+                        spec,
                     )
                 )
                 if row:
@@ -1317,7 +1326,18 @@ def export_shared_subtables(
             quantity = params.get("quantity", "")
             rarity = params.get("rarity", "")
             nested = NESTED_TABLE_REFS.get(name.strip().lower())
-            if nested and nested != key:
+            if key == "gem" and name.strip().lower() == "talisman":
+                # Chaos/Nature depends on the source monster's location; this
+                # bare label is not the separate Waterbirth talisman table.
+                entries.append(
+                    {
+                        "location_talisman": True,
+                        "name": name,
+                        "quantity_raw": quantity,
+                        "rarity_raw": rarity,
+                    }
+                )
+            elif nested and nested != key:
                 entries.append(
                     {"shared_table": nested, "name": name, "rarity_raw": rarity}
                 )

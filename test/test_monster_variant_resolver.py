@@ -200,3 +200,94 @@ def test_committed_output_uses_the_level_25_wolf_for_116():
     assert entry["wiki_url"].endswith("/Wolf#Level_25")
     assert entry["combat_level"] == 25
     assert entry["hitpoints"] == 34
+
+
+# One shared ``id`` list on versions whose stats differ (Great Olm). The ids are two forms of
+# the head (gamevals olm_head_spawning 7551, olm_head 7554), both used in Normal and Challenge
+# Mode raids, not one id per version.
+SHARED_FORM_IDS = """{{Infobox Monster
+|version1 = Head (Normal)
+|version2 = Head (Challenge Mode)
+|max hit1 = 27
+|max hit2 = 38
+|combat = 1043
+|hitpoints = 800
+|att1 = 250
+|att2 = 375
+|id = 7551,7554
+}}"""
+
+# One shared ``id`` list on appearance variants that differ only in name and image
+# (Emissary Archer: vmq4_crypt_attacker_ranged_variant_1/_2).
+SHARED_APPEARANCE_IDS = """{{Infobox Monster
+|version1 = 1
+|version2 = 2
+|name = Emissary Archer
+|image1 = [[File:Emissary Archer (1).png]]
+|image2 = [[File:Emissary Archer (2).png]]
+|combat = 71
+|hitpoints = 40
+|att = 60
+|id = 14407,14408
+}}"""
+
+
+def test_shared_id_list_on_versions_with_different_stats_stays_shared():
+    variants = vr.page_variants("Great Olm", SHARED_FORM_IDS)
+    assert [(v.version_number, v.ids) for v in variants] == [
+        ("1", (7551, 7554)),
+        ("2", (7551, 7554)),
+    ]
+    params = {"version1": "A", "version2": "B", "hitpoints2": "450", "id": "1,2"}
+    assert vr.positional_ids(params, {1, 2}) == {}
+
+
+def test_shared_id_list_on_appearance_variants_maps_by_position():
+    variants = vr.page_variants("Emissary Archer", SHARED_APPEARANCE_IDS)
+    assert [(v.version_number, v.ids) for v in variants] == [
+        ("1", (14407,)),
+        ("2", (14408,)),
+    ]
+
+
+def test_shared_id_list_that_does_not_pair_with_the_versions_stays_shared():
+    params = {"version1": "A", "version2": "B", "id": "1,2,3"}
+    assert vr.positional_ids(params, {1, 2}) == {}
+    params = {"version1": "A", "version2": "B", "id": "1,2", "id2": "2"}
+    assert vr.positional_ids(params, {1, 2}) == {}
+    assert vr.positional_ids({"id": "1,2"}, {1}) == {}
+
+
+def _committed(npc_id):
+    return json.loads(
+        Path(config.DOCS_PATH / "monsters-json" / f"{npc_id}.json").read_text(
+            encoding="utf-8"
+        )
+    )
+
+
+def test_committed_output_keeps_normal_stats_for_the_cox_forms():
+    # Regression on the regenerated output: #110 gave the risen Olm head 7554, used in
+    # Normal raids too, Challenge Mode max hits 38/39/41 and level 375.
+    head = _committed(7554)
+    assert head["wiki_url"].endswith("/Great_Olm#Head_(Normal)")
+    assert head["max_hit"] == 27
+    assert head["attack_level"] == 250
+    for claw in (7553, 7555):
+        assert _committed(claw)["wiki_url"].endswith("_(Normal)")
+        assert _committed(claw)["attack_level"] == 250
+    for npc_id in (7539, 7567, 7574):
+        assert _committed(npc_id)["wiki_url"].endswith("#Normal")
+    max_hits = json.loads(
+        Path(config.DOCS_PATH / "npc-max-hits.json").read_text(encoding="utf-8")
+    )
+    assert [row["max_hit"] for row in max_hits["npcs"]["7554"]["max_hits"]] == [
+        27,
+        28,
+        29,
+    ]
+
+
+def test_committed_output_gives_each_emissary_variant_its_own_version():
+    assert _committed(14408)["wiki_url"].endswith("/Emissary_Archer#2")
+    assert _committed(13737)["wiki_url"].endswith("/Emissary_Acolyte#6")

@@ -140,6 +140,19 @@ def test_dump_applies_corrections_before_writing(monkeypatch, tmp_path):
     assert not list(tmp_path.iterdir())
 
 
+def test_rocky_narration_lines_continue_the_conversation():
+    # The Wiki writes these as bare prose, which parsed as unavailable markers and ended the chat.
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    options = dialogues["Rocky"]["variants"]["standard-dialogue"][0]["options"]
+    first, fourth = options[0]["steps"], options[3]["steps"]
+    assert first[1] == {"type": "action", "text": "You slip your hand into Rocky's pocket.", "id": "B65XlG"}
+    assert first[2]["npc"].startswith("OY!! You're going to have to do better than that!")
+    assert fourth[2] == {"type": "action", "text": "Rocky jumps into your backpack...", "id": "JL_pBJ"}
+    assert fourth[4] == {"type": "action", "text": "Rocky flicks the coin back into your backpack", "id": "BJK-M1"}
+    assert fourth[5] == {"player": "I better keep my eyes on you..."}
+    assert "unavailable" not in json.dumps(dialogues["Rocky"]["variants"]["standard-dialogue"])
+
+
 def test_captured_ides_line_replaces_the_wiki_typo():
     dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     variant = dialogues["The Ides of Milk"]["variants"][
@@ -150,10 +163,20 @@ def test_captured_ides_line_replaces_the_wiki_typo():
     assert "he'll he happy" not in text
 
 
-def test_prince_ali_rescue_plays_the_revision_242_capture():
-    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
+def test_baraek_medium_clue_answer_prompt_is_spoken_by_baraek():
+    # Live sends "Baraek|Please enter the answer to the question." with his chathead
+    # (revision 227 capture); the Wiki transcript names Dunstan, a copy from his page.
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    again = dialogues["Baraek"]["variants"]["treasure-trails-medium-when-talked-to-again"]
+    assert again[0] == {"npc": "Please enter the answer to the question."}
+    assert "Dunstan" not in json.dumps(dialogues["Baraek"])
+
+
+def test_prince_ali_rescue_keeps_the_captured_paste_line_and_the_wiki_flow():
+    record = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
         "Prince Ali Rescue"
-    ]["variants"]
+    ]
+    variants = record["variants"]
     aggie = json.dumps(variants["preparations-for-rescue-talking-to-aggie"])
     assert (
         "Yes, I can. I see you already have the ingredients - the water, flour,"
@@ -161,43 +184,37 @@ def test_prince_ali_rescue_plays_the_revision_242_capture():
     ) in aggie
     assert "Yes I can. I see you already have the ingredients." not in aggie
 
+    # The Wiki's first visit to Leela always explains the plan; a visit with every
+    # item is the separate "after having all the required items" variant.
     leela = variants["starting-out-talking-to-leela"]
-    assert [step.get("player") or step.get("text") for step in leela[:2]] == [
+    assert [step.get("player") or step.get("text") for step in leela[:3]] == [
         "You must be Leela. Your father sent me to help rescue Prince Ali.",
         "Yes, he sent word ahead that you'd be coming. Are you aware of the plan?",
+        "I need to obtain a copy of the key to the Prince's cell, create a disguise"
+        " for him that makes him look like Keli and then break him out of the jail.",
     ]
-    prepared = leela[2]
-    assert prepared["type"] == "condition"
-    assert prepared["text"] == "If the player has the disguise, the key and a rope:"
-    assert [step.get("player") or step.get("text") for step in prepared["steps"]] == [
-        "Yes. In fact, I already have everything we need.",
-        "Good work. Now, before breaking the Prince out, you'll need to find a way"
-        " to deal with his personal guard. He's talkative, so try to find a"
-        " weakness. Remember, we don't want any unneeded violence.",
-        "Alright. I'll go have a chat to this guard.",
-        None,
+    assert "I already have everything we need." not in json.dumps(leela)
+    prepared = variants[
+        "preparations-for-rescue-talking-to-leela-after-having-all-the-required-items"
     ]
-    assert prepared["steps"][-1] == {"type": "end"}
-    # The unprepared first visit still explains the plan.
-    assert leela[3]["player"].startswith("I need to obtain a copy of the key")
+    assert [step.get("player") or step.get("text") for step in prepared[:2]] == [
+        "You're back. Do you have everything needed yet?",
+        "I do indeed.",
+    ]
 
-    # Live, Joe takes the second and third beers straight after the first; the
-    # "Not too drunk?" question leads only into his one-beer reply.
-    record = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
-        "Prince Ali Rescue"
-    ]
+    # The Wiki asks "Not too drunk?" after every first beer, before branching on
+    # the beers still held.
     for steps in [
-        record["variants"]["executing-the-rescue-talking-to-joe"][2]["options"][0][
-            "steps"
-        ],
+        variants["executing-the-rescue-talking-to-joe"][2]["options"][0]["steps"],
         record["branches"]["jump-c2dcd1ef49d2a376"],
     ]:
         assert steps[4]["text"] == "That was perfect! I can't thank you enough."
-        fewer, more = steps[5], steps[6]
+        assert steps[5] == {"player": "How are you? Still okay? Not too drunk?"}
+        fewer, more = steps[6], steps[7]
         assert fewer["text"] == "If the player has less than three beers:"
-        assert fewer["steps"][0] == {
-            "player": "How are you? Still okay? Not too drunk?"
-        }
+        assert fewer["steps"][0]["text"].startswith(
+            "No, I don't get drunk from only one drink."
+        )
         assert more["text"] == "If the player has two more beers:"
         assert more["steps"][0] == {
             "player": "Would you care for another beer, my friend?"
@@ -264,9 +281,11 @@ def test_witchs_house_follows_the_revision_242_capture():
 
 
 def test_biohazard_follows_the_revision_242_capture():
-    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())[
-        "Biohazard"
-    ]["variants"]
+    # speaker_ids is derived identity metadata, not part of the captured wording.
+    variants = json.loads(
+        (config.DOCS_PATH / "npc-dialogues.json").read_text(),
+        object_hook=lambda node: {k: v for k, v in node.items() if k != "speaker_ids"},
+    )["Biohazard"]["variants"]
     # Before the wall is crossed, Elena points back to Jerico (capture tick 29).
     assert variants["getting-started-talking-to-elena-again"] == [
         {"player": "Hello Elena."},
@@ -1009,3 +1028,664 @@ def test_wanted_follows_the_revision_242_capture():
         assert live in text, live
     for wiki in ("\u2013 not 'Boss'", "deputized", "Well old bean, we will", "object that as in", "all-clear, [player name]", "way \u2013 and Solus"):
         assert wiki not in text, wiki
+
+
+def test_slug_menace_follows_the_revision_242_capture():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    quest_pages = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())
+    npc_pages = json.loads((config.DATA_PATH / "dialogues/wiki-pages.json").read_text())
+    for name, pages in (
+        ("The Slug Menace", quest_pages),
+        ("Witchaven villager", npc_pages),
+        ("Sir Tiffy Cashien", npc_pages),
+    ):
+        page = pages[f"Transcript:{name}"]
+        assert sources[name]["revision"] == page["revision"]
+        raw = apply_capture_lines(name, page["wikitext"], sources[name], page["revision"])
+        assert raw == apply_capture_lines(name, page["wikitext"], sources[name], page["revision"])
+        with pytest.raises(ValueError, match="Stale dialogue capture source"):
+            apply_capture_lines(name, "\n" + page["wikitext"], sources[name], page["revision"])
+
+    exported = json.loads(
+        (config.DOCS_PATH / "npc-dialogues.json").read_text(),
+        object_hook=lambda node: {k: v for k, v in node.items() if k != "speaker_ids"},
+    )
+    variants = exported["The Slug Menace"]["variants"]
+    # After the quest starts Tiffy offers his own menu, not the start prompt again (tick 241).
+    start = variants["starting-off-talking-to-sir-tiffy-cashien-to-start-the-quest"]
+    yes = start[2]["options"][0]["steps"][-1]["options"][0]
+    assert yes["steps"][-2]["text"] == "Now, is there anything else I can do for you?"
+    assert [o["text"] for o in yes["steps"][-1]["options"]] == [
+        "Can you explain the Gaze of Saradomin to me?", "Can I buy some armour?",
+        "Can I switch respawns, please?", "Goodbye.",
+    ]
+    assert "Nonsense, [old boy/my gal]," in json.dumps(yes["steps"])
+    # "Something else." reaches Tiffy's standard menu (tick 271).
+    started = variants["starting-off-talking-to-sir-tiffy-cashien-after-starting-the-quest"]
+    other = started[2]["options"][1]
+    assert other["text"] == "Something else."
+    assert [o["text"] for o in other["steps"][0]["options"]] == [
+        "Do you have any jobs for me yet?", "Can you explain the Gaze of Saradomin to me?",
+        "Can I buy some armour?", "Can I switch respawns please?", "Goodbye.",
+    ]
+    # Sections the Wiki lacks.
+    assert variants["witchaven-savant-asking-to-scan-the-mayor"][-1]["player"] == "Sure thing, one moment."
+    assert variants["witchaven-scanning-the-mayor"][-1]["text"] == "Savant Out."
+    assert variants["witchaven-contacting-the-commorb-while-investigating-witchaven"][0]["player"] == (
+        "So, Savant, what do you think?"
+    )
+    assert variants["the-shrine-picking-up-the-dead-sea-slug"][1]["text"] == (
+        "I've detected a sea slug on you. Is everything okay?"
+    )
+    assert variants["the-pages-mayor-hobb-leaving-the-church"] == [{
+        "type": "line", "speaker": "Mayor Hobb", "text": "Welcome to the family, Brother Maledict.",
+        "presentation": "overhead",
+    }]
+    assert variants["witchaven-talking-to-jeb-before-holgart-mentions-the-boat"][0]["text"] == "Hello there."
+    # Jorral goes straight to the translation (tick 2099).
+    assert variants["the-pages-talking-to-jorral"][0] == {"player": "Excuse me?"}
+    # The glyph question plays before the transcript is added (tick 1854).
+    scan = json.dumps(variants["the-shrine-scanning-commorb-near-the-door"])
+    assert scan.index("So how am I supposed to show him the glyphs?") < scan.index("If the player has no inventory space")
+    assert variants["the-pages-opening-maledict-s-desk"][0]["text"] == (
+        "You open the locked drawer and find a page of Maledict's holy book."
+    )
+    assert variants["crafting-the-runes-enchanting-the-water-rune"][0]["text"] == (
+        "You manage to empower the required water rune."
+    )
+    hobb = next(s for s in variants["witchaven-talking-to-mayor-hobb-2"] if s.get("type") == "choice")
+    fish = next(o for o in hobb["options"] if o["text"] == "I'm here to fish.")
+    assert fish["steps"][0] == {"player": "I'm here to fish."}
+    villager = exported["Witchaven villager"]["variants"]
+    normal = json.dumps(villager["pre-quest-dialogue"])
+    possessed = json.dumps(villager["post-quest-dialogue"])
+    assert "Hoorah, me boys, we're homeward bound." in normal and "pre-occupied" in normal
+    assert "What is happening to the people in this town?" in normal
+    assert "Can you see it?" in possessed and "She is close now... so close" in possessed
+
+
+def test_nature_spirit_follows_the_revision_242_capture():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Nature Spirit"
+    ]
+    source = sources["Nature Spirit"]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Nature Spirit", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Nature Spirit", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Nature Spirit", "\n" + page["wikitext"], source, page["revision"])
+
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Nature Spirit"]["variants"]
+    # The plain wording: a coloured line's `styled` copy would count it twice.
+    text = json.dumps(json.loads(json.dumps(variants), object_hook=lambda node: {k: v for k, v in node.items() if k != "styled"}))
+    # Wording as live sends it (ticks 56, 553, 558, 1120, 1257).
+    assert '"prompt": "Start the Nature Spirit quest?"' in text
+    assert "rude or anything" in text and "rude or something" not in text
+    assert "protect it as a nature spirit." in text
+    assert "you can bless ~ ~ a new sickle" in text
+    assert "The druid pouch makes the Ghast visible." in text
+    assert text.count("~ The druid attempts to cast a spell. ~") == 3
+    # The fungus talk (933-939) and Filliman's later greeting before the same menu (966), in the
+    # order that keeps the greeting off the first talk once 55 is recorded.
+    talk = next(step for step in variants["talking-to-filliman"] if step.get("id") == "L_2i2x")["steps"]
+    assert [step["text"] for step in talk[:2]] == [
+        "If the player has already shown Filliman the fungus:",
+        "If the player has not shown Filliman the fungus yet:",
+    ]
+    assert talk[0]["steps"][0]["text"].startswith("Hello again! I don't suppose you've found out")
+    assert talk[1]["steps"][2] == {"player": "Yes, I have a fungus here that I picked."}
+    menu = talk[2]
+    assert menu["options"][0]["steps"][0] == {"player": "What are the things that are needed again?"}
+    puzzle = menu["options"][2]["steps"]
+    assert puzzle[-1]["text"] == "If all the items are placed onto their respective stones:"
+    assert puzzle[-1]["steps"][0]["text"].startswith("Aha, everything seems to be in place!")
+    # Filliman approves each offering (1008, 1021); an unused bloom spell is the "spell scroll".
+    brown = next(step for step in variants["talking-to-filliman-brown-stone"] if step.get("id") == "rjopYY")
+    assert brown["steps"][1]["text"] == "Aha, yes, that seems right well done!"
+    grey = variants["talking-to-filliman-grey-stone"][1]
+    assert grey["text"] == "If the player uses the bloom spell scroll on the grey stone:"
+    assert grey["steps"][0]["text"] == "The stone seems to absorb the spell scroll."
+
+
+def test_fremennik_trials_follows_the_revision_241_242_captures():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:The Fremennik Trials"
+    ]
+    source = sources["The Fremennik Trials"]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("The Fremennik Trials", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("The Fremennik Trials", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("The Fremennik Trials", "\n" + page["wikitext"], source, page["revision"])
+
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["The Fremennik Trials"]["variants"]
+    text = json.dumps(variants)
+    # Brundt greets before his first menu (local 1002236 t3093).
+    start = variants["starting-off-talking-to-brundt-the-chieftain"]
+    assert start[0]["text"] == "Greetings outerlander!" and start[1]["type"] == "choice"
+    # Seven votes: the acceptance comes before the reminder and ends the talk (t10284-10305).
+    votes = variants["the-council-members-talking-to-brundt"]
+    accept = next(index for index, step in enumerate(votes) if step.get("id") == "Ve_OpV")
+    remember = next(index for index, step in enumerate(votes) if str(step.get("text", "")).startswith("Remember:"))
+    assert accept < remember
+    assert votes[accept]["steps"][-1]["type"] == "end"
+    assert votes[accept]["steps"][-2]["id"] == "3gWp4j"
+    # Manni (t3266-3300) and the longhall's shout (t5812).
+    assert "Ah, I see you have your keg of beer." in text and "As, I see" not in text
+    assert "As you wish outerlander; I will drink first" in text
+    assert "I canna drink another drop! I alsho feel veddy, veddy ill..." in text
+    assert '"What was THAT?"' in text
+    # Tuning (local 1001364 t2714-2728) and the Champions' Guild ballad (1002236 t5726-5738).
+    assert "Doh Ray Me So." in text and "Dor Ray" not in text
+    assert "Your lyre is perfectly tuned." in text and "Your lure" not in text
+    for line in ("The thought of lots of questing,", "Leaves some people unfulfilled,",
+                 "But I have done my simple best, in", "Entering the Champions' Guild."):
+        assert line in text
+    # The performance ends as live sends it (t5742-5752): messages, then Olaf's two lines.
+    perform = json.dumps(variants["the-council-members-olaf-the-bard-performing-with-the-lyre"])
+    order = ["Your lyre is perfectly tuned.", "Congratulations! You have completed the Bard's Trial!",
+             "As you finished playing you felt Fossegrimen's power leave you...",
+             "You are one of the greatest bards I have ever had the pleasure of watching performing!\"",
+             "You have certainly earned my vote! I hope we can duet together soon!",
+             "You feel the musical ability from the Fossegrimen leave you..."]
+    assert [perform.index(line) for line in order] == sorted(perform.index(line) for line in order)
+    # Koschei's overheads (t8412; local 1001646 t2331, t2440) and Thorvald after the fight (t2703-2709).
+    assert "Outerlander... you made a mistake coming down here!" in text
+    assert "What kind of person calls [him/her]self [player name]?" in text
+    assert "Hey outerlander! Let's see what you have!" in text
+    assert "The death was your own!" in text and "THAT is bravery." in text
+    # The unicorn head when its disk is already taken (t3145, t3163).
+    assert "It's unusual because you removed it already!" in text
+
+
+@pytest.mark.parametrize(
+    "name, cache",
+    [
+        ("Fairytale I - Growing Pains", "quest-pages.json"),
+        ("Fairy Nuff", "wiki-pages.json"),
+        ("Martin the Master Gardener", "wiki-pages.json"),
+        ("Fairytale II - Cure a Queen", "quest-pages.json"),
+    ],
+)
+def test_fairytale_i_capture_sources_are_pinned(name, cache):
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / cache).read_text())[f"Transcript:{name}"]
+    source = sources[name]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+
+
+def test_fairytale_i_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Fairytale I - Growing Pains"]["variants"]
+    text = json.dumps(variants)
+    # Martin's "have you noticed" menu before his offer (ticks 126-133, 157-164).
+    start = json.dumps(variants["starting-the-quest"])
+    assert '"text": "Now that I think about it, you\'re right!"' in start
+    assert "That's not very observant of you." in start and "I know I am. Depressing isn't it?" in start
+    # Dreven, the fifth gardener (785, 794).
+    assert "I'm an adventurer, not a weather controller!" in text
+    assert "catalysts to our problems" in text
+    # A gardener asked again keeps the menu (277-281).
+    again = variants["talking-to-the-gardeners-if-the-player-has-already-talked-to-them"][0]
+    assert again["type"] == "choice" and len(again["options"]) == 5
+    assert again["options"][0]["steps"][-1]["text"] == "I've already told you everything I suspect."
+    # The Godfather and Slim Louie (1335, 1340, 1358, 1364, 1374).
+    assert "She is-a being cared for by-a Fairy Nuff, who lives-a just north of-a da bank." in text
+    assert "while you are in Zanaris. Ciao." in text and "eet iz-a not." in text
+    assert '{"player": "Right. Thanks again."}' in text
+    assert variants["entering-zanaris-trying-to-talk-to-the-fairy-godfather-again"][0]["speaker"] == "Slim Louie"
+    # Fairy Nuff (1459-1534).
+    assert "What can I help you with then?" in text and "what can I help you with?" in text
+    assert "Here, I've written down a list of her symptoms." in text and "tempus fugit" in text
+    assert "Dark Wizards' tower near Falador" in text and "Dark Wizard's tower" not in text
+    # Zandar (1724-1751).
+    assert "she saved me from a mortal injury" in text and "more details about the Fairy Queen's condition" in text
+    assert "ethereal body" in text and "ethreal" not in text and "hmmmm" not in text
+    assert "Malignus{{sic}} Mortifer. Okay, thanks very much." not in text
+    assert "Malignus Mortifer. Okay, thanks very much." in text
+    assert "seek out a necromancer" not in text and "fungus!" not in text
+    # Malignius: his menu title and the skull from the "asked again" menu (2097-2421).
+    again = variants["talking-to-malignius-mortifer-talking-to-malignius-again-before-getting-the-skull"][0]
+    assert again["prompt"] == "What would you like to say?"
+    skull = again["options"][1]["steps"]
+    assert [step.get("text") for step in skull if step.get("type") == "condition"] == [
+        "If the player has brought the skull:", "If the player has not brought the skull:",
+    ]
+    assert skull[2]["steps"][0] == {"player": "Yes, I have it right here."}
+    assert "I guess so, forgot to take notes did you? Well, listen carefully this time." in text
+    assert "You will need a pair of secateurs, you will also need to gather" in text
+    # The Nature Spirit's menu after the blessing (1001455 ticks 2520-2525).
+    lost = variants["in-the-nature-grotto-talking-to-the-nature-spirit-after-losing-the-secateurs"]
+    assert [option["text"] for option in lost[1]["options"]] == [
+        "I'm afraid I've lost the secateurs you enchanted.", "No reason, really.",
+    ]
+    assert "You should not lie to me, my friend." in json.dumps(lost)
+    # After the fight (4108, 4175).
+    assert "he'd be cross if he knew you brought them to me first, but come back" in text
+    assert "So did-a yous getta back" in text
+
+    nuff = dialogues["Fairy Nuff"]["variants"]
+    first = nuff["initial-dialogue-before-fairytale-part-1"]
+    assert first[0] == {"npc": "Hello, can I help you at all?"}
+    assert [option["text"] for option in first[1]["options"]] == [
+        "What do you do around here?", "Yes, please. I need healing.", "No thanks. Just looking around.",
+    ]
+    healing = json.dumps(nuff["initial-dialogue-before-fairytale-part-1-subsequent-dialogue"])
+    assert healing.index("11 Hitpoints.") < healing.index("That will cost you 1 diamond.")
+    assert "Not too well, the Godfather" in json.dumps(nuff["after-fairytale-part-1"])
+
+    martin = json.dumps(dialogues["Martin the Master Gardener"])
+    assert "Can you tell me about your skillcape?" in martin
+    ft2 = json.dumps(dialogues["Fairytale II - Cure a Queen"])
+    assert "in an enchanted sleep, because" in ft2 and "enchanted deep sleep" not in ft2
+
+
+@pytest.mark.parametrize(
+    "name, cache",
+    [("Jungle Potion", "quest-pages.json"), ("Trufitus", "wiki-pages.json")],
+)
+def test_jungle_potion_capture_sources_are_pinned(name, cache):
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / cache).read_text())[f"Transcript:{name}"]
+    source = sources[name]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+
+
+@pytest.mark.parametrize(
+    "name, cache",
+    [
+        ("Shilo Village", "quest-pages.json"),
+        ("Mosol Rei", "wiki-pages.json"),
+        ("Yanni Salika", "wiki-pages.json"),
+        ("Vigroy", "wiki-pages.json"),
+    ],
+)
+def test_shilo_village_capture_sources_are_pinned(name, cache):
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / cache).read_text())[f"Transcript:{name}"]
+    source = sources[name]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+
+
+def test_jungle_potion_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    for name, variant in (("Jungle Potion", "starting-off"), ("Trufitus", "before-jungle-potion")):
+        record = dialogues[name]
+        text = json.dumps({"variants": record["variants"], "branches": record.get("branches", {})})
+        # Trufitus's offer and the snake weed clue (ticks 107-162).
+        assert "bring it to me. I will then give you details of where to find the next herb." in text
+        assert "bring to me. I will give you" not in text
+        assert "It grows near vines in an area to the south west where" in text
+        assert "It grows near the vines" not in text
+        assert "Hmm, sounds difficult, I don't know if I am ready for the challenge." in text
+        assert "Hmmm, sounds difficult" not in text
+        assert variant in record["variants"]
+    # His post-quest line ends at the chief's title (tick 1130).
+    after = dialogues["Trufitus"]["variants"]["after-jungle-potion"]
+    assert after[-1]["npc"] == "You should deliver the good news to Bwana Timfraku, Chief of Tai Bwo Wannai."
+
+
+def test_fairytale_ii_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Fairytale II - Cure a Queen"]["variants"]
+    text = json.dumps(variants)
+    # Martin (FairyTale2 ticks 52, 56, 76).
+    assert "Yeah, sure, whatever." in text and "Yah, sure" not in text
+    ready = json.dumps(variants["starting-off-talking-to-martin-after-5-minutes-have-passed"])
+    assert '"prompt": "Start the Fairytale II - Cure a Queen quest?"' in ready
+    # The Godfather's first menu carries the certificate as its third option (420, 431).
+    menu = variants["starting-off-talking-to-the-fairy-godfather"][0]
+    assert menu["type"] == "choice"
+    assert [option["text"] for option in menu["options"]] == [
+        "Where is the Fairy Queen?", "Where have all the fairies gone?", "Show the Godfather the Certificate!",
+    ]
+    assert menu["options"][2]["condition"] == "With Fairy Nuff's certificate:"
+    assert len(variants["starting-off-talking-to-the-fairy-godfather"]) == 1
+    assert "datta da Queen Bee" in text and "explain- a to you" in text
+    # The contract scroll route (507) and the refusal's reply (487).
+    assert "I'm not signing this!" in text and "I am not signing" not in text
+    assert "Come and talk-a to me when yous do." in text and "me me yous do" not in text
+    # The co-ordinator's certificate box and answer (637, 639).
+    assert "You show the certificate to the co-ordinator." in text and "Fairy Coordinator" not in text
+    assert "maybe somebody else will recognise them." in text
+    # The hideout fairies before Fairy Very Wise's news (877-941), then the Wiki's seven (1016-1020).
+    fairies = variants["in-the-hideout-talking-to-the-fairies"]
+    assert fairies[0]["type"] == "condition" and fairies[0]["text"] == "Before Fairy Very Wise brings her news:"
+    assert [option["steps"][0]["text"] for option in fairies[0]["steps"][0]["options"]] == [
+        "How could everything have gone so wrong, so quickly?",
+        "What is that evil fairy doing to our beautiful kingdom?",
+        "The Queen is the true ruler of Zanaris, not that wicked Godfather!",
+        "I hope that the Queen wakes up soon, I want to go back home.",
+        "The Godfather's henchmen tried to pull off my wings!",
+    ]
+    assert fairies[1]["type"] == "random" and len(fairies[1]["options"]) == 7
+    # Fairy Nuff's recap by the planes visited (1910-1914, 2364-2370).
+    recap = variants["curing-the-queen-talking-to-fairy-nuff-after-visiting-the-cosmic-plane-and-gorak-plane"]
+    assert [step.get("text") for step in recap if step.get("type") == "condition"] == [
+        "After visiting the Gorak Plane but not the Cosmic Plane:", "Before visiting the Gorak Plane:",
+    ]
+    assert recap[3]["steps"][0] == {
+        "player": "Thanks for the lecture, I've seen a Gorak, but where do I get one of these Star Flowers from?"}
+    assert recap[-1] == {"player": "Yes, I'm on my way."}
+    # The Queen's reward lines as live splits them (2524, 2530).
+    wake = json.dumps(variants["curing-the-queen-after-using-the-magic-essence-potion-on-the-fairy-queen"])
+    assert "I'm afraid you find" in wake and '"us in trying times, but please accept this magic lamp' in wake
+
+
+def test_shilo_village_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Shilo Village"]["variants"]
+    text = json.dumps(variants)
+    # The broken cart and the village gate before the quest (ticks 671-773, 692-710).
+    cart = variants["starting-out-search-broken-cart"]
+    assert cart[1]["type"] == "random" and len(cart[1]["options"]) == 2
+    assert [o["text"] for o in cart[2]["options"]] == [
+        "I'm climbing over the cart anyway!", "I'm climbing in anyway. Don't warn me again.",
+        "Actually, I'll stay out here.",
+    ]
+    gate = variants["starting-out-open-metal-gate"]
+    assert gate[0]["text"].startswith("The gate feels very cold to your touch!")
+    assert [o["text"] for o in gate[1]["options"]] == [
+        "Yes, I am fearless!", "No, actually, I have a bad feeling about this!",
+    ]
+    # Mosol Rei asks after the belt first (1460-1498).
+    belt = variants["starting-out-talking-to-mosol-rei-after-getting-the-wampum-belt"]
+    assert belt[0]["text"] == "Hey there Bwana, have you delivered that Wampum Belt to Trufitus yet?"
+    assert [o["text"] for o in belt[1]["options"]] == ["Yes, of course!", "Not yet, I've been busy."]
+    assert [o["text"] for o in belt[1]["options"][0]["steps"][-1]["options"]] == [
+        "Ok. Thanks for your help.", "Why are the undead here?",
+    ]
+    # Trufitus's Talk-to with the belt, and without it (1643-1772).
+    greeting = variants["starting-out-talking-to-trufitus-with-the-wampum-belt"]
+    assert greeting[0] == {"player": "Greetings."}
+    assert [o["text"] for o in greeting[4]["options"]] == [
+        "What do you know about Rashiliyia?", "What do you know about Mosol Rei?",
+        "Mosol gave me something to show you.",
+    ]
+    assert variants["starting-out-talking-to-trufitus-without-the-wampum-belt"][1]["text"] == (
+        "I have no more news since we last spoke."
+    )
+    assert "Usually a strong creature of some sort will be guarding her remains." in text
+    assert "Trufitus goes back to his studies." in text
+    # Ah Za Rhoon (2483, 2508-2513, 2648, 2758).
+    assert variants["visiting-ah-za-rhoon-search-fissure"][1]["prompt"] == "Climb into the fissure?"
+    torch = json.dumps(variants["visiting-ah-za-rhoon-use-lit-torch-on-fissure"])
+    assert "You drop the torch into the fissure" in torch and "Some rope might help here." in torch
+    assert "You see nothing here but an empty bookcase behind some rocks." in text
+    assert "The gallows look pretty eerie. You search but find nothing." in text
+    # Trufitus after Ah Za Rhoon and Bervirius' tomb (3050, 3270-3272, 3804-3805).
+    assert "Leave no stone unturned." in text and "We need to identify that the place" not in text
+    assert "If you found anything at Ah Za Rhoon that you're not sure of" not in text
+    tomb = variants["visiting-the-tomb-of-bervirius-talking-to-trufitus-after-visiting-bervirius-tomb"]
+    found = tomb[2]["options"][0]["steps"]
+    assert found[1]["text"].startswith("Congratulations Bwana. Show me any items")
+    assert [o["text"] for o in found[2]["options"]] == [
+        "I actually need help with something else.", "I didn't find anything in the tomb.",
+    ]
+    # Rashiliyia's tomb (3984, 4592-4594, 4612, 4837-4854, 4891-4897, 4905, 5245-5257).
+    assert "The trees are already pulled apart revealing some doors." in text
+    up = variants["visiting-the-tomb-of-rashiliyia-climb-rocks-back-up"]
+    assert [s["text"] for s in up] == [
+        "You carefully pick your way through the rocks.", "You manage to carefully clamber up.",
+    ]
+    third = variants["visiting-the-tomb-of-rashiliyia-using-bones-on-tomb-doors"][2]["steps"]
+    assert [s["text"][:30] for s in third] == [
+        "You carefully place another bo", "You place the bone into the la",
+        "You fit the last bone into the", "The door seems to change sligh",
+    ]
+    dolmen = variants["visiting-the-tomb-of-rashiliyia-look-at-or-search-tomb-dolmen"]
+    assert dolmen[2]["text"] == "Who dares disturb Rashiliyia's rest?"
+    assert [s.get("text", "")[:26] for s in dolmen[-5:]] == [
+        "You see something appear o", "Nazastarool: May you peris", "Nazastarool: curse is upon",
+        "You hear a disembodied voi", "You see something appear o",
+    ]
+    assert "You find nothing new on the dolmen." in text
+    assert "The Beads of the Dead start to glow" not in json.dumps(
+        variants["visiting-the-tomb-of-rashiliyia-open-tomb-exit"]
+    )
+    rest = variants["visiting-the-tomb-of-rashiliyia-using-rashiliyias-remains-on-the-dolmen"]
+    assert rest[0]["text"].startswith("You carefully place Rashiliyia's remains")
+    assert rest[3]["text"] == "Without warning the spirit of Rashiliyia disappears."
+    # Mosol Rei, Yanni Salika and Vigroy (5392, 5502-5535, 5695-5698).
+    mosol = json.dumps(dialogues["Mosol Rei"])
+    assert "Mosol leads you into the village and walks back out into the jungle." in mosol
+    assert "Mosol leaves you by the gate" not in mosol
+    yanni = json.dumps(dialogues["Yanni Salika"])
+    assert "Yanni looks through your items..." in yanni and '{"npc": "give you a quote?"}' in yanni
+    assert "Yanni won't sell you items that you've already got stored elsewhere." in yanni
+    vigroy = json.dumps(dialogues["Vigroy"])
+    assert "The player is transported to Brimhaven" in vigroy
+
+
+def test_tree_gnome_village_capture_source_is_pinned():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    page = json.loads((config.DATA_PATH / "dialogues" / "quest-pages.json").read_text())[
+        "Transcript:Tree Gnome Village"
+    ]
+    source = sources["Tree Gnome Village"]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Tree Gnome Village", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Tree Gnome Village", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Tree Gnome Village", "\n" + page["wikitext"], source, page["revision"])
+
+
+def test_tree_gnome_village_follows_the_revision_242_capture():
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = dialogues["Tree Gnome Village"]["variants"]
+    # Bolren's guide-out line ends with a full stop (local 1001802 tick 931).
+    start = json.dumps(variants["tree-gnome-king"])
+    assert "try your best to return the orb.\"" in start
+    # Montai's menu lists the wood first (tick 1056).
+    menu = next(step for step in variants["battlefield-commander-montai"] if step.get("type") == "choice")
+    assert [option["text"] for option in menu["options"]] == [
+        "Ok, I'll gather some wood.", "Sorry, I no longer want to be involved.",
+    ]
+    # The chest's box (tick 1567).
+    chest = json.dumps(variants["into-the-stronghold-upon-opening-the-chest-containing-the-orb-of-protection"])
+    assert "Inside you find the gnomes' stolen orb of protection." in chest
+
+
+def test_the_corsair_curse_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["The Corsair Curse"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:The Corsair Curse"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("The Corsair Curse", page["wikitext"], source, page["revision"])
+    lines = raw.splitlines()
+    # Four lines the capture sends are added; the Wiki's own lines are all kept.
+    assert len(lines) == len(page["wikitext"].splitlines()) + 4
+    greeting = lines.index("* '''Captain Tock:''' Ahoy, young [lad/lass].")
+    assert lines[greeting + 1].startswith("* '''Captain Tock:''' Ahoy, young [lad/lass]. Might ye")
+    # The apology is the player's, after Tess's question, as the capture has it (ticks 5653-5655).
+    tess = lines.index(
+        "** '''Chief Tess:''' He skinny man who climb down vine the other day, yah? He big fool. You see what he stole?"
+    )
+    assert lines[tess + 1] == "** '''Player:''' Arsen says he's very sorry for stealing from you. Here it is..."
+    assert "** '''Chief Tess:''' Arsen says he's very sorry" not in raw
+    colin = lines.index("* '''Cabin Boy Colin:''' What?")
+    assert lines[colin - 1].endswith("That was a wet ogre.")
+    besides = next(i for i, line in enumerate(lines) if line.startswith("** '''Ithoi the Navigator:''' Besides,"))
+    assert lines[besides + 1] == "** {{topt|Maybe because the Captain's thinking of firing you.}}"
+    # The Wiki's wording stays where the capture words it differently (Tock's "good [lad/lass]").
+    assert "ye've found my ship - good [lad/lass]." in raw
+    assert raw == apply_capture_lines("The Corsair Curse", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("The Corsair Curse", "\n" + page["wikitext"], source, page["revision"])
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["The Corsair Curse"]
+    start = exported["variants"]["the-cursed-crew-talking-to-captain-tock"]
+    assert start[0]["text"] == "Ahoy, young [lad/lass]."
+    assert start[2]["options"][1]["steps"][4]["prompt"] == "Start The Corsair Curse quest?"
+
+
+def test_tai_bwo_wannai_trio_follows_the_captures():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Tai Bwo Wannai Trio"]
+    structure = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
+    )["Tai Bwo Wannai Trio"]["structure"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Tai Bwo Wannai Trio"
+    ]
+    assert source["revision"] == structure["revision"] == page["revision"]
+    structured = update.apply_structure_annotations(
+        "Tai Bwo Wannai Trio", page["wikitext"], structure, page["revision"]
+    )
+    raw = apply_capture_lines("Tai Bwo Wannai Trio", structured, source, page["revision"])
+    assert raw == apply_capture_lines("Tai Bwo Wannai Trio", structured, source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Tai Bwo Wannai Trio", "\n" + structured, source, page["revision"])
+    # Lubufu's four topics are one menu, as live shows it (local 1001562 tick 5658).
+    assert "* {{topt|Talk about Karambwan...}}" in raw.splitlines()
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Tai Bwo Wannai Trio"]
+    variants, branches = exported["variants"], exported["branches"]
+    again = variants["talking-to-lubufu-talking-to-lubufu-again"]
+    assert [option["text"] for option in again[3]["options"]] == [
+        "Talk about him...", "Talk about Karambwan...", "Talk about something else...", "Leave",
+    ]
+    # Timfraku's first menu: "Trufitus sent me." and "Ask about Village." only once Jungle Potion is done.
+    first = next(step for step in branches["jump-68ca096f234c6328"] if step.get("type") == "choice")
+    assert [option["text"] for option in first["options"]] == [
+        "Why should I leave?", "Right, I'm going then.", "Trufitus sent me.", "Ask about Village.",
+    ]
+    assert [option.get("condition") for option in first["options"]][2:] == [
+        "If the player has completed Jungle Potion:", "If the player has completed Jungle Potion:",
+    ]
+    news = json.dumps(first["options"][2]["steps"])
+    assert news.index("Then it must be true.") < news.index("Timfraku appears to concentrate very deeply.")
+    again = variants["starting-off-talking-to-timfraku-again-before-jungle-potion"]
+    assert again[0]["text"] == "You again! Only a fool would ignore my instructions."
+    # Lubufu: the player's question, the bait offer's condition and the third ask (ticks 5624, 5705, 5855).
+    assert variants["talking-to-lubufu"][1]["options"][2]["steps"][0] == {"player": "Who are you?"}
+    assert "If the player has asked Lubufu what he does with his Karambwan:" in json.dumps(variants)
+    delivered = json.dumps(variants["talking-to-lubufu-talking-to-lubufu-after-delivering-raw-karambwanji"])
+    assert delivered.index("fewer than three times") < delivered.index("My, you're keen") < delivered.index(
+        "Lubufu appears to think for a moment."
+    ) < delivered.index("How would you feel about becoming my apprentice?")
+    # Tiadeche: his attempt message, and his talk once he has trapped one (ticks 6234, 6700).
+    assert "Tiadeche attempts to use the Karambwan vessel." in json.dumps(variants["talking-to-tiadeche-talking-to-tiadeche-again"])
+    trapped = variants["talking-to-tiadeche-talking-to-tiadeche-after-he-traps-a-karambwan"]
+    assert trapped[0] == {"player": "Can we return to the village now?"}
+    # The Wiki's wording stays where the captures word a line differently.
+    assert "Roving adventurer, please accept my eternal gratitude!" in json.dumps(exported)
+    assert json.dumps(exported).count("Well, hand it here then.") >= 2
+
+
+def test_zogre_flesh_eaters_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Zogre Flesh Eaters"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Zogre Flesh Eaters"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Zogre Flesh Eaters", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Zogre Flesh Eaters", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Zogre Flesh Eaters", "\n" + page["wikitext"], source, page["revision"])
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Zogre Flesh Eaters"]
+    variants = exported["variants"]
+    # Grish answers "What are Zogres?" with two lines (capture ticks 121-122).
+    zogres = json.dumps(variants["getting-started-talking-to-grish"])
+    assert zogres.index("Da Zogres are da bigun nasties") < zogres.index("Dem zogries commin from da under dirt")
+    # The prism sale once Sithik has had the potion (ticks 1750-1760).
+    sale = variants["investigating-b-vahn-use-the-black-prism-on-zavistic-rarve-after-giving-sithik-the-potion"]
+    assert sale[0]["text"] == "You show the black prism to Zavistic."
+    assert [option["text"] for option in sale[3]["options"]] == [
+        "Sell it to Zavistic for 2000", "Take it to Yanni for a greater reward.",
+    ]
+    assert sale[3]["options"][0]["steps"][-1]["text"] == "You sell the black prism for 2000 coins."
+    # Zavistic's Magic Guild option has a body (ticks 1009-1025).
+    evidence = json.dumps(variants["investigating-b-vahn-talking-to-zavistic-rarve-after-gathering-evidence"])
+    assert "Sure, go ahead, ask away." in evidence
+    # Uglug Nar refuses a balm before the cure is known (ticks 765-771).
+    balm = variants["defeating-the-zogres-use-relicym-s-balm-on-uglug-nar"]
+    assert balm[2]["text"] == "If the player has not learned how to cure the disease:"
+    assert balm[2]["steps"][-1] == {"type": "end"}
+    assert balm[-1]["text"] == "You sell the potion and get 650 coins in return."
+
+
+def test_rum_deal_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["Rum Deal"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:Rum Deal"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("Rum Deal", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Rum Deal", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Rum Deal", "\n" + page["wikitext"], source, page["revision"])
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Rum Deal"]["variants"]
+    # The start prompt (the Pirate Pete page's, capture ticks 153 and 173).
+    start = variants["setting-out-talking-to-pirate-pete"]
+    menu = next(step for step in start if step.get("type") == "choice")
+    assert menu["prompt"] == "Start the Rum Deal quest?"
+    assert [option["text"] for option in menu["options"]] == ["Yes.", "No."]
+    text = json.dumps(start)
+    assert text.index("Err...Barrelor!") < text.index("Yes, the mighty, fearsome, tall, deadly, oaken, round demon Barrelor the Destroyer.")
+    assert text.index("Trapped Pit of Barrelor.") < text.index("Wanna give it a shot?")
+    # The meeting's three lines the Wiki lacks (ticks 388, 396, 447).
+    meeting = json.dumps(variants["setting-out-meeting-captain-braindeath"])
+    for line in ("When ye arrived ye took a nasty knock to the head", "Well, fer a price, at any rate.",
+                 "Seems they lost their fightin' spirit after the first few days."):
+        assert line in meeting
+    # The stagnant water used on Braindeath (ticks 1629-1633).
+    used = variants[
+        "stagnant-water-talking-to-captain-braindeath-before-pouring-in-the-stagnant-in-the-hopper"
+        "-using-the-bucket-of-stagnant-water-on-captain-braindeath"
+    ]
+    assert used[0] == {"player": "What exactly do you want me to do with this?"}
+    # The sluglings line the Wiki joins is two boxes (ticks 1709-1710).
+    sluglings = json.dumps(variants["sluglings-talking-to-captain-braindeath-after-using-the-water-on-the-hopper"])
+    assert "super-secret ingredients!\", " in sluglings or "super-secret ingredients!\"" in sluglings
+    assert "ingredients! Yer not" not in sluglings
+    # The Wiki's own wording stays where the capture words a line differently.
+    assert "beseiged" in meeting
+
+
+def test_pirate_pete_dock_lift_continues_into_the_lift_menu():
+    # The dock branch's "{{tact|continue}}" carries on into the lift menu the island branch holds
+    # (runtime-bindings navigation anchor); without it the dock offer ended at "Interested?".
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Pirate Pete"]
+    dock = next(step for step in exported["variants"]["standard-dialogue"]
+                if step.get("type") == "condition" and "dock north of Port Phasmatys" in step.get("text", ""))
+    jump = dock["steps"][-1]
+    assert jump["type"] == "jump" and jump["reference"] == "continue"
+    branch = exported["branches"][jump["steps"][0]["branch"]]
+    menu = branch[0]
+    assert menu["type"] == "choice"
+    assert [option["text"] for option in menu["options"]][:2] == ["Okay!", "Not now"]

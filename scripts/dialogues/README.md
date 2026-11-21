@@ -36,6 +36,16 @@ explicit participant pages. NPCs sharing a short name are never globally merged.
 An absent ID mapping is unresolved identity, not permission to guess a name match.
 The index lists candidates, not a quest-state-aware routing decision.
 
+Lines whose `speaker` is a short label ("Hrafn", "King Sorvott IV", "Guard") carry
+`speaker_ids`: the NPC ids of the one participant on the page's own Transcript list that the
+label names, so a consumer can show that NPC's chathead instead of the one being talked to.
+The label is matched against the participant's page title and infobox names, then the title
+without its disambiguation ("Guard (Jatizso)"), then the label's words in order within the
+title ("King Sorvott IV" in "King Gjuki Sorvott IV"); the first rule that finds exactly one
+participant wins and a tie resolves nothing. Labels naming several people ("A/B"), the player,
+and speakers not on the list have no `speaker_ids`. It is added after corrections are applied,
+so correction fingerprints and node ids do not include it.
+
 ## Record shapes and natural endings
 
 When the only variant is `standard-dialogue` and it is the selected default,
@@ -177,6 +187,12 @@ self-speech is still `{"npc":"..."}`, player speech `{"player":"..."}`. Explicit
 `{{overhead|...}}` speech keeps its normal shape and may add
 `"presentation": "overhead"`; that is the only presentation value and it does not
 change the speaker, text or control flow.
+Speech and message boxes whose Wiki text has a hex `{{Colour|#rrggbb|...}}` also carry
+`"styled"`: the same text with that colour as the client's `<col=rrggbb>...</col>` tag
+(Client of Kourend's possessed Veos, `<col=000080>` as live sends it). `text` stays plain,
+so matching and step ids are unchanged (`styled` is left out of a step's identity). A shared
+branch's key hashes its whole content, so a branch with coloured lines gets a new key; nothing
+should name those keys. A named colour (`red`) adds nothing.
 Choices/random alternatives have nested `options` and `steps`. Message, missing,
 unavailable, condition and reference nodes must not silently disappear.
 
@@ -255,6 +271,17 @@ anchors. The Restless Ghost has one: its bare `above` after "Nope. I just know..
 resumes after "Well, to be honest... I'm not sure." in the same transcript.
 The source does not uniquely identify that target, so this remains an explicit,
 reviewed interpretation rather than an automatic parser inference.
+An annotation names exactly one of `after` (resume past that node) or `at` (start
+at it, for a destination that is the first node of its branch). The Fortis House
+Robbery urchins use `at`: live captures (rsprox.net 1105) show "Sounds good.",
+the free first-time information and "Yes, don't ask me again." all continue into
+the paid information flow, which the Wiki's bare `below`/`continue`/`above` do not
+identify uniquely.
+
+`{{tact|continue|X}}` keeps the name X. When conditions of one run continue to an
+`{{Anchor|X}}` that the Wiki writes straight after the run's last condition's own
+continue, one level too deep, that tail is moved to just after the run so every
+condition reaches it (Lucia's "Do you want me to point you in the right direction?").
 
 The normal command applies runtime bindings and the remaining corrections after compaction
 and before publishing aggregates, shards, indexes or diagnostics. A corrected

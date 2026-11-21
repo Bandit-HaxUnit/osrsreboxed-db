@@ -349,3 +349,262 @@ def test_reviewed_source_anchor_reuses_the_tail_and_rejects_stale_inputs():
             changed["variants"]["talk"].append(copy.deepcopy(nodes[destination]))
         with pytest.raises(ValueError, match="Stale dialogue navigation anchor"):
             resolve_navigation(changed, anchors)
+
+
+URCHIN = """==Standard dialogue==
+===Subsequent dialogue===
+* {{tcond|If the player has not met the leader:}}
+** '''Lucia:''' Go chat to them!
+** {{tact|continue|below}}
+* {{tcond|If the player has met the leader:}}
+** '''Lucia:''' A fine day for stealing.
+** {{tact|continue|below}}
+* {{tselect|Select an Option}}
+* {{topt|I could do with some information on houses.}}
+** {{tselect|Pay 15 valuables for information?}}
+** {{topt|Yes.}}
+*** {{tcond|If the homeowner is about to leave:}}
+**** '''Lucia:''' I hear that [Caius] might be leaving soon.
+**** {{tact|continue|below}}
+*** {{tcond|If this is the first time:}}
+**** '''Lucia:''' Looks like [Caius] isn't home right now. Go quickly!
+**** {{tact|continue|below}}
+*** {{tcond|If the player already received intel:}}
+**** '''Lucia:''' Already forgotten?
+**** {{tact|continue|below}}
+**** '''Lucia:''' Do you want me to point you in the right direction? {{Anchor|below}}
+***** {{tselect|Select an Option}}
+***** {{topt|Yes please.}}
+****** '''Player:''' Yes please.
+****** {{tact|end}}
+***** {{topt|I'll find my own way.}}
+****** '''Player:''' I'll find my own way.
+****** {{tact|end}}
+** {{topt|No.}}
+*** '''Lucia:''' Suit yourself.
+*** {{tact|end}}
+* {{topt|I'd better get going.}}
+** {{tact|end}}
+"""
+
+
+def test_condition_run_continue_resumes_at_the_anchored_tail_after_the_run():
+    """Lucia: `{{tact|continue|below}}` names the `{{Anchor|below}}` that the
+    Wiki nests under the last condition; the tail belongs after the whole run."""
+    value = record("Lucia", URCHIN)
+    resolve_navigation(value)
+    steps = value["variants"]["standard-dialogue-subsequent-dialogue"]
+    yes = steps[2]["options"][0]["steps"][0]["options"][0]["steps"]
+    assert [node.get("type") for node in yes] == [
+        "condition",
+        "condition",
+        "condition",
+        None,
+    ]
+    assert yes[3]["npc"] == "Do you want me to point you in the right direction?"
+    assert [option["text"] for option in yes[3]["steps"][0]["options"]] == [
+        "Yes please.",
+        "I'll find my own way.",
+    ]
+    for condition in yes[:3]:
+        assert condition["steps"][-1]["reference"] == "continue"
+        assert not any("npc" in node and "point you" in node["npc"] for node in condition["steps"])
+    # A run whose last condition has no anchored tail is left as written: the
+    # page's only anchor sits in a later menu, not in that run.
+    assert [node.get("type") for node in steps] == ["condition", "condition", "choice"]
+    assert steps[1]["steps"][-1]["reference"] == "continue"
+    assert "_continue_to" not in str(value) and "_anchors" not in str(value)
+
+
+def test_condition_run_keeps_a_tail_no_sibling_continue_names():
+    value = record(
+        "Lucia",
+        URCHIN.replace(
+            "**** '''Lucia:''' I hear that [Caius] might be leaving soon.\n**** {{tact|continue|below}}",
+            "**** '''Lucia:''' I hear that [Caius] might be leaving soon.\n**** {{tact|end}}",
+        ).replace(
+            "**** '''Lucia:''' Looks like [Caius] isn't home right now. Go quickly!\n**** {{tact|continue|below}}",
+            "**** '''Lucia:''' Looks like [Caius] isn't home right now. Go quickly!\n**** {{tact|continue|elsewhere}}",
+        ),
+    )
+    resolve_navigation(value)
+    steps = value["variants"]["standard-dialogue-subsequent-dialogue"]
+    yes = steps[2]["options"][0]["steps"][0]["options"][0]["steps"]
+    assert len(yes) == 3
+    assert yes[2]["steps"][-1]["npc"].startswith("Do you want me to point you")
+
+
+def test_reviewed_source_anchor_can_start_at_a_branch_first_node():
+    """`at` starts at the named node: a branch's first node has nothing to resume after."""
+    value = record(
+        "Lucia",
+        """==Talk==
+* {{tselect}}
+* {{topt|Yes.}}
+** {{tcond|If the homeowner is about to leave:}}
+*** '''Lucia:''' I hear that [Caius] might be leaving soon.
+** {{tcond|If this is the first time:}}
+*** '''Lucia:''' Looks like [Caius] isn't home right now.
+* {{topt|Yes, don't ask me again.}}
+** {{tact|above}}
+""",
+    )
+    annotate(value["variants"]["talk"], "Transcript:Lucia#talk", {})
+    menu = value["variants"]["talk"][0]
+    destination = menu["options"][0]["steps"][0]["id"]
+    source = menu["options"][1]["steps"][0]["id"]
+    resolved = copy.deepcopy(value)
+    resolve_navigation(resolved, {source: {"expected": "above", "at": destination}})
+    expanded = follow(resolved, resolved["variants"]["talk"][0]["options"][1]["steps"])
+    assert [node["text"] for node in expanded] == [
+        "If the homeowner is about to leave:",
+        "If this is the first time:",
+    ]
+    for invalid in ({"expected": "above"}, {"expected": "above", "at": destination, "after": destination}):
+        with pytest.raises(ValueError, match="Invalid dialogue navigation anchor"):
+            resolve_navigation(copy.deepcopy(value), {source: invalid})
+
+
+def test_bare_back_option_on_a_later_menu_page_returns_to_the_previous_page():
+    """Lunar Diplomacy's "Prev" before "The trousers" has no `{{tact|previous}}` on the wiki."""
+    value = record(
+        "Oneiromancer",
+        """==Lunar clothing==
+* {{tselect|Select an Option}}
+* {{topt|The cape}}
+** '''Player:''' The cape.
+* {{topt|Next}}
+** {{tselect|Select an Option}}
+** {{topt|Prev}}
+*** {{tact|previous}}
+** {{topt|Next}}
+*** {{tselect|Select an Option}}
+*** {{topt|Prev}}
+*** {{topt|The ring}}
+**** '''Player:''' The ring.
+*** {{topt|Exit}}
+* {{topt|Previous options...}}
+""",
+    )
+    first = value["variants"]["lunar-clothing"][0]
+    second = first["options"][1]["steps"][0]
+    third = second["options"][1]["steps"][0]
+    previous = [{"type": "jump", "reference": "previous"}]
+    assert second["options"][0]["steps"] == previous, "the wiki's own back jump"
+    labels = [option["text"] for option in third["options"]]
+    assert labels == ["Prev", "The ring", "Exit"]
+    assert third["options"][0]["steps"] == previous, "the bare one gets the same"
+    assert not third["options"][2].get("steps"), "not every empty option"
+    assert not first["options"][2].get("steps"), "a first page has none"
+
+
+def test_back_option_is_filled_only_when_empty_and_on_a_page_opened_by_a_menu():
+    value = record(
+        "Banker",
+        """==Talk==
+* '''Banker:''' Hello.
+* {{topt|More options...}}
+** '''Banker:''' More?
+** {{tselect|Select an Option}}
+** {{topt|Previous...}}
+** {{topt|Don't mind me.}}
+* {{topt|Bank}}
+** {{tselect|Select an Option}}
+** {{topt|Previous options...}}
+*** '''Player:''' Go back.
+""",
+    )
+    menu = value["variants"]["talk"][1]
+    after_line = menu["options"][0]["steps"][1]
+    # A menu after a line is not a page of the menu above.
+    assert not after_line["options"][0].get("steps")
+    with_body = menu["options"][1]["steps"][0]
+    assert with_body["options"][0]["steps"] == [{"player": "Go back."}]
+
+
+def test_previous_is_a_back_option_only_on_a_page_a_paging_option_opened():
+    """A topic submenu's "Previous..." is not a later page; "Return to previous menu" is a way back."""
+    value = record(
+        "Daero",
+        """==Briefing==
+* {{tselect|Select an Option}}
+* {{topt|Talk about the journey...}}
+** {{tselect|Select an Option}}
+** {{topt|Previous...}}
+** {{topt|Return to previous menu}}
+* {{topt|Leave...}}
+""",
+    )
+    submenu = value["variants"]["briefing"][0]["options"][0]["steps"][0]
+    previous, back = submenu["options"]
+    assert not previous.get("steps"), "opened by a topic, not a paging option"
+    assert back["steps"] == [{"type": "jump", "reference": "previous"}]
+
+
+def test_lone_player_condition_option_is_a_condition():
+    """Wizard Jalarast writes his non-members branch as `{{topt}}`; it is not a menu."""
+    value = record(
+        "Wizard Jalarast",
+        """==Standard dialogue==
+* {{topt|Can you make me some armour please?}}
+** '''Player:''' Can you make me some armour please?
+** '''Wizard Jalarast:''' Certainly, what would you like me to make?
+** {{topt|If the player is on a non-members world:}}
+*** '''Wizard Jalarast:''' I'm sorry, but I can't do that right now.
+*** {{tact|members}}
+** {{tact|Continues with shop dialogue.}}
+""",
+    )
+    first = value["variants"]["standard-dialogue"][0]
+    steps = follow(value, first["options"][0]["steps"])
+    kinds = [step.get("type") for step in steps]
+    assert "choice" not in kinds, "no one-option menu of condition prose"
+    condition = next(step for step in steps if step.get("type") == "condition")
+    assert condition["text"] == "If the player is on a non-members world:"
+    assert follow(value, condition["steps"])[0]["npc"] == (
+        "I'm sorry, but I can't do that right now."
+    )
+    assert steps[-1]["text"] == "Continues with shop dialogue."
+
+
+def test_condition_prose_stays_an_option_in_a_menu_or_random_set():
+    """A real menu's "If you insist..." and a random set's outcomes keep their options."""
+    value = record(
+        "Guard",
+        """==Standard dialogue==
+* {{tselect|Select an Option}}
+* {{topt|If you insist...}}
+** '''Player:''' If you insist...
+* {{topt|No.}}
+** '''Player:''' No.
+* {{trandom}}
+* {{topt|If the player receives coins:}}
+** '''Guard:''' Coins.
+* {{topt|If the player receives runes:}}
+** '''Guard:''' Runes.
+""",
+    )
+    steps = value["variants"]["standard-dialogue"]
+    assert [option["text"] for option in steps[0]["options"]] == [
+        "If you insist...",
+        "No.",
+    ]
+    assert steps[1]["type"] == "random"
+    assert len(steps[1]["options"]) == 2
+
+
+@pytest.mark.parametrize(
+    "opening,kind",
+    [("{{tselect|Select an Option}}", "choice"), ("{{trandom}}", "random")],
+)
+def test_explicit_single_option_condition_prose_keeps_its_menu(opening, kind):
+    value = record(
+        "Guard",
+        "==Standard dialogue==\n"
+        f"* {opening}\n"
+        "* {{topt|If the player receives coins:}}\n"
+        "** '''Guard:''' Coins.\n",
+    )
+    menu = value["variants"]["standard-dialogue"][0]
+    assert menu["type"] == kind
+    assert menu["options"][0]["text"] == "If the player receives coins:"
