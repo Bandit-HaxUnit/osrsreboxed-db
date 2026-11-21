@@ -539,3 +539,72 @@ def test_previous_is_a_back_option_only_on_a_page_a_paging_option_opened():
     previous, back = submenu["options"]
     assert not previous.get("steps"), "opened by a topic, not a paging option"
     assert back["steps"] == [{"type": "jump", "reference": "previous"}]
+
+
+def test_lone_player_condition_option_is_a_condition():
+    """Wizard Jalarast writes his non-members branch as `{{topt}}`; it is not a menu."""
+    value = record(
+        "Wizard Jalarast",
+        """==Standard dialogue==
+* {{topt|Can you make me some armour please?}}
+** '''Player:''' Can you make me some armour please?
+** '''Wizard Jalarast:''' Certainly, what would you like me to make?
+** {{topt|If the player is on a non-members world:}}
+*** '''Wizard Jalarast:''' I'm sorry, but I can't do that right now.
+*** {{tact|members}}
+** {{tact|Continues with shop dialogue.}}
+""",
+    )
+    first = value["variants"]["standard-dialogue"][0]
+    steps = follow(value, first["options"][0]["steps"])
+    kinds = [step.get("type") for step in steps]
+    assert "choice" not in kinds, "no one-option menu of condition prose"
+    condition = next(step for step in steps if step.get("type") == "condition")
+    assert condition["text"] == "If the player is on a non-members world:"
+    assert follow(value, condition["steps"])[0]["npc"] == (
+        "I'm sorry, but I can't do that right now."
+    )
+    assert steps[-1]["text"] == "Continues with shop dialogue."
+
+
+def test_condition_prose_stays_an_option_in_a_menu_or_random_set():
+    """A real menu's "If you insist..." and a random set's outcomes keep their options."""
+    value = record(
+        "Guard",
+        """==Standard dialogue==
+* {{tselect|Select an Option}}
+* {{topt|If you insist...}}
+** '''Player:''' If you insist...
+* {{topt|No.}}
+** '''Player:''' No.
+* {{trandom}}
+* {{topt|If the player receives coins:}}
+** '''Guard:''' Coins.
+* {{topt|If the player receives runes:}}
+** '''Guard:''' Runes.
+""",
+    )
+    steps = value["variants"]["standard-dialogue"]
+    assert [option["text"] for option in steps[0]["options"]] == [
+        "If you insist...",
+        "No.",
+    ]
+    assert steps[1]["type"] == "random"
+    assert len(steps[1]["options"]) == 2
+
+
+@pytest.mark.parametrize(
+    "opening,kind",
+    [("{{tselect|Select an Option}}", "choice"), ("{{trandom}}", "random")],
+)
+def test_explicit_single_option_condition_prose_keeps_its_menu(opening, kind):
+    value = record(
+        "Guard",
+        "==Standard dialogue==\n"
+        f"* {opening}\n"
+        "* {{topt|If the player receives coins:}}\n"
+        "** '''Guard:''' Coins.\n",
+    )
+    menu = value["variants"]["standard-dialogue"][0]
+    assert menu["type"] == kind
+    assert menu["options"][0]["text"] == "If the player receives coins:"
