@@ -347,6 +347,27 @@ def parse_step(raw, issues, line):
     return dict(type="unparsed", raw=raw)
 
 
+# Condition prose about the player ("If the player is on a non-members world:").
+# Options a player picks never read this way; "If you insist..." and the like do.
+PLAYER_CONDITION = re.compile(r"^\(?If\s+the\s+player\b", re.I)
+
+
+def lone_condition_option(option_nodes):
+    """A lone `{{topt}}` (no `{{tselect}}`, no other options) whose text is a condition.
+
+    Wizard Jalarast's "Can you make me some armour please?" writes its non-members
+    branch as `{{topt|If the player is on a non-members world:}}` where its shop
+    dialogue uses `{{tcond}}` for the same branch. Inside a real menu or a random
+    set the option stays an option.
+    """
+    if len(option_nodes) != 1:
+        return False
+    option = option_nodes[0]
+    if set(option) - {"type", "text", "steps", "_anchors"}:
+        return False
+    return bool(PLAYER_CONDITION.match(str(option.get("text", ""))))
+
+
 def group_options(nodes, random_options=False):
     """Group menu alternatives.
 
@@ -440,6 +461,18 @@ def group_options(nodes, random_options=False):
                         if i < len(nodes) and nodes[i]["type"] == "option":
                             continue
                     break
+            if (
+                node["type"] == "option"
+                and not random_options
+                and lone_condition_option(option_nodes)
+            ):
+                # A condition the page wrote with `{{topt}}`: a menu of one option
+                # would show the condition's prose to the player as a choice.
+                condition = {k: v for k, v in option_nodes[0].items() if k != "steps"}
+                condition["type"] = "condition"
+                condition["steps"] = group_options(option_nodes[0].get("steps", []))
+                result.append(condition)
+                continue
             for option in option_nodes:
                 group["options"].append(
                     {k: v for k, v in option.items() if k != "type"}
