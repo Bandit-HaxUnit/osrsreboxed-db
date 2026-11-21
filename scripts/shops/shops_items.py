@@ -550,6 +550,56 @@ def parse_shop_info(wikitext: str) -> dict:
     return shop_info
 
 
+# A shop can gain stock once a quest or miniquest requirement is met: the Wiki
+# puts that stock in its own table under the requirement's heading (Slayer
+# Equipment's "===A Porcine of Interest===", the Menaphite gear on Ali's
+# Discount Wares, the pearl barbarian rod on Alry's). A section describing a
+# duplicate shop (the skill capes) or a league world's stock is alternative
+# stock, not an addition, so its table is not merged.
+_STOCK_ADDED_AFTER = re.compile(
+    r"(?:completion of|completed the|partially completed|completing the)", re.IGNORECASE
+)
+_NOT_ADDED = re.compile(r"\bduplicate\b|\bleague\b", re.IGNORECASE)
+_HEADING = re.compile(r"^={2,6}\s*(.+?)\s*={2,6}\s*$", re.MULTILINE)
+
+
+def _section_prose(text: str, index: int) -> str:
+    """The prose between the nearest heading above ``index`` and ``index``."""
+    heading = None
+    for heading in _HEADING.finditer(text, 0, index):
+        pass
+    return text[heading.end() : index] if heading else text[:index]
+
+
+def _adds_stock_after_requirement(prose: str) -> bool:
+    """Whether the section above a table adds its stock once a requirement is met."""
+    return bool(
+        re.search(r"\[\[[^\]]+\]\]", prose)
+        and _STOCK_ADDED_AFTER.search(prose)
+        and not _NOT_ADDED.search(prose)
+    )
+
+
+def store_table_sections(wikitext: str) -> list:
+    """Each stock table's rows as ``(added_after_requirement, rows_text)``.
+
+    The first table is the shop's own stock. Later tables join it only when
+    their section says completion of a quest or miniquest adds the items.
+    """
+    sections = []
+    heads = list(re.finditer(r"\{\{StoreTableHead\|[^}]+\}\}", wikitext, re.IGNORECASE))
+    for index, head in enumerate(heads):
+        bottom = re.search(r"\{\{StoreTableBottom\}\}", wikitext[head.end() :], re.IGNORECASE)
+        if not bottom:
+            continue
+        if index > 0 and not _adds_stock_after_requirement(
+            _section_prose(wikitext, head.start())
+        ):
+            continue
+        sections.append((index > 0, wikitext[head.end() : head.end() + bottom.start()]))
+    return sections
+
+
 def parse_shop_items(shop_name: str, wikitext: str) -> list:
     """Parse StoreLine and Tzhaar shop row templates from shop wikitext to extract items.
 
@@ -559,16 +609,11 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
     """
     items = []
 
-    # Extract the section between StoreTableHead and StoreTableBottom
-    head_match = re.search(r"\{\{StoreTableHead\|[^}]+\}\}", wikitext, re.IGNORECASE)
-    bottom_match = re.search(r"\{\{StoreTableBottom\}\}", wikitext, re.IGNORECASE)
-
-    if not head_match or not bottom_match:
+    sections = store_table_sections(wikitext)
+    if not sections:
         logger.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
         logger.warning("No StoreTableHead or StoreTableBottom found in %s", shop_name)
         return items
-
-    section = wikitext[head_match.end() : bottom_match.start()]
 
     # Find all templates in this section robustly (including nested/multiline)
     # This regex matches {{TemplateName|...}} blocks, including nested braces
@@ -602,7 +647,11 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                 i += 1
         return templates
 
-    templates = extract_templates(section)
+    templates = [
+        (added, name, params)
+        for added, section in sections
+        for name, params in extract_templates(section)
+    ]
 
     # First extract currency from StoreTableHead if available
 
@@ -615,11 +664,17 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
 
     # Process all templates in the section
 
-    for template_name, params_str in templates:
+    seen_ids = set()
+    for added, template_name, params_str in templates:
         item_data = parse_storeline_params(params_str)
         if item_data and "name" in item_data and item_data["name"]:
             item_id = item_id_lookup(item_data["name"], item_data.get("bucketname"))
             if item_id is not None:
+                # Added stock repeats the rows it does not change; keep the
+                # shop's own row and append only the items the section adds.
+                if added and item_id in seen_ids:
+                    continue
+                seen_ids.add(item_id)
                 stock = item_data.get("stock")
                 if stock is not None:
                     stock_str = str(stock).strip()

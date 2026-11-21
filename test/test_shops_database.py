@@ -1036,3 +1036,35 @@ def test_a_stray_closing_brace_does_not_swallow_the_next_parameter():
         shops = json.load(f)
     buys = [row["buy"] for row in shops["Worm Tongue's Wares"]["items"] if "buy" in row]
     assert buys and set(buys) == {"N/A"}, "every StoreLine buys nothing"
+
+def test_stock_a_quest_adds_is_merged_into_the_shop():
+    """Slayer Equipment gains reinforced goggles once A Porcine of Interest is done.
+
+    The Wiki keeps the row in a second table under the quest's heading and the
+    prose says completion makes the shop carry it, so the item is shop stock
+    (a consumer can still hide it until the quest is complete). Rows the
+    section repeats stay as the shop's own row.
+    """
+    with open(
+        config.DATA_SHOPS_PATH / "shops-wiki-page-text.json", encoding="utf-8"
+    ) as source_file:
+        wikitext = json.load(source_file)["Slayer Equipment (shop)"]
+    sections = shops_items.store_table_sections(wikitext)
+    assert [added for added, _ in sections] == [False, True]
+    assert "Reinforced goggles" in sections[1][1]
+    items = shops_items.parse_shop_items("Slayer Equipment (shop)", wikitext)
+    assert 24942 in [item["id"] for item in items if item.get("type") == "item"]
+
+
+def test_duplicate_shop_and_league_tables_stay_out_of_the_stock():
+    """The skill-cape sections are a duplicate shop and the league sections only
+    exist on those worlds, so neither table is merged into the ordinary shop."""
+    with open(
+        config.DATA_SHOPS_PATH / "shops-wiki-page-text.json", encoding="utf-8"
+    ) as source_file:
+        pages = json.load(source_file)
+    for name in [
+        "Martin Thwait's Lost and Found.",
+        "General Store (Canifis)",
+    ]:
+        assert len(shops_items.store_table_sections(pages[name])) == 1, name
