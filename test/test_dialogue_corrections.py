@@ -2001,11 +2001,25 @@ def test_auguste_last_hand_in_and_basket_talk_open_with_his_line():
         rest = resolve(rest)
         assert rest[0]["text"] == basket
         assert [option["text"] for option in rest[1]["options"]] == willow
+        again = resolve(next(o for o in rest[1]["options"] if o["text"] == "What do I do again?")["steps"])
+        assert again[0] == {"player": "What do I do again?"}  # ticks 882 and 1443
     # Talks after all the materials, before planting (ticks 869, 889, 973, 1436, 1448).
     talk = quest["variants"][
         "preparing-for-the-expedition-talking-to-him-before-planting-his-sapling-but-after-delivering-all-the-required-materials"]
     assert (talk[0]["speaker"], talk[0]["text"]) == ("Auguste", basket)
     assert [option["text"] for option in talk[1]["options"]] == willow
+    # Every willow menu's "What do I do again?" plays the player's line first, then Auguste's.
+    for name in ("preparing-for-the-expedition-talking-to-him-before-planting-his-sapling-but-after-delivering-all-the-required-materials",
+                 "preparing-for-the-expedition-talking-to-him-after-planting-his-sapling-and-handing-in-all-the-ingredients"):
+        menu = next(step for step in quest["variants"][name] if step.get("type") == "choice")
+        again = resolve(next(o for o in menu["options"] if o["text"] == "What do I do again?")["steps"])
+        assert again[0] == {"player": "What do I do again?"}, name
+        assert again[1]["text"].startswith("Use the willow sapling I gave you"), name
+    # The item-help branch has no such line.
+    trouble = next(o for o in next(step for step in quest["variants"]["preparing-for-the-expedition"] if step.get("type") == "choice")["options"]
+                   if o["text"] == "I'm having some trouble finding some of the items.")
+    assert trouble["steps"][0] == {"player": "I'm having some trouble finding some of the items."}
+    assert "What do I do again?" not in json.dumps(trouble)
 
 
 def test_auguste_replace_items_option_holds_every_reclaim_condition():
