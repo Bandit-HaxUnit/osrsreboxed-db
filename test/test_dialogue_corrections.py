@@ -1834,3 +1834,37 @@ def test_murder_mystery_capture_lines_add_what_the_wiki_lacks():
     outside = json.dumps(variants["post-quest-talking-to-the-guard-outside-the-mansion-after-the-quest"])
     assert "Seems awfully quiet up at the house" in outside
     assert "Nothing right now, we have it all under control." in outside
+
+
+def test_watchtower_capture_lines_add_what_the_wiki_lacks():
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    assert "Ogre guard" not in source  # the Watchtower page now has the guards' own sections
+    source = source["Watchtower"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())["Transcript:Watchtower"]
+    assert source["revision"] == page["revision"] == 15399934
+    raw = apply_capture_lines("Watchtower", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("Watchtower", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("Watchtower", "\n" + page["wikitext"], source, page["revision"])
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Watchtower"]["variants"]
+    # The wizard's fingernails branch stays in his talk (the new section moved below it).
+    wizard = variants["searching-for-evidence-talking-to-the-watchtower-wizard"]
+    assert [step.get("id") for step in wizard if step.get("type") == "condition"] == ["pBFHsX", "BoocKJ", "Q3Ag5X"]
+    assert [step["text"] for step in variants[
+        "searching-for-evidence-using-evidence-other-than-the-fingernails-on-the-watchtower-wizard"]][0] == "Let me see..."
+    # The north-west guard: the player's claim before the guard asks (capture tick 2311).
+    carrying = next(step for step in variants["entering-gu-tanoth-city-guard"] if step.get("id") == "7ZK2kb")
+    assert carrying["steps"][0] == {"player": "I've got a proof of friendship right here!"}
+    # Skavid 4, "Gor cur" / "Ar" (ticks 3083-3096), and every skavid's messages and wrong-word loop.
+    skavid4 = variants["skavid-search-learning-skavid-skavid-4"]
+    assert skavid4[0]["text"] == "Gor cur..."
+    assert skavid4[1] == {"type": "message", "text": "The skavid is trying to communicate...", "id": skavid4[1]["id"]}
+    for number in (1, 2, 3, 4):
+        menu = next(step for step in variants[f"skavid-search-learning-skavid-skavid-{number}"] if step.get("type") == "choice")
+        assert all(option.get("steps") for option in menu["options"]), number
+        texts = json.dumps(menu)
+        assert "It seems the skavid understood you." in texts and "It seems that was the wrong reply." in texts
+    # The Wiki's own wording stays; the capture's "kind one" is now the Wiki's too.
+    assert "Thank you, kind one." in json.dumps(variants["skavid-search-scared-skavid"])
