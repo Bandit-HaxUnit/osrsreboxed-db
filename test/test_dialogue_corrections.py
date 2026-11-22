@@ -1827,10 +1827,9 @@ def test_murder_mystery_capture_lines_add_what_the_wiki_lacks():
     assert some.index("You show the guard the thread you found on the window.") < some.index(
         "All the servants dress in black"
     )
-    # Him for a son, her for a daughter (recordings 1001551, 1001958: David; 1001930: Carol).
+    # The Wiki's "her" stays for every murderer (the captures say "him" for a son: a recorded difference).
     hand_in = json.dumps(variants["presenting-the-evidence-talking-to-the-guard-with-all-evidence"])
-    assert "If Bob, David or Frank is the murderer:" in hand_in and "hold him here" in hand_in
-    assert "If Anna, Carol or Elizabeth is the murderer:" in hand_in and "hold her here" in hand_in
+    assert "hold her here" in hand_in and "hold him here" not in hand_in
     # The courtyard guard after the quest (tick 2383).
     outside = json.dumps(variants["post-quest-talking-to-the-guard-outside-the-mansion-after-the-quest"])
     assert "Seems awfully quiet up at the house" in outside
