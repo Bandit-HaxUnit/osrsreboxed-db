@@ -1070,26 +1070,34 @@ def test_slug_menace_follows_the_revision_242_capture():
         "Do you have any jobs for me yet?", "Can you explain the Gaze of Saradomin to me?",
         "Can I buy some armour?", "Can I switch respawns please?", "Goodbye.",
     ]
-    # Sections the Wiki lacks.
-    assert variants["witchaven-savant-asking-to-scan-the-mayor"][-1]["player"] == "Sure thing, one moment."
-    assert variants["witchaven-scanning-the-mayor"][-1]["text"] == "Savant Out."
-    assert variants["witchaven-contacting-the-commorb-while-investigating-witchaven"][0]["player"] == (
-        "So, Savant, what do you think?"
-    )
+    # Revision 15395854 has these sections itself, so the capture no longer inserts them.
+    assert sources["The Slug Menace"]["revision"] == 15395854
+    inserted = json.dumps(sources["The Slug Menace"]["lines"])
+    for section in ("Scanning the Mayor", "Contacting the commorb while", "Picking up the dead sea slug", "Mayor Hobb leaving"):
+        assert section not in inserted, section
+    assert variants["witchaven-scanning-mayor-hobb"][-1]["text"] == "Savant Out."
+    contact = variants["witchaven-contacting-savant-after-talking-to-col-o-niall"]
+    assert contact[0]["player"] == "So, Savant, what do you think?"
+    # The Wiki names an editor's account where the capture sends the player's name.
+    assert "Melee User3" not in json.dumps(exported["The Slug Menace"])
+    assert contact[3]["text"] == "I really don't know at this point, [player name]."
     assert variants["the-shrine-picking-up-the-dead-sea-slug"][1]["text"] == (
         "I've detected a sea slug on you. Is everything okay?"
     )
-    assert variants["the-pages-mayor-hobb-leaving-the-church"] == [{
-        "type": "line", "speaker": "Mayor Hobb", "text": "Welcome to the family, Brother Maledict.",
+    # The Wiki's wording, without the capture's comma (tick 2507: a recorded difference).
+    assert variants["the-pages-during-the-cutscene-where-maledict-is-possessed"] == [{
+        "type": "line", "speaker": "Mayor Hobb", "text": "Welcome to the family Brother Maledict",
         "presentation": "overhead",
     }]
+    # Sections the Wiki still lacks.
+    assert variants["witchaven-savant-asking-to-scan-the-mayor"][-1]["player"] == "Sure thing, one moment."
     assert variants["witchaven-talking-to-jeb-before-holgart-mentions-the-boat"][0]["text"] == "Hello there."
     # Jorral goes straight to the translation (tick 2099).
     assert variants["the-pages-talking-to-jorral"][0] == {"player": "Excuse me?"}
     # The glyph question plays before the transcript is added (tick 1854).
     scan = json.dumps(variants["the-shrine-scanning-commorb-near-the-door"])
     assert scan.index("So how am I supposed to show him the glyphs?") < scan.index("If the player has no inventory space")
-    assert variants["the-pages-opening-maledict-s-desk"][0]["text"] == (
+    assert variants["the-pages-opening-hobb-s-desk"][0]["text"] == (
         "You open the locked drawer and find a page of Maledict's holy book."
     )
     assert variants["crafting-the-runes-enchanting-the-water-rune"][0]["text"] == (
@@ -1098,6 +1106,12 @@ def test_slug_menace_follows_the_revision_242_capture():
     hobb = next(s for s in variants["witchaven-talking-to-mayor-hobb-2"] if s.get("type") == "choice")
     fish = next(o for o in hobb["options"] if o["text"] == "I'm here to fish.")
     assert fish["steps"][0] == {"player": "I'm here to fish."}
+    # Every answer to "what brings you to Witchaven?" gets his reply and his questions (issue RSPSApp/tsps#6503).
+    assert [o["text"] for o in hobb["options"]] == ["I'm here to relax.", "I'm just looking around.", "I'm here to fish."]
+    for option in hobb["options"]:
+        assert option["steps"][0] == {"player": option["text"]}
+        assert option["steps"][1]["text"].startswith("That's good, yes, that's good.")
+        assert "missing" not in json.dumps(option)
     villager = exported["Witchaven villager"]["variants"]
     normal = json.dumps(villager["pre-quest-dialogue"])
     possessed = json.dumps(villager["post-quest-dialogue"])
