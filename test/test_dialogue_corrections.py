@@ -1926,7 +1926,9 @@ def test_auguste_capture_lines_add_the_what_motivates_you_option():
     variants = exported["Auguste"]["variants"]
     initial = menu(variants["initial-dialogue-after-enlightened-journey"])
     assert list(initial)[2:4] == ["Could you tell me how to make an origami balloon?", "What motivates you?"]
-    assert initial["What motivates you?"]["steps"] == lines
+    # The menu closes the variant, so its options drop the closing end (as "No." does).
+    assert initial["What motivates you?"]["steps"] == lines[:-1]
+    assert initial["No."]["steps"] == [{"player": "No."}]
     subsequent = menu(variants["subsequent-dialogues-after-enlightened-journey"])
     assert list(subsequent)[2:4] == list(initial)[2:4]
     (jump,) = subsequent["What motivates you?"]["steps"]
@@ -2004,3 +2006,41 @@ def test_auguste_last_hand_in_and_basket_talk_open_with_his_line():
         "preparing-for-the-expedition-talking-to-him-before-planting-his-sapling-but-after-delivering-all-the-required-materials"]
     assert (talk[0]["speaker"], talk[0]["text"]) == ("Auguste", basket)
     assert [option["text"] for option in talk[1]["options"]] == willow
+
+
+def test_auguste_replace_items_option_holds_every_reclaim_condition():
+    bindings = json.loads((config.DATA_PATH / "dialogues/runtime-bindings.json").read_text(encoding="utf-8"))
+    page = json.loads((config.DATA_PATH / "dialogues/wiki-pages.json").read_text())["Transcript:Auguste"]
+    structure = bindings["Auguste"]["structure"]
+    assert structure["revision"] == page["revision"]
+    # The Wiki writes the cap's first line at depth 1 under its depth-2 condition (line 59).
+    structured = update.apply_structure_annotations("Auguste", page["wikitext"], structure, page["revision"])
+    assert structured.splitlines()[58] == "*** '''Auguste:''' You still seem to have your cap."
+    with pytest.raises(ValueError, match="Stale dialogue structure annotation"):
+        update.apply_structure_annotations("Auguste", "\n" + page["wikitext"], structure, page["revision"])
+    auguste = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Auguste"]
+    initial = auguste["variants"]["initial-dialogue-after-enlightened-journey"]
+    # One menu, nothing left hanging after it.
+    assert initial[-1]["type"] == "choice" and [step.get("type") for step in initial].count("choice") == 1
+    options = {option["text"]: option for option in initial[-1]["options"]}
+    assert list(options)[-2:] == ["Could you replace some items for me?", "Could you combine my cap and goggles?"]
+    replace = options["Could you replace some items for me?"]["steps"]
+    assert [(step["type"], step["text"], step["steps"][0]["npc"]) for step in replace] == [
+        ("condition", "If the bomber cap has not been lost:", "You still seem to have your cap."),
+        ("condition", "If the bomber cap has been lost but there is no free inventory space:",
+         "You don't have enough free space for your cap."),
+        ("condition", "If the bomber cap has been lost:", "Here's your cap. Try to keep better track of it."),
+        ("condition", "If the bomber jacket has not been lost:",
+         "You don't need a new jacket; you still have your original one."),
+        ("condition", "If the bomber jacket has been lost but there is no free inventory space:",
+         "You don't have enough free space for your jacket."),
+        ("condition", "If the bomber jacket has been lost:", "Here's your jacket, to keep you warm during flight."),
+    ]
+    assert replace[0]["id"] == "bOybQz"
+    assert [step["steps"][1].get("reference", step["steps"][1]["type"]) for step in replace] == [
+        "continues", "continues", "continues", "continues", "end", "continues"]
+    # The subsequent menu's "same as above" plays the same six conditions.
+    subsequent = auguste["variants"]["subsequent-dialogues-after-enlightened-journey"][-1]["options"]
+    (jump,) = next(o for o in subsequent if o["text"] == "Could you replace some items for me?")["steps"]
+    (call,) = jump["steps"]
+    assert [step["text"] for step in auguste["branches"][call["branch"]]] == [step["text"] for step in replace]
