@@ -1932,3 +1932,34 @@ def test_auguste_capture_lines_add_the_what_motivates_you_option():
     (jump,) = subsequent["What motivates you?"]["steps"]
     (call,) = jump["steps"]
     assert exported["Auguste"]["branches"][call["branch"]] == lines
+
+
+def test_auguste_hand_in_menu_returns_to_the_item_menu():
+    # After each hand-in or refusal live shows the item menu again, minus what was handed in
+    # (capture ticks 757, 765, 769, 774), not "Do you have anything for me?".
+    quest = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Enlightened Journey"]
+
+    def jumps(node):
+        if isinstance(node, dict):
+            if node.get("type") == "jump" and "reference" in node:
+                yield node["reference"]
+            for value in node.values():
+                yield from jumps(value)
+        elif isinstance(node, list):
+            for value in node:
+                yield from jumps(value)
+
+    def hand_in(steps):
+        top = next(step for step in steps if step.get("type") == "choice")
+        option = next(o for o in top["options"] if o["text"] == "Yes, I want to give you some items.")
+        return next(step for step in option["steps"] if step.get("type") == "choice")
+
+    items = hand_in(quest["variants"]["preparing-for-the-expedition"])
+    assert [option["text"] for option in items["options"]] == ["Dye.", "Sandbags.", "Silk.", "Bowl.", "Never mind."]
+    references = list(jumps(items))
+    assert references.count("other") == 12 and "previous" not in references
+    assert references.count("above") == 5 and references.count("continues") == 2
+    shared = [name for name, steps in quest["branches"].items() if "Here's the bowl." in json.dumps(steps)]
+    assert shared
+    for name in shared:
+        assert list(jumps(quest["branches"][name])) == references
