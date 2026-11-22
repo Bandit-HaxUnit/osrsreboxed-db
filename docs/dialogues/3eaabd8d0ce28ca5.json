@@ -182,6 +182,29 @@
             ]
           },
           {
+            "text": "What motivates you?",
+            "steps": [
+              {
+                "player": "What motivates you to do all of this?"
+              },
+              {
+                "npc": "Well..."
+              },
+              {
+                "npc": "What we leave behind is not as important as how we've lived."
+              },
+              {
+                "player": "Wise words."
+              },
+              {
+                "npc": "That's what I think, anyway."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
             "text": "Could you replace some items for me?",
             "condition": "If the bomber jacket or cap has been lost",
             "steps": [
@@ -363,6 +386,21 @@
             ]
           },
           {
+            "text": "What motivates you?",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "NtjsvI",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-5ad465c5d1bc60e5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "text": "Could you replace some items for me?",
             "condition": "If the bomber jacket or cap has been lost",
             "steps": [
@@ -419,6 +457,26 @@
       },
       {
         "npc": "You can release the balloon and watch it float in the air, just use a tinderbox on it."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "jump-5ad465c5d1bc60e5": [
+      {
+        "player": "What motivates you to do all of this?"
+      },
+      {
+        "npc": "Well..."
+      },
+      {
+        "npc": "What we leave behind is not as important as how we've lived."
+      },
+      {
+        "player": "Wise words."
+      },
+      {
+        "npc": "That's what I think, anyway."
       },
       {
         "type": "end"

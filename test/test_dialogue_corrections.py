@@ -1882,3 +1882,53 @@ def test_watchtower_capture_lines_add_what_the_wiki_lacks():
         assert "It seems the skavid understood you." in texts and "It seems that was the wrong reply." in texts
     # The Wiki's own wording stays; the capture's "kind one" is now the Wiki's too.
     assert "Thank you, kind one." in json.dumps(variants["skavid-search-scared-skavid"])
+
+
+def test_auguste_capture_lines_add_the_what_motivates_you_option():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    lines = [
+        {"player": "What motivates you to do all of this?"},
+        {"npc": "Well..."},
+        {"npc": "What we leave behind is not as important as how we've lived."},
+        {"player": "Wise words."},
+        {"npc": "That's what I think, anyway."},
+        {"type": "end"},
+    ]
+    for name, cache in (("Enlightened Journey", "quest-pages"), ("Auguste", "wiki-pages")):
+        page = json.loads((config.DATA_PATH / f"dialogues/{cache}.json").read_text())[f"Transcript:{name}"]
+        source = sources[name]
+        assert source["revision"] == page["revision"]
+        raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+        assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+        with pytest.raises(ValueError, match="Stale dialogue capture source"):
+            apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+
+    def menu(variant):
+        choice = next(step for step in variant if step.get("type") == "choice")
+        return {option["text"]: option for option in choice["options"]}
+
+    def flat(steps):
+        return [
+            {"npc": step["text"]} if step.get("type") == "line" else step for step in steps
+        ]
+
+    # Right after the quest in Taverley (capture ticks 2146-2174, the option picked at 2170).
+    options = menu(exported["Enlightened Journey"]["variants"][
+        "landing-in-taverley-talking-to-auguste-again-before-he-is-replaced-with-assistant-stan"])
+    assert list(options)[2:] == ["Could you tell me how to make an origami balloon?", "What motivates you?"]
+    # The quest export drops the closing end, as it does for the sibling "No." option.
+    assert flat(options["What motivates you?"]["steps"]) == lines[:-1]
+    assert flat(options["No."]["steps"]) == [{"player": "No."}]
+    # Auguste's own menus on Entrana (tick 2984): straight after the origami option in both.
+    variants = exported["Auguste"]["variants"]
+    initial = menu(variants["initial-dialogue-after-enlightened-journey"])
+    assert list(initial)[2:4] == ["Could you tell me how to make an origami balloon?", "What motivates you?"]
+    assert initial["What motivates you?"]["steps"] == lines
+    subsequent = menu(variants["subsequent-dialogues-after-enlightened-journey"])
+    assert list(subsequent)[2:4] == list(initial)[2:4]
+    (jump,) = subsequent["What motivates you?"]["steps"]
+    (call,) = jump["steps"]
+    assert exported["Auguste"]["branches"][call["branch"]] == lines
