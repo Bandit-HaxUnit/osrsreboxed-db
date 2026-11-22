@@ -1583,9 +1583,25 @@
                             "text": "If all the materials are finally handed in:",
                             "steps": [
                               {
+                                "type": "line",
+                                "speaker": "Auguste",
+                                "text": "That's the last of it!",
+                                "speaker_ids": [
+                                  4715,
+                                  4716,
+                                  4717,
+                                  4718
+                                ]
+                              },
+                              {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "-PAJNV"
+                                "id": "-PAJNV",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-0513964be5b92670"
+                                  }
+                                ]
                               }
                             ],
                             "id": "z-fS6X"
@@ -1648,9 +1664,25 @@
                             "text": "If all the materials are finally handed in:",
                             "steps": [
                               {
+                                "type": "line",
+                                "speaker": "Auguste",
+                                "text": "That's the last of it!",
+                                "speaker_ids": [
+                                  4715,
+                                  4716,
+                                  4717,
+                                  4718
+                                ]
+                              },
+                              {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "I7Vu-j"
+                                "id": "I7Vu-j",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-7ad3f965eb343737"
+                                  }
+                                ]
                               }
                             ],
                             "id": "xtOk6w"
@@ -1802,9 +1834,25 @@
                             "text": "If all the materials are finally handed in:",
                             "steps": [
                               {
+                                "type": "line",
+                                "speaker": "Auguste",
+                                "text": "That's the last of it!",
+                                "speaker_ids": [
+                                  4715,
+                                  4716,
+                                  4717,
+                                  4718
+                                ]
+                              },
+                              {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "JpL2Y0"
+                                "id": "JpL2Y0",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2ddbc3683b01913b"
+                                  }
+                                ]
                               }
                             ],
                             "id": "ty-ocK"
@@ -1910,9 +1958,25 @@
                             "text": "If all the materials are finally handed in:",
                             "steps": [
                               {
+                                "type": "line",
+                                "speaker": "Auguste",
+                                "text": "That's the last of it!",
+                                "speaker_ids": [
+                                  4715,
+                                  4716,
+                                  4717,
+                                  4718
+                                ]
+                              },
+                              {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "gDAA-k"
+                                "id": "gDAA-k",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-fc9041e9caf25e71"
+                                  }
+                                ]
                               }
                             ],
                             "id": "mkBxOa"
@@ -2017,9 +2081,25 @@
                             "text": "If all the materials are finally handed in:",
                             "steps": [
                               {
+                                "type": "line",
+                                "speaker": "Auguste",
+                                "text": "That's the last of it!",
+                                "speaker_ids": [
+                                  4715,
+                                  4716,
+                                  4717,
+                                  4718
+                                ]
+                              },
+                              {
                                 "type": "jump",
-                                "reference": "above",
-                                "id": "l-JmZE"
+                                "id": "l-JmZE",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "jump-2a27080c76a16b49"
+                                  }
+                                ]
                               }
                             ],
                             "id": "ILKLjD"
@@ -2328,6 +2408,17 @@
     ],
     "preparing-for-the-expedition-talking-to-him-before-planting-his-sapling-but-after-delivering-all-the-required-materials": [
       {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "You just need to build the basket and I can finish the balloon! How are you getting on with the willow?",
+        "speaker_ids": [
+          4715,
+          4716,
+          4717,
+          4718
+        ]
+      },
+      {
         "type": "choice",
         "options": [
           {
@@ -2335,8 +2426,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "W3SWvE"
+                "id": "W3SWvE",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0a487ed37253a9bc"
+                  }
+                ]
               }
             ]
           },
@@ -2345,8 +2441,13 @@
             "steps": [
               {
                 "type": "jump",
-                "reference": "above",
-                "id": "--f7tH"
+                "id": "--f7tH",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-d032ec7fe59dd93f"
+                  }
+                ]
               }
             ]
           },
@@ -3639,6 +3740,135 @@
         ]
       }
     ],
+    "jump-0513964be5b92670": [
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "You just need to build the basket and I can finish the balloon! How are you getting on with the willow?",
+        "speaker_ids": [
+          4715,
+          4716,
+          4717,
+          4718
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have lost my willow sapling. Can I buy a replacement?",
+            "condition": "If Auguste's sapping hasn't been planted yet",
+            "steps": [
+              {
+                "type": "jump",
+                "id": "CmfohW",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "jump-0a487ed37253a9bc"
+                  }
+                ]
+              }
+            ],
+            "id": "QW2mhm"
+          },
+          {
+            "text": "What do I do again?",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Auguste",
+                "text": "Use the willow sapling I gave you to grow a willow tree. Cut twelve branches from it using secateurs. Use the branches on the platform here.",
+                "speaker_ids": [
+                  4715,
+                  4716,
+                  4717,
+                  4718
+                ]
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Fine thanks.",
+            "steps": [
+              {
+                "player": "Fine thanks."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "jump-7ad3f965eb343737": [
+      {
+        "type": "jump",
+        "id": "-PAJNV",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-0513964be5b92670"
+          }
+        ]
+      }
+    ],
+    "jump-2ddbc3683b01913b": [
+      {
+        "type": "jump",
+        "id": "I7Vu-j",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-7ad3f965eb343737"
+          }
+        ]
+      }
+    ],
+    "jump-fc9041e9caf25e71": [
+      {
+        "type": "jump",
+        "id": "JpL2Y0",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-2ddbc3683b01913b"
+          }
+        ]
+      }
+    ],
+    "jump-2a27080c76a16b49": [
+      {
+        "type": "jump",
+        "id": "gDAA-k",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "jump-fc9041e9caf25e71"
+          }
+        ]
+      }
+    ],
+    "jump-d032ec7fe59dd93f": [
+      {
+        "type": "line",
+        "speaker": "Auguste",
+        "text": "Use the willow sapling I gave you to grow a willow tree. Cut twelve branches from it using secateurs. Use the branches on the platform here.",
+        "speaker_ids": [
+          4715,
+          4716,
+          4717,
+          4718
+        ]
+      },
+      {
+        "type": "end"
+      }
+    ],
     "jump-23beafe8d8a1c36f": [
       {
         "player": "Yes, I want to give you some items."
@@ -3818,9 +4048,25 @@
                     "text": "If all the materials are finally handed in:",
                     "steps": [
                       {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "That's the last of it!",
+                        "speaker_ids": [
+                          4715,
+                          4716,
+                          4717,
+                          4718
+                        ]
+                      },
+                      {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "-PAJNV"
+                        "id": "-PAJNV",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-0513964be5b92670"
+                          }
+                        ]
                       }
                     ],
                     "id": "z-fS6X"
@@ -3883,9 +4129,25 @@
                     "text": "If all the materials are finally handed in:",
                     "steps": [
                       {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "That's the last of it!",
+                        "speaker_ids": [
+                          4715,
+                          4716,
+                          4717,
+                          4718
+                        ]
+                      },
+                      {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "I7Vu-j"
+                        "id": "I7Vu-j",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-7ad3f965eb343737"
+                          }
+                        ]
                       }
                     ],
                     "id": "xtOk6w"
@@ -4037,9 +4299,25 @@
                     "text": "If all the materials are finally handed in:",
                     "steps": [
                       {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "That's the last of it!",
+                        "speaker_ids": [
+                          4715,
+                          4716,
+                          4717,
+                          4718
+                        ]
+                      },
+                      {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "JpL2Y0"
+                        "id": "JpL2Y0",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2ddbc3683b01913b"
+                          }
+                        ]
                       }
                     ],
                     "id": "ty-ocK"
@@ -4155,9 +4433,25 @@
                     "text": "If all the materials are finally handed in:",
                     "steps": [
                       {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "That's the last of it!",
+                        "speaker_ids": [
+                          4715,
+                          4716,
+                          4717,
+                          4718
+                        ]
+                      },
+                      {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "gDAA-k"
+                        "id": "gDAA-k",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-fc9041e9caf25e71"
+                          }
+                        ]
                       }
                     ],
                     "id": "mkBxOa"
@@ -4272,9 +4566,25 @@
                     "text": "If all the materials are finally handed in:",
                     "steps": [
                       {
+                        "type": "line",
+                        "speaker": "Auguste",
+                        "text": "That's the last of it!",
+                        "speaker_ids": [
+                          4715,
+                          4716,
+                          4717,
+                          4718
+                        ]
+                      },
+                      {
                         "type": "jump",
-                        "reference": "above",
-                        "id": "l-JmZE"
+                        "id": "l-JmZE",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "jump-2a27080c76a16b49"
+                          }
+                        ]
                       }
                     ],
                     "id": "ILKLjD"
@@ -4451,22 +4761,6 @@
             ]
           }
         ]
-      }
-    ],
-    "jump-d032ec7fe59dd93f": [
-      {
-        "type": "line",
-        "speaker": "Auguste",
-        "text": "Use the willow sapling I gave you to grow a willow tree. Cut twelve branches from it using secateurs. Use the branches on the platform here.",
-        "speaker_ids": [
-          4715,
-          4716,
-          4717,
-          4718
-        ]
-      },
-      {
-        "type": "end"
       }
     ],
     "jump-d681f89b85abe397": [

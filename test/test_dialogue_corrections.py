@@ -1958,8 +1958,49 @@ def test_auguste_hand_in_menu_returns_to_the_item_menu():
     assert [option["text"] for option in items["options"]] == ["Dye.", "Sandbags.", "Silk.", "Bowl.", "Never mind."]
     references = list(jumps(items))
     assert references.count("other") == 12 and "previous" not in references
-    assert references.count("above") == 5 and references.count("continues") == 2
+    # The five last-hand-in "above" jumps resolve to the basket line (see the test below).
+    assert references.count("continues") == 2 and "above" not in references
     shared = [name for name, steps in quest["branches"].items() if "Here's the bowl." in json.dumps(steps)]
     assert shared
     for name in shared:
         assert list(jumps(quest["branches"][name])) == references
+
+
+def test_auguste_last_hand_in_and_basket_talk_open_with_his_line():
+    quest = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Enlightened Journey"]
+    branches = quest["branches"]
+    basket = "You just need to build the basket and I can finish the balloon! How are you getting on with the willow?"
+    willow = ["I have lost my willow sapling. Can I buy a replacement?", "What do I do again?", "Fine thanks."]
+
+    def resolve(steps):
+        # Follow single-call jumps to the steps they play.
+        while len(steps) == 1 and steps[0].get("type") == "jump" and steps[0].get("steps"):
+            (call,) = steps[0]["steps"]
+            steps = branches[call["branch"]]
+        return steps
+
+    def conditions(node):
+        if isinstance(node, dict):
+            if node.get("type") == "condition" and node.get("text") == "If all the materials are finally handed in:":
+                yield node
+            for value in node.values():
+                yield from conditions(value)
+        elif isinstance(node, list):
+            for value in node:
+                yield from conditions(value)
+
+    # The last material handed in (capture ticks 850-857, the sandbags last): "That's the last
+    # of it!", the basket line, then the willow menu, in every material's branch.
+    found = list(conditions(quest["variants"]["preparing-for-the-expedition"]))
+    assert len(found) == 6
+    for condition in found:
+        first, *rest = condition["steps"]
+        assert (first["speaker"], first["text"]) == ("Auguste", "That's the last of it!")
+        rest = resolve(rest)
+        assert rest[0]["text"] == basket
+        assert [option["text"] for option in rest[1]["options"]] == willow
+    # Talks after all the materials, before planting (ticks 869, 889, 973, 1436, 1448).
+    talk = quest["variants"][
+        "preparing-for-the-expedition-talking-to-him-before-planting-his-sapling-but-after-delivering-all-the-required-materials"]
+    assert (talk[0]["speaker"], talk[0]["text"]) == ("Auguste", basket)
+    assert [option["text"] for option in talk[1]["options"]] == willow
