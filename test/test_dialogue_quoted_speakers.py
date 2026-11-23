@@ -101,3 +101,45 @@ def test_cached_tower_of_life_parses_quoted_speakers():
     assert set(found) == set(expected)
     for text, speaker in expected.items():
         assert found[text]["speaker"] == speaker
+
+
+def test_speaker_number_after_the_colon_is_the_numbered_speaker():
+    assert update.parse_step(
+        "'''Shadowy figure: (#2)''' Not to worry! Now we've got more!", [], 1
+    ) == {
+        "type": "line",
+        "speaker": "Shadowy figure (#2)",
+        "text": "Not to worry! Now we've got more!",
+    }
+    assert update.parse_step("'''Shadowy figure (#1):''' Of course!", [], 1)[
+        "speaker"
+    ] == "Shadowy figure (#1)"
+
+
+def test_cached_darkness_of_hallowvale_bush_scene_keeps_the_werewolves():
+    pages = json.loads(
+        (config.DATA_PATH / "dialogues" / "quest-pages.json").read_text()
+    )
+    source = pages["Transcript:Darkness of Hallowvale"]
+    record = update.gameplay_npc(
+        "Darkness of Hallowvale",
+        update.parse_npc("Darkness of Hallowvale", source["wikitext"]),
+    )
+    steps = record["variants"][
+        "misthalin-diplomacy-searching-the-bush-outside-paterdomus-temple"
+    ]
+    lines = [
+        (step.get("speaker"), step.get("text"))
+        for step in steps
+        if isinstance(step, dict) and step.get("type") == "line"
+    ]
+    assert lines[:5] == [
+        ("Shadowy figure (#1)", "I told you to hide it properly!"),
+        ("Shadowy figure (#2)", "Not to worry! Now we've got more!"),
+        ("Shadowy figure (#1)", "Nah, we can't take her. It'll look suspicious."),
+        ("Shadowy figure (#2)", "Let's go! Have you got the tithe?"),
+        ("Shadowy figure (#1)", "Of course!"),
+    ]
+    assert not any(
+        isinstance(step, dict) and step.get("type") == "unavailable" for step in steps
+    )
