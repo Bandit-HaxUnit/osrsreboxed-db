@@ -11,6 +11,9 @@ import re
 from collections import Counter
 from pathlib import Path
 
+import mwparserfromhell
+from mwparserfromhell.nodes import Heading, Template
+
 from scripts.wiki.wikitext_parser import extract_wikitext_template
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -169,6 +172,22 @@ def _reconcile_case_aliases(rows):
     return [row for index, row in enumerate(rows) if index not in removed]
 
 
+def _spawn_sections(text):
+    """The heading above each ItemSpawnLine, in extract_wikitext_template order.
+
+    Item pages list loose ground items under "Item spawns" and items that sit in
+    scenery (taken with an object op) under "Scenery object spawns"; both use
+    ItemSpawnLine, so the heading is the only thing that tells them apart.
+    """
+    sections, current = [], ""
+    for node in mwparserfromhell.parse(text).ifilter(recursive=True):
+        if isinstance(node, Heading):
+            current = str(node.title).strip()
+        elif isinstance(node, Template) and "itemspawnline" in node.name.strip().lower():
+            sections.append(current)
+    return sections
+
+
 def parse_pages(pages):
     """Preserve spawn arguments; reconcile agreeing case aliases with provenance."""
     rows = []
@@ -179,9 +198,11 @@ def parse_pages(pages):
             _versions(text, title) if re.search("ItemSpawnLine", text, re.I) else []
         )
         replacement = _pickup_replacement(text, pages) if versions else None
-        for index, template in enumerate(
-            extract_wikitext_template(text, "itemspawnline")
-        ):
+        templates = extract_wikitext_template(text, "itemspawnline")
+        sections = _spawn_sections(text) if templates else []
+        if len(sections) != len(templates):
+            raise ValueError(f"{title}: spawn section count does not match its templates")
+        for index, template in enumerate(templates):
             raw_parameters = [
                 (str(p.name).strip(), str(p.value).strip()) for p in template.params
             ]
@@ -289,6 +310,7 @@ def parse_pages(pages):
                     {
                         "page": title,
                         "page_sha256": hashlib.sha256(text.encode()).hexdigest(),
+                        "section": sections[index],
                         "row_index": index,
                         "argument": argument,
                         "argument_index": argument_index,
