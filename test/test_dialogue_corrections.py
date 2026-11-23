@@ -1882,3 +1882,179 @@ def test_watchtower_capture_lines_add_what_the_wiki_lacks():
         assert "It seems the skavid understood you." in texts and "It seems that was the wrong reply." in texts
     # The Wiki's own wording stays; the capture's "kind one" is now the Wiki's too.
     assert "Thank you, kind one." in json.dumps(variants["skavid-search-scared-skavid"])
+
+
+def test_auguste_capture_lines_add_the_what_motivates_you_option():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    lines = [
+        {"player": "What motivates you to do all of this?"},
+        {"npc": "Well..."},
+        {"npc": "What we leave behind is not as important as how we've lived."},
+        {"player": "Wise words."},
+        {"npc": "That's what I think, anyway."},
+        {"type": "end"},
+    ]
+    for name, cache in (("Enlightened Journey", "quest-pages"), ("Auguste", "wiki-pages")):
+        page = json.loads((config.DATA_PATH / f"dialogues/{cache}.json").read_text())[f"Transcript:{name}"]
+        source = sources[name]
+        assert source["revision"] == page["revision"]
+        raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+        assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+        with pytest.raises(ValueError, match="Stale dialogue capture source"):
+            apply_capture_lines(name, "\n" + page["wikitext"], source, page["revision"])
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+
+    def menu(variant):
+        choice = next(step for step in variant if step.get("type") == "choice")
+        return {option["text"]: option for option in choice["options"]}
+
+    def flat(steps):
+        return [
+            {"npc": step["text"]} if step.get("type") == "line" else step for step in steps
+        ]
+
+    # Right after the quest in Taverley (capture ticks 2146-2174, the option picked at 2170).
+    options = menu(exported["Enlightened Journey"]["variants"][
+        "landing-in-taverley-talking-to-auguste-again-before-he-is-replaced-with-assistant-stan"])
+    assert list(options)[2:] == ["Could you tell me how to make an origami balloon?", "What motivates you?"]
+    # The quest export drops the closing end, as it does for the sibling "No." option.
+    assert flat(options["What motivates you?"]["steps"]) == lines[:-1]
+    assert flat(options["No."]["steps"]) == [{"player": "No."}]
+    # Auguste's own menus on Entrana (tick 2984): straight after the origami option in both.
+    variants = exported["Auguste"]["variants"]
+    initial = menu(variants["initial-dialogue-after-enlightened-journey"])
+    assert list(initial)[2:4] == ["Could you tell me how to make an origami balloon?", "What motivates you?"]
+    # The menu closes the variant, so its options drop the closing end (as "No." does).
+    assert initial["What motivates you?"]["steps"] == lines[:-1]
+    assert initial["No."]["steps"] == [{"player": "No."}]
+    subsequent = menu(variants["subsequent-dialogues-after-enlightened-journey"])
+    assert list(subsequent)[2:4] == list(initial)[2:4]
+    (jump,) = subsequent["What motivates you?"]["steps"]
+    (call,) = jump["steps"]
+    assert exported["Auguste"]["branches"][call["branch"]] == lines
+
+
+def test_auguste_hand_in_menu_returns_to_the_item_menu():
+    # After each hand-in or refusal live shows the item menu again, minus what was handed in
+    # (capture ticks 757, 765, 769, 774), not "Do you have anything for me?".
+    quest = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Enlightened Journey"]
+
+    def jumps(node):
+        if isinstance(node, dict):
+            if node.get("type") == "jump" and "reference" in node:
+                yield node["reference"]
+            for value in node.values():
+                yield from jumps(value)
+        elif isinstance(node, list):
+            for value in node:
+                yield from jumps(value)
+
+    def hand_in(steps):
+        top = next(step for step in steps if step.get("type") == "choice")
+        option = next(o for o in top["options"] if o["text"] == "Yes, I want to give you some items.")
+        return next(step for step in option["steps"] if step.get("type") == "choice")
+
+    items = hand_in(quest["variants"]["preparing-for-the-expedition"])
+    assert [option["text"] for option in items["options"]] == ["Dye.", "Sandbags.", "Silk.", "Bowl.", "Never mind."]
+    references = list(jumps(items))
+    assert references.count("other") == 12 and "previous" not in references
+    # The five last-hand-in "above" jumps resolve to the basket line (see the test below).
+    assert references.count("continues") == 2 and "above" not in references
+    shared = [name for name, steps in quest["branches"].items() if "Here's the bowl." in json.dumps(steps)]
+    assert shared
+    for name in shared:
+        assert list(jumps(quest["branches"][name])) == references
+
+
+def test_auguste_last_hand_in_and_basket_talk_open_with_his_line():
+    quest = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Enlightened Journey"]
+    branches = quest["branches"]
+    basket = "You just need to build the basket and I can finish the balloon! How are you getting on with the willow?"
+    willow = ["I have lost my willow sapling. Can I buy a replacement?", "What do I do again?", "Fine thanks."]
+
+    def resolve(steps):
+        # Follow single-call jumps to the steps they play.
+        while len(steps) == 1 and steps[0].get("type") == "jump" and steps[0].get("steps"):
+            (call,) = steps[0]["steps"]
+            steps = branches[call["branch"]]
+        return steps
+
+    def conditions(node):
+        if isinstance(node, dict):
+            if node.get("type") == "condition" and node.get("text") == "If all the materials are finally handed in:":
+                yield node
+            for value in node.values():
+                yield from conditions(value)
+        elif isinstance(node, list):
+            for value in node:
+                yield from conditions(value)
+
+    # The last material handed in (capture ticks 850-857, the sandbags last): "That's the last
+    # of it!", the basket line, then the willow menu, in every material's branch.
+    found = list(conditions(quest["variants"]["preparing-for-the-expedition"]))
+    assert len(found) == 6
+    for condition in found:
+        first, *rest = condition["steps"]
+        assert (first["speaker"], first["text"]) == ("Auguste", "That's the last of it!")
+        rest = resolve(rest)
+        assert rest[0]["text"] == basket
+        assert [option["text"] for option in rest[1]["options"]] == willow
+        again = resolve(next(o for o in rest[1]["options"] if o["text"] == "What do I do again?")["steps"])
+        assert again[0] == {"player": "What do I do again?"}  # ticks 882 and 1443
+    # Talks after all the materials, before planting (ticks 869, 889, 973, 1436, 1448).
+    talk = quest["variants"][
+        "preparing-for-the-expedition-talking-to-him-before-planting-his-sapling-but-after-delivering-all-the-required-materials"]
+    assert (talk[0]["speaker"], talk[0]["text"]) == ("Auguste", basket)
+    assert [option["text"] for option in talk[1]["options"]] == willow
+    # Every willow menu's "What do I do again?" plays the player's line first, then Auguste's.
+    for name in ("preparing-for-the-expedition-talking-to-him-before-planting-his-sapling-but-after-delivering-all-the-required-materials",
+                 "preparing-for-the-expedition-talking-to-him-after-planting-his-sapling-and-handing-in-all-the-ingredients"):
+        menu = next(step for step in quest["variants"][name] if step.get("type") == "choice")
+        again = resolve(next(o for o in menu["options"] if o["text"] == "What do I do again?")["steps"])
+        assert again[0] == {"player": "What do I do again?"}, name
+        assert again[1]["text"].startswith("Use the willow sapling I gave you"), name
+    # The item-help branch has no such line.
+    trouble = next(o for o in next(step for step in quest["variants"]["preparing-for-the-expedition"] if step.get("type") == "choice")["options"]
+                   if o["text"] == "I'm having some trouble finding some of the items.")
+    assert trouble["steps"][0] == {"player": "I'm having some trouble finding some of the items."}
+    assert "What do I do again?" not in json.dumps(trouble)
+
+
+def test_auguste_replace_items_option_holds_every_reclaim_condition():
+    bindings = json.loads((config.DATA_PATH / "dialogues/runtime-bindings.json").read_text(encoding="utf-8"))
+    page = json.loads((config.DATA_PATH / "dialogues/wiki-pages.json").read_text())["Transcript:Auguste"]
+    structure = bindings["Auguste"]["structure"]
+    assert structure["revision"] == page["revision"]
+    # The Wiki writes the cap's first line at depth 1 under its depth-2 condition (line 59).
+    structured = update.apply_structure_annotations("Auguste", page["wikitext"], structure, page["revision"])
+    assert structured.splitlines()[58] == "*** '''Auguste:''' You still seem to have your cap."
+    with pytest.raises(ValueError, match="Stale dialogue structure annotation"):
+        update.apply_structure_annotations("Auguste", "\n" + page["wikitext"], structure, page["revision"])
+    auguste = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["Auguste"]
+    initial = auguste["variants"]["initial-dialogue-after-enlightened-journey"]
+    # One menu, nothing left hanging after it.
+    assert initial[-1]["type"] == "choice" and [step.get("type") for step in initial].count("choice") == 1
+    options = {option["text"]: option for option in initial[-1]["options"]}
+    assert list(options)[-2:] == ["Could you replace some items for me?", "Could you combine my cap and goggles?"]
+    replace = options["Could you replace some items for me?"]["steps"]
+    assert [(step["type"], step["text"], step["steps"][0]["npc"]) for step in replace] == [
+        ("condition", "If the bomber cap has not been lost:", "You still seem to have your cap."),
+        ("condition", "If the bomber cap has been lost but there is no free inventory space:",
+         "You don't have enough free space for your cap."),
+        ("condition", "If the bomber cap has been lost:", "Here's your cap. Try to keep better track of it."),
+        ("condition", "If the bomber jacket has not been lost:",
+         "You don't need a new jacket; you still have your original one."),
+        ("condition", "If the bomber jacket has been lost but there is no free inventory space:",
+         "You don't have enough free space for your jacket."),
+        ("condition", "If the bomber jacket has been lost:", "Here's your jacket, to keep you warm during flight."),
+    ]
+    assert replace[0]["id"] == "bOybQz"
+    assert [step["steps"][1].get("reference", step["steps"][1]["type"]) for step in replace] == [
+        "continues", "continues", "continues", "continues", "end", "continues"]
+    # The subsequent menu's "same as above" plays the same six conditions.
+    subsequent = auguste["variants"]["subsequent-dialogues-after-enlightened-journey"][-1]["options"]
+    (jump,) = next(o for o in subsequent if o["text"] == "Could you replace some items for me?")["steps"]
+    (call,) = jump["steps"]
+    assert [step["text"] for step in auguste["branches"][call["branch"]]] == [step["text"] for step in replace]
