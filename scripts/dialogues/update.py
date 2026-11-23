@@ -161,8 +161,16 @@ def infer_action(text):
     return {}
 
 
+# "Name: (#1)": a speaker's number written after the colon (Darkness of Hallowvale's
+# werewolves) is the same "Name (#1):" label.
+NUMBERED_AFTER_COLON = re.compile(r"(.+?):\s*(\(#\d+\))")
+
+
 def speaker_label(raw):
     label = clean(raw).strip()
+    numbered = NUMBERED_AFTER_COLON.fullmatch(label)
+    if numbered:
+        return f"{numbered[1].strip()} {numbered[2]}"
     if label.endswith(":"):
         return label[:-1].strip()
     if len(label) >= 3 and label[-1] in "'\"" and label[-2] == ":":
