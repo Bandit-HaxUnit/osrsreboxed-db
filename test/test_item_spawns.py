@@ -121,6 +121,34 @@ class ItemSpawnExportTests(unittest.TestCase):
         self.assertEqual(rows[1]["tile_respawn_raw"], "50")
         self.assertIn("untyped-tile-respawn", rows[1]["unresolved_reasons"])
 
+    def test_each_row_keeps_the_heading_it_is_listed_under(self):
+        rows = parse_pages(
+            {
+                "Fire rune": page(
+                    "{{ItemSpawnLine|name=Fire rune|1,2}}"
+                    "\n===Item spawns===\n{{ItemSpawnTableHead}}\n"
+                    "{{ItemSpawnLine|name=Fire rune|3,4|5,6}}\n{{ItemSpawnTableBottom}}"
+                    "\n=== Scenery object spawns ===\n"
+                    "{{ItemSpawnLine|name=Fire rune|7,8}}"
+                )
+            }
+        )
+        self.assertEqual(
+            [(row["x"], row["section"]) for row in rows],
+            [(1, ""), (3, "Item spawns"), (5, "Item spawns"), (7, "Scenery object spawns")],
+        )
+
+    def test_committed_export_marks_the_scenery_object_spawns(self):
+        export = json.loads((ROOT / "docs/ground-item-spawns.json").read_text(encoding="utf-8"))
+        scenery = {
+            (row["page"], row["x"], row["y"])
+            for row in export["rows"]
+            if row["section"] == "Scenery object spawns"
+        }
+        self.assertIn(("Bronze axe", 3097, 3239), scenery)
+        self.assertIn(("Tinderbox", 2543, 2862), scenery)
+        self.assertNotIn(("Spade", 3120, 3359), scenery)
+
     def test_defaults_and_zero_id_are_preserved(self):
         row = parse_pages(
             {"Fire rune": page("{{ItemSpawnLine|name=Fire rune|1,2}}", item_id="0")}
