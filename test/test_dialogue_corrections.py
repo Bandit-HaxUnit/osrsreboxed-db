@@ -2171,3 +2171,67 @@ def test_gertrudes_cat_follows_the_revision_242_capture():
     kittens = records["Gertrude"]["variants"]["standard-dialogue-on-pay-to-play-worlds"][4]["options"][0]["steps"]
     assert kittens[1]["type"] == "condition" and kittens[1]["text"] == "While already owning a kitten:"
     assert kittens[1]["steps"][0]["npc"].startswith("Aren't you still raising that other kitten?")
+
+
+def test_the_golem_capture_lines_and_the_curators_fossil_island_menu():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    source = sources["The Golem"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())[
+        "Transcript:The Golem"
+    ]
+    assert source["revision"] == page["revision"]
+    raw = apply_capture_lines("The Golem", page["wikitext"], source, page["revision"])
+    assert raw == apply_capture_lines("The Golem", page["wikitext"], source, page["revision"])
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("The Golem", "\n" + page["wikitext"], source, page["revision"])
+    records = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+    variants = records["The Golem"]["variants"]
+    # The start prompt (capture tick 26).
+    start = variants["talking-to-the-golem-to-start-the-quest"]
+    menu = next(step for step in start if step.get("type") == "choice")
+    assert menu["prompt"] == "Start The Golem quest?"
+    assert [option["text"] for option in menu["options"]] == ["Yes.", "No."]
+    # Elissa's first two menus end with "Sorry, I need to go." (ticks 340, 369, 380, 382).
+    for name in (
+        "talking-to-elissa-in-the-digsite",
+        "talking-to-elissa-in-the-digsite-talking-to-elissa-again-after-learning-where-the-notes-are",
+    ):
+        options = next(step for step in variants[name] if step.get("type") == "choice")["options"]
+        assert options[-1] == {"text": "Sorry, I need to go.", "steps": [{"player": "Sorry, I need to go."}]}
+    letter = json.dumps(variants["talking-to-elissa-in-the-digsite"])
+    assert "I wrote that letter to my late husband" in letter and "AI wrote" not in letter
+    assert "That was a great city as well" in letter
+    # The curator's Fossil Island option borrows his page's body and condition (tick 558-568).
+    for name in (
+        "visiting-the-varrock-museum-talking-to-curator-haig-in-the-varrock-museum",
+        "visiting-the-varrock-museum-talking-to-curator-haig-after-losing-the-statuette",
+    ):
+        options = next(step for step in variants[name] if step.get("type") == "choice")["options"]
+        fossil = options[0]
+        assert fossil["text"] == "Talk about Fossil Island."
+        assert fossil["condition"] == "After Bone Voyage:"
+        assert fossil["steps"][0] == {"player": "I've got some questions regarding Fossil Island."}
+        sub = next(step for step in fossil["steps"] if step.get("type") == "choice")
+        assert [option["text"] for option in sub["options"]] == [
+            "What can I do with fossils I find on Fossil Island?",
+            "Nevermind.",
+        ]
+    # The curator's own page: the Fossil Island sub-menu is under its option, not the main menu.
+    bindings = json.loads(
+        (config.DATA_PATH / "dialogues" / "runtime-bindings.json").read_text(encoding="utf-8")
+    )
+    curator_page = json.loads((config.DATA_PATH / "dialogues/wiki-pages.json").read_text())[
+        "Transcript:Curator Haig Halen"
+    ]
+    structure = bindings["Curator Haig Halen"]["structure"]
+    assert structure["revision"] == curator_page["revision"]
+    standard = records["Curator Haig Halen"]["variants"]["standard-dialogue"]
+    main = next(step for step in standard if step.get("type") == "choice")["options"]
+    assert [option["text"] for option in main][:2] == [
+        "Talk about Fossil Island.",
+        "I found a strange relic while salvaging...",
+    ]
+    # The Wiki's own wording stays where the capture words a line differently.
+    assert "Damage... severe... Task... incomplete..." in json.dumps(start)
