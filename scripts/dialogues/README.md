@@ -276,7 +276,10 @@ at it, for a destination that is the first node of its branch). The Fortis House
 Robbery urchins use `at`: live captures (rsprox.net 1105) show "Sounds good.",
 the free first-time information and "Yes, don't ask me again." all continue into
 the paid information flow, which the Wiki's bare `below`/`continue`/`above` do not
-identify uniquely.
+identify uniquely. The Candle seller's two "All right, you win, I'll buy a
+candle." answers end in a bare `above` and resume after "Yes please.", at the
+coin check; Death to the Dorgeshuun's tour stop borrows that body and carries
+the same two annotations.
 
 `{{tact|continue|X}}` keeps the name X. When conditions of one run continue to an
 `{{Anchor|X}}` that the Wiki writes straight after the run's last condition's own

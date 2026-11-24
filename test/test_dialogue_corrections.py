@@ -1790,6 +1790,49 @@ def test_pirate_pete_dock_lift_continues_into_the_lift_menu():
     assert [option["text"] for option in menu["options"]][:2] == ["Okay!", "Not now"]
 
 
+def test_candle_seller_haggled_purchase_reaches_the_coin_check():
+    # Both "All right, you win, I'll buy a candle." answers end in a bare "{{tact|above}}": the sale
+    # under "Yes please." (runtime-bindings navigation anchors, resumed after that line so it is not
+    # said twice). Unresolved, the consumer guessed another option and no candle was sold (tsps#6698).
+    exported = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
+
+    def purchase_jumps(nodes, found):
+        for node in nodes:
+            for option in node.get("options", []):
+                steps = option.get("steps", [])
+                if option.get("text") == "All right, you win, I'll buy a candle.":
+                    found.append(steps)
+                purchase_jumps(steps, found)
+            purchase_jumps(node.get("steps", []), found)
+        return found
+
+    def sale(record, steps, seen=()):
+        assert steps[0] == {"player": "All right, you win, I'll buy a candle."}
+        jump = steps[1]
+        for _ in range(3):
+            assert jump["type"] == "jump" and "reference" not in jump
+            branch = record["branches"][jump["steps"][0]["branch"]]
+            if branch[0].get("type") != "jump":
+                return branch
+            jump = branch[0]
+        raise AssertionError("purchase jump never reaches the sale")
+
+    for name, variant in (
+        ("Candle seller", "standard-dialogue"),
+        ("Death to the Dorgeshuun", "a-tour-of-lumbridge-candle-seller"),
+    ):
+        record = exported[name]
+        answers = purchase_jumps(record["variants"][variant], [])
+        assert len(answers) == 2, name
+        for steps in answers:
+            branch = sale(record, steps)
+            assert [step.get("text") for step in branch] == [
+                "If the player does not have 1000 coins:",
+                "If the player has at least 1000 coins:",
+            ], name
+            assert "Here you go then." in json.dumps(branch[1])
+
+
 def test_murder_mystery_capture_lines_add_what_the_wiki_lacks():
     source = json.loads(
         (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")

@@ -331,6 +331,38 @@ def test_resolve_shops_retags_known_shops(target, shop):
 
 
 @pytest.mark.parametrize(
+    "target,shop",
+    [
+        # A pub's window is named with a trailing word the shop title lacks
+        # (RSPSApp/tsps#6654: these two pubs opened nothing).
+        ("Auburn Pub shop", "Auburn Pub"),
+        ("Atlazora's Rest shop", "Atlazora's Rest"),
+        ("auburn pub Shop.", "Auburn Pub"),
+    ],
+)
+def test_resolve_shops_retags_a_target_with_a_trailing_shop_word(target, shop):
+    index = dialogues_update.shop_index()
+    npcs = {"X": [dict(type="action", action="open_interface", target=target)]}
+    assert dialogues_update.resolve_shops(npcs, index) == 1
+    assert npcs["X"][0] == dict(type="action", action="open_shop", target=shop)
+
+
+def test_a_shop_titled_with_the_word_shop_keeps_its_own_match():
+    # The word is dropped only after the target as written matched nothing.
+    index = dialogues_update.shop_index()
+    npcs = {"X": [dict(type="action", action="open_interface", target="Aubury's Rune Shop")]}
+    assert dialogues_update.resolve_shops(npcs, index) == 1
+    assert npcs["X"][0]["target"] == "Aubury's Rune Shop."
+
+
+def test_the_trailing_shop_word_does_not_invent_a_shop():
+    index = dialogues_update.shop_index()
+    node = dict(type="action", action="open_interface", target="Bank shop")
+    assert dialogues_update.resolve_shops({"X": [node]}, index) == 0
+    assert node["action"] == "open_interface"
+
+
+@pytest.mark.parametrize(
     "target,shop,shops",
     [
         # One shop page, one dumped shop per infobox version (#831).
