@@ -138,8 +138,10 @@ def test_quantity_export_preserves_npc_mappings_and_unrelated_reward_paths():
     # Keep restored bare-ID variants, excluding stale category-unlisted pages.
     # Jelly and Outlaw (Mudfoot's Big Adventure) split on their Multi Infobox
     # pages' unnumbered dropversions (2 and 3 tables instead of 1 each).
-    assert len(dump["tables"]) == 1115
-    assert len(dump["npcs"]) == 3226
+    # Eleven ordinary revenants add two task variants each. The maledictus
+    # needs encounter-specific multi-recipient loot and is deliberately unmapped.
+    assert len(dump["tables"]) == 1137
+    assert len(dump["npcs"]) == 3237
     # TzKal-Zuk's lead-in rows now export as their own table (new in this export).
     assert dump["npcs"]["7706"]["tables"] == ["tz_kal_zuk"]
     assert {npc_id for npc_id, npc in dump["npcs"].items() if not npc["tables"]} == {

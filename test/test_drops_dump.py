@@ -1009,11 +1009,14 @@ def test_members_world_rate_replaces_the_free_to_play_rate():
         if t["label"] == "Drops"
     ]
     assert moss_giant["main_max_roll"] == 128
-    assert sum(
-        e["weight"]
-        for e in moss_giant["entries"]
-        if "weight" in e and not e.get("separate_roll")
-    ) == 128
+    assert (
+        sum(
+            e["weight"]
+            for e in moss_giant["entries"]
+            if "weight" in e and not e.get("separate_roll")
+        )
+        == 128
+    )
 
 
 def test_cached_manta_ray_keeps_its_other_seed_pools():
@@ -1362,7 +1365,14 @@ def test_a_plain_row_without_rolls_still_leaves_the_table_unexported():
         (
             "Colossal Hydra",
             3,
-            ["Hydra's eye", "Hydra's fang", "Hydra's heart", "Hydra tail", "Dragon thrownaxe", "Dragon knife"],
+            [
+                "Hydra's eye",
+                "Hydra's fang",
+                "Hydra's heart",
+                "Hydra tail",
+                "Dragon thrownaxe",
+                "Dragon knife",
+            ],
         ),
         (
             "Shadow Wyrm",
@@ -1408,7 +1418,10 @@ def test_a_superior_page_that_states_its_roll_count_repeats_a_row_that_omitted_r
     seed = next(row for row in table["entries"] if row.get("name") == "Bones" and not row.get("pre_roll") and row.get("rarity") != "Always")
     assert not seed.get("once_per_kill")
     # The Pre-roll row stays once per kill.
-    assert next(row for row in table["entries"] if row.get("pre_roll"))["once_per_kill"] is True
+    assert (
+        next(row for row in table["entries"] if row.get("pre_roll"))["once_per_kill"]
+        is True
+    )
 
 
 def test_the_statement_is_ignored_when_the_explicit_counts_disagree_with_it():
@@ -1417,7 +1430,10 @@ def test_the_statement_is_ignored_when_the_explicit_counts_disagree_with_it():
 
 
 def test_without_the_statement_a_plain_row_still_leaves_the_count_unexported():
-    source = SUPERIOR_SOURCE.replace("superior slayer monsters will always roll 3 additional items", "monsters drop items")
+    source = SUPERIOR_SOURCE.replace(
+        "superior slayer monsters will always roll 3 additional items",
+        "monsters drop items",
+    )
     assert "rolls" not in _export(source)
 
 
@@ -1476,3 +1492,236 @@ def test_herb_roll_counts_are_read_from_the_wikis_roll_once_or_twice_wording():
         "[[herb drop table]].}}{{HerbDropLines|19/128}}"
     )
     assert all(not a.roll_count_weights for a in dark_beast)
+
+
+def test_parameterized_included_drop_tables_do_not_vanish():
+    source = "{{Infobox Monster|id=7931}}\n{{Family/Drops|combat=15}}"
+    templates = {"Family/Drops": """==Drops==
+{{#vardefine:A|{{#expr:floor(2200/floor(sqrt({{{combat|135}}})))}}}}
+===100%===
+{{DropsTableHead}}{{DropsLine|name=Revenant ether|quantity=2-{{#expr:floor(sqrt({{{combat|135}}})+1)*2}}|rarity=Always}}{{DropsTableBottom}}
+===Unique===
+{{DropsTableHead|dropversion=Off-task}}{{DropsLine|name=Amulet of avarice|quantity=1|rarity=1/{{#expr:{{#var:A}}*2}}}}{{DropsTableBottom}}
+{{DropsTableHead|dropversion=On-task}}{{DropsLine|name=Amulet of avarice|quantity=1|rarity=1/{{#var:A}}}}{{DropsTableBottom}}
+===Other===
+{{DropsTableHead}}{{#ifexpr:{{{combat}}}<132|{{DropsLine|name=Coins|quantity=1|rarity=1/2}}}}
+{{#switch:{{PAGENAME}}|Revenant goblin={{DropsLine|name=Goblin champion scroll|quantity=1|rarity=1/5000}}}}
+{{DropsTableBottom}}"""}
+    tables = drops_wikitext.parse_all_drop_tables(
+        source, included_templates=templates, page_title="Revenant goblin"
+    )
+    assert [t.drop_variant for t in tables] == ["Off-task", "On-task"]
+    assert all(t.npc_ids == [7931] for t in tables)
+    for table in tables:
+        assert {d.name for d in table.drops} == {
+            "Revenant ether",
+            "Amulet of avarice",
+            "Coins",
+            "Goblin champion scroll",
+        }
+        assert (
+            next(d for d in table.drops if d.name == "Revenant ether").quantity == "2-8"
+        )
+    assert (
+        next(d for d in tables[0].drops if d.name == "Amulet of avarice").rarity
+        == "1/1466"
+    )
+
+
+def test_included_drop_tables_fail_closed_for_missing_or_cyclic_sources():
+    for templates in ({}, {"Family/Drops": "{{Family/Drops}}"}):
+        with pytest.raises(ValueError):
+            drops_wikitext.parse_all_drop_tables(
+                "{{Family/Drops}}", included_templates=templates
+            )
+
+
+def test_cached_parameterized_revenant_family_has_real_resolved_drops():
+    import json
+    import config
+    from scripts.drops import included_tables
+
+    templates = json.loads(
+        (config.DATA_DROPS_PATH / "included-templates-wiki-page-text.json").read_text()
+    )
+    templates = {
+        name.removeprefix("Template:"): text for name, text in templates.items()
+    }
+    pages = update.load_monster_wikitext()
+    affected = {
+        name: text
+        for name, text in pages.items()
+        if included_tables.template_titles(text or "")
+    }
+    assert len(affected) >= 12
+    for name, text in affected.items():
+        parsed = drops_wikitext.parse_all_drop_tables(
+            text, included_templates=templates, page_title=name
+        )
+        if name == "Revenant maledictus":
+            assert parsed == []
+            continue
+        assert [t.drop_variant for t in parsed] == ["Off-task", "On-task"]
+        for table in parsed:
+            assert len(table.drops) >= 50
+            assert len([d for d in table.drops if d.name == "Amulet of avarice"]) == 1
+            assert all(
+                "{{" not in d.quantity and "{{" not in d.rarity for d in table.drops
+            )
+            champion = [d.name for d in table.drops if "champion scroll" in d.name]
+            assert champion == (
+                [name.removeprefix("Revenant ").capitalize() + " champion scroll"]
+                if name in ("Revenant imp", "Revenant goblin", "Revenant hobgoblin")
+                else []
+            )
+    goblin = drops_wikitext.parse_all_drop_tables(
+        pages["Revenant goblin"],
+        included_templates=templates,
+        page_title="Revenant goblin",
+    )[0]
+    assert goblin.npc_ids == [7931]
+    assert next(d for d in goblin.drops if d.name == "Revenant ether").quantity == "2-8"
+    dragon = drops_wikitext.parse_all_drop_tables(
+        pages["Revenant dragon"],
+        included_templates=templates,
+        page_title="Revenant dragon",
+    )[0]
+    assert not any(d.name == "Coins" for d in dragon.drops)
+
+
+def test_included_expression_evaluator_rejects_code_and_unbounded_math():
+    from scripts.drops.included_tables import number
+
+    assert number("floor(sqrt(15))") == "3"
+    assert number("(15+60)^2") == "5625"
+    for expression in ("__import__('os').getcwd()", "2^99999", "1/0", "sqrt(-1)"):
+        with pytest.raises((ValueError, ZeroDivisionError)):
+            number(expression)
+
+
+def test_included_drop_interpreter_uses_source_order_and_selected_branches():
+    from scripts.drops.included_tables import interpret, expand
+
+    text = (
+        "{{#vardefine:x|2}}{{DropsLine|name=A|quantity=1|rarity=1/{{#var:x}}}}"
+        "{{#vardefine:x|4}}{{DropsLine|name=B|quantity=1|rarity=1/{{#var:x}}}}"
+    )
+    rendered = interpret(text, "Test")
+    assert "rarity=1/2" in rendered and "rarity=1/4" in rendered
+    assert interpret("{{#if:x|yes|no}}", "Test") == "yes"
+    assert interpret("{{#switch:a|a|b=yes|#default=no}}", "Test") == "yes"
+    assert "{{Family/Drops" not in expand(
+        "{{wrapper|{{Family/Drops}}}}", {"Family/Drops": "ok"}
+    )
+    with pytest.raises(ValueError):
+        interpret("{{#ifexpr:1 and 1|yes|no}}", "Test")
+
+
+@pytest.mark.parametrize("condition", ["#ifeq:a|b", "#iferror:value"])
+def test_unsupported_included_controls_cannot_leak_drop_rows(condition):
+    from scripts.drops.included_tables import interpret
+
+    with pytest.raises(ValueError, match="Unresolved included drop control"):
+        interpret(
+            "{{" + condition + "|{{DropsLine|name=A}}|{{DropsLine|name=B}}}}",
+            "Test",
+        )
+
+
+def test_included_switch_uses_unnamed_last_value_as_default():
+    from scripts.drops.included_tables import interpret
+
+    row = "{{DropsLine|name=Coins|quantity=1|rarity=1/2}}"
+    assert interpret("{{#switch:z|a=A|" + row + "}}", "Test") == row
+    assert interpret("{{#switch:a|a=A|" + row + "}}", "Test") == "A"
+
+
+@pytest.mark.parametrize(
+    ("variable", "value"),
+    [("{{#var:unset}}", ""), ("{{#var:unset|fallback}}", "fallback")],
+)
+def test_unset_included_variables_use_their_default_or_empty(variable, value):
+    from scripts.drops.included_tables import interpret
+
+    assert interpret(variable, "Test") == value
+    assert interpret("{{#if:" + variable + "|yes|no}}", "Test") == (
+        "yes" if value else "no"
+    )
+
+
+def test_included_variables_preserve_rounding_except_in_rates():
+    from scripts.drops.included_tables import interpret
+
+    rendered = interpret(
+        "{{#vardefine:base|{{#expr:7/3 round 0}}}}"
+        "{{#vardefine:rate|{{#expr:{{#var:base}}*2 round 0}}}}"
+        "{{#vardefine:base|3}}"
+        "{{DropsLine|name=Coins|quantity={{#var:rate}}"
+        "|rarity={{#ifexpr:1|1/{{#var:rate}}}}"
+        "|altrarity={{#switch:z|a=1/10|1/{{#var:rate}}}}}}",
+        "Test",
+    )
+    assert rendered == "{{DropsLine|name=Coins|quantity=4|rarity=3/14|altrarity=3/14}}"
+
+
+def test_included_revenant_rates_remain_exact_exclusive_pools():
+    import json
+    from fractions import Fraction
+    import config
+
+    templates = {
+        name.removeprefix("Template:"): text
+        for name, text in json.loads(
+            (
+                config.DATA_DROPS_PATH / "included-templates-wiki-page-text.json"
+            ).read_text()
+        ).items()
+    }
+    pages = update.load_monster_wikitext()
+    items = drops_tables.ItemIdLookup(update.items_api.load())
+    for title, text in pages.items():
+        if title == "Revenant maledictus" or "{{Revenants/Drops" not in text:
+            continue
+        for parsed in drops_wikitext.parse_all_drop_tables(
+            text, included_templates=templates, page_title=title
+        ):
+            spec = drops_tables.build_table_spec(title, parsed, items)
+            assert sum(row.weight for row in spec.main) == spec.main_max_roll, title
+            rows = drops_tables.build_table_json(spec)["entries"]
+            unique = (
+                "Unique" if parsed.drop_variant == "Off-task" else "Unique (on-task)"
+            )
+            for section in (unique, "Secondary"):
+                group = [row for row in rows if row.get("section") == section]
+                assert group and all(row.get("separate_roll") for row in group), title
+                assert all(
+                    "pre_roll" not in row and "group_access_out_of" not in row
+                    for row in group
+                ), title
+                assert {row["roll_group"] for row in group} == {section.lower()}, title
+                assert {row["out_of"] for row in group} == {group[0]["out_of"]}, title
+                assert (
+                    0 < sum(row["weight"] for row in group) < group[0]["out_of"]
+                ), title
+                assert {
+                    row["name"]: Fraction(row["weight"], row["out_of"]) for row in group
+                } == {
+                    drop.name: Fraction(drop.rarity)
+                    for drop in parsed.drops
+                    if drop.subsection == section
+                }, title
+            if title == "Revenant hobgoblin":
+                coins = next(row for row in spec.main if row.name == "Coins")
+                assert Fraction(coins.weight, spec.main_max_roll) == Fraction(227, 314)
+    assert not drops_wikitext.parse_all_drop_tables(
+        pages["Revenant maledictus"],
+        included_templates=templates,
+        page_title="Revenant maledictus",
+    )
+
+
+def test_rounding_must_not_turn_a_probable_drop_into_a_guarantee():
+    for rarity in ("1/1.03", "1/1.06", "1/1.32", "1/1.38"):
+        with pytest.raises(ValueError, match="exact fraction"):
+            drops_wikitext.parse_main_rarity(rarity)
+    assert drops_wikitext.parse_main_rarity("100/103") == (100, 103)
