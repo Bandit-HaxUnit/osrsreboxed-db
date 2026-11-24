@@ -834,7 +834,44 @@ def build_table_spec(
 
     pre_roll, _, pre_roll_separate = _finalize_main_rolls(pre_roll_drops, [])
     accesses = table.subtable_accesses
-    if {"gwdRareDrop", "gwdGem"}.issubset(a.table_key for a in accesses):
+    if table.exact_main_pool:
+        if unresolved_pool:
+            raise ValueError(
+                f"{wiki_page}: unresolved included pool rows: {unresolved_pool}"
+            )
+        rates = [Fraction(entry.rarity_raw) for entry in standard_main]
+        if accesses or not 0 < sum(rates, Fraction(0)) <= 1:
+            raise ValueError(f"{wiki_page}: included main pool does not sum to one")
+        main_max_roll = 1
+        for rate in rates:
+            main_max_roll = (
+                main_max_roll * rate.denominator // gcd(main_max_roll, rate.denominator)
+            )
+        main_entries = [
+            replace(
+                entry,
+                weight=rate.numerator * (main_max_roll // rate.denominator),
+                roll_denominator=main_max_roll,
+                out_of=main_max_roll,
+            )
+            for entry, rate in zip(standard_main, rates)
+        ]
+        unused = main_max_roll - sum(entry.weight for entry in main_entries)
+        if unused:
+            # Unoccupied source slots are no-drop outcomes, not extra item rolls.
+            main_entries.append(
+                ResolvedEntry(
+                    item_id=None,
+                    name="Nothing",
+                    quantity="1",
+                    weight=unused,
+                    out_of=main_max_roll,
+                    roll_denominator=main_max_roll,
+                    is_nothing=True,
+                )
+            )
+        separate_rolls = []
+    elif {"gwdRareDrop", "gwdGem"}.issubset(a.table_key for a in accesses):
         main_entries, main_max_roll, accesses = _exclusive_source_pool(
             standard_main, accesses, wiki_page, unresolved_pool
         )

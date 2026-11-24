@@ -131,6 +131,7 @@ class ParsedDropTable:
     excluded_npc_ids: List[int] = field(default_factory=list)
     rolls: int = 1
     reward_policy: Optional[Dict] = None
+    exact_main_pool: bool = False
 
 
 # ---------------------------------------------------------------------------
@@ -451,6 +452,10 @@ def _parse_decimal_fraction(trimmed: str) -> Optional[Tuple[int, int]]:
     denominator = int(
         Decimal(match.group(2)).quantize(Decimal(1), rounding=ROUND_HALF_UP)
     )
+    if numerator == denominator and Decimal(match.group(1)) < Decimal(match.group(2)):
+        raise ValueError(
+            "Rounded drop rate would become guaranteed; an exact fraction is required"
+        )
     return numerator, denominator
 
 
@@ -1795,7 +1800,8 @@ HERB_ROLL_VARIANT = re.compile(
 # roll twice" (Smoke devil), "15/31 chance to roll once, 10/31 to roll twice, and 6/31 to
 # roll three times" (Turoth). The numerators are the variant weights.
 HERB_ROLL_TIMES = re.compile(
-    r"(\d+)\s*/\s*(\d+)\s+(?:chance\s+)?to roll (once|twice|three times|four times)", re.I
+    r"(\d+)\s*/\s*(\d+)\s+(?:chance\s+)?to roll (once|twice|three times|four times)",
+    re.I,
 )
 HERB_ACCESS_SENTENCE = re.compile(r"chance to access the \[\[herb drop table\]\]", re.I)
 HERB_ROLL_TIMES_COUNT = {"once": 1, "twice": 2, "three times": 3, "four times": 4}
@@ -2054,6 +2060,15 @@ def parse_all_drop_tables(
         bool(included_tables.template_titles(wikitext))
         and included_templates is not None
     )
+    # A copied fragment does not describe this encounter's complete loot contract.
+    # Leave ownership with the encounter runtime rather than map an ordinary kill table.
+    if has_includes and re.search(
+        r"only represents one of (?:two|\d+) non-guaranteed loot rolls", wikitext, re.I
+    ):
+        return []
+    independent_sections = included_tables.independent_sections(
+        included_tables.template_titles(wikitext)
+    )
     wikitext = included_tables.expand(wikitext, included_templates, page_title)
     wikitext = expand_unique_templates(wikitext, unique_templates)
     sections, strict_headings = _parse_drop_table_sections(wikitext)
@@ -2124,6 +2139,8 @@ def parse_all_drop_tables(
             if perfect_kill_page:
                 # After rarity resolution, which can move rows between sections.
                 drops = [apply_perfect_kill_condition(drop) for drop in drops]
+            if has_includes:
+                included_tables.group_independent_pools(drops, independent_sections)
             accesses = _parse_subtable_accesses(variant_body)
             # Only uniform main rolls can be represented by a table-wide count.
             # A Pre-roll row without its own rolls is rolled once per kill whatever the table
@@ -2154,6 +2171,7 @@ def parse_all_drop_tables(
                     npc_ids=npc_ids,
                     excluded_npc_ids=excluded_npc_ids,
                     reward_policy=reward_policy if not variant_name else None,
+                    exact_main_pool=has_includes,
                 )
             )
     if not strict_headings:

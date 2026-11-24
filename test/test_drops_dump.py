@@ -1009,11 +1009,14 @@ def test_members_world_rate_replaces_the_free_to_play_rate():
         if t["label"] == "Drops"
     ]
     assert moss_giant["main_max_roll"] == 128
-    assert sum(
-        e["weight"]
-        for e in moss_giant["entries"]
-        if "weight" in e and not e.get("separate_roll")
-    ) == 128
+    assert (
+        sum(
+            e["weight"]
+            for e in moss_giant["entries"]
+            if "weight" in e and not e.get("separate_roll")
+        )
+        == 128
+    )
 
 
 def test_cached_manta_ray_keeps_its_other_seed_pools():
@@ -1362,7 +1365,14 @@ def test_a_plain_row_without_rolls_still_leaves_the_table_unexported():
         (
             "Colossal Hydra",
             3,
-            ["Hydra's eye", "Hydra's fang", "Hydra's heart", "Hydra tail", "Dragon thrownaxe", "Dragon knife"],
+            [
+                "Hydra's eye",
+                "Hydra's fang",
+                "Hydra's heart",
+                "Hydra tail",
+                "Dragon thrownaxe",
+                "Dragon knife",
+            ],
         ),
         (
             "Shadow Wyrm",
@@ -1408,7 +1418,10 @@ def test_a_superior_page_that_states_its_roll_count_repeats_a_row_that_omitted_r
     seed = next(row for row in table["entries"] if row.get("name") == "Bones" and not row.get("pre_roll") and row.get("rarity") != "Always")
     assert not seed.get("once_per_kill")
     # The Pre-roll row stays once per kill.
-    assert next(row for row in table["entries"] if row.get("pre_roll"))["once_per_kill"] is True
+    assert (
+        next(row for row in table["entries"] if row.get("pre_roll"))["once_per_kill"]
+        is True
+    )
 
 
 def test_the_statement_is_ignored_when_the_explicit_counts_disagree_with_it():
@@ -1417,7 +1430,10 @@ def test_the_statement_is_ignored_when_the_explicit_counts_disagree_with_it():
 
 
 def test_without_the_statement_a_plain_row_still_leaves_the_count_unexported():
-    source = SUPERIOR_SOURCE.replace("superior slayer monsters will always roll 3 additional items", "monsters drop items")
+    source = SUPERIOR_SOURCE.replace(
+        "superior slayer monsters will always roll 3 additional items",
+        "monsters drop items",
+    )
     assert "rolls" not in _export(source)
 
 
@@ -1542,6 +1558,9 @@ def test_cached_parameterized_revenant_family_has_real_resolved_drops():
         parsed = drops_wikitext.parse_all_drop_tables(
             text, included_templates=templates, page_title=name
         )
+        if name == "Revenant maledictus":
+            assert parsed == []
+            continue
         assert [t.drop_variant for t in parsed] == ["Off-task", "On-task"]
         for table in parsed:
             assert len(table.drops) >= 50
@@ -1578,3 +1597,67 @@ def test_included_expression_evaluator_rejects_code_and_unbounded_math():
     for expression in ("__import__('os').getcwd()", "2^99999", "1/0", "sqrt(-1)"):
         with pytest.raises((ValueError, ZeroDivisionError)):
             number(expression)
+
+
+def test_included_drop_interpreter_uses_source_order_and_selected_branches():
+    from scripts.drops.included_tables import interpret, expand
+
+    text = (
+        "{{#vardefine:x|2}}{{DropsLine|name=A|quantity=1|rarity=1/{{#var:x}}}}"
+        "{{#vardefine:x|4}}{{DropsLine|name=B|quantity=1|rarity=1/{{#var:x}}}}"
+    )
+    rendered = interpret(text, "Test")
+    assert "rarity=1/2" in rendered and "rarity=1/4" in rendered
+    assert interpret("{{#if:x|yes|no}}", "Test") == "yes"
+    assert interpret("{{#switch:a|a|b=yes|#default=no}}", "Test") == "yes"
+    assert "{{Family/Drops" not in expand(
+        "{{wrapper|{{Family/Drops}}}}", {"Family/Drops": "ok"}
+    )
+    with pytest.raises(ValueError):
+        interpret("{{#ifexpr:1 and 1|yes|no}}", "Test")
+
+
+def test_included_revenant_rates_remain_exact_exclusive_pools():
+    import json
+    from fractions import Fraction
+    import config
+
+    templates = {
+        name.removeprefix("Template:"): text
+        for name, text in json.loads(
+            (
+                config.DATA_DROPS_PATH / "included-templates-wiki-page-text.json"
+            ).read_text()
+        ).items()
+    }
+    pages = update.load_monster_wikitext()
+    items = drops_tables.ItemIdLookup(update.items_api.load())
+    for title, text in pages.items():
+        if title == "Revenant maledictus" or "{{Revenants/Drops" not in text:
+            continue
+        for parsed in drops_wikitext.parse_all_drop_tables(
+            text, included_templates=templates, page_title=title
+        ):
+            spec = drops_tables.build_table_spec(title, parsed, items)
+            assert not spec.separate_rolls, title
+            assert sum(row.weight for row in spec.main) == spec.main_max_roll, title
+            for group in spec.conditional_groups:
+                assert (
+                    sum(row.group_weight_numerator for row in group.entries)
+                    == group.entries[0].group_weight_denominator
+                ), title
+            if title == "Revenant hobgoblin":
+                coins = next(row for row in spec.main if row.name == "Coins")
+                assert Fraction(coins.weight, spec.main_max_roll) == Fraction(227, 314)
+    assert not drops_wikitext.parse_all_drop_tables(
+        pages["Revenant maledictus"],
+        included_templates=templates,
+        page_title="Revenant maledictus",
+    )
+
+
+def test_rounding_must_not_turn_a_probable_drop_into_a_guarantee():
+    for rarity in ("1/1.03", "1/1.06", "1/1.32", "1/1.38"):
+        with pytest.raises(ValueError, match="exact fraction"):
+            drops_wikitext.parse_main_rarity(rarity)
+    assert drops_wikitext.parse_main_rarity("100/103") == (100, 103)

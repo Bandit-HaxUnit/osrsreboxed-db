@@ -12,6 +12,7 @@ import ast
 import html
 import math
 import re
+from fractions import Fraction
 
 import mwparserfromhell
 
@@ -26,7 +27,7 @@ def template_titles(text):
     )
 
 
-def number(expression):
+def number(expression, exact=False):
     from scripts.drops.drops_wikitext import evaluate_expression
 
     expression = expression.strip().replace("^", "**")
@@ -38,7 +39,7 @@ def number(expression):
 
     def visit(node):
         if isinstance(node, ast.Constant) and type(node.value) in (int, float):
-            result = node.value
+            result = Fraction(str(node.value))
         elif isinstance(node, ast.UnaryOp) and isinstance(
             node.op, (ast.UAdd, ast.USub)
         ):
@@ -87,9 +88,17 @@ def number(expression):
             raise ValueError("Unsupported included drop expression")
         if not math.isfinite(result) or abs(result) > 1e15:
             raise ValueError("Unbounded included drop expression")
-        return float(result)
+        return result
 
     value = visit(tree.body)
+    if exact:
+        value = Fraction(value)
+        return (
+            str(value.numerator)
+            if value.denominator == 1
+            else f"{value.numerator}/{value.denominator}"
+        )
+    value = float(value)
     suffix = rounded.group(0) if rounded else ""
     if not rounded:
         return format(value, ".15f").rstrip("0").rstrip(".") or "0"
@@ -106,7 +115,7 @@ def expand(text, templates, page_title="", stack=()):
         raise ValueError("Included drop template depth exceeded")
     code = mwparserfromhell.parse(text)
     # Only include sources are interpreted; ordinary monster pages are unchanged.
-    for template in list(code.filter_templates(recursive=False)):
+    for template in reversed(code.filter_templates()):
         name = str(template.name).strip()
         if not name.lower().endswith("/drops"):
             continue
@@ -131,16 +140,14 @@ def expand(text, templates, page_title="", stack=()):
 
 
 def interpret(text, page_title):
-    from scripts.drops.drops_wikitext import collect_page_vars
-
     # The wikitext tokenizer otherwise mistakes <10 ... >50 for an HTML tag
     # spanning nested conditions. Encode comparison tokens before tokenizing.
     text = re.sub(
         r"(#ifexpr:[^|]*?)(<=|>=|<|>)", lambda m: m[1] + html.escape(m[2]), text
     )
-    variables = collect_page_vars(text)
+    variables = {}
 
-    def render(value, depth=0):
+    def render(value, depth=0, exact=False):
         if depth > 32:
             raise ValueError("Cyclic included drop variable")
         code = mwparserfromhell.parse(value)
@@ -151,24 +158,39 @@ def interpret(text, page_title):
             args = [str(p.value) for p in t.params]
             result = None
             if key in ("#vardefine", "#vardefineecho"):
-                result = ""
+                defined = render(args[0], depth + 1, True) if args else ""
+                variables[argument.strip().lower()] = defined
+                result = defined if key == "#vardefineecho" else ""
             elif key == "#var":
                 if argument.strip().lower() in variables:
-                    result = render(variables[argument.strip().lower()], depth + 1)
+                    result = variables[argument.strip().lower()]
             elif key == "pagename":
                 result = page_title
             elif key == "#expr":
                 try:
-                    result = number(render(argument, depth + 1))
+                    result = number(render(argument, depth + 1, exact), exact=exact)
+                    if exact and "/" in result:
+                        result = f"({result})"
                 except (ValueError, SyntaxError, ZeroDivisionError, OverflowError):
                     pass
             elif key == "min" or key == "max":
                 try:
                     result = number(
-                        key + "(" + ",".join(render(a, depth + 1) for a in args) + ")"
+                        key
+                        + "("
+                        + ",".join(render(a, depth + 1, exact) for a in args)
+                        + ")",
+                        exact=exact,
                     )
                 except (ValueError, SyntaxError, ZeroDivisionError, OverflowError):
                     pass
+            elif key == "#if":
+                truth = bool(render(argument, depth + 1).strip())
+                result = render(
+                    args[0] if truth and args else args[1] if len(args) > 1 else "",
+                    depth + 1,
+                    exact,
+                )
             elif key == "#ifexpr":
                 try:
                     truth = (
@@ -192,24 +214,42 @@ def interpret(text, page_title):
             elif key == "#switch":
                 selected = render(argument, depth + 1).strip()
                 default = ""
+                fallthrough = False
                 for p in t.params:
                     case = str(p.name).strip()
+                    if not p.showkey:
+                        fallthrough = (
+                            fallthrough
+                            or render(str(p.value), depth + 1).strip() == selected
+                        )
+                        continue
                     if case == "#default":
                         default = str(p.value)
-                    if case == selected:
+                    if case == selected or fallthrough:
                         result = render(str(p.value), depth + 1)
                         break
                 if result is None:
                     result = render(default, depth + 1)
             if result is None:
                 for p in t.params:
-                    p.value = render(str(p.value), depth + 1)
+                    rate = key in ("dropsline", "dropslineclue") and str(
+                        p.name
+                    ).strip().lower() in ("rarity", "altrarity")
+                    rendered = render(str(p.value), depth + 1, exact or rate)
+                    if rate and re.fullmatch(r"[\d\s.()+*/-]+", rendered):
+                        rendered = number(rendered, exact=True)
+                    p.value = rendered
             else:
                 code.replace(t, result)
         return str(code)
 
     output = render(text)
     for t in mwparserfromhell.parse(output).filter_templates():
+        key = str(t.name).strip().lower()
+        if key.partition(":")[0] in ("#if", "#ifexpr", "#switch") or key.endswith(
+            "/drops"
+        ):
+            raise ValueError(f"Unresolved included drop control: {t.name}")
         if str(t.name).strip().lower() in ("dropsline", "dropslineclue"):
             for p in t.params:
                 if str(p.name).strip().lower() in (
@@ -251,3 +291,44 @@ def split_versions(body):
             cursor = block.end()
         result.append((version, text + body[cursor:]))
     return result
+
+
+# Source policy describes roll structure, never item rows or repaired output.
+# https://oldschool.runescape.wiki/w/Template:Revenants/Drops
+# Its unique and secondary rolls are separate from the ancient/main/coins roll.
+INDEPENDENT_SOURCE_SECTIONS = {
+    "revenants/drops": ("unique", "unique (on-task)", "secondary")
+}
+
+
+def independent_sections(names):
+    return {
+        section
+        for name in names
+        for section in INDEPENDENT_SOURCE_SECTIONS.get(name.lower(), ())
+    }
+
+
+def group_independent_pools(drops, independent_sections):
+    """Keep source-labelled unique and secondary rolls as exclusive weighted groups.
+
+    Rows in the ordinary main pool remain exclusive with each other. Their exact
+    rates are verified by the builder rather than classified by rounded denominators.
+    """
+    groups = {}
+    for drop in drops:
+        section = drop.subsection.lower()
+        if drop.section == "Main" and section in independent_sections:
+            groups.setdefault(section, []).append(drop)
+    for name, rows in groups.items():
+        rates = [Fraction(row.rarity) for row in rows]
+        access = sum(rates, Fraction(0))
+        if not 0 < access <= 1:
+            raise ValueError(f"Invalid included drop group probability: {name}")
+        for row, rate in zip(rows, rates):
+            conditional = rate / access
+            row.group_key = name
+            row.group_access_numerator = access.numerator
+            row.group_access_denominator = access.denominator
+            row.group_weight_numerator = conditional.numerator
+            row.group_weight_denominator = conditional.denominator
