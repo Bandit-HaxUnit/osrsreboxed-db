@@ -109,6 +109,17 @@
                         "player": "Do you have any more kittens?"
                       },
                       {
+                        "type": "condition",
+                        "text": "While already owning a kitten:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "3lTFtJ"
+                          }
+                        ],
+                        "id": "ZJlZKy"
+                      },
+                      {
                         "type": "line",
                         "speaker": "Gertrude",
                         "text": "Indeed I have. They are 100 coins each, do you want one?",
@@ -208,6 +219,17 @@
                     "steps": [
                       {
                         "player": "Do you have any more kittens?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "While already owning a kitten:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "3lTFtJ"
+                          }
+                        ],
+                        "id": "ZJlZKy"
                       },
                       {
                         "type": "line",
@@ -320,6 +342,17 @@
             "steps": [
               {
                 "player": "Do you have any more kittens?"
+              },
+              {
+                "type": "condition",
+                "text": "While already owning a kitten:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "3lTFtJ"
+                  }
+                ],
+                "id": "ZJlZKy"
               },
               {
                 "type": "line",
@@ -5630,6 +5663,20 @@
     ]
   },
   "branches": {
+    "3lTFtJ": [
+      {
+        "type": "line",
+        "speaker": "Gertrude",
+        "text": "Aren't you still raising that other kitten? Only once it's fully grown and it no longer needs your attention will I let you have another kitten.",
+        "speaker_ids": [
+          7284,
+          7723
+        ]
+      },
+      {
+        "type": "end"
+      }
+    ],
     "-KXtkQ": [
       {
         "player": "Yes please."
