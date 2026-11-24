@@ -144,12 +144,41 @@ def expand(text, templates, page_title="", stack=()):
     return str(code)
 
 
-def interpret(text, page_title):
-    # The wikitext tokenizer otherwise mistakes <10 ... >50 for an HTML tag
-    # spanning nested conditions. Encode comparison tokens before tokenizing.
-    text = re.sub(
-        r"(#ifexpr:[^|]*?)(<=|>=|<|>)", lambda m: m[1] + html.escape(m[2]), text
+def _escape_ifexpr_comparisons(text):
+    # Preserve real markup in the branches. A pipe ends the condition only
+    # if it belongs to the #ifexpr itself, so track nested template arguments.
+    frames = []
+    conditions = 0
+
+    def escape_token(match):
+        nonlocal conditions
+        token = match[0]
+        if token.startswith("{{"):
+            condition = token.endswith(":")
+            frames.append((3 if token == "{{{" else 2, condition))
+            conditions += condition
+        elif token.startswith("}}"):
+            remaining = len(token)
+            while frames and remaining >= frames[-1][0]:
+                width, condition = frames.pop()
+                remaining -= width
+                conditions -= condition
+        elif token == "|":
+            if frames and frames[-1][1]:
+                frames[-1] = (2, False)
+                conditions -= 1
+        elif conditions:
+            return html.escape(token)
+        return token
+
+    return re.sub(
+        r"\{\{\s*#ifexpr:|\{\{\{?|\}{2,}|[|<>]", escape_token, text, flags=re.I
     )
+
+
+def interpret(text, page_title):
+    # The wikitext tokenizer would otherwise treat comparisons as HTML tags.
+    text = _escape_ifexpr_comparisons(text)
 
     def bind_variable(expression, variables, depth):
         # A rate can use the unrounded form of a variable, including earlier
@@ -261,6 +290,9 @@ def interpret(text, page_title):
         return str(code)
 
     output = render(text, {})
+    control = re.search(r"\{\{\s*(#(?:if\w*|switch)\b)", output, flags=re.I)
+    if control:
+        raise ValueError(f"Unresolved included drop control: {control[1]}")
     for t in mwparserfromhell.parse(output).filter_templates():
         key = str(t.name).strip().lower()
         if key.endswith("/drops") or (
