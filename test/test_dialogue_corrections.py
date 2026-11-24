@@ -2143,6 +2143,11 @@ def test_gertrudes_cat_follows_the_revision_242_capture():
     pay = shilop[6]["options"][1]["steps"]
     assert words(pay)[3:6] == ["Shilop: 100 coins should cover it.", "100 coins! Why should I pay you?",
         "Shilop: You shouldn't, but I won't help otherwise. I never liked that cat anyway, so what do you say?"]
+    # Paying Shilop: he gives both directions, "I play at", and the player's "Fluffs ?" (recording 1001963, ticks 9151-9178).
+    assert words(pay[-1]["options"][1]["steps"])[1:] == ["action: You give the lad 100 coins.",
+        "There you go, now where did you see Fluffs ?",
+        "Shilop: I play at an abandoned lumber mill to the north east. Just beyond the Jolly Boar Inn. I saw Fluffs running around in there.",
+        "Anything else?", "Shilop: Well, you'll have to find the broken fence to get in. I'm sure you can manage that."]
     # Clicking Wilough: Shilop chips in, Wilough defends him, no apostrophe in the menu (ticks 173-274).
     wilough = variants["talking-to-shilop-and-wilough-talking-to-wilough"]
     assert words(wilough)[3] == "Shilop: I might be able to help. Fluffs followed me to our secret play area and I haven't seen her since."
