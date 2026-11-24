@@ -1617,15 +1617,47 @@ def test_included_drop_interpreter_uses_source_order_and_selected_branches():
         interpret("{{#ifexpr:1 and 1|yes|no}}", "Test")
 
 
-@pytest.mark.parametrize("condition", ["#ifeq:a|b", "#iferror:value"])
-def test_unsupported_included_controls_cannot_leak_drop_rows(condition):
+@pytest.mark.parametrize(
+    ("condition", "row"),
+    [
+        ("#ifeq:a|b", "{{DropsLine|name=A}}"),
+        ("#iferror:value", "{{DropsLine|name=A}}"),
+        ("#IFEQ:a|b", "{{HerbDropLines|1/5}}"),
+        ("#ifeq:a|b", "{{RareDropTable|1/5}}"),
+        ("#switch:<a>b", "{{DropsLine|name=A}}"),
+    ],
+)
+def test_unsupported_included_controls_cannot_leak_drop_rows(condition, row):
     from scripts.drops.included_tables import interpret
 
     with pytest.raises(ValueError, match="Unresolved included drop control"):
-        interpret(
-            "{{" + condition + "|{{DropsLine|name=A}}|{{DropsLine|name=B}}}}",
-            "Test",
-        )
+        interpret("{{" + condition + "|" + row + "|}}", "Test")
+
+
+@pytest.mark.parametrize("condition", ["1<2 and 3<2", "5<>1"])
+def test_invalid_included_comparisons_cannot_leak_branches(condition):
+    from scripts.drops.included_tables import interpret
+
+    with pytest.raises(ValueError, match="Unresolved included drop condition"):
+        interpret("{{#ifexpr:" + condition + "|yes|no}}", "Test")
+
+
+@pytest.mark.parametrize(
+    ("condition", "expected"),
+    [
+        ("#ifexpr:{{#var:Q|0}}>1", "no"),
+        ("#ifexpr:{{min|{{#var:a}}|2}}>1", "<small>yes</small>"),
+        ("#ifexpr:{{#ifexpr:1<2|3|0}}>1", "<small>yes</small>"),
+        ("#IFEXPR:5>1", "<small>yes</small>"),
+    ],
+)
+def test_included_comparisons_preserve_nested_arguments_and_branch_markup(
+    condition, expected
+):
+    from scripts.drops.included_tables import interpret
+
+    text = "{{#vardefine:a|3}}{{" + condition + "|<small>yes</small>|no}}"
+    assert interpret(text, "Test") == expected
 
 
 def test_included_switch_uses_unnamed_last_value_as_default():
