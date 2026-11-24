@@ -19,7 +19,7 @@
         "prompt": "Start The Golem quest?",
         "options": [
           {
-            "text": "Yes",
+            "text": "Yes.",
             "steps": [
               {
                 "player": "Shall I try to repair you?"
@@ -41,7 +41,7 @@
             "quest": "The Golem"
           },
           {
-            "text": "No",
+            "text": "No.",
             "steps": [
               {
                 "player": "I'm not going to find a conversation here!"
@@ -416,7 +416,7 @@
               {
                 "type": "line",
                 "speaker": "Elissa",
-                "text": "AI wrote that letter to my late husband when he was exploring there.",
+                "text": "I wrote that letter to my late husband when he was exploring there.",
                 "speaker_ids": [
                   5138
                 ]
@@ -424,7 +424,7 @@
               {
                 "type": "line",
                 "speaker": "Elissa",
-                "text": "that was a great city as well, but the museum could only fund one excavation and this one was closer to home.",
+                "text": "That was a great city as well, but the museum could only fund one excavation and this one was closer to home.",
                 "speaker_ids": [
                   5138
                 ]
@@ -436,6 +436,14 @@
                 "speaker_ids": [
                   5138
                 ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I need to go.",
+            "steps": [
+              {
+                "player": "Sorry, I need to go."
               }
             ]
           }
@@ -497,6 +505,14 @@
                 "speaker_ids": [
                   5138
                 ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I need to go.",
+            "steps": [
+              {
+                "player": "Sorry, I need to go."
               }
             ]
           }
@@ -618,7 +634,44 @@
         "type": "choice",
         "options": [
           {
-            "text": "Fossil Island"
+            "text": "Talk about Fossil Island.",
+            "condition": "After Bone Voyage:",
+            "id": "8odAmY",
+            "steps": [
+              {
+                "player": "I've got some questions regarding Fossil Island."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Ah, how can I help?",
+                "speaker_ids": [
+                  5214
+                ]
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What can I do with fossils I find on Fossil Island?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "93lpu2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nevermind.",
+                    "steps": [
+                      {
+                        "player": "Nevermind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Have you any interesting news?",
@@ -629,10 +682,10 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "dwJpG2"
+                    "branch": "MoIger"
                   }
                 ],
-                "id": "eSsOcb"
+                "id": "6GMQvw"
               },
               {
                 "type": "condition",
@@ -643,7 +696,7 @@
                     "branch": "X9TO_8"
                   }
                 ],
-                "id": "1RIiH_"
+                "id": "vJxRlb"
               }
             ]
           },
@@ -740,7 +793,7 @@
                     "branch": "1wehEl"
                   }
                 ],
-                "id": "Lg_PTN"
+                "id": "TCe4Ju"
               },
               {
                 "type": "condition",
@@ -751,7 +804,7 @@
                     "branch": "YRgjB_"
                   }
                 ],
-                "id": "MM8_yB"
+                "id": "F6LNBC"
               },
               {
                 "type": "condition",
@@ -789,7 +842,7 @@
                     ]
                   }
                 ],
-                "id": "2uls3V"
+                "id": "1aURsU"
               },
               {
                 "type": "condition",
@@ -812,7 +865,7 @@
                           {
                             "type": "message",
                             "text": "The curator hands you a medallion.",
-                            "id": "qrOUUk"
+                            "id": "U9LNui"
                           }
                         ]
                       },
@@ -823,7 +876,7 @@
                     ]
                   }
                 ],
-                "id": "Rp1F04"
+                "id": "UQ4-IT"
               }
             ]
           }
@@ -902,7 +955,44 @@
         "type": "choice",
         "options": [
           {
-            "text": "Fossil Island"
+            "text": "Talk about Fossil Island.",
+            "condition": "After Bone Voyage:",
+            "id": "7sx9Pa",
+            "steps": [
+              {
+                "player": "I've got some questions regarding Fossil Island."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Ah, how can I help?",
+                "speaker_ids": [
+                  5214
+                ]
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What can I do with fossils I find on Fossil Island?",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "93lpu2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nevermind.",
+                    "steps": [
+                      {
+                        "player": "Nevermind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "text": "Have you any interesting news?",
@@ -913,10 +1003,10 @@
                 "steps": [
                   {
                     "type": "call",
-                    "branch": "dwJpG2"
+                    "branch": "MoIger"
                   }
                 ],
-                "id": "eSsOcb"
+                "id": "6GMQvw"
               },
               {
                 "type": "condition",
@@ -927,7 +1017,7 @@
                     "branch": "X9TO_8"
                   }
                 ],
-                "id": "1RIiH_"
+                "id": "vJxRlb"
               }
             ]
           },
@@ -997,7 +1087,7 @@
                     "branch": "1wehEl"
                   }
                 ],
-                "id": "Lg_PTN"
+                "id": "TCe4Ju"
               },
               {
                 "type": "condition",
@@ -1008,7 +1098,7 @@
                     "branch": "YRgjB_"
                   }
                 ],
-                "id": "MM8_yB"
+                "id": "F6LNBC"
               },
               {
                 "type": "condition",
@@ -1046,7 +1136,7 @@
                     ]
                   }
                 ],
-                "id": "2uls3V"
+                "id": "1aURsU"
               },
               {
                 "type": "condition",
@@ -1069,7 +1159,7 @@
                           {
                             "type": "message",
                             "text": "The curator hands you a medallion.",
-                            "id": "qrOUUk"
+                            "id": "U9LNui"
                           }
                         ]
                       },
@@ -1080,7 +1170,7 @@
                     ]
                   }
                 ],
-                "id": "Rp1F04"
+                "id": "UQ4-IT"
               }
             ]
           }
@@ -1607,7 +1697,20 @@
         ]
       }
     ],
-    "dwJpG2": [
+    "93lpu2": [
+      {
+        "player": "What can I do with fossils I find on Fossil Island?"
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "I'm not entirely sure just yet.",
+        "speaker_ids": [
+          5214
+        ]
+      }
+    ],
+    "MoIger": [
       {
         "player": "Have you any interesting news?"
       },
@@ -1638,7 +1741,7 @@
         "target": "Transcript:Bone Voyage",
         "section": "",
         "text": "Continues in Transcript:Bone Voyage",
-        "id": "C60sf8",
+        "id": "G7E9Z9",
         "resolved": false,
         "page_available": true
       }
