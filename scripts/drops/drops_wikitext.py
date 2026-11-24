@@ -104,6 +104,7 @@ class ParsedDrop:
     group_access_denominator: int = 0
     group_weight_numerator: int = 0
     group_weight_denominator: int = 0
+    roll_group: str = ""
 
 
 @dataclass
@@ -2140,18 +2141,19 @@ def parse_all_drop_tables(
                 # After rarity resolution, which can move rows between sections.
                 drops = [apply_perfect_kill_condition(drop) for drop in drops]
             if has_includes:
-                included_tables.group_independent_pools(drops, independent_sections)
+                included_tables.mark_independent_pools(drops, independent_sections)
             accesses = _parse_subtable_accesses(variant_body)
             # Only uniform main rolls can be represented by a table-wide count.
-            # A Pre-roll row without its own rolls is rolled once per kill whatever the table
-            # repeats (the Wiki's "rolls" is on the repeated rows only), so it does not make the
-            # count mixed; build_table_json flags such rows `once_per_kill`. A plain row without
-            # rolls does (the page may simply have omitted it).
+            # A pre-roll or independent group row without its own rolls is rolled once per
+            # kill, so it does not make the count mixed. A plain row without rolls does.
             roll_counts = {
                 drop.rolls
                 for drop in drops
                 if drop.section == SECTION_MAIN
-                and not (drop.rolls == 1 and drop.subsection.lower() == "pre-roll")
+                and not (
+                    drop.rolls == 1
+                    and (drop.subsection.lower() == "pre-roll" or drop.roll_group)
+                )
             } | {access.rolls for access in accesses}
             # A superior Slayer page states the count for the whole table ("will always roll 3 additional
             # items"), so when every explicit count on it is that number, a plain row that omitted `rolls`

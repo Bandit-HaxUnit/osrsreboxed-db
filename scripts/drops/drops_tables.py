@@ -161,6 +161,7 @@ class ResolvedEntry:
     group_access_denominator: int = 0
     group_weight_numerator: int = 0
     group_weight_denominator: int = 0
+    roll_group: str = ""
     # The row's own `rolls` parameter on the Wiki (1 when it has none).
     rolls: int = 1
 
@@ -397,8 +398,10 @@ def _resolve_entry(drop: ParsedDrop, items: ItemIdLookup) -> Optional[ResolvedEn
             weight=weight,
             roll_denominator=roll_denominator,
             subsection=drop.subsection,
+            rarity_raw=drop.rarity,
             is_nothing=True,
             rolls=drop.rolls,
+            roll_group=drop.roll_group,
         )
 
     if not wikitext.has_known_drop_rate(drop.rarity):
@@ -427,6 +430,7 @@ def _resolve_entry(drop: ParsedDrop, items: ItemIdLookup) -> Optional[ResolvedEn
         group_access_denominator=drop.group_access_denominator,
         group_weight_numerator=drop.group_weight_numerator,
         group_weight_denominator=drop.group_weight_denominator,
+        roll_group=drop.roll_group,
     )
 
     if drop.section == SECTION_GUARANTEED:
@@ -607,6 +611,55 @@ def _build_conditional_groups(
             )
         )
     return remaining, groups
+
+
+def _scale_pool_rates(
+    entries: List[ResolvedEntry], rates: List[Fraction]
+) -> Tuple[List[ResolvedEntry], int]:
+    denominator = 1
+    for rate in rates:
+        denominator = (
+            denominator * rate.denominator // gcd(denominator, rate.denominator)
+        )
+    return [
+        replace(
+            entry,
+            weight=rate.numerator * (denominator // rate.denominator),
+            roll_denominator=denominator,
+            out_of=denominator,
+        )
+        for entry, rate in zip(entries, rates)
+    ], denominator
+
+
+def _build_independent_rolls(
+    main: List[ResolvedEntry],
+) -> Tuple[List[ResolvedEntry], List[SeparateRoll]]:
+    grouped: Dict[str, List[ResolvedEntry]] = {}
+    remaining = []
+    for entry in main:
+        if entry.roll_group:
+            grouped.setdefault(entry.roll_group, []).append(entry)
+        else:
+            remaining.append(entry)
+
+    rolls = []
+    for name, entries in grouped.items():
+        rates = [Fraction(entry.rarity_raw) for entry in entries]
+        if not 0 < sum(rates) <= 1:
+            raise ValueError(f"Invalid included drop group probability: {name}")
+        # Each weight is its unconditional chance. Unused slots in the group's
+        # shared denominator are misses, with a separate roll on the main pool.
+        normalized, denominator = _scale_pool_rates(entries, rates)
+        rolls.append(
+            SeparateRoll(
+                normalized[0].subsection,
+                sum(entry.weight for entry in normalized),
+                denominator,
+                normalized,
+            )
+        )
+    return remaining, rolls
 
 
 def stacked_assumed_rolls(separate_rolls: List[SeparateRoll]) -> List[SeparateRoll]:
@@ -821,7 +874,8 @@ def build_table_spec(
             table.reward_policy, tertiary, _entry_json
         )
 
-    standard_main, conditional_groups = _build_conditional_groups(main)
+    standard_main, independent_rolls = _build_independent_rolls(main)
+    standard_main, conditional_groups = _build_conditional_groups(standard_main)
 
     pre_roll_drops = []
     standard_main_filtered = []
@@ -842,20 +896,7 @@ def build_table_spec(
         rates = [Fraction(entry.rarity_raw) for entry in standard_main]
         if accesses or not 0 < sum(rates, Fraction(0)) <= 1:
             raise ValueError(f"{wiki_page}: included main pool does not sum to one")
-        main_max_roll = 1
-        for rate in rates:
-            main_max_roll = (
-                main_max_roll * rate.denominator // gcd(main_max_roll, rate.denominator)
-            )
-        main_entries = [
-            replace(
-                entry,
-                weight=rate.numerator * (main_max_roll // rate.denominator),
-                roll_denominator=main_max_roll,
-                out_of=main_max_roll,
-            )
-            for entry, rate in zip(standard_main, rates)
-        ]
+        main_entries, main_max_roll = _scale_pool_rates(standard_main, rates)
         unused = main_max_roll - sum(entry.weight for entry in main_entries)
         if unused:
             # Unoccupied source slots are no-drop outcomes, not extra item rolls.
@@ -889,6 +930,7 @@ def build_table_spec(
                 roll.access_denominator,
                 ", ".join(entry.name for entry in roll.entries),
             )
+    separate_rolls = independent_rolls + separate_rolls
     if main_max_roll is not None:
         main_entries, replacement_weight = _apply_currency_replacements(main_entries)
         used = (
@@ -1002,6 +1044,7 @@ def _entry_json(
                 "out_of": out_of,
                 "pre_roll": True if pre_roll else None,
                 "separate_roll": True if separate else None,
+                "roll_group": entry.roll_group or None,
             }
         )
     if not entry.name:
@@ -1040,6 +1083,7 @@ def _entry_json(
             "always": True if always else None,
             "pre_roll": True if pre_roll else None,
             "separate_roll": True if separate else None,
+            "roll_group": entry.roll_group or None,
             "weight": entry.weight,
             "out_of": out_of,
             "rarity": rarity,

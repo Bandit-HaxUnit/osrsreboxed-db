@@ -1617,6 +1617,53 @@ def test_included_drop_interpreter_uses_source_order_and_selected_branches():
         interpret("{{#ifexpr:1 and 1|yes|no}}", "Test")
 
 
+@pytest.mark.parametrize("condition", ["#ifeq:a|b", "#iferror:value"])
+def test_unsupported_included_controls_cannot_leak_drop_rows(condition):
+    from scripts.drops.included_tables import interpret
+
+    with pytest.raises(ValueError, match="Unresolved included drop control"):
+        interpret(
+            "{{" + condition + "|{{DropsLine|name=A}}|{{DropsLine|name=B}}}}",
+            "Test",
+        )
+
+
+def test_included_switch_uses_unnamed_last_value_as_default():
+    from scripts.drops.included_tables import interpret
+
+    row = "{{DropsLine|name=Coins|quantity=1|rarity=1/2}}"
+    assert interpret("{{#switch:z|a=A|" + row + "}}", "Test") == row
+    assert interpret("{{#switch:a|a=A|" + row + "}}", "Test") == "A"
+
+
+@pytest.mark.parametrize(
+    ("variable", "value"),
+    [("{{#var:unset}}", ""), ("{{#var:unset|fallback}}", "fallback")],
+)
+def test_unset_included_variables_use_their_default_or_empty(variable, value):
+    from scripts.drops.included_tables import interpret
+
+    assert interpret(variable, "Test") == value
+    assert interpret("{{#if:" + variable + "|yes|no}}", "Test") == (
+        "yes" if value else "no"
+    )
+
+
+def test_included_variables_preserve_rounding_except_in_rates():
+    from scripts.drops.included_tables import interpret
+
+    rendered = interpret(
+        "{{#vardefine:base|{{#expr:7/3 round 0}}}}"
+        "{{#vardefine:rate|{{#expr:{{#var:base}}*2 round 0}}}}"
+        "{{#vardefine:base|3}}"
+        "{{DropsLine|name=Coins|quantity={{#var:rate}}"
+        "|rarity={{#ifexpr:1|1/{{#var:rate}}}}"
+        "|altrarity={{#switch:z|a=1/10|1/{{#var:rate}}}}}}",
+        "Test",
+    )
+    assert rendered == "{{DropsLine|name=Coins|quantity=4|rarity=3/14|altrarity=3/14}}"
+
+
 def test_included_revenant_rates_remain_exact_exclusive_pools():
     import json
     from fractions import Fraction
@@ -1639,13 +1686,30 @@ def test_included_revenant_rates_remain_exact_exclusive_pools():
             text, included_templates=templates, page_title=title
         ):
             spec = drops_tables.build_table_spec(title, parsed, items)
-            assert not spec.separate_rolls, title
             assert sum(row.weight for row in spec.main) == spec.main_max_roll, title
-            for group in spec.conditional_groups:
-                assert (
-                    sum(row.group_weight_numerator for row in group.entries)
-                    == group.entries[0].group_weight_denominator
+            rows = drops_tables.build_table_json(spec)["entries"]
+            unique = (
+                "Unique" if parsed.drop_variant == "Off-task" else "Unique (on-task)"
+            )
+            for section in (unique, "Secondary"):
+                group = [row for row in rows if row.get("section") == section]
+                assert group and all(row.get("separate_roll") for row in group), title
+                assert all(
+                    "pre_roll" not in row and "group_access_out_of" not in row
+                    for row in group
                 ), title
+                assert {row["roll_group"] for row in group} == {section.lower()}, title
+                assert {row["out_of"] for row in group} == {group[0]["out_of"]}, title
+                assert (
+                    0 < sum(row["weight"] for row in group) < group[0]["out_of"]
+                ), title
+                assert {
+                    row["name"]: Fraction(row["weight"], row["out_of"]) for row in group
+                } == {
+                    drop.name: Fraction(drop.rarity)
+                    for drop in parsed.drops
+                    if drop.subsection == section
+                }, title
             if title == "Revenant hobgoblin":
                 coins = next(row for row in spec.main if row.name == "Coins")
                 assert Fraction(coins.weight, spec.main_max_roll) == Fraction(227, 314)

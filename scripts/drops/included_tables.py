@@ -13,8 +13,13 @@ import html
 import math
 import re
 from fractions import Fraction
+from functools import cache
 
 import mwparserfromhell
+
+
+DROP_ROWS = ("dropsline", "dropslineclue")
+RATE_FIELDS = ("rarity", "altrarity")
 
 
 def template_titles(text):
@@ -145,11 +150,25 @@ def interpret(text, page_title):
     text = re.sub(
         r"(#ifexpr:[^|]*?)(<=|>=|<|>)", lambda m: m[1] + html.escape(m[2]), text
     )
-    variables = {}
 
-    def render(value, depth=0, exact=False):
+    def bind_variable(expression, variables, depth):
+        # A rate can use the unrounded form of a variable, including earlier
+        # definitions it referenced. Keep the scope at the point of assignment.
+        scope = variables.copy()
+
+        @cache
+        def rate():
+            return render(expression, scope.copy(), depth, exact=True)
+
+        return render(expression, variables, depth), rate
+
+    def render(value, variables, depth=0, exact=False):
         if depth > 32:
             raise ValueError("Cyclic included drop variable")
+
+        def nested(value, exact=exact):
+            return render(value, variables, depth + 1, exact)
+
         code = mwparserfromhell.parse(value)
         for t in list(code.filter_templates(recursive=False)):
             name = str(t.name).strip()
@@ -158,17 +177,25 @@ def interpret(text, page_title):
             args = [str(p.value) for p in t.params]
             result = None
             if key in ("#vardefine", "#vardefineecho"):
-                defined = render(args[0], depth + 1, True) if args else ""
-                variables[argument.strip().lower()] = defined
-                result = defined if key == "#vardefineecho" else ""
+                defined, rate = bind_variable(
+                    args[0] if args else "", variables, depth + 1
+                )
+                variables[argument.strip().lower()] = (defined, rate)
+                result = (
+                    (rate() if exact else defined) if key == "#vardefineecho" else ""
+                )
             elif key == "#var":
-                if argument.strip().lower() in variables:
-                    result = variables[argument.strip().lower()]
+                variable = variables.get(argument.strip().lower())
+                if variable is None:
+                    result = nested(args[0]) if args else ""
+                else:
+                    defined, rate = variable
+                    result = rate() if exact else defined
             elif key == "pagename":
                 result = page_title
             elif key == "#expr":
                 try:
-                    result = number(render(argument, depth + 1, exact), exact=exact)
+                    result = number(nested(argument), exact=exact)
                     if exact and "/" in result:
                         result = f"({result})"
                 except (ValueError, SyntaxError, ZeroDivisionError, OverflowError):
@@ -176,25 +203,20 @@ def interpret(text, page_title):
             elif key == "min" or key == "max":
                 try:
                     result = number(
-                        key
-                        + "("
-                        + ",".join(render(a, depth + 1, exact) for a in args)
-                        + ")",
+                        key + "(" + ",".join(nested(a) for a in args) + ")",
                         exact=exact,
                     )
+                    if exact and "/" in result:
+                        result = f"({result})"
                 except (ValueError, SyntaxError, ZeroDivisionError, OverflowError):
                     pass
             elif key == "#if":
-                truth = bool(render(argument, depth + 1).strip())
-                result = render(
-                    args[0] if truth and args else args[1] if len(args) > 1 else "",
-                    depth + 1,
-                    exact,
-                )
+                branch = 0 if nested(argument, exact=False).strip() else 1
+                result = nested(args[branch]) if branch < len(args) else ""
             elif key == "#ifexpr":
                 try:
                     truth = (
-                        float(number(html.unescape(render(argument, depth + 1)))) != 0
+                        float(number(html.unescape(nested(argument, exact=False)))) != 0
                     )
                 except (
                     ValueError,
@@ -203,58 +225,57 @@ def interpret(text, page_title):
                     OverflowError,
                 ) as exc:
                     raise ValueError("Unresolved included drop condition") from exc
-                result = render(
-                    (
-                        args[0]
-                        if truth and args
-                        else args[1] if not truth and len(args) > 1 else ""
-                    ),
-                    depth + 1,
-                )
+                branch = 0 if truth else 1
+                result = nested(args[branch]) if branch < len(args) else ""
             elif key == "#switch":
-                selected = render(argument, depth + 1).strip()
+                selected = nested(argument, exact=False).strip()
                 default = ""
                 fallthrough = False
-                for p in t.params:
+                for index, p in enumerate(t.params):
                     case = str(p.name).strip()
+                    value = str(p.value)
                     if not p.showkey:
-                        fallthrough = (
-                            fallthrough
-                            or render(str(p.value), depth + 1).strip() == selected
-                        )
+                        if index == len(t.params) - 1:
+                            default = value
+                        elif not fallthrough:
+                            fallthrough = nested(value, exact=False).strip() == selected
                         continue
                     if case == "#default":
-                        default = str(p.value)
+                        default = value
                     if case == selected or fallthrough:
-                        result = render(str(p.value), depth + 1)
+                        result = nested(value)
                         break
                 if result is None:
-                    result = render(default, depth + 1)
+                    result = nested(default)
             if result is None:
                 for p in t.params:
-                    rate = key in ("dropsline", "dropslineclue") and str(
-                        p.name
-                    ).strip().lower() in ("rarity", "altrarity")
-                    rendered = render(str(p.value), depth + 1, exact or rate)
-                    if rate and re.fullmatch(r"[\d\s.()+*/-]+", rendered):
+                    rate_field = (
+                        key in DROP_ROWS and str(p.name).strip().lower() in RATE_FIELDS
+                    )
+                    rendered = nested(str(p.value), exact=exact or rate_field)
+                    if rate_field and re.fullmatch(r"[\d\s.()+*/-]+", rendered):
                         rendered = number(rendered, exact=True)
                     p.value = rendered
             else:
                 code.replace(t, result)
         return str(code)
 
-    output = render(text)
+    output = render(text, {})
     for t in mwparserfromhell.parse(output).filter_templates():
         key = str(t.name).strip().lower()
-        if key.partition(":")[0] in ("#if", "#ifexpr", "#switch") or key.endswith(
-            "/drops"
+        if key.endswith("/drops") or (
+            key.startswith("#")
+            and any(
+                str(child.name).strip().lower() in DROP_ROWS
+                for child in mwparserfromhell.parse(str(t)).filter_templates()[1:]
+            )
         ):
             raise ValueError(f"Unresolved included drop control: {t.name}")
-        if str(t.name).strip().lower() in ("dropsline", "dropslineclue"):
+        if key in DROP_ROWS:
             for p in t.params:
                 if str(p.name).strip().lower() in (
                     "quantity",
-                    "rarity",
+                    *RATE_FIELDS,
                 ) and "{{" in str(p.value):
                     raise ValueError(f"Unresolved included drop field: {p}")
     return output
@@ -309,26 +330,9 @@ def independent_sections(names):
     }
 
 
-def group_independent_pools(drops, independent_sections):
-    """Keep source-labelled unique and secondary rolls as exclusive weighted groups.
-
-    Rows in the ordinary main pool remain exclusive with each other. Their exact
-    rates are verified by the builder rather than classified by rounded denominators.
-    """
-    groups = {}
+def mark_independent_pools(drops, independent_sections):
+    """Mark source sections that roll separately from the ordinary main pool."""
     for drop in drops:
         section = drop.subsection.lower()
         if drop.section == "Main" and section in independent_sections:
-            groups.setdefault(section, []).append(drop)
-    for name, rows in groups.items():
-        rates = [Fraction(row.rarity) for row in rows]
-        access = sum(rates, Fraction(0))
-        if not 0 < access <= 1:
-            raise ValueError(f"Invalid included drop group probability: {name}")
-        for row, rate in zip(rows, rates):
-            conditional = rate / access
-            row.group_key = name
-            row.group_access_numerator = access.numerator
-            row.group_access_denominator = access.denominator
-            row.group_weight_numerator = conditional.numerator
-            row.group_weight_denominator = conditional.denominator
+            drop.roll_group = section
