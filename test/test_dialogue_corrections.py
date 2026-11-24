@@ -2103,6 +2103,81 @@ def test_auguste_replace_items_option_holds_every_reclaim_condition():
     assert [step["text"] for step in auguste["branches"][call["branch"]]] == [step["text"] for step in replace]
 
 
+def test_gertrudes_cat_follows_the_revision_242_capture():
+    sources = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )
+    corrections = json.loads(
+        (config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")
+    )
+    for name, cache, title in (
+        ("Gertrude's Cat", "quest-pages", "Transcript:Gertrude's Cat"),
+        ("Gertrude", "wiki-pages", "Transcript:Gertrude"),
+    ):
+        # Source inputs over the cached revision, not edits of the generated record.
+        assert name not in corrections
+        source = sources[name]
+        page = json.loads((config.DATA_PATH / f"dialogues/{cache}.json").read_text())[title]
+        assert source["revision"] == page["revision"]
+        lines = page["wikitext"].splitlines()
+        for fix in source["lines"]:
+            assert hashlib.sha256(lines[fix["line"] - 1].encode()).hexdigest() == fix["sha256"]
+        raw = apply_capture_lines(name, page["wikitext"], source, page["revision"])
+        assert raw == apply_capture_lines(name, page["wikitext"], source, page["revision"])
+        with pytest.raises(ValueError, match="Stale dialogue capture source"):
+            apply_capture_lines(name, page["wikitext"], source, page["revision"] + 1)
+
+    records = json.loads(
+        (config.DOCS_PATH / "npc-dialogues.json").read_text(),
+        object_hook=lambda node: {k: v for k, v in node.items() if k not in ("speaker_ids", "id")},
+    )
+    variants = records["Gertrude's Cat"]["variants"]
+    words = lambda steps: [step.get("player") or f"{step.get('speaker', step.get('type'))}: {step.get('text')}" for step in steps]
+    # The quest starts as the player agrees, before Gertrude's thanks (tick 63).
+    agree = variants["starting-off"][7]["options"][0]["steps"]
+    assert agree[0] == {"player": "Well, I suppose I could."}
+    assert agree[1]["hook"] == "quest:gertrude-s-cat:start"
+    # Clicking Shilop: he alone asks for and refuses the coins (ticks 148-240).
+    shilop = variants["talking-to-shilop-and-wilough"]
+    assert words(shilop[:6])[1] == "Shilop: I didn't mean to take it! I just forgot to pay."
+    pay = shilop[6]["options"][1]["steps"]
+    assert words(pay)[3:6] == ["Shilop: 100 coins should cover it.", "100 coins! Why should I pay you?",
+        "Shilop: You shouldn't, but I won't help otherwise. I never liked that cat anyway, so what do you say?"]
+    # Paying Shilop: he gives both directions, "I play at", and the player's "Fluffs ?" (recording 1001963, ticks 9151-9178).
+    assert words(pay[-1]["options"][1]["steps"])[1:] == ["action: You give the lad 100 coins.",
+        "There you go, now where did you see Fluffs ?",
+        "Shilop: I play at an abandoned lumber mill to the north east. Just beyond the Jolly Boar Inn. I saw Fluffs running around in there.",
+        "Anything else?", "Shilop: Well, you'll have to find the broken fence to get in. I'm sure you can manage that."]
+    # Clicking Wilough: Shilop chips in, Wilough defends him, no apostrophe in the menu (ticks 173-274).
+    wilough = variants["talking-to-shilop-and-wilough-talking-to-wilough"]
+    assert words(wilough)[3] == "Shilop: I might be able to help. Fluffs followed me to our secret play area and I haven't seen her since."
+    menu = wilough[6]["options"]
+    assert [option["text"] for option in menu][2] == "Well never mind, it's Fluffs loss."
+    assert words(menu[0]["steps"])[1:] == ["Shilop: W..wh..what?! Y..you wouldn't! A young lad like me!",
+        "Wilough: If you want to hurt my brother you'll first have to get by me!",
+        "message: You decide it's best not to hurt the boy."]
+    paid = menu[1]["steps"][-1]["options"][1]["steps"]
+    assert words(paid)[1:] == ["action: You give the lad 100 coins.", "There you go, now where did you see Fluffs?",
+        "Shilop: We play at an abandoned lumber mill to the north east. Just beyond the Jolly Boar Inn. I saw Fluffs running around in there.",
+        "Anything else?", "Wilough: Well, you'll have to find the broken fence to get in. I'm sure you can manage that."]
+    assert words(variants["talking-to-shilop-and-wilough-talking-to-wilough-again"])[1].startswith("Wilough: Weren't you listening?")
+    assert words(variants["talking-to-shilop-and-wilough-talking-to-them-again"])[1].startswith("Shilop: Weren't you listening?")
+    assert words(variants["finding-fluffs-talking-to-wilough-again"])[1:5] == ["Wilough: You think you're tough do you?",
+        "Pardon?", "Wilough: I can beat anyone up!", "Shilop: He can you know!"]
+    # Message boxes, as live shows them.
+    assert variants["finding-fluffs-pick-up-fluffs"][-1] == {"type": "message", "text": "Maybe the cat is thirsty?"}
+    assert variants["making-seasoned-sardines-returning-the-kitten-to-fluffs"][-1] == {
+        "type": "message", "text": "Fluffs has run off home with her offspring."}
+    finish = words(variants["finishing-up"])
+    assert "message: Gertrude gives you a hug." in finish and "message: Gertrude gives you a kitten." in finish
+    assert "action: ... and some food!" in finish
+    assert variants["after-the-quest-pick-up-fluffs"] == [{"player": "Oh, it looks like Fluffs has returned. I'd better leave her alone."}]
+    # Gertrude refuses another kitten while one is still being raised (ticks 883-884).
+    kittens = records["Gertrude"]["variants"]["standard-dialogue-on-pay-to-play-worlds"][4]["options"][0]["steps"]
+    assert kittens[1]["type"] == "condition" and kittens[1]["text"] == "While already owning a kitten:"
+    assert kittens[1]["steps"][0]["npc"].startswith("Aren't you still raising that other kitten?")
+
+
 def test_the_golem_capture_lines_and_the_curators_fossil_island_menu():
     sources = json.loads(
         (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
