@@ -9,7 +9,8 @@ Reads the monster wiki page text already fetched by ``scripts.monsters.update``,
 parses every ``==Drops==`` table on those pages, and writes the dump to
 ``docs/drops-json/``. Item and npc IDs come from the databases in this
 repository. The only network access is the wiki's shared drop tables and
-include-only ``{{Uniques/...}}`` templates, both cached under ``data/drops/``.
+include-only ``{{Uniques/...}}`` and parameterized ``{{.../Drops}}`` templates,
+all cached under ``data/drops/``.
 
 Usage:
     python -m scripts.drops.update
@@ -39,12 +40,14 @@ import json
 import logging
 from pathlib import Path
 from typing import Dict, Iterable, Optional
-from urllib.parse import unquote
+from urllib.parse import unquote, quote
+
+import requests
 
 import config
 from builders.run_log import begin_run
 from osrsreboxed import items_api
-from scripts.drops import drops_tables
+from scripts.drops import drops_tables, included_tables
 from scripts.drops.drops_tables import ItemIdLookup, NpcDropsAggregator
 from scripts.drops.drops_wikitext import (
     has_non_numeric_npc_id,
@@ -186,6 +189,50 @@ def load_unique_template_wikitext(
     return templates
 
 
+def load_included_template_wikitext(
+    names: Iterable[str], refresh=False
+) -> Dict[str, str]:
+    """Cache official raw source for parameterized /Drops transclusions.
+
+    Discover nested includes too. Missing sources abort rather than silently
+    publishing an empty monster table. Raw endpoint avoids API rendering.
+    """
+    cache_file = config.DATA_DROPS_PATH / "included-templates-wiki-page-text.json"
+    cached = json.loads(cache_file.read_text()) if cache_file.exists() else {}
+    templates = {}
+    pending = sorted(set(names))
+    while pending:
+        name = pending.pop(0)
+        if name in templates:
+            continue
+        if len(templates) >= 128:
+            raise ValueError("Too many nested included drop templates")
+        title = f"Template:{name}"
+        text = None if refresh else cached.get(title)
+        if not text:
+            response = requests.get(
+                "https://oldschool.runescape.wiki/w/"
+                + quote(title, safe="/:")
+                + "?action=raw",
+                headers=config.custom_agent,
+                timeout=30,
+            )
+            response.raise_for_status()
+            text = response.text
+            if not text or text.lstrip().startswith("<!"):
+                raise ValueError(f"Invalid included drop template source: {title}")
+            cached[title] = text
+            cache_file.parent.mkdir(parents=True, exist_ok=True)
+            cache_file.write_text(
+                json.dumps(cached, ensure_ascii=False, indent=2) + "\n"
+            )
+        templates[name] = text
+        pending.extend(
+            sorted(set(included_tables.template_titles(text)) - templates.keys())
+        )
+    return templates
+
+
 def load_shared_table_wikitext(refresh: bool = False) -> Dict[str, Optional[str]]:
     """Load the wikitext of every shared drop table page, fetching any not cached.
 
@@ -247,6 +294,15 @@ def generate(
         unique_names, refresh=refresh_unique
     )
 
+    included_templates = load_included_template_wikitext(
+        {
+            name
+            for text in all_wikitext.values()
+            for name in included_tables.template_titles(text or "")
+        },
+        refresh=refresh_unique,
+    )
+
     aggregator = NpcDropsAggregator(npc_names=npc_names)
     scanned_pages = 0
     skipped_pages = 0
@@ -272,7 +328,10 @@ def generate(
             continue
 
         tables = parse_all_drop_tables(
-            page_wikitext, unique_templates=unique_templates
+            page_wikitext,
+            unique_templates=unique_templates,
+            included_templates=included_templates,
+            page_title=page_title,
         )
         if not tables:
             skipped_pages += 1

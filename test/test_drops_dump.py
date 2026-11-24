@@ -1476,3 +1476,105 @@ def test_herb_roll_counts_are_read_from_the_wikis_roll_once_or_twice_wording():
         "[[herb drop table]].}}{{HerbDropLines|19/128}}"
     )
     assert all(not a.roll_count_weights for a in dark_beast)
+
+
+def test_parameterized_included_drop_tables_do_not_vanish():
+    source = "{{Infobox Monster|id=7931}}\n{{Family/Drops|combat=15}}"
+    templates = {"Family/Drops": """==Drops==
+{{#vardefine:A|{{#expr:floor(2200/floor(sqrt({{{combat|135}}})))}}}}
+===100%===
+{{DropsTableHead}}{{DropsLine|name=Revenant ether|quantity=2-{{#expr:floor(sqrt({{{combat|135}}})+1)*2}}|rarity=Always}}{{DropsTableBottom}}
+===Unique===
+{{DropsTableHead|dropversion=Off-task}}{{DropsLine|name=Amulet of avarice|quantity=1|rarity=1/{{#expr:{{#var:A}}*2}}}}{{DropsTableBottom}}
+{{DropsTableHead|dropversion=On-task}}{{DropsLine|name=Amulet of avarice|quantity=1|rarity=1/{{#var:A}}}}{{DropsTableBottom}}
+===Other===
+{{DropsTableHead}}{{#ifexpr:{{{combat}}}<132|{{DropsLine|name=Coins|quantity=1|rarity=1/2}}}}
+{{#switch:{{PAGENAME}}|Revenant goblin={{DropsLine|name=Goblin champion scroll|quantity=1|rarity=1/5000}}}}
+{{DropsTableBottom}}"""}
+    tables = drops_wikitext.parse_all_drop_tables(
+        source, included_templates=templates, page_title="Revenant goblin"
+    )
+    assert [t.drop_variant for t in tables] == ["Off-task", "On-task"]
+    assert all(t.npc_ids == [7931] for t in tables)
+    for table in tables:
+        assert {d.name for d in table.drops} == {
+            "Revenant ether",
+            "Amulet of avarice",
+            "Coins",
+            "Goblin champion scroll",
+        }
+        assert (
+            next(d for d in table.drops if d.name == "Revenant ether").quantity == "2-8"
+        )
+    assert (
+        next(d for d in tables[0].drops if d.name == "Amulet of avarice").rarity
+        == "1/1466"
+    )
+
+
+def test_included_drop_tables_fail_closed_for_missing_or_cyclic_sources():
+    for templates in ({}, {"Family/Drops": "{{Family/Drops}}"}):
+        with pytest.raises(ValueError):
+            drops_wikitext.parse_all_drop_tables(
+                "{{Family/Drops}}", included_templates=templates
+            )
+
+
+def test_cached_parameterized_revenant_family_has_real_resolved_drops():
+    import json
+    import config
+    from scripts.drops import included_tables
+
+    templates = json.loads(
+        (config.DATA_DROPS_PATH / "included-templates-wiki-page-text.json").read_text()
+    )
+    templates = {
+        name.removeprefix("Template:"): text for name, text in templates.items()
+    }
+    pages = update.load_monster_wikitext()
+    affected = {
+        name: text
+        for name, text in pages.items()
+        if included_tables.template_titles(text or "")
+    }
+    assert len(affected) >= 12
+    for name, text in affected.items():
+        parsed = drops_wikitext.parse_all_drop_tables(
+            text, included_templates=templates, page_title=name
+        )
+        assert [t.drop_variant for t in parsed] == ["Off-task", "On-task"]
+        for table in parsed:
+            assert len(table.drops) >= 50
+            assert len([d for d in table.drops if d.name == "Amulet of avarice"]) == 1
+            assert all(
+                "{{" not in d.quantity and "{{" not in d.rarity for d in table.drops
+            )
+            champion = [d.name for d in table.drops if "champion scroll" in d.name]
+            assert champion == (
+                [name.removeprefix("Revenant ").capitalize() + " champion scroll"]
+                if name in ("Revenant imp", "Revenant goblin", "Revenant hobgoblin")
+                else []
+            )
+    goblin = drops_wikitext.parse_all_drop_tables(
+        pages["Revenant goblin"],
+        included_templates=templates,
+        page_title="Revenant goblin",
+    )[0]
+    assert goblin.npc_ids == [7931]
+    assert next(d for d in goblin.drops if d.name == "Revenant ether").quantity == "2-8"
+    dragon = drops_wikitext.parse_all_drop_tables(
+        pages["Revenant dragon"],
+        included_templates=templates,
+        page_title="Revenant dragon",
+    )[0]
+    assert not any(d.name == "Coins" for d in dragon.drops)
+
+
+def test_included_expression_evaluator_rejects_code_and_unbounded_math():
+    from scripts.drops.included_tables import number
+
+    assert number("floor(sqrt(15))") == "3"
+    assert number("(15+60)^2") == "5625"
+    for expression in ("__import__('os').getcwd()", "2^99999", "1/0", "sqrt(-1)"):
+        with pytest.raises((ValueError, ZeroDivisionError)):
+            number(expression)

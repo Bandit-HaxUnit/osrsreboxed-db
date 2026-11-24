@@ -2038,6 +2038,8 @@ def parse_all_drop_tables(
     wikitext: str,
     include_rewards: bool = False,
     unique_templates: Optional[Dict[str, str]] = None,
+    included_templates: Optional[Dict[str, str]] = None,
+    page_title: str = "",
 ) -> List[ParsedDropTable]:
     """Parse every drop table declared on a monster's wiki page.
 
@@ -2046,6 +2048,13 @@ def parse_all_drop_tables(
         expanded before the drop sections are read.
     :return: One :class:`ParsedDropTable` per table/variant on the page.
     """
+    from scripts.drops import included_tables
+
+    has_includes = (
+        bool(included_tables.template_titles(wikitext))
+        and included_templates is not None
+    )
+    wikitext = included_tables.expand(wikitext, included_templates, page_title)
     wikitext = expand_unique_templates(wikitext, unique_templates)
     sections, strict_headings = _parse_drop_table_sections(wikitext)
     if not sections:
@@ -2060,7 +2069,9 @@ def parse_all_drop_tables(
     tables = []
     for table_name, body in sections:
         if table_name.lower() == "drops":
-            variants = parse_drop_variants(body, wikitext)
+            variants = (
+                included_tables.split_versions(body) if has_includes else None
+            ) or parse_drop_variants(body, wikitext)
         else:
             variants = [("", body)]
 
