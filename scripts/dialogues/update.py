@@ -1021,6 +1021,9 @@ def shop_index():
     return index
 
 
+SHOP_WORD = re.compile(r"\s+shop\.?$", re.I)
+
+
 def shop_for(target, index, redirects=None):
     """The shop a dialogue's link opens: by its own title, else where the wiki
     redirects it (a shop page that moved since the transcript was written).
@@ -1032,6 +1035,15 @@ def shop_for(target, index, redirects=None):
     shop = next((index[key] for key in shop_keys(target or "") if key in index), None)
     if shop:
         return shop
+    # A transcript may call a pub's window "Auburn Pub shop" where the shops dump
+    # titles the shop "The Auburn Pub". The trailing word is dropped only once the
+    # target as written has matched nothing, so a shop whose title really ends in
+    # "Shop" keeps its own match.
+    bare = SHOP_WORD.sub("", target or "")
+    if bare != target:
+        shop = next((index[key] for key in shop_keys(bare) if key in index), None)
+        if shop:
+            return shop
     moved = (redirects or {}).get(target)
     return index.get(moved) if moved else None
 
