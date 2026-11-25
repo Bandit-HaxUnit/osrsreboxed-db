@@ -476,6 +476,44 @@ def test_short_speaker_labels_resolve_to_listed_participants_only():
     assert "speaker_ids" not in lines["Hrafn/Guard"]
 
 
+def test_short_label_of_the_pages_own_npc_resolves_without_a_transcript_list():
+    # Transcript:Border Guard labels the guard "Guard" and lists no participants;
+    # tsps drew whichever cache NPC is first called "Guard" (tsps#6762).
+    raw = """{{Transcript|npc}}
+==Before completing [[Prince Ali Rescue]] quest==
+* '''Player:''' Can I come through this gate?
+* '''Guard:''' You must pay a toll of 10 gold coins to pass.
+* '''Border Guard:''' You cannot pass.
+* '''Zanik:''' Nevermind.
+* '''Guard/Zanik:''' Together.
+"""
+    guard = record("Border Guard", raw)
+    pages = {"Border Guard": "{{Infobox NPC|name=Border Guard|id1=4287|id2=4288}}"}
+    identity = {name: {"wikitext": text} for name, text in pages.items()}
+    enrich_records({"Border Guard": guard}, {}, identity, update.clean)
+    assert guard["participants"] == []
+    ids = npc_identities(identity, update.clean)
+    annotate_speaker_ids(guard, guard["participants"], ids, own_page="Border Guard")
+    lines = {
+        n["speaker"]: n
+        for steps in guard["variants"].values()
+        for n in walk(steps)
+        if n.get("type") == "line"
+    }
+    assert lines["Guard"]["speaker_ids"] == [4287, 4288]
+    # The full name already is the page's NPC (a plain npc step); others and
+    # groups stay unresolved.
+    assert "Border Guard" not in lines
+    assert "speaker_ids" not in lines["Zanik"]
+    assert "speaker_ids" not in lines["Guard/Zanik"]
+    # Without the page's own NPC (a quest page, or a page with no NPC page).
+    plain = record("Border Guard", raw)
+    enrich_records({"Border Guard": plain}, {}, identity, update.clean)
+    annotate_speaker_ids(plain, plain["participants"], ids)
+    annotate_speaker_ids(plain, plain["participants"], ids, own_page="Nobody")
+    assert not any("speaker_ids" in n for steps in plain["variants"].values() for n in walk(steps))
+
+
 def test_speaker_ids_do_not_change_node_ids():
     raw = """{{Transcript|quest}}
 {{Transcript list|HRH Hrafn}}

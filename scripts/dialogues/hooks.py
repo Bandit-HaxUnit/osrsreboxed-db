@@ -131,14 +131,38 @@ def speaker_ids(speaker, participants, identities):
     return []
 
 
-def annotate_speaker_ids(record, participants, identities):
+def own_speaker_ids(speaker, page, identities):
+    """NPC ids for a short label of an NPC transcript's own NPC.
+
+    An NPC's transcript with no Transcript list still has one speaker it names:
+    the page's own NPC, which the Wiki often labels by the last words of its
+    title ("Guard" on Transcript:Border Guard, "Hassan" on Transcript:Chancellor
+    Hassan, "Camel" on Transcript:Cart Camel). Only such a label resolves; the
+    full title or infobox name already names the page's NPC and gets nothing, and
+    a page with no NPC page of its own has no ids.
+    """
+    label = speaker.strip()
+    if not label or "/" in label or label.casefold() == "player":
+        return []
+    ids, _ = identities.get(page, ([], set()))
+    wanted = _words(label)
+    title = _words(_base_name(page))
+    if not ids or not wanted or len(wanted) >= len(title):
+        return []
+    return sorted(set(ids)) if title[-len(wanted):] == wanted else []
+
+
+def annotate_speaker_ids(record, participants, identities, own_page=None):
     """Add `speaker_ids` to lines spoken by a listed participant.
+
+    With no participants, `own_page` (the NPC page the transcript belongs to)
+    resolves short labels of that NPC instead (own_speaker_ids).
 
     Runs on the exported record after corrections: their fingerprints cover the
     record as compacted, so the field must not exist before they are checked.
     Node ids are untouched.
     """
-    if not participants:
+    if not participants and not own_page:
         return
     steps_lists = (
         [record["steps"]]
@@ -153,7 +177,11 @@ def annotate_speaker_ids(record, participants, identities):
             if node.get("type") != "line" or not speaker:
                 continue
             if speaker not in cache:
-                cache[speaker] = speaker_ids(speaker, participants, identities)
+                cache[speaker] = (
+                    speaker_ids(speaker, participants, identities)
+                    if participants
+                    else own_speaker_ids(speaker, own_page, identities)
+                )
             if cache[speaker]:
                 node["speaker_ids"] = list(cache[speaker])
 
