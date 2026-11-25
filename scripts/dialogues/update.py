@@ -1390,6 +1390,7 @@ def main():
             record,
             data["authoring"].get("Transcript:" + name, {}).get("participants", []),
             identities,
+            own_page=name if name in npcs else None,
         )
     dialogues = dict(sorted(data["records"].items()))
     classified = {title for titles in types.values() for title in titles}
