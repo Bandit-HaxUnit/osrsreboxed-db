@@ -2292,6 +2292,14 @@ def test_merlins_crystal_follows_the_revision_242_capture():
         assert [option["text"] for option in menu["options"]] == [offer, refuse]
         assert [step["type"] for step in menu["options"][0]["steps"]] == ["condition", "condition"]
 
+    # The Lady's "Who are you?" during the quest is her own page's answer (capture tick 1461).
+    lady = variants["searching-for-excalibur-the-lady-of-the-lake"][1]["options"][0]
+    assert lady["text"] == "Who are you?"
+    assert [step.get("player") or step.get("text") for step in lady["steps"]] == [
+        "Who are you?",
+        "I am the Lady of the Lake.",
+    ]
+
     # Source inputs over the cached revision, not edits of the generated record.
     corrections = json.loads(
         (config.DATA_PATH / "dialogues" / "corrections.json").read_text(encoding="utf-8")
