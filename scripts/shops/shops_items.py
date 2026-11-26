@@ -565,6 +565,90 @@ def parse_shop_info(wikitext: str) -> dict:
     return shop_info
 
 
+# A shop can gain stock once a quest or miniquest requirement is met: the Wiki
+# puts that stock in its own table under the requirement's heading (Slayer
+# Equipment's "===A Porcine of Interest===", the pearl barbarian rod on Alry's).
+# A section describing a duplicate shop (the skill capes), a league world's
+# stock, or one of two lines the player swaps between (Ali's Desert and
+# Menaphite gear, whose parent heading says so) is alternative stock, not an
+# addition, so its table is not merged.
+_STOCK_ADDED_AFTER = re.compile(
+    r"(?:completion of|completed the|partially completed|completing the)", re.IGNORECASE
+)
+_NOT_ADDED = re.compile(
+    r"\bduplicate\b|\bleague\b|\bswapping\b|\bswaps?\b", re.IGNORECASE
+)
+_HEADING = re.compile(r"^={2,6}\s*(.+?)\s*={2,6}\s*$", re.MULTILINE)
+
+
+def _heading_level(heading) -> int:
+    text = heading.group(0)
+    return len(text) - len(text.lstrip("="))
+
+
+def _section_prose(text: str, index: int, ancestors: bool = False) -> str:
+    """The prose between the nearest heading above ``index`` and ``index``.
+
+    With ``ancestors`` the intro prose of each enclosing heading follows it: a
+    parent section's wording still describes the tables beneath it.
+    """
+    headings = list(_HEADING.finditer(text, 0, index))
+    if not headings:
+        return text[:index]
+    parts = [text[headings[-1].end() : index]]
+    if not ancestors:
+        return parts[0]
+    level = _heading_level(headings[-1])
+    for position in range(len(headings) - 2, -1, -1):
+        if _heading_level(headings[position]) < level:
+            level = _heading_level(headings[position])
+            parts.append(
+                text[headings[position].end() : headings[position + 1].start()]
+            )
+    return "\n".join(parts)
+
+
+def _adds_stock_after_requirement(prose: str, context: str) -> bool:
+    """Whether the section above a table adds its stock once a requirement is met.
+
+    ``prose`` is the table's own section and must name the requirement;
+    ``context`` adds the enclosing sections, which can only rule it out.
+    """
+    return bool(
+        re.search(r"\[\[[^\]]+\]\]", prose)
+        and _STOCK_ADDED_AFTER.search(prose)
+        and not _NOT_ADDED.search(context)
+    )
+
+
+def store_table_sections(wikitext: str) -> list:
+    """Each stock table's rows as ``(added_after_requirement, rows_text)``.
+
+    The first table is the shop's own stock. Later tables join it only when
+    their section says completion of a quest or miniquest adds the items.
+    Heads are read whole, so nested templates in a StoreTableHead stay inside it.
+    """
+    sections = []
+    offset = 0
+    index = 0
+    while True:
+        head = find_store_table_head(wikitext[offset:])
+        if not head:
+            break
+        start, end = offset + head[0], offset + head[1]
+        bottom = re.search(r"\{\{StoreTableBottom\}\}", wikitext[end:], re.IGNORECASE)
+        if not bottom:
+            break
+        if index == 0 or _adds_stock_after_requirement(
+            _section_prose(wikitext, start),
+            _section_prose(wikitext, start, ancestors=True),
+        ):
+            sections.append((index > 0, wikitext[end : end + bottom.start()]))
+        offset = end + bottom.end()
+        index += 1
+    return sections
+
+
 def parse_shop_items(shop_name: str, wikitext: str) -> list:
     """Parse StoreLine and Tzhaar shop row templates from shop wikitext to extract items.
 
@@ -574,16 +658,11 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
     """
     items = []
 
-    # Extract the section between StoreTableHead and StoreTableBottom
-    head = find_store_table_head(wikitext)
-    bottom_match = re.search(r"\{\{StoreTableBottom\}\}", wikitext, re.IGNORECASE)
-
-    if not head or not bottom_match:
+    sections = store_table_sections(wikitext)
+    if not sections:
         logger.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
         logger.warning("No StoreTableHead or StoreTableBottom found in %s", shop_name)
         return items
-
-    section = wikitext[head[1] : bottom_match.start()]
 
     # Find all templates in this section robustly (including nested/multiline)
     # This regex matches {{TemplateName|...}} blocks, including nested braces
@@ -617,7 +696,11 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                 i += 1
         return templates
 
-    templates = extract_templates(section)
+    templates = [
+        (added, name, params)
+        for added, section in sections
+        for name, params in extract_templates(section)
+    ]
 
     # First extract currency from StoreTableHead if available
 
@@ -630,11 +713,17 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
 
     # Process all templates in the section
 
-    for template_name, params_str in templates:
+    seen_ids = set()
+    for added, template_name, params_str in templates:
         item_data = parse_storeline_params(params_str)
         if item_data and "name" in item_data and item_data["name"]:
             item_id = item_id_lookup(item_data["name"], item_data.get("bucketname"))
             if item_id is not None:
+                # Added stock repeats the rows it does not change; keep the
+                # shop's own row and append only the items the section adds.
+                if added and item_id in seen_ids:
+                    continue
+                seen_ids.add(item_id)
                 stock = item_data.get("stock")
                 if stock is not None:
                     stock_str = str(stock).strip()
