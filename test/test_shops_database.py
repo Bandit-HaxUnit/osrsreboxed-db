@@ -1072,6 +1072,25 @@ def test_duplicate_shop_and_league_tables_stay_out_of_the_stock():
         assert len(shops_items.store_table_sections(pages[name])) == 1, name
 
 
+def test_alternate_clothing_line_stays_out_of_alis_general_stock():
+    """Ali's Clothing section says Siamun swaps the player between the Desert and
+    Menaphite lines, so the Menaphite table (repeating the Rogue Trader line under
+    its own heading) is an alternate shop, not stock the general table gains."""
+    with open(
+        config.DATA_SHOPS_PATH / "shops-wiki-page-text.json", encoding="utf-8"
+    ) as source_file:
+        wikitext = json.load(source_file)["Ali's Discount Wares."]
+    sections = shops_items.store_table_sections(wikitext)
+    assert [added for added, _ in sections] == [False]
+    assert "Menaphite" not in sections[0][1]
+    ids = {
+        item["id"]
+        for item in shops_items.parse_shop_items("Ali's Discount Wares.", wikitext)
+        if item.get("type") == "item"
+    }
+    assert not ids & set(range(6392, 6408, 2)), "Menaphite gear is not general stock"
+
+
 def test_a_store_table_head_with_nested_templates_is_read_whole():
     """Worm Tongue's Wares' head holds "{{plinkp|Coins}}/{{plinkp|Termites}}". Stopping at its first "}}" left
     "{{plinkp|Termites}}" in the stock section, read as a Termites row, and lost any parameter after it."""

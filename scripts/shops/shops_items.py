@@ -567,31 +567,57 @@ def parse_shop_info(wikitext: str) -> dict:
 
 # A shop can gain stock once a quest or miniquest requirement is met: the Wiki
 # puts that stock in its own table under the requirement's heading (Slayer
-# Equipment's "===A Porcine of Interest===", the Menaphite gear on Ali's
-# Discount Wares, the pearl barbarian rod on Alry's). A section describing a
-# duplicate shop (the skill capes) or a league world's stock is alternative
-# stock, not an addition, so its table is not merged.
+# Equipment's "===A Porcine of Interest===", the pearl barbarian rod on Alry's).
+# A section describing a duplicate shop (the skill capes), a league world's
+# stock, or one of two lines the player swaps between (Ali's Desert and
+# Menaphite gear, whose parent heading says so) is alternative stock, not an
+# addition, so its table is not merged.
 _STOCK_ADDED_AFTER = re.compile(
     r"(?:completion of|completed the|partially completed|completing the)", re.IGNORECASE
 )
-_NOT_ADDED = re.compile(r"\bduplicate\b|\bleague\b", re.IGNORECASE)
+_NOT_ADDED = re.compile(
+    r"\bduplicate\b|\bleague\b|\bswapping\b|\bswaps?\b", re.IGNORECASE
+)
 _HEADING = re.compile(r"^={2,6}\s*(.+?)\s*={2,6}\s*$", re.MULTILINE)
 
 
-def _section_prose(text: str, index: int) -> str:
-    """The prose between the nearest heading above ``index`` and ``index``."""
-    heading = None
-    for heading in _HEADING.finditer(text, 0, index):
-        pass
-    return text[heading.end() : index] if heading else text[:index]
+def _heading_level(heading) -> int:
+    text = heading.group(0)
+    return len(text) - len(text.lstrip("="))
 
 
-def _adds_stock_after_requirement(prose: str) -> bool:
-    """Whether the section above a table adds its stock once a requirement is met."""
+def _section_prose(text: str, index: int, ancestors: bool = False) -> str:
+    """The prose between the nearest heading above ``index`` and ``index``.
+
+    With ``ancestors`` the intro prose of each enclosing heading follows it: a
+    parent section's wording still describes the tables beneath it.
+    """
+    headings = list(_HEADING.finditer(text, 0, index))
+    if not headings:
+        return text[:index]
+    parts = [text[headings[-1].end() : index]]
+    if not ancestors:
+        return parts[0]
+    level = _heading_level(headings[-1])
+    for position in range(len(headings) - 2, -1, -1):
+        if _heading_level(headings[position]) < level:
+            level = _heading_level(headings[position])
+            parts.append(
+                text[headings[position].end() : headings[position + 1].start()]
+            )
+    return "\n".join(parts)
+
+
+def _adds_stock_after_requirement(prose: str, context: str) -> bool:
+    """Whether the section above a table adds its stock once a requirement is met.
+
+    ``prose`` is the table's own section and must name the requirement;
+    ``context`` adds the enclosing sections, which can only rule it out.
+    """
     return bool(
         re.search(r"\[\[[^\]]+\]\]", prose)
         and _STOCK_ADDED_AFTER.search(prose)
-        and not _NOT_ADDED.search(prose)
+        and not _NOT_ADDED.search(context)
     )
 
 
@@ -614,7 +640,8 @@ def store_table_sections(wikitext: str) -> list:
         if not bottom:
             break
         if index == 0 or _adds_stock_after_requirement(
-            _section_prose(wikitext, start)
+            _section_prose(wikitext, start),
+            _section_prose(wikitext, start, ancestors=True),
         ):
             sections.append((index > 0, wikitext[end : end + bottom.start()]))
         offset = end + bottom.end()
