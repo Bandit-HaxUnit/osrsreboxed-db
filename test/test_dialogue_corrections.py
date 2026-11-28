@@ -2389,3 +2389,59 @@ def test_family_crest_and_family_pest_follow_the_revision_242_captures():
     other = records["Dimintheis"]["variants"]["standard-dialogue-after-completing-family-crest"][0]["options"][1]["steps"]
     named = [step for step in other if step.get("type") == "condition" and step["text"] == "If the player has their goldsmith gauntlets:"]
     assert words(named[0]["steps"])[0] == "You asked Avan to convert them into goldsmithing gauntlets, didn't you? I think you must still have them somewhere."
+
+
+def test_at_first_light_follows_the_revision_243_capture():
+    def words(steps):
+        found = []
+        for step in steps:
+            if isinstance(step, dict):
+                for key in ("player", "npc", "text"):
+                    if isinstance(step.get(key), str):
+                        found.append(step[key])
+                for nested in [step.get("steps") or [], *[o.get("steps") or [] for o in step.get("options") or []]]:
+                    found.extend(words(nested))
+        return found
+
+    variants = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())["At First Light"]["variants"]
+    assert "Well, actually, I heard there might be something I could help you with?" in words(
+        variants["a-missing-fox-talking-to-guild-scribe-verity"]
+    )
+    assert words(variants["a-missing-fox-talking-to-guild-hunter-wolf"]).count(
+        "Well, then I guess the first step is to work out what he went to get. Could I take a look at Kiko's bed?"
+    ) == 1
+    assert "Well, it's your lucky day! Take this sample to a woman called Atza in Outer Fortis. She'll have exactly what we need." in words(
+        variants["fox-tracking-talking-to-fox-with-the-makeshift-poultice"]
+    )
+    # The uncaptured full-inventory line keeps the Wiki's wording.
+    assert "Well it's your lucky day! Make some room and I'll give you the sample needed to fix the bed." in words(
+        variants["fox-tracking-talking-to-fox-with-the-makeshift-poultice"]
+    )
+    assert "Well, as much as I resent the trickery used, this bed is much comfier now." in words(
+        variants["finishing-up-repairing-kiko-s-bed"]
+    )
+
+    both = variants["fox-tracking-talking-to-guild-hunter-fox-talking-to-fox-again"][1]["options"][0]["steps"]
+    assert both[0] == {"player": "I think I've got them both."}
+    assert [step["text"] for step in both[1:]] == ["If the player has both leaves:", "If the player does not have both leaves:"]
+    assert words(both[1]["steps"]) == [
+        "Yay, Fox will be pleased. I'll let him know right now!",
+        "...",
+        "He's very mean... He says you'll have to... tie them up with the cute little jerb tail.",
+    ]
+    assert words(both[2]["steps"]) == ["It doesn't look like you do... Who's the one with the head wound again?"]
+
+    first = variants["fox-tracking-talking-to-guild-hunter-wolf-for-the-first-time-after-giving-fox-the-poultice"]
+    assert words(first) == [
+        "I've found Fox. He's been injured by something out in the savannah, but he's doing okay."
+        " He's got me doing a few things for him whilst he recuperates.",
+        "Ha! Now that's the Fox I know. I'll have to give him some odd jobs once he's back to make up for ones you're covering!",
+    ]
+    assert words(variants["fox-tracking-talking-to-guild-hunter-wolf-after-giving-fox-the-poultice"])[0] == "How's the Fox situation?"
+
+    source = json.loads(
+        (config.DATA_PATH / "dialogues" / "capture-sources.json").read_text(encoding="utf-8")
+    )["At First Light"]
+    page = json.loads((config.DATA_PATH / "dialogues/quest-pages.json").read_text())["Transcript:At First Light"]
+    with pytest.raises(ValueError, match="Stale dialogue capture source"):
+        apply_capture_lines("At First Light", page["wikitext"], source, page["revision"] + 1)
